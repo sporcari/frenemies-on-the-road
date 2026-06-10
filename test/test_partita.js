@@ -109,15 +109,14 @@ function passo(i){
   if(f==="jolly_intro"){ click(document.getElementById("j-ok")); return f }
   if(f==="primo_conteggio"){ click(document.getElementById("pc-avanti")); return f }
   if(f==="colpi"){
-    if(colpiFatti<1){
-      const carte=[...document.querySelectorAll("#riservaCarte .carta")];
-      for(const c of carte){
-        click(c);
-        const b=document.querySelector("button[data-bersaglio]");
-        if(b){ colpiFatti++; log.push("COLPO DI SCENA fatto"); click(b); return "colpo" }
-      }
+    // colpo obbligatorio: gioca una carta di riserva, poi clicca il primo bottone (bersaglio o "metti senza eliminare")
+    const carte=[...document.querySelectorAll("#riservaCarte .carta")];
+    if(carte.length){
+      click(carte[0]);
+      const b=document.querySelector("button[data-bersaglio]");
+      if(b){ colpiFatti++; log.push("COLPO DI SCENA fatto"); click(b); }
     }
-    click(document.getElementById("colpoPasso")); return f }
+    return "colpo"; }
   if(f==="neutralizza"){ click(document.getElementById("n-ok")); return f }
   if(f==="finale") return "FINALE";
   throw new Error("fase sconosciuta: "+f);

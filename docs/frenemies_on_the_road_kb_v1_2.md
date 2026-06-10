@@ -382,6 +382,8 @@ Si sommano i valori delle carte presenti nel piatto:
 
 Chi ha il totale più alto vince la posta della scena.
 
+> **Scena chiusa da una scopa (v1.3):** se la scena finisce con il **piatto vuoto** perché l'ultima giocata è stata una **scopa**, la posta è vinta da **chi ha fatto la scopa**, anche se i totali del piatto sarebbero 0-0. (Un piatto svuotato dal counter di un Jolly non è una scopa: in quel caso la posta resta in equilibrio.)
+
 **Se vincono i Protagonisti:** la posta della scena è raggiunta; recuperano 1 carta casuale dagli scarti, messa in fondo al mazzo.
 
 **Se vince l'Opposizione:** la posta della scena fallisce, la situazione peggiora per i protagonisti. Nessun recupero.
@@ -508,7 +510,7 @@ Narrativamente: il piano scorretto fallisce senza portare alcun vantaggio.
 
 ### 23.1 — Mano finale estesa
 
-Se un giocatore ha tra 5 e 7 carte rimanenti nel mazzo:
+Se un giocatore ha **più di 4 carte** rimanenti nel mazzo (la mano finale si sceglie **dopo il mercato**, così le figure appena comprate possono entrarci):
 
 - Le prende tutte in mano
 - Sceglie 4 carte con cui giocherà la scena
@@ -526,21 +528,23 @@ Questa regola incentiva a usare attivamente le figure e a non lasciarle esposte.
 
 ## 24. Colpi di scena finali
 
-Dopo il primo conteggio dell'ultima scena, i giocatori con carte nella riserva possono fare **colpi di scena**.
+Dopo il primo conteggio dell'ultima scena si giocano i **colpi di scena**: si continua a giocare a **turni alterni** usando le carte tenute in **riserva**. Inizia il lato che sta **perdendo** (in parità, i Protagonisti; se la scena si era chiusa con una scopa a piatto vuoto, parte chi *non* l'ha fatta).
 
-**Effetto:** sostituire una carta avversaria nel piatto con una carta della propria riserva, a condizione che la nuova carta abbia valore pari o inferiore alla carta sostituita.
+**Gioco obbligatorio (v1.3):** finché hai carte in riserva, nel tuo turno **devi** giocarne una. La carta entra nel **piatto** e aggiunge il suo valore al tuo totale.
 
-**Alternanza:** se un giocatore fa un colpo di scena, l'altro può rispondere con un contro-colpo di scena. Si procede alternandosi finché nessuno può o vuole più farne.
+**Eliminazione (v1.3):** la carta che giochi può **eliminare** dal piatto **una** carta di **seme avversario** di valore **pari o inferiore** al valore della carta giocata. La carta eliminata va negli **scarti** del suo proprietario (non è una presa). La tua carta **resta** nel piatto. Si possono colpire solo carte dei semi avversari, mai dei propri. *(Sostituisce la regola v1.1, in cui si sostituiva una carta avversaria di valore maggiore o uguale: ora la tua carta ne abbatte una più debole e resta sul tavolo.)*
+
+Non si fanno prese o scope in questa fase: le uniche azioni sono mettere la carta nel piatto ed eventualmente eliminarne una avversaria di valore ≤. Le figure giocate ora contano solo per il loro **valore**, senza effetto speciale.
+
+**Fine:** i colpi di scena finiscono quando **entrambe le riserve sono esaurite**; poi si fa il **conteggio definitivo**.
 
 **Struttura narrativa:**
 
-1. Dopo il primo conteggio → si narra un esito apparente
+1. Dopo il primo conteggio → si narra l'esito apparente
 2. A ogni colpo di scena → si narra come le cose non fossero come apparivano
-3. Alla fine → si rifà il conteggio e si determina l'esito definitivo
+3. Quando le riserve sono finite → conteggio definitivo
 
-> **Chiarimento (v1.1):** la carta avversaria sostituita va nella pila degli **scarti del suo proprietario**.
-
-> **Esempio:** Primo conteggio: i nemici sembrano avere la meglio, il piatto pende a loro favore. Colpo di scena dei Protagonisti: Skunk sostituisce un 5 di Quadri con un 5 di Cuori. "Il meccanico che li ha venduti ai sicari? Era un uomo di Jorge: ha venduto a tutti e due, e ai sicari ha dato la pista sbagliata."
+> **Esempio:** Primo conteggio: l'Opposizione sembra avere la meglio. Tocca prima ai Protagonisti, che perdono: Skunk cala dalla riserva un 7 di Cuori e con quello fa sparire un 5 di Quadri dal tavolo — "il meccanico che li ha venduti ai sicari era un uomo di Jorge". Il 7♥ resta nel piatto, il 5♦ finisce negli scarti. Risponde l'Opposizione, poi di nuovo i Protagonisti, finché entrambi hanno svuotato la riserva.
 
 ## 25. Conteggio finale
 
@@ -922,6 +926,12 @@ Resta la lettura del diario (§27), che corregge il trionfo: salita nella cella,
 
 # REGISTRO MODIFICHE
 
+## v1.3 (giugno 2026)
+
+1. **§18** — Scena chiusa da una **scopa** a piatto vuoto: la posta è vinta da chi ha fatto la scopa (non più parità 0-0). Vale anche per l'esito apparente della quinta scena (poi seguono i colpi di scena). Un piatto svuotato dal counter di un Jolly resta invece in equilibrio.
+2. **§24** — **Colpi di scena riscritti.** Si gioca a turni alterni e, finché si hanno carte in riserva, **si gioca obbligatoriamente**: la carta entra nel piatto e può **eliminare** una carta avversaria di valore **pari o inferiore** (la carta giocata resta sul tavolo; quella eliminata va negli scarti). Prima invece si *sostituiva* una carta avversaria di valore maggiore o uguale. La fase finisce quando entrambe le riserve sono esaurite.
+3. **§23.1** — La mano finale della quinta scena si sceglie **dopo il mercato** (così le figure appena comprate possono entrarvi); la scelta di 4 carte scatta con **più di 4 carte** rimaste nel mazzo.
+
 ## v1.2 (giugno 2026)
 
 1. **§9.7** — Nuova domanda condivisa del pitch: che cosa impedisce di raggiungere l'obiettivo subito, la prima difficoltà da superare. La risposta non è spuntabile, appartiene al tavolo e inquadra la Scena 1. L'uso meccanico delle risposte diventa §9.8.
@@ -945,4 +955,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.2*
+*Frenemies on the Road — Knowledge Base v1.3*

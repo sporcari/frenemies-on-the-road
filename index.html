@@ -397,6 +397,7 @@ function nuovaPartita(){
     controllo:{P:"picche",O:"quadri"},
     prevControllo:{P:null,O:null},
     scopeGiocatore:{picche:0,cuori:0,quadri:0,fiori:0},
+    svuotoConScopa:null,   // lato che ha svuotato il piatto con una scopa (per assegnare la scena a piatto vuoto)
     pers:{A:{nome:"",desc:""}, B:{nome:"",desc:""}},
     pitch:PITCH_TEMPLATE.map(p=>({seme:p.seme, risposta:"", usata:false})),
     spinte:{P:{},O:{}},
@@ -1014,6 +1015,7 @@ function iniziaScena(){
   calcolaControllo();
   G.scene[G.scena] = G.scene[G.scena] || {titolo:"",posta:"",iniziativa:null,ambiente:"",vincitore:null,dominante:null,rapporto:null,totP:0,totO:0,riassunto:""};
   G.astaPicks={P:null,O:null};
+  G.svuotoConScopa=null;   // si conta solo una scopa fatta DURANTE questa scena
   G.fase="asta"; G.attore="P";
   velo("P", render);
 }
@@ -1230,6 +1232,7 @@ function giocaCarta(c, combo, daAsta){
     msg+=`giocata nel piatto — un nuovo elemento entra in scena.`;
   }
   G.ultimaGiocata=msg;
+  G.svuotoConScopa = (tipo==="scopa") ? l : null;   // scopa = piatto svuotato da l; presa/piatto = non vuoto
   // effetto figura dopo la narrazione, prima del cambio turno
   const dopo = c.fig ? ()=>effettoFigura(c, ()=>prossimoTurno()) : null;
   vaiNarrazione(c, tipo, dettagli, dopo);
@@ -1297,6 +1300,7 @@ function eseguiSpinta(idxPitch){
   aggiungiScopa(l);
   const residue=G.piatto.length;
   if(residue){ L.prese.push(...G.piatto); G.piatto=[]; }
+  G.svuotoConScopa = l;   // la spinta è una scopa vera: piatto svuotato da l
   G.narr.boostCard=null;
   G.narr.tipo="scopa";
   G.narr.sugg=`<b>RISORSA DEL PITCH — la presa diventa SCOPA${residue?" e svuota il piatto":""}.</b> Porta in narrazione, come scena, rivelazione o flashback: <i>«${p.risposta}»</i>. Il momento cambia peso: da successo parziale a svolta.`;
@@ -1514,6 +1518,7 @@ function risolviJolly(counter){
     D.mano=D.mano.filter(x=>x.id!==jollyDif.id);
     D.prese.push(...G.piatto);
     G.piatto=[];
+    G.svuotoConScopa=null;   // il counter svuota il piatto ma NON è una scopa
     G.ultimaGiocata=`COUNTER! ${nomeLato(dif)} smaschera il tentativo: prende tutto il piatto, entrambi i Jolly escono dal gioco.`;
     vaiNarrazione(null,"presa","",null,
       `<b>COUNTER.</b> ${nomeLato(dif)} narra come il tentativo scorretto viene smascherato: la trappola smontata davanti a tutti, il piano esposto — e tutto ciò che era in scena finisce nelle sue mani.`, dif);
@@ -1524,11 +1529,13 @@ function risolviJolly(counter){
   if(G.piatto.length===0){
     pj.carta.peccato=true; L.scope.push(pj.carta); L.peccatoScena=G.scena;
     aggiungiScopa(l);
+    G.svuotoConScopa=l;   // scopa col Jolly: piatto svuotato da l
     G.ultimaGiocata=`${nomeLato(l)} — SCOPA col Jolly come ${pj.valore}. Resta un peccato latente.`;
     vaiNarrazione(pj.carta,"scopa","",null,
       `<b>SVOLTA scorretta.</b> ${nomeLato(l)} narra il mezzo moralmente discutibile con cui ripulisce la scena in un colpo solo — una bugia, una minaccia, una scorciatoia. Il vantaggio è pieno, ma il <b>peccato resta latente</b>: in una scena futura potrebbe tornare a chiedere il conto.`);
   }else{
     L.prese.push(pj.carta);
+    G.svuotoConScopa=null;   // presa col Jolly: piatto non vuoto
     G.ultimaGiocata=`${nomeLato(l)} — presa col Jolly come ${pj.valore}.`;
     vaiNarrazione(pj.carta,"presa","",null,
       `<b>Vantaggio scorretto.</b> ${nomeLato(l)} narra come ottiene questo successo parziale con un mezzo moralmente discutibile — tecnicamente sbagliato, sicuramente efficace.`);
@@ -1557,7 +1564,10 @@ function eseguiPeccato(l, jollyCard){
 function fineScena(){
   if(G.scena===4){
     const tP=totaleProt(), tO=totaleOpp();
-    G.colpi={passaggi:0, attore: tP<tO?"P":tP>tO?"O":"P", apparente:{tP,tO}};
+    // scopa a piatto vuoto: l'esito apparente va a chi l'ha fatta; parte nei colpi chi sta perdendo
+    const scopaWin = (G.piatto.length===0 && G.svuotoConScopa) ? G.svuotoConScopa : null;
+    const attore = scopaWin ? altro(scopaWin) : (tP<tO?"P":tP>tO?"O":"P");
+    G.colpi={attore, apparente:{tP,tO,scopa:scopaWin}};
     G.ultimaGiocata="";
     G.fase="primo_conteggio"; render(); return;
   }
@@ -1568,7 +1578,14 @@ function fineScena(){
 function chiudiScena(){
   const rec=G.scene[G.scena];
   rec.totP=totaleProt(); rec.totO=totaleOpp();
-  rec.vincitore = rec.totP>rec.totO ? "P" : rec.totO>rec.totP ? "O" : "parita";
+  // scena finita con una scopa a piatto vuoto: la vince chi ha fatto la scopa (non più parità 0-0)
+  if(G.piatto.length===0 && G.svuotoConScopa){
+    rec.vincitore = G.svuotoConScopa;
+    rec.perScopa = true;
+  }else{
+    rec.vincitore = rec.totP>rec.totO ? "P" : rec.totO>rec.totP ? "O" : "parita";
+    rec.perScopa = false;
+  }
   // seme dominante = somma più alta nel piatto
   const somme=Object.keys(SIMBOLI).map(s=>({s,t:totaleSeme(s)})).sort((a,b)=>b.t-a.t);
   rec.dominante = (somme[0].t===0 || somme[0].t===somme[1].t) ? "parita" : somme[0].s;
@@ -1590,7 +1607,8 @@ function rFineScena(){
     <h2 class="ts">Fine della scena ${G.scena+1}</h2>
     ${rec.titolo?`<p class="sotto">«${rec.titolo}»${rec.posta?" — "+rec.posta:""}</p>`:""}
     <div class="cartellone"><div class="grande">${vincNome}</div>
-      <div class="sc">piatto: ♥+♠ ${rec.totP} contro ♦+♣ ${rec.totO}</div></div>
+      <div class="sc">${rec.perScopa?"scopa a piatto vuoto — la scena va a chi l'ha fatta":`piatto: ♥+♠ ${rec.totP} contro ♦+♣ ${rec.totO}`}</div></div>
+    ${rec.perScopa?`<div class="banner scopa">La scena finisce con una <b>scopa a piatto vuoto</b>: la vince ${nomeLato(rec.vincitore)}, che ha ripulito il tavolo.</div>`:""}
     ${rec.vincitore==="P"?`<div class="banner">La posta è raggiunta.${rec.recupero?` I Protagonisti recuperano ${rec.recupero} dagli scarti, in fondo al mazzo.`:""}</div>`:""}
     ${rec.vincitore==="O"?`<div class="banner">La posta fallisce: la situazione peggiora per i protagonisti. Nessun recupero.</div>`:""}
     ${rec.vincitore==="parita"?`<div class="banner">Totali in equilibrio: la posta resta sospesa, nessun recupero.</div>`:""}
@@ -1839,33 +1857,35 @@ function rNeutralizza(){
 }
 
 /* ================= COLPI DI SCENA FINALI ================= */
-function colpiPossibili(l){
-  const L=lato(l), semiAvv=lato(altro(l)).semi;
-  return L.riserva.some(r=>G.piatto.some(c=>semiAvv.includes(c.seme) && c.val>=r.val));
+function colpiPossibili(l){ return lato(l).riserva.length>0; }   // colpi obbligatori finché c'è riserva
+function bersagliColpo(l, r){
+  const semiAvv=lato(altro(l)).semi;
+  return G.piatto.filter(c=>semiAvv.includes(c.seme) && c.val<=r.val);   // avversarie di valore ≤ alla carta giocata
 }
 function rPrimoConteggio(){
   const a=G.colpi.apparente;
-  const vinc = a.tP>a.tO?"P":a.tO>a.tP?"O":"parita";
+  const vinc = a.scopa ? a.scopa : (a.tP>a.tO?"P":a.tO>a.tP?"O":"parita");
+  const ciSonoColpi = colpiPossibili("P")||colpiPossibili("O");
   SC.innerHTML=`
     <h2 class="ts">Primo conteggio — l'esito apparente</h2>
     <div class="cartellone"><div class="grande">${vinc==="parita"?"EQUILIBRIO":nomeLato(vinc)}</div>
-      <div class="sc">♥+♠ ${a.tP} contro ♦+♣ ${a.tO} — ma le cose potrebbero non essere come appaiono</div></div>
+      <div class="sc">${a.scopa?"scopa a piatto vuoto":`♥+♠ ${a.tP} contro ♦+♣ ${a.tO}`} — ma le cose potrebbero non essere come appaiono</div></div>
     <div class="pannello">
       <span class="etichetta">Ora narra</span>
-      <div class="lettura">Raccontate insieme <b>come sembra finire</b>: chi sta vincendo, cosa sta per succedere. Poi le riserve potranno ribaltare il quadro.</div>
+      <div class="lettura">Raccontate insieme <b>come sembra finire</b>${a.scopa?` — ${nomeLato(a.scopa)} ha ripulito il tavolo con una scopa`:""}. Poi le riserve potranno ribaltare il quadro.</div>
     </div>
-    <div class="banner">Riserve: ${nomeLato("P")} ${lato("P").riserva.length} carte · ${nomeLato("O")} ${lato("O").riserva.length} carte. Un colpo di scena sostituisce una carta avversaria nel piatto con una propria di valore pari o inferiore.</div>
-    <button class="azione" id="pc-avanti">${colpiPossibili("P")||colpiPossibili("O")?"Via ai colpi di scena":"Nessun colpo possibile — conteggio definitivo"}</button>`;
+    <div class="banner">Riserve: ${nomeLato("P")} ${lato("P").riserva.length} carte · ${nomeLato("O")} ${lato("O").riserva.length} carte. Nei colpi di scena ogni carta della riserva entra nel piatto e può eliminare una carta avversaria di valore pari o inferiore.</div>
+    <button class="azione" id="pc-avanti">${ciSonoColpi?"Via ai colpi di scena":"Nessuna riserva — conteggio definitivo"}</button>`;
   document.getElementById("pc-avanti").addEventListener("click",()=>{
-    if(!colpiPossibili("P") && !colpiPossibili("O")){ conteggioDefinitivo(); return }
-    if(!colpiPossibili(G.colpi.attore)){ G.colpi.attore=altro(G.colpi.attore); G.colpi.passaggi=1; }
+    if(!ciSonoColpi){ conteggioDefinitivo(); return }
+    if(!colpiPossibili(G.colpi.attore)) G.colpi.attore=altro(G.colpi.attore);   // parte chi ha riserva
     G.attore=G.colpi.attore;
     G.fase="colpi"; velo(G.attore,render);
   });
 }
 function rColpi(){
-  const l=G.attore, L=lato(l), semiAvv=lato(altro(l)).semi;
-  const puo=colpiPossibili(l);
+  const l=G.attore, L=lato(l);
+  if(!L.riserva.length){ prossimoColpo(l); return }   // sicurezza: niente riserva, passa oltre
   SC.innerHTML=`
     <h2 class="ts">Colpo di scena — ${nomeLato(l)}</h2>
     <div class="tavolo-top">
@@ -1874,49 +1894,52 @@ function rColpi(){
     </div>
     <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto</span>'}</div>
     <div class="pannello${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}">
-      <span class="etichetta">La tua riserva ${puo?"— scegli la carta da mettere in gioco":"(nessun colpo possibile)"}</span>
+      <span class="etichetta">La tua riserva — gioca una carta: entra nel piatto e può eliminare una avversaria di valore ≤</span>
       <div class="mazzo-carte" id="riservaCarte">${ordina(L.riserva).map(c=>cartaHTML(c)).join("")}</div>
       <div id="colpoAzione"></div>
-    </div>
-    <button class="secondaria" id="colpoPasso" style="width:100%">Passo — nessun colpo di scena</button>`;
-  if(puo) SC.querySelectorAll("#riservaCarte .carta").forEach(el=>{
+    </div>`;
+  SC.querySelectorAll("#riservaCarte .carta").forEach(el=>{
     el.addEventListener("click",()=>{
       SC.querySelectorAll("#riservaCarte .carta").forEach(x=>x.classList.remove("sel"));
       el.classList.add("sel");
       const r=L.riserva.find(x=>x.id==el.dataset.id);
-      const bersagli=G.piatto.filter(c=>semiAvv.includes(c.seme) && c.val>=r.val);
+      const bersagli=bersagliColpo(l, r);
       const box=document.getElementById("colpoAzione");
-      if(!bersagli.length){ box.innerHTML=`<div class="banner">Nessuna carta avversaria di valore pari o superiore nel piatto.</div>`; return }
-      box.innerHTML=`<span class="etichetta" style="margin-top:10px">Sostituisci quale carta avversaria?</span>
-        <div class="opzioni">${bersagli.map(c=>`<button data-bersaglio="${c.id}">${c.fig?FIGURE[c.fig].nome.charAt(0):c.val}${SIMBOLI[c.seme]}</button>`).join("")}</div>`;
+      let html=`<span class="etichetta" style="margin-top:10px">${nomeCarta(r)} entra nel piatto. ${bersagli.length?"Elimina una carta avversaria (valore ≤):":"Nessuna carta avversaria di valore ≤ da eliminare."}</span><div class="opzioni">`;
+      bersagli.forEach(c=>{ html+=`<button data-bersaglio="${c.id}">Elimina ${c.fig?FIGURE[c.fig].nome.charAt(0):c.val}${SIMBOLI[c.seme]}</button>`; });
+      html+=`<button class="neutra" data-bersaglio="">Metti senza eliminare</button></div>`;
+      box.innerHTML=html;
       box.querySelectorAll("button[data-bersaglio]").forEach(b=>b.addEventListener("click",()=>{
-        const bers=G.piatto.find(x=>x.id==b.dataset.bersaglio);
+        const bers = b.dataset.bersaglio ? G.piatto.find(x=>x.id==b.dataset.bersaglio) : null;
         eseguiColpo(l, r, bers);
       }));
     });
   });
-  document.getElementById("colpoPasso").addEventListener("click",()=>{
-    G.colpi.passaggi++;
-    if(G.colpi.passaggi>=2 || !colpiPossibili(altro(l))){ conteggioDefinitivo(); return }
-    G.colpi.attore=altro(l); G.attore=G.colpi.attore;
-    G.fase="colpi"; velo(G.attore,render);
-  });
+}
+function prossimoColpo(l){
+  // alternanza: tocca all'altro se ha riserva; altrimenti continua chi ne ha; se nessuno, conteggio
+  const o=altro(l);
+  if(colpiPossibili(o)){ G.colpi.attore=o; G.attore=o; G.fase="colpi"; velo(o,render); }
+  else if(colpiPossibili(l)){ G.colpi.attore=l; G.attore=l; G.fase="colpi"; velo(l,render); }
+  else conteggioDefinitivo();
 }
 function eseguiColpo(l, riservaCard, bersaglio){
   const L=lato(l);
   L.riserva=L.riserva.filter(x=>x.id!==riservaCard.id);
-  const proprietario = lato("P").semi.includes(bersaglio.seme) ? "P":"O";
-  G.piatto=G.piatto.filter(x=>x.id!==bersaglio.id);
-  lato(proprietario).scarti.push(bersaglio);
   G.piatto.push(riservaCard);
-  G.colpi.passaggi=0;
-  G.ultimaGiocata=`COLPO DI SCENA! ${nomeLato(l)} sostituisce ${nomeCarta(bersaglio)} con ${nomeCarta(riservaCard)}.`;
-  vaiNarrazione(riservaCard,"presa","",()=>{
-    G.colpi.attore=altro(l); G.attore=G.colpi.attore;
-    if(colpiPossibili(G.attore)){ G.fase="colpi"; velo(G.attore,render); }
-    else if(colpiPossibili(l)){ G.colpi.attore=l; G.attore=l; G.colpi.passaggi=1; G.fase="colpi"; velo(l,render); }
-    else conteggioDefinitivo();
-  }, `<b>COLPO DI SCENA.</b> Narra come le cose non fossero come apparivano: ${nomeCarta(bersaglio)} esce dalla storia, ${nomeCarta(riservaCard)} ne prende il posto. Un volto che cade, una verità che riemerge, una carta che qualcuno teneva da parte da sempre.`, l);
+  G.svuotoConScopa=null;
+  let sugg;
+  if(bersaglio){
+    const proprietario = lato("P").semi.includes(bersaglio.seme) ? "P":"O";
+    G.piatto=G.piatto.filter(x=>x.id!==bersaglio.id);
+    lato(proprietario).scarti.push(bersaglio);
+    G.ultimaGiocata=`COLPO DI SCENA! ${nomeLato(l)} mette in gioco ${nomeCarta(riservaCard)} ed elimina ${nomeCarta(bersaglio)}.`;
+    sugg=`<b>COLPO DI SCENA.</b> ${nomeCarta(riservaCard)} entra in scena e spazza via ${nomeCarta(bersaglio)}: narra come le cose non fossero come apparivano — un volto che cade, una verità che riemerge.`;
+  }else{
+    G.ultimaGiocata=`COLPO DI SCENA! ${nomeLato(l)} mette in gioco ${nomeCarta(riservaCard)}.`;
+    sugg=`<b>COLPO DI SCENA.</b> ${nomeCarta(riservaCard)} entra in scena: una carta tenuta da parte che ora pesa nel conto finale.`;
+  }
+  vaiNarrazione(riservaCard,"presa","",()=>prossimoColpo(l), sugg, l);
 }
 function conteggioDefinitivo(){
   chiudiScena();
@@ -2049,7 +2072,8 @@ const REGOLE={
   lettura:{titolo:"Fine scena e letture",html:`
     <h3>Vittoria della scena</h3>
     Quando entrambe le mani sono esaurite si sommano i valori delle carte nel <b>piatto</b>: ♥+♠ = Protagonisti, ♦+♣ = Opposizione. Il totale più alto vince la posta.<br>
-    <b>Se vincono i Protagonisti:</b> posta raggiunta, recuperano 1 carta casuale dagli scarti (in fondo al mazzo). <b>Se vince l'Opposizione:</b> la posta fallisce, nessun recupero.
+    <b>Se vincono i Protagonisti:</b> posta raggiunta, recuperano 1 carta casuale dagli scarti (in fondo al mazzo). <b>Se vince l'Opposizione:</b> la posta fallisce, nessun recupero.<br>
+    <b>Scopa a piatto vuoto:</b> se la scena finisce con il piatto vuoto perché l'ultima giocata è stata una scopa, la posta la vince chi ha fatto la scopa.
     <h3>Lettura del piatto — chi ha deciso l'esito (27.1)</h3>
     Il seme col valore più alto nel piatto racconta <i>come</i> è andata, indipendentemente da chi ha vinto:
     ♠ forza dei protagonisti · ♥ dialogo dei protagonisti · ♦ l'opposizione organizzata · ♣ la sfortuna e il caos.
@@ -2106,11 +2130,11 @@ const REGOLE={
     Tra i due protagonisti, l'ultima parola spetta a chi ha realizzato <b>più scope</b>.`},
   scena5:{titolo:"La quinta scena",html:`
     <h3>Mano finale estesa (23.1)</h3>
-    Se un giocatore ha tra <b>5 e 7 carte</b> rimanenti nel mazzo: le prende tutte, sceglie le 4 con cui giocherà, le altre vanno da parte come <b>riserva</b>.
+    La mano finale si sceglie <b>dopo il mercato</b>. Se un giocatore ha <b>più di 4 carte</b> nel mazzo: le prende tutte, sceglie le 4 con cui giocherà, le altre vanno da parte come <b>riserva</b>.
     <h3>Figure nel piatto (23.2)</h3>
     Le figure rimaste nel piatto all'inizio dell'ultima scena vengono rimosse: l'avversario del proprietario narra la <b>neutralizzazione</b> di quel PNG, e ognuna conta come <b>una scopa</b> per lui.
     <h3>Colpi di scena finali (24)</h3>
-    Dopo il <b>primo conteggio</b> si narra l'esito apparente. Poi chi ha carte in riserva può sostituire <b>una carta avversaria nel piatto</b> con una propria di <b>valore pari o inferiore</b>, narrando come le cose non fossero come apparivano. Ci si alterna finché nessuno può o vuole più farne. Infine si rifà il conteggio: è quello definitivo.
+    Dopo il <b>primo conteggio</b> si narra l'esito apparente. Poi si gioca a <b>turni alterni</b> con le carte della <b>riserva</b> (inizia chi sta perdendo): finché hai riserva <b>devi</b> giocare una carta, che <b>entra nel piatto</b> e può <b>eliminare</b> una carta di <b>seme avversario</b> di valore <b>pari o inferiore</b> (va negli scarti; la tua resta sul tavolo). I colpi finiscono quando <b>entrambe le riserve sono esaurite</b>: poi il conteggio definitivo.
     <h3>Conteggio finale e outcome (25–26)</h3>
     Il piatto finale (♥+♠ vs ♦+♣) decide l'<b>esito esterno della missione</b>; in parità: tie-break su scope (non spese 2, spese 1, alleati sacrificati inclusi) poi prese. Incrociando piatto e punti complessivi (scope + prese):
     <table><tr><th>Piatto</th><th>Punti</th><th>Esito</th></tr>
@@ -2293,7 +2317,7 @@ document.getElementById("btnNuova").addEventListener("click",()=>{
 let iaBusy=false, iaNarrTesto=null;
 function iaBadge(on){ const b=document.getElementById("iaBadge"); if(b) b.style.display=on?"block":"none" }
 
-const REGOLE_IA=`Sei l'OPPOSIZIONE (i nemici ♦ Quadri e il caos ♣ Fiori) in Frenemies on the Road, gioco di carte narrativo su regole tipo Scopa, ambientazione road movie notturno. Regole essenziali: una carta prende dal piatto una carta di pari valore, oppure un gruppo di carte la cui somma è pari al suo valore; se la presa svuota il piatto è SCOPA. A fine scena si sommano i valori delle carte rimaste nel piatto: ♦ e ♣ contano per te, ♥ e ♠ per i Protagonisti; vince la scena il totale più alto, e il piatto resta sul tavolo per la scena dopo. La partita si decide sul piatto della quinta scena. Le carte prese valgono punti (al mercato e nel conteggio finale); le scope valgono di più. Strategia: prendi quando puoi, soprattutto carte alte dei semi avversari; preferisci lasciare nel piatto carte alte dei TUOI semi; nell'asta una carta alta vince l'iniziativa ma esce dalla tua strategia di round. Quando narri, sei il mondo che rema contro: sicari pazienti, poliziotti corrotti, tempesta nel deserto.`;
+const REGOLE_IA=`Sei l'OPPOSIZIONE (i nemici ♦ Quadri e il caos ♣ Fiori) in Frenemies on the Road, gioco di carte narrativo su regole tipo Scopa, ambientazione road movie notturno. Regole essenziali: una carta prende dal piatto una carta di pari valore, oppure un gruppo di carte la cui somma è pari al suo valore; se la presa svuota il piatto è SCOPA. A fine scena si sommano i valori delle carte rimaste nel piatto: ♦ e ♣ contano per te, ♥ e ♠ per i Protagonisti; vince la scena il totale più alto (ma se la scena si chiude con una scopa a piatto vuoto, la vince chi ha fatto la scopa), e il piatto resta sul tavolo per la scena dopo. La partita si decide sul piatto della quinta scena. Le carte prese valgono punti (al mercato e nel conteggio finale); le scope valgono di più. Strategia: prendi quando puoi, soprattutto carte alte dei semi avversari; preferisci lasciare nel piatto carte alte dei TUOI semi; nell'asta una carta alta vince l'iniziativa ma esce dalla tua strategia di round. Quando narri, sei il mondo che rema contro: sicari pazienti, poliziotti corrotti, tempesta nel deserto.`;
 
 function iaContesto(){
   const rec=G.scene[G.scena]||{};
@@ -2455,28 +2479,26 @@ async function iaManoEstesa(){
   if(btn&&!btn.disabled){ iaBusy=false; clicca(btn); return }
   const carte=[...document.querySelectorAll("#estCarte .carta")];
   const op=carte.map((el,i)=>{const c=lato("O").mazzo.find(x=>x.id==el.dataset.id);return `${i}: ${c?nomeCarta(c):"?"}`});
-  const r=await chiamaClaude(`MANO FINALE: prendi tutte le carte rimaste, ne tieni 4 per l'ultima scena; le altre vanno in riserva per i colpi di scena (lì servono carte BASSE dei tuoi semi, per sostituire carte avversarie di valore pari o superiore nel piatto).\nCARTE:\n${op.join("\n")}\nJSON: {"tieni": [quattro numeri]}`);
+  const r=await chiamaClaude(`MANO FINALE: prendi tutte le carte rimaste, ne tieni 4 per l'ultima scena; le altre vanno in riserva per i colpi di scena (lì ogni carta entra nel piatto e può eliminare una carta avversaria di valore pari o inferiore: per la riserva servono quindi carte ALTE dei tuoi semi).\nCARTE:\n${op.join("\n")}\nJSON: {"tieni": [quattro numeri]}`);
   let sel=(r&&Array.isArray(r.tieni)&&r.tieni.length===4&&r.tieni.every(i=>carte[i]))?r.tieni:[0,1,2,3];
   iaBusy=false;
   sel.forEach(i=>clicca(carte[i]));
   clicca(document.getElementById("estOk"));
 }
 
-async function iaColpi(){
+function iaColpi(){
+  // colpo obbligatorio: gioca la carta di riserva e il bersaglio che tolgono più valore all'avversario
   iaBusy=true;
-  const semiAvv=lato("P").semi, R=lato("O").riserva;
-  const ops=[];
-  for(const r of R) G.piatto.filter(c=>semiAvv.includes(c.seme)&&c.val>=r.val&&!c.jolly)
-    .forEach(b=>ops.push({desc:`sostituisci ${nomeCarta(b)} (dell'avversario, nel piatto) con ${nomeCarta(r)} (tua riserva)`, esegui:()=>eseguiColpo("O",r,b)}));
-  let scelta=-1;
-  if(ops.length){
-    const r=await chiamaClaude(`COLPI DI SCENA dopo il primo conteggio (Protagonisti ${totaleProt()}, Opposizione ${totaleOpp()}). Puoi sostituire una carta avversaria nel piatto con una tua di valore pari o inferiore, narrando il ribaltamento, oppure passare.\nOPZIONI:\n${ops.map((o,i)=>i+": "+o.desc).join("\n")}\n${ops.length}: PASSO\nJSON: {"scelta": <numero>}`);
-    if(r&&Number.isInteger(r.scelta)&&r.scelta>=0&&r.scelta<ops.length) scelta=r.scelta;
-    else if(!(r&&r.scelta===ops.length)&&totaleOpp()<totaleProt()&&ops.length) scelta=0;
+  const R=[...lato("O").riserva];
+  if(!R.length){ iaBusy=false; prossimoColpo("O"); return; }
+  let best=null;
+  for(const r of R){
+    const t=bersagliColpo("O", r).sort((a,b)=>b.val-a.val)[0]||null;
+    const gain=(t?t.val:0)+r.val;   // valore tolto all'avversario + valore aggiunto a sé
+    if(!best||gain>best.gain) best={r,t,gain};
   }
   iaBusy=false;
-  if(scelta>=0) ops[scelta].esegui();
-  else clicca(document.getElementById("colpoPasso"));
+  eseguiColpo("O", best.r, best.t);   // la narrazione la gestisce iaNarrazione subito dopo
 }
 
 /* ================= AVVIO ================= */

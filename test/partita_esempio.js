@@ -208,16 +208,14 @@ function passo(){
   }
 
   if(f==="colpi"){
-    if(colpiFatti<2){
-      const carte=[...document.querySelectorAll("#riservaCarte .carta")];
-      for(const c of carte){
-        click(c);
-        const b=document.querySelector("button[data-bersaglio]");
-        if(b){ colpiFatti++; click(b); logUltima(); return "colpo" }
-      }
+    // colpo obbligatorio finché c'è riserva
+    const carte=[...document.querySelectorAll("#riservaCarte .carta")];
+    if(carte.length){
+      click(carte[0]);
+      const b=document.querySelector("button[data-bersaglio]");
+      if(b){ colpiFatti++; click(b); logUltima(); return "colpo"; }
     }
-    log(`   ${nomeL(G().attore)} passa: nessun (altro) colpo di scena.`);
-    click(document.getElementById("colpoPasso")); return f;
+    return "colpo";
   }
 
   if(f==="neutralizza"){

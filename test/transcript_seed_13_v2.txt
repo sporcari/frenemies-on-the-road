@@ -34,7 +34,7 @@
    → Paola — 3 di Cuori: giocata nel piatto — un nuovo elemento entra in scena.
    OPPOSIZIONE — mano: 9♣ 8♦ | piatto: 8♥ 4♣ 6♥ 5♦ 3♥
    → Omar — 8 di Quadri: presa di 1 carta — un successo parziale, o con un costo.
-   → SPINTA DEL PITCH: viene spuntata «♦ «La rete di poliziotti corrotti e i due sicari pazienti»» — la presa diventa una scopa (finta scopa).
+   → SPINTA DEL PITCH: viene spuntata «♦ «La rete di poliziotti corrotti e i due sicari pazienti»» — la presa diventa una scopa vera: il piatto si svuota nelle prese di chi spunta.
    → Omar — 8 di Quadri: presa di 1 carta — un successo parziale, o con un costo. ⚡ Risorsa del pitch attivata: la presa diventa SCOPA e raccoglie le 4 carte rimaste nel piatto.
    PROTAGONISTI — mano: 9♥ 4♥ 4♠ | piatto: (vuoto)
    → Paola — 4 di Cuori: giocata nel piatto — un nuovo elemento entra in scena.
@@ -61,7 +61,7 @@
    → Omar — 1 di Quadri: giocata nel piatto — un nuovo elemento entra in scena.
    PROTAGONISTI — mano: 1♠ 10♠ | piatto: 9♣ 9♥ 10♣ 10♥ 1♦
    → Paola — 1 di Picche: presa di 1 carta — un successo parziale, o con un costo.
-   → SPINTA DEL PITCH: viene spuntata «♠ «Skunk non dice mai tutta la verità: ogni cosa che tocca dive…»» — la presa diventa una scopa (finta scopa).
+   → SPINTA DEL PITCH: viene spuntata «♠ «Skunk non dice mai tutta la verità: ogni cosa che tocca dive…»» — la presa diventa una scopa vera: il piatto si svuota nelle prese di chi spunta.
    → Paola — 1 di Picche: presa di 1 carta — un successo parziale, o con un costo. ⚡ Risorsa del pitch attivata: la presa diventa SCOPA e raccoglie le 4 carte rimaste nel piatto.
    OPPOSIZIONE — mano: 3♦ 4♦ 1♣ | piatto: (vuoto)
    → Omar — 3 di Quadri: giocata nel piatto — un nuovo elemento entra in scena.
@@ -128,14 +128,14 @@
 
 -- PRIMO CONTEGGIO (esito apparente) --
    Piatto finale: 7♣ 8♠ 9♦ 6♦ 1♥ F♦ 2♥ 2♦ F♥
-   → COLPO DI SCENA! Paola sostituisce 7 di Fiori con 2 di Picche.
-   → COLPO DI SCENA! Omar sostituisce 8 di Picche con 3 di Fiori.
-   PROTAGONISTI passa: nessun (altro) colpo di scena.
-   OPPOSIZIONE passa: nessun (altro) colpo di scena.
+   → COLPO DI SCENA! Paola mette in gioco 2 di Picche ed elimina 2 di Quadri.
+   → COLPO DI SCENA! Omar mette in gioco 3 di Fiori ed elimina 1 di Cuori.
+   → COLPO DI SCENA! Paola mette in gioco 7 di Picche ed elimina 7 di Fiori.
+   → COLPO DI SCENA! Omar mette in gioco 8 di Fiori ed elimina 8 di Picche.
 
 -- CONTEGGIO DEFINITIVO E FINALE --
-   Piatto finale: 9♦ 6♦ 1♥ F♦ 2♥ 2♦ F♥ 2♠ 3♣
-   Valori nel piatto: Protagonisti (♥+♠) 13 contro Opposizione (♦+♣) 28.
+   Piatto finale: 9♦ 6♦ F♦ 2♥ F♥ 2♠ 3♣ 7♠ 8♣
+   Valori nel piatto: Protagonisti (♥+♠) 19 contro Opposizione (♦+♣) 34.
    Punti complessivi (scope + prese): Protagonisti 11 (10 prese), Opposizione 4 (2 prese).
    Esito: SCONFITTA CON ASPETTI POSITIVI
    Scope — Protagonisti: 1♠ · Opposizione: 8♦

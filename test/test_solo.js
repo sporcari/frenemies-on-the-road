@@ -91,7 +91,15 @@ async function main(){
     if(f==="jolly_intro"){ click(document.getElementById("j-ok")); await dorme(20); continue }
     if(f==="primo_conteggio"){ click(document.getElementById("pc-avanti")); await dorme(20); continue }
     if(f==="colpi"){
-      if(!attoreO) click(document.getElementById("colpoPasso"));
+      // turno di P (umano): colpo obbligatorio, gioca una carta di riserva; turno di O: ci pensa lo scheduler
+      if(!attoreO){
+        const carte=[...document.querySelectorAll("#riservaCarte .carta")];
+        if(carte.length){
+          click(carte[0]);
+          const b=document.querySelector("button[data-bersaglio]");
+          if(b) click(b);
+        }
+      }
       await dorme(50); continue;
     }
     if(f==="neutralizza"){ click(document.getElementById("n-ok")); await dorme(20); continue }
