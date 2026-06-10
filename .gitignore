@@ -1,0 +1,6 @@
+node_modules/
+package-lock.json
+package.json
+.DS_Store
+test/transcript_seed_*.txt
+!test/transcript_seed_13_v2.txt

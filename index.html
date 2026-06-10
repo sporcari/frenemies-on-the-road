@@ -1,0 +1,2275 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Frenemies on the Road</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#15161a">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.2/peerjs.min.js"></script>
+<style>
+:root{
+  --asfalto:#15161a; --notte:#1f2128; --pannello:#262932; --bordo:#3a3e4a;
+  --osso:#efe9dc; --grigio:#9a9483; --mezzeria:#f5a623; --faro:#ffd23f;
+  --cuori:#e4572e; --picche:#d8d3c8; --quadri:#4f7cac; --fiori:#6a994e;
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{background:var(--asfalto);color:var(--osso);font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.5;overflow:hidden}
+#app{display:flex;flex-direction:column;height:100vh;height:100dvh}
+
+header{
+  flex:0 0 auto;padding:10px 16px 8px;border-bottom:3px solid var(--mezzeria);
+  background:repeating-linear-gradient(90deg,transparent 0 34px,rgba(245,166,35,.12) 34px 58px),var(--asfalto);
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+header h1{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(15px,3vw,21px);letter-spacing:2px;text-transform:uppercase;white-space:nowrap}
+header h1 .amp{color:var(--mezzeria)}
+#infoScena{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--grigio);text-transform:uppercase;text-align:right;line-height:1.4}
+.hbtns{display:flex;gap:8px}
+.hbtns button{background:var(--notte);border:1px solid var(--bordo);border-radius:8px;color:var(--osso);font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:7px 10px;cursor:pointer}
+
+main{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(16px*var(--k,1));display:flex;flex-direction:column}
+#scena-corrente{max-width:980px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column}
+
+h2.ts{font-family:'Oswald',sans-serif;font-weight:600;font-size:max(16px,calc(21px*var(--k,1)));letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+p.sotto{color:var(--grigio);font-size:max(12px,calc(14px*var(--k,1)));margin-bottom:calc(14px*var(--k,1))}
+.pannello{background:var(--pannello);border:1px solid var(--bordo);border-radius:var(--r);padding:calc(14px*var(--k,1));margin-bottom:calc(12px*var(--k,1))}
+.etichetta{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grigio);display:block;margin-bottom:6px}
+input[type=text],textarea{width:100%;background:var(--notte);border:1px solid var(--bordo);border-radius:8px;color:var(--osso);font-family:'IBM Plex Sans',sans-serif;font-size:16px;padding:10px 12px;outline:none}
+input:focus,textarea:focus{border-color:var(--mezzeria)}
+textarea{resize:vertical;min-height:60px}
+.riga2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.riga2{grid-template-columns:1fr}}
+
+button.azione{
+  background:var(--mezzeria);border:none;border-radius:12px;color:#1a1206;
+  font-family:'Oswald',sans-serif;font-weight:600;font-size:max(14px,calc(16px*var(--k,1)));letter-spacing:1.5px;text-transform:uppercase;
+  padding:calc(14px*var(--k,1)) 24px;cursor:pointer;width:100%;
+}
+button.azione:disabled{opacity:.35}
+button.secondaria{
+  background:var(--notte);border:1px solid var(--bordo);border-radius:12px;color:var(--osso);
+  font-family:'Oswald',sans-serif;font-size:14px;letter-spacing:1px;text-transform:uppercase;
+  padding:11px 18px;cursor:pointer;
+}
+
+/* ---------- carte ---------- */
+.carta{
+  width:calc(62px*var(--k,1));height:calc(88px*var(--k,1));border-radius:9px;border:2px solid var(--bordo);
+  background:linear-gradient(160deg,#2c2f3a,#1c1e26);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+  cursor:pointer;flex:0 0 auto;position:relative;transition:transform .12s,border-color .12s,box-shadow .12s;
+  user-select:none;
+}
+.carta .v{font-family:'Oswald',sans-serif;font-size:calc(26px*var(--k,1));font-weight:700;line-height:1}
+.carta .s{font-size:calc(19px*var(--k,1));line-height:1}
+.carta .fig{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.5px;color:var(--grigio);text-transform:uppercase}
+.carta.cuori .v,.carta.cuori .s{color:var(--cuori)}
+.carta.picche .v,.carta.picche .s{color:var(--picche)}
+.carta.quadri .v,.carta.quadri .s{color:var(--quadri)}
+.carta.fiori .v,.carta.fiori .s{color:var(--fiori)}
+.carta.jolly{border-color:var(--faro)}
+.carta.jolly .v{color:var(--faro);font-size:calc(17px*var(--k,1));letter-spacing:1px}
+.carta.sel{transform:translateY(-8px);border-color:var(--faro);box-shadow:0 6px 18px rgba(255,210,63,.3)}
+.carta.evid{border-color:var(--mezzeria);box-shadow:0 0 12px rgba(245,166,35,.35)}
+.carta.retro{background:repeating-linear-gradient(45deg,#23262f 0 8px,#1b1d24 8px 16px);}
+.carta.retro *{visibility:hidden}
+.carta.tappata{transform:rotate(90deg) scale(.85);opacity:.7}
+.carta.mini{width:calc(46px*var(--k,1));height:calc(66px*var(--k,1))}
+.carta.mini .v{font-size:calc(19px*var(--k,1))}
+.carta.mini .s{font-size:calc(14px*var(--k,1))}
+.mazzo-carte{display:flex;gap:calc(8px*var(--k,1));flex-wrap:wrap;justify-content:center}
+
+/* ---------- tavolo ---------- */
+.tavolo-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:calc(8px*var(--k,1));flex-wrap:wrap}
+.tot-lato{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase}
+.tot-lato b{font-family:'Oswald',sans-serif;font-size:max(15px,calc(20px*var(--k,1)));letter-spacing:0;margin-left:6px}
+.tot-lato.p b{color:var(--cuori)} .tot-lato.o b{color:var(--quadri)}
+#piatto{
+  background:radial-gradient(ellipse at center,#23262e 0%,var(--notte) 75%);
+  border:1px dashed var(--bordo);border-radius:var(--r);
+  min-height:calc(120px*var(--k,1));overflow-y:auto;
+  padding:calc(14px*var(--k,1));display:flex;gap:calc(8px*var(--k,1));flex-wrap:wrap;align-items:center;align-content:center;justify-content:center;
+  margin-bottom:calc(12px*var(--k,1));
+}
+#piatto .vuoto{color:var(--grigio);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.banner{
+  border-left:3px solid var(--mezzeria);background:rgba(245,166,35,.07);border-radius:0 8px 8px 0;
+  padding:calc(8px*var(--k,1)) 12px;font-size:max(11.5px,calc(13px*var(--k,1)));font-style:italic;margin-bottom:calc(10px*var(--k,1));
+}
+.banner.scopa{border-left-color:var(--faro);background:rgba(255,210,63,.12);font-weight:600;font-style:normal}
+.mano-area{margin-top:auto}
+.mano-titolo{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:calc(8px*var(--k,1))}
+.contatori{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--grigio);letter-spacing:1px}
+.opzioni{display:flex;gap:8px;flex-wrap:wrap;margin-top:calc(12px*var(--k,1))}
+.opzioni button{
+  background:var(--notte);border:1px solid var(--mezzeria);border-radius:10px;color:var(--osso);
+  font-family:'IBM Plex Sans',sans-serif;font-size:max(12.5px,calc(14px*var(--k,1)));padding:calc(10px*var(--k,1)) 14px;cursor:pointer;
+}
+.opzioni button.neutra{border-color:var(--bordo)}
+
+
+/* ---------- velo ---------- */
+#velo{
+  position:fixed;inset:0;background:var(--asfalto);z-index:50;display:none;
+  flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;
+}
+#velo.attivo{display:flex}
+#velo .strada-velo{width:min(420px,80vw);height:6px;background:repeating-linear-gradient(90deg,var(--mezzeria) 0 26px,transparent 26px 48px);border-radius:3px}
+#velo h3{font-family:'Oswald',sans-serif;font-size:15px;letter-spacing:3px;text-transform:uppercase;color:var(--grigio)}
+#velo .nome{font-family:'Oswald',sans-serif;font-size:clamp(28px,7vw,44px);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--faro)}
+#velo button{max-width:320px}
+
+/* ---------- overlay diario / modali ---------- */
+.overlay{position:fixed;inset:0;background:rgba(10,11,14,.92);z-index:40;display:none;overflow-y:auto;padding:20px}
+.overlay.attivo{display:block}
+.overlay .scatola{max-width:760px;margin:0 auto;background:var(--pannello);border:1px solid var(--bordo);border-radius:var(--r);padding:18px}
+.chiudi{float:right;background:none;border:none;color:var(--grigio);font-size:24px;cursor:pointer;line-height:1}
+.diario-voce{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px dashed var(--bordo)}
+.diario-voce:last-child{border-bottom:none}
+.diario-voce .n{flex:0 0 32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-weight:600;border:2px solid var(--bordo);color:var(--grigio);font-size:14px}
+.diario-voce.su .n{border-color:var(--cuori);color:var(--cuori)}
+.diario-voce.giu .n{border-color:var(--picche);color:var(--picche)}
+.diario-voce .testo b{font-family:'Oswald',sans-serif;letter-spacing:.5px}
+.diario-voce .testo span{display:block;font-size:13px;color:var(--grigio)}
+
+/* ---------- mercato ---------- */
+.mercato-griglia{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:680px){.mercato-griglia{grid-template-columns:1fr}}
+.punti-big{font-family:'Oswald',sans-serif;font-size:32px;font-weight:700;color:var(--faro)}
+.fig-riga{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px dashed var(--bordo);flex-wrap:wrap}
+.fig-riga:last-child{border-bottom:none}
+.fig-riga .desc{font-size:13px}
+.fig-riga .desc b{font-family:'Oswald',sans-serif;letter-spacing:.5px}
+.fig-riga .desc small{display:block;color:var(--grigio);font-size:11.5px}
+.fig-esaurita{opacity:.45;padding:0 6px;align-self:center}
+.ia-nascosta{display:none}
+#iaBadge{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:#1a1206;color:var(--mezzeria);border:1px solid var(--mezzeria);border-radius:20px;padding:7px 16px;font-size:13px;z-index:60;display:none;letter-spacing:.5px}
+.compra{display:flex;gap:6px}
+.compra button{background:var(--notte);border:1px solid var(--mezzeria);border-radius:8px;color:var(--osso);font-size:15px;padding:7px 11px;cursor:pointer}
+.compra button:disabled{opacity:.3;border-color:var(--bordo)}
+
+.cartellone{border:3px solid var(--mezzeria);border-radius:var(--r);padding:16px;text-align:center;background:radial-gradient(ellipse at top,#2b2415 0%,var(--notte) 70%);margin-bottom:12px}
+.regole-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.regole-nav button{
+  background:var(--notte);border:1px solid var(--bordo);border-radius:20px;color:var(--grigio);
+  font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.5px;padding:6px 12px;cursor:pointer;
+}
+.regole-nav button.attivo{border-color:var(--mezzeria);color:var(--faro)}
+.regole-corpo{font-size:14px;line-height:1.65}
+.regole-corpo h3{font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:1px;text-transform:uppercase;color:var(--faro);margin:14px 0 6px}
+.regole-corpo h3:first-child{margin-top:0}
+.regole-corpo table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
+.regole-corpo td,.regole-corpo th{border:1px solid var(--bordo);padding:6px 8px;text-align:left}
+.regole-corpo th{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--grigio)}
+.regole-corpo .es{border-left:3px solid var(--bordo);padding:6px 10px;margin:8px 0;font-style:italic;color:var(--grigio);font-size:13px}
+.regole-corpo ul{margin:6px 0 6px 20px}
+.cartellone .grande{font-family:'Oswald',sans-serif;font-size:24px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--faro)}
+.cartellone .sc{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grigio);margin-top:3px}
+.lettura{border-left:3px solid var(--mezzeria);background:rgba(245,166,35,.06);border-radius:0 8px 8px 0;padding:9px 12px;font-size:14px;font-style:italic;margin-top:8px}
+#areaDati{margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;display:none;width:100%}
+#areaDati.aperta{display:block}
+</style>
+</head>
+<body>
+<div id="app">
+<header>
+  <h1>Frenemies <span class="amp">on the</span> Road</h1>
+  <div id="infoScena"></div>
+  <div class="hbtns">
+    <button id="btnRegole" title="Regolamento">?</button>
+    <button id="btnDiario">Diario</button>
+    <button id="btnSalva">Salva</button>
+  </div>
+</header>
+<main><div id="scena-corrente"></div></main>
+</div>
+
+<div id="iaBadge">🃏 Claude sta tramando…</div>
+<div id="velo">
+  <h3>Passa il tablet a</h3>
+  <div class="nome" id="veloNome"></div>
+  <div class="strada-velo"></div>
+  <button class="azione" id="veloBtn">Sono pronto</button>
+</div>
+
+<div class="overlay" id="ovDiario">
+  <div class="scatola">
+    <button class="chiudi" data-chiudi="ovDiario">×</button>
+    <h2 class="ts">Diario del rapporto</h2>
+    <div id="diarioPitch"></div>
+    <p class="sotto">Su quando si avvicinano (♥), giù quando si allontanano (♠). Si scrive da solo, leggendo il piatto.</p>
+    <svg id="strada" viewBox="0 0 700 240" style="width:100%;height:auto;display:block;background:var(--notte);border-radius:10px;margin-bottom:12px"></svg>
+    <div id="diarioVoci"></div>
+  </div>
+</div>
+
+<div class="overlay" id="ovSalva">
+  <div class="scatola">
+    <button class="chiudi" data-chiudi="ovSalva">×</button>
+    <h2 class="ts">Salvataggio</h2>
+    <p class="sotto">Esporta il testo e conservalo per riprendere la partita.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="secondaria" id="btnEsporta">Esporta partita</button>
+      <button class="secondaria" id="btnImporta">Importa partita</button>
+      <button class="secondaria" id="btnNuova">Nuova partita</button>
+    </div>
+    <textarea id="areaDati" rows="5" placeholder="Incolla qui una partita esportata, poi tocca Importa."></textarea>
+  </div>
+</div>
+
+<div class="overlay" id="ovRegole">
+  <div class="scatola">
+    <button class="chiudi" data-chiudi="ovRegole">×</button>
+    <h2 class="ts">Regolamento</h2>
+    <div class="regole-nav" id="regoleNav"></div>
+    <div id="regoleCorpo" class="regole-corpo"></div>
+  </div>
+</div>
+
+<div class="overlay" id="ovModale"><div class="scatola" id="modaleCorpo"></div></div>
+
+<script>
+/* ================================================================
+   FRENEMIES ON THE ROAD — motore + interfaccia
+   Architettura: stato puro (G) + macchina a fasi + render per fase
+================================================================ */
+
+/* ---------------- costanti ---------------- */
+const SIMBOLI = {cuori:"♥", picche:"♠", quadri:"♦", fiori:"♣"};
+const FASI_NARR = ["Innesco","Adattamento","Frattura","Crisi","Risoluzione"];
+const FASI_FUNZ = ["Collaborazione forzata, minaccia iniziale","Viaggio, preparativi, primi segnali di fiducia","Evento destabilizzante, dubbio sulla coppia o sulla missione","Peggioramento, verità che emergono, situazione sopraffacente","Sforzo massimo, scelta decisiva, esito finale"];
+const PITCH_TEMPLATE=[
+  {seme:"picche",  q:(a,b)=>`Cosa ${a} (♠) detesta di ${b} (♥)?`},
+  {seme:"cuori",   q:(a,b)=>`Cosa ${b} (♥) detesta di ${a} (♠)?`},
+  {seme:"picche",  q:(a,b)=>`Perché per ${a} (♠) è importante l'obiettivo?`},
+  {seme:"cuori",   q:(a,b)=>`Perché per ${b} (♥) è importante l'obiettivo?`},
+  {seme:"picche",  q:(a,b)=>`Quale dote o risorsa di ${a} (♠) potrebbe essere un asso nella manica?`},
+  {seme:"cuori",   q:(a,b)=>`Quale dote o risorsa di ${b} (♥) potrebbe essere un asso nella manica?`},
+  {seme:"quadri",  q:()=>`Quali sono i mezzi, metodi o armi più temibili della fazione nemica? (♦)`},
+  {seme:"quadri",  q:()=>`Perché l'Opposizione deve assolutamente impedire ai protagonisti di ottenere quello che vogliono? (♦)`},
+  {seme:"fiori",   q:()=>`Quali catastrofi o eventi imprevedibili possono manifestarsi in questa ambientazione? (♣)`},
+  {seme:"fiori",   q:()=>`Che cosa i protagonisti non hanno considerato e potrebbe far saltare la loro alleanza? (♣)`}
+];
+const AMBIENTE = {
+  picche:"In movimento, sotto pressione: ambiente caotico, situazione frenetica.",
+  cuori:"Un momento di tregua o intimità: un rifugio, una pausa che permette il dialogo.",
+  quadri:"Attacco del nemico: imboscata, territorio favorevole agli avversari.",
+  fiori:"Evento imprevisto: luogo neutro ma instabile, caos o ambiguità immediata."
+};
+const LETT_DOM = {
+  picche:"♠ I Protagonisti hanno determinato l'esito con forza, imposizione, conflitto diretto.",
+  cuori:"♥ I Protagonisti hanno determinato l'esito con dialogo, connessione, empatia.",
+  quadri:"♦ La fazione nemica ha determinato l'esito — l'opposizione organizzata ha avuto la meglio.",
+  fiori:"♣ Sfortuna e caos hanno determinato l'esito — fattori esterni, imprevisti, attriti.",
+  parita:"Nessun seme prevale: l'esito resta ambiguo, conteso fino all'ultimo."
+};
+const LETT_RAPP = {
+  su:"♥ > ♠ — I protagonisti si sono avvicinati: dialogo, fiducia, un momento di connessione.",
+  giu:"♠ > ♥ — I protagonisti si sono allontanati: conflitto, tensione, distanza.",
+  pari:"♥ = ♠ — Il rapporto è in bilico: né avanzato né peggiorato."
+};
+const FIGURE = {
+  F:{nome:"Fante", titolo:"L'informatore", val:8, costo:8,
+     eff:"Guarda le prime 4 carte del tuo mazzo e scegli quali mettere in fondo."},
+  D:{nome:"Dama", titolo:"La manipolatrice", val:9, costo:9,
+     eff:"L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo."},
+  R:{nome:"Re", titolo:"Il deus ex machina", val:10, costo:10,
+     eff:"Scambia una carta dalla tua mano con una dei tuoi scarti dello stesso seme."}
+};
+
+/* ---------------- materiali di ispirazione (knowledge base) ---------------- */
+const TONI=["Action","Comedy","Dramedy","Romance"];
+const COPPIE=[
+  // famiglia
+  "Padre burbero e anaffettivo / Figlio sensibile che si è allontanato dalla famiglia",
+  "Madre ipercontrollante e ambiziosa / Figlia che ha mollato tutto per seguire i propri sogni",
+  "Fratello maggiore abituato a proteggere tutti / Fratello minore che vuole cavarsela da solo",
+  "Nonno veterano incapace di mostrare affetto / Nipote attivista che lo considera un dinosauro",
+  "Zia eccentrica e manipolativa / Nipote rigido che non ha mai capito le sue intenzioni",
+  // professionale
+  "Capoufficio ossessivo e iperpreciso / Stagista creativo e festaiolo che improvvisa tutto",
+  "Detective di vecchia scuola che non si fida di nessuno / Profiler giovane che ragiona solo con i dati",
+  "Avvocato cinico abituato a vincere sporco / Assistente legale idealista che crede ancora nel sistema",
+  "Chef stellato con problemi di controllo / Sous chef talentuoso e caotico che odia le regole",
+  "Manager freddo orientato ai numeri / Sindacalista appassionato che pensa solo alle persone",
+  // opposti sociali
+  "Ex poliziotto sospeso per eccesso di forza / Assistente sociale che ha denunciato quella forza",
+  "Contrabbandiere di professione / Funzionaria doganale in congedo forzato",
+  "Aristocratico decaduto che non sa fare nulla di pratico / Meccanico di periferia che non si fida di chi ha i soldi",
+  "Hacker anarchico che odia le istituzioni / Ex agente dei servizi che è stato le istituzioni",
+  "Attivista ambientalista radicale / Petroliere in crisi di coscienza",
+  // ambienti distanti
+  "Operaio di fabbrica sindacalizzato e diffidente / Manager di consulenza che non ha mai toccato un attrezzo",
+  "Poliziotto di quartiere cresciuto in strada / Avvocato di grido che ha sempre guardato dall'alto",
+  "Nonna del sud con valori immutabili / Nipote gender fluid che torna solo ai funerali",
+  "Rugbista tatuato di provincia / Critica letteraria di sinistra — convinti entrambi di essere il problema dell'altro",
+  "Prete di periferia che risolve tutto con la presenza / Psicologa laica convinta che la religione sia parte del problema",
+  "Tiktoker di successo che vive di immagine / Giornalista investigativo che non ha mai aperto un social",
+  "Ex galeotto con codice d'onore ferreo / Funzionaria ministeriale che crede nella riabilitazione ma non ha mai parlato con un detenuto",
+  "Militare in pensione con visione in bianco e nero / Operatrice umanitaria che lavora nelle zone grigie da vent'anni",
+  // romance
+  "Ladra professionista e metodica / Investigatore assicurativo che la insegue da tre anni",
+  "Bodyguard senza parole / Ereditiera impulsiva che non vuole essere protetta",
+  "Giornalista d'inchiesta disposto a tutto / Fonte che sa troppe cose e non si fida di nessuno",
+  "Chef di strada irriverente / Critica gastronomica che lo ha stroncato pubblicamente",
+  "Pilota di rally spericolato / Navigatrice che calcola ogni rischio e li odia tutti"
+];
+const MISSIONI=[
+  // salvataggio e protezione
+  "Estrarre il testimone chiave dal suo nascondiglio e portarlo in aula PRIMA che il processo venga archiviato per mancanza di prove e il mandante torni libero",
+  "Scoprire chi ha incastrato il collega e portare le prove al giudice PRIMA che venga trasferito nel carcere dove i mafiosi lo aspettano",
+  "Trovare e riportare a casa il ragazzo scomparso PRIMA che suo padre firmi la dichiarazione di morte presunta e perda ogni diritto di cercarlo",
+  "Mettere in salvo la famiglia del delatore PRIMA che il suo nome venga pubblicato dal giornalista corrotto",
+  "Raggiungere il medico e convincerlo a operare PRIMA che la finestra chirurgica si chiuda e il paziente non abbia più chances",
+  // recupero e consegna
+  "Raccogliere e consegnare i fondi necessari PRIMA che l'impresa di demolizioni butti giù l'orfanotrofio",
+  "Recuperare i documenti rubati e restituirli al legittimo proprietario PRIMA che vengano venduti all'asta all'estero e spariscano per sempre",
+  "Trovare la prova del falso in bilancio e consegnarla alla commissione PRIMA che il voto in assemblea renda l'acquisizione irreversibile",
+  "Recuperare il farmaco sperimentale dall'impianto abbandonato PRIMA che i tecnici lo distruggano nel sopralluogo di bonifica",
+  "Riportare la bambina al padre biologico oltre confine PRIMA che i documenti d'adozione vengano ratificati e lei sparisca nel sistema",
+  // smascheramento e rivelazione
+  "Raccogliere le prove della corruzione del sindaco PRIMA che venga rieletto e i reati cadano in prescrizione",
+  "Identificare la talpa all'interno del dipartimento PRIMA che l'operazione undercover venga bruciata e i nostri agenti uccisi",
+  "Trovare il responsabile del sabotaggio PRIMA che il volo con duecento passeggeri a bordo decolli",
+  "Dimostrare che l'incidente non fu un incidente PRIMA che la famiglia firmi la transazione e rinunci a qualsiasi azione legale",
+  "Risalire a chi ha ordinato l'attentato PRIMA che il sicario completi il secondo contratto",
+  // fuga e sopravvivenza
+  "Attraversare il territorio controllato dalla fazione nemica e raggiungere il confine PRIMA che scada il cessate il fuoco e la zona diventi una trappola mortale",
+  "Uscire dalla città PRIMA che venga istituito il blocco e i nostri nomi finiscano sulle liste di ricercati",
+  "Mettere al sicuro i server con le prove PRIMA che il reparto venga formalmente sequestrato e tutti i dati siano inaccessibili per sempre",
+  // on the road
+  "Attraversare il paese da nord a sud, insieme e con tutti i disagi del caso, per arrivare in tempo al funerale del genitore",
+  "Raggiungere il fratello all'altro capo del paese PRIMA che esca dall'ospedale e sparisca di nuovo senza dire dove va",
+  "Riportare le ceneri del padre nel paese d'origine, attraversando l'Europa, PRIMA che la famiglia laggiù si disperda per sempre",
+  "Portare il testimone scomodo dall'altra parte degli Stati Uniti PRIMA che qualcuno lo trovi — senza volare, senza lasciare tracce",
+  "Raggiungere la figlia che ha tagliato i ponti, attraverso tutto il paese, PRIMA che parta per un posto da cui non si torna"
+];
+
+/* ---------------- stato ---------------- */
+let idc = 0;
+function carta(seme, val, fig=null, jolly=false){
+  return {id:++idc, seme, val, fig, jolly, tappata:false, peccato:false, esposta:false};
+}
+function nuovoLato(chiave, nome, semi){
+  const mazzo = [];
+  semi.forEach(s=>{ for(let v=1; v<=10; v++) mazzo.push(carta(s,v)); });
+  return {chiave, nome, semi, mazzo:mischia(mazzo), mano:[], prese:[], scope:[], scarti:[],
+          astaCarta:null, riserva:[], bonus:0, peccatoScena:-1};
+}
+function nuovaPartita(){
+  idc = 0;
+  return {
+    fase:"modalita", passo:0,
+    modalita:"locale", hostLato:"P",
+    nomi:{P:"", O:""}, missione:"", primaDiff:"", tono:"",
+    nGiocatori:2,
+    giocatori:{picche:"",cuori:"",quadri:"",fiori:""},
+    modo3:"maggioranza",
+    controllo:{P:"picche",O:"quadri"},
+    prevControllo:{P:null,O:null},
+    scopeGiocatore:{picche:0,cuori:0,quadri:0,fiori:0},
+    pers:{A:{nome:"",desc:""}, B:{nome:"",desc:""}},
+    pitch:PITCH_TEMPLATE.map(p=>({seme:p.seme, risposta:"", usata:false})),
+    spinte:{P:{},O:{}},
+    colpi:null,
+    nemici:"", caos:"",
+    rivela:null, neutralizzati:null, narrLato:null, mercatoLato:null,
+    lati:{ P:nuovoLato("P","Protagonisti",["cuori","picche"]),
+           O:nuovoLato("O","Opposizione",["quadri","fiori"]) },
+    piatto:[],
+    scena:0,
+    scene:[null,null,null,null,null],
+    attore:"P",            // chi tiene il tablet / agisce
+    astaWinner:null,
+    astaPicks:{P:null,O:null},
+    ultimaGiocata:"",
+    pendingJolly:null,     // {attore, cartaId, valore, comboIds}
+    jollyEntrato:false, jollyIntroVisto:false, figureComprate:[],
+    epilogo:""
+  };
+}
+let G = nuovaPartita();
+
+/* ---------------- utilità ---------------- */
+function mischia(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function altro(l){return l==="P"?"O":"P"}
+function lato(l){return G.lati[l]}
+function nomeLato(l){return l==="P" ? (G.nomi.P||"Protagonisti") : (G.nomi.O||"Opposizione")}
+function nomeCarta(c){
+  if(c.jolly) return "JOLLY";
+  const f=c.fig?FIGURE[c.fig].nome+" ":"";
+  return f+(c.fig?"":c.val+" ")+"di "+c.seme.charAt(0).toUpperCase()+c.seme.slice(1);
+}
+function valore(c, dichiarato){ return c.jolly ? dichiarato : c.val }
+function totaleSeme(s){ return G.piatto.filter(c=>c.seme===s).reduce((t,c)=>t+c.val,0) }
+function totaleProt(){ return totaleSeme("cuori")+totaleSeme("picche") }
+function totaleOpp(){ return totaleSeme("quadri")+totaleSeme("fiori") }
+function puntiMercato(l){
+  const L=lato(l);
+  return L.bonus + L.prese.length + L.scope.filter(c=>!c.tappata && !c.esposta).length*5;
+}
+function ordina(mano){
+  const ord={cuori:0,picche:1,quadri:2,fiori:3};
+  return [...mano].sort((a,b)=> (a.jolly?9:ord[a.seme])-(b.jolly?9:ord[b.seme]) || a.val-b.val);
+}
+
+/* prese possibili: tutte le combinazioni del piatto che sommano a v */
+function combosPresa(v){
+  const carte=[...G.piatto].sort((a,b)=>b.val-a.val);
+  const ris=[];
+  function dfs(i, somma, scelte){
+    if(ris.length>=30) return;
+    if(somma===v){ ris.push([...scelte]); return }
+    if(i>=carte.length || somma>v) return;
+    if(carte[i].val+somma<=v){ scelte.push(carte[i]); dfs(i+1,somma+carte[i].val,scelte); scelte.pop(); }
+    dfs(i+1,somma,scelte);
+  }
+  dfs(0,0,[]);
+  // singole prima, poi gruppi piccoli
+  ris.sort((a,b)=>a.length-b.length);
+  return ris;
+}
+
+/* ---------------- controllo della mano (3/4 giocatori) ---------------- */
+function latoDiviso(l){
+  return (l==="P" && G.nGiocatori>=3) || (l==="O" && G.nGiocatori===4);
+}
+function nomeControllore(l){
+  if(!latoDiviso(l)) return nomeLato(l);
+  const seme=G.controllo[l];
+  return G.giocatori[seme] || (SIMBOLI[seme]+" "+seme);
+}
+function calcolaControllo(){
+  ["P","O"].forEach(l=>{
+    if(!latoDiviso(l)){ G.controllo[l]=lato(l).semi[0]; return }
+    const [s1,s2]=lato(l).semi;
+    let ctrl;
+    if(l==="P" && G.nGiocatori===3 && G.modo3==="alternanza"){
+      ctrl = G.scena%2===0 ? s1 : s2;
+    }else{
+      const mano=lato(l).mano;
+      const c1=mano.filter(c=>c.seme===s1).length, c2=mano.filter(c=>c.seme===s2).length;
+      if(c1>c2) ctrl=s1; else if(c2>c1) ctrl=s2;
+      else ctrl = G.prevControllo[l] ? (G.prevControllo[l]===s1?s2:s1) : s1;  // parità: chi non ha controllato la scena prima
+    }
+    G.prevControllo[l]=G.controllo[l];
+    G.controllo[l]=ctrl;
+  });
+}
+function aggiungiScopa(l){ G.scopeGiocatore[G.controllo[l]]++; }
+
+/* ---------------- rete (online P2P) ---------------- */
+const rete={peer:null, conn:null, mioLato:null, attiva:false, stato:"—", ricevendo:false};
+function generaCodice(){
+  const a="ABCDEFGHJKMNPQRSTUVWXYZ23456789"; let c="";
+  for(let i=0;i<5;i++) c+=a[Math.floor(Math.random()*a.length)];
+  return c;
+}
+function inviaStato(){
+  if(rete.attiva && rete.conn && rete.conn.open && !rete.ricevendo){
+    try{ rete.conn.send({t:"g", G:JSON.parse(JSON.stringify(G)), idc}); }catch(e){}
+  }
+}
+function agganciaConn(conn){
+  rete.conn=conn;
+  conn.on("data",d=>{
+    if(d && d.t==="g"){
+      rete.ricevendo=true;
+      G=d.G; if(d.idc>idc) idc=d.idc;
+      if(!rete.mioLato) rete.mioLato=altro(G.hostLato);   // l'ospite prende il lato opposto
+      render();
+      rete.ricevendo=false;
+    }
+  });
+  conn.on("close",()=>{ rete.stato="disconnesso"; aggiornaHeader(); });
+  conn.on("error",()=>{ rete.stato="errore"; aggiornaHeader(); });
+}
+function creaStanza(latoScelto, cb){
+  const codice=generaCodice();
+  rete.peer=new Peer("fotr-"+codice);
+  rete.peer.on("open",()=>{
+    rete.mioLato=latoScelto; rete.attiva=true; rete.stato="in attesa";
+    G.modalita="online"; G.hostLato=latoScelto;
+    cb(codice);
+  });
+  rete.peer.on("connection",conn=>{
+    agganciaConn(conn);
+    conn.on("open",()=>{
+      rete.stato="connesso";
+      inviaStato();   // l'ospite riceve subito lo stato completo
+      render();
+    });
+  });
+  rete.peer.on("error",e=>{ rete.stato="errore: "+e.type; aggiornaHeader(); });
+}
+function uniscitiStanza(codice, cb){
+  rete.peer=new Peer();
+  rete.peer.on("open",()=>{
+    const conn=rete.peer.connect("fotr-"+codice.toUpperCase().trim(),{reliable:true});
+    agganciaConn(conn);
+    conn.on("open",()=>{
+      rete.attiva=true; rete.stato="connesso";
+      cb();   // il lato dell'ospite arriva col primo stato (l'opposto dell'host)
+    });
+  });
+  rete.peer.on("error",e=>{ rete.stato="errore: "+e.type; aggiornaHeader(); render(); });
+}
+/* chi può agire nella fase corrente */
+function latoCheAgisce(){
+  const f=G.fase;
+  if(f==="setup"||f==="fine_scena"||f==="jolly_intro"||f==="neutralizza"||f==="finale"||f==="primo_conteggio") return G.hostLato;
+  if(f==="counter") return G.pendingJolly ? altro(G.pendingJolly.attore) : G.attore;
+  if(f==="narrazione") return G.narrLato || G.attore;
+  if(f==="mercato") return G.mercatoLato || G.hostLato;
+  if(f==="asta_rivela") return G.rivela && G.rivela.win ? G.rivela.win : G.attore;
+  return G.attore;   // asta, apertura, turno, mano_estesa
+}
+function spettatore(){ return rete.attiva && G.modalita==="online" && latoCheAgisce()!==rete.mioLato }
+function rSpettatore(){
+  const f=G.fase, chi=nomeLato(latoCheAgisce());
+  let extra="";
+  if(f==="turno"||f==="asta"){
+    extra=`
+      <div class="tavolo-top">
+        <div class="tot-lato p">♥+♠ Protagonisti <b>${totaleProt()}</b></div>
+        <div class="tot-lato o">♦+♣ Opposizione <b>${totaleOpp()}</b></div>
+      </div>
+      <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto</span>'}</div>`;
+  }
+  if(f==="narrazione" && G.narr){
+    extra=`<div style="display:flex;justify-content:center;margin:10px 0">${G.narr.html}</div>
+      <div class="pannello"><span class="etichetta">${chi} sta narrando</span><div class="lettura">${G.narr.sugg}</div></div>`;
+  }
+  if(f==="counter") extra=`<div class="banner">È in corso una decisione segreta…</div>`;
+  if(f==="setup"){
+    extra=`<div class="pannello">
+      <span class="etichetta">Creazione della partita — passo ${G.passo+1}/${PASSI_WIZ.length}: ${PASSI_WIZ[G.passo]}</span>
+      ${G.missione?`<div class="lettura">${G.missione}</div>`:""}
+      ${G.pers.A.desc||G.pers.B.desc?`<div class="lettura">${G.pers.A.nome||"P1"} ♠: ${G.pers.A.desc}<br>${G.pers.B.nome||"P2"} ♥: ${G.pers.B.desc}</div>`:""}
+    </div>`;
+  }
+  SC.innerHTML=`
+    ${G.ultimaGiocata && (f==="turno"||f==="asta")?`<div class="banner">${G.ultimaGiocata}</div>`:""}
+    ${extra}
+    <div class="cartellone" style="margin-top:14px"><div class="grande">Tocca a ${chi}</div>
+      <div class="sc">${f==="counter"?"decisione in corso":f==="narrazione"?"narrazione in corso":"attendi la mossa"}</div></div>`;
+}
+
+/* ---------------- velo ---------------- */
+let dopoVelo = null;
+function velo(latoDest, poi){
+  if(G.modalita==="online"){ poi(); return }   // online: nessun velo, ci pensa il gating
+  if(G.modalita==="solo"){ poi(); return }      // solo: contro Claude il velo non serve
+  document.getElementById("veloNome").textContent = nomeControllore(latoDest);
+  document.getElementById("velo").classList.add("attivo");
+  dopoVelo = poi;
+}
+document.getElementById("veloBtn").addEventListener("click",()=>{
+  document.getElementById("velo").classList.remove("attivo");
+  if(dopoVelo){const f=dopoVelo; dopoVelo=null; f();}
+});
+
+/* ---------------- render principale ---------------- */
+const SC = document.getElementById("scena-corrente");
+
+/* Adattamento al viewport: nessuno scroll della pagina. Dopo ogni modifica al DOM
+   si parte da scala piena e si riduce --k finché il contenuto entra in <main>.
+   Solo visuale: non tocca mai lo stato G. */
+const MAIN_EL = document.querySelector("main");
+let adattaInCorso = false;
+function adattaViewport(){
+  if(adattaInCorso || !MAIN_EL) return;
+  adattaInCorso = true;
+  const radice = document.documentElement;
+  let k = 1;
+  radice.style.setProperty("--k", k);
+  // scrollHeight conta il padding-bottom? misuriamo con un piccolo margine di tolleranza
+  let guardia = 0;
+  while(MAIN_EL.scrollHeight > MAIN_EL.clientHeight + 1 && k > 0.5 && guardia < 12){
+    k = Math.round((k - 0.05) * 100) / 100;
+    radice.style.setProperty("--k", k);
+    guardia++;
+  }
+  adattaInCorso = false;
+}
+if(MAIN_EL){
+  const raf = window.requestAnimationFrame ? f=>requestAnimationFrame(f) : f=>setTimeout(f,16);
+  new MutationObserver(()=>raf(adattaViewport))
+    .observe(MAIN_EL, {childList:true, subtree:true});
+  window.addEventListener("resize", ()=>raf(adattaViewport));
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=>adattaViewport());
+}
+
+const FASI_CONDIVISE=new Set(["fine_scena","asta_rivela","jolly_intro","neutralizza","finale","mercato","primo_conteggio"]);
+function render(){
+  aggiornaHeader();
+  inviaStato();
+  const f = G.fase;
+  if(f==="modalita"){ rModalita(); return }
+  if(f==="lobby"){ rLobby(); return }
+  if(spettatore() && !FASI_CONDIVISE.has(f)){ rSpettatore(); return }
+  if(f==="setup") rSetup();
+  else if(f==="asta") rAsta();
+  else if(f==="asta_rivela") rAstaRivela();
+  else if(f==="apertura") rApertura();
+  else if(f==="turno") rTurno();
+  else if(f==="narrazione") rNarrazione();
+  else if(f==="counter") rCounter();
+  else if(f==="fine_scena") rFineScena();
+  else if(f==="primo_conteggio") rPrimoConteggio();
+  else if(f==="colpi") rColpi();
+  else if(f==="mano_estesa") rManoEstesa();
+  else if(f==="mercato") rMercato();
+  else if(f==="jolly_intro") rJollyIntro();
+  else if(f==="neutralizza") rNeutralizza();
+  else if(f==="finale") rFinale();
+  if(spettatore() && FASI_CONDIVISE.has(f)){
+    SC.querySelectorAll("button,input,textarea").forEach(el=>el.disabled=true);
+    const nota=document.createElement("div");
+    nota.className="banner";
+    nota.textContent=`In attesa di ${nomeLato(latoCheAgisce())}…`;
+    SC.appendChild(nota);
+  }
+  if(G.modalita==="solo") setTimeout(iaScheduler, 60);
+}
+function aggiornaHeader(){
+  const el=document.getElementById("infoScena");
+  const dot = (rete.attiva||G.modalita==="online")
+    ? `<span style="color:${rete.stato==="connesso"?"var(--fiori)":"var(--cuori)"}">●</span> ${rete.stato}${rete.mioLato?` · sei ${nomeLato(rete.mioLato)}`:""}<br>` : "";
+  if(G.fase==="setup"||G.fase==="finale"||G.fase==="modalita"||G.fase==="lobby"){ el.innerHTML=dot; return }
+  const rec=G.scene[G.scena];
+  const ctrl = G.nGiocatori>2
+    ? `<br>${latoDiviso("P")?SIMBOLI[G.controllo.P]+" "+(nomeControllore("P")||"?"):""}${latoDiviso("O")?" · "+SIMBOLI[G.controllo.O]+" "+(nomeControllore("O")||"?"):""}`
+    : "";
+  el.innerHTML = dot + `Scena ${G.scena+1}/5 · ${FASI_NARR[G.scena]}` +
+    (rec && rec.titolo ? `<br>«${rec.titolo}»` : "") + ctrl;
+}
+function cartaHTML(c, cls="", dichiarato=null){
+  if(c.jolly) return `<div class="carta jolly ${cls}" data-id="${c.id}"><span class="v">JOLLY</span>${dichiarato?`<span class="s" style="color:var(--faro)">${dichiarato}</span>`:""}<span class="fig">1–10</span></div>`;
+  return `<div class="carta ${c.seme} ${cls} ${c.tappata?'tappata':''}" data-id="${c.id}">
+    <span class="v">${c.fig||c.val}</span><span class="s">${SIMBOLI[c.seme]}</span>
+    ${c.fig?`<span class="fig">${FIGURE[c.fig].titolo}</span>`:""}</div>`;
+}
+
+/* ================= MODALITÀ E LOBBY ================= */
+function rModalita(){
+  SC.innerHTML=`
+    <h2 class="ts">Frenemies on the Road</h2>
+    <p class="sotto">Come si gioca questa partita?</p>
+    <div class="pannello" style="cursor:pointer" id="md-locale">
+      <span class="etichetta">Stesso tablet</span>
+      <b style="font-family:'Oswald',sans-serif;font-size:18px;letter-spacing:1px">PASS & PLAY</b>
+      <div style="font-size:13.5px;color:var(--grigio)">Un dispositivo che passa di mano, con il velo tra i turni.</div>
+    </div>
+    <div class="pannello" style="cursor:pointer" id="md-online">
+      <span class="etichetta">Due dispositivi</span>
+      <b style="font-family:'Oswald',sans-serif;font-size:18px;letter-spacing:1px">ONLINE</b>
+      <div style="font-size:13.5px;color:var(--grigio)">In contemporanea, ognuno sul proprio schermo — perfetto con una videochiamata accanto. Connessione diretta tra i due browser, con un codice stanza.</div>
+    </div>
+    <div class="pannello" style="cursor:pointer" id="md-solo">
+      <span class="etichetta">Un giocatore</span>
+      <b style="font-family:'Oswald',sans-serif;font-size:18px;letter-spacing:1px">CONTRO CLAUDE</b>
+      <div style="font-size:13.5px;color:var(--grigio)">Tu guidi i Protagonisti ♥♠, Claude gioca e narra l'Opposizione ♦♣. Richiede la connessione (funziona dentro Claude.ai).</div>
+    </div>`;
+  document.getElementById("md-locale").addEventListener("click",()=>{
+    G.modalita="locale"; G.fase="setup"; render();
+  });
+  document.getElementById("md-solo").addEventListener("click",()=>{
+    G.modalita="solo"; G.nGiocatori=2; G.nomi.O="Claude"; G.fase="setup"; render();
+  });
+  document.getElementById("md-online").addEventListener("click",()=>{
+    G.modalita="online"; G.fase="lobby"; render();
+  });
+}
+function rLobby(){
+  SC.innerHTML=`
+    <h2 class="ts">Partita online</h2>
+    <p class="sotto">Chi crea la stanza prepara anche il pitch; l'altro segue in diretta.</p>
+    <div class="pannello">
+      <span class="etichetta">Crea una stanza</span>
+      <div class="opzioni">
+        <button id="lb-creaP">Crea — gioco i Protagonisti ♥♠</button>
+        <button id="lb-creaO">Crea — gioco l'Opposizione ♦♣</button>
+      </div>
+      <div id="lb-codice" style="display:none;margin-top:12px;text-align:center">
+        <span class="etichetta">Codice stanza — dettalo all'altro giocatore</span>
+        <div style="font-family:'Oswald',sans-serif;font-size:44px;font-weight:700;letter-spacing:8px;color:var(--faro)" id="lb-codiceVal"></div>
+        <div class="contatori" id="lb-attesa">in attesa dell'altro giocatore…</div>
+      </div>
+    </div>
+    <div class="pannello">
+      <span class="etichetta">Oppure unisciti a una stanza</span>
+      <div style="display:flex;gap:8px">
+        <input type="text" id="lb-input" placeholder="CODICE" style="text-transform:uppercase;letter-spacing:4px;font-family:'Oswald',sans-serif;font-size:20px">
+        <button class="secondaria" id="lb-vai">Unisciti</button>
+      </div>
+      <div class="contatori" id="lb-statoJoin" style="margin-top:6px"></div>
+    </div>
+    <button class="secondaria" id="lb-indietro">← Torna alla scelta della modalità</button>`;
+  function crea(latoScelto){
+    document.getElementById("lb-creaP").disabled=true;
+    document.getElementById("lb-creaO").disabled=true;
+    creaStanza(latoScelto, codice=>{
+      document.getElementById("lb-codice").style.display="block";
+      document.getElementById("lb-codiceVal").textContent=codice;
+      aggiornaHeader();
+      const attesa=setInterval(()=>{
+        if(rete.stato==="connesso"){
+          clearInterval(attesa);
+          G.fase="setup"; G.passo=0; render();
+        }
+      },400);
+    });
+  }
+  document.getElementById("lb-creaP").addEventListener("click",()=>crea("P"));
+  document.getElementById("lb-creaO").addEventListener("click",()=>crea("O"));
+  document.getElementById("lb-vai").addEventListener("click",()=>{
+    const codice=document.getElementById("lb-input").value;
+    if(!codice) return;
+    document.getElementById("lb-statoJoin").textContent="connessione…";
+    uniscitiStanza(codice,()=>{
+      document.getElementById("lb-statoJoin").textContent="connesso ✓ — in attesa dello stato";
+    });
+  });
+  document.getElementById("lb-indietro").addEventListener("click",()=>{
+    G.modalita="locale"; G.fase="modalita"; render();
+  });
+}
+
+/* ================= WIZARD DI CREAZIONE ================= */
+const PASSI_WIZ=["Il gioco","Giocatori","Tono","Missione","Protagonisti","Opposizione","Le domande","Pronti a partire"];
+function caso(a){return a[Math.floor(Math.random()*a.length)]}
+function salvaCampi(){
+  const g=id=>{const e=document.getElementById(id);return e?e.value:null};
+  const v=g("w-missione"); if(v!==null) G.missione=v;
+  const pd=g("w-primadiff"); if(pd!==null) G.primaDiff=pd;
+  const np=g("w-nomeP"); if(np!==null) G.nomi.P=np;
+  const no=g("w-nomeO"); if(no!==null) G.nomi.O=no;
+  ["picche","cuori","quadri","fiori"].forEach(sm=>{
+    const v=g("w-g"+sm); if(v!==null) G.giocatori[sm]=v;
+  });
+  if(G.modalita==="solo"){ G.nGiocatori=2; if(!G.nomi.O) G.nomi.O="Claude"; }
+  if(G.nGiocatori===2){ G.giocatori.picche=G.giocatori.cuori=G.nomi.P; G.giocatori.quadri=G.giocatori.fiori=G.nomi.O; }
+  if(G.nGiocatori===3){ G.giocatori.quadri=G.giocatori.fiori=G.nomi.O; }
+  const pa=g("w-persA"); if(pa!==null) G.pers.A.nome=pa;
+  const da=g("w-descA"); if(da!==null) G.pers.A.desc=da;
+  const pb=g("w-persB"); if(pb!==null) G.pers.B.nome=pb;
+  const db=g("w-descB"); if(db!==null) G.pers.B.desc=db;
+  G.pitch.forEach((p,i)=>{ const v=g("w-pitch-"+i); if(v!==null) p.risposta=v; });
+  const ne=g("w-nemici"); if(ne!==null) G.nemici=ne;
+  const ca=g("w-caos"); if(ca!==null) G.caos=ca;
+}
+function rSetup(){
+  const p=G.passo;
+  const punti=PASSI_WIZ.map((_,i)=>
+    `<span style="width:9px;height:9px;border-radius:50%;display:inline-block;background:${i<p?"var(--mezzeria)":i===p?"var(--faro)":"var(--bordo)"}"></span>`).join("");
+  let corpo="";
+  const nA=()=>G.pers.A.nome||"P1", nB=()=>G.pers.B.nome||"P2";
+
+  if(p===0) corpo=`
+    <h2 class="ts">Frenemies on the Road</h2>
+    <p class="sotto">Un gioco di viaggi senza ritorno, missioni disperate, piani improvvisati.</p>
+    <div class="pannello" style="font-size:14.5px;line-height:1.65">
+      Due protagonisti <b>incompatibili</b> sono costretti a collaborare per raggiungere un obiettivo
+      prima che sia troppo tardi. Il mondo è contro di loro: <b>nemici organizzati</b> ♦ — ma anche
+      <b>caos, sfortuna, incomprensioni</b> ♣.<br><br>
+      Un giocatore guida i Protagonisti ♥♠, l'altro l'Opposizione ♦♣. La storia si sviluppa in
+      <b>cinque scene</b>, da <i>${FASI_NARR[0]}</i> a <i>${FASI_NARR[4]}</i>. Le carte giocate scrivono
+      la fiction: ogni presa è un successo parziale, ogni scopa una svolta, e a fine scena il piatto
+      racconta chi ha deciso l'esito — e se i due si sono avvicinati o allontanati.<br><br>
+      Alla fine non conta solo se ce la fanno. <b>Conta chi diventano lungo la strada.</b>
+    </div>`;
+
+  else if(p===1){
+    const ng=G.nGiocatori;
+    const selettore = (G.modalita==="online"||G.modalita==="solo") ? "" : `
+      <span class="etichetta">In quanti siete?</span>
+      <div class="opzioni" style="margin-bottom:12px">
+        ${[2,3,4].map(n=>`<button data-ng="${n}" style="${ng===n?"background:var(--mezzeria);color:#1a1206;border-color:var(--mezzeria)":""}">${n} giocatori</button>`).join("")}
+      </div>`;
+    let campi="";
+    if(ng===2) campi=`<div class="riga2">
+      <div class="pannello"><span class="etichetta">Giocatore Protagonisti ♥♠</span>
+        <input type="text" id="w-nomeP" value="${G.nomi.P}" placeholder="Nome"></div>
+      <div class="pannello"><span class="etichetta">Giocatore Opposizione ♦♣</span>
+        <input type="text" id="w-nomeO" value="${G.nomi.O}" placeholder="Nome"></div>
+    </div>`;
+    else if(ng===3) campi=`<div class="riga2">
+      <div class="pannello"><span class="etichetta">Giocatore ♠ Picche</span>
+        <input type="text" id="w-gpicche" value="${G.giocatori.picche}" placeholder="Nome"></div>
+      <div class="pannello"><span class="etichetta">Giocatore ♥ Cuori</span>
+        <input type="text" id="w-gcuori" value="${G.giocatori.cuori}" placeholder="Nome"></div>
+    </div>
+    <div class="pannello"><span class="etichetta">Giocatore Opposizione ♦♣</span>
+      <input type="text" id="w-nomeO" value="${G.nomi.O}" placeholder="Nome"></div>
+    <div class="pannello">
+      <span class="etichetta">Controllo della mano dei Protagonisti (mazzo e mano sono condivisi)</span>
+      <div class="opzioni">
+        <button data-modo3="maggioranza" style="${G.modo3==="maggioranza"?"background:var(--mezzeria);color:#1a1206;border-color:var(--mezzeria)":""}">Maggioranza di seme</button>
+        <button data-modo3="alternanza" style="${G.modo3==="alternanza"?"background:var(--mezzeria);color:#1a1206;border-color:var(--mezzeria)":""}">Alternanza di scena</button>
+      </div>
+      <p style="font-size:12.5px;color:var(--grigio);margin-top:8px">Maggioranza: a inizio scena gioca chi ha più carte del proprio seme in mano (in parità, chi non ha controllato la scena precedente). Nell'epilogo, l'ultima parola spetta a chi ha realizzato più scope.</p>
+    </div>`;
+    else campi=`<div class="riga2">
+      <div class="pannello"><span class="etichetta">Giocatore ♠ Picche</span>
+        <input type="text" id="w-gpicche" value="${G.giocatori.picche}" placeholder="Nome"></div>
+      <div class="pannello"><span class="etichetta">Giocatore ♥ Cuori</span>
+        <input type="text" id="w-gcuori" value="${G.giocatori.cuori}" placeholder="Nome"></div>
+    </div>
+    <div class="riga2">
+      <div class="pannello"><span class="etichetta">Giocatore ♦ Quadri</span>
+        <input type="text" id="w-gquadri" value="${G.giocatori.quadri}" placeholder="Nome"></div>
+      <div class="pannello"><span class="etichetta">Giocatore ♣ Fiori</span>
+        <input type="text" id="w-gfiori" value="${G.giocatori.fiori}" placeholder="Nome"></div>
+    </div>
+    <p class="sotto">Mazzi e mani restano due. La mano condivisa è gestita da chi ha la maggioranza di carte del proprio seme (in parità, chi non ha controllato la scena precedente).</p>`;
+    corpo=`
+    <h2 class="ts">I giocatori</h2>
+    <p class="sotto">Chi siede da che parte del tavolo. I nomi servono per i passaggi del tablet.</p>
+    ${selettore}
+    ${campi}
+    <p class="sotto">L'Opposizione non interpreta "il cattivo": interpreta il mondo che reagisce contro i protagonisti.</p>`;
+  }
+
+  else if(p===2) corpo=`
+    <h2 class="ts">Il tono</h2>
+    <p class="sotto">La stessa missione cambia faccia a seconda di come la raccontate. Scegliete insieme.</p>
+    <div class="opzioni" style="margin-bottom:10px">
+      ${TONI.map(t=>`<button data-tono="${t}" style="${G.tono===t?"background:var(--mezzeria);color:#1a1206;border-color:var(--mezzeria)":""}">${t}</button>`).join("")}
+      <button data-tono="" class="neutra" style="${G.tono===""?"border-color:var(--mezzeria)":""}">Libero</button>
+    </div>
+    ${G.tono==="Romance"?`<div class="lettura">Nel tono Romance le domande del pitch cambiano valenza: "cosa detesta dell'altro" può nascondere attrazione, e la dominanza di ♥ nel finale non indica solo riconciliazione — indica che il legame ha prevalso sulla durezza.</div>`:""}`;
+
+  else if(p===3) corpo=`
+    <h2 class="ts">La missione</h2>
+    <p class="sotto">Un obiettivo concreto + una scadenza improrogabile: il successo o il fallimento saranno definitivi.</p>
+    <div class="pannello">
+      <span class="etichetta">La posta del viaggio</span>
+      <textarea id="w-missione" rows="3" placeholder="…PRIMA che…">${G.missione}</textarea>
+      <button class="secondaria" id="w-ispMiss" style="margin-top:10px">🎲 Ispirami</button>
+    </div>`;
+
+  else if(p===4) corpo=`
+    <h2 class="ts">I protagonisti</h2>
+    <p class="sotto">Una differenza evidente, un conflitto, un motivo per collaborare nonostante tutto. Chi è a sinistra tende a ♠, chi è a destra a ♥ — ma decidete voi.</p>
+    <button class="secondaria" id="w-ispCop" style="margin-bottom:12px">🎲 Pesca una coppia</button>
+    <div class="riga2">
+      <div class="pannello"><span class="etichetta">Protagonista 1 · tende a ♠</span>
+        <input type="text" id="w-persA" value="${G.pers.A.nome}" placeholder="Nome">
+        <span class="etichetta" style="margin-top:8px">Chi è</span>
+        <textarea id="w-descA" rows="3">${G.pers.A.desc}</textarea></div>
+      <div class="pannello"><span class="etichetta">Protagonista 2 · tende a ♥</span>
+        <input type="text" id="w-persB" value="${G.pers.B.nome}" placeholder="Nome">
+        <span class="etichetta" style="margin-top:8px">Chi è</span>
+        <textarea id="w-descB" rows="3">${G.pers.B.desc}</textarea></div>
+    </div>`;
+
+  else if(p===6){
+    const domandeHtml=(da,a)=>G.pitch.map((x,i)=>({x,i})).slice(da,a).map(({x,i})=>`
+      <span class="etichetta" style="margin-top:10px">${SIMBOLI[x.seme]} ${PITCH_TEMPLATE[i].q(nA(),nB())}</span>
+      <input type="text" id="w-pitch-${i}" value="${x.risposta.replace(/"/g,'&quot;')}">`).join("");
+    corpo=`
+    <h2 class="ts">Le domande del pitch</h2>
+    <p class="sotto">Le risposte scritte diventano <b>risorse di gioco</b>: una volta ciascuna, portandole in narrazione, trasformano una presa in scopa (max una per seme per lato).</p>
+    <div class="pannello">
+      <span class="etichetta">Ai Protagonisti — poste dall'Opposizione</span>
+      ${domandeHtml(0,6)}
+    </div>
+    <div class="pannello">
+      <span class="etichetta">All'Opposizione — poste dai Protagonisti</span>
+      ${domandeHtml(6,10)}
+    </div>
+    <div class="pannello">
+      <span class="etichetta">La prima difficoltà — risposta condivisa</span>
+      <p class="sotto" style="margin:4px 0 8px">Che cosa vi impedisce di raggiungere l'obiettivo subito? Rispondete tutti insieme. Non è una risorsa spuntabile: è il materiale della Scena 1.</p>
+      <textarea id="w-primadiff" rows="2" placeholder="Il primo ostacolo da superare…">${G.primaDiff||""}</textarea>
+    </div>`;
+  }
+
+  else if(p===5) corpo=`
+    <h2 class="ts">L'opposizione</h2>
+    <p class="sotto">Il mondo è sempre contro di voi — ma non sempre per gli stessi motivi.</p>
+    <div class="pannello">
+      <span class="etichetta">♦ I nemici organizzati — chi li insegue, chi li ostacola con intenzione</span>
+      <textarea id="w-nemici" rows="2" placeholder="Forze dell'ordine, criminali, istituzioni…">${G.nemici}</textarea>
+      <span class="etichetta" style="margin-top:10px">♣ Il caos — la sfortuna, gli imprevisti, gli attriti che li perseguitano</span>
+      <textarea id="w-caos" rows="2" placeholder="Un'auto che non parte mai, il tempo che cambia, vecchi conti in sospeso…">${G.caos}</textarea>
+    </div>`;
+
+  else corpo=`
+    <h2 class="ts">Il pitch</h2>
+    <div class="cartellone"><div class="grande">${G.pers.A.nome||"P1"} & ${G.pers.B.nome||"P2"}</div>
+      <div class="sc">${G.tono||"tono libero"} · cinque scene</div></div>
+    ${G.missione?`<div class="pannello"><span class="etichetta">Missione</span><div style="font-size:14.5px">${G.missione}</div></div>`:""}
+    ${G.primaDiff?`<div class="pannello"><span class="etichetta">Prima difficoltà — Scena 1</span><div style="font-size:13.5px">${G.primaDiff}</div></div>`:""}
+    ${G.pers.A.desc||G.pers.B.desc?`<div class="riga2">
+      <div class="pannello"><span class="etichetta">${G.pers.A.nome||"P1"} ♠</span><div style="font-size:13.5px">${G.pers.A.desc}</div></div>
+      <div class="pannello"><span class="etichetta">${G.pers.B.nome||"P2"} ♥</span><div style="font-size:13.5px">${G.pers.B.desc}</div></div></div>`:""}
+    ${G.nemici||G.caos?`<div class="pannello">
+      ${G.nemici?`<span class="etichetta">♦ Nemici</span><div style="font-size:13.5px;margin-bottom:8px">${G.nemici}</div>`:""}
+      ${G.caos?`<span class="etichetta">♣ Caos</span><div style="font-size:13.5px">${G.caos}</div>`:""}</div>`:""}
+    <p class="sotto">Ogni lato parte con 20 carte (1–10 dei propri semi) — esattamente cinque scene: quando il mazzo finisce, la strada finisce. Figure e Jolly arriveranno strada facendo.</p>`;
+
+  SC.innerHTML=`
+    <div style="text-align:center;display:flex;gap:6px;justify-content:center;margin-bottom:14px">${punti}</div>
+    ${corpo}
+    <div style="display:flex;gap:10px;margin-top:14px">
+      ${p>0?`<button class="secondaria" id="w-indietro" style="flex:1">Indietro</button>`:""}
+      <button class="azione" id="w-avanti" style="flex:2">${p===PASSI_WIZ.length-1?"Mettiti in viaggio":"Avanti"}</button>
+    </div>`;
+
+  if(p===1){
+    SC.querySelectorAll("button[data-ng]").forEach(b=>b.addEventListener("click",()=>{
+      salvaCampi(); G.nGiocatori=parseInt(b.dataset.ng); render();
+    }));
+    SC.querySelectorAll("button[data-modo3]").forEach(b=>b.addEventListener("click",()=>{
+      salvaCampi(); G.modo3=b.dataset.modo3; render();
+    }));
+  }
+  if(p===2) SC.querySelectorAll("button[data-tono]").forEach(b=>b.addEventListener("click",()=>{
+    G.tono=b.dataset.tono; render();
+  }));
+  if(p===3) document.getElementById("w-ispMiss").addEventListener("click",()=>{
+    document.getElementById("w-missione").value=caso(MISSIONI);
+  });
+  if(p===4) document.getElementById("w-ispCop").addEventListener("click",()=>{
+    const [a,b]=caso(COPPIE).split(" / ");
+    document.getElementById("w-descA").value=a;
+    document.getElementById("w-descB").value=b;
+  });
+  const av=document.getElementById("w-avanti");
+  av.addEventListener("click",()=>{
+    salvaCampi();
+    if(p===PASSI_WIZ.length-1){ iniziaScena(); return }
+    G.passo++; render();
+  });
+  const ind=document.getElementById("w-indietro");
+  if(ind) ind.addEventListener("click",()=>{ salvaCampi(); G.passo--; render(); });
+}
+
+/* ================= FLUSSO SCENA ================= */
+function iniziaScena(){
+  // pesca iniziale solo per la prima scena (le altre pescano nel mercato)
+  if(G.scena===0){ pescaFinoA("P",4); pescaFinoA("O",4); }
+  calcolaControllo();
+  G.scene[G.scena] = G.scene[G.scena] || {titolo:"",posta:"",iniziativa:null,ambiente:"",vincitore:null,dominante:null,rapporto:null,totP:0,totO:0};
+  G.astaPicks={P:null,O:null};
+  G.fase="asta"; G.attore="P";
+  velo("P", render);
+}
+function pescaFinoA(l,n){
+  const L=lato(l);
+  while(L.mano.length<n && L.mazzo.length>0) L.mano.push(L.mazzo.shift());
+}
+
+/* ================= ASTA ================= */
+function rAsta(){
+  const L=lato(G.attore);
+  SC.innerHTML = `
+    <h2 class="ts">Asta per l'iniziativa</h2>
+    <p class="sotto">${nomeLato(G.attore)}: scegli una carta coperta. La più alta vince l'iniziativa e apre la scena. ${L.mano.some(c=>c.jolly)?"Il Jolly non può essere usato nell'asta.":""}</p>
+    <div class="tavolo-top">
+      <div class="tot-lato p">♥+♠ Protagonisti <b>${totaleProt()}</b></div>
+      <div class="tot-lato o">♦+♣ Opposizione <b>${totaleOpp()}</b></div>
+    </div>
+    <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto — la prima presa sarebbe scopa</span>'}</div>
+    <div class="pannello${G.modalita==="solo"&&G.attore==="O"?" ia-nascosta":""}"><span class="etichetta">La tua mano</span><div class="mazzo-carte" id="manoAsta">
+      ${ordina(L.mano).map(c=>cartaHTML(c, c.jolly?"":"")).join("")}
+    </div></div>
+    <button class="azione" id="confAsta" disabled>Gioca coperta</button>`;
+  let scelta=null;
+  SC.querySelectorAll("#manoAsta .carta").forEach(el=>{
+    const c=L.mano.find(x=>x.id==el.dataset.id);
+    if(c.jolly){ el.style.opacity=.35; return }
+    el.addEventListener("click",()=>{
+      SC.querySelectorAll(".carta").forEach(x=>x.classList.remove("sel"));
+      el.classList.add("sel"); scelta=c;
+      document.getElementById("confAsta").disabled=false;
+    });
+  });
+  document.getElementById("confAsta").addEventListener("click",()=>{
+    G.astaPicks[G.attore]=scelta;
+    L.mano = L.mano.filter(c=>c.id!==scelta.id);
+    if(G.attore==="P"){ G.attore="O"; velo("O",render); }
+    else risolviAsta();
+  });
+}
+function risolviAsta(){
+  const cP=G.astaPicks.P, cO=G.astaPicks.O;
+  let win=null, tieBreak=false;
+  if(cP.val===cO.val){
+    const prev = G.scena>0 && G.scene[G.scena-1] ? G.scene[G.scena-1].iniziativa : null;
+    win = prev ? altro(prev) : "O";   // parità: a chi non ha avuto l'iniziativa la scena prima; alla prima scena, all'Opposizione
+    tieBreak=true;
+  }
+  if(!win) win = cP.val>cO.val ? "P":"O";
+  const cartaWin = win==="P"?cP:cO;
+  G.astaWinner = win;
+  lato(win).astaCarta = cartaWin;                       // tenuta da parte, sarà l'ultima giocata
+  lato(altro(win)).mano.push(G.astaPicks[altro(win)]);  // il perdente la riprende in mano
+  const rec=G.scene[G.scena];
+  rec.iniziativa = win;
+  rec.ambiente = AMBIENTE[cartaWin.seme];
+  G.rivela={tie:false,cP,cO,win,tieBreak};
+  G.astaPicks={P:null,O:null};
+  G.fase="asta_rivela"; render();
+}
+function rAstaRivela(){
+  const r=G.rivela, cP=r.cP, cO=r.cO;
+  let html = `
+    <h2 class="ts">Le carte si rivelano</h2>
+    <div class="riga2">
+      <div class="pannello" style="text-align:center"><span class="etichetta">${nomeLato("P")}</span>
+        <div class="mazzo-carte">${cartaHTML(cP)}</div></div>
+      <div class="pannello" style="text-align:center"><span class="etichetta">${nomeLato("O")}</span>
+        <div class="mazzo-carte">${cartaHTML(cO)}</div></div>
+    </div>`;
+  const win=r.win, cartaWin = win==="P"?cP:cO;
+  const rec=G.scene[G.scena];
+  html += `
+    ${r.tieBreak?`<div class="banner">Valori in parità: ${G.scena===0?"alla prima scena l'iniziativa va all'Opposizione — il mondo è contro di voi fin dall'inizio.":"l'iniziativa va a chi non l'ha avuta nella scena precedente."}</div>`:""}
+    <div class="cartellone"><div class="grande">${nomeLato(win)}</div><div class="sc">${r.tieBreak?"prende l'iniziativa per alternanza, con "+nomeCarta(cartaWin):"vince l'iniziativa con "+nomeCarta(cartaWin)}</div></div>
+    <div class="lettura">${SIMBOLI[cartaWin.seme]} ${rec.ambiente}</div>
+    <p class="sotto" style="margin-top:10px">La carta d'asta resta da parte: sarà la sua ultima giocata del round. Il perdente riprende la propria in mano.</p>
+    <button class="azione" id="vaiApertura">Continua</button>`;
+  SC.innerHTML=html;
+  const b=document.getElementById("vaiApertura");
+  b.addEventListener("click",()=>{
+    G.rivela=null;
+    G.fase="apertura"; G.attore=win;
+    if(G.modalita!=="online" && win!=="O") velo(win,render); else render();
+  });
+}
+
+/* ================= APERTURA ================= */
+function rApertura(){
+  const rec=G.scene[G.scena];
+  SC.innerHTML = `
+    <h2 class="ts">Scena ${G.scena+1} — ${FASI_NARR[G.scena]}</h2>
+    <p class="sotto">${nomeLato(G.attore)} ha l'iniziativa: dà il titolo alla scena e ne dichiara la posta.</p>
+    <div class="lettura" style="margin-bottom:12px">${rec.ambiente}</div>
+    ${G.scena===0&&G.primaDiff?`<div class="lettura" style="margin-bottom:12px"><b>La prima difficoltà (decisa nel pitch):</b> ${G.primaDiff}</div>`:""}
+    <div class="pannello">
+      <span class="etichetta">Titolo della scena</span>
+      <input type="text" id="a-titolo" value="${rec.titolo}">
+      <span class="etichetta" style="margin-top:10px">La posta — cosa succede se va male</span>
+      <textarea id="a-posta">${rec.posta}</textarea>
+    </div>
+    ${G.piatto.length?`<div class="banner">Nel piatto restano ${G.piatto.length} carte dalla scena precedente: chi apre può già fare presa o scopa.</div>`:""}
+    <button class="azione" id="a-via">Apri la scena</button>`;
+  document.getElementById("a-via").addEventListener("click",()=>{
+    rec.titolo=document.getElementById("a-titolo").value;
+    rec.posta=document.getElementById("a-posta").value;
+    G.fase="turno"; render();
+  });
+}
+
+/* ================= TURNO ================= */
+function carteGiocabili(l){
+  const L=lato(l);
+  if(L.mano.length>0) return {carte:L.mano, daAsta:false};
+  if(l===G.astaWinner && L.astaCarta) return {carte:[L.astaCarta], daAsta:true};
+  return {carte:[], daAsta:false};
+}
+function roundFinito(){
+  return lato("P").mano.length===0 && lato("O").mano.length===0 &&
+         (!G.astaWinner || lato(G.astaWinner).astaCarta===null);
+}
+function prossimoTurno(){
+  if(roundFinito()){ fineScena(); return }
+  let next=altro(G.attore);
+  if(carteGiocabili(next).carte.length===0) next=G.attore;   // l'altro ha finito: continua lo stesso
+  if(carteGiocabili(next).carte.length===0){ fineScena(); return }
+  const cambia = next!==G.attore && !G.saltaVelo;
+  G.saltaVelo=false;
+  G.attore=next; G.fase="turno";
+  if(cambia) velo(next,render); else render();
+}
+
+function rTurno(){
+  const l=G.attore, L=lato(l);
+  const g=carteGiocabili(l);
+  const peccObj = peccatoDisponibile(l);
+  SC.innerHTML = `
+    ${G.ultimaGiocata?`<div class="banner ${G.ultimaGiocata.includes("SCOPA")?"scopa":""}">${G.ultimaGiocata}</div>`:""}
+    <div class="tavolo-top">
+      <div class="tot-lato p">♥+♠ Protagonisti <b>${totaleProt()}</b></div>
+      <div class="tot-lato o">♦+♣ Opposizione <b>${totaleOpp()}</b></div>
+    </div>
+    <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto — una presa qui sarebbe scopa</span>'}</div>
+    ${peccObj?`<button class="secondaria" id="btnPeccato" style="margin-bottom:10px">⚡ Fai emergere il peccato del Jolly avversario (+5 punti)</button>`:""}
+    <div class="mano-area${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}">
+      <div class="mano-titolo">
+        <span class="etichetta" style="margin:0">${g.daAsta?"Ultima giocata — la carta dell'asta":"Mano di "+nomeLato(l)+(latoDiviso(l)?" — gioca "+nomeControllore(l)+" "+SIMBOLI[G.controllo[l]]:"")}</span>
+        <span class="contatori">prese ${L.prese.length} · scope ${L.scope.filter(c=>!c.esposta).length} · mazzo ${L.mazzo.length}</span>
+      </div>
+      <div class="mazzo-carte" id="manoTurno">${ordina(g.carte).map(c=>cartaHTML(c)).join("")}</div>
+      <div id="pannelloAzione"></div>
+    </div>`;
+  if(peccObj) document.getElementById("btnPeccato").addEventListener("click",()=>eseguiPeccato(l,peccObj));
+  SC.querySelectorAll("#manoTurno .carta").forEach(el=>{
+    el.addEventListener("click",()=>{
+      SC.querySelectorAll("#manoTurno .carta").forEach(x=>x.classList.remove("sel"));
+      el.classList.add("sel");
+      const c=g.carte.find(x=>x.id==el.dataset.id);
+      mostraOpzioni(c, g.daAsta);
+    });
+  });
+}
+
+function mostraOpzioni(c, daAsta){
+  const box=document.getElementById("pannelloAzione");
+  if(c.jolly){ opzioniJolly(c); return }
+  const combos=combosPresa(c.val);
+  let html=`<div class="opzioni">`;
+  combos.forEach((cmb,i)=>{
+    html+=`<button data-cmb="${i}">Prendi ${cmb.map(x=>(x.fig?FIGURE[x.fig].nome.charAt(0):x.val)+SIMBOLI[x.seme]).join(" + ")}${cmb.length===G.piatto.length?" — SCOPA!":""}</button>`;
+  });
+  html+=`<button class="neutra" data-piatto="1">Metti nel piatto</button></div>`;
+  if(c.fig) html+=`<div class="banner" style="margin-top:10px">${FIGURE[c.fig].nome} — ${FIGURE[c.fig].eff}</div>`;
+  box.innerHTML=html;
+  box.querySelectorAll("button[data-cmb]").forEach(b=>{
+    b.addEventListener("click",()=>giocaCarta(c, combos[parseInt(b.dataset.cmb)], daAsta));
+  });
+  box.querySelector("button[data-piatto]").addEventListener("click",()=>giocaCarta(c, null, daAsta));
+}
+
+function rimuoviDaMano(l, c, daAsta){
+  const L=lato(l);
+  if(daAsta) L.astaCarta=null;
+  else L.mano=L.mano.filter(x=>x.id!==c.id);
+}
+
+function giocaCarta(c, combo, daAsta){
+  const l=G.attore, L=lato(l);
+  rimuoviDaMano(l,c,daAsta);
+  let msg = `${nomeLato(l)} — ${nomeCarta(c)}: `;
+  let tipo="piatto", dettagli="";
+  if(combo){
+    dettagli = combo.map(x=>(x.fig?FIGURE[x.fig].nome.charAt(0):x.val)+SIMBOLI[x.seme]).join(" + ");
+    G.piatto = G.piatto.filter(x=>!combo.some(y=>y.id===x.id));
+    L.prese.push(...combo);
+    if(G.piatto.length===0){
+      L.scope.push(c);  // la carta della scopa, da parte
+      aggiungiScopa(l);
+      tipo="scopa";
+      msg+=`SCOPA! Il piatto è ripulito — un successo pieno, una svolta.`;
+    }else{
+      L.prese.push(c);
+      tipo="presa";
+      msg+=`presa di ${combo.length} cart${combo.length>1?"e":"a"} — un successo parziale, o con un costo.`;
+    }
+  }else{
+    G.piatto.push(c);
+    msg+=`giocata nel piatto — un nuovo elemento entra in scena.`;
+  }
+  G.ultimaGiocata=msg;
+  // effetto figura dopo la narrazione, prima del cambio turno
+  const dopo = c.fig ? ()=>effettoFigura(c, ()=>prossimoTurno()) : null;
+  vaiNarrazione(c, tipo, dettagli, dopo);
+  if(tipo==="presa" && !c.jolly){ G.narr.boostCard=c.id; render(); }
+}
+
+/* ================= NARRAZIONE ================= */
+function nomeA(){return G.pers.A.nome||"il primo protagonista"}
+function nomeB(){return G.pers.B.nome||"il secondo protagonista"}
+function suggSeme(seme){
+  switch(seme){
+    case "picche": return `<b>${SIMBOLI.picche} Picche — la linea dura.</b> ${nomeA()} (o comunque i protagonisti) agisce con forza, imposizione, pressione: uno scontro, una minaccia, una decisione presa senza chiedere.`;
+    case "cuori": return `<b>${SIMBOLI.cuori} Cuori — la connessione.</b> ${nomeB()} (o comunque i protagonisti) agisce con dialogo, empatia, fiducia: qualcuno si apre, qualcuno convince, qualcuno ascolta.`;
+    case "quadri": return `<b>${SIMBOLI.quadri} Quadri — i nemici attivi.</b> La fazione ostile entra in azione o si fa più vicina: inseguitori, minacce organizzate, risorse avversarie messe in campo con intenzione.`;
+    case "fiori": return `<b>${SIMBOLI.fiori} Fiori — il caos.</b> Sfortuna, incidenti, attriti tra i protagonisti, PNG irritanti, complicazioni che nessuno ha voluto ma che ora sono lì.`;
+  }
+  return "";
+}
+function suggerimento(c, tipo, dettagli){
+  let testo="";
+  if(tipo==="piatto"){
+    testo=`<b>Introduci.</b> Stai aggiungendo un elemento con cui l'avversario dovrà fare i conti — non risolve ciò che è già in scena, lo complica.`;
+  }else if(tipo==="presa"){
+    testo=`<b>Superamento parziale.</b> Narra un successo con un costo, o un ostacolo gestito senza risolvere tutto: gli elementi presi (${dettagli}) escono di scena, ma lasciano un segno.`;
+  }else if(tipo==="scopa"){
+    testo=`<b>SVOLTA.</b> Successo pieno, ribaltamento: la scena si ripulisce in un colpo solo. Concediti il momento — è una delle giocate che la storia ricorderà.`;
+  }
+  let extra="";
+  if(c && c.fig){
+    const f=FIGURE[c.fig];
+    extra=`<br><br><b>${f.nome} — ${f.titolo}.</b> Entra in scena un PNG significativo: ${
+      c.fig==="F" ? "un contatto, una fonte, qualcuno che sa cose che gli altri non sanno."
+      : c.fig==="D" ? "qualcuno che seduce, distrae, manipola: crea disordine nelle file dell'altro lato."
+      : "un alleato potente, un intervento quasi da deus ex machina, qualcuno che nessuno si aspettava."
+    }`;
+  }
+  if(c && c.jolly){
+    extra=`<br><br><b>JOLLY.</b> Il vantaggio è ottenuto nel modo sbagliato: narra il mezzo moralmente discutibile — una bugia, una minaccia, una scorciatoia che qualcuno pagherà.`;
+  }
+  const seme = c && !c.jolly ? `<br><br>${suggSeme(c.seme)}` : "";
+  return testo + seme + extra;
+}
+function semiLato(l){ return lato(l).semi }
+function spinteDisponibili(l){
+  if(G.scena>=4 || !G.narr || !G.narr.boostCard) return [];
+  const c=lato(l).prese.find(x=>x.id===G.narr.boostCard);
+  if(!c) return [];
+  return G.pitch.map((p,i)=>({p,i}))
+    .filter(({p})=>p.seme===c.seme && semiLato(l).includes(p.seme) && p.risposta && !p.usata && !G.spinte[l][p.seme]);
+}
+function eseguiSpinta(idxPitch){
+  const l=G.narrLato||G.attore, L=lato(l), p=G.pitch[idxPitch];
+  const c=L.prese.find(x=>x.id===G.narr.boostCard);
+  if(!c) return;
+  p.usata=true; G.spinte[l][p.seme]=true;
+  L.prese=L.prese.filter(x=>x.id!==c.id);
+  L.scope.push(c);
+  aggiungiScopa(l);
+  const residue=G.piatto.length;
+  if(residue){ L.prese.push(...G.piatto); G.piatto=[]; }
+  G.narr.boostCard=null;
+  G.narr.tipo="scopa";
+  G.narr.sugg=`<b>RISORSA DEL PITCH — la presa diventa SCOPA${residue?" e svuota il piatto":""}.</b> Porta in narrazione, come scena, rivelazione o flashback: <i>«${p.risposta}»</i>. Il momento cambia peso: da successo parziale a svolta.`;
+  G.ultimaGiocata+=` ⚡ Risorsa del pitch attivata: la presa diventa SCOPA${residue?` e raccoglie le ${residue} carte rimaste nel piatto`:""}.`;
+  render();
+}
+let narrDopo=null;
+function vaiNarrazione(c, tipo, dettagli, dopoNarrazione, suggOverride, narrLato){
+  G.narr={html:c?cartaHTML(c):"", tipo, sugg:suggOverride||suggerimento(c,tipo,dettagli)};
+  G.narrLato = narrLato || G.attore;
+  narrDopo=dopoNarrazione;
+  G.fase="narrazione"; render();
+}
+function rNarrazione(){
+  const n=G.narr;
+  SC.innerHTML=`
+    ${G.ultimaGiocata?`<div class="banner ${n.tipo==="scopa"?"scopa":""}">${G.ultimaGiocata}</div>`:""}
+    <div style="display:flex;justify-content:center;margin:10px 0">${n.html}</div>
+    <div class="pannello">
+      <span class="etichetta">Ora narra${latoDiviso(G.narrLato||G.attore)?" — "+nomeControllore(G.narrLato||G.attore):""}</span>
+      <div class="lettura">${n.sugg}</div>
+    </div>
+    ${n.boostCard && spinteDisponibili(G.narrLato||G.attore).length ? `
+    <div class="pannello">
+      <span class="etichetta">⚡ Risorse del pitch — spunta la risposta del seme della presa: SCOPA vera, il piatto si svuota</span>
+      <div class="opzioni">${spinteDisponibili(G.narrLato||G.attore).map(({p,i})=>
+        `<button data-spinta="${i}">${SIMBOLI[p.seme]} «${p.risposta.length>60?p.risposta.slice(0,60)+"…":p.risposta}»</button>`).join("")}</div>
+    </div>`:""}
+    <button class="azione" id="narrOk">Narrato — avanti</button>`;
+  SC.querySelectorAll("button[data-spinta]").forEach(b=>
+    b.addEventListener("click",()=>eseguiSpinta(parseInt(b.dataset.spinta))));
+  document.getElementById("narrOk").addEventListener("click",()=>{
+    const f=narrDopo; narrDopo=null; G.narr=null; G.narrLato=null;
+    if(f) f(); else prossimoTurno();
+  });
+}
+
+/* ================= FIGURE ================= */
+function modale(html){ document.getElementById("modaleCorpo").innerHTML=html; document.getElementById("ovModale").classList.add("attivo") }
+function chiudiModale(){ document.getElementById("ovModale").classList.remove("attivo") }
+
+function effettoFigura(c, poi){
+  const l=G.attore, L=lato(l), A=lato(altro(l));
+  if(c.fig==="F"){
+    const top=L.mazzo.slice(0,4);
+    if(top.length===0){ poi(); return }
+    modale(`<h2 class="ts">Fante — L'informatore</h2>
+      <p class="sotto">Le prime ${top.length} carte del tuo mazzo. Tocca quelle da mandare in fondo.</p>
+      <div class="mazzo-carte" id="fanteCarte">${top.map(x=>cartaHTML(x)).join("")}</div>
+      <button class="azione" id="fanteOk" style="margin-top:14px">Conferma</button>`);
+    const inFondo=new Set();
+    document.querySelectorAll("#fanteCarte .carta").forEach(el=>{
+      el.addEventListener("click",()=>{
+        const id=parseInt(el.dataset.id);
+        if(inFondo.has(id)){inFondo.delete(id);el.classList.remove("sel")}
+        else{inFondo.add(id);el.classList.add("sel")}
+      });
+    });
+    document.getElementById("fanteOk").addEventListener("click",()=>{
+      const resto=L.mazzo.slice(top.length);
+      const su=top.filter(x=>!inFondo.has(x.id));
+      const giu=top.filter(x=>inFondo.has(x.id));
+      L.mazzo=[...su,...resto,...giu];
+      chiudiModale(); poi();
+    });
+  }
+  else if(c.fig==="D"){
+    if(A.mano.length>0){
+      const i=Math.floor(Math.random()*A.mano.length);
+      const scartata=A.mano.splice(i,1)[0];
+      A.scarti.push(scartata);
+      if(A.mazzo.length>0) A.mano.push(A.mazzo.shift());
+      G.ultimaGiocata += ` La Dama agisce: l'avversario scarta ${nomeCarta(scartata)} e pesca dal mazzo.`;
+    }
+    poi();
+  }
+  else if(c.fig==="R"){
+    const scartiUtili=L.scarti.filter(x=>L.semi.includes(x.seme));
+    if(L.mano.length===0 || scartiUtili.length===0){ poi(); return }
+    let manoSel=null, scartoSel=null;
+    modale(`<h2 class="ts">Re — Il deus ex machina</h2>
+      <p class="sotto">Scambia una carta della tua mano con una dei tuoi scarti dello stesso seme.</p>
+      <span class="etichetta">La tua mano</span>
+      <div class="mazzo-carte" id="reMano">${ordina(L.mano).map(x=>cartaHTML(x)).join("")}</div>
+      <span class="etichetta" style="margin-top:12px">I tuoi scarti</span>
+      <div class="mazzo-carte" id="reScarti">${scartiUtili.map(x=>cartaHTML(x)).join("")}</div>
+      <div style="display:flex;gap:8px;margin-top:14px">
+        <button class="azione" id="reOk" disabled>Scambia</button>
+        <button class="secondaria" id="reNo">Rinuncia</button>
+      </div>`);
+    function agg(){
+      document.getElementById("reOk").disabled = !(manoSel && scartoSel && manoSel.seme===scartoSel.seme);
+    }
+    document.querySelectorAll("#reMano .carta").forEach(el=>el.addEventListener("click",()=>{
+      document.querySelectorAll("#reMano .carta").forEach(x=>x.classList.remove("sel"));
+      el.classList.add("sel"); manoSel=L.mano.find(x=>x.id==el.dataset.id); agg();
+    }));
+    document.querySelectorAll("#reScarti .carta").forEach(el=>el.addEventListener("click",()=>{
+      document.querySelectorAll("#reScarti .carta").forEach(x=>x.classList.remove("sel"));
+      el.classList.add("sel"); scartoSel=L.scarti.find(x=>x.id==el.dataset.id); agg();
+    }));
+    document.getElementById("reOk").addEventListener("click",()=>{
+      L.mano=L.mano.filter(x=>x.id!==manoSel.id); L.scarti.push(manoSel);
+      L.scarti=L.scarti.filter(x=>x.id!==scartoSel.id); L.mano.push(scartoSel);
+      G.ultimaGiocata += ` Il Re interviene: ${nomeCarta(scartoSel)} torna dagli scarti.`;
+      chiudiModale(); poi();
+    });
+    document.getElementById("reNo").addEventListener("click",()=>{chiudiModale(); poi();});
+  }
+  else poi();
+}
+
+/* ================= JOLLY ================= */
+function opzioniJolly(c){
+  const box=document.getElementById("pannelloAzione");
+  if(G.piatto.length===0){
+    box.innerHTML=`<div class="banner">Piatto vuoto: il piano scorretto non ha appigli. Il Jolly finisce tra le tue scope come risorsa fallita, esposta all'avversario.</div>
+      <div class="opzioni"><button id="jFallisce">Gioca comunque il Jolly</button></div>`;
+    document.getElementById("jFallisce").addEventListener("click",()=>{
+      const l=G.attore;
+      rimuoviDaMano(l,c,false);
+      c.esposta=true; lato(l).scope.push(c);
+      G.ultimaGiocata=`${nomeLato(l)} gioca il Jolly su piatto vuoto: il piano scorretto fallisce senza alcun vantaggio.`;
+      vaiNarrazione(c,"piatto","",null,
+        `<b>Il piano fallisce.</b> Narra il tentativo scorretto che non trova appigli: la bugia che nessuno beve, la trappola scattata a vuoto. Il Jolly resta tra le tue scope come risorsa fallita, esposta agli occhi dell'avversario.`);
+    });
+    return;
+  }
+  let html=`<div class="banner">Dichiara il valore del Jolly (1–10). Ricorda: dovrai narrare <b>come ottieni il vantaggio con un mezzo moralmente discutibile</b>.</div><div class="opzioni">`;
+  for(let v=1;v<=10;v++){
+    const ha=combosPresa(v).length>0;
+    html+=`<button data-v="${v}" ${ha?"":"disabled style='opacity:.3'"}>${v}</button>`;
+  }
+  html+=`</div><div id="jollyCombos"></div>`;
+  box.innerHTML=html;
+  box.querySelectorAll("button[data-v]").forEach(b=>b.addEventListener("click",()=>{
+    const v=parseInt(b.dataset.v);
+    const combos=combosPresa(v);
+    const jc=document.getElementById("jollyCombos");
+    jc.innerHTML=`<div class="opzioni" style="margin-top:8px">`+combos.map((cmb,i)=>
+      `<button data-c="${i}">Come ${v}: prendi ${cmb.map(x=>(x.fig?FIGURE[x.fig].nome.charAt(0):x.val)+SIMBOLI[x.seme]).join(" + ")}${cmb.length===G.piatto.length?" — SCOPA!":""}</button>`).join("")+`</div>`;
+    jc.querySelectorAll("button[data-c]").forEach(bb=>bb.addEventListener("click",()=>{
+      G.pendingJolly={attore:G.attore, carta:c, valore:v, combo:combos[parseInt(bb.dataset.c)]};
+      G.fase="counter";
+      velo(altro(G.attore),render);   // decisione segreta dell'avversario, sempre
+    }));
+  }));
+}
+
+function rCounter(){
+  const pj=G.pendingJolly, dif=altro(pj.attore), D=lato(dif);
+  if(G.modalita==="solo" && dif==="O"){
+    SC.innerHTML=`<h2 class="ts">Mossa scorretta in corso</h2>
+      <div class="banner">Giochi il <b>JOLLY come ${pj.valore}</b>. L'Opposizione valuta la mossa…</div>`;
+    return;
+  }
+  const haJolly=D.mano.some(x=>x.jolly);
+  SC.innerHTML=`
+    <h2 class="ts">Mossa scorretta in corso</h2>
+    <div class="banner">${nomeLato(pj.attore)} gioca il <b>JOLLY come ${pj.valore}</b> e vuole prendere:
+      <div class="mazzo-carte" style="margin-top:8px">${pj.combo.map(x=>cartaHTML(x,"mini")).join("")}</div>
+      ${pj.combo.length===G.piatto.length?"<b>Sarebbe SCOPA.</b>":""}
+    </div>
+    ${haJolly
+      ? `<p class="sotto">Hai un Jolly in mano: puoi smascherare il tentativo. Se lo fai, prendi <b>tutte le carte del piatto</b> e i due Jolly escono dal gioco.</p>
+         <div style="display:flex;gap:10px;flex-wrap:wrap">
+           <button class="azione" style="flex:1" id="cSi">COUNTER — Smaschera</button>
+           <button class="secondaria" style="flex:1" id="cNo">Lascia correre</button>
+         </div>`
+      : `<p class="sotto">Non hai modo di opporti a questa mossa.</p>
+         <button class="azione" id="cNo">Continua</button>`}`;
+  document.getElementById("cNo").addEventListener("click",()=>risolviJolly(false));
+  if(haJolly) document.getElementById("cSi").addEventListener("click",()=>risolviJolly(true));
+}
+function risolviJolly(counter){
+  const pj=G.pendingJolly, l=pj.attore, L=lato(l), dif=altro(l), D=lato(dif);
+  rimuoviDaMano(l,pj.carta,false);
+  G.pendingJolly=null;
+  G.saltaVelo=true;   // il difensore ha già il tablet in mano
+  if(counter){
+    const jollyDif=D.mano.find(x=>x.jolly);
+    D.mano=D.mano.filter(x=>x.id!==jollyDif.id);
+    D.prese.push(...G.piatto);
+    G.piatto=[];
+    G.ultimaGiocata=`COUNTER! ${nomeLato(dif)} smaschera il tentativo: prende tutto il piatto, entrambi i Jolly escono dal gioco.`;
+    vaiNarrazione(null,"presa","",null,
+      `<b>COUNTER.</b> ${nomeLato(dif)} narra come il tentativo scorretto viene smascherato: la trappola smontata davanti a tutti, il piano esposto — e tutto ciò che era in scena finisce nelle sue mani.`, dif);
+    return;
+  }
+  G.piatto=G.piatto.filter(x=>!pj.combo.some(y=>y.id===x.id));
+  L.prese.push(...pj.combo);
+  if(G.piatto.length===0){
+    pj.carta.peccato=true; L.scope.push(pj.carta); L.peccatoScena=G.scena;
+    aggiungiScopa(l);
+    G.ultimaGiocata=`${nomeLato(l)} — SCOPA col Jolly come ${pj.valore}. Resta un peccato latente.`;
+    vaiNarrazione(pj.carta,"scopa","",null,
+      `<b>SVOLTA scorretta.</b> ${nomeLato(l)} narra il mezzo moralmente discutibile con cui ripulisce la scena in un colpo solo — una bugia, una minaccia, una scorciatoia. Il vantaggio è pieno, ma il <b>peccato resta latente</b>: in una scena futura potrebbe tornare a chiedere il conto.`);
+  }else{
+    L.prese.push(pj.carta);
+    G.ultimaGiocata=`${nomeLato(l)} — presa col Jolly come ${pj.valore}.`;
+    vaiNarrazione(pj.carta,"presa","",null,
+      `<b>Vantaggio scorretto.</b> ${nomeLato(l)} narra come ottiene questo successo parziale con un mezzo moralmente discutibile — tecnicamente sbagliato, sicuramente efficace.`);
+  }
+}
+
+/* peccato latente: l'avversario può farlo emergere in una scena successiva */
+function peccatoDisponibile(l){
+  const S=lato(altro(l));
+  if(S.peccatoScena>=0 && S.peccatoScena<G.scena){
+    const j=S.scope.find(x=>x.jolly && x.peccato);
+    if(j) return j;
+  }
+  return null;
+}
+function eseguiPeccato(l, jollyCard){
+  const S=lato(altro(l));
+  S.scope=S.scope.filter(x=>x.id!==jollyCard.id);
+  S.peccatoScena=-1;
+  lato(l).bonus+=5;
+  G.ultimaGiocata=`Il peccato emerge: il Jolly di ${nomeLato(altro(l))} viene eliminato e ${nomeLato(l)} ottiene 5 punti. Narra come il passato torna a chiedere il conto.`;
+  render();
+}
+
+/* ================= FINE SCENA ================= */
+function fineScena(){
+  if(G.scena===4){
+    const tP=totaleProt(), tO=totaleOpp();
+    G.colpi={passaggi:0, attore: tP<tO?"P":tP>tO?"O":"P", apparente:{tP,tO}};
+    G.ultimaGiocata="";
+    G.fase="primo_conteggio"; render(); return;
+  }
+  chiudiScena();
+  G.ultimaGiocata="";
+  G.fase="fine_scena"; render();
+}
+function chiudiScena(){
+  const rec=G.scene[G.scena];
+  rec.totP=totaleProt(); rec.totO=totaleOpp();
+  rec.vincitore = rec.totP>rec.totO ? "P" : rec.totO>rec.totP ? "O" : "parita";
+  // seme dominante = somma più alta nel piatto
+  const somme=Object.keys(SIMBOLI).map(s=>({s,t:totaleSeme(s)})).sort((a,b)=>b.t-a.t);
+  rec.dominante = (somme[0].t===0 || somme[0].t===somme[1].t) ? "parita" : somme[0].s;
+  const tc=totaleSeme("cuori"), tp=totaleSeme("picche");
+  rec.rapporto = tc>tp?"su":tp>tc?"giu":"pari";
+  // recupero dei protagonisti
+  rec.recupero=null;
+  if(rec.vincitore==="P" && lato("P").scarti.length>0){
+    const i=Math.floor(Math.random()*lato("P").scarti.length);
+    const c=lato("P").scarti.splice(i,1)[0];
+    lato("P").mazzo.push(c);
+    rec.recupero=nomeCarta(c);
+  }
+}
+function rFineScena(){
+  const rec=G.scene[G.scena];
+  const vincNome = rec.vincitore==="parita" ? "PARITÀ" : nomeLato(rec.vincitore);
+  SC.innerHTML=`
+    <h2 class="ts">Fine della scena ${G.scena+1}</h2>
+    ${rec.titolo?`<p class="sotto">«${rec.titolo}»${rec.posta?" — "+rec.posta:""}</p>`:""}
+    <div class="cartellone"><div class="grande">${vincNome}</div>
+      <div class="sc">piatto: ♥+♠ ${rec.totP} contro ♦+♣ ${rec.totO}</div></div>
+    ${rec.vincitore==="P"?`<div class="banner">La posta è raggiunta.${rec.recupero?` I Protagonisti recuperano ${rec.recupero} dagli scarti, in fondo al mazzo.`:""}</div>`:""}
+    ${rec.vincitore==="O"?`<div class="banner">La posta fallisce: la situazione peggiora per i protagonisti. Nessun recupero.</div>`:""}
+    ${rec.vincitore==="parita"?`<div class="banner">Totali in equilibrio: la posta resta sospesa, nessun recupero.</div>`:""}
+    <div class="pannello">
+      <span class="etichetta">Lettura del piatto</span>
+      <div class="lettura">${LETT_DOM[rec.dominante]}</div>
+      <div class="lettura">${LETT_RAPP[rec.rapporto]}</div>
+    </div>
+    <div class="banner">Le carte restano nel piatto: chi aprirà la prossima scena potrà già fare presa o scopa.</div>
+    <button class="azione" id="fs-avanti">${G.scena===4?"Vai al finale":"Vai al mercato"}</button>`;
+  document.getElementById("fs-avanti").addEventListener("click",()=>{
+    if(G.scena===4){ G.fase="finale"; render(); return }
+    avviaMercato();
+  });
+}
+
+/* ================= MERCATO ================= */
+function avviaMercato(){
+  // ordine: 1) Jolly nei mazzi (fine 3ª scena, PRIMA della pesca)  2) pesca nuova mano  3) acquisti
+  if(G.scena===2 && !G.jollyEntrato) entraJollyNeiMazzi();
+  const preScena5 = (G.scena===3);
+  G.mercatoLato = G.modalita==="online" ? "P" : null;
+  if(preScena5){
+    G.estesa={P:false,O:false};
+    G.fase="mano_estesa"; G.attore="P"; velo("P",render);
+  }else{
+    pescaFinoA("P",4); pescaFinoA("O",4);
+    G.fase="mercato"; render();
+  }
+}
+function rManoEstesa(){
+  const l=G.attore, L=lato(l);
+  if(L.mazzo.length>=5 && L.mazzo.length<=7){
+    const tutte=[...L.mazzo];
+    SC.innerHTML=`
+      <h2 class="ts">Mano finale — ${nomeLato(l)}</h2>
+      <p class="sotto">Nel mazzo restano ${tutte.length} carte: le prendi tutte. Scegline 4 per l'ultima scena; le altre vanno in riserva, fuori dal gioco.</p>
+      <div class="pannello${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}"><div class="mazzo-carte" id="estCarte">${ordina(tutte).map(c=>cartaHTML(c)).join("")}</div></div>
+      <button class="azione" id="estOk" disabled>Conferma (0/4)</button>`;
+    const scelte=new Set();
+    const btn=document.getElementById("estOk");
+    SC.querySelectorAll("#estCarte .carta").forEach(el=>el.addEventListener("click",()=>{
+      const id=parseInt(el.dataset.id);
+      if(scelte.has(id)){scelte.delete(id);el.classList.remove("sel")}
+      else if(scelte.size<4){scelte.add(id);el.classList.add("sel")}
+      btn.disabled=scelte.size!==4;
+      btn.textContent=`Conferma (${scelte.size}/4)`;
+    }));
+    btn.addEventListener("click",()=>{
+      L.mano.push(...tutte.filter(c=>scelte.has(c.id)));
+      L.riserva.push(...tutte.filter(c=>!scelte.has(c.id)));
+      L.mazzo=[];
+      fineEstesa(l);
+    });
+  }else{
+    pescaFinoA(l,4);   // ≤4: le prende tutte; >7: pesca 4 normalmente
+    SC.innerHTML=`
+      <h2 class="ts">Mano finale — ${nomeLato(l)}</h2>
+      <p class="sotto">${L.mazzo.length===0?"Hai preso in mano tutte le carte rimaste.":"Hai pescato la mano per l'ultima scena."}</p>
+      <div class="pannello${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}"><div class="mazzo-carte">${ordina(L.mano).map(c=>cartaHTML(c)).join("")}</div></div>
+      <button class="azione" id="estOk">Continua</button>`;
+    document.getElementById("estOk").addEventListener("click",()=>fineEstesa(l));
+  }
+}
+function fineEstesa(l){
+  G.estesa[l]=true;
+  if(!G.estesa.O){ G.attore="O"; velo("O",render); }
+  else { G.fase="mercato"; render(); }
+}
+
+function rMercato(){
+  const online = G.modalita==="online";
+  function pannelloLato(l){
+    const L=lato(l);
+    const punti=puntiMercato(l);
+    const pecc=peccatoDisponibile(l);
+    return `<div class="pannello">
+      <span class="etichetta">${nomeLato(l)} ${L.semi.map(s=>SIMBOLI[s]).join("")}</span>
+      <div class="punti-big" id="punti-${l}">${punti}</div>
+      <div class="contatori">carte prese ${L.prese.length} · scope attive ${L.scope.filter(c=>!c.tappata&&!c.esposta).length}${L.bonus?` · bonus ${L.bonus}`:""}</div>
+      ${pecc?`<button class="secondaria" style="margin-top:8px;width:100%" data-pecc="${l}">⚡ Fai emergere il peccato avversario (+5)</button>`:""}
+      <div style="margin-top:10px">
+        ${Object.entries(FIGURE).map(([k,f])=>`
+          <div class="fig-riga">
+            <div class="desc"><b>${f.nome} — ${f.costo} punti</b><small>${f.eff}</small></div>
+            <div class="compra">${L.semi.map(s=>(G.figureComprate||[]).includes(k+s)?`<span class="fig-esaurita" title="già acquistata">${SIMBOLI[s]}✓</span>`:`<button data-l="${l}" data-f="${k}" data-s="${s}" ${punti<f.costo?"disabled":""}>${SIMBOLI[s]}</button>`).join("")}</div>
+          </div>`).join("")}
+      </div>
+      <div class="banner" id="esito-${l}" style="display:none;margin-top:10px"></div>
+    </div>`;
+  }
+  const pannelli = online ? pannelloLato(G.mercatoLato) : pannelloLato("P")+pannelloLato("O");
+  const etichettaFine = online
+    ? (G.mercatoLato==="P" ? "Ho finito — tocca all'Opposizione" : "Chiudi il mercato e riparti")
+    : "Chiudi il mercato e riparti";
+  SC.innerHTML=`
+    <h2 class="ts">Il mercato${online?" — "+nomeLato(G.mercatoLato):""}</h2>
+    <p class="sotto">La nuova mano è già stata pescata. Pagamento automatico: prima i punti bonus, poi le carte prese (vanno negli scarti), infine le scope (vengono tappate). Le figure entrano nel mazzo, subito rimescolato.</p>
+    <div class="mercato-griglia">${pannelli}</div>
+    <button class="azione" id="m-fine">${etichettaFine}</button>`;
+  SC.querySelectorAll("button[data-f]").forEach(b=>b.addEventListener("click",()=>{
+    const l=b.dataset.l, f=b.dataset.f, s=b.dataset.s, L=lato(l);
+    if((G.figureComprate||[]).includes(f+s)) return;   // ogni figura esiste in una sola copia (v1.2)
+    if(!pagaCosto(l, FIGURE[f].costo)) return;
+    G.figureComprate=G.figureComprate||[];
+    G.figureComprate.push(f+s);
+    b.outerHTML=`<span class="fig-esaurita" title="già acquistata">${SIMBOLI[s]}✓</span>`;
+    L.mazzo.push(carta(s, FIGURE[f].val, f));
+    L.mazzo=mischia(L.mazzo);
+    const es=document.getElementById("esito-"+l);
+    es.style.display="block";
+    es.innerHTML=(es.innerHTML?es.innerHTML+"<br>":"")+`Acquistato ${FIGURE[f].nome} ${SIMBOLI[s]} — entra nel mazzo, rimescolato.`;
+    document.getElementById("punti-"+l).textContent=puntiMercato(l);
+    SC.querySelectorAll(`button[data-l="${l}"]`).forEach(x=>{
+      const cf=FIGURE[x.dataset.f];
+      x.disabled = puntiMercato(l)<cf.costo;
+    });
+    inviaStato();
+  }));
+  SC.querySelectorAll("button[data-pecc]").forEach(b=>b.addEventListener("click",()=>{
+    const l=b.dataset.pecc, j=peccatoDisponibile(l);
+    if(j){ eseguiPeccato(l,j); G.fase="mercato"; render(); }
+  }));
+  document.getElementById("m-fine").addEventListener("click",()=>{
+    if(online && G.mercatoLato==="P"){ G.mercatoLato="O"; render(); return }
+    G.mercatoLato=null;
+    if(G.scena===2 && !G.jollyIntroVisto){ G.jollyIntroVisto=true; G.fase="jolly_intro"; render(); }
+    else avanzaScena();
+  });
+}
+function pagaCosto(l, costo){
+  const L=lato(l);
+  if(puntiMercato(l)<costo) return false;
+  let resto=costo;
+  const usaBonus=Math.min(L.bonus,resto); L.bonus-=usaBonus; resto-=usaBonus;
+  while(resto>0 && L.prese.length>0){
+    const i=Math.floor(Math.random()*L.prese.length);
+    L.scarti.push(L.prese.splice(i,1)[0]); resto-=1;
+  }
+  while(resto>0){
+    const sc=L.scope.find(c=>!c.tappata && !c.esposta);
+    if(!sc) break;
+    sc.tappata=true; resto-=5;
+  }
+  return true;
+}
+function entraJollyNeiMazzi(){
+  G.jollyEntrato=true;
+  ["P","O"].forEach(l=>{
+    const L=lato(l), j=carta(null,0,null,true);
+    j.seme="jolly";
+    L.mazzo.splice(Math.floor(Math.random()*(L.mazzo.length+1)),0,j);
+  });
+}
+function rJollyIntro(){
+  SC.innerHTML=`
+    <h2 class="ts">Qualcosa cambia sulla strada</h2>
+    <div class="cartellone"><div class="grande">Entra il Jolly</div>
+      <div class="sc">uno per mazzo, mescolato tra le carte</div></div>
+    <div class="pannello" style="font-size:14px">
+      Il Jolly vale quanto dichiari (1–10) e serve solo per fare presa o scopa — mai nell'asta.
+      Quando lo giochi, <b>narri come ottieni il vantaggio con un mezzo moralmente discutibile</b>.
+      Una scopa col Jolly lascia un <b>peccato latente</b> che l'avversario potrà far emergere.
+      E se l'avversario ha il proprio Jolly in mano, può fare <b>counter</b>: smaschera la mossa, prende tutto il piatto, ed entrambi i Jolly escono dal gioco.
+    </div>
+    <button class="azione" id="j-ok">Si riparte</button>`;
+  document.getElementById("j-ok").addEventListener("click",avanzaScena);
+}
+function avanzaScena(){
+  G.scena++;
+  if(G.scena===4){
+    // neutralizzazione delle figure rimaste nel piatto, prima dell'ultima scena
+    const figure=G.piatto.filter(c=>c.fig);
+    if(figure.length===0){ iniziaScena(); return }
+    G.neutralizzati=[];
+    figure.forEach(c=>{
+      const prop = lato("P").semi.includes(c.seme) ? "P":"O";
+      const avv=altro(prop);
+      G.piatto=G.piatto.filter(x=>x.id!==c.id);
+      lato(avv).scope.push(c); // conta come una scopa per l'avversario
+      aggiungiScopa(avv);
+      G.neutralizzati.push({fig:c.fig, seme:c.seme, prop, avv});
+    });
+    G.fase="neutralizza"; render();
+  }
+  else iniziaScena();
+}
+
+/* ================= SCENA 5: neutralizzazione figure ================= */
+function rNeutralizza(){
+  const righe=(G.neutralizzati||[]).map(n=>`
+    <div class="diario-voce"><div class="n">${SIMBOLI[n.seme]}</div>
+      <div class="testo"><b>${FIGURE[n.fig].nome} di ${nomeLato(n.prop)}</b>
+      <span>Neutralizzato: ${nomeLato(n.avv)} narra come questo PNG esce di scena, e guadagna una scopa.</span></div></div>`).join("");
+  SC.innerHTML=`
+    <h2 class="ts">Prima dell'ultima scena</h2>
+    <p class="sotto">Gli alleati lasciati esposti nel piatto vengono eliminati dal tabellone della storia.</p>
+    <div class="pannello">${righe}</div>
+    <button class="azione" id="n-ok">Inizia la scelta decisiva</button>`;
+  document.getElementById("n-ok").addEventListener("click",()=>{
+    G.neutralizzati=null;
+    iniziaScena();
+  });
+}
+
+/* ================= COLPI DI SCENA FINALI ================= */
+function colpiPossibili(l){
+  const L=lato(l), semiAvv=lato(altro(l)).semi;
+  return L.riserva.some(r=>G.piatto.some(c=>semiAvv.includes(c.seme) && c.val>=r.val));
+}
+function rPrimoConteggio(){
+  const a=G.colpi.apparente;
+  const vinc = a.tP>a.tO?"P":a.tO>a.tP?"O":"parita";
+  SC.innerHTML=`
+    <h2 class="ts">Primo conteggio — l'esito apparente</h2>
+    <div class="cartellone"><div class="grande">${vinc==="parita"?"EQUILIBRIO":nomeLato(vinc)}</div>
+      <div class="sc">♥+♠ ${a.tP} contro ♦+♣ ${a.tO} — ma le cose potrebbero non essere come appaiono</div></div>
+    <div class="pannello">
+      <span class="etichetta">Ora narra</span>
+      <div class="lettura">Raccontate insieme <b>come sembra finire</b>: chi sta vincendo, cosa sta per succedere. Poi le riserve potranno ribaltare il quadro.</div>
+    </div>
+    <div class="banner">Riserve: ${nomeLato("P")} ${lato("P").riserva.length} carte · ${nomeLato("O")} ${lato("O").riserva.length} carte. Un colpo di scena sostituisce una carta avversaria nel piatto con una propria di valore pari o inferiore.</div>
+    <button class="azione" id="pc-avanti">${colpiPossibili("P")||colpiPossibili("O")?"Via ai colpi di scena":"Nessun colpo possibile — conteggio definitivo"}</button>`;
+  document.getElementById("pc-avanti").addEventListener("click",()=>{
+    if(!colpiPossibili("P") && !colpiPossibili("O")){ conteggioDefinitivo(); return }
+    if(!colpiPossibili(G.colpi.attore)){ G.colpi.attore=altro(G.colpi.attore); G.colpi.passaggi=1; }
+    G.attore=G.colpi.attore;
+    G.fase="colpi"; velo(G.attore,render);
+  });
+}
+function rColpi(){
+  const l=G.attore, L=lato(l), semiAvv=lato(altro(l)).semi;
+  const puo=colpiPossibili(l);
+  SC.innerHTML=`
+    <h2 class="ts">Colpo di scena — ${nomeLato(l)}</h2>
+    <div class="tavolo-top">
+      <div class="tot-lato p">♥+♠ <b>${totaleProt()}</b></div>
+      <div class="tot-lato o">♦+♣ <b>${totaleOpp()}</b></div>
+    </div>
+    <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto</span>'}</div>
+    <div class="pannello${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}">
+      <span class="etichetta">La tua riserva ${puo?"— scegli la carta da mettere in gioco":"(nessun colpo possibile)"}</span>
+      <div class="mazzo-carte" id="riservaCarte">${ordina(L.riserva).map(c=>cartaHTML(c)).join("")}</div>
+      <div id="colpoAzione"></div>
+    </div>
+    <button class="secondaria" id="colpoPasso" style="width:100%">Passo — nessun colpo di scena</button>`;
+  if(puo) SC.querySelectorAll("#riservaCarte .carta").forEach(el=>{
+    el.addEventListener("click",()=>{
+      SC.querySelectorAll("#riservaCarte .carta").forEach(x=>x.classList.remove("sel"));
+      el.classList.add("sel");
+      const r=L.riserva.find(x=>x.id==el.dataset.id);
+      const bersagli=G.piatto.filter(c=>semiAvv.includes(c.seme) && c.val>=r.val);
+      const box=document.getElementById("colpoAzione");
+      if(!bersagli.length){ box.innerHTML=`<div class="banner">Nessuna carta avversaria di valore pari o superiore nel piatto.</div>`; return }
+      box.innerHTML=`<span class="etichetta" style="margin-top:10px">Sostituisci quale carta avversaria?</span>
+        <div class="opzioni">${bersagli.map(c=>`<button data-bersaglio="${c.id}">${c.fig?FIGURE[c.fig].nome.charAt(0):c.val}${SIMBOLI[c.seme]}</button>`).join("")}</div>`;
+      box.querySelectorAll("button[data-bersaglio]").forEach(b=>b.addEventListener("click",()=>{
+        const bers=G.piatto.find(x=>x.id==b.dataset.bersaglio);
+        eseguiColpo(l, r, bers);
+      }));
+    });
+  });
+  document.getElementById("colpoPasso").addEventListener("click",()=>{
+    G.colpi.passaggi++;
+    if(G.colpi.passaggi>=2 || !colpiPossibili(altro(l))){ conteggioDefinitivo(); return }
+    G.colpi.attore=altro(l); G.attore=G.colpi.attore;
+    G.fase="colpi"; velo(G.attore,render);
+  });
+}
+function eseguiColpo(l, riservaCard, bersaglio){
+  const L=lato(l);
+  L.riserva=L.riserva.filter(x=>x.id!==riservaCard.id);
+  const proprietario = lato("P").semi.includes(bersaglio.seme) ? "P":"O";
+  G.piatto=G.piatto.filter(x=>x.id!==bersaglio.id);
+  lato(proprietario).scarti.push(bersaglio);
+  G.piatto.push(riservaCard);
+  G.colpi.passaggi=0;
+  G.ultimaGiocata=`COLPO DI SCENA! ${nomeLato(l)} sostituisce ${nomeCarta(bersaglio)} con ${nomeCarta(riservaCard)}.`;
+  vaiNarrazione(riservaCard,"presa","",()=>{
+    G.colpi.attore=altro(l); G.attore=G.colpi.attore;
+    if(colpiPossibili(G.attore)){ G.fase="colpi"; velo(G.attore,render); }
+    else if(colpiPossibili(l)){ G.colpi.attore=l; G.attore=l; G.colpi.passaggi=1; G.fase="colpi"; velo(l,render); }
+    else conteggioDefinitivo();
+  }, `<b>COLPO DI SCENA.</b> Narra come le cose non fossero come apparivano: ${nomeCarta(bersaglio)} esce dalla storia, ${nomeCarta(riservaCard)} ne prende il posto. Un volto che cade, una verità che riemerge, una carta che qualcuno teneva da parte da sempre.`, l);
+}
+function conteggioDefinitivo(){
+  chiudiScena();
+  G.colpi=null;
+  G.fase="finale"; render();
+}
+
+function rFinale(){
+  const vp=G.scene.filter(s=>s&&s.vincitore==="P").length;
+  const vo=G.scene.filter(s=>s&&s.vincitore==="O").length;
+  function scopeVal(l){
+    const L=lato(l);
+    return L.scope.filter(c=>!c.esposta&&!c.tappata).length*2 + L.scope.filter(c=>!c.esposta&&c.tappata).length*1;
+  }
+  function punti(l){ return scopeVal(l) + lato(l).prese.length }
+  // vittoria del piatto = esito esterno della missione (con tie-break: scope, poi prese)
+  const rec5=G.scene[4];
+  let piattoP;
+  if(rec5.totP!==rec5.totO) piattoP = rec5.totP>rec5.totO;
+  else if(scopeVal("P")!==scopeVal("O")) piattoP = scopeVal("P")>scopeVal("O");
+  else piattoP = lato("P").prese.length>=lato("O").prese.length;
+  const pP=punti("P"), pO=punti("O");
+  const puntiP = pP>pO, pari = pP===pO;
+  const OUTCOME = piattoP
+    ? (puntiP||pari ? ["VITTORIA TOTALE","successo pieno, netto — la missione riesce e il viaggio li premia"]
+                    : ["PER IL ROTTO DELLA CUFFIA","l'obiettivo è raggiunto, ma pagando un prezzo"])
+    : (puntiP ? ["SCONFITTA CON ASPETTI POSITIVI","l'obiettivo fallisce, ma qualcosa è salvato o imparato"]
+              : ["DISFATTA TOTALE","fallimento completo"]);
+  const tf=totaleSeme("fiori"), tq=totaleSeme("quadri");
+  const oppNat = tq>tf
+    ? "♦ È stata soprattutto l'opposizione organizzata a ostacolarli: un nemico con un volto, un piano, una volontà."
+    : tf>tq
+    ? "♣ Sono stati soprattutto il caos e la sfortuna a ostacolarli: il mondo stesso, non un nemico preciso."
+    : "Nemici e caos in egual misura: il mondo era contro di loro, ma non sempre per gli stessi motivi.";
+  const su=G.scene.filter(s=>s&&s.rapporto==="su").length;
+  const giu=G.scene.filter(s=>s&&s.rapporto==="giu").length;
+  const rapp = su>giu
+    ? `Lungo la strada si sono avvicinati: ${su} scene di connessione contro ${giu} di distanza. Non sono più quelli della partenza.`
+    : giu>su
+    ? `Lungo la strada si sono allontanati: ${giu} scene di conflitto contro ${su} di connessione. Qualunque sia l'esito — a quale prezzo?`
+    : `Connessione e conflitto in equilibrio (${su} a ${giu}): il rapporto resta una domanda aperta.`;
+  SC.innerHTML=`
+    <h2 class="ts">Fine della corsa</h2>
+    <div class="cartellone">
+      <div class="grande">${OUTCOME[0]}</div>
+      <div class="sc">${OUTCOME[1]}</div>
+    </div>
+    <div class="riga2">
+      <div class="pannello" style="text-align:center"><span class="etichetta">Piatto finale — la missione</span>
+        <div class="punti-big">${rec5.totP} — ${rec5.totO}</div>
+        <div class="contatori">♥+♠ / ♦+♣ · ${piattoP?"missione riuscita":"missione fallita"}</div></div>
+      <div class="pannello" style="text-align:center"><span class="etichetta">Punti — scope + prese</span>
+        <div class="punti-big">${pP} — ${pO}</div>
+        <div class="contatori">scope intatte ×2, spese ×1, più le prese · scene vinte ${vp}/${vo}</div></div>
+    </div>
+    <div class="pannello">
+      <span class="etichetta">L'ultima scena</span>
+      <div class="lettura">${LETT_DOM[rec5.dominante]}</div>
+      <div class="lettura">${oppNat}</div>
+    </div>
+    <div class="pannello">
+      <span class="etichetta">Il rapporto</span>
+      <div class="lettura">${rapp}</div>
+    </div>
+    ${G.nGiocatori>2?`<div class="pannello">
+      <span class="etichetta">Scope per giocatore</span>
+      <div class="contatori" style="font-size:13px">
+        ${latoDiviso("P")?`♠ ${G.giocatori.picche||"Picche"}: ${G.scopeGiocatore.picche} · ♥ ${G.giocatori.cuori||"Cuori"}: ${G.scopeGiocatore.cuori}`:""}
+        ${latoDiviso("O")?`<br>♦ ${G.giocatori.quadri||"Quadri"}: ${G.scopeGiocatore.quadri} · ♣ ${G.giocatori.fiori||"Fiori"}: ${G.scopeGiocatore.fiori}`:""}
+      </div>
+      ${latoDiviso("P")?`<div class="lettura">${
+        G.scopeGiocatore.picche>G.scopeGiocatore.cuori
+          ? `Nell'epilogo, tra i due protagonisti, l'ultima parola spetta a <b>${G.giocatori.picche||"♠"}</b> (più scope).`
+          : G.scopeGiocatore.cuori>G.scopeGiocatore.picche
+          ? `Nell'epilogo, tra i due protagonisti, l'ultima parola spetta a <b>${G.giocatori.cuori||"♥"}</b> (più scope).`
+          : `Scope in parità tra i due protagonisti: l'ultima parola è condivisa.`}</div>`:""}
+    </div>`:""}
+    <div class="pannello">
+      <span class="etichetta">Epilogo — come hai vinto, quanto hai perso, cosa è cambiato</span>
+      <textarea id="f-epilogo" rows="4">${G.epilogo}</textarea>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button class="secondaria" style="flex:1" id="f-diario">Rileggi il diario</button>
+      <button class="azione" style="flex:1" id="f-nuova">Nuovo viaggio</button>
+    </div>`;
+  document.getElementById("f-epilogo").addEventListener("input",e=>G.epilogo=e.target.value);
+  document.getElementById("f-diario").addEventListener("click",apriDiario);
+  document.getElementById("f-nuova").addEventListener("click",()=>{
+    G=nuovaPartita();
+    if(rete.attiva){ G.modalita="online"; G.hostLato=rete.mioLato; G.fase="setup"; }
+    render();
+  });
+}
+
+/* ================= REGOLAMENTO ================= */
+const REGOLE={
+  semi:{titolo:"I quattro semi",html:`
+    <h3>Cosa rappresentano i semi</h3>
+    <table><tr><th>Seme</th><th>Significato in scena</th></tr>
+    <tr><td>♠ Picche</td><td>I protagonisti agiscono con <b>forza, imposizione, conflitto diretto</b>: pressione, scontro, decisioni prese senza chiedere.</td></tr>
+    <tr><td>♥ Cuori</td><td>I protagonisti agiscono con <b>dialogo, connessione, empatia</b>: qualcuno si apre, convince, ascolta.</td></tr>
+    <tr><td>♦ Quadri</td><td>I <b>nemici attivi</b>: fazioni ostili, inseguitori, minacce organizzate, risorse avversarie intenzionali.</td></tr>
+    <tr><td>♣ Fiori</td><td>Il <b>caos</b>: sfortuna, incidenti, attriti tra protagonisti, PNG problematici, complicazioni impreviste.</td></tr></table>
+    <div class="es">"Due uomini in giacca scura scendono da un SUV davanti al diner. Hanno le foto di Frank e Skunk." (♦) — "L'auto riparte, ma dopo mezzo chilometro una gomma esplode. Sono in mezzo al deserto." (♣)</div>`},
+  asta:{titolo:"Asta e apertura",html:`
+    <h3>Inizio scena: mano e asta</h3>
+    <ul><li>Ogni lato pesca <b>4 carte</b> dal proprio mazzo</li>
+    <li>Ogni lato gioca <b>1 carta coperta</b> come asta per l'iniziativa</li>
+    <li>Le carte si rivelano insieme: la più alta vince l'iniziativa (il Jolly non può partecipare)</li>
+    <li><b>Parità:</b> l'iniziativa va a chi <b>non</b> l'ha avuta nella scena precedente; alla prima scena, all'<b>Opposizione</b></li>
+    <li>La carta d'asta del vincitore resta da parte: la rigiocherà come <b>sua ultima giocata</b> del round. Il perdente riprende la propria in mano</li></ul>
+    <h3>Apertura della scena</h3>
+    Chi vince l'asta sceglie il <b>titolo</b> e dichiara la <b>posta</b> della scena. Il seme della carta d'asta vincente suggerisce l'atmosfera iniziale:
+    <table><tr><td>♠</td><td>In movimento, sotto pressione, situazione frenetica</td></tr>
+    <tr><td>♥</td><td>Tregua o intimità, rifugio, pausa che permette dialogo</td></tr>
+    <tr><td>♦</td><td>Attacco del nemico, imboscata, territorio avversario</td></tr>
+    <tr><td>♣</td><td>Evento imprevisto, luogo instabile, caos immediato</td></tr></table>
+    <h3>Struttura del round</h3>
+    I giocatori si alternano, iniziando dal vincitore dell'iniziativa: <b>4 giocate a testa</b>. Il vincitore gioca 3 carte dalla mano e cala quella d'asta come quarta e ultima.`},
+  azioni:{titolo:"Azioni e prese",html:`
+    <h3>Nel proprio turno</h3>
+    <ul><li><b>Giocare una carta nel piatto</b> = <i>Introdurre</i>: aggiungi un elemento con cui l'avversario dovrà fare i conti. Non risolve ciò che è già in scena.</li>
+    <li><b>Fare una presa</b> = <i>Superamento parziale</i>: successo con un costo, ostacolo gestito senza risolvere tutto. Genera risorse per il mercato.</li>
+    <li><b>Fare una scopa</b> = <i>Svolta</i>: la presa svuota il piatto. Successo pieno, ribaltamento. Vale molto di più di una presa.</li></ul>
+    <h3>Regole di presa (come nella Scopa)</h3>
+    Una carta prende <b>una carta di uguale valore</b> nel piatto, oppure <b>un gruppo di carte la cui somma</b> è uguale al suo valore. Se il piatto si svuota → scopa.
+    <div class="es">"Presa con un 8 di Cuori → Nora convince il portiere a lasciarli passare, ma lui li guarderà con sospetto da qui in poi."</div>
+    <h3>Il piatto resta</h3>
+    A fine scena le carte rimaste nel piatto <b>non si toccano</b>: chi apre la scena successiva può già fare presa o scopa.`},
+  lettura:{titolo:"Fine scena e letture",html:`
+    <h3>Vittoria della scena</h3>
+    Quando entrambe le mani sono esaurite si sommano i valori delle carte nel <b>piatto</b>: ♥+♠ = Protagonisti, ♦+♣ = Opposizione. Il totale più alto vince la posta.<br>
+    <b>Se vincono i Protagonisti:</b> posta raggiunta, recuperano 1 carta casuale dagli scarti (in fondo al mazzo). <b>Se vince l'Opposizione:</b> la posta fallisce, nessun recupero.
+    <h3>Lettura del piatto — chi ha deciso l'esito (27.1)</h3>
+    Il seme col valore più alto nel piatto racconta <i>come</i> è andata, indipendentemente da chi ha vinto:
+    ♠ forza dei protagonisti · ♥ dialogo dei protagonisti · ♦ l'opposizione organizzata · ♣ la sfortuna e il caos.
+    <h3>Il rapporto (27.2)</h3>
+    Si confrontano ♥ e ♠ nel piatto: <b>♥ &gt; ♠</b> i protagonisti si sono avvicinati · <b>♠ &gt; ♥</b> si sono allontanati · parità: in bilico. Scena dopo scena emerge il <b>diario del rapporto</b>.
+    <h3>Natura dell'opposizione (27.3)</h3>
+    Alla quinta scena, ♣ contro ♦ nell'ultimo piatto: chi li ha davvero ostacolati — un nemico con un piano, o il mondo stesso?`},
+  mercato:{titolo:"Mercato",html:`
+    <h3>Fase di mercato (tra le scene)</h3>
+    Ordine importante: <b>1)</b> si pesca la nuova mano di 4 carte · <b>2)</b> si effettuano gli acquisti · <b>3)</b> le figure acquistate entrano nel <b>mazzo</b> (non in mano, non negli scarti) · <b>4)</b> il mazzo viene rimescolato.
+    <h3>Economia</h3>
+    <ul><li>Carte nel mazzetto prese → <b>1 punto</b> ciascuna</li>
+    <li>Scope → <b>5 punti</b> ciascuna (la scopa spesa viene "tappata")</li></ul>
+    Le carte usate per pagare vanno negli <b>scarti</b> del proprio lato.<br>
+    Nel tie-break finale: scopa non spesa = <b>2 punti</b>, scopa spesa = <b>1 punto</b>.`},
+  figure:{titolo:"Le figure",html:`
+    <h3>Doppia natura</h3>
+    Meccanica (carte forti con effetti) e narrativa (alleati o PNG significativi).
+    <table><tr><th>Figura</th><th>Costo</th><th>Valore</th><th>Effetto</th></tr>
+    <tr><td><b>Fante</b> — l'informatore</td><td>8</td><td>8</td><td>Guarda le prime 4 carte del proprio mazzo; può mettere in fondo quelle che vuole.</td></tr>
+    <tr><td><b>Dama</b> — la manipolatrice</td><td>9</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo.</td></tr>
+    <tr><td><b>Re</b> — il deus ex machina</td><td>10</td><td>10</td><td>Scambia una carta della mano con una dei propri scarti dello stesso seme.</td></tr></table>
+    <div class="es">"Jess — la nostra fonte all'interno della stazione — ci dice dove si trovano le prove e quando le sentinelle cambiano turno." (Fante)</div>
+    Attenzione: le figure lasciate nel piatto all'inizio dell'ultima scena vengono <b>neutralizzate</b> (vedi Quinta scena).`},
+  jolly:{titolo:"Il Jolly",html:`
+    <h3>Ingresso e uso</h3>
+    Il Jolly entra nei mazzi al termine della <b>terza scena</b>. Non può essere usato nell'asta. Chi lo gioca <b>dichiara il valore (1–10)</b> e lo usa per fare presa o scopa.
+    <h3>Vincolo narrativo</h3>
+    Giocandolo si deve narrare <b>come si ottiene il vantaggio con un mezzo moralmente discutibile</b>.
+    <div class="es">"Kai minaccia il teste con informazioni false per farlo parlare — tecnicamente illegale, sicuramente efficace."</div>
+    <h3>Il peccato del Jolly</h3>
+    Una <b>scopa</b> col Jolly lascia un <i>peccato latente</i>. In una scena successiva l'avversario può farlo emergere: elimina il Jolly dal gioco, ottiene <b>5 punti</b>, e narra come il passato torna a chiedere il conto.
+    <h3>Counter</h3>
+    Se l'avversario ha il proprio Jolly in mano può smascherare la mossa (facoltativo): prende <b>tutte le carte del piatto</b> come presa, ed entrambi i Jolly escono dal gioco.
+    <h3>Piatto vuoto</h3>
+    Jolly giocato su piatto vuoto: nessuna presa, finisce tra le scope come <b>risorsa fallita</b>, esposta all'avversario.`},
+  pitch:{titolo:"Risorse del pitch",html:`
+    <h3>Le dieci domande (9.5–9.6)</h3>
+    Sei poste dall'Opposizione ai Protagonisti (cosa si detestano, perché tengono all'obiettivo, gli assi nella manica — ♠ e ♥) e quattro poste dai Protagonisti all'Opposizione (mezzi temibili e motivazioni ♦, catastrofi e crepe nell'alleanza ♣). Le risposte vengono scritte e <b>diventano risorse di gioco</b>.
+    <h3>La prima difficoltà (9.7)</h3>
+    Dopo le domande, tutti rispondono insieme: <b>che cosa vi impedisce di raggiungere l'obiettivo subito?</b> La risposta non è spuntabile: appartiene al tavolo e inquadra la <b>Scena 1</b>.
+    <h3>Uso meccanico (9.8)</h3>
+    Dopo una presa normale si può <b>spuntare la risposta corrispondente al seme della carta di presa</b>: la presa diventa una <b>scopa vera</b> e le carte rimaste nel piatto finiscono tra le prese di chi spunta. Condizioni:
+    <ul><li>la risposta deve entrare esplicitamente nella narrazione (scena, rivelazione o flashback)</li>
+    <li>ogni risposta si usa una volta sola; massimo <b>una spinta per seme per lato</b></li>
+    <li><b>non si può usare nell'ultima scena</b>: nella Risoluzione il piatto si svuota solo con una scopa vera</li></ul>
+    <div class="es">"Jorge è stato ucciso al posto di Skunk: la spia era lui, e Frank non lo sa." A scena 3 il giocatore Fiori-Quadri prende con una carta di Fiori e la spunta con un flashback, l'ultima telefonata di Jorge, l'addio di chi sa che non arriverà a domani: la presa diventa una scopa e il piatto si svuota nelle sue prese.</div>`},
+  tavoli:{titolo:"3–4 giocatori",html:`
+    <h3>Strutture (7.2–7.3)</h3>
+    Esistono sempre <b>due mazzi e due mani</b>. In 3 giocatori: uno controlla ♠, uno ♥ (mazzo e mano dei Protagonisti condivisi), uno ♦♣. In 4: ogni seme a un giocatore.
+    <h3>Controllo della mano condivisa</h3>
+    A inizio scena la mano è gestita dal giocatore con la <b>maggioranza di carte del proprio seme</b> nella mano del suo lato; il controllo vale per tutta la scena. In parità, gioca chi <b>non</b> ha controllato la mano nella scena precedente. In 3 giocatori, in alternativa, il controllo può <b>alternarsi di scena in scena</b>.
+    <h3>Epilogo</h3>
+    Tra i due protagonisti, l'ultima parola spetta a chi ha realizzato <b>più scope</b>.`},
+  scena5:{titolo:"La quinta scena",html:`
+    <h3>Mano finale estesa (23.1)</h3>
+    Se un giocatore ha tra <b>5 e 7 carte</b> rimanenti nel mazzo: le prende tutte, sceglie le 4 con cui giocherà, le altre vanno da parte come <b>riserva</b>.
+    <h3>Figure nel piatto (23.2)</h3>
+    Le figure rimaste nel piatto all'inizio dell'ultima scena vengono rimosse: l'avversario del proprietario narra la <b>neutralizzazione</b> di quel PNG, e ognuna conta come <b>una scopa</b> per lui.
+    <h3>Colpi di scena finali (24)</h3>
+    Dopo il <b>primo conteggio</b> si narra l'esito apparente. Poi chi ha carte in riserva può sostituire <b>una carta avversaria nel piatto</b> con una propria di <b>valore pari o inferiore</b>, narrando come le cose non fossero come apparivano. Ci si alterna finché nessuno può o vuole più farne. Infine si rifà il conteggio: è quello definitivo.
+    <h3>Conteggio finale e outcome (25–26)</h3>
+    Il piatto finale (♥+♠ vs ♦+♣) decide l'<b>esito esterno della missione</b>; in parità: tie-break su scope (non spese 2, spese 1, alleati sacrificati inclusi) poi prese. Incrociando piatto e punti complessivi (scope + prese):
+    <table><tr><th>Piatto</th><th>Punti</th><th>Esito</th></tr>
+    <tr><td>Vinto</td><td>Vinti</td><td><b>Vittoria totale</b> — successo pieno, netto</td></tr>
+    <tr><td>Vinto</td><td>Persi</td><td><b>Per il rotto della cuffia</b> — obiettivo raggiunto pagando un prezzo</td></tr>
+    <tr><td>Perso</td><td>Vinti</td><td><b>Sconfitta con aspetti positivi</b> — qualcosa è salvato o imparato</td></tr>
+    <tr><td>Perso</td><td>Persi</td><td><b>Disfatta totale</b> — fallimento completo</td></tr></table>`}
+};
+const AIUTO_FASE={asta:"asta",asta_rivela:"asta",apertura:"asta",turno:"azioni",narrazione:"semi",
+  counter:"jolly",fine_scena:"lettura",mano_estesa:"scena5",neutralizza:"scena5",primo_conteggio:"scena5",colpi:"scena5",mercato:"mercato",
+  jolly_intro:"jolly",finale:"lettura",setup:"semi",modalita:"semi",lobby:"semi"};
+function apriRegole(chiave){
+  const nav=document.getElementById("regoleNav");
+  nav.innerHTML=Object.entries(REGOLE).map(([k,r])=>
+    `<button data-rk="${k}" class="${k===chiave?"attivo":""}">${r.titolo}</button>`).join("");
+  nav.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>apriRegole(b.dataset.rk)));
+  document.getElementById("regoleCorpo").innerHTML=REGOLE[chiave].html;
+  document.getElementById("ovRegole").classList.add("attivo");
+  document.querySelector("#ovRegole .scatola").scrollTop=0;
+}
+document.getElementById("btnRegole").addEventListener("click",()=>{
+  apriRegole(AIUTO_FASE[G.fase]||"semi");
+});
+
+/* ================= DIARIO ================= */
+function apriDiario(){
+  const dp=document.getElementById("diarioPitch");
+  dp.innerHTML = (G.pers.A.nome||G.pers.B.nome||G.missione) ? `
+    <div class="banner" style="margin-bottom:10px">
+      <b>${G.pers.A.nome||"P1"} ♠ & ${G.pers.B.nome||"P2"} ♥</b>${G.tono?` · ${G.tono}`:""}
+      ${G.missione?`<br>${G.missione}`:""}
+    </div>` : "";
+  const svg=document.getElementById("strada");
+  const W=700,H=240,x0=60,dx=(W-2*x0)/4,yC=H/2,passo=34;
+  let y=yC; const punti=[[x0-dx*0.6,yC]]; const ys=[];
+  G.scene.forEach(s=>{
+    if(s&&s.rapporto==="su")y-=passo; else if(s&&s.rapporto==="giu")y+=passo;
+    y=Math.max(28,Math.min(H-28,y)); ys.push(y);
+    punti.push([x0+dx*ys.length-dx, y]);
+  });
+  // ricostruisci coordinate corrette
+  punti.length=1; let yy=yC;
+  G.scene.forEach((s,i)=>{
+    if(s&&s.rapporto==="su")yy-=passo; else if(s&&s.rapporto==="giu")yy+=passo;
+    yy=Math.max(28,Math.min(H-28,yy)); ys[i]=yy;
+    punti.push([x0+dx*i,yy]);
+  });
+  const d=punti.map((p,i)=>(i?"L":"M")+p[0]+","+p[1]).join(" ");
+  let cerchi="";
+  G.scene.forEach((s,i)=>{
+    const cx=x0+dx*i, cy=ys[i];
+    const col=s&&s.rapporto==="su"?"var(--cuori)":s&&s.rapporto==="giu"?"var(--picche)":"var(--bordo)";
+    cerchi+=`<circle cx="${cx}" cy="${cy}" r="14" fill="var(--notte)" stroke="${col}" stroke-width="3"/>
+      <text x="${cx}" y="${cy+5}" text-anchor="middle" font-family="Oswald,sans-serif" font-size="14" font-weight="600" fill="${s&&s.rapporto?col:"var(--grigio)"}">${i+1}</text>
+      <text x="${cx}" y="${cy+(s&&s.rapporto==="giu"?34:-24)}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="1" fill="var(--grigio)">${((s&&s.titolo)||FASI_NARR[i]).toUpperCase().slice(0,18)}</text>`;
+  });
+  svg.innerHTML=`
+    <line x1="0" y1="${yC}" x2="${W}" y2="${yC}" stroke="var(--bordo)" stroke-width="1" stroke-dasharray="3 5"/>
+    <path d="${d}" fill="none" stroke="#0c0d10" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="${d}" fill="none" stroke="var(--mezzeria)" stroke-width="3" stroke-dasharray="14 12" stroke-linejoin="round" stroke-linecap="round"/>
+    ${cerchi}`;
+  const cont=document.getElementById("diarioVoci");
+  cont.innerHTML="";
+  G.scene.forEach((s,i)=>{
+    const div=document.createElement("div");
+    div.className="diario-voce "+(s&&s.rapporto==="su"?"su":s&&s.rapporto==="giu"?"giu":"");
+    const titolo=(s&&s.titolo)||FASI_NARR[i];
+    const r=s&&s.rapporto?LETT_RAPP[s.rapporto]:"Scena non ancora giocata.";
+    const dom=s&&s.dominante?" · "+LETT_DOM[s.dominante]:"";
+    const vinc=s&&s.vincitore?` — posta ${s.vincitore==="P"?"raggiunta":s.vincitore==="O"?"fallita":"sospesa"}`:"";
+    div.innerHTML=`<div class="n">${i+1}</div><div class="testo"><b>${titolo}${vinc}</b><span>${r}${dom}</span></div>`;
+    cont.appendChild(div);
+  });
+  document.getElementById("ovDiario").classList.add("attivo");
+}
+document.getElementById("btnDiario").addEventListener("click",apriDiario);
+document.getElementById("btnSalva").addEventListener("click",()=>document.getElementById("ovSalva").classList.add("attivo"));
+document.querySelectorAll(".chiudi").forEach(b=>b.addEventListener("click",()=>document.getElementById(b.dataset.chiudi).classList.remove("attivo")));
+document.getElementById("ovModale").addEventListener("click",e=>{ /* il modale si chiude solo dai suoi pulsanti */ });
+
+/* ================= SALVATAGGIO ================= */
+const areaDati=document.getElementById("areaDati");
+document.getElementById("btnEsporta").addEventListener("click",()=>{
+  areaDati.classList.add("aperta");
+  areaDati.value=JSON.stringify({G,idc});
+  areaDati.select();
+});
+document.getElementById("btnImporta").addEventListener("click",()=>{
+  if(!areaDati.classList.contains("aperta")){areaDati.classList.add("aperta");areaDati.value="";areaDati.focus();return}
+  try{
+    const dati=JSON.parse(areaDati.value);
+    if(!dati.G||!dati.G.lati) throw 0;
+    G=dati.G; idc=dati.idc||idc;
+    areaDati.value="Partita importata ✓";
+    document.getElementById("ovSalva").classList.remove("attivo");
+    render();
+  }catch(e){ areaDati.value="Non riesco a leggere questi dati. Incolla il testo esportato in precedenza."; }
+});
+document.getElementById("btnNuova").addEventListener("click",()=>{
+  G=nuovaPartita();
+  if(rete.attiva){ G.modalita="online"; G.hostLato=rete.mioLato; G.fase="setup"; }
+  document.getElementById("ovSalva").classList.remove("attivo");
+  render();
+});
+
+
+/* ================= MODALITÀ SOLO — CLAUDE GIOCA L'OPPOSIZIONE ================= */
+let iaBusy=false, iaNarrTesto=null;
+function iaBadge(on){ const b=document.getElementById("iaBadge"); if(b) b.style.display=on?"block":"none" }
+
+const REGOLE_IA=`Sei l'OPPOSIZIONE (i nemici ♦ Quadri e il caos ♣ Fiori) in Frenemies on the Road, gioco di carte narrativo su regole tipo Scopa, ambientazione road movie notturno. Regole essenziali: una carta prende dal piatto una carta di pari valore, oppure un gruppo di carte la cui somma è pari al suo valore; se la presa svuota il piatto è SCOPA. A fine scena si sommano i valori delle carte rimaste nel piatto: ♦ e ♣ contano per te, ♥ e ♠ per i Protagonisti; vince la scena il totale più alto, e il piatto resta sul tavolo per la scena dopo. La partita si decide sul piatto della quinta scena. Le carte prese valgono punti (al mercato e nel conteggio finale); le scope valgono di più. Strategia: prendi quando puoi, soprattutto carte alte dei semi avversari; preferisci lasciare nel piatto carte alte dei TUOI semi; nell'asta una carta alta vince l'iniziativa ma esce dalla tua strategia di round. Quando narri, sei il mondo che rema contro: sicari pazienti, poliziotti corrotti, tempesta nel deserto.`;
+
+function iaContesto(){
+  const rec=G.scene[G.scena]||{};
+  const O=lato("O"), P=lato("P");
+  const pitchO=G.pitch.slice(6).map(p=>`${p.usata?"[USATA] ":""}${SIMBOLI[p.seme]} ${p.risposta}`).filter(s=>s.trim().length>3).join(" | ");
+  return `PARTITA: scena ${G.scena+1}/5 (${FASI_NARR[G.scena]||""}). Missione dei Protagonisti: ${G.missione||"-"}. Titolo della scena: ${rec.titolo||"-"}. Posta: ${rec.posta||"-"}.
+Nemici ♦: ${G.nemici||"-"}. Caos ♣: ${G.caos||"-"}. Le tue risorse del pitch: ${pitchO||"-"}.
+PIATTO: ${G.piatto.length?G.piatto.map(c=>nomeCarta(c)).join(", "):"vuoto"}.
+LA TUA MANO: ${O.mano.map(c=>nomeCarta(c)).join(", ")||"vuota"}.
+Tue prese ${O.prese.length}, tue scope ${O.scope.length} · prese avversarie ${P.prese.length}, scope avversarie ${P.scope.length}.
+Totali del piatto ora: Protagonisti ${totaleProt()}, Opposizione ${totaleOpp()}.`;
+}
+
+async function chiamaClaude(istruzioni){
+  try{
+    iaBadge(true);
+    const r=await fetch("https://api.anthropic.com/v1/messages",{
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({model:"claude-sonnet-4-20250514", max_tokens:1000,
+        messages:[{role:"user",content:REGOLE_IA+"\n\n"+iaContesto()+"\n\n"+istruzioni+"\nRispondi SOLO con un oggetto JSON valido, senza testo prima o dopo e senza markdown."}]})});
+    const d=await r.json();
+    const testo=(d.content||[]).map(x=>x.text||"").join("").replace(/```json|```/g,"").trim();
+    return JSON.parse(testo);
+  }catch(e){ console.warn("IA non raggiungibile, mossa automatica:",e.message); return null }
+  finally{ iaBadge(false) }
+}
+
+function clicca(el){ if(el) el.dispatchEvent(new Event("click",{bubbles:true})) }
+
+function iaScheduler(){
+  if(G.modalita!=="solo"||iaBusy) return;
+  if(document.getElementById("ovModale").classList.contains("attivo")){
+    if(G.attore==="O") clicca(document.getElementById("fanteOk")||document.getElementById("reNo"));
+    return;
+  }
+  const f=G.fase;
+  if(f==="asta"&&G.attore==="O") iaAsta();
+  else if(f==="apertura"&&G.attore==="O") iaApertura();
+  else if(f==="turno"&&G.attore==="O") iaTurno();
+  else if(f==="counter"&&G.pendingJolly&&altro(G.pendingJolly.attore)==="O") iaCounter();
+  else if(f==="narrazione"&&(G.narrLato||G.attore)==="O") iaNarrazione();
+  else if(f==="mercato") iaMercato();
+  else if(f==="mano_estesa"&&G.attore==="O") iaManoEstesa();
+  else if(f==="colpi"&&G.attore==="O") iaColpi();
+}
+
+async function iaAsta(){
+  iaBusy=true;
+  const carte=[...document.querySelectorAll("#manoAsta .carta")].filter(x=>!x.classList.contains("jolly"));
+  const op=carte.map((el,i)=>{const c=lato("O").mano.find(x=>x.id==el.dataset.id);return `${i}: gioca coperto ${nomeCarta(c)}`});
+  const r=await chiamaClaude(`ASTA PER L'INIZIATIVA: la carta più alta vince e apre la scena; la carta del vincitore sarà la sua ultima giocata, quella del perdente torna in mano.\nOPZIONI:\n${op.join("\n")}\nJSON: {"scelta": <numero>}`);
+  const i=(r&&Number.isInteger(r.scelta)&&carte[r.scelta])?r.scelta:Math.floor(Math.random()*carte.length);
+  iaBusy=false;
+  clicca(carte[i]); clicca(document.getElementById("confAsta"));
+}
+
+async function iaApertura(){
+  iaBusy=true;
+  const r=await chiamaClaude(`Hai vinto l'iniziativa: APRI LA SCENA. Scegli un titolo evocativo (2-4 parole) e dichiara la posta (cosa succede se va male per i Protagonisti), coerenti con la missione e con la fase narrativa.\nJSON: {"titolo":"...","posta":"..."}`);
+  const ti=document.getElementById("a-titolo"), po=document.getElementById("a-posta");
+  if(ti) ti.value=(r&&r.titolo)||FASI_NARR[G.scena];
+  if(po) po.value=(r&&r.posta)||FASI_FUNZ[G.scena];
+  iaBusy=false;
+  clicca(document.getElementById("a-via"));
+}
+
+async function iaTurno(){
+  iaBusy=true;
+  const g=carteGiocabili("O");
+  const ops=[];
+  for(const c of g.carte){
+    if(c.jolly){
+      if(G.piatto.length===0){
+        ops.push({desc:"gioca il JOLLY su piatto vuoto: il piano fallisce, il Jolly finisce esposto tra le tue scope a valore 0",
+          esegui:()=>{ rimuoviDaMano("O",c,false); c.esposta=true; lato("O").scope.push(c);
+            G.ultimaGiocata=`${nomeLato("O")} gioca il Jolly su piatto vuoto: il piano scorretto fallisce senza alcun vantaggio.`;
+            vaiNarrazione(c,"piatto","",null,`<b>Il piano fallisce.</b> Il tentativo scorretto non trova appigli. Il Jolly resta esposto tra le scope dell'Opposizione.`);}});
+      }else{
+        for(let v=1;v<=10;v++) combosPresa(v).forEach(cmb=>ops.push({
+          desc:`JOLLY dichiarato come ${v}: prendi ${cmb.map(x=>nomeCarta(x)).join(" + ")}${cmb.length===G.piatto.length?" — SCOPA (ma lascia un peccato latente)":""}. L'avversario potrà fare counter se ha il suo Jolly`,
+          esegui:()=>{ G.pendingJolly={attore:"O",carta:c,valore:v,combo:cmb}; G.fase="counter"; velo("P",render); }}));
+      }
+    }else{
+      combosPresa(c.val).forEach(cmb=>ops.push({
+        desc:`con ${nomeCarta(c)} prendi ${cmb.map(x=>nomeCarta(x)).join(" + ")}${cmb.length===G.piatto.length?" — SCOPA":""}`,
+        esegui:()=>giocaCarta(c,cmb,g.daAsta)}));
+      ops.push({desc:`gioca ${nomeCarta(c)} nel piatto (nessuna presa)`, esegui:()=>giocaCarta(c,null,g.daAsta)});
+    }
+  }
+  const r=await chiamaClaude(`È IL TUO TURNO. ${g.daAsta?"Questa è la tua ultima giocata: la carta dell'asta.":""}\nOPZIONI:\n${ops.map((o,i)=>i+": "+o.desc).join("\n")}\nJSON: {"scelta": <numero>}`);
+  let i=(r&&Number.isInteger(r.scelta)&&ops[r.scelta])?r.scelta:-1;
+  if(i<0){ i=ops.findIndex(o=>o.desc.includes("prendi")); if(i<0) i=Math.floor(Math.random()*ops.length); }
+  iaBusy=false;
+  ops[i].esegui();
+}
+
+async function iaCounter(){
+  iaBusy=true;
+  const pj=G.pendingJolly;
+  const ha=lato("O").mano.some(c=>c.jolly);
+  let counter=false;
+  if(ha){
+    const r=await chiamaClaude(`L'avversario gioca il JOLLY come ${pj.valore} per prendere ${pj.combo.map(x=>nomeCarta(x)).join(" + ")}. Hai il tuo Jolly in mano: puoi fare COUNTER (smascheri la mossa, prendi TUTTE le ${G.piatto.length} carte del piatto, entrambi i Jolly escono dal gioco) oppure lasciar correre e tenerti il Jolly.\nJSON: {"counter": true|false}`);
+    counter=!!(r&&r.counter);
+  }
+  iaBusy=false;
+  risolviJolly(counter);
+}
+
+async function iaNarrazione(){
+  if(document.getElementById("iaNarr")) return;
+  iaBusy=true;
+  const spinte=spinteDisponibili("O");
+  const haBoost=G.narr&&G.narr.boostCard&&spinte.length>0;
+  if(iaNarrTesto===null){
+    const r=await chiamaClaude(`Hai appena agito: "${G.ultimaGiocata||""}". Narra la mossa in 1-2 frasi, in italiano, dal punto di vista dell'Opposizione.${haBoost?`\nPuoi anche SPUNTARE la risorsa del pitch corrispondente al seme della carta con cui hai preso, per trasformare questa presa in SCOPA vera: le carte rimaste nel piatto finiscono tra le tue prese. Risorse disponibili:\n${spinte.map(({p,i},k)=>k+": "+SIMBOLI[p.seme]+" "+p.risposta).join("\n")}\nUsala solo se la risorsa entra davvero nella narrazione: è una svolta, non un bonus.`:""}\nJSON: {"narrazione":"...", "spinta": ${haBoost?"<numero> oppure null":"null"}}`);
+    iaNarrTesto=(r&&r.narrazione)||"L'Opposizione stringe il cerchio, senza fretta.";
+    if(haBoost&&r&&Number.isInteger(r.spinta)&&spinte[r.spinta]){
+      iaBusy=false;
+      clicca(SC.querySelector(`button[data-spinta="${spinte[r.spinta].i}"]`));
+      return;  // il re-render della narrazione richiamerà l'iniezione
+    }
+  }
+  const pann=SC.querySelector(".lettura");
+  if(pann&&!document.getElementById("iaNarr")){
+    const div=document.createElement("div");
+    div.id="iaNarr"; div.className="lettura";
+    div.style.cssText="margin-top:8px;border-left:3px solid var(--mezzeria);padding-left:10px";
+    div.textContent="🃏 Claude: «"+iaNarrTesto+"»";
+    pann.parentElement.appendChild(div);
+  }
+  iaNarrTesto=null; iaBusy=false;
+}
+
+async function iaMercato(){
+  if(document.getElementById("iaMercatoFatto")) return;
+  iaBusy=true;
+  const fine=document.getElementById("m-fine"); if(fine) fine.disabled=true;
+  const btns=[...document.querySelectorAll('button[data-l="O"][data-f]')].filter(b=>!b.disabled);
+  if(btns.length){
+    const op=btns.map((b,i)=>`${i}: ${FIGURE[b.dataset.f].nome} di ${b.dataset.s} ${SIMBOLI[b.dataset.s]} (costo ${FIGURE[b.dataset.f].costo})`);
+    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (il pagamento spende prima i bonus, poi le carte prese, poi tappa le scope). Le figure entrano nel tuo mazzo. Effetti: Fante = guarda e riordina le prime 4 carte del mazzo; Dama = l'avversario scarta una carta a caso; Re = recupera una carta dagli scarti. Ogni figura esiste in copia unica.\nOPZIONI (puoi sceglierne più d'una o nessuna):\n${op.join("\n")}\nJSON: {"acquisti": [numeri] }`);
+    if(r&&Array.isArray(r.acquisti)) for(const i of r.acquisti){
+      const b=btns[i];
+      if(b&&document.contains(b)&&!b.disabled) clicca(b);
+    }
+  }
+  const m=document.createElement("span"); m.id="iaMercatoFatto"; m.style.display="none"; SC.appendChild(m);
+  if(fine) fine.disabled=false;
+  iaBusy=false;
+}
+
+async function iaManoEstesa(){
+  iaBusy=true;
+  const btn=document.getElementById("estOk");
+  if(btn&&!btn.disabled){ iaBusy=false; clicca(btn); return }
+  const carte=[...document.querySelectorAll("#estCarte .carta")];
+  const op=carte.map((el,i)=>{const c=lato("O").mazzo.find(x=>x.id==el.dataset.id);return `${i}: ${c?nomeCarta(c):"?"}`});
+  const r=await chiamaClaude(`MANO FINALE: prendi tutte le carte rimaste, ne tieni 4 per l'ultima scena; le altre vanno in riserva per i colpi di scena (lì servono carte BASSE dei tuoi semi, per sostituire carte avversarie di valore pari o superiore nel piatto).\nCARTE:\n${op.join("\n")}\nJSON: {"tieni": [quattro numeri]}`);
+  let sel=(r&&Array.isArray(r.tieni)&&r.tieni.length===4&&r.tieni.every(i=>carte[i]))?r.tieni:[0,1,2,3];
+  iaBusy=false;
+  sel.forEach(i=>clicca(carte[i]));
+  clicca(document.getElementById("estOk"));
+}
+
+async function iaColpi(){
+  iaBusy=true;
+  const semiAvv=lato("P").semi, R=lato("O").riserva;
+  const ops=[];
+  for(const r of R) G.piatto.filter(c=>semiAvv.includes(c.seme)&&c.val>=r.val&&!c.jolly)
+    .forEach(b=>ops.push({desc:`sostituisci ${nomeCarta(b)} (dell'avversario, nel piatto) con ${nomeCarta(r)} (tua riserva)`, esegui:()=>eseguiColpo("O",r,b)}));
+  let scelta=-1;
+  if(ops.length){
+    const r=await chiamaClaude(`COLPI DI SCENA dopo il primo conteggio (Protagonisti ${totaleProt()}, Opposizione ${totaleOpp()}). Puoi sostituire una carta avversaria nel piatto con una tua di valore pari o inferiore, narrando il ribaltamento, oppure passare.\nOPZIONI:\n${ops.map((o,i)=>i+": "+o.desc).join("\n")}\n${ops.length}: PASSO\nJSON: {"scelta": <numero>}`);
+    if(r&&Number.isInteger(r.scelta)&&r.scelta>=0&&r.scelta<ops.length) scelta=r.scelta;
+    else if(!(r&&r.scelta===ops.length)&&totaleOpp()<totaleProt()&&ops.length) scelta=0;
+  }
+  iaBusy=false;
+  if(scelta>=0) ops[scelta].esegui();
+  else clicca(document.getElementById("colpoPasso"));
+}
+
+/* ================= AVVIO ================= */
+render();
+</script>
+<script>
+if("serviceWorker" in navigator) addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+</script>
+</body>
+</html>

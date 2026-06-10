@@ -1,0 +1,87 @@
+# FRENEMIES ON THE ROAD — Diario delle decisioni
+*Sviluppo del prototipo digitale · giugno 2026 · da leggere insieme a `friends_foes_road_kb_v1_2.md` (regolamento) e `frenemies_gioco.html` (codice)*
+
+Questo documento registra le decisioni prese durante lo sviluppo del gioco digitale: chiarimenti di regole confluiti nella Knowledge Base v1.1, interpretazioni implementative dove il regolamento taceva, scelte tecniche e roadmap. È la fonte da consultare prima di modificare il codice o le regole.
+
+---
+
+## 1. Decisioni di regolamento (confluite nella KB v1.1 e v1.2)
+
+Queste sono ormai regole ufficiali, integrate nel regolamento e marcate *(v1.1)* o *(v1.2)* nel documento:
+
+1. **Mazzi base da 20 carte** (Asso–10 dei due semi per lato). Le carte bastano esattamente per cinque scene: quando il mazzo finisce, la partita finisce. Nessun rimescolo degli scarti nel mazzo. *(La versione da 14 carte, 1–7, era un errore: la simulazione automatica ha dimostrato che i mazzi si esauriscono alla quarta scena.)*
+2. **Carta d'asta del perdente**: torna nella sua mano. Quella del vincitore resta da parte e viene giocata come sua quarta e ultima carta del round.
+3. **Round = 4 carte a testa**, alternanza completa (8 giocate), nessuna carta resta in mano a fine round.
+4. **Parità nell'asta**: l'iniziativa va a chi non l'ha avuta nella scena precedente. Alla prima scena, in caso di parità, va all'**Opposizione** ("il mondo è contro di voi fin dall'inizio"). Non esiste più la ripetizione dell'asta.
+5. **Il piatto resta** sul tavolo tra una scena e l'altra: chi apre la scena successiva può già fare presa o scopa.
+6. **Spinta del pitch = scopa vera (§9.8, v1.2)**: si spunta la risposta corrispondente al **seme della carta di presa** e la presa diventa una scopa a tutti gli effetti, le carte residue del piatto vanno tra le prese di chi spunta. **Vietata nell'ultima scena** (nella Risoluzione il piatto si svuota solo con una scopa vera). Il vincolo di seme assorbe il limite di una spinta per seme per lato; effetto collaterale accettato: una figura comprata di seme avversario non sblocca spinte. Sostituisce la "finta scopa" della v1.1 (carta tra le scope, piatto intatto). Da osservare al playtest: il peso dello svuotamento del piatto nelle scene 3 e 4, dove il valore accumulato dal piatto persistente è massimo.
+7. **Colpo di scena**: la carta avversaria sostituita va negli **scarti del suo proprietario** (quindi può teoricamente rientrare con un recupero o un Re).
+8. **Maggioranza di seme (3/4 giocatori)**: si valuta **a inizio scena** sulla mano appena pescata e il controllo vale per l'intera scena, asta inclusa. Alla prima scena, in parità, il controllo parte da Picche (Protagonisti) e Quadri (Opposizione).
+9. **Prima difficoltà (§9.7, v1.2)**: dopo le due serie di domande del pitch, tutti rispondono insieme a "che cosa vi impedisce di raggiungere l'obiettivo subito?". La risposta **non è spuntabile**: appartiene al tavolo e serve a inquadrare la Scena 1 (Innesco). L'uso meccanico delle risposte è diventato §9.8. Nel gioco digitale: campo in coda al passo "Le domande" del wizard, riepilogo nel passo finale, promemoria nell'apertura della Scena 1.
+10. **L'Opposizione prima delle domande (§9.4, v1.2)**: la definizione di nemici ♦ e caos ♣ precede le domande del pitch (nuova sezione 9.4; le domande passano a 9.5–9.6), così le domande all'Opposizione hanno un riferimento concreto. Stesso ordine nel wizard: Il gioco → Giocatori → Tono → Missione → Protagonisti → **Opposizione → Le domande** → Pronti a partire.
+11. **Copia unica delle figure (§20, v1.2)**: ogni figura di ciascun seme esiste in una sola copia e può essere acquistata una sola volta in tutta la partita (nel mercato il pulsante sparisce dopo l'acquisto, stato in `G.figureComprate`). Emersa durante la generazione della partita d'esempio, in cui l'Opposizione aveva comprato due Fanti di Quadri.
+12. **Scenario demo (§33, v1.2)**: "Frank, Skunk e il jet di Vargas" è il pitch canonico usato in **tutti gli esempi** del regolamento (KB e regolamento in-game) e nella futura partita d'esempio. Frank (♠): ex poliziotto sospeso, terra bruciata attorno. Skunk (♥): suo ex informatore, sa dove atterra Vargas e come superarne la sicurezza grazie all'ultima telefonata d'addio del fratello Jorge (ucciso al posto suo: la spia era Skunk, e Frank non lo sa); non rivela nulla (assicurazione sulla vita + vuole esserci). La telefonata di Jorge è il flashback canonico degli esempi. Vargas non può spostare il meeting (boss in arrivo, finestra di volo del jet). Prima difficoltà: Skunk in cella, messo lì dai poliziotti corrotti per farlo uccidere in prigione.
+
+## 2. Interpretazioni implementative da validare al playtest
+
+Punti dove il regolamento tace e il codice ha adottato una scelta. Funzionano, ma vanno confermati o corretti giocando:
+
+1. **Pagamento al mercato automatico**: l'app spende nell'ordine punti bonus → carte prese (scelte a caso, vanno negli scarti) → scope (vengono tappate). Alternativa possibile: selezione manuale di cosa spendere.
+2. **Spinte del pitch e Jolly**: le prese fatte col Jolly **non** sono potenziabili con una risorsa del pitch (il Jolly ha già il suo regime: peccato, counter).
+3. **Parità nei totali del piatto a fine scena 1–4**: posta "sospesa", nessun vincitore, nessun recupero. Caso non coperto dal regolamento.
+4. **Punti complessivi per l'outcome (§26)**: calcolati come valore delle scope (intatte 2, spese 1) + numero delle carte prese. Il regolamento dice solo "scope + prese" senza specificare la formula.
+5. **Colpi di scena, chi inizia**: il lato che sta **perdendo** al primo conteggio (in parità, i Protagonisti). Il regolamento non specifica.
+6. **Counter del Jolly e segretezza**: quando un Jolly viene giocato, la schermata di decisione del difensore appare **sempre**, anche se non ha il Jolly in mano (vede solo "non puoi opporti"). Serve a non rivelare all'attaccante se l'avversario possiede il Jolly.
+7. **Jolly su piatto vuoto**: finisce tra le scope come carta "esposta", vale 0 punti e 0 nel tie-break.
+8. **Recupero dei Protagonisti alla scena 5**: tecnicamente avviene anche lì se vincono (irrilevante a fine partita, ma il codice lo applica per coerenza).
+
+## 3. Architettura del codice
+
+- **Un solo file** `frenemies_gioco.html`: HTML + CSS + JS, tutto client-side, nessun backend.
+- **Stato puro separato dall'interfaccia**: l'oggetto globale `G` contiene tutto lo stato della partita; le funzioni `r*()` disegnano le schermate leggendolo. Regola ferrea: **le funzioni di render non devono mai mutare lo stato** — requisito indispensabile per l'online, dove lo stato viene replicato tra due client e un render "impuro" applicherebbe le mutazioni due volte.
+- **Macchina a fasi**: `modalita → lobby (solo online) → setup (wizard 8 passi) → [per scena: asta → asta_rivela → apertura → turno/narrazione/counter → fine_scena → mercato (→ jolly_intro dopo la 3ª) (→ mano_estesa/neutralizza prima della 5ª)] → primo_conteggio → colpi → finale`.
+- **Pass-and-play**: velo di handoff tra i turni (mani coperte). **Online**: niente velo, ogni client vede solo la propria mano; gating per fase tramite `latoCheAgisce()`; replica simmetrica dello stato via PeerJS (chi agisce muta e trasmette l'intero `G`).
+- **Online, scelte specifiche**: codice stanza di 5 lettere; mercato sequenziale (prima Protagonisti, poi Opposizione) per evitare conflitti di scrittura concorrente; il mazzo del compratore viene rimescolato subito a ogni acquisto (equivalente al rimescolo di fine fase, ma sicuro tra due client).
+- **Salvataggio**: export/import dell'intero stato come JSON (niente localStorage: vietato negli artefatti; su Netlify si potrà aggiungere il salvataggio automatico).
+- **Operazioni sulle carte sempre per id**, mai per riferimento: la serializzazione di rete rompe l'identità degli oggetti.
+- **Modalità solo, contro Claude** (giugno 2026): terza modalità accanto a locale e online; l'umano guida i Protagonisti, Claude gioca e narra l'Opposizione via API Anthropic (negli artefatti la chiamata non richiede chiave; per Netlify servirà una chiave dell'utente o una function proxy, da decidere al deploy). Architettura: `iaScheduler()` agganciato in coda a `render()` agisce quando tocca all'Opposizione (asta, apertura, turno, counter, narrazione con eventuale spinta, mercato, mano estesa, colpi, modali figura). Le decisioni passano dalle **mosse legali calcolate dal motore** (`combosPresa`, `carteGiocabili`, ecc.) inviate come elenco numerato; la risposta è JSON (`{"scelta": n}` e simili) e **ogni risposta assente o invalida ripiega su una scelta automatica**: l'IA irraggiungibile non blocca mai la partita. Segretezza: il prompt contiene solo ciò che l'Opposizione ha diritto di sapere (mai la mano dei Protagonisti); le schermate con la mano di O hanno classe `.ia-nascosta`; il counter con difensore O mostra una schermata neutra e si risolve via `risolviJolly()` senza rivelare se l'IA ha il Jolly. Le narrazioni di Claude appaiono nel pannello della narrazione (`#iaNarr`), confermate dall'umano. Velo disattivato in solo. Rifinitura nota: l'effetto figura dell'IA (Fante/Re) è risolto con il default e il modale può lampeggiare un frame.
+
+## 4. Interfaccia e convenzioni
+
+- Estetica **road movie notturno**: asfalto scuro (#15161a), mezzeria gialla (#f5a623/#ffd23f), font Oswald (titoli) e IBM Plex Mono/Sans.
+- Colori dei semi: ♥ #e4572e · ♠ #d8d3c8 · ♦ #4f7cac · ♣ #6a994e.
+- Tutto in **italiano**.
+- **Suggerimenti di narrazione** dopo ogni giocata (tipo di azione + significato del seme + casi speciali figura/Jolly), con i nomi dei protagonisti del pitch inseriti nei testi.
+- **Regolamento contestuale**: pulsante "?" in alto che apre la sezione pertinente alla fase corrente, con navigazione a chip verso le altre otto sezioni.
+- **Diario del rapporto**: strada SVG che sale (♥) e scende (♠), si compila da sola leggendo il piatto; accessibile sempre dal pulsante in alto.
+- Wizard del pitch con pulsanti "🎲 Ispirami" che pescano da coppie e missioni della Knowledge Base.
+- **Interfaccia adattiva, niente scroll di pagina** (giugno 2026): tutte le dimensioni chiave (carte, mini, padding di main/pannelli/piatto, gap, banner, opzioni, titoli) sono espresse come `calc(base * var(--k,1))`. La funzione `adattaViewport()` riparte da `--k = 1` e scende a passi di 0.05 (fino a 0.5) finché `main.scrollHeight ≤ main.clientHeight`; è agganciata a un MutationObserver su `main`, al resize e a `document.fonts.ready`, quindi copre anche i pannelli che compaiono senza re-render (es. opzioni di presa). Solo visuale: non tocca mai lo stato `G`. I font hanno minimi di leggibilità via `max()`. Fallback se a scala minima non basta: scroll di `main` (resta possibile nelle schermate con form lunghi, es. wizard). Il piatto non ha più max-height fissa. Motivo: su Chrome desktop la schermata del turno superava l'altezza della finestra; requisito di Saverio: tutto adattivo, mai scroll durante il gioco.
+
+## 5. Roadmap e stato
+
+| Cosa | Stato |
+|---|---|
+| 2 giocatori pass-and-play, regole complete v1.1 | ✅ fatto e collaudato |
+| 3/4 giocatori pass-and-play (controllo mano, scope per giocatore, ultima parola) | ✅ fatto e collaudato |
+| 2 giocatori online (PeerJS) | ✅ implementato, **da testare dopo il deploy su Netlify** (la sandbox degli artefatti blocca la connessione) |
+| 3/4 giocatori online | ⬜ non fatto — richiede topologia a più connessioni, ultimo step previsto |
+| Deploy su Netlify + eventuale PWA | ⬜ da fare |
+| Nomi dei PNG per le figure acquistate (scheda PNG della KB) | ⬜ non implementato |
+| Pagamento manuale al mercato | ⬜ eventuale, se il playtest lo chiede |
+| Modalità solo contro Claude (IA gioca l'Opposizione) | ✅ prototipo implementato e collaudato coi fallback; **da provare con chiamate reali nell'artefatto su Claude.ai**; per Netlify decidere chiave utente o proxy |
+| Partita d'esempio per il manuale (driver a seed fisso + narrazione, 2 giocatori, scenario demo §33) | ⚠️ da riscrivere — la regola v1.2 della spinta (scopa vera, §9.8) cambia la partita seed 13 dalla Scena 2 in poi: nuove scene POPOO, esito "Sconfitta con aspetti positivi" invece di Vittoria Totale 19-3 e 8-7. Il §34 va riscritto sul nuovo transcript (le due spinte cadono negli stessi momenti: 8♦ di Omar in Scena 2, 1♠ di Paola in Scena 3, ora con piatto raccolto) oppure su un altro seed da scegliere |
+
+## 6. Collaudo
+
+- `test_partita.js`: driver headless (jsdom) che gioca **partite complete** con scelte casuali, dalla creazione al finale, esercitando mercato, Jolly, spinte del pitch, mano estesa e colpi di scena. Le risposte del pitch vengono compilate quando i campi `w-pitch-*` sono presenti, non a un passo fisso del wizard (robusto a riordini dei passi).
+- `test_adatta.js`: verifica l'adattatore di viewport in jsdom: con contenuto traboccante `--k` deve scendere finché tutto entra; con contenuto corto deve restare a 1.
+- `test_solo.js`: collauda la **modalità solo** con uno stub di rete che risponde sempre JSON vuoto, così ogni decisione dell'IA passa dai fallback: la partita deve completarsi e le narrazioni IA devono comparire. Le chiamate vere a Claude si provano solo dentro l'artefatto in Claude.ai.
+- Uso: `npm i jsdom && node test_partita.js` · variabile `NG=3` o `NG=4` per il numero di giocatori · adattare il percorso dell'HTML nella `readFileSync` se serve.
+- Prassi: **una passata dopo ogni modifica al gioco**, a 2 e a 4 giocatori. È questo test che ha scoperto l'errore dei mazzi da 14 carte.
+- `partita_esempio.js`: driver con **seed riproducibile** (RNG mulberry32 iniettato) e transcript completo, usato per generare la partita d'esempio del §34 (seed 13, pitch demo precompilato). Uso: `SEED=13 TRANSCRIPT=1 node partita_esempio.js`. Se una regola cambia, la partita del manuale si rigenera e si riverifica da qui.
+- **Secondo bug scoperto dal collaudo automatico** (giugno 2026): l'ordine pesca/Jolly. `avviaMercato()` pescava la mano della scena 4 prima che il Jolly entrasse nei mazzi (l'inserimento avveniva solo alla chiusura del mercato), quindi il Jolly non era mai pescabile in scena 4, contro la KB §22. Corretto: il Jolly entra nei mazzi a inizio mercato, prima della pesca; la schermata di spiegazione resta a fine mercato (flag `jollyIntroVisto`). Il sintomo: nessun counter in 480 partite simulate.
+
+## 7. Documentazione
+
+- `friends_foes_road_kb_v1_2.md` è la **fonte di verità** del regolamento (sostituisce la v1.1). Il PDF si rigenera da lì (markdown → HTML → WeasyPrint) e riceve in coda le 5 pagine della scheda di partita dal PDF originale (pypdf merge). Aggiornare sempre prima il Markdown, poi rigenerare.
+- Ogni nuova regola va annotata anche nel **Registro modifiche** in fondo alla KB e, se rilevante per il gioco digitale, nelle sezioni del regolamento in-game (oggetto `REGOLE` nel codice).
