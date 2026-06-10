@@ -1,0 +1,4 @@
+[build]
+  # Sito statico tutto client-side: nessun build step.
+  command = ""
+  publish = "."
