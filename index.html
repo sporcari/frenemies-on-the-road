@@ -1618,21 +1618,29 @@ function avviaMercato(){
   if(G.scena===2 && !G.jollyEntrato) entraJollyNeiMazzi();
   const preScena5 = (G.scena===3);
   G.mercatoLato = G.modalita==="online" ? "P" : null;
-  if(preScena5){
-    G.estesa={P:false,O:false};
-    G.fase="mano_estesa"; G.attore="P"; velo("P",render);
-  }else{
-    pescaFinoA("P",4); pescaFinoA("O",4);
-    G.fase="mercato"; render();
-  }
+  // prima della 5ª non si pesca qui: la scelta delle 4 carte (mano estesa) avviene DOPO il mercato,
+  // così le figure comprate entrano nel mazzo prima della scelta ed è possibile tenerle.
+  if(!preScena5){ pescaFinoA("P",4); pescaFinoA("O",4); }
+  G.fase="mercato"; render();
+}
+function avviaManoEstesa(){
+  G.estesa={P:false,O:false};
+  G.fase="mano_estesa"; G.attore="P"; velo("P",render);
 }
 function rManoEstesa(){
   const l=G.attore, L=lato(l);
-  if(L.mazzo.length>=5 && L.mazzo.length<=7){
+  const piattoHTML=`
+    <div class="tavolo-top">
+      <div class="tot-lato p">♥+♠ Protagonisti <b>${totaleProt()}</b></div>
+      <div class="tot-lato o">♦+♣ Opposizione <b>${totaleOpp()}</b></div>
+    </div>
+    <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto</span>'}</div>`;
+  if(L.mazzo.length>4){
     const tutte=[...L.mazzo];
     SC.innerHTML=`
       <h2 class="ts">Mano finale — ${nomeLato(l)}</h2>
       <p class="sotto">Nel mazzo restano ${tutte.length} carte: le prendi tutte. Scegline 4 per l'ultima scena; le altre vanno in riserva, fuori dal gioco.</p>
+      ${piattoHTML}
       <div class="pannello${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}"><div class="mazzo-carte" id="estCarte">${ordina(tutte).map(c=>cartaHTML(c)).join("")}</div></div>
       <button class="azione" id="estOk" disabled>Conferma (0/4)</button>`;
     const scelte=new Set();
@@ -1651,10 +1659,11 @@ function rManoEstesa(){
       fineEstesa(l);
     });
   }else{
-    pescaFinoA(l,4);   // ≤4: le prende tutte; >7: pesca 4 normalmente
+    pescaFinoA(l,4);   // ≤4 carte: le prende tutte, nessuna scelta da fare
     SC.innerHTML=`
       <h2 class="ts">Mano finale — ${nomeLato(l)}</h2>
       <p class="sotto">${L.mazzo.length===0?"Hai preso in mano tutte le carte rimaste.":"Hai pescato la mano per l'ultima scena."}</p>
+      ${piattoHTML}
       <div class="pannello${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}"><div class="mazzo-carte">${ordina(L.mano).map(c=>cartaHTML(c)).join("")}</div></div>
       <button class="azione" id="estOk">Continua</button>`;
     document.getElementById("estOk").addEventListener("click",()=>fineEstesa(l));
@@ -1663,7 +1672,7 @@ function rManoEstesa(){
 function fineEstesa(l){
   G.estesa[l]=true;
   if(!G.estesa.O){ G.attore="O"; velo("O",render); }
-  else { G.fase="mercato"; render(); }
+  else avanzaScena();
 }
 
 function rMercato(){
@@ -1693,7 +1702,7 @@ function rMercato(){
     : "Chiudi il mercato e riparti";
   SC.innerHTML=`
     <h2 class="ts">Il mercato${online?" — "+nomeLato(G.mercatoLato):""}</h2>
-    <p class="sotto">La nuova mano è già stata pescata. Pagamento automatico: prima i punti bonus, poi le carte prese (vanno negli scarti), infine le scope (vengono tappate). Le figure entrano nel mazzo, subito rimescolato.</p>
+    <p class="sotto">${G.scena===3?"Compra ora: la mano dell'ultima scena la sceglierai subito dopo, così le figure acquistate possono entrare nella scelta.":"La nuova mano è già stata pescata."} Pagamento automatico: prima i punti bonus, poi le carte prese (vanno negli scarti), infine le scope (vengono tappate). Le figure entrano nel mazzo, subito rimescolato.</p>
     <div class="mercato-griglia">${pannelli}</div>
     <button class="azione" id="m-fine">${etichettaFine}</button>`;
   SC.querySelectorAll("button[data-f]").forEach(b=>b.addEventListener("click",()=>{
@@ -1710,6 +1719,7 @@ function rMercato(){
     if(online && G.mercatoLato==="P"){ G.mercatoLato="O"; render(); return }
     G.mercatoLato=null;
     if(G.scena===2 && !G.jollyIntroVisto){ G.jollyIntroVisto=true; G.fase="jolly_intro"; render(); }
+    else if(G.scena===3){ avviaManoEstesa(); }   // prima della 5ª: la scelta delle 4 carte è DOPO il mercato
     else avanzaScena();
   });
 }
