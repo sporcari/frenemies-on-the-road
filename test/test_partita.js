@@ -12,13 +12,18 @@ function fase(){ return window.__G ? window.__G().fase : "?" }
 function veloAttivo(){ return document.getElementById("velo").classList.contains("attivo") }
 function modaleAttivo(){ return document.getElementById("ovModale").classList.contains("attivo") }
 
-let compratoUnaVolta=false, spinteUsate=0, colpiFatti=0, log=[];
+let compratoUnaVolta=false, spinteUsate=0, colpiFatti=0, pngCreato=false, log=[];
 function passo(i){
   // modali degli effetti figura
   if(modaleAttivo()){
     const f=document.getElementById("fanteOk"), rNo=document.getElementById("reNo");
     if(f){ click(f); return "fante" }
     if(rNo){ click(rNo); return "re-no" }
+    const pngOk=document.getElementById("pngOk");      // modale acquisto figura (nome/desc)
+    if(pngOk){ const ni=document.getElementById("m-png-nome"); if(ni) ni.value="Figura di prova";
+      const di=document.getElementById("m-png-desc"); if(di) di.value="Descrizione di prova"; click(pngOk); return "png-figura" }
+    const pngnOk=document.getElementById("pngnOk");    // modale crea PNG narrativo
+    if(pngnOk){ const ni=document.getElementById("m-pngn-nome"); if(ni) ni.value="PNG narrativo di prova"; click(pngnOk); return "png-narr" }
     throw new Error("modale sconosciuto");
   }
   if(veloAttivo()){ click(document.getElementById("veloBtn")); return "velo" }
@@ -80,6 +85,7 @@ function passo(i){
       click(sp[0]); log.push("SPINTA usata, scena "+(g.scena+1)+", piatto raccolto: "+piattoPrima);
       if(G().piatto.length!==0) throw new Error("VINCOLO VIOLATO: piatto non svuotato dopo la spinta");
       return "spinta" }
+    if(!pngCreato){ const cp=document.getElementById("creaPng"); if(cp){ pngCreato=true; click(cp); return "apre-png-narr" } }
     click(document.getElementById("narrOk")); return f }
   if(f==="fine_scena"){
     const P=G().lati.P, O=G().lati.O;
@@ -96,7 +102,7 @@ function passo(i){
   if(f==="mercato"){
     if(!compratoUnaVolta){
       const b=[...document.querySelectorAll("button[data-f]")].find(x=>!x.disabled);
-      if(b){ click(b); compratoUnaVolta=true; log.push("ACQUISTO ok"); }
+      if(b){ click(b); compratoUnaVolta=true; log.push("ACQUISTO ok"); return "compra"; }  // apre il modale nome/desc
     }
     click(document.getElementById("m-fine")); return f;
   }

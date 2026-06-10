@@ -68,6 +68,11 @@ function passo(){
     const f=document.getElementById("fanteOk"), rNo=document.getElementById("reNo");
     if(f){ log("   → effetto FANTE: guarda le prime 4 carte del mazzo e le riordina."); click(f); return "fante" }
     if(rNo){ log("   → effetto RE: nessuno scambio con gli scarti."); click(rNo); return "re-no" }
+    const pngOk=document.getElementById("pngOk");   // modale nome/desc dell'acquisto figura (silenzioso nel transcript)
+    if(pngOk){ const n=document.getElementById("m-png-nome"); if(n) n.value="PNG di prova";
+      const d=document.getElementById("m-png-desc"); if(d) d.value="descrizione di prova"; click(pngOk); return "png-figura" }
+    const pngnOk=document.getElementById("pngnOk");
+    if(pngnOk){ const n=document.getElementById("m-pngn-nome"); if(n) n.value="PNG narrativo di prova"; click(pngnOk); return "png-narr" }
     throw new Error("modale sconosciuto");
   }
   if(veloAttivo()){ click(document.getElementById("veloBtn")); return "velo" }
@@ -183,11 +188,13 @@ function passo(){
   }
 
   if(f==="mercato"){
-    let b;
-    while(acquisti<3 && (b=[...document.querySelectorAll("button[data-f]")].find(x=>!x.disabled))){
-      const NOMI_FIG={F:"il FANTE",D:"la DAMA",R:"il RE"};
-      log(`   MERCATO: ${nomeL(b.dataset.l)} compra ${NOMI_FIG[b.dataset.f]||b.dataset.f} di ${b.dataset.s} ${SYM[b.dataset.s]}.`);
-      click(b); acquisti++;
+    if(acquisti<3){
+      const b=[...document.querySelectorAll("button[data-f]")].find(x=>!x.disabled);
+      if(b){
+        const NOMI_FIG={F:"il FANTE",D:"la DAMA",R:"il RE"};
+        log(`   MERCATO: ${nomeL(b.dataset.l)} compra ${NOMI_FIG[b.dataset.f]||b.dataset.f} di ${b.dataset.s} ${SYM[b.dataset.s]}.`);
+        click(b); acquisti++; return "compra";   // apre il modale nome/desc, gestito al passo dopo
+      }
     }
     click(document.getElementById("m-fine")); return f;
   }

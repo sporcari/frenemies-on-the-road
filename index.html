@@ -94,8 +94,8 @@ button.secondaria{
 .tot-lato b{font-family:'Oswald',sans-serif;font-size:max(15px,calc(20px*var(--k,1)));letter-spacing:0;margin-left:6px}
 .tot-lato.p b{color:var(--cuori)} .tot-lato.o b{color:var(--quadri)}
 #piatto{
-  background:radial-gradient(ellipse at center,#23262e 0%,var(--notte) 75%);
-  border:1px dashed var(--bordo);border-radius:var(--r);
+  background:radial-gradient(ellipse at center,#23362c 0%,#172019 78%);
+  border:1px dashed #3c5044;border-radius:var(--r);
   min-height:calc(120px*var(--k,1));overflow-y:auto;
   padding:calc(14px*var(--k,1));display:flex;gap:calc(8px*var(--k,1));flex-wrap:wrap;align-items:center;align-content:center;justify-content:center;
   margin-bottom:calc(12px*var(--k,1));
@@ -110,6 +110,12 @@ button.secondaria{
 .scena-banner .st{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.5px;color:var(--osso);font-size:max(13px,calc(15px*var(--k,1)))}
 .scena-banner .sp{font-size:max(11px,calc(12.5px*var(--k,1)));color:var(--osso);margin-top:3px;line-height:1.35}
 .scena-banner .sp b{color:var(--mezzeria);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase}
+.spinte-mano{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:calc(8px*var(--k,1))}
+.spinte-mano .lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mezzeria)}
+.spinta-chip{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--bordo);border-left:3px solid var(--bordo);border-radius:6px;padding:3px 8px;font-size:max(10.5px,calc(12px*var(--k,1)));background:rgba(245,166,35,.05)}
+.spinta-chip i{font-style:italic;color:var(--grigio)}
+.pannello.png-prot{background:rgba(106,153,78,.16);border-color:#3f5a36}
+.pannello.png-opp{background:rgba(228,87,46,.16);border-color:#6e3326}
 .mano-area{margin-top:auto}
 .mano-titolo{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:calc(8px*var(--k,1))}
 .contatori{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--grigio);letter-spacing:1px}
@@ -382,7 +388,7 @@ function nuovoLato(chiave, nome, semi){
 function nuovaPartita(){
   idc = 0;
   return {
-    fase:"modalita", passo:0,
+    fase:"modalita", passo:0, passoSub:0,   // passoSub: metà della fase domande in online (0=Protagonisti, 1=Opposizione)
     modalita:"locale", hostLato:"P",
     nomi:{P:"", O:""}, missione:"", primaDiff:"", tono:"",
     nGiocatori:2,
@@ -408,6 +414,8 @@ function nuovaPartita(){
     ultimaGiocata:"",
     pendingJolly:null,     // {attore, cartaId, valore, comboIds}
     jollyEntrato:false, jollyIntroVisto:false, figureComprate:[],
+    png:{},                // metadati PNG-figura acquistati: chiave "<fig><seme>" -> {nome, desc}
+    pngNarr:[],            // PNG narrativi creati in narrazione: {seme, nome, desc, scena}
     epilogo:""
   };
 }
@@ -540,12 +548,23 @@ function uniscitiStanza(codice, cb){
 /* chi può agire nella fase corrente */
 function latoCheAgisce(){
   const f=G.fase;
-  if(f==="setup"||f==="fine_scena"||f==="jolly_intro"||f==="neutralizza"||f==="finale"||f==="primo_conteggio") return G.hostLato;
+  if(f==="setup") return ownerSetup();
+  if(f==="fine_scena"||f==="jolly_intro"||f==="neutralizza"||f==="finale"||f==="primo_conteggio") return G.hostLato;
   if(f==="counter") return G.pendingJolly ? altro(G.pendingJolly.attore) : G.attore;
   if(f==="narrazione") return G.narrLato || G.attore;
   if(f==="mercato") return G.mercatoLato || G.hostLato;
   if(f==="asta_rivela") return G.rivela && G.rivela.win ? G.rivela.win : G.attore;
   return G.attore;   // asta, apertura, turno, mano_estesa
+}
+/* nel setup online ogni lato compila le proprie schede: Protagonisti la scena 4 e le domande
+   sui protagonisti, Opposizione la scena 5 e le domande sull'opposizione; il resto all'host */
+function ownerSetup(){
+  if(G.modalita!=="online") return G.hostLato;
+  const p=G.passo;
+  if(p===4) return "P";                              // i protagonisti
+  if(p===5) return "O";                              // l'opposizione
+  if(p===6) return (G.passoSub||0)===0 ? "P" : "O";  // le domande: prima i protagonisti, poi l'opposizione
+  return G.hostLato;                                 // intro, giocatori, tono, missione, riepilogo
 }
 function spettatore(){ return rete.attiva && G.modalita==="online" && latoCheAgisce()!==rete.mioLato }
 function rSpettatore(){
@@ -899,22 +918,25 @@ function rSetup(){
     const domandeHtml=(da,a)=>G.pitch.map((x,i)=>({x,i})).slice(da,a).map(({x,i})=>`
       <span class="etichetta" style="margin-top:10px">${SIMBOLI[x.seme]} ${PITCH_TEMPLATE[i].q(nA(),nB())}</span>
       <input type="text" id="w-pitch-${i}" value="${x.risposta.replace(/"/g,'&quot;')}">`).join("");
+    const online=G.modalita==="online", sub=G.passoSub||0;
+    const mostraP = !online || sub===0;   // domande sui protagonisti + prima difficoltà
+    const mostraO = !online || sub===1;   // domande sull'opposizione
     corpo=`
-    <h2 class="ts">Le domande del pitch</h2>
+    <h2 class="ts">Le domande del pitch${online?(sub===0?" — i Protagonisti":" — l'Opposizione"):""}</h2>
     <p class="sotto">Le risposte scritte diventano <b>risorse di gioco</b>: una volta ciascuna, portandole in narrazione, trasformano una presa in scopa (max una per seme per lato).</p>
-    <div class="pannello">
+    ${mostraP?`<div class="pannello">
       <span class="etichetta">Ai Protagonisti — poste dall'Opposizione</span>
       ${domandeHtml(0,6)}
-    </div>
-    <div class="pannello">
+    </div>`:""}
+    ${mostraO?`<div class="pannello">
       <span class="etichetta">All'Opposizione — poste dai Protagonisti</span>
       ${domandeHtml(6,10)}
-    </div>
-    <div class="pannello">
+    </div>`:""}
+    ${mostraP?`<div class="pannello">
       <span class="etichetta">La prima difficoltà — risposta condivisa</span>
       <p class="sotto" style="margin:4px 0 8px">Che cosa vi impedisce di raggiungere l'obiettivo subito? Rispondete tutti insieme. Non è una risorsa spuntabile: è il materiale della Scena 1.</p>
       <textarea id="w-primadiff" rows="2" placeholder="Il primo ostacolo da superare…">${G.primaDiff||""}</textarea>
-    </div>`;
+    </div>`:""}`;
   }
 
   else if(p===5) corpo=`
@@ -968,14 +990,21 @@ function rSetup(){
     document.getElementById("w-descA").value=a;
     document.getElementById("w-descB").value=b;
   });
+  const online=G.modalita==="online";
   const av=document.getElementById("w-avanti");
   av.addEventListener("click",()=>{
     salvaCampi();
+    if(online && p===6 && (G.passoSub||0)===0){ G.passoSub=1; render(); return }   // domande: passa all'Opposizione
     if(p===PASSI_WIZ.length-1){ iniziaScena(); return }
-    G.passo++; render();
+    G.passoSub=0; G.passo++; render();
   });
   const ind=document.getElementById("w-indietro");
-  if(ind) ind.addEventListener("click",()=>{ salvaCampi(); G.passo--; render(); });
+  if(ind) ind.addEventListener("click",()=>{
+    salvaCampi();
+    if(online && p===6 && (G.passoSub||0)===1){ G.passoSub=0; render(); return }   // domande: torna ai Protagonisti
+    if(online && p===7){ G.passo=6; G.passoSub=1; render(); return }                // dal riepilogo torna alle domande dell'Opposizione
+    G.passoSub=0; G.passo--; render();
+  });
 }
 
 /* ================= FLUSSO SCENA ================= */
@@ -983,7 +1012,7 @@ function iniziaScena(){
   // pesca iniziale solo per la prima scena (le altre pescano nel mercato)
   if(G.scena===0){ pescaFinoA("P",4); pescaFinoA("O",4); }
   calcolaControllo();
-  G.scene[G.scena] = G.scene[G.scena] || {titolo:"",posta:"",iniziativa:null,ambiente:"",vincitore:null,dominante:null,rapporto:null,totP:0,totO:0};
+  G.scene[G.scena] = G.scene[G.scena] || {titolo:"",posta:"",iniziativa:null,ambiente:"",vincitore:null,dominante:null,rapporto:null,totP:0,totO:0,riassunto:""};
   G.astaPicks={P:null,O:null};
   G.fase="asta"; G.attore="P";
   velo("P", render);
@@ -1121,6 +1150,7 @@ function rTurno(){
   const l=G.attore, L=lato(l);
   const g=carteGiocabili(l);
   const peccObj = peccatoDisponibile(l);
+  const sr = spinteResidue(l);
   SC.innerHTML = `
     ${intestazioneScena()}
     ${G.ultimaGiocata?`<div class="banner ${G.ultimaGiocata.includes("SCOPA")?"scopa":""}">${G.ultimaGiocata}</div>`:""}
@@ -1135,6 +1165,10 @@ function rTurno(){
         <span class="etichetta" style="margin:0">${g.daAsta?"Ultima giocata — la carta dell'asta":"Mano di "+nomeLato(l)+(latoDiviso(l)?" — gioca "+nomeControllore(l)+" "+SIMBOLI[G.controllo[l]]:"")}</span>
         <span class="contatori">prese ${L.prese.length} · scope ${L.scope.filter(c=>!c.esposta).length} · mazzo ${L.mazzo.length}</span>
       </div>
+      ${sr.length?`<div class="spinte-mano">
+        <span class="lbl">⚡ Spinte disponibili</span>
+        ${sr.map(({p})=>`<span class="spinta-chip" style="border-left-color:var(--${p.seme})"><b style="color:var(--${p.seme})">${SIMBOLI[p.seme]}</b> <i>«${p.risposta.length>32?p.risposta.slice(0,32)+"…":p.risposta}»</i></span>`).join("")}
+      </div>`:""}
       <div class="mazzo-carte" id="manoTurno">${ordina(g.carte).map(c=>cartaHTML(c)).join("")}</div>
       <div id="pannelloAzione"></div>
     </div>`;
@@ -1239,6 +1273,13 @@ function suggerimento(c, tipo, dettagli){
   return testo + seme + extra;
 }
 function semiLato(l){ return lato(l).semi }
+function spinteResidue(l){
+  // spinte del pitch ancora spendibili dal lato nel corso della partita
+  // (risposta scritta, seme del lato, non ancora usata, seme non già bruciato; vietate nell'ultima scena)
+  if(G.scena>=4) return [];
+  return G.pitch.map((p,i)=>({p,i}))
+    .filter(({p})=>p.risposta && semiLato(l).includes(p.seme) && !p.usata && !G.spinte[l][p.seme]);
+}
 function spinteDisponibili(l){
   if(G.scena>=4 || !G.narr || !G.narr.boostCard) return [];
   const c=lato(l).prese.find(x=>x.id===G.narr.boostCard);
@@ -1264,7 +1305,7 @@ function eseguiSpinta(idxPitch){
 }
 let narrDopo=null;
 function vaiNarrazione(c, tipo, dettagli, dopoNarrazione, suggOverride, narrLato){
-  G.narr={html:c?cartaHTML(c):"", tipo, sugg:suggOverride||suggerimento(c,tipo,dettagli)};
+  G.narr={html:c?cartaHTML(c):"", tipo, sugg:suggOverride||suggerimento(c,tipo,dettagli), seme:(c && !c.jolly && c.seme)?c.seme:null, fig:(c && c.fig)?c.fig:null};
   G.narrLato = narrLato || G.attore;
   narrDopo=dopoNarrazione;
   G.fase="narrazione"; render();
@@ -1285,13 +1326,44 @@ function rNarrazione(){
       <div class="opzioni">${spinteDisponibili(G.narrLato||G.attore).map(({p,i})=>
         `<button data-spinta="${i}">${SIMBOLI[p.seme]} «${p.risposta.length>60?p.risposta.slice(0,60)+"…":p.risposta}»</button>`).join("")}</div>
     </div>`:""}
-    <button class="azione" id="narrOk">Narrato — avanti</button>`;
+    ${(G.pngNarr||[]).length?`<div class="spinte-mano"><span class="lbl">PNG creati</span>${(G.pngNarr||[]).map(p=>`<span class="spinta-chip" style="border-left-color:var(--${p.seme})"><b style="color:var(--${p.seme})">${SIMBOLI[p.seme]}</b> ${p.nome||"(senza nome)"}</span>`).join("")}</div>`:""}
+    <div style="display:flex;gap:10px">
+      <button class="azione" style="flex:1" id="narrOk">Narrato — avanti</button>
+      ${n.seme && !n.fig?`<button class="secondaria" id="creaPng" title="Crea un PNG legato al seme della carta giocata">➕ Crea PNG ${SIMBOLI[n.seme]}</button>`:""}
+    </div>`;
   SC.querySelectorAll("button[data-spinta]").forEach(b=>
     b.addEventListener("click",()=>eseguiSpinta(parseInt(b.dataset.spinta))));
+  const cpBtn=document.getElementById("creaPng"); if(cpBtn) cpBtn.addEventListener("click",creaPng);
   document.getElementById("narrOk").addEventListener("click",()=>{
     const f=narrDopo; narrDopo=null; G.narr=null; G.narrLato=null;
     if(f) f(); else prossimoTurno();
   });
+}
+function creaPng(){
+  const seme=G.narr && G.narr.seme;
+  if(!seme) return;
+  modale(`<h2 class="ts">Nuovo PNG ${SIMBOLI[seme]}</h2>
+    <p class="sotto">Un personaggio non giocante legato al seme della carta appena giocata (${SIMBOLI[seme]}). Entra nel registro dei PNG.</p>
+    <div class="pannello">
+      <span class="etichetta">Nome del PNG</span>
+      <input type="text" id="m-pngn-nome" placeholder="Come si chiama?">
+      <span class="etichetta" style="margin-top:10px">Descrizione</span>
+      <textarea id="m-pngn-desc" rows="3" placeholder="Chi è, che aspetto ha, cosa vuole"></textarea>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button class="azione" style="flex:1" id="pngnOk">Crea il PNG</button>
+      <button class="secondaria" id="pngnNo">Annulla</button>
+    </div>`);
+  document.getElementById("pngnOk").addEventListener("click",()=>{
+    const nome=document.getElementById("m-pngn-nome").value.trim();
+    const desc=document.getElementById("m-pngn-desc").value.trim();
+    chiudiModale();
+    if(!nome && !desc) return;   // niente da registrare
+    G.pngNarr=G.pngNarr||[];
+    G.pngNarr.push({seme, nome, desc, scena:G.scena});
+    render();
+  });
+  document.getElementById("pngnNo").addEventListener("click",chiudiModale);
 }
 
 /* ================= FIGURE ================= */
@@ -1527,9 +1599,14 @@ function rFineScena(){
       <div class="lettura">${LETT_DOM[rec.dominante]}</div>
       <div class="lettura">${LETT_RAPP[rec.rapporto]}</div>
     </div>
+    <div class="pannello">
+      <span class="etichetta">Com'è finita la scena — riassunto per il diario</span>
+      <textarea id="fs-riassunto" rows="3" placeholder="Due righe su come si è chiusa la scena…">${rec.riassunto||""}</textarea>
+    </div>
     <div class="banner">Le carte restano nel piatto: chi aprirà la prossima scena potrà già fare presa o scopa.</div>
     <button class="azione" id="fs-avanti">${G.scena===4?"Vai al finale":"Vai al mercato"}</button>`;
   document.getElementById("fs-avanti").addEventListener("click",()=>{
+    rec.riassunto=document.getElementById("fs-riassunto").value;
     if(G.scena===4){ G.fase="finale"; render(); return }
     avviaMercato();
   });
@@ -1620,23 +1697,10 @@ function rMercato(){
     <div class="mercato-griglia">${pannelli}</div>
     <button class="azione" id="m-fine">${etichettaFine}</button>`;
   SC.querySelectorAll("button[data-f]").forEach(b=>b.addEventListener("click",()=>{
-    const l=b.dataset.l, f=b.dataset.f, s=b.dataset.s, L=lato(l);
+    const l=b.dataset.l, f=b.dataset.f, s=b.dataset.s;
     if((G.figureComprate||[]).includes(f+s)) return;   // ogni figura esiste in una sola copia (v1.2)
-    if(!pagaCosto(l, FIGURE[f].costo)) return;
-    G.figureComprate=G.figureComprate||[];
-    G.figureComprate.push(f+s);
-    b.outerHTML=`<span class="fig-esaurita" title="già acquistata">${SIMBOLI[s]}✓</span>`;
-    L.mazzo.push(carta(s, FIGURE[f].val, f));
-    L.mazzo=mischia(L.mazzo);
-    const es=document.getElementById("esito-"+l);
-    es.style.display="block";
-    es.innerHTML=(es.innerHTML?es.innerHTML+"<br>":"")+`Acquistato ${FIGURE[f].nome} ${SIMBOLI[s]} — entra nel mazzo, rimescolato.`;
-    document.getElementById("punti-"+l).textContent=puntiMercato(l);
-    SC.querySelectorAll(`button[data-l="${l}"]`).forEach(x=>{
-      const cf=FIGURE[x.dataset.f];
-      x.disabled = puntiMercato(l)<cf.costo;
-    });
-    inviaStato();
+    if(puntiMercato(l)<FIGURE[f].costo) return;
+    chiediPng(l,f,s,b);
   }));
   SC.querySelectorAll("button[data-pecc]").forEach(b=>b.addEventListener("click",()=>{
     const l=b.dataset.pecc, j=peccatoDisponibile(l);
@@ -1648,6 +1712,46 @@ function rMercato(){
     if(G.scena===2 && !G.jollyIntroVisto){ G.jollyIntroVisto=true; G.fase="jolly_intro"; render(); }
     else avanzaScena();
   });
+}
+function acquistaFigura(l,f,s,nome,desc,b){
+  const L=lato(l);
+  if((G.figureComprate||[]).includes(f+s)) return;   // copia unica (v1.2)
+  if(!pagaCosto(l, FIGURE[f].costo)) return;
+  G.figureComprate=G.figureComprate||[];
+  G.figureComprate.push(f+s);
+  G.png=G.png||{};
+  G.png[f+s]={nome:(nome||"").trim(), desc:(desc||"").trim()};
+  L.mazzo.push(carta(s, FIGURE[f].val, f));
+  L.mazzo=mischia(L.mazzo);
+  if(b && document.contains(b)) b.outerHTML=`<span class="fig-esaurita" title="già acquistata">${SIMBOLI[s]}✓</span>`;
+  const es=document.getElementById("esito-"+l);
+  if(es){ es.style.display="block";
+    es.innerHTML=(es.innerHTML?es.innerHTML+"<br>":"")+`Acquistato ${FIGURE[f].nome} ${SIMBOLI[s]}${(nome||"").trim()?` — “${nome.trim()}”`:""} — entra nel mazzo, rimescolato.`; }
+  const pel=document.getElementById("punti-"+l); if(pel) pel.textContent=puntiMercato(l);
+  SC.querySelectorAll(`button[data-l="${l}"]`).forEach(x=>{ x.disabled = puntiMercato(l)<FIGURE[x.dataset.f].costo; });
+  inviaStato();
+}
+function chiediPng(l,f,s,b){
+  const fig=FIGURE[f];
+  modale(`<h2 class="ts">${fig.nome} di ${s} ${SIMBOLI[s]}</h2>
+    <p class="sotto">${fig.titolo} — ${fig.eff}<br>Dai un nome e una storia a questo PNG: finirà nel registro dei PNG.</p>
+    <div class="pannello">
+      <span class="etichetta">Nome del PNG</span>
+      <input type="text" id="m-png-nome" placeholder="Come si chiama?">
+      <span class="etichetta" style="margin-top:10px">Descrizione</span>
+      <textarea id="m-png-desc" rows="3" placeholder="Chi è, che aspetto ha, cosa vuole"></textarea>
+    </div>
+    <div style="display:flex;gap:10px">
+      <button class="azione" style="flex:1" id="pngOk">Conferma acquisto</button>
+      <button class="secondaria" id="pngNo">Annulla</button>
+    </div>`);
+  document.getElementById("pngOk").addEventListener("click",()=>{
+    const nome=document.getElementById("m-png-nome").value;
+    const desc=document.getElementById("m-png-desc").value;
+    chiudiModale();
+    acquistaFigura(l,f,s,nome,desc,b);
+  });
+  document.getElementById("pngNo").addEventListener("click",chiudiModale);
 }
 function pagaCosto(l, costo){
   const L=lato(l);
@@ -2067,7 +2171,8 @@ function apriDiario(){
     const r=s&&s.rapporto?LETT_RAPP[s.rapporto]:"Scena non ancora giocata.";
     const dom=s&&s.dominante?" · "+LETT_DOM[s.dominante]:"";
     const vinc=s&&s.vincitore?` — posta ${s.vincitore==="P"?"raggiunta":s.vincitore==="O"?"fallita":"sospesa"}`:"";
-    div.innerHTML=`<div class="n">${i+1}</div><div class="testo"><b>${titolo}${vinc}</b><span>${r}${dom}</span></div>`;
+    const ria=s&&s.riassunto?`<span style="margin-top:4px;font-style:italic;color:var(--osso)">«${s.riassunto}»</span>`:"";
+    div.innerHTML=`<div class="n">${i+1}</div><div class="testo"><b>${titolo}${vinc}</b><span>${r}${dom}</span>${ria}</div>`;
     cont.appendChild(div);
   });
   document.getElementById("ovDiario").classList.add("attivo");
@@ -2108,16 +2213,31 @@ function apriSchede(tab){
       return cartello(`${nA} & ${nB}`,`${G.tono||"tono libero"} · cinque scene`)+(corpo||vuoto);
     }},
     P:{label:"PNG", html:()=>{
-      const figs=G.figureComprate||[];
-      const intro=cartello("PNG","figure acquistate al mercato");
-      if(!figs.length) return intro+`<p class="sotto">Nessuna figura acquistata finora. Fante, Dama e Re si comprano al mercato tra una scena e l'altra.</p>`;
-      return intro+figs.map(e=>{
-        const f=FIGURE[e[0]], seme=e.slice(1);
-        const lato=(seme==="cuori"||seme==="picche")?"Protagonisti ♥♠":"Opposizione ♦♣";
-        return `<div class="pannello"><span class="etichetta">${SIMBOLI[seme]} ${f.nome} di ${seme} · ${lato}</span>
-          <div style="font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:.5px;color:var(--faro)">${f.titolo}</div>
-          <div style="font-size:13px;color:var(--grigio);margin-top:4px">${f.eff}</div></div>`;
-      }).join("");
+      const figs=G.figureComprate||[], narr=G.pngNarr||[];
+      const intro=cartello("PNG","registro dei personaggi non giocanti");
+      const protag=seme=>(seme==="cuori"||seme==="picche");
+      const latoSeme=seme=>protag(seme)?"Protagonisti ♥♠":"Opposizione ♦♣";
+      const clsLato=seme=>protag(seme)?"png-prot":"png-opp";
+      if(!figs.length && !narr.length)
+        return intro+`<p class="sotto">Nessun PNG ancora. Le figure (Fante, Dama, Re) si comprano al mercato; i PNG narrativi si creano dal pulsante "Crea PNG" durante la narrazione.</p>`;
+      let html=intro;
+      if(figs.length){
+        html+=`<div class="etichetta" style="margin:14px 0 6px">Figure acquistate al mercato</div>`;
+        html+=figs.map(e=>{
+          const f=FIGURE[e[0]], seme=e.slice(1), meta=(G.png&&G.png[e])||{};
+          return `<div class="pannello ${clsLato(seme)}"><span class="etichetta">${SIMBOLI[seme]} ${f.nome} di ${seme} · ${latoSeme(seme)}</span>
+            <div style="font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:.5px;color:var(--faro)">${meta.nome||f.titolo}</div>
+            ${meta.desc?`<div style="font-size:13.5px;margin-top:3px">${meta.desc}</div>`:""}
+            <div style="font-size:12.5px;color:var(--grigio);margin-top:5px"><b>${f.nome} — ${f.titolo}.</b> ${f.eff}</div></div>`;
+        }).join("");
+      }
+      if(narr.length){
+        html+=`<div class="etichetta" style="margin:14px 0 6px">PNG narrativi</div>`;
+        html+=narr.map(p=>`<div class="pannello ${clsLato(p.seme)}"><span class="etichetta">${SIMBOLI[p.seme]} ${p.seme} · ${latoSeme(p.seme)}${p.scena!=null?` · scena ${p.scena+1}`:""}</span>
+          <div style="font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:.5px;color:var(--faro)">${p.nome||"(senza nome)"}</div>
+          ${p.desc?`<div style="font-size:13.5px;margin-top:3px">${p.desc}</div>`:""}</div>`).join("");
+      }
+      return html;
     }}
   };
   if(!TABS[schedaTab]) schedaTab="A";
@@ -2308,7 +2428,10 @@ async function iaMercato(){
     const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (il pagamento spende prima i bonus, poi le carte prese, poi tappa le scope). Le figure entrano nel tuo mazzo. Effetti: Fante = guarda e riordina le prime 4 carte del mazzo; Dama = l'avversario scarta una carta a caso; Re = recupera una carta dagli scarti. Ogni figura esiste in copia unica.\nOPZIONI (puoi sceglierne più d'una o nessuna):\n${op.join("\n")}\nJSON: {"acquisti": [numeri] }`);
     if(r&&Array.isArray(r.acquisti)) for(const i of r.acquisti){
       const b=btns[i];
-      if(b&&document.contains(b)&&!b.disabled) clicca(b);
+      if(b&&document.contains(b)&&!b.disabled){
+        const f=b.dataset.f, s=b.dataset.s;
+        acquistaFigura("O", f, s, FIGURE[f].titolo, "", b);   // PNG-figura dell'IA: nome di default, niente modale
+      }
     }
   }
   const m=document.createElement("span"); m.id="iaMercatoFatto"; m.style.display="none"; SC.appendChild(m);
