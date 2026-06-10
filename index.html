@@ -106,6 +106,10 @@ button.secondaria{
   padding:calc(8px*var(--k,1)) 12px;font-size:max(11.5px,calc(13px*var(--k,1)));font-style:italic;margin-bottom:calc(10px*var(--k,1));
 }
 .banner.scopa{border-left-color:var(--faro);background:rgba(255,210,63,.12);font-weight:600;font-style:normal}
+.scena-banner{border:1px solid var(--bordo);border-left:3px solid var(--mezzeria);background:rgba(245,166,35,.05);border-radius:0 8px 8px 0;padding:calc(7px*var(--k,1)) 12px;margin-bottom:calc(10px*var(--k,1))}
+.scena-banner .st{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.5px;color:var(--osso);font-size:max(13px,calc(15px*var(--k,1)))}
+.scena-banner .sp{font-size:max(11px,calc(12.5px*var(--k,1)));color:var(--osso);margin-top:3px;line-height:1.35}
+.scena-banner .sp b{color:var(--mezzeria);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase}
 .mano-area{margin-top:auto}
 .mano-titolo{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:calc(8px*var(--k,1))}
 .contatori{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--grigio);letter-spacing:1px}
@@ -186,6 +190,7 @@ button.secondaria{
   <div id="infoScena"></div>
   <div class="hbtns">
     <button id="btnRegole" title="Regolamento">?</button>
+    <button id="btnSchede" title="Schede: protagonisti, opposizione, missione, PNG">Schede</button>
     <button id="btnDiario">Diario</button>
     <button id="btnSalva">Salva</button>
   </div>
@@ -209,6 +214,15 @@ button.secondaria{
     <p class="sotto">Su quando si avvicinano (♥), giù quando si allontanano (♠). Si scrive da solo, leggendo il piatto.</p>
     <svg id="strada" viewBox="0 0 700 240" style="width:100%;height:auto;display:block;background:var(--notte);border-radius:10px;margin-bottom:12px"></svg>
     <div id="diarioVoci"></div>
+  </div>
+</div>
+
+<div class="overlay" id="ovSchede">
+  <div class="scatola">
+    <button class="chiudi" data-chiudi="ovSchede">×</button>
+    <h2 class="ts">Schede</h2>
+    <div class="regole-nav" id="schedeNav"></div>
+    <div id="schedeCorpo"></div>
   </div>
 </div>
 
@@ -652,6 +666,14 @@ function aggiornaHeader(){
     : "";
   el.innerHTML = dot + `Scena ${G.scena+1}/5 · ${FASI_NARR[G.scena]}` +
     (rec && rec.titolo ? `<br>«${rec.titolo}»` : "") + ctrl;
+}
+function intestazioneScena(){
+  const rec=G.scene[G.scena];
+  if(!rec) return "";
+  return `<div class="scena-banner">
+    <div class="st">Scena ${G.scena+1}/5 · ${FASI_NARR[G.scena]}${rec.titolo?` — «${rec.titolo}»`:""}</div>
+    ${rec.posta?`<div class="sp"><b>Posta</b> · ${rec.posta}</div>`:""}
+  </div>`;
 }
 function cartaHTML(c, cls="", dichiarato=null){
   if(c.jolly) return `<div class="carta jolly ${cls}" data-id="${c.id}"><span class="v">JOLLY</span>${dichiarato?`<span class="s" style="color:var(--faro)">${dichiarato}</span>`:""}<span class="fig">1–10</span></div>`;
@@ -1100,6 +1122,7 @@ function rTurno(){
   const g=carteGiocabili(l);
   const peccObj = peccatoDisponibile(l);
   SC.innerHTML = `
+    ${intestazioneScena()}
     ${G.ultimaGiocata?`<div class="banner ${G.ultimaGiocata.includes("SCOPA")?"scopa":""}">${G.ultimaGiocata}</div>`:""}
     <div class="tavolo-top">
       <div class="tot-lato p">♥+♠ Protagonisti <b>${totaleProt()}</b></div>
@@ -1249,6 +1272,7 @@ function vaiNarrazione(c, tipo, dettagli, dopoNarrazione, suggOverride, narrLato
 function rNarrazione(){
   const n=G.narr;
   SC.innerHTML=`
+    ${intestazioneScena()}
     ${G.ultimaGiocata?`<div class="banner ${n.tipo==="scopa"?"scopa":""}">${G.ultimaGiocata}</div>`:""}
     <div style="display:flex;justify-content:center;margin:10px 0">${n.html}</div>
     <div class="pannello">
@@ -1385,12 +1409,13 @@ function opzioniJolly(c){
 function rCounter(){
   const pj=G.pendingJolly, dif=altro(pj.attore), D=lato(dif);
   if(G.modalita==="solo" && dif==="O"){
-    SC.innerHTML=`<h2 class="ts">Mossa scorretta in corso</h2>
+    SC.innerHTML=`${intestazioneScena()}<h2 class="ts">Mossa scorretta in corso</h2>
       <div class="banner">Giochi il <b>JOLLY come ${pj.valore}</b>. L'Opposizione valuta la mossa…</div>`;
     return;
   }
   const haJolly=D.mano.some(x=>x.jolly);
   SC.innerHTML=`
+    ${intestazioneScena()}
     <h2 class="ts">Mossa scorretta in corso</h2>
     <div class="banner">${nomeLato(pj.attore)} gioca il <b>JOLLY come ${pj.valore}</b> e vuole prendere:
       <div class="mazzo-carte" style="margin-top:8px">${pj.combo.map(x=>cartaHTML(x,"mini")).join("")}</div>
@@ -2048,6 +2073,62 @@ function apriDiario(){
   document.getElementById("ovDiario").classList.add("attivo");
 }
 document.getElementById("btnDiario").addEventListener("click",apriDiario);
+
+/* ================= SCHEDE ================= */
+let schedaTab="A";
+function apriSchede(tab){
+  if(tab) schedaTab=tab;
+  const nA=G.pers.A.nome||"Protagonista ♠", nB=G.pers.B.nome||"Protagonista ♥";
+  const vuoto=`<p class="sotto">Niente da mostrare qui: si compila nella creazione della partita.</p>`;
+  // blocco domanda+risposta del pitch, filtrato per seme
+  const qa=(semi)=>G.pitch.map((x,i)=>({x,i})).filter(({x})=>semi.includes(x.seme) && x.risposta)
+    .map(({x,i})=>`<div style="margin-top:10px">
+      <span class="etichetta" style="margin-bottom:2px">${SIMBOLI[x.seme]} ${PITCH_TEMPLATE[i].q(G.pers.A.nome||"P1",G.pers.B.nome||"P2")}</span>
+      <div style="font-size:13.5px">${x.risposta}${x.usata?` <span style="color:var(--grigio);font-style:italic">· risorsa già spesa</span>`:""}</div>
+    </div>`).join("");
+  const cartello=(grande,sc)=>`<div class="cartellone"><div class="grande">${grande}</div><div class="sc">${sc}</div></div>`;
+  const TABS={
+    A:{label:`♠ ${G.pers.A.nome||"Picche"}`, html:()=>{
+      const corpo=(G.pers.A.desc?`<div class="pannello"><span class="etichetta">Chi è</span><div style="font-size:14px">${G.pers.A.desc}</div></div>`:"")+qa(["picche"]);
+      return cartello(nA,"Protagonista · la linea dura ♠")+(corpo||vuoto);
+    }},
+    B:{label:`♥ ${G.pers.B.nome||"Cuori"}`, html:()=>{
+      const corpo=(G.pers.B.desc?`<div class="pannello"><span class="etichetta">Chi è</span><div style="font-size:14px">${G.pers.B.desc}</div></div>`:"")+qa(["cuori"]);
+      return cartello(nB,"Protagonista · la connessione ♥")+(corpo||vuoto);
+    }},
+    O:{label:"♦♣ Opposizione", html:()=>{
+      const corpo=(G.nemici?`<div class="pannello"><span class="etichetta">♦ I nemici organizzati</span><div style="font-size:14px">${G.nemici}</div></div>`:"")
+        +(G.caos?`<div class="pannello"><span class="etichetta">♣ Il caos</span><div style="font-size:14px">${G.caos}</div></div>`:"")
+        +qa(["quadri","fiori"]);
+      return cartello("L'Opposizione","nemici ♦ · caos ♣")+(corpo||vuoto);
+    }},
+    M:{label:"Missione", html:()=>{
+      const corpo=(G.missione?`<div class="pannello"><span class="etichetta">L'obiettivo del viaggio — la posta</span><div style="font-size:14.5px">${G.missione}</div></div>`:"")
+        +(G.primaDiff?`<div class="pannello"><span class="etichetta">Prima difficoltà — Scena 1</span><div style="font-size:13.5px">${G.primaDiff}</div></div>`:"");
+      return cartello(`${nA} & ${nB}`,`${G.tono||"tono libero"} · cinque scene`)+(corpo||vuoto);
+    }},
+    P:{label:"PNG", html:()=>{
+      const figs=G.figureComprate||[];
+      const intro=cartello("PNG","figure acquistate al mercato");
+      if(!figs.length) return intro+`<p class="sotto">Nessuna figura acquistata finora. Fante, Dama e Re si comprano al mercato tra una scena e l'altra.</p>`;
+      return intro+figs.map(e=>{
+        const f=FIGURE[e[0]], seme=e.slice(1);
+        const lato=(seme==="cuori"||seme==="picche")?"Protagonisti ♥♠":"Opposizione ♦♣";
+        return `<div class="pannello"><span class="etichetta">${SIMBOLI[seme]} ${f.nome} di ${seme} · ${lato}</span>
+          <div style="font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:.5px;color:var(--faro)">${f.titolo}</div>
+          <div style="font-size:13px;color:var(--grigio);margin-top:4px">${f.eff}</div></div>`;
+      }).join("");
+    }}
+  };
+  if(!TABS[schedaTab]) schedaTab="A";
+  const nav=document.getElementById("schedeNav");
+  nav.innerHTML=Object.entries(TABS).map(([k,t])=>`<button data-tk="${k}" class="${k===schedaTab?"attivo":""}">${t.label}</button>`).join("");
+  nav.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>apriSchede(b.dataset.tk)));
+  document.getElementById("schedeCorpo").innerHTML=TABS[schedaTab].html();
+  document.getElementById("ovSchede").classList.add("attivo");
+  document.querySelector("#ovSchede .scatola").scrollTop=0;
+}
+document.getElementById("btnSchede").addEventListener("click",()=>apriSchede());
 document.getElementById("btnSalva").addEventListener("click",()=>document.getElementById("ovSalva").classList.add("attivo"));
 document.querySelectorAll(".chiudi").forEach(b=>b.addEventListener("click",()=>document.getElementById(b.dataset.chiudi).classList.remove("attivo")));
 document.getElementById("ovModale").addEventListener("click",e=>{ /* il modale si chiude solo dai suoi pulsanti */ });
