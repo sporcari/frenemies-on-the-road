@@ -136,9 +136,9 @@ try{
       console.log("rapporti:",g.scene.map(s=>s?s.rapporto:"-").join(","));
       console.log("jolly entrato:",g.jollyEntrato,"| acquisto:",compratoUnaVolta,"| spinte:",spinteUsate,"| colpi:",colpiFatti);
       console.log("piatto finale:",g.piatto.length,"carte");
-      const tot=l=>["mazzo","mano","prese","scope","scarti","riserva"].map(k=>g.lati[l][k].length).join("/");
-      console.log("nGiocatori:",g.nGiocatori,"| scopeGiocatore:",JSON.stringify(g.scopeGiocatore),"| controllo finale:",JSON.stringify(g.controllo));
-      console.log("P mazzo/mano/prese/scope/scarti/riserva:",tot("P"));
+      const tot=l=>["mazzo","mano","prese","scope","riserva"].map(k=>g.lati[l][k].length).join("/");
+      console.log("nGiocatori:",g.nGiocatori,"| scopeGiocatore:",JSON.stringify(g.scopeGiocatore),"| controllo finale:",JSON.stringify(g.controllo),"| scarti comuni:",g.scartiComuni.length);
+      console.log("P mazzo/mano/prese/scope/riserva:",tot("P"));
       console.log("O:",tot("O"));
       process.exit(0);
     }

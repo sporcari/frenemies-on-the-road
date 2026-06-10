@@ -148,7 +148,7 @@ Si usa un mazzo francese standard.
 
 Stato iniziale:
 
-- Le figure (Fante, Dama, Re) sono rimosse da entrambi i mazzi
+- Le figure (Fante, Regina, Re) sono rimosse da entrambi i mazzi
 - I Jolly non sono ancora in gioco
 - I mazzi iniziali contengono solo le carte numeriche (**Asso–10**) dei rispettivi semi: **20 carte per lato**
 
@@ -359,17 +359,15 @@ Le prese seguono la logica della Scopa tradizionale:
 
 ## 17. Gestione di prese e scope
 
-### 17.1 — Prese
+### 17.1 — Prese *(v1.3)*
 
-Le carte prese vanno nel mazzetto delle prese. Ogni carta vale 1 punto-economia in fase di acquisto.
+La carta con cui fai la presa si **tiene da parte in verticale**: vale **1 punto**. Le carte catturate dal piatto vanno **subito nella pila degli scarti comune** e non danno punti.
 
-### 17.2 — Scope
+### 17.2 — Scope *(v1.3)*
 
-Le carte prese in una scopa vanno nel mazzetto delle prese. La carta con cui è stata fatta la scopa viene tenuta da parte, separata, come segnalazione.
+La carta con cui fai la scopa si **tiene da parte in orizzontale**: vale **3 punti**. Le carte catturate vanno anch'esse negli scarti comuni.
 
-- Ogni scopa vale **5 punti-economia** in fase di acquisto
-- La carta-scopa, quando viene spesa, viene "tappata" (ruotata) per indicare che è stata usata
-- Nel tie-break finale: scopa non spesa = **2 punti**, scopa spesa = **1 punto**
+- Ogni presa vale **1 punto**, ogni scopa **3 punti**, sia in fase di acquisto sia nel conteggio finale (i punti non spesi mantengono lo stesso valore).
 
 ## 18. Fine del round e vittoria della scena
 
@@ -384,7 +382,7 @@ Chi ha il totale più alto vince la posta della scena.
 
 > **Scena chiusa da una scopa (v1.3):** se la scena finisce con il **piatto vuoto** perché l'ultima giocata è stata una **scopa**, la posta è vinta da **chi ha fatto la scopa**, anche se i totali del piatto sarebbero 0-0. (Un piatto svuotato dal counter di un Jolly non è una scopa: in quel caso la posta resta in equilibrio.)
 
-**Se vincono i Protagonisti:** la posta della scena è raggiunta; recuperano 1 carta casuale dagli scarti, messa in fondo al mazzo.
+**Se vincono i Protagonisti:** la posta della scena è raggiunta; recuperano 1 carta del **proprio seme** (♥/♠) dagli **scarti comuni**, messa in fondo al mazzo.
 
 **Se vince l'Opposizione:** la posta della scena fallisce, la situazione peggiora per i protagonisti. Nessun recupero.
 
@@ -407,12 +405,12 @@ Ordine corretto (importante per non annullare gli effetti del Fante):
 
 Risorse disponibili:
 
-- Carte nel mazzetto prese → **1 punto** ciascuna
-- Scope → **5 punti** ciascuna
+- Ogni **presa** → **1 punto**
+- Ogni **scopa** → **3 punti**
 
-Le carte usate per pagare vanno nella pila degli scarti del rispettivo lato. Le figure acquistate entrano nel mazzo — non in mano, non negli scarti.
+Il pagamento spende prima il **bonus**, poi le **prese**, poi le **scope**; i marcatori spesi vanno negli **scarti comuni**. Le figure acquistate entrano nel mazzo — non in mano, non negli scarti.
 
-> **Copia unica (v1.2):** ogni figura di ciascun seme esiste in una sola copia, come in un vero mazzo di carte. Una volta acquistata, non sarà più disponibile nei mercati successivi.
+> **Una figura per tipo (v1.3):** ogni giocatore può comprare al massimo **un Fante, una Regina, un Re** in tutta la partita (a prescindere dal seme).
 
 ## 21. Le Figure: costi, valori ed effetti
 
@@ -420,8 +418,8 @@ Le figure hanno una doppia natura: meccanica (carte forti con effetti speciali) 
 
 | Figura | Costo acquisto | Valore in gioco |
 |---|---|---|
-| Fante | 8 punti | 8 |
-| Dama / Regina | 9 punti | 9 |
+| Fante | 4 punti | 8 |
+| Regina | 7 punti | 9 |
 | Re | 10 punti | 10 |
 
 ### Fante — L'informatore
@@ -434,7 +432,7 @@ Le figure hanno una doppia natura: meccanica (carte forti con effetti speciali) 
 
 > **Esempio:** "Ray, l'unico vecchio collega di Frank rimasto pulito, ci dice quali contee evitare e a che ora cambiano i turni ai posti di blocco."
 
-### Dama / Regina — La manipolatrice
+### Regina — La manipolatrice
 
 **Effetto meccanico:** l'avversario scarta una carta a caso dalla mano e la sostituisce con la prima carta del suo mazzo.
 
@@ -446,7 +444,7 @@ Le figure hanno una doppia natura: meccanica (carte forti con effetti speciali) 
 
 ### Re — Il deus ex machina
 
-**Effetto meccanico:** scambia una carta dalla mano con una carta dalla pila degli scarti dello stesso seme.
+**Effetto meccanico:** scambia una carta dalla mano con una carta degli **scarti comuni** dello stesso seme.
 
 **Funzione:** recupero mirato, ottimizzazione della mano.
 
@@ -554,7 +552,7 @@ Al termine dell'ultima scena (dopo gli eventuali colpi di scena):
 
 **Tie-break (in caso di parità):**
 
-1. Si contano le scope (non spese = 2, spese = 1; alleati sacrificati nell'ultima scena contano come scopa per l'avversario)
+1. Si contano le scope (alleati sacrificati nell'ultima scena contano come scopa per l'avversario)
 2. In ulteriore parità: si contano le prese
 
 ---
@@ -931,6 +929,8 @@ Resta la lettura del diario (§27), che corregge il trionfo: salita nella cella,
 1. **§18** — Scena chiusa da una **scopa** a piatto vuoto: la posta è vinta da chi ha fatto la scopa (non più parità 0-0). Vale anche per l'esito apparente della quinta scena (poi seguono i colpi di scena). Un piatto svuotato dal counter di un Jolly resta invece in equilibrio.
 2. **§24** — **Colpi di scena riscritti.** Si gioca a turni alterni e, finché si hanno carte in riserva, **si gioca obbligatoriamente**: la carta entra nel piatto e può **eliminare** una carta avversaria di valore **pari o inferiore** (la carta giocata resta sul tavolo; quella eliminata va negli scarti). Prima invece si *sostituiva* una carta avversaria di valore maggiore o uguale. La fase finisce quando entrambe le riserve sono esaurite.
 3. **§23.1** — La mano finale della quinta scena si sceglie **dopo il mercato** (così le figure appena comprate possono entrarvi); la scelta di 4 carte scatta con **più di 4 carte** rimaste nel mazzo.
+4. **§17, §20** — **Economia semplificata.** Ogni presa vale **1 punto**, ogni scopa **3 punti** (sia al mercato sia nel conteggio finale; i punti non spesi mantengono il valore). Le carte catturate dal piatto vanno subito in una **pila di scarti comune**; si tengono solo le carte che fanno presa (in verticale) o scopa (in orizzontale) come marcatori. Recupero dei Protagonisti ed effetto del Re pescano dagli scarti comuni (per il proprio seme).
+5. **§21** — **Prezzi figure ribassati:** Fante 4, Regina 7, Re 10 (valori in gioco invariati: 8/9/10). La figura di mezzo si chiama **Regina**. **Una figura per tipo per giocatore:** al massimo un Fante, una Regina, un Re in tutta la partita (sostituisce la "copia unica per seme").
 
 ## v1.2 (giugno 2026)
 

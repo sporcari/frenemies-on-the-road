@@ -298,9 +298,9 @@ const LETT_RAPP = {
   pari:"♥ = ♠ — Il rapporto è in bilico: né avanzato né peggiorato."
 };
 const FIGURE = {
-  F:{nome:"Fante", titolo:"L'informatore", val:8, costo:8,
+  F:{nome:"Fante", titolo:"L'informatore", val:8, costo:4,
      eff:"Guarda le prime 4 carte del tuo mazzo e scegli quali mettere in fondo."},
-  D:{nome:"Dama", titolo:"La manipolatrice", val:9, costo:9,
+  D:{nome:"Regina", titolo:"La manipolatrice", val:9, costo:7,
      eff:"L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo."},
   R:{nome:"Re", titolo:"Il deus ex machina", val:10, costo:10,
      eff:"Scambia una carta dalla tua mano con una dei tuoi scarti dello stesso seme."}
@@ -382,7 +382,7 @@ function carta(seme, val, fig=null, jolly=false){
 function nuovoLato(chiave, nome, semi){
   const mazzo = [];
   semi.forEach(s=>{ for(let v=1; v<=10; v++) mazzo.push(carta(s,v)); });
-  return {chiave, nome, semi, mazzo:mischia(mazzo), mano:[], prese:[], scope:[], scarti:[],
+  return {chiave, nome, semi, mazzo:mischia(mazzo), mano:[], prese:[], scope:[],
           astaCarta:null, riserva:[], bonus:0, peccatoScena:-1};
 }
 function nuovaPartita(){
@@ -398,6 +398,7 @@ function nuovaPartita(){
     prevControllo:{P:null,O:null},
     scopeGiocatore:{picche:0,cuori:0,quadri:0,fiori:0},
     svuotoConScopa:null,   // lato che ha svuotato il piatto con una scopa (per assegnare la scena a piatto vuoto)
+    scartiComuni:[],       // pila degli scarti comune: ci finiscono le carte catturate dal piatto e i marcatori spesi
     pers:{A:{nome:"",desc:""}, B:{nome:"",desc:""}},
     pitch:PITCH_TEMPLATE.map(p=>({seme:p.seme, risposta:"", usata:false})),
     spinte:{P:{},O:{}},
@@ -438,7 +439,10 @@ function totaleProt(){ return totaleSeme("cuori")+totaleSeme("picche") }
 function totaleOpp(){ return totaleSeme("quadri")+totaleSeme("fiori") }
 function puntiMercato(l){
   const L=lato(l);
-  return L.bonus + L.prese.length + L.scope.filter(c=>!c.tappata && !c.esposta).length*5;
+  return L.bonus + L.prese.length*1 + L.scope.filter(c=>!c.esposta).length*3;   // presa 1, scopa 3
+}
+function figuraTipoComprata(l, f){   // il lato ha già comprato una figura di questo tipo (qualsiasi seme)?
+  return (G.figureComprate||[]).some(e=>e[0]===f && semiLato(l).includes(e.slice(1)));
 }
 function ordina(mano){
   const ord={cuori:0,picche:1,quadri:2,fiori:3};
@@ -1216,14 +1220,14 @@ function giocaCarta(c, combo, daAsta){
   if(combo){
     dettagli = combo.map(x=>(x.fig?FIGURE[x.fig].nome.charAt(0):x.val)+SIMBOLI[x.seme]).join(" + ");
     G.piatto = G.piatto.filter(x=>!combo.some(y=>y.id===x.id));
-    L.prese.push(...combo);
+    G.scartiComuni.push(...combo);   // le carte catturate vanno subito negli scarti comuni
     if(G.piatto.length===0){
-      L.scope.push(c);  // la carta della scopa, da parte
+      L.scope.push(c);  // la carta che ha fatto scopa: marcatore (3 punti)
       aggiungiScopa(l);
       tipo="scopa";
       msg+=`SCOPA! Il piatto è ripulito — un successo pieno, una svolta.`;
     }else{
-      L.prese.push(c);
+      L.prese.push(c);  // la carta che ha fatto presa: marcatore (1 punto)
       tipo="presa";
       msg+=`presa di ${combo.length} cart${combo.length>1?"e":"a"} — un successo parziale, o con un costo.`;
     }
@@ -1299,7 +1303,7 @@ function eseguiSpinta(idxPitch){
   L.scope.push(c);
   aggiungiScopa(l);
   const residue=G.piatto.length;
-  if(residue){ L.prese.push(...G.piatto); G.piatto=[]; }
+  if(residue){ G.scartiComuni.push(...G.piatto); G.piatto=[]; }   // carte raccolte → scarti comuni
   G.svuotoConScopa = l;   // la spinta è una scopa vera: piatto svuotato da l
   G.narr.boostCard=null;
   G.narr.tipo="scopa";
@@ -1403,14 +1407,14 @@ function effettoFigura(c, poi){
     if(A.mano.length>0){
       const i=Math.floor(Math.random()*A.mano.length);
       const scartata=A.mano.splice(i,1)[0];
-      A.scarti.push(scartata);
+      G.scartiComuni.push(scartata);
       if(A.mazzo.length>0) A.mano.push(A.mazzo.shift());
-      G.ultimaGiocata += ` La Dama agisce: l'avversario scarta ${nomeCarta(scartata)} e pesca dal mazzo.`;
+      G.ultimaGiocata += ` La Regina agisce: l'avversario scarta ${nomeCarta(scartata)} e pesca dal mazzo.`;
     }
     poi();
   }
   else if(c.fig==="R"){
-    const scartiUtili=L.scarti.filter(x=>L.semi.includes(x.seme));
+    const scartiUtili=G.scartiComuni.filter(x=>L.semi.includes(x.seme));
     if(L.mano.length===0 || scartiUtili.length===0){ poi(); return }
     let manoSel=null, scartoSel=null;
     modale(`<h2 class="ts">Re — Il deus ex machina</h2>
@@ -1432,11 +1436,11 @@ function effettoFigura(c, poi){
     }));
     document.querySelectorAll("#reScarti .carta").forEach(el=>el.addEventListener("click",()=>{
       document.querySelectorAll("#reScarti .carta").forEach(x=>x.classList.remove("sel"));
-      el.classList.add("sel"); scartoSel=L.scarti.find(x=>x.id==el.dataset.id); agg();
+      el.classList.add("sel"); scartoSel=G.scartiComuni.find(x=>x.id==el.dataset.id); agg();
     }));
     document.getElementById("reOk").addEventListener("click",()=>{
-      L.mano=L.mano.filter(x=>x.id!==manoSel.id); L.scarti.push(manoSel);
-      L.scarti=L.scarti.filter(x=>x.id!==scartoSel.id); L.mano.push(scartoSel);
+      L.mano=L.mano.filter(x=>x.id!==manoSel.id); G.scartiComuni.push(manoSel);
+      G.scartiComuni=G.scartiComuni.filter(x=>x.id!==scartoSel.id); L.mano.push(scartoSel);
       G.ultimaGiocata += ` Il Re interviene: ${nomeCarta(scartoSel)} torna dagli scarti.`;
       chiudiModale(); poi();
     });
@@ -1516,8 +1520,8 @@ function risolviJolly(counter){
   if(counter){
     const jollyDif=D.mano.find(x=>x.jolly);
     D.mano=D.mano.filter(x=>x.id!==jollyDif.id);
-    D.prese.push(...G.piatto);
-    G.piatto=[];
+    const cap=[...G.piatto]; G.piatto=[];
+    if(cap.length){ D.prese.push(cap[0]); G.scartiComuni.push(...cap.slice(1)); }   // counter = 1 presa; resto agli scarti
     G.svuotoConScopa=null;   // il counter svuota il piatto ma NON è una scopa
     G.ultimaGiocata=`COUNTER! ${nomeLato(dif)} smaschera il tentativo: prende tutto il piatto, entrambi i Jolly escono dal gioco.`;
     vaiNarrazione(null,"presa","",null,
@@ -1525,7 +1529,7 @@ function risolviJolly(counter){
     return;
   }
   G.piatto=G.piatto.filter(x=>!pj.combo.some(y=>y.id===x.id));
-  L.prese.push(...pj.combo);
+  G.scartiComuni.push(...pj.combo);   // carte catturate col Jolly → scarti comuni
   if(G.piatto.length===0){
     pj.carta.peccato=true; L.scope.push(pj.carta); L.peccatoScena=G.scena;
     aggiungiScopa(l);
@@ -1591,11 +1595,12 @@ function chiudiScena(){
   rec.dominante = (somme[0].t===0 || somme[0].t===somme[1].t) ? "parita" : somme[0].s;
   const tc=totaleSeme("cuori"), tp=totaleSeme("picche");
   rec.rapporto = tc>tp?"su":tp>tc?"giu":"pari";
-  // recupero dei protagonisti
+  // recupero dei protagonisti: una carta del loro seme (♥/♠) dagli scarti comuni, in fondo al mazzo
   rec.recupero=null;
-  if(rec.vincitore==="P" && lato("P").scarti.length>0){
-    const i=Math.floor(Math.random()*lato("P").scarti.length);
-    const c=lato("P").scarti.splice(i,1)[0];
+  const recuperabili=G.scartiComuni.filter(x=>lato("P").semi.includes(x.seme));
+  if(rec.vincitore==="P" && recuperabili.length>0){
+    const c=recuperabili[Math.floor(Math.random()*recuperabili.length)];
+    G.scartiComuni=G.scartiComuni.filter(x=>x.id!==c.id);
     lato("P").mazzo.push(c);
     rec.recupero=nomeCarta(c);
   }
@@ -1702,14 +1707,15 @@ function rMercato(){
     return `<div class="pannello">
       <span class="etichetta">${nomeLato(l)} ${L.semi.map(s=>SIMBOLI[s]).join("")}</span>
       <div class="punti-big" id="punti-${l}">${punti}</div>
-      <div class="contatori">carte prese ${L.prese.length} · scope attive ${L.scope.filter(c=>!c.tappata&&!c.esposta).length}${L.bonus?` · bonus ${L.bonus}`:""}</div>
+      <div class="contatori">prese ${L.prese.length} (×1) · scope ${L.scope.filter(c=>!c.esposta).length} (×3)${L.bonus?` · bonus ${L.bonus}`:""}</div>
       ${pecc?`<button class="secondaria" style="margin-top:8px;width:100%" data-pecc="${l}">⚡ Fai emergere il peccato avversario (+5)</button>`:""}
       <div style="margin-top:10px">
-        ${Object.entries(FIGURE).map(([k,f])=>`
-          <div class="fig-riga">
+        ${Object.entries(FIGURE).map(([k,f])=>{
+          const presa=figuraTipoComprata(l,k);   // una figura per tipo per lato
+          return `<div class="fig-riga">
             <div class="desc"><b>${f.nome} — ${f.costo} punti</b><small>${f.eff}</small></div>
-            <div class="compra">${L.semi.map(s=>(G.figureComprate||[]).includes(k+s)?`<span class="fig-esaurita" title="già acquistata">${SIMBOLI[s]}✓</span>`:`<button data-l="${l}" data-f="${k}" data-s="${s}" ${punti<f.costo?"disabled":""}>${SIMBOLI[s]}</button>`).join("")}</div>
-          </div>`).join("")}
+            <div class="compra">${presa?`<span class="fig-esaurita" title="già acquistata">✓</span>`:L.semi.map(s=>`<button data-l="${l}" data-f="${k}" data-s="${s}" ${punti<f.costo?"disabled":""}>${SIMBOLI[s]}</button>`).join("")}</div>
+          </div>`;}).join("")}
       </div>
       <div class="banner" id="esito-${l}" style="display:none;margin-top:10px"></div>
     </div>`;
@@ -1720,12 +1726,12 @@ function rMercato(){
     : "Chiudi il mercato e riparti";
   SC.innerHTML=`
     <h2 class="ts">Il mercato${online?" — "+nomeLato(G.mercatoLato):""}</h2>
-    <p class="sotto">${G.scena===3?"Compra ora: la mano dell'ultima scena la sceglierai subito dopo, così le figure acquistate possono entrare nella scelta.":"La nuova mano è già stata pescata."} Pagamento automatico: prima i punti bonus, poi le carte prese (vanno negli scarti), infine le scope (vengono tappate). Le figure entrano nel mazzo, subito rimescolato.</p>
+    <p class="sotto">${G.scena===3?"Compra ora: la mano dell'ultima scena la sceglierai subito dopo, così le figure acquistate possono entrare nella scelta.":"La nuova mano è già stata pescata."} Pagamento automatico: prima i punti bonus, poi le prese (1 punto), infine le scope (3 punti); i marcatori spesi vanno negli scarti comuni. Le figure entrano nel mazzo, subito rimescolato. Si può comprare al massimo una figura per tipo.</p>
     <div class="mercato-griglia">${pannelli}</div>
     <button class="azione" id="m-fine">${etichettaFine}</button>`;
   SC.querySelectorAll("button[data-f]").forEach(b=>b.addEventListener("click",()=>{
     const l=b.dataset.l, f=b.dataset.f, s=b.dataset.s;
-    if((G.figureComprate||[]).includes(f+s)) return;   // ogni figura esiste in una sola copia (v1.2)
+    if(figuraTipoComprata(l,f)) return;   // una figura per tipo per lato
     if(puntiMercato(l)<FIGURE[f].costo) return;
     chiediPng(l,f,s,b);
   }));
@@ -1743,7 +1749,7 @@ function rMercato(){
 }
 function acquistaFigura(l,f,s,nome,desc,b){
   const L=lato(l);
-  if((G.figureComprate||[]).includes(f+s)) return;   // copia unica (v1.2)
+  if(figuraTipoComprata(l,f)) return;   // una figura per tipo per lato
   if(!pagaCosto(l, FIGURE[f].costo)) return;
   G.figureComprate=G.figureComprate||[];
   G.figureComprate.push(f+s);
@@ -1751,7 +1757,8 @@ function acquistaFigura(l,f,s,nome,desc,b){
   G.png[f+s]={nome:(nome||"").trim(), desc:(desc||"").trim()};
   L.mazzo.push(carta(s, FIGURE[f].val, f));
   L.mazzo=mischia(L.mazzo);
-  if(b && document.contains(b)) b.outerHTML=`<span class="fig-esaurita" title="già acquistata">${SIMBOLI[s]}✓</span>`;
+  // tutti i bottoni di QUESTO tipo per il lato spariscono (una sola figura per tipo)
+  SC.querySelectorAll(`button[data-l="${l}"][data-f="${f}"]`).forEach(x=>{ if(document.contains(x)) x.outerHTML=`<span class="fig-esaurita" title="già acquistata">✓</span>`; });
   const es=document.getElementById("esito-"+l);
   if(es){ es.style.display="block";
     es.innerHTML=(es.innerHTML?es.innerHTML+"<br>":"")+`Acquistato ${FIGURE[f].nome} ${SIMBOLI[s]}${(nome||"").trim()?` — “${nome.trim()}”`:""} — entra nel mazzo, rimescolato.`; }
@@ -1786,14 +1793,14 @@ function pagaCosto(l, costo){
   if(puntiMercato(l)<costo) return false;
   let resto=costo;
   const usaBonus=Math.min(L.bonus,resto); L.bonus-=usaBonus; resto-=usaBonus;
+  // poi le prese (1 cad.), poi le scope (3 cad.); i marcatori spesi vanno negli scarti comuni
   while(resto>0 && L.prese.length>0){
-    const i=Math.floor(Math.random()*L.prese.length);
-    L.scarti.push(L.prese.splice(i,1)[0]); resto-=1;
+    G.scartiComuni.push(L.prese.splice(Math.floor(Math.random()*L.prese.length),1)[0]); resto-=1;
   }
   while(resto>0){
-    const sc=L.scope.find(c=>!c.tappata && !c.esposta);
-    if(!sc) break;
-    sc.tappata=true; resto-=5;
+    const i=L.scope.findIndex(c=>!c.esposta);
+    if(i<0) break;
+    G.scartiComuni.push(L.scope.splice(i,1)[0]); resto-=3;
   }
   return true;
 }
@@ -1930,9 +1937,8 @@ function eseguiColpo(l, riservaCard, bersaglio){
   G.svuotoConScopa=null;
   let sugg;
   if(bersaglio){
-    const proprietario = lato("P").semi.includes(bersaglio.seme) ? "P":"O";
     G.piatto=G.piatto.filter(x=>x.id!==bersaglio.id);
-    lato(proprietario).scarti.push(bersaglio);
+    G.scartiComuni.push(bersaglio);
     G.ultimaGiocata=`COLPO DI SCENA! ${nomeLato(l)} mette in gioco ${nomeCarta(riservaCard)} ed elimina ${nomeCarta(bersaglio)}.`;
     sugg=`<b>COLPO DI SCENA.</b> ${nomeCarta(riservaCard)} entra in scena e spazza via ${nomeCarta(bersaglio)}: narra come le cose non fossero come apparivano — un volto che cade, una verità che riemerge.`;
   }else{
@@ -1950,11 +1956,8 @@ function conteggioDefinitivo(){
 function rFinale(){
   const vp=G.scene.filter(s=>s&&s.vincitore==="P").length;
   const vo=G.scene.filter(s=>s&&s.vincitore==="O").length;
-  function scopeVal(l){
-    const L=lato(l);
-    return L.scope.filter(c=>!c.esposta&&!c.tappata).length*2 + L.scope.filter(c=>!c.esposta&&c.tappata).length*1;
-  }
-  function punti(l){ return scopeVal(l) + lato(l).prese.length }
+  function scopeVal(l){ return lato(l).scope.filter(c=>!c.esposta).length; }   // conteggio scope (per il tie-break)
+  function punti(l){ return puntiMercato(l); }   // punti non spesi: bonus + prese×1 + scope×3
   // vittoria del piatto = esito esterno della missione (con tie-break: scope, poi prese)
   const rec5=G.scene[4];
   let piattoP;
@@ -1993,7 +1996,7 @@ function rFinale(){
         <div class="contatori">♥+♠ / ♦+♣ · ${piattoP?"missione riuscita":"missione fallita"}</div></div>
       <div class="pannello" style="text-align:center"><span class="etichetta">Punti — scope + prese</span>
         <div class="punti-big">${pP} — ${pO}</div>
-        <div class="contatori">scope intatte ×2, spese ×1, più le prese · scene vinte ${vp}/${vo}</div></div>
+        <div class="contatori">prese ×1, scope ×3 · scene vinte ${vp}/${vo}</div></div>
     </div>
     <div class="pannello">
       <span class="etichetta">L'ultima scena</span>
@@ -2083,19 +2086,18 @@ const REGOLE={
     Alla quinta scena, ♣ contro ♦ nell'ultimo piatto: chi li ha davvero ostacolati — un nemico con un piano, o il mondo stesso?`},
   mercato:{titolo:"Mercato",html:`
     <h3>Fase di mercato (tra le scene)</h3>
-    Ordine importante: <b>1)</b> si pesca la nuova mano di 4 carte · <b>2)</b> si effettuano gli acquisti · <b>3)</b> le figure acquistate entrano nel <b>mazzo</b> (non in mano, non negli scarti) · <b>4)</b> il mazzo viene rimescolato.
+    Ordine importante: <b>1)</b> si pesca la nuova mano di 4 carte · <b>2)</b> si effettuano gli acquisti (max <b>una figura per tipo</b>) · <b>3)</b> le figure acquistate entrano nel <b>mazzo</b> · <b>4)</b> il mazzo viene rimescolato.
     <h3>Economia</h3>
-    <ul><li>Carte nel mazzetto prese → <b>1 punto</b> ciascuna</li>
-    <li>Scope → <b>5 punti</b> ciascuna (la scopa spesa viene "tappata")</li></ul>
-    Le carte usate per pagare vanno negli <b>scarti</b> del proprio lato.<br>
-    Nel tie-break finale: scopa non spesa = <b>2 punti</b>, scopa spesa = <b>1 punto</b>.`},
+    <ul><li>Ogni <b>presa</b> → <b>1 punto</b> (carta che fa presa tenuta in verticale)</li>
+    <li>Ogni <b>scopa</b> → <b>3 punti</b> (carta che fa scopa tenuta in orizzontale)</li></ul>
+    Le carte catturate dal piatto vanno subito negli <b>scarti comuni</b>; i marcatori spesi al mercato pure. A fine partita i punti non spesi mantengono lo stesso valore (presa 1, scopa 3).`},
   figure:{titolo:"Le figure",html:`
     <h3>Doppia natura</h3>
-    Meccanica (carte forti con effetti) e narrativa (alleati o PNG significativi).
+    Meccanica (carte forti con effetti) e narrativa (alleati o PNG significativi). Si può comprare al massimo <b>una figura per tipo</b>.
     <table><tr><th>Figura</th><th>Costo</th><th>Valore</th><th>Effetto</th></tr>
-    <tr><td><b>Fante</b> — l'informatore</td><td>8</td><td>8</td><td>Guarda le prime 4 carte del proprio mazzo; può mettere in fondo quelle che vuole.</td></tr>
-    <tr><td><b>Dama</b> — la manipolatrice</td><td>9</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo.</td></tr>
-    <tr><td><b>Re</b> — il deus ex machina</td><td>10</td><td>10</td><td>Scambia una carta della mano con una dei propri scarti dello stesso seme.</td></tr></table>
+    <tr><td><b>Fante</b> — l'informatore</td><td>4</td><td>8</td><td>Guarda le prime 4 carte del proprio mazzo; può mettere in fondo quelle che vuole.</td></tr>
+    <tr><td><b>Regina</b> — la manipolatrice</td><td>7</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo.</td></tr>
+    <tr><td><b>Re</b> — il deus ex machina</td><td>10</td><td>10</td><td>Scambia una carta della mano con una degli scarti comuni dello stesso seme.</td></tr></table>
     <div class="es">"Jess — la nostra fonte all'interno della stazione — ci dice dove si trovano le prove e quando le sentinelle cambiano turno." (Fante)</div>
     Attenzione: le figure lasciate nel piatto all'inizio dell'ultima scena vengono <b>neutralizzate</b> (vedi Quinta scena).`},
   jolly:{titolo:"Il Jolly",html:`
@@ -2253,7 +2255,7 @@ function apriSchede(tab){
       const latoSeme=seme=>protag(seme)?"Protagonisti ♥♠":"Opposizione ♦♣";
       const clsLato=seme=>protag(seme)?"png-prot":"png-opp";
       if(!figs.length && !narr.length)
-        return intro+`<p class="sotto">Nessun PNG ancora. Le figure (Fante, Dama, Re) si comprano al mercato; i PNG narrativi si creano dal pulsante "Crea PNG" durante la narrazione.</p>`;
+        return intro+`<p class="sotto">Nessun PNG ancora. Le figure (Fante, Regina, Re) si comprano al mercato; i PNG narrativi si creano dal pulsante "Crea PNG" durante la narrazione.</p>`;
       let html=intro;
       if(figs.length){
         html+=`<div class="etichetta" style="margin:14px 0 6px">Figure acquistate al mercato</div>`;
@@ -2459,7 +2461,7 @@ async function iaMercato(){
   const btns=[...document.querySelectorAll('button[data-l="O"][data-f]')].filter(b=>!b.disabled);
   if(btns.length){
     const op=btns.map((b,i)=>`${i}: ${FIGURE[b.dataset.f].nome} di ${b.dataset.s} ${SIMBOLI[b.dataset.s]} (costo ${FIGURE[b.dataset.f].costo})`);
-    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (il pagamento spende prima i bonus, poi le carte prese, poi tappa le scope). Le figure entrano nel tuo mazzo. Effetti: Fante = guarda e riordina le prime 4 carte del mazzo; Dama = l'avversario scarta una carta a caso; Re = recupera una carta dagli scarti. Ogni figura esiste in copia unica.\nOPZIONI (puoi sceglierne più d'una o nessuna):\n${op.join("\n")}\nJSON: {"acquisti": [numeri] }`);
+    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (una presa vale 1, una scopa 3). Le figure entrano nel tuo mazzo; puoi comprare al massimo una figura per tipo. Effetti: Fante (costo 4) = guarda e riordina le prime 4 carte del mazzo; Regina (costo 7) = l'avversario scarta una carta a caso; Re (costo 10) = recupera una carta dagli scarti.\nOPZIONI (puoi sceglierne più d'una o nessuna):\n${op.join("\n")}\nJSON: {"acquisti": [numeri] }`);
     if(r&&Array.isArray(r.acquisti)) for(const i of r.acquisti){
       const b=btns[i];
       if(b&&document.contains(b)&&!b.disabled){
