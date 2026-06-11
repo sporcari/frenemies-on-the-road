@@ -35,11 +35,20 @@ ancora la regola vecchia):
    il registro modifiche. Se cambia il transcript (vedi Collaudo), rigenera
    test/transcript_seed_13_v2.txt e riallinea il §34.
 3. index.html - tre rappresentazioni delle stesse regole, da tenere in sync:
-   - costante REGOLE: il regolamento in-app per i giocatori (pulsante "?").
+   - costante REGOLE: il regolamento in-app per i giocatori (pulsante "?"),
+     inclusi i suoi esempi (blocchi `.es`).
    - costante REGOLE_IA: il regolamento condensato inviato a Claude in modalità
-     vs Claude. NON è un file separato: è una stringa dentro index.html.
+     vs Claude (con i suoi esempi di tono). NON è un file separato: è una
+     stringa dentro index.html.
    - setupPerIA() / statoPerIA(): il contesto di gioco inviato a Claude (dati
      del pitch, stato della partita).
+
+Aggiorna SEMPRE anche gli ESEMPI quando cambia la regola che illustrano: gli
+esempi vivono nel KB (esempi inline, §10, §34) e in index.html (blocchi `.es`
+di REGOLE, esempi di tono in REGOLE_IA). Il PDF del manuale si rigenera dal solo
+KB (docs/genera_pdf.py): per il manuale il KB è già la fonte unica; le copie in
+index.html non possono pescare da file esterni (file unico, niente build) e
+vanno allineate a mano qui.
 
 ## Documentazione delle decisioni
 Ogni nuova interpretazione di regole o scelta architetturale (anche non di
