@@ -816,96 +816,87 @@ Skunk è in cella. I poliziotti corrotti lo hanno arrestato con un pretesto per 
 
 ---
 
-## 34. Partita d'esempio: trentasei ore *(v1.2)*
+## 34. Partita d'esempio: trentasei ore *(v1.3)*
 
-Una partita vera a 2 giocatori, giocata dall'inizio alla fine con lo scenario demo (§33) e riportata integralmente: ogni carta, ogni presa e ogni conteggio sono reali e verificati. Paola gioca i Protagonisti (Frank ♠ e Skunk ♥), Omar gioca l'Opposizione (i nemici ♦ e il caos ♣). Le meccaniche sono tra parentesi, i richiami alle regole nei riquadri.
+Una partita vera a 2 giocatori, giocata dall'inizio alla fine con lo scenario demo (§33) e riportata integralmente: ogni carta, ogni presa e ogni conteggio sono reali e verificati dal motore di gioco (seme 13). Paola gioca i Protagonisti (Frank ♠ e Skunk ♥), Omar gioca l'Opposizione (i nemici ♦ e il caos ♣). Le meccaniche sono tra parentesi, i richiami alle regole nei riquadri.
 
 ### Scena 1 — La cella (Innesco)
 
 *Posta: tirare fuori Skunk prima del trasferimento; se va male, escono braccati e con mezzo distretto alle calcagna.*
 
-All'asta Paola gioca coperto un 6♥, Omar un 4♣: iniziativa ai Protagonisti, che inquadrano la scena sulla prima difficoltà decisa nel pitch.
+All'asta Paola gioca coperto un 6♥, Omar un 4♣: iniziativa ai Protagonisti.
 
 > Il 6♥ di Paola resta da parte e sarà la sua **ultima giocata** del round; il 4♣ di Omar **torna nella sua mano** (§11).
 
-Il round, giocata per giocata:
+Il round: Paola apre con **8♥** (un messaggio dalla cella al secondino), Omar mette **7♦** (il trasferimento anticipato a stanotte), Paola cala **3♠** (Frank entra dal retro). Omar prende 7♦ + 3♠ col **10♦** (presa, §16): il sergente corrotto dà l'allarme. Paola gioca **5♠**, Omar **4♣** (l'allarme antincendio), Paola la carta d'asta **6♥** (la faccia di Skunk convince due detenuti). Omar chiude prendendo il 5♠ col **5♣**.
 
-1. Paola gioca **8♥** nel piatto: Skunk, dalla cella, fa arrivare un messaggio al secondino che gli deve un favore.
-2. Omar risponde **7♦**: nel registro della centrale il trasferimento viene anticipato a stanotte.
-3. Paola gioca **3♠**: Frank entra dal retro con il passo di chi ha ancora il distintivo.
-4. Omar cala il **10♦** e prende 7♦ + 3♠ (7 + 3 = 10): il sergente corrotto riconosce Frank e dà l'allarme. Un successo dei nemici, con un costo.
-5. Paola gioca **5♠**: Frank forza l'uscita di servizio.
-6. Omar gioca **4♣**: l'allarme antincendio parte da solo e i corridoi si riempiono di gente.
-7. Paola chiude con la sua carta d'asta, il **6♥**: nel caos, è la faccia di Skunk a convincere due detenuti a coprirli.
-8. Omar prende il 5♠ col **5♣** (presa di pari valore, §16): una volante li ha visti uscire.
+Fine del round: nel piatto restano 8♥, 4♣ e 6♥. **Protagonisti 14, Opposizione 4**: la scena è loro, Skunk è fuori. Seme dominante ♥ — ne sono usciti con i favori e la parlantina di Skunk, non con la forza — e il diario del rapporto segna una salita (§27).
 
-Fine del round: nel piatto restano 8♥, 4♣ e 6♥. Si sommano i valori per lato: **Protagonisti 14, Opposizione 4**. La scena è dei Protagonisti: Skunk è fuori. Seme dominante ♥: ne sono usciti con i favori e le parlantine di Skunk, non con la forza, e il diario del rapporto segna una salita (§27).
-
-> **Il piatto resta sul tavolo** (§18): 8♥, 4♣ e 6♥ aspettano la prossima scena. E si noti l'economia: Omar ha vinto solo 4 punti di piatto ma ha già 4 carte prese, che al mercato valgono.
+> **Economia (§17, v1.3):** le carte catturate (7♦, 3♠, 5♠) vanno subito negli **scarti comuni**; Omar tiene in verticale solo le due carte con cui ha preso, il 10♦ e il 5♣: due marcatori di presa, **2 punti** al mercato. **Il piatto resta sul tavolo** (§18): 8♥, 4♣, 6♥ aspettano la scena 2.
 
 ### Scena 2 — La statale (Adattamento)
 
 *Posta: sparire verso ovest; se va male, i sicari agganciano la loro traccia.*
 
-Asta: Paola rischia poco con un 3♥, Omar piazza un 10♣ e prende l'iniziativa. Il viaggio comincia in salita.
+Asta: 4♠ contro 5♦, iniziativa all'Opposizione. Omar apre prendendo l'8♥ con l'**8♦** e subito **spunta la risposta ♦ del pitch** "la rete di poliziotti corrotti e i due sicari pazienti": due uomini in giacca scura scendono dal SUV davanti al diner.
 
-Le giocate chiave: Omar apre con **5♦** (un posto di blocco sulla statale), Paola butta nel piatto il 3♥ tornato in mano. Poi la mossa del round: Omar prende l'8♥ con l'**8♦** e **spunta la risposta ♦ del pitch** "la rete di poliziotti corrotti e i due sicari pazienti", narrando i due uomini in giacca scura che scendono dal SUV davanti al diner.
+> **Spinta del pitch (§9.8, scopa vera):** la risposta entra in narrazione e la presa diventa una **scopa che svuota il piatto** — 4♣ e 6♥ finiscono negli scarti comuni. L'8♦ va in orizzontale tra le scope di Omar: **3 punti**. Quella risposta ♦ è ora spuntata: Omar non potrà usare un'altra spinta ♦ per tutta la partita.
 
-> **Spinta del pitch** (§9.8): la risposta entra esplicitamente in narrazione, quindi la presa diventa una **finta scopa**. L'8♦ va nel mazzetto delle scope di Omar (varrà al mercato e nel tie-break) ma il piatto non viene toccato. Quella risposta ora è spuntata: non si può riusare, e Omar non potrà usare un'altra spinta ♦ per tutta la partita.
+Segue un lungo tira e molla: Paola semina 3♥ e 4♥, Omar 9♣ e 10♣; Paola prende il 9♣ col **9♥**, Omar cala il 5♦ d'asta, Paola chiude prendendo il 4♥ col **4♠**. Resta nel piatto 3♥, 10♣, 5♦: **3 a 15**, scena all'Opposizione. Dominante ♣: a fermarli è stata la tempesta, non i sicari. Eppure il diario sale — l'unico seme dei protagonisti rimasto sul tavolo è un cuore.
 
-Seguono prese vere da entrambe le parti: Paola prende 5♦ + 4♥ col **9♥** (Skunk ottiene benzina e silenzio dal ragazzo che lavorava per Jorge), Omar chiude con la carta d'asta, il **10♣**, prendendo 4♣ + 6♥: la tempesta di sabbia inghiotte la corsia e li costringe a fermarsi. Conteggio: **7 a 9**, scena all'Opposizione. Dominante ♣: non sono stati i sicari a rallentarli, è stata la strada. Il diario scende.
+Al mercato Omar compra il **Fante di Quadri** (un informatore nel distretto): costa **4**, e paga con le sue due prese e la scopa appena fatta; i marcatori spesi vanno negli scarti comuni (§20).
 
-Al mercato Omar spende i suoi punti e compra il **Fante di Quadri** (un informatore dentro il distretto). Costa 8: paga con le carte prese, che finiscono nei suoi scarti (§20).
+> **Dopo la seconda scena il Jolly entra nel mazzo dei Protagonisti** (§22, v1.3): uno solo, mescolato tra le carte, e ce l'hanno solo loro. Da qui ogni pescata può portare in mano il compromesso.
 
 ### Scena 3 — Il deserto (Frattura)
 
 *Posta: attraversare il deserto interi; se va male, quello che non si sono detti esplode.*
 
-Asta: 9♠ contro 1♣, iniziativa ai Protagonisti. È la scena dei segreti: Paola prende l'1♦ con l'**1♠** e **spunta la risposta ♠** "Skunk non dice mai tutta la verità", trasformando la presa in finta scopa: nel silenzio del deserto Frank chiede a Skunk, per la prima volta a voce alta, che cosa non gli sta dicendo. La risposta non arriva, e l'1♠ va tra le scope di Paola.
+Asta: 9♠ contro 4♦, iniziativa ai Protagonisti. È la scena dei segreti: dopo che il piatto si gonfia (10♥, 1♦, 1♠, 3♦), Paola cala il **10♠**, prende quattro carte e **spunta la risposta ♠** "Skunk non dice mai tutta la verità": nel silenzio del deserto Frank chiede a voce alta cosa gli stia nascondendo.
 
-Il resto della scena è un corpo a corpo di prese piccole: Paola prende il 10♥ col **10♠**, Omar il 4♠ col **4♦**. Conteggio finale: **12 a 13**, ancora all'Opposizione, ancora con i ♣ dominanti. Due sconfitte di un soffio, e un diario che continua a scendere: la coppia si sta incrinando.
+> **Spinta del pitch (§9.8):** la presa diventa **scopa** e svuota il piatto. Il 10♠ va tra le scope di Paola (**3 punti**). Anche la ♠ è ora spuntata: niente più spinte ♠ per i Protagonisti.
 
-Al mercato comprano entrambi: Paola il **Fante di Cuori** (paga tappando la sua scopa: da 2 punti scende a 1, §20). Omar vorrebbe un secondo informatore nel distretto, ma il Fante di Quadri non c'è più:
+Si chiude con due giocate piccole; resta nel piatto 4♦, 9♠, 1♣: **9 a 5**, scena ai Protagonisti. Ma il seme dominante è ♠ e il diario **scende**: hanno vinto con la durezza di Frank, e qualcosa tra loro si incrina.
 
-> **Copia unica** (§20): ogni figura di ciascun seme esiste in una sola copia. Omar ripiega sul **Fante di Fiori**, che però finirà in riserva senza mai entrare in gioco: anche al mercato le scelte hanno un costo.
+Al mercato Paola compra il **Fante di Cuori** (costo 4): il contatto di Skunk dentro la sicurezza dell'aeroporto.
 
-E a fine mercato succede la cosa importante:
-
-> **Dopo la terza scena i Jolly entrano nei mazzi** (§22), uno per lato, mescolati tra le carte. Da qui in avanti ogni pescata può portare in mano il compromesso morale.
+> **Una figura per tipo (§21, v1.3):** comprato il loro Fante, i Protagonisti non potranno comprarne un altro per tutta la partita — un solo Fante, una sola Regina, un solo Re a testa.
 
 ### Scena 4 — L'ultima notte (Crisi)
 
-Le mani pescate parlano chiaro: tutti e due i Jolly sono usciti subito. Asta: 5♥ contro 9♦, iniziativa all'Opposizione (il Jolly non può fare l'asta, §22.2).
+Asta: 6♠ contro 8♣, iniziativa all'Opposizione. Sul tavolo i 4♦, 9♠, 1♣ rimasti.
 
-Omar apre la scena calando subito il **Jolly dichiarato come 10** per prendere 9♣ + 1♣ dal piatto: un testimone comprato giura di aver visto Frank e Skunk dall'altra parte della contea, e i federali abboccano. Ma la schermata passa a Paola, che ha il proprio Jolly in mano:
+È un round di prese fitte: Paola prende col **5♥** (4♦ + 1♣) e col **6♠** (6♦), Omar ribatte con l'**8♣** d'asta (2♦ + 6♣). Ma alla fine sul tavolo restano solo picche pesanti: 9♠, 7♠, 8♠. Conteggio **24 a 0**, scena ai Protagonisti, dominante ♠: continuano a vincere, ma con le maniere forti, e il diario scende di nuovo.
 
-> **Counter** (§22.5): Paola lo rivela e smaschera la mossa. Skunk fiuta la trappola al volo, è il suo mestiere: il testimone crolla in tre domande. Paola prende **tutte e cinque le carte del piatto** come prese, ed **entrambi i Jolly escono dal gioco**. La giocata di Omar è consumata: il suo round prosegue con una carta in meno, esattamente come quello di Paola.
-
-È il colpo grosso dei Protagonisti: cinque carte prese in un colpo solo. Ma il piatto ora è vuoto, e nel resto del round nessuno riesce più a prendere: sei giocate finiscono tutte nel piatto, e l'ultima è il 9♦ d'asta di Omar. Conteggio: **19 a 22**. L'Opposizione vince anche la Crisi, e stavolta il seme dominante è ♠: è la durezza di Frank, ormai fuori controllo, a peggiorare le cose. Terza discesa consecutiva del diario.
+> Quel piatto da 24 (tutto ♠) **resta sul tavolo** per la Risoluzione: sarà la base ricchissima del conteggio finale. Prima dell'ultima scena: il **mercato** (nessuno compra) e poi la **mano estesa** (§23) — ognuno prende le carte rimaste, ne tiene 4, mette il resto in riserva per i colpi di scena. E nella mano di Paola, finalmente, c'è il **Jolly**.
 
 ### Scena 5 — La pista (Risoluzione)
 
-Prima dell'ultima scena, la **mano estesa** (§23): nei mazzi restano poche carte, ognuno le prende tutte, ne tiene 4 e mette il resto in riserva per i colpi di scena. Paola tiene 7♥, 2♥, 1♥ e il **Fante di Cuori**; Omar tiene 2♦, 2♣, 6♦ e il **Fante di Quadri** (il Fante di Fiori va in riserva).
+*Posta: il meeting; se va male, il jet riparte con Vargas a bordo.*
 
-Asta: Paola punta tutto e gioca coperto il Fante di Cuori, che vale 8; Omar tiene basso con un 2♣. Iniziativa ai Protagonisti: il jet è a terra, il meeting è cominciato, e stavolta sono loro a muovere per primi. Il Fante resta da parte: sarà l'ultima giocata di Paola.
+Asta: 7♥ contro 9♦, iniziativa all'Opposizione. Sul tavolo già 9♠, 7♠, 8♠. Omar apre calando il suo **Fante di Quadri** nel piatto: l'informatore del distretto si piazza al cancello. Paola risponde con la mossa sleale: gioca il **Jolly dichiarato come 9** e prende il 9♠.
 
-Il round è una guerra di logoramento sul piatto più ricco della partita. Paola semina carte piccole (1♥, 2♥), Omar risponde con prese chirurgiche: il 6♣ col **6♦**, e poi l'8♠ col suo **Fante di Quadri** (le figure prendono col loro valore, §21: il Fante vale 8). Paola prende il 7♣ col **7♥**. Poi la sua ultima giocata, la carta d'asta: il **Fante di Cuori finisce nel piatto**. Il contatto di Skunk si presenta al cancello della pista, e lì resta: a mazzi ormai vuoti, il suo effetto di pesca non ha più nulla da guardare, ma il suo peso si farà sentire. Omar chiude prendendo il 2♦ col 2♣.
+> **Il Jolly (§22, v1.3):** un successo ottenuto contro i principi e la lealtà. Paola si porta via una picche pesante dal tavolo, ma **il punto della presa va a Omar**: il vantaggio è suo, il punto all'avversario. Frank fa quello che si era giurato di non rifare più.
 
-**Primo conteggio** (§24), l'esito apparente, con sei carte sul tavolo: 5♥, 6♠, 9♦, 1♥, 2♥ e il Fante di Cuori. **Protagonisti 22, Opposizione 9**: Vargas sembra in trappola, il piano dei Protagonisti ha funzionato.
+Il round prosegue: Omar prende col **3♣** (2♣ + 1♥), Paola chiude prendendo il 7♠ col **7♥**.
 
-Ma i colpi di scena li inizia chi sta perdendo. Omar pesca dalla riserva un 3♣ e sostituisce il 5♥: il furgone dei rinforzi che Skunk aveva chiamato si ferma a tre chilometri, impantanato nella sabbia. Ora è **17 a 12** e il portello del jet si sta chiudendo. Paola risponde dalla riserva: un 2♠ al posto del 9♦. Il capo della sicurezza che teneva la pista? Frank lo conosce, è uno dei corrotti del suo vecchio caso: gli basta una frase a mezza voce per farlo sparire nel buio. **19 a 3.** Omar guarda la riserva e passa: non gli restano carte abbastanza basse da cambiare le cose.
+**Primo conteggio** (§24), l'esito apparente, con quattro carte sul tavolo: 8♠, il Fante di Quadri, 2♥ e 9♦. **Opposizione 18, Protagonisti 10**: con due figure pesanti dei nemici sul tavolo, il jet sembra pronto a ripartire.
 
-> **Colpo di scena** (§24): sostituisce una carta avversaria nel piatto con una propria di valore pari o inferiore, narrando come le cose non fossero come apparivano. Ci si alterna finché qualcuno passa, e le carte sostituite vanno negli scarti del proprietario.
+Ma i colpi di scena li inizia chi perde, e i Protagonisti hanno la riserva piena. Paola cala il **Fante di Cuori** ed **elimina il Fante di Quadri** (valore pari, ≤): il contatto di Skunk smaschera l'informatore corrotto. Omar risponde col **7♣** ed elimina il 2♥. Ma Paola non si ferma: l'**8♥** spazza via il 7♣, il **10♥** elimina il 9♦, e poi mette in gioco anche **2♠** e **3♠** — la riserva dell'Opposizione è già esaurita.
+
+> **Colpi di scena (§24, v1.3):** finché si ha riserva, si gioca **obbligatoriamente**; ogni carta entra nel piatto e può **eliminare** una carta avversaria di valore pari o inferiore (la tua resta sul tavolo, l'altra va negli scarti). Si finisce quando entrambe le riserve sono vuote.
 
 ### Il finale
 
-Conteggio definitivo del piatto: **Protagonisti 19, Opposizione 3**. Il piatto è dei Protagonisti: l'esito esterno della missione è un successo, Vargas viene ammanettato sulla pista con i boss locali come testimoni involontari. E a fare la differenza è il Fante di Cuori rimasto in campo: 8 dei 19 punti sono i suoi.
+Conteggio definitivo: sul tavolo 8♠, Fante di Cuori, 8♥, 10♥, 2♠, 3♠. **Protagonisti 39, Opposizione 0.** Il piatto è schiacciante: Vargas viene ammanettato sulla pista, con i boss locali come testimoni involontari.
 
-Poi i punti complessivi (§26), scope più prese: Paola ha una scopa tappata (1 punto) e 7 prese, totale **8**; Omar ha una scopa tappata e 6 prese, totale **7**. Piatto vinto e punti vinti: è **Vittoria Totale**, ma ai punti per un solo voto di scarto. Senza le cinque carte del counter in scena 4, l'esito esterno sarebbe stato lo stesso ma i punti no: sarebbe stata una vittoria per il rotto della cuffia.
+Poi i punti complessivi (§26): presa = 1, scopa = 3. Ma le due scope fatte con le spinte sono finite **entrambe al mercato** (spese per comprare i due Fanti), così restano solo le prese non spese: **Protagonisti 3, Opposizione 3**. Piatto stravinto e punti in pareggio: è **Vittoria Totale**.
 
-Resta la lettura del diario (§27), che corregge il trionfo: salita nella cella, poi tre discese di fila, e di nuovo salita davanti al jet, con i Cuori dominanti nell'ultima scena. Frank e Skunk si sono incrinati per tutto il viaggio e si sono ritrovati solo alla fine, quando contava. E nell'ultimo piatto la natura dell'opposizione parla chiaro: Quadri a 0, Fiori a 3. Alla resa dei conti i sicari non c'erano più; l'unica cosa che ha quasi fermato i Protagonisti è stata la sfortuna.
+> **Nota (§22):** uno dei 3 punti dell'Opposizione è proprio quello che Paola le ha **regalato col Jolly**. Il vantaggio sul tavolo è stato dei Protagonisti; quel punto, no.
 
-> Questa è la lezione finale della partita: **vincere le scene e vincere la partita sono due cose diverse**. L'Opposizione ha vinto quattro scene su cinque e ha perso tutto; i Protagonisti hanno passato il viaggio a incassare, e hanno chiuso i conti quando contava.
+Resta la lettura del diario (§27): **su, su, giù, giù, su**. Salita nella cella e sulla statale, poi due discese nel deserto e nell'ultima notte, e di nuovo salita davanti al jet. Frank e Skunk hanno rischiato di perdersi a metà strada — vincendo con la durezza — e si sono ritrovati solo alla fine. E nell'ultimo piatto la natura dell'opposizione parla chiaro: ♦ e ♣ a 0. Alla resa dei conti né i sicari né il caos li hanno fermati: a un passo dal traguardo, l'unico vero pericolo era la scorciatoia di Frank.
+
+> La lezione della partita: si può **stravincere sul tavolo e pagare comunque un prezzo**. I Protagonisti hanno dominato quattro scene su cinque, ma il diario ricorda quanto sono stati vicini a spezzarsi — e il punto regalato col Jolly resta lì, a dire che certi vantaggi si pagano.
 
 ---
 
