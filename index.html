@@ -1108,14 +1108,14 @@ function rApertura(){
   const rec=G.scene[G.scena];
   SC.innerHTML = `
     <h2 class="ts">Scena ${G.scena+1} — ${FASI_NARR[G.scena]}</h2>
-    <p class="sotto">${nomeLato(G.attore)} ha l'iniziativa: dà il titolo alla scena e ne dichiara la posta.</p>
+    <p class="sotto">${nomeLato(G.attore)} ha l'iniziativa: dichiara la posta della scena e le dà un titolo.</p>
     <div class="lettura" style="margin-bottom:12px">${rec.ambiente}</div>
     ${G.scena===0&&G.primaDiff?`<div class="lettura" style="margin-bottom:12px"><b>La prima difficoltà (decisa nel pitch):</b> ${G.primaDiff}</div>`:""}
     <div class="pannello">
-      <span class="etichetta">Titolo della scena</span>
+      <span class="etichetta">La posta della scena</span>
+      <textarea id="a-posta" placeholder="Cosa vogliono ottenere i protagonisti in questa scena? Cosa succede se non riescono?">${rec.posta}</textarea>
+      <span class="etichetta" style="margin-top:10px">Titolo della scena</span>
       <input type="text" id="a-titolo" value="${rec.titolo}">
-      <span class="etichetta" style="margin-top:10px">La posta — cosa succede se va male</span>
-      <textarea id="a-posta">${rec.posta}</textarea>
     </div>
     ${G.piatto.length?`<div class="banner">Nel piatto restano ${G.piatto.length} carte dalla scena precedente: chi apre può già fare presa o scopa.</div>`:""}
     <button class="azione" id="a-via">Apri la scena</button>`;
