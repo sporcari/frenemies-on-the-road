@@ -2563,7 +2563,7 @@ MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Con i punti compr
 
 JOLLY: un solo Jolly, solo nel mazzo dei Protagonisti, entra dopo la 2ª scena. Tu non lo possiedi mai. Chi lo gioca dichiara il valore e cattura, ma il marcatore va all'AVVERSARIO (presa 1, scopa 3 all'altro lato): se i Protagonisti lo usano, quel punto va a te. Si narra come un vantaggio ottenuto contro i propri principi.
 
-RISORSE DEL PITCH (spinte): dopo una presa normale puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e le carte rimaste nel piatto finiscono tra le tue prese. La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola; massimo una spinta per seme per lato; VIETATA nell'ultima scena.
+RISORSE DEL PITCH (spinte): sono otto, due per seme (le tue sono ♦ e ♣). Dopo una presa normale puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e le carte rimaste nel piatto finiscono tra le tue prese. La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola; massimo una spinta per seme per lato; VIETATA nell'ultima scena. (I tratti "cosa i protagonisti si detestano" sono solo narrativi, non spinte.)
 
 QUINTA SCENA: la mano finale si sceglie dopo il mercato; le carte oltre le 4 vanno in RISERVA. Le figure lasciate nel piatto a inizio ultima scena vengono neutralizzate. Dopo il primo conteggio si gioca a COLPI DI SCENA: a turni alterni (inizia chi sta perdendo) cali una carta dalla riserva, che entra nel piatto e può eliminare una carta di seme avversario di valore pari o inferiore (finisce negli scarti; la tua resta). Finché hai riserva devi giocare. Poi il conteggio definitivo decide l'esito della missione.
 
@@ -2574,14 +2574,17 @@ NARRAZIONE: quando narri sei il mondo che rema contro i protagonisti. ♦ = nemi
 function setupPerIA(){
   // parte STATICA per partita (va nel blocco system cacheato: deve restare byte-identica)
   const P=G.pers||{A:{},B:{}};
-  const pitch=G.pitch.map(p=>(p.risposta&&p.risposta.trim())?`${SIMBOLI[p.seme]} ${p.risposta.trim()}`:"").filter(Boolean).join("\n");
+  const detA=((G.pitch[0]||{}).risposta||"").trim(), detB=((G.pitch[1]||{}).risposta||"").trim();
+  // solo le risposte spuntabili (le 8 spinte); i due "detesta" sono tratti dei protagonisti, non spinte
+  const spinte=G.pitch.map((p,i)=>({p,i})).filter(({i})=>PITCH_TEMPLATE[i].spinta!==false)
+    .map(({p})=>(p.risposta&&p.risposta.trim())?`${SIMBOLI[p.seme]} ${p.risposta.trim()}`:"").filter(Boolean).join("\n");
   return `LA PARTITA. Missione dei Protagonisti: ${G.missione||"-"}.
 Tono: ${G.tono||"-"}.
-Protagonisti: ${P.A.nome||"P1"} ♠ ${(P.A.desc||"").trim()} | ${P.B.nome||"P2"} ♥ ${(P.B.desc||"").trim()}.
+Protagonisti: ${P.A.nome||"P1"} ♠ ${(P.A.desc||"").trim()}${detA?` (detesta dell'altro: ${detA})`:""} | ${P.B.nome||"P2"} ♥ ${(P.B.desc||"").trim()}${detB?` (detesta dell'altro: ${detB})`:""}.
 Opposizione: nemici ♦ ${G.nemici||"-"}; caos ♣ ${G.caos||"-"}.
 La prima difficoltà (inquadra la scena 1): ${G.primaDiff||"-"}.
-Risorse del pitch (fiction condivisa):
-${pitch||"-"}`;
+Spinte del pitch (risorse spuntabili, fiction condivisa):
+${spinte||"-"}`;
 }
 function statoPerIA(){
   // parte DINAMICA per chiamata (va nel messaggio user)
