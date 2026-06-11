@@ -27,6 +27,8 @@ async function main(){
 
     // modali figura: se è dell'umano (P), conferma; se è dell'IA ci pensa lo scheduler
     if(mod()){
+      const ck=document.getElementById("ckOk");
+      if(ck){ click(ck); await dorme(20); continue; }   // prompt setup Claude (modello + chiave) → Inizia, senza chiave
       if(G().attore==="P") click(document.getElementById("fanteOk")||document.getElementById("reNo"));
       await dorme(30); continue;
     }
