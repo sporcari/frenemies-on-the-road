@@ -62,7 +62,12 @@ async function main(){
     }
     if(f==="narrazione"){
       const latoNarr=G().narrLato||G().attore;
-      if(latoNarr==="P"){ click(document.getElementById("narrOk")); await dorme(20); continue }
+      if(latoNarr==="P"){
+        // in solo la narrazione umana è obbligatoria: scrivo nel campo, poi confermo
+        const ni=document.getElementById("narrInput");
+        if(ni){ ni.value="Frank e Skunk tirano dritto nella notte."; ni.dispatchEvent(new window.Event("input",{bubbles:true})); }
+        click(document.getElementById("narrOk")); await dorme(20); continue;
+      }
       // narrazione dell'IA: aspetta l'iniezione del testo, poi conferma come farebbe l'umano
       const n=document.getElementById("iaNarr");
       if(n){ narrazioniIA++; click(document.getElementById("narrOk")); }
@@ -104,7 +109,11 @@ async function main(){
       console.log("narrazioni IA mostrate:", narrazioniIA, "| modalita:", g.modalita, "| nomi O:", g.nomi.O);
       if(g.modalita!=="solo") { console.error("FALLITO: modalita errata"); process.exit(1) }
       if(narrazioniIA===0) { console.error("FALLITO: nessuna narrazione IA iniettata"); process.exit(1) }
-      console.log("modalità solo OK (tutti i fallback esercitati)");
+      const storiaP=g.storia.filter(v=>v.lato==="P").length, storiaO=g.storia.filter(v=>v.lato==="O").length;
+      console.log("log narrativo:", g.storia.length, "voci (P:"+storiaP+" O:"+storiaO+")");
+      if(storiaP===0) { console.error("FALLITO: nessuna narrazione umana registrata nel log"); process.exit(1) }
+      if(storiaO===0) { console.error("FALLITO: nessuna narrazione di Claude registrata nel log"); process.exit(1) }
+      console.log("modalità solo OK (tutti i fallback esercitati, log narrativo popolato)");
       process.exit(0);
     }
     await dorme(40); // tocca all'IA: lasciale il tempo di agire
