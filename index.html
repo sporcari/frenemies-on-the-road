@@ -36,8 +36,12 @@ header h1 .amp{color:var(--mezzeria)}
 .hbtns{display:flex;gap:8px}
 .hbtns button{background:var(--notte);border:1px solid var(--bordo);border-radius:8px;color:var(--osso);font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:7px 10px;cursor:pointer}
 
-main{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(16px*var(--k,1));display:flex;flex-direction:column}
+#corpo{flex:1 1 auto;display:flex;min-height:0}
+main{flex:1 1 auto;min-width:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(16px*var(--k,1));display:flex;flex-direction:column}
 #scena-corrente{max-width:980px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column}
+#storiaCol{flex:0 0 clamp(220px,24vw,320px);border-left:1px solid var(--bordo);background:var(--notte);overflow-y:auto;display:none}
+#storiaCol.attivo{display:block}
+@media(max-width:720px){#storiaCol.attivo{flex-basis:190px}}
 
 h2.ts{font-family:'Oswald',sans-serif;font-weight:600;font-size:max(16px,calc(21px*var(--k,1)));letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
 p.sotto{color:var(--grigio);font-size:max(12px,calc(14px*var(--k,1)));margin-bottom:calc(14px*var(--k,1))}
@@ -162,6 +166,16 @@ button.secondaria{
 .fig-riga .desc small{display:block;color:var(--grigio);font-size:11.5px}
 .fig-esaurita{opacity:.45;padding:0 6px;align-self:center}
 .ia-nascosta{display:none}
+#storiaLog{padding:12px 14px}
+#storiaLog .lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mezzeria);display:block;margin-bottom:8px;position:sticky;top:0;background:var(--notte);padding:2px 0 6px}
+#storiaLog .sc{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--grigio);margin:10px 0 5px;border-top:1px dashed var(--bordo);padding-top:7px}
+#storiaLog .voce{margin-bottom:10px}
+#storiaLog .voce-bar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:3px 8px;border-left:3px solid var(--mezzeria);background:rgba(255,255,255,.04);border-radius:6px 6px 0 0}
+#storiaLog .voce-bar .chi{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.5px;font-size:12px}
+#storiaLog .voce-bar .carta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--osso)}
+#storiaLog .voce-bar .mossa{margin-left:auto;font-size:10.5px;color:var(--grigio);white-space:nowrap}
+#storiaLog .voce-testo{font-size:13px;line-height:1.45;padding:5px 9px;border-left:3px solid var(--bordo)}
+#storiaLog .vuoto{color:var(--grigio);font-style:italic;font-size:12px}
 #iaBadge{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:#1a1206;color:var(--mezzeria);border:1px solid var(--mezzeria);border-radius:20px;padding:7px 16px;font-size:13px;z-index:60;display:none;letter-spacing:.5px}
 .compra{display:flex;gap:6px}
 .compra button{background:var(--notte);border:1px solid var(--mezzeria);border-radius:8px;color:var(--osso);font-size:15px;padding:7px 11px;cursor:pointer}
@@ -201,7 +215,10 @@ button.secondaria{
     <button id="btnSalva">Salva</button>
   </div>
 </header>
+<div id="corpo">
 <main><div id="scena-corrente"></div></main>
+<aside id="storiaCol"><div id="storiaLog"></div></aside>
+</div>
 </div>
 
 <div id="iaBadge">🃏 Claude sta tramando…</div>
@@ -240,6 +257,7 @@ button.secondaria{
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <button class="secondaria" id="btnEsporta">Esporta partita</button>
       <button class="secondaria" id="btnImporta">Importa partita</button>
+      <button class="secondaria" id="btnPlayset">Salva come playset</button>
       <button class="secondaria" id="btnNuova">Nuova partita</button>
     </div>
     <textarea id="areaDati" rows="5" placeholder="Incolla qui una partita esportata, poi tocca Importa."></textarea>
@@ -373,6 +391,39 @@ const MISSIONI=[
   "Portare il testimone scomodo dall'altra parte degli Stati Uniti PRIMA che qualcuno lo trovi — senza volare, senza lasciare tracce",
   "Raggiungere la figlia che ha tagliato i ponti, attraverso tutto il paese, PRIMA che parta per un posto da cui non si torna"
 ];
+// Playset pronti, incorporati. Formato di scambio (file .json) e import/export: vedi caricaPlaysetObj/esportaPlaysetFile.
+// pitch = 10 risposte nell'ordine di PITCH_TEMPLATE; scene = titolo/posta pre-suggeriti per le 5 scene (opzionale).
+const PLAYSET=[
+  {
+    nome:"Frank, Skunk e il jet di Vargas",
+    tono:"Action",
+    missione:"Entro 36 ore Vargas atterrerà con un jet privato dalla Colombia su una pista segreta del New Mexico per un meeting con i boss locali, e ripartirà: una volta decollato, nessuna estradizione lo riporterà davanti a un giudice. Arrivare alla pista e farlo arrestare in flagranza prima del decollo.",
+    primaDiff:"Skunk è in cella: i poliziotti corrotti lo hanno arrestato con un pretesto per consegnarlo agli uomini di Vargas dentro la prigione, dove un coltello costa poco e nessuno fa domande. Bisogna tirarlo fuori prima che qualcuno arrivi a lui.",
+    persA:{nome:"Frank", desc:"Ex poliziotto sospeso per eccesso di forza. Cinico, metodico, conosce il distretto come le sue tasche. Si è fatto terra bruciata attorno: senza distintivo, senza colleghi, senza coperture."},
+    persB:{nome:"Skunk", desc:"Suo ex informatore. Truffatore, ricettatore, intrallazzone dei bassifondi: sopravvive di chiacchiere, favori e bugie. Sa dove atterra Vargas dall'ultima telefonata del fratello Jorge, e non lo rivela: è la sua assicurazione sulla vita."},
+    nemici:"L'organizzazione di Vargas: una rete di poliziotti corrotti dentro il distretto e una coppia di sicari pazienti che non hanno fretta.",
+    caos:"La tempesta di sabbia in arrivo, un'auto con trecentomila chilometri, la sfortuna delle contee sbagliate.",
+    pitch:[
+      "Non dice mai tutta la verità, nemmeno quando gli converrebbe; ogni cosa che tocca diventa un traffico.",
+      "Lo ha spremuto per anni come informatore e scaricato quando non serviva più; lo tratta ancora come una spia, mai come un socio.",
+      "Un arresto in flagranza di Vargas è l'unica cosa che può ridargli il distintivo e dimostrare che su di lui si sbagliavano tutti.",
+      "Vargas ha fatto uccidere suo fratello Jorge; non gli interessa il processo, gli interessa vederlo cadere.",
+      "Conosce ogni strada secondaria del distretto e sa quali colleghi sono sul libro paga di Vargas.",
+      "Con una telefonata procura qualsiasi cosa: un'auto pulita, dei documenti, un tetto per la notte, un silenzio.",
+      "La rete di poliziotti corrotti dentro il distretto e i due sicari che non hanno fretta.",
+      "Quel meeting è il momento di massima esposizione della vita di Vargas. Se qualcuno sa della pista, va trovato e zittito prima che il jet tocchi terra.",
+      "La tempesta di sabbia che chiude la statale, un'auto con trecentomila chilometri nel deserto, posti di blocco a sorpresa nelle contee sbagliate.",
+      "Jorge è stato ucciso al posto di Skunk, perché la spia era lui. E Frank non lo sa."
+    ],
+    scene:[
+      {titolo:"La cella", posta:"Tirare fuori Skunk prima del trasferimento: se va male, escono braccati e con mezzo distretto alle calcagna"},
+      {titolo:"La statale", posta:"Sparire verso ovest: se va male, i sicari agganciano la loro traccia"},
+      {titolo:"Il deserto", posta:"Attraversare il deserto interi: se va male, quello che non si sono detti esplode"},
+      {titolo:"L'ultima notte", posta:"Arrivare in vista della pista: se va male, qualcuno li sta già aspettando"},
+      {titolo:"La pista", posta:"Il meeting: se va male, il jet riparte con Vargas a bordo"}
+    ]
+  }
+];
 
 /* ---------------- stato ---------------- */
 let idc = 0;
@@ -404,6 +455,7 @@ function nuovaPartita(){
     spinte:{P:{},O:{}},
     colpi:null,
     nemici:"", caos:"",
+    oppGenerata:false, oppTentata:false,   // solo vs Claude: l'Opposizione (nemici/caos/pitch ♦♣) la compila Claude
     rivela:null, neutralizzati:null, narrLato:null, mercatoLato:null,
     lati:{ P:nuovoLato("P","Protagonisti",["cuori","picche"]),
            O:nuovoLato("O","Opposizione",["quadri","fiori"]) },
@@ -417,6 +469,7 @@ function nuovaPartita(){
     jollyEntrato:false, jollyIntroVisto:false, figureComprate:[],
     png:{},                // metadati PNG-figura acquistati: chiave "<fig><seme>" -> {nome, desc}
     pngNarr:[],            // PNG narrativi creati in narrazione: {seme, nome, desc, scena}
+    storia:[],             // log narrativo (solo vs Claude): {scena, lato, testo} in ordine; fonte per storiaTestoIA
     epilogo:""
   };
 }
@@ -673,6 +726,9 @@ function render(){
     nota.textContent=`In attesa di ${nomeLato(latoCheAgisce())}…`;
     SC.appendChild(nota);
   }
+  aggiornaStoriaLog(f);
+  if(G.modalita==="solo" && f==="setup" && G.passo===5 && !G.oppGenerata && !G.oppTentata && !oppGenInCorso && (claudeKey||inArtefatto()))
+    setTimeout(generaOpposizioneIA, 60);   // al passo Opposizione, Claude la definisce da sé
   if(G.modalita==="solo") setTimeout(iaScheduler, 60);
 }
 function aggiornaHeader(){
@@ -720,14 +776,12 @@ function rModalita(){
     <div class="pannello" style="cursor:pointer" id="md-solo">
       <span class="etichetta">Un giocatore</span>
       <b style="font-family:'Oswald',sans-serif;font-size:18px;letter-spacing:1px">CONTRO CLAUDE</b>
-      <div style="font-size:13.5px;color:var(--grigio)">Tu guidi i Protagonisti ♥♠, Claude gioca e narra l'Opposizione ♦♣. Richiede la connessione (funziona dentro Claude.ai).</div>
+      <div style="font-size:13.5px;color:var(--grigio)">Tu guidi i Protagonisti ♥♠, Claude gioca e narra l'Opposizione ♦♣.</div>
     </div>`;
   document.getElementById("md-locale").addEventListener("click",()=>{
     G.modalita="locale"; G.fase="setup"; render();
   });
-  document.getElementById("md-solo").addEventListener("click",()=>{
-    G.modalita="solo"; G.nGiocatori=2; G.nomi.O="Claude"; G.fase="setup"; render();
-  });
+  document.getElementById("md-solo").addEventListener("click",()=>chiediSetupClaude(true));   // prompt: modello + chiave, poi avvia
   document.getElementById("md-online").addEventListener("click",()=>{
     G.modalita="online"; G.fase="lobby"; render();
   });
@@ -810,6 +864,80 @@ function salvaCampi(){
   const ne=g("w-nemici"); if(ne!==null) G.nemici=ne;
   const ca=g("w-caos"); if(ca!==null) G.caos=ca;
 }
+function caricaPlaysetObj(ps){
+  // tollerante al formato di scambio (.json) e a quello compatto incorporato
+  if(!ps || typeof ps!=="object"){ alert("Playset non valido."); return; }
+  const pers = ps.pers || {A:ps.persA, B:ps.persB};
+  if(ps.tono!=null) G.tono=ps.tono;
+  if(ps.missione!=null) G.missione=ps.missione;
+  if(ps.primaDiff!=null) G.primaDiff=ps.primaDiff;
+  if(pers && pers.A){ G.pers.A.nome=pers.A.nome||""; G.pers.A.desc=pers.A.desc||""; }
+  if(pers && pers.B){ G.pers.B.nome=pers.B.nome||""; G.pers.B.desc=pers.B.desc||""; }
+  if(ps.nemici!=null) G.nemici=ps.nemici;
+  if(ps.caos!=null) G.caos=ps.caos;
+  if(Array.isArray(ps.pitch)) ps.pitch.forEach((r,k)=>{
+    if(!G.pitch[k]) return;
+    G.pitch[k].risposta = (typeof r==="string") ? r : (r&&r.risposta)||"";
+    G.pitch[k].usata = false;
+  });
+  // titolo/posta pre-suggeriti per le scene (geografia_scene del formato, o scene compatte)
+  const scene = ps.geografia_scene || ps.scene;
+  if(Array.isArray(scene)) scene.forEach((s,idx)=>{
+    const i = (typeof s.scena==="number") ? s.scena-1 : idx;
+    if(i<0 || i>4) return;
+    G.scene[i] = Object.assign(
+      {titolo:"",posta:"",iniziativa:null,ambiente:"",vincitore:null,dominante:null,rapporto:null,totP:0,totO:0,riassunto:""},
+      {titolo:s.titolo||"", posta:(s.posta||s.suggerimento_posta||"")});
+  });
+  if(G.nGiocatori!==2 && typeof ps.nGiocatori==="number" && G.modalita!=="solo") G.nGiocatori=ps.nGiocatori;
+  if(G.modalita==="solo"){ G.oppGenerata=true; G.oppTentata=false; }   // il playset fornisce già l'Opposizione: niente auto-generazione
+  if(G.fase==="setup") G.passo=PASSI_WIZ.length-1;   // salta al riepilogo per rivedere il pitch caricato
+  chiudiModale();
+  render();
+}
+function caricaPlayset(i){ caricaPlaysetObj(PLAYSET[i]); }
+function chiediPlayset(){
+  const lista=PLAYSET.map((p,i)=>`<button class="secondaria" data-ps="${i}" style="display:block;width:100%;text-align:left;margin-bottom:8px">📋 ${p.nome||p.playset||"Playset"} <span style="color:var(--grigio);font-size:12px">— ${p.tono||"tono libero"}</span></button>`).join("");
+  modale(`<h2 class="ts">Carica un playset</h2>
+    <p class="sotto">Un pitch pronto: missione, protagonisti, opposizione e le dieci risposte. Potrai comunque modificare ogni campo.</p>
+    ${lista}
+    <label class="secondaria" style="display:block;text-align:center;cursor:pointer;margin-bottom:8px">📁 Carica da file (.json)
+      <input type="file" id="ps-file" accept="application/json,.json" style="display:none"></label>
+    <div style="margin-top:8px"><button class="secondaria" id="psNo">Annulla</button></div>`);
+  document.getElementById("modaleCorpo").querySelectorAll("button[data-ps]").forEach(b=>
+    b.addEventListener("click",()=>caricaPlayset(parseInt(b.dataset.ps))));
+  const fileInp=document.getElementById("ps-file");
+  if(fileInp) fileInp.addEventListener("change",e=>{
+    const f=e.target.files&&e.target.files[0]; if(!f) return;
+    const rd=new FileReader();
+    rd.onload=()=>{ try{ caricaPlaysetObj(JSON.parse(rd.result)); }catch(err){ alert("File playset non leggibile: "+err.message); } };
+    rd.readAsText(f);
+  });
+  document.getElementById("psNo").addEventListener("click",chiudiModale);
+}
+function esportaPlaysetFile(){
+  // esporta il pitch corrente nel formato di scambio standard, come file .json scaricabile
+  const nA=G.pers.A.nome||"P1", nB=G.pers.B.nome||"P2";
+  const ps={
+    formato:1,
+    playset:nA+" & "+nB,
+    nGiocatori:G.nGiocatori,
+    tono:G.tono||"",
+    missione:G.missione||"",
+    primaDiff:G.primaDiff||"",
+    pers:{A:{nome:G.pers.A.nome,desc:G.pers.A.desc}, B:{nome:G.pers.B.nome,desc:G.pers.B.desc}},
+    nemici:G.nemici||"",
+    caos:G.caos||"",
+    pitch:G.pitch.map((p,i)=>({seme:p.seme, domanda:PITCH_TEMPLATE[i].q(nA,nB), risposta:p.risposta||""})),
+    geografia_scene:(G.scene||[]).map((s,i)=>(s&&(s.titolo||s.posta))?{scena:i+1, fase:FASI_NARR[i], titolo:s.titolo||"", suggerimento_posta:s.posta||""}:null).filter(Boolean)
+  };
+  const blob=new Blob([JSON.stringify(ps,null,2)],{type:"application/json"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download=(ps.playset.replace(/[^\w]+/g,"_").toLowerCase()||"playset")+".json";
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },0);
+}
 function rSetup(){
   const p=G.passo;
   const punti=PASSI_WIZ.map((_,i)=>
@@ -829,7 +957,9 @@ function rSetup(){
       la fiction: ogni presa è un successo parziale, ogni scopa una svolta, e a fine scena il piatto
       racconta chi ha deciso l'esito — e se i due si sono avvicinati o allontanati.<br><br>
       Alla fine non conta solo se ce la fanno. <b>Conta chi diventano lungo la strada.</b>
-    </div>`;
+    </div>
+    <button class="secondaria" id="w-playset" style="width:100%">📋 Carica un playset pronto</button>
+    <p class="sotto" style="margin-top:6px">Oppure prosegui e costruisci il tuo pitch passo per passo.</p>`;
 
   else if(p===1){
     const ng=G.nGiocatori;
@@ -919,6 +1049,10 @@ function rSetup(){
     const domandeHtml=(da,a)=>G.pitch.map((x,i)=>({x,i})).slice(da,a).map(({x,i})=>`
       <span class="etichetta" style="margin-top:10px">${SIMBOLI[x.seme]} ${PITCH_TEMPLATE[i].q(nA(),nB())}</span>
       <input type="text" id="w-pitch-${i}" value="${x.risposta.replace(/"/g,'&quot;')}">`).join("");
+    const domandeRO=(da,a)=>G.pitch.map((x,i)=>({x,i})).slice(da,a).map(({x,i})=>`
+      <span class="etichetta" style="margin-top:10px">${SIMBOLI[x.seme]} ${PITCH_TEMPLATE[i].q(nA(),nB())}</span>
+      <div class="lettura" style="margin-top:2px">${x.risposta||"—"}</div>`).join("");
+    const claudeOpp = G.modalita==="solo" && G.oppGenerata;   // le domande all'Opposizione le ha già scritte Claude
     const online=G.modalita==="online", sub=G.passoSub||0;
     const mostraP = !online || sub===0;   // domande sui protagonisti + prima difficoltà
     const mostraO = !online || sub===1;   // domande sull'opposizione
@@ -930,8 +1064,8 @@ function rSetup(){
       ${domandeHtml(0,6)}
     </div>`:""}
     ${mostraO?`<div class="pannello">
-      <span class="etichetta">All'Opposizione — poste dai Protagonisti</span>
-      ${domandeHtml(6,10)}
+      <span class="etichetta">All'Opposizione — ${claudeOpp?"definite da Claude":"poste dai Protagonisti"}</span>
+      ${claudeOpp?domandeRO(6,10):domandeHtml(6,10)}
     </div>`:""}
     ${mostraP?`<div class="pannello">
       <span class="etichetta">La prima difficoltà — risposta condivisa</span>
@@ -940,15 +1074,33 @@ function rSetup(){
     </div>`:""}`;
   }
 
-  else if(p===5) corpo=`
+  else if(p===5){
+    const canaleIA = claudeKey || inArtefatto();
+    const claudeAttivo = G.modalita==="solo" && canaleIA && !G.oppTentata;
+    let oppCorpo;
+    if(claudeAttivo && G.oppGenerata) oppCorpo=`
+      <div class="pannello">
+        <span class="etichetta">♦ I nemici organizzati (definiti da Claude)</span>
+        <div class="lettura">${G.nemici||"—"}</div>
+        <span class="etichetta" style="margin-top:10px">♣ Il caos (definito da Claude)</span>
+        <div class="lettura">${G.caos||"—"}</div>
+        <div style="margin-top:10px"><button class="secondaria" id="w-reopp">🃏 Reinventa</button></div>
+      </div>`;
+    else if(claudeAttivo) oppCorpo=`
+      <div class="pannello"><div class="lettura">🃏 Claude sta inventando l'Opposizione…</div></div>`;
+    else oppCorpo=`
+      <div class="pannello">
+        <span class="etichetta">♦ I nemici organizzati — chi li insegue, chi li ostacola con intenzione</span>
+        <textarea id="w-nemici" rows="2" placeholder="Forze dell'ordine, criminali, istituzioni…">${G.nemici}</textarea>
+        <span class="etichetta" style="margin-top:10px">♣ Il caos — la sfortuna, gli imprevisti, gli attriti che li perseguitano</span>
+        <textarea id="w-caos" rows="2" placeholder="Un'auto che non parte mai, il tempo che cambia, vecchi conti in sospeso…">${G.caos}</textarea>
+        ${G.modalita==="solo"&&canaleIA?`<div style="margin-top:10px"><button class="secondaria" id="w-reopp">🃏 Lascia decidere a Claude</button></div>`:""}
+      </div>`;
+    corpo=`
     <h2 class="ts">L'opposizione</h2>
-    <p class="sotto">Il mondo è sempre contro di voi — ma non sempre per gli stessi motivi.</p>
-    <div class="pannello">
-      <span class="etichetta">♦ I nemici organizzati — chi li insegue, chi li ostacola con intenzione</span>
-      <textarea id="w-nemici" rows="2" placeholder="Forze dell'ordine, criminali, istituzioni…">${G.nemici}</textarea>
-      <span class="etichetta" style="margin-top:10px">♣ Il caos — la sfortuna, gli imprevisti, gli attriti che li perseguitano</span>
-      <textarea id="w-caos" rows="2" placeholder="Un'auto che non parte mai, il tempo che cambia, vecchi conti in sospeso…">${G.caos}</textarea>
-    </div>`;
+    <p class="sotto">Il mondo è sempre contro di voi, ma non sempre per gli stessi motivi.</p>
+    ${oppCorpo}`;
+  }
 
   else corpo=`
     <h2 class="ts">Il pitch</h2>
@@ -983,6 +1135,7 @@ function rSetup(){
   if(p===2) SC.querySelectorAll("button[data-tono]").forEach(b=>b.addEventListener("click",()=>{
     G.tono=b.dataset.tono; render();
   }));
+  if(p===0) document.getElementById("w-playset").addEventListener("click", chiediPlayset);
   if(p===3) document.getElementById("w-ispMiss").addEventListener("click",()=>{
     document.getElementById("w-missione").value=caso(MISSIONI);
   });
@@ -991,6 +1144,8 @@ function rSetup(){
     document.getElementById("w-descA").value=a;
     document.getElementById("w-descB").value=b;
   });
+  const reopp=document.getElementById("w-reopp");
+  if(reopp) reopp.addEventListener("click",()=>{ salvaCampi(); G.oppGenerata=false; G.oppTentata=false; render(); });
   const online=G.modalita==="online";
   const av=document.getElementById("w-avanti");
   av.addEventListener("click",()=>{
@@ -1122,6 +1277,7 @@ function rApertura(){
   document.getElementById("a-via").addEventListener("click",()=>{
     rec.titolo=document.getElementById("a-titolo").value;
     rec.posta=document.getElementById("a-posta").value;
+    aggiungiStoria(G.attore, `Apertura: "${rec.titolo}". Posta: ${rec.posta}`, {tipo:"apertura"});
     G.fase="turno"; render();
   });
 }
@@ -1306,13 +1462,39 @@ function eseguiSpinta(idxPitch){
 }
 let narrDopo=null;
 function vaiNarrazione(c, tipo, dettagli, dopoNarrazione, suggOverride, narrLato){
-  G.narr={html:c?cartaHTML(c):"", tipo, sugg:suggOverride||suggerimento(c,tipo,dettagli), seme:(c && !c.jolly && c.seme)?c.seme:null, fig:(c && c.fig)?c.fig:null};
+  G.narr={html:c?cartaHTML(c):"", tipo, sugg:suggOverride||suggerimento(c,tipo,dettagli), seme:(c && !c.jolly && c.seme)?c.seme:null, fig:(c && c.fig)?c.fig:null,
+    carta:c?(c.jolly?"Jolly":(c.fig?FIGURE[c.fig].nome.charAt(0):c.val)+SIMBOLI[c.seme]):null};
   G.narrLato = narrLato || G.attore;
   narrDopo=dopoNarrazione;
   G.fase="narrazione"; render();
 }
+function descrizioneMossaO(n){
+  const q=n.seme==="quadri", f=n.seme==="fiori";
+  if(n.tipo==="scopa") return "Ribalta la scena a proprio favore.";
+  if(n.tipo==="presa") return q?"I nemici guadagnano terreno." : f?"Il caos complica le cose ai protagonisti." : "Superamento parziale.";
+  return q?"Introduce le fazioni nemiche in scena." : f?"Scatena un imprevisto: il caos entra in gioco." : "Introduce un nuovo elemento.";
+}
 function rNarrazione(){
   const n=G.narr;
+  const ioNarro=G.modalita==="solo" && (G.narrLato||G.attore)==="P";
+  if(G.modalita==="solo" && (G.narrLato||G.attore)==="O"){
+    // turno di Claude: vista pulita in sola lettura, niente spinte/PNG/redazione per l'umano
+    SC.innerHTML=`
+      ${intestazioneScena()}
+      ${G.ultimaGiocata?`<div class="banner ${n.tipo==="scopa"?"scopa":""}">${G.ultimaGiocata}</div>`:""}
+      <div style="display:flex;justify-content:center;margin:10px 0">${n.html}</div>
+      <div class="pannello">
+        <span class="etichetta">🃏 Claude · l'Opposizione${n.seme?" "+SIMBOLI[n.seme]:""}</span>
+        <div style="font-size:max(12px,calc(13.5px*var(--k,1)));color:var(--grigio);margin-bottom:8px">${descrizioneMossaO(n)}</div>
+        <div class="lettura" id="iaNarrSlot" style="font-size:max(14px,calc(16px*var(--k,1)));line-height:1.5"></div>
+      </div>
+      <button class="azione" id="narrOk" disabled>Avanti</button>`;
+    document.getElementById("narrOk").addEventListener("click",()=>{
+      const fn=narrDopo; narrDopo=null; G.narr=null; G.narrLato=null;
+      if(fn) fn(); else prossimoTurno();
+    });
+    return;
+  }
   SC.innerHTML=`
     ${intestazioneScena()}
     ${G.ultimaGiocata?`<div class="banner ${n.tipo==="scopa"?"scopa":""}">${G.ultimaGiocata}</div>`:""}
@@ -1328,17 +1510,109 @@ function rNarrazione(){
         `<button data-spinta="${i}">${SIMBOLI[p.seme]} «${p.risposta.length>60?p.risposta.slice(0,60)+"…":p.risposta}»</button>`).join("")}</div>
     </div>`:""}
     ${(G.pngNarr||[]).length?`<div class="spinte-mano"><span class="lbl">PNG creati</span>${(G.pngNarr||[]).map(p=>`<span class="spinta-chip" style="border-left-color:var(--${p.seme})"><b style="color:var(--${p.seme})">${SIMBOLI[p.seme]}</b> ${p.nome||"(senza nome)"}</span>`).join("")}</div>`:""}
+    ${ioNarro?`<div class="pannello">
+      <span class="etichetta">La tua narrazione (Claude la legge per restare coerente con la storia)</span>
+      <textarea id="narrInput" placeholder="Racconta cosa accade in questo momento della storia, poi tocca Narrato.">${G.narr.bozza||""}</textarea>
+    </div>`:""}
     <div style="display:flex;gap:10px">
-      <button class="azione" style="flex:1" id="narrOk">Narrato — avanti</button>
+      <button class="azione" style="flex:1" id="narrOk"${ioNarro && !(G.narr.bozza||"").trim()?" disabled":""}>Narrato — avanti</button>
       ${n.seme && !n.fig?`<button class="secondaria" id="creaPng" title="Crea un PNG legato al seme della carta giocata">➕ Crea PNG ${SIMBOLI[n.seme]}</button>`:""}
     </div>`;
   SC.querySelectorAll("button[data-spinta]").forEach(b=>
     b.addEventListener("click",()=>eseguiSpinta(parseInt(b.dataset.spinta))));
   const cpBtn=document.getElementById("creaPng"); if(cpBtn) cpBtn.addEventListener("click",creaPng);
+  const niEl=document.getElementById("narrInput");
+  if(niEl) niEl.addEventListener("input",e=>{ G.narr.bozza=e.target.value; const ok=document.getElementById("narrOk"); if(ok) ok.disabled=!e.target.value.trim(); });
   document.getElementById("narrOk").addEventListener("click",()=>{
+    if(ioNarro) aggiungiStoria("P", G.narr.bozza, {tipo:G.narr.tipo, carta:G.narr.carta, seme:G.narr.seme});
     const f=narrDopo; narrDopo=null; G.narr=null; G.narrLato=null;
     if(f) f(); else prossimoTurno();
   });
+}
+function aggiungiStoria(lato, testo, meta){
+  if(G.modalita!=="solo") return;          // log narrativo solo in modalità vs Claude
+  const t=(testo||"").trim();
+  if(!t) return;
+  meta=meta||{};
+  G.storia.push({scena:G.scena, lato, testo:t, tipo:meta.tipo||null, carta:meta.carta||null, seme:meta.seme||null});
+}
+function storiaTestoIA(){
+  if(!G.storia.length) return "";
+  return "STORIA NARRATIVA FINORA (mantieni continuità con questi eventi):\n"+
+    G.storia.map(v=>`Scena ${v.scena+1} [${nomeLato(v.lato)}]: ${v.testo}`).join("\n");
+}
+function inArtefatto(){ return !!(window.claude && typeof window.claude.complete==="function"); }
+const MODELLI_IA=[
+  ["claude-sonnet-4-6","Sonnet 4.6 — equilibrato, economico"],
+  ["claude-opus-4-8","Opus 4.8 — il più capace"],
+  ["claude-fable-5","Fable 5 — massima potenza, costoso"],
+  ["claude-haiku-4-5","Haiku 4.5 — rapido, molto economico"]
+];
+function chiediSetupClaude(avvia){
+  // prompt mostrato dopo aver scelto "Contro Claude" (avvia=true) o dal pulsante 🔑 (avvia=false)
+  const art=inArtefatto();
+  const opts=MODELLI_IA.map(([v,t])=>`<option value="${v}"${v===claudeModel?" selected":""}>${t}</option>`).join("");
+  const selStyle="width:100%;background:var(--notte);border:1px solid var(--bordo);border-radius:8px;color:var(--osso);font-family:'IBM Plex Sans',sans-serif;font-size:15px;padding:10px 12px;outline:none";
+  modale(`<h2 class="ts">Gioca contro Claude</h2>
+    ${art?`<p class="sotto">Sei dentro Claude.ai: le chiamate non richiedono chiave né scelta del modello.</p>`
+    :`<p class="sotto">Le chiamate sono a tuo carico. Scegli il modello e incolla la tua chiave Anthropic (sk-ant-...). Restano solo in questa scheda, non vengono salvati né esportati. La chiave si ottiene su console.anthropic.com.</p>
+      <span class="etichetta">Modello</span>
+      <select id="ckModello" style="${selStyle}">${opts}</select>
+      <span class="etichetta" style="margin-top:12px">Chiave API${claudeKey?" (già impostata: lascia vuoto per tenerla)":""}</span>
+      <input type="password" id="ckInput" placeholder="sk-ant-..." autocomplete="off">`}
+    <div style="display:flex;gap:10px;margin-top:14px">
+      <button class="azione" style="flex:1" id="ckOk">${avvia?"Inizia la partita":"Salva"}</button>
+      <button class="secondaria" id="ckNo">Annulla</button>
+    </div>`);
+  document.getElementById("ckOk").addEventListener("click",()=>{
+    if(!art){
+      const sel=document.getElementById("ckModello"); if(sel) claudeModel=sel.value;
+      const v=(document.getElementById("ckInput").value||"").trim(); if(v) claudeKey=v;
+    }
+    chiudiModale();
+    if(avvia){ G.modalita="solo"; G.nGiocatori=2; G.nomi.O="Claude"; G.fase="setup"; }
+    render();
+  });
+  document.getElementById("ckNo").addEventListener("click",chiudiModale);
+}
+function storiaLabel(){
+  const chiave=inArtefatto()?"":` <button id="storiaChiave" title="Imposta la tua chiave Anthropic" style="float:right;background:none;border:1px solid var(--bordo);border-radius:6px;color:${claudeKey?"var(--fiori)":"var(--mezzeria)"};font-size:11px;cursor:pointer;padding:1px 6px">🔑${claudeKey?" ✓":""}</button>`;
+  return `<span class="lbl">Storia della partita${chiave}</span>`;
+}
+function mossaInfo(tipo){
+  if(tipo==="scopa")    return {ic:"💥", txt:"scopa"};
+  if(tipo==="presa")    return {ic:"✋", txt:"presa"};
+  if(tipo==="apertura") return {ic:"🎬", txt:"apertura"};
+  return {ic:"▭", txt:"elemento"};   // giocata nel piatto
+}
+function renderStoria(){
+  if(!G.storia.length) return `${storiaLabel()}<div class="vuoto">Si riempirà con le narrazioni, tue e di Claude.</div>`;
+  let html=storiaLabel(), ultScena=-1;
+  for(const v of G.storia){
+    if(v.scena!==ultScena){ html+=`<div class="sc">Scena ${v.scena+1}: ${FASI_NARR[v.scena]||""}</div>`; ultScena=v.scena; }
+    const m=mossaInfo(v.tipo);
+    const col=v.seme?`var(--${v.seme})`:"var(--mezzeria)";
+    html+=`<div class="voce ${v.lato==="O"?"o":"p"}">
+      <div class="voce-bar" style="border-left-color:${col}">
+        <span class="chi" style="color:${col}">${nomeLato(v.lato)}</span>
+        ${v.carta?`<span class="carta">${v.carta}</span>`:""}
+        <span class="mossa">${m.ic} ${m.txt}</span>
+      </div>
+      <div class="voce-testo" style="border-left-color:${col}">${v.testo}</div>
+    </div>`;
+  }
+  return html;
+}
+function aggiornaStoriaLog(f){
+  const col=document.getElementById("storiaCol"), log=document.getElementById("storiaLog");
+  if(!col||!log) return;
+  const mostra = G.modalita==="solo" && f!=="modalita" && f!=="lobby" && f!=="setup";
+  col.classList.toggle("attivo", mostra);
+  if(!mostra) return;
+  const vicinoFondo = col.scrollHeight - col.scrollTop - col.clientHeight < 60;   // l'utente stava leggendo il fondo?
+  log.innerHTML=renderStoria();
+  const kb=log.querySelector("#storiaChiave"); if(kb) kb.addEventListener("click", ()=>chiediSetupClaude(false));
+  if(vicinoFondo) col.scrollTop=col.scrollHeight;   // resta sull'ultima voce, ma se è risalito a leggere non lo strappo via
 }
 function creaPng(){
   const seme=G.narr && G.narr.seme;
@@ -2233,6 +2507,7 @@ document.getElementById("btnImporta").addEventListener("click",()=>{
     render();
   }catch(e){ areaDati.value="Non riesco a leggere questi dati. Incolla il testo esportato in precedenza."; }
 });
+document.getElementById("btnPlayset").addEventListener("click",esportaPlaysetFile);
 document.getElementById("btnNuova").addEventListener("click",()=>{
   G=nuovaPartita();
   if(rete.attiva){ G.modalita="online"; G.hostLato=rete.mioLato; G.fase="setup"; }
@@ -2243,31 +2518,96 @@ document.getElementById("btnNuova").addEventListener("click",()=>{
 
 /* ================= MODALITÀ SOLO — CLAUDE GIOCA L'OPPOSIZIONE ================= */
 let iaBusy=false, iaNarrTesto=null;
+let claudeKey="";   // BYOK: chiave Anthropic del giocatore, solo in memoria di questa scheda (mai in G, mai salvata)
+let claudeModel="claude-sonnet-4-6";   // modello scelto dal giocatore (default il più economico)
+let oppGenInCorso=false;   // generazione dell'Opposizione (setup solo) in corso
 function iaBadge(on){ const b=document.getElementById("iaBadge"); if(b) b.style.display=on?"block":"none" }
 
-const REGOLE_IA=`Sei l'OPPOSIZIONE (i nemici ♦ Quadri e il caos ♣ Fiori) in Frenemies on the Road, gioco di carte narrativo su regole tipo Scopa, ambientazione road movie notturno. Regole essenziali: una carta prende dal piatto una carta di pari valore, oppure un gruppo di carte la cui somma è pari al suo valore; se la presa svuota il piatto è SCOPA. A fine scena si sommano i valori delle carte rimaste nel piatto: ♦ e ♣ contano per te, ♥ e ♠ per i Protagonisti; vince la scena il totale più alto (ma se la scena si chiude con una scopa a piatto vuoto, la vince chi ha fatto la scopa), e il piatto resta sul tavolo per la scena dopo. La partita si decide sul piatto della quinta scena. Le carte prese valgono punti (al mercato e nel conteggio finale); le scope valgono di più. Strategia: prendi quando puoi, soprattutto carte alte dei semi avversari; preferisci lasciare nel piatto carte alte dei TUOI semi; nell'asta una carta alta vince l'iniziativa ma esce dalla tua strategia di round. Quando narri, sei il mondo che rema contro: sicari pazienti, poliziotti corrotti, tempesta nel deserto.`;
+const REGOLE_IA=`Sei l'OPPOSIZIONE in "Frenemies on the Road", gioco narrativo competitivo su meccaniche tipo Scopa, ambientazione road movie notturno. Controlli i semi ♦ Quadri (i nemici attivi: fazioni ostili, inseguitori, minacce organizzate) e ♣ Fiori (il caos: sfortuna, incidenti, attriti, complicazioni impreviste). L'umano controlla i Protagonisti, ♥ Cuori (dialogo, connessione, empatia) e ♠ Picche (forza, imposizione, conflitto diretto). Giochi e narri SOLO il tuo lato.
 
-function iaContesto(){
+STRUTTURA: 5 scene (Innesco, Adattamento, Frattura, Crisi, Risoluzione). Ogni scena: asta, apertura, round di giocate, fine scena; tra le scene c'è il mercato. La partita si decide sul piatto della quinta scena.
+
+ASTA E APERTURA: a inizio scena ogni lato pesca 4 carte e ne gioca 1 coperta per l'iniziativa; la più alta vince (il Jolly non partecipa; in parità vince chi NON ha avuto l'iniziativa nella scena precedente, alla scena 1 l'Opposizione). La carta d'asta del vincitore torna come sua ULTIMA giocata del round; quella del perdente torna in mano. Chi vince apre la scena: sceglie un titolo e dichiara la posta.
+
+ROUND: ci si alterna a partire dal vincitore dell'iniziativa, 4 giocate a testa. Nel tuo turno puoi:
+- Giocare una carta nel piatto = INTRODURRE un elemento con cui l'avversario dovrà fare i conti.
+- Fare una PRESA (vale 1 punto) = superamento parziale: una carta prende una carta di pari valore nel piatto, oppure un gruppo la cui somma è pari al suo valore.
+- Fare una SCOPA (vale 3 punti) = svolta: la presa svuota il piatto. Vale molto più di una presa.
+
+FINE SCENA: si sommano i valori delle carte rimaste nel piatto: ♦+♣ contano per te, ♥+♠ per i Protagonisti; la posta la vince il totale più alto. MA se la scena si chiude col piatto vuoto perché l'ultima giocata è stata una scopa, la posta la vince chi ha fatto la scopa. Il piatto NON si svuota tra le scene: chi apre la successiva può già prendere. Se vincono i Protagonisti recuperano 1 carta dagli scarti; se vinci tu, la loro posta fallisce.
+
+MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Con i punti compri figure (max una per tipo) che entrano nel tuo mazzo:
+- Fante (costo 4, valore 8): guardi le prime 4 carte del tuo mazzo e scegli quali mettere in fondo.
+- Regina (costo 7, valore 9): l'avversario scarta una carta a caso dalla mano e pesca dal mazzo.
+- Re (costo 10, valore 10): scambi una carta della mano con una degli scarti comuni dello stesso seme.
+
+JOLLY: un solo Jolly, solo nel mazzo dei Protagonisti, entra dopo la 2ª scena. Tu non lo possiedi mai. Chi lo gioca dichiara il valore e cattura, ma il marcatore va all'AVVERSARIO (presa 1, scopa 3 all'altro lato): se i Protagonisti lo usano, quel punto va a te. Si narra come un vantaggio ottenuto contro i propri principi.
+
+RISORSE DEL PITCH (spinte): dopo una presa normale puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e le carte rimaste nel piatto finiscono tra le tue prese. La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola; massimo una spinta per seme per lato; VIETATA nell'ultima scena.
+
+QUINTA SCENA: la mano finale si sceglie dopo il mercato; le carte oltre le 4 vanno in RISERVA. Le figure lasciate nel piatto a inizio ultima scena vengono neutralizzate. Dopo il primo conteggio si gioca a COLPI DI SCENA: a turni alterni (inizia chi sta perdendo) cali una carta dalla riserva, che entra nel piatto e può eliminare una carta di seme avversario di valore pari o inferiore (finisce negli scarti; la tua resta). Finché hai riserva devi giocare. Poi il conteggio definitivo decide l'esito della missione.
+
+STRATEGIA: prendi quando puoi, soprattutto carte alte dei semi avversari (♥♠) per toglierle dal loro totale; preferisci lasciare nel piatto le carte alte dei TUOI semi (♦♣) così pesano per te a fine scena. Nell'asta una carta alta vince l'iniziativa ma esce dal tuo round. Per la riserva dei colpi finali servono carte ALTE dei tuoi semi.
+
+NARRAZIONE: quando narri sei il mondo che rema contro i protagonisti. ♦ = nemici con un piano (sicari pazienti, poliziotti corrotti, fazioni ostili); ♣ = caos e sfortuna (tempeste, guasti, attriti, PNG molesti). Resta coerente con la storia già scritta, la missione, la posta della scena e le risposte del pitch. Asciutto e cinematografico, 1-2 frasi. Esempi di tono: "Due uomini in giacca scura scendono da un SUV davanti al diner: hanno le foto." (♦) "Una gomma esplode in mezzo al deserto e la tempesta di sabbia è già all'orizzonte." (♣)`;
+
+function setupPerIA(){
+  // parte STATICA per partita (va nel blocco system cacheato: deve restare byte-identica)
+  const P=G.pers||{A:{},B:{}};
+  const pitch=G.pitch.map(p=>(p.risposta&&p.risposta.trim())?`${SIMBOLI[p.seme]} ${p.risposta.trim()}`:"").filter(Boolean).join("\n");
+  return `LA PARTITA. Missione dei Protagonisti: ${G.missione||"-"}.
+Tono: ${G.tono||"-"}.
+Protagonisti: ${P.A.nome||"P1"} ♠ ${(P.A.desc||"").trim()} | ${P.B.nome||"P2"} ♥ ${(P.B.desc||"").trim()}.
+Opposizione: nemici ♦ ${G.nemici||"-"}; caos ♣ ${G.caos||"-"}.
+La prima difficoltà (inquadra la scena 1): ${G.primaDiff||"-"}.
+Risorse del pitch (fiction condivisa):
+${pitch||"-"}`;
+}
+function statoPerIA(){
+  // parte DINAMICA per chiamata (va nel messaggio user)
   const rec=G.scene[G.scena]||{};
   const O=lato("O"), P=lato("P");
-  const pitchO=G.pitch.slice(6).map(p=>`${p.usata?"[USATA] ":""}${SIMBOLI[p.seme]} ${p.risposta}`).filter(s=>s.trim().length>3).join(" | ");
-  return `PARTITA: scena ${G.scena+1}/5 (${FASI_NARR[G.scena]||""}). Missione dei Protagonisti: ${G.missione||"-"}. Titolo della scena: ${rec.titolo||"-"}. Posta: ${rec.posta||"-"}.
-Nemici ♦: ${G.nemici||"-"}. Caos ♣: ${G.caos||"-"}. Le tue risorse del pitch: ${pitchO||"-"}.
+  const figure=Object.entries(G.png||{}).map(([k,v])=>FIGURE[k[0]]?`${FIGURE[k[0]].nome} di ${k.slice(1)}${v&&v.nome?" ("+v.nome+")":""}`:"").filter(Boolean).join(", ");
+  const pngN=(G.pngNarr||[]).map(p=>`${SIMBOLI[p.seme]} ${p.nome||""}`.trim()).filter(s=>s.length>2).join(", ");
+  return `STATO ATTUALE. Scena ${G.scena+1}/5 (${FASI_NARR[G.scena]||""}). Titolo: ${rec.titolo||"-"}. Posta: ${rec.posta||"-"}.
 PIATTO: ${G.piatto.length?G.piatto.map(c=>nomeCarta(c)).join(", "):"vuoto"}.
 LA TUA MANO: ${O.mano.map(c=>nomeCarta(c)).join(", ")||"vuota"}.
 Tue prese ${O.prese.length}, tue scope ${O.scope.length} · prese avversarie ${P.prese.length}, scope avversarie ${P.scope.length}.
-Totali del piatto ora: Protagonisti ${totaleProt()}, Opposizione ${totaleOpp()}.`;
+Totali del piatto ora: Protagonisti ${totaleProt()}, Opposizione ${totaleOpp()}.${figure?`\nFigure comprate: ${figure}.`:""}${pngN?`\nPNG narrativi: ${pngN}.`:""}`;
 }
 
 async function chiamaClaude(istruzioni){
+  // system STATICO (regole + setup): cacheato dal proxy, byte-identico per tutta la partita
+  const sys=REGOLE_IA+"\n\n"+setupPerIA();
+  // user DINAMICO: storia + stato attuale + istruzione di fase
+  const storia=storiaTestoIA();
+  const userMsg=(storia?storia+"\n\n":"")+statoPerIA()+"\n\n"+istruzioni+"\nRispondi SOLO con un oggetto JSON valido, senza testo prima o dopo e senza markdown.";
   try{
     iaBadge(true);
-    const r=await fetch("https://api.anthropic.com/v1/messages",{
-      method:"POST", headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({model:"claude-sonnet-4-20250514", max_tokens:1000,
-        messages:[{role:"user",content:REGOLE_IA+"\n\n"+iaContesto()+"\n\n"+istruzioni+"\nRispondi SOLO con un oggetto JSON valido, senza testo prima o dopo e senza markdown."}]})});
-    const d=await r.json();
-    const testo=(d.content||[]).map(x=>x.text||"").join("").replace(/```json|```/g,"").trim();
+    let testo;
+    if(window.claude && typeof window.claude.complete==="function"){
+      // dentro un artefatto Claude.ai: canale dedicato, una sola stringa (nessun caching)
+      testo=await window.claude.complete(sys+"\n\n"+userMsg);
+    }else{
+      // fuori dall'artefatto: BYOK, chiamata diretta col tasto del giocatore (header anti-CORS).
+      // Il prompt caching del system riduce il costo ripetuto del regolamento.
+      if(!claudeKey) return null;   // senza chiave del giocatore, l'IA ripiega sulla mossa automatica
+      const r=await fetch("https://api.anthropic.com/v1/messages",{
+        method:"POST",
+        headers:{
+          "content-type":"application/json",
+          "x-api-key":claudeKey,
+          "anthropic-version":"2023-06-01",
+          "anthropic-dangerous-direct-browser-access":"true"
+        },
+        body:JSON.stringify({
+          model:claudeModel, max_tokens:1024,
+          system:[{type:"text", text:sys, cache_control:{type:"ephemeral"}}],
+          messages:[{role:"user", content:userMsg}]})});
+      const d=await r.json();
+      testo=(d.content||[]).map(x=>x.text||"").join("");
+    }
+    testo=(testo||"").replace(/```json|```/g,"").trim();
     return JSON.parse(testo);
   }catch(e){ console.warn("IA non raggiungibile, mossa automatica:",e.message); return null }
   finally{ iaBadge(false) }
@@ -2335,25 +2675,50 @@ async function iaNarrazione(){
   const spinte=spinteDisponibili("O");
   const haBoost=G.narr&&G.narr.boostCard&&spinte.length>0;
   if(iaNarrTesto===null){
-    const r=await chiamaClaude(`Hai appena agito: "${G.ultimaGiocata||""}". Narra la mossa in 1-2 frasi, in italiano, dal punto di vista dell'Opposizione.${haBoost?`\nPuoi anche SPUNTARE la risorsa del pitch corrispondente al seme della carta con cui hai preso, per trasformare questa presa in SCOPA vera: le carte rimaste nel piatto finiscono tra le tue prese. Risorse disponibili:\n${spinte.map(({p,i},k)=>k+": "+SIMBOLI[p.seme]+" "+p.risposta).join("\n")}\nUsala solo se la risorsa entra davvero nella narrazione: è una svolta, non un bonus.`:""}\nJSON: {"narrazione":"...", "spinta": ${haBoost?"<numero> oppure null":"null"}}`);
+    const seme=G.narr&&G.narr.seme;
+    const regSeme = seme==="quadri"
+      ? "La carta è di ♦ Quadri: narra i NEMICI ATTIVI (fazioni ostili, inseguitori, poliziotti corrotti, minacce organizzate che agiscono con intenzione)."
+      : seme==="fiori"
+      ? "La carta è di ♣ Fiori: narra il CAOS e la sfortuna (imprevisti, guasti, incidenti, attriti, PNG molesti), non un nemico organizzato."
+      : "";
+    const r=await chiamaClaude(`Hai appena agito: "${G.ultimaGiocata||""}". ${regSeme} Narra la mossa in 1-2 frasi, in italiano, dal punto di vista dell'Opposizione, coerente con la storia finora.${haBoost?`\nPuoi anche SPUNTARE la risorsa del pitch corrispondente al seme della carta con cui hai preso, per trasformare questa presa in SCOPA vera: le carte rimaste nel piatto finiscono tra le tue prese. Risorse disponibili:\n${spinte.map(({p,i},k)=>k+": "+SIMBOLI[p.seme]+" "+p.risposta).join("\n")}\nUsala solo se la risorsa entra davvero nella narrazione: è una svolta, non un bonus.`:""}\nJSON: {"narrazione":"...", "spinta": ${haBoost?"<numero> oppure null":"null"}}`);
     iaNarrTesto=(r&&r.narrazione)||"L'Opposizione stringe il cerchio, senza fretta.";
     if(haBoost&&r&&Number.isInteger(r.spinta)&&spinte[r.spinta]){
       iaBusy=false;
-      clicca(SC.querySelector(`button[data-spinta="${spinte[r.spinta].i}"]`));
-      return;  // il re-render della narrazione richiamerà l'iniezione
+      eseguiSpinta(spinte[r.spinta].i);   // spinta decisa da Claude, eseguita direttamente; il re-render richiama l'iniezione
+      return;
     }
   }
-  const pann=SC.querySelector(".lettura");
-  if(pann&&!document.getElementById("iaNarr")){
+  const slot=document.getElementById("iaNarrSlot");
+  if(slot && !document.getElementById("iaNarr")){
     const div=document.createElement("div");
-    div.id="iaNarr"; div.className="lettura";
-    div.style.cssText="margin-top:8px;border-left:3px solid var(--mezzeria);padding-left:10px";
-    div.textContent="🃏 Claude: «"+iaNarrTesto+"»";
-    pann.parentElement.appendChild(div);
+    div.id="iaNarr";
+    div.textContent="🃏 "+iaNarrTesto;
+    slot.appendChild(div);
+    const ok=document.getElementById("narrOk"); if(ok) ok.disabled=false;   // narrazione pronta: l'umano può avanzare
+    aggiungiStoria("O", iaNarrTesto, {tipo:G.narr&&G.narr.tipo, carta:G.narr&&G.narr.carta, seme:G.narr&&G.narr.seme});
   }
   iaNarrTesto=null; iaBusy=false;
 }
 
+async function generaOpposizioneIA(){
+  // setup vs Claude: l'Opposizione (nemici ♦, caos ♣, risposte pitch 6-9) la inventa Claude
+  if(G.oppGenerata===true || oppGenInCorso) return;
+  oppGenInCorso=true;
+  const r=await chiamaClaude(`SETUP. Sei l'Opposizione: sulla base della missione dei Protagonisti e di chi sono, inventa la TUA fazione e le tue risorse, coerenti, cinematografiche e in italiano. Frasi brevi.
+JSON: {"nemici":"...", "caos":"...", "q6":"...", "q7":"...", "q8":"...", "q9":"..."}
+nemici (♦) = chi insegue e ostacola i protagonisti con intenzione; caos (♣) = la sfortuna e gli imprevisti che li perseguitano; q6 = i mezzi/metodi/armi più temibili della fazione nemica; q7 = perché l'Opposizione deve assolutamente impedire ai protagonisti di riuscire; q8 = catastrofi o eventi imprevedibili dell'ambientazione; q9 = cosa i protagonisti non hanno considerato e potrebbe far saltare la loro alleanza.`);
+  if(r && (r.nemici || r.caos)){
+    if(r.nemici) G.nemici=String(r.nemici);
+    if(r.caos) G.caos=String(r.caos);
+    [["q6",6],["q7",7],["q8",8],["q9",9]].forEach(([k,i])=>{ if(r[k]) G.pitch[i].risposta=String(r[k]); });
+    G.oppGenerata=true;
+  }else{
+    G.oppTentata=true;   // niente canale o risposta vuota: si ripiega sui campi manuali, niente ritentativi automatici
+  }
+  oppGenInCorso=false;
+  render();
+}
 async function iaMercato(){
   if(document.getElementById("iaMercatoFatto")) return;
   iaBusy=true;
