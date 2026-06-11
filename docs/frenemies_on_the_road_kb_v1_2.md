@@ -189,16 +189,19 @@ Prima delle domande si definisce contro chi e contro che cosa viaggiano i protag
 
 Definirla prima dà alle domande del pitch un riferimento concreto: chiedere quali sono i mezzi più temibili della fazione nemica ha senso solo se la fazione nemica ha già un volto.
 
-### 9.5 — Domande ai Protagonisti (poste dall'Opposizione)
+### 9.5 — Domande ai Protagonisti (poste dall'Opposizione) *(v1.4)*
 
-L'Opposizione chiede ai Protagonisti. Le risposte vengono scritte e diventano risorse:
+Le prime due domande sono **tratti di relazione**: si scrivono insieme ai protagonisti (§9.2) e sono **solo narrative ed estetiche**, senza effetto meccanico (non sono spuntabili).
 
-1. Cosa P1 detesta di P2?
-2. Cosa P2 detesta di P1?
-3. Perché per P1 è importante l'obiettivo?
-4. Perché per P2 è importante l'obiettivo?
-5. Quale dote o risorsa di P1 potrebbe essere un asso nella manica?
-6. Quale dote o risorsa di P2 potrebbe essere un asso nella manica?
+1. Cosa P1 detesta di P2? *(tratto narrativo)*
+2. Cosa P2 detesta di P1? *(tratto narrativo)*
+
+Le altre quattro diventano **spinte** (risorse spuntabili, §9.8): due Picche (P1, che tende a ♠) e due Cuori (P2, che tende a ♥).
+
+3. Perché per P1 è importante l'obiettivo? *(spinta ♠)*
+4. Perché per P2 è importante l'obiettivo? *(spinta ♥)*
+5. Quale dote o risorsa di P1 potrebbe essere un asso nella manica? *(spinta ♠)*
+6. Quale dote o risorsa di P2 potrebbe essere un asso nella manica? *(spinta ♥)*
 
 ### 9.6 — Domande all'Opposizione (poste dai Protagonisti)
 
@@ -221,7 +224,7 @@ La risposta si scrive ma, a differenza delle altre, non è una risorsa spuntabil
 
 ### 9.8 — Uso meccanico delle risposte del pitch
 
-Le risposte scritte sono risorse di gioco attivabili durante la partita.
+Le spinte sono **otto, due per seme** (♠ e ♥ dai Protagonisti, ♦ e ♣ dall'Opposizione). I due "cosa si detestano" (§9.5) **non** sono spinte: sono tratti narrativi dei protagonisti, senza effetto.
 
 Dopo una presa normale, il giocatore può spuntare la risposta corrispondente al seme della carta con cui ha preso: la presa diventa una scopa a tutti gli effetti. La carta di presa va nel mazzetto delle scope e le carte rimaste nel piatto finiscono tra le prese di chi ha spuntato, esattamente come per una scopa normale.
 
@@ -786,14 +789,17 @@ Tutti gli esempi di questo regolamento, e la partita d'esempio in appendice, usa
 - **Quadri (nemici attivi):** l'organizzazione di Vargas, con mezzo distretto sul libro paga e una coppia di sicari pazienti.
 - **Fiori (caos):** la tempesta di sabbia in arrivo, un'auto con trecentomila chilometri, la sfortuna.
 
-**Le sei risposte dei Protagonisti (§9.5)**
+**Tratti di relazione (narrativi, §9.5)**
 
-1. Cosa Frank detesta di Skunk: non dice mai tutta la verità, nemmeno quando gli converrebbe; ogni cosa che tocca diventa un traffico.
-2. Cosa Skunk detesta di Frank: lo ha spremuto per anni come informatore e scaricato quando non serviva più; lo tratta ancora come una spia, mai come un socio.
-3. Perché conta per Frank: un arresto in flagranza di Vargas è l'unica cosa che può ridargli il distintivo e dimostrare che su di lui si sbagliavano tutti.
-4. Perché conta per Skunk: Vargas ha fatto uccidere suo fratello Jorge; non gli interessa il processo, gli interessa vederlo cadere.
-5. Asso nella manica di Frank: conosce ogni strada secondaria del distretto e sa quali colleghi sono sul libro paga di Vargas.
-6. Asso nella manica di Skunk: con una telefonata procura qualsiasi cosa: un'auto pulita, dei documenti, un tetto per la notte, un silenzio.
+- Cosa Frank detesta di Skunk: non dice mai tutta la verità, nemmeno quando gli converrebbe; ogni cosa che tocca diventa un traffico.
+- Cosa Skunk detesta di Frank: lo ha spremuto per anni come informatore e scaricato quando non serviva più; lo tratta ancora come una spia, mai come un socio.
+
+**Le quattro spinte dei Protagonisti (§9.5, ♠/♥)**
+
+1. (♠) Perché conta per Frank: un arresto in flagranza di Vargas è l'unica cosa che può ridargli il distintivo e dimostrare che su di lui si sbagliavano tutti.
+2. (♥) Perché conta per Skunk: Vargas ha fatto uccidere suo fratello Jorge; non gli interessa il processo, gli interessa vederlo cadere.
+3. (♠) Asso nella manica di Frank: conosce ogni strada secondaria del distretto e sa quali colleghi sono sul libro paga di Vargas.
+4. (♥) Asso nella manica di Skunk: con una telefonata procura qualsiasi cosa: un'auto pulita, dei documenti, un tetto per la notte, un silenzio.
 
 **Le quattro risposte dell'Opposizione (§9.6)**
 
@@ -852,7 +858,7 @@ Al mercato Omar compra il **Fante di Quadri** (un informatore nel distretto): co
 
 *Posta: attraversare il deserto interi; se va male, quello che non si sono detti esplode.*
 
-Asta: 9♠ contro 4♦, iniziativa ai Protagonisti. È la scena dei segreti: dopo che il piatto si gonfia (10♥, 1♦, 1♠, 3♦), Paola cala il **10♠**, prende quattro carte e **spunta la risposta ♠** "Skunk non dice mai tutta la verità": nel silenzio del deserto Frank chiede a voce alta cosa gli stia nascondendo.
+Asta: 9♠ contro 4♦, iniziativa ai Protagonisti. È la scena della posta in gioco: dopo che il piatto si gonfia (10♥, 1♦, 1♠, 3♦), Paola cala il **10♠**, prende quattro carte e **spunta la risposta ♠** "Solo l'arresto in flagranza di Vargas può ridargli il distintivo": nel silenzio del deserto Frank ricorda a voce alta perché è partito, il nome pulito che ha appeso a questo arresto.
 
 > **Spinta del pitch (§9.8):** la presa diventa **scopa** e svuota il piatto. Il 10♠ va tra le scope di Paola (**3 punti**). Anche la ♠ è ora spuntata: niente più spinte ♠ per i Protagonisti.
 

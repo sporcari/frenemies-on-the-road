@@ -1,6 +1,7 @@
 {
+  "formato": 1,
   "playset": "Frank, Skunk e il jet di Vargas",
-  "fonte": "friends_foes_road_kb_v1_2.md, sezione 33 (scenario demo)",
+  "fonte": "frenemies_on_the_road_kb_v1_2.md, sezione 33 (scenario demo)",
   "nGiocatori": 2,
   "tono": "Action",
   "missione": "Entro 36 ore Vargas atterrerà con un jet privato dalla Colombia su una pista segreta del New Mexico per un meeting con i boss locali, e ripartirà: una volta decollato, nessuna estradizione lo riporterà davanti a un giudice. Arrivare alla pista e farlo arrestare in flagranza prima del decollo.",
@@ -8,77 +9,35 @@
   "pers": {
     "A": {
       "nome": "Frank",
-      "desc": "Ex poliziotto sospeso per eccesso di forza. Cinico, metodico, conosce il distretto come le sue tasche. Si è fatto terra bruciata attorno: senza distintivo, senza colleghi, senza coperture."
+      "desc": "Ex poliziotto sospeso per eccesso di forza. Cinico, metodico, conosce il distretto come le sue tasche. Si è fatto terra bruciata attorno: senza distintivo, senza colleghi, senza coperture.",
+      "detesta": "Mente per riflesso: ogni cosa che tocca diventa un traffico."
     },
     "B": {
       "nome": "Skunk",
-      "desc": "Suo ex informatore. Truffatore, ricettatore, intrallazzone dei bassifondi: sopravvive di chiacchiere, favori e bugie. Sa dove atterra Vargas dall'ultima telefonata del fratello Jorge, e non lo rivela: è la sua assicurazione sulla vita."
+      "desc": "Suo ex informatore. Truffatore, ricettatore, intrallazzone dei bassifondi: sopravvive di chiacchiere, favori e bugie. Sa dove atterra Vargas dall'ultima telefonata del fratello Jorge, e non lo rivela: è la sua assicurazione sulla vita.",
+      "detesta": "Frank lo ha usato e scaricato: lo tratta da spia, mai da socio."
     }
   },
   "nemici": "L'organizzazione di Vargas: una rete di poliziotti corrotti dentro il distretto e una coppia di sicari pazienti che non hanno fretta.",
   "caos": "La tempesta di sabbia in arrivo, un'auto con trecentomila chilometri, la sfortuna delle contee sbagliate.",
-  "pitch": [
-    {
-      "seme": "picche",
-      "domanda": "Cosa Frank (♠) detesta di Skunk (♥)?",
-      "risposta": "Non dice mai tutta la verità, nemmeno quando gli converrebbe; ogni cosa che tocca diventa un traffico.",
-      "usata": false
-    },
-    {
-      "seme": "cuori",
-      "domanda": "Cosa Skunk (♥) detesta di Frank (♠)?",
-      "risposta": "Lo ha spremuto per anni come informatore e scaricato quando non serviva più; lo tratta ancora come una spia, mai come un socio.",
-      "usata": false
-    },
-    {
-      "seme": "picche",
-      "domanda": "Perché per Frank (♠) è importante l'obiettivo?",
-      "risposta": "Un arresto in flagranza di Vargas è l'unica cosa che può ridargli il distintivo e dimostrare che su di lui si sbagliavano tutti.",
-      "usata": false
-    },
-    {
-      "seme": "cuori",
-      "domanda": "Perché per Skunk (♥) è importante l'obiettivo?",
-      "risposta": "Vargas ha fatto uccidere suo fratello Jorge; non gli interessa il processo, gli interessa vederlo cadere.",
-      "usata": false
-    },
-    {
-      "seme": "picche",
-      "domanda": "Quale dote o risorsa di Frank (♠) potrebbe essere un asso nella manica?",
-      "risposta": "Conosce ogni strada secondaria del distretto e sa quali colleghi sono sul libro paga di Vargas.",
-      "usata": false
-    },
-    {
-      "seme": "cuori",
-      "domanda": "Quale dote o risorsa di Skunk (♥) potrebbe essere un asso nella manica?",
-      "risposta": "Con una telefonata procura qualsiasi cosa: un'auto pulita, dei documenti, un tetto per la notte, un silenzio.",
-      "usata": false
-    },
-    {
-      "seme": "quadri",
-      "domanda": "Quali sono i mezzi, metodi o armi più temibili della fazione nemica? (♦)",
-      "risposta": "La rete di poliziotti corrotti dentro il distretto e i due sicari che non hanno fretta.",
-      "usata": false
-    },
-    {
-      "seme": "quadri",
-      "domanda": "Perché l'Opposizione deve assolutamente impedire ai protagonisti di ottenere quello che vogliono? (♦)",
-      "risposta": "Quel meeting è il momento di massima esposizione della vita di Vargas. Se qualcuno sa della pista, va trovato e zittito prima che il jet tocchi terra.",
-      "usata": false
-    },
-    {
-      "seme": "fiori",
-      "domanda": "Quali catastrofi o eventi imprevedibili possono manifestarsi in questa ambientazione? (♣)",
-      "risposta": "La tempesta di sabbia che chiude la statale, un'auto con trecentomila chilometri nel deserto, posti di blocco a sorpresa nelle contee sbagliate.",
-      "usata": false
-    },
-    {
-      "seme": "fiori",
-      "domanda": "Che cosa i protagonisti non hanno considerato e potrebbe far saltare la loro alleanza? (♣)",
-      "risposta": "Jorge è stato ucciso al posto di Skunk, perché la spia era lui. E Frank non lo sa.",
-      "usata": false
-    }
-  ],
+  "spinte": {
+    "picche": [
+      "Inchiodare Vargas è l'unico modo per riavere il distintivo.",
+      "Conosce ogni scorciatoia del distretto e chi è sul libro paga di Vargas."
+    ],
+    "cuori": [
+      "Vargas ha ucciso suo fratello Jorge: vuole vendetta, non giustizia.",
+      "Con una telefonata trova un'auto pulita, documenti, un silenzio."
+    ],
+    "quadri": [
+      "Poliziotti corrotti ovunque e due sicari che non hanno fretta.",
+      "Se qualcuno sa della pista, va zittito prima che il jet atterri."
+    ],
+    "fiori": [
+      "Tempesta in arrivo, un'auto sfiancata, posti di blocco a sorpresa.",
+      "Jorge è morto al posto di Skunk: la spia era lui. E Frank non lo sa."
+    ]
+  },
   "geografia_scene": [
     { "scena": 1, "fase": "Innesco", "titolo": "La cella", "suggerimento_posta": "Tirare fuori Skunk prima del trasferimento: se va male, escono braccati e con mezzo distretto alle calcagna" },
     { "scena": 2, "fase": "Adattamento", "titolo": "La statale", "suggerimento_posta": "Sparire verso ovest: se va male, i sicari agganciano la loro traccia" },
@@ -86,5 +45,5 @@
     { "scena": 4, "fase": "Crisi", "titolo": "L'ultima notte", "suggerimento_posta": "Arrivare in vista della pista: se va male, qualcuno li sta già aspettando" },
     { "scena": 5, "fase": "Risoluzione", "titolo": "La pista", "suggerimento_posta": "Il meeting: se va male, il jet riparte con Vargas a bordo" }
   ],
-  "note_mappatura": "Le chiavi di primo livello (tono, missione, primaDiff, pers, nemici, caos, pitch) corrispondono ai campi dello stato G del gioco e ai campi del wizard: w-missione, w-primadiff, w-persA/w-descA, w-persB/w-descB, w-nemici, w-caos, w-pitch-0 … w-pitch-9 (stesso ordine dell'array pitch). I valori di 'tono' ammessi dal gioco sono Action, Comedy, Dramedy, Romance o stringa vuota (libero). 'geografia_scene' è materiale indicativo per chi apre le scene, non un campo del pitch."
+  "note_mappatura": "Mappatura sui campi dello stato G / wizard. pers.A/B -> w-persA/w-descA e il terzo campo 'detesta' (spunto narrativo, w-pitch-0 e w-pitch-1, nessun effetto in gioco). spinte: due risposte per seme, sono le risorse che trasformano una presa in scopa (max una per seme per lato) e mappano su w-pitch-2..9 secondo PITCH_TEMPLATE. tono ammesso: Action, Comedy, Dramedy, Romance o vuoto. geografia_scene: titolo/posta pre-suggeriti per le 5 scene (opzionale). Il vecchio formato con 'pitch' piatto resta accettato in caricamento."
 }
