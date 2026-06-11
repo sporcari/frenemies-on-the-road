@@ -1,0 +1,85 @@
+{
+  "formato": 1,
+  "playset": "Federico, Asia e la coupé di papà",
+  "fonte": "playset originale, tono Dramedy (fratelli ritrovati, viaggio col padre)",
+  "nGiocatori": 2,
+  "tono": "Dramedy",
+  "premessa": "Augusto vive con Vanessa, la seconda moglie, trent'anni meno di lui. Da quando i figli si sono allontanati è lei a filtrare telefonate, visite e firme, e ora ha mosso l'attacco finale: con la perizia del dottor Maino e uno studio legale ha chiesto al giudice di interdirlo, chiuderlo in una casa di riposo e prendere il controllo del patrimonio. Federico e Asia, che non si parlano da anni, scoprono tutto a una settimana dall'udienza. Resta una sola carta: la controperizia del professor Lanza. E una sola macchina su cui Augusto accetti di salire.",
+  "missione": "Portare papà Augusto dal professor Lanza, a milleottocento chilometri, PRIMA che venerdì il giudice decida sull'interdizione.",
+  "primaDiff": "Augusto è in 'osservazione volontaria' nella clinica del dottor Maino, e le visite dei figli sono sospese su richiesta della moglie, per il suo bene. Prima di tutto bisogna entrare in quella clinica. E poi uscirne in tre.",
+  "pers": {
+    "A": {
+      "nome": "Federico",
+      "desc": "Il fratello maggiore: noioso, iper responsabile, ricco e di successo. Dirige fondi, delega tutto, non sbaglia un appuntamento da vent'anni. Con il padre non parla da dieci, convinto che fosse Augusto a non volerlo vedere.",
+      "detesta": "Asia trasforma ogni stanza in cui entra in un dopofesta: promette, sparisce, ricomincia. E tutti, sempre, la perdonano."
+    },
+    "B": {
+      "nome": "Asia",
+      "desc": "La sorella minore: spontanea, festaiola, una lista di ex da evitare lunga tre regioni. Ha attraversato le dipendenze e ci cammina ancora accanto, un giorno alla volta. È stata l'ultima a vedere Augusto, ed è stata lei ad accorgersi che qualcosa non tornava.",
+      "detesta": "Federico ha trasformato la distanza in un'agenda: tratta la famiglia come un consiglio di amministrazione. Sempre giusto, sempre puntuale, mai presente."
+    }
+  },
+  "nemici": "Vanessa, la matrigna: più giovane di Augusto di trent'anni, paziente come un avvocato e armata come uno studio legale. Con lei il dottor Maino, autore della perizia, e i legali che hanno già preparato ogni carta. Dal momento in cui Augusto esce dalla clinica, hanno anche la denuncia perfetta: sottrazione di persona incapace.",
+  "caos": "Milleottocento chilometri su una coupé azzurra del '72, l'unica macchina su cui Augusto accetti di salire. Le carte di credito bloccate, i contanti che evaporano, e le regole non negoziabili di papà: si pranza alle 12.30 in punto, si dorme solo nei motel con le piastrelle verdi, e la radio non si tocca.",
+  "spinte": {
+    "picche": [
+      "È la sua ultima occasione di recuperare il tempo perduto con suo padre, prima di perderlo per sempre.",
+      "Il suo nome apre porte: direttori, notai e primari lo ricevono senza appuntamento."
+    ],
+    "cuori": [
+      "Augusto è l'unico che non ha mai smesso di crederle: stavolta tocca a lei esserci.",
+      "Parla con tutti e tutti le parlano: la verità viaggia ai piani bassi."
+    ],
+    "quadri": [
+      "La denuncia di sottrazione mette in allerta polizia e ospedali lungo tutto il percorso.",
+      "Se la controperizia arriva, emergono i prelievi già fatti: Vanessa diventerebbe imputata."
+    ],
+    "fiori": [
+      "La coupé che bolle, i contanti agli sgoccioli, e le regole di papà che non ammettono deroghe.",
+      "Nel fascicolo c'è una procura firmata da Federico anni fa, senza leggerla. Asia non lo sa."
+    ]
+  },
+  "png": [
+    {
+      "nome": "Augusto",
+      "desc": "Il padre: lucido come un mattino d'inverno e testardo come la sua coupé. Ha le sue regole, i suoi orari e una memoria che funziona benissimo, soprattutto per le cose che i figli vorrebbero dimenticare. Non è il premio del viaggio: è il terzo passeggero, e ogni tanto guida lui."
+    },
+    {
+      "nome": "Professor Lanza",
+      "desc": "L'unico luminare che può confutare la perizia del dottor Maino, e l'unico collega che Augusto abbia mai rispettato. Ottantaquattro anni: non viaggia, visita solo di persona nel suo istituto."
+    }
+  ],
+  "geografia_scene": [
+    {
+      "scena": 1,
+      "fase": "Innesco",
+      "titolo": "La clinica",
+      "suggerimento_posta": "Entrare a vedere Augusto e uscirne in tre: se va male, escono braccati e con la denuncia già in viaggio"
+    },
+    {
+      "scena": 2,
+      "fase": "Adattamento",
+      "titolo": "La statale del sud",
+      "suggerimento_posta": "Imparare a viaggiare in tre, alle regole di papà: se va male, perdono mezza giornata e la polizia guadagna terreno"
+    },
+    {
+      "scena": 3,
+      "fase": "Frattura",
+      "titolo": "Il motel delle piastrelle verdi",
+      "suggerimento_posta": "Una notte ferma, troppe domande: se va male, la firma di Federico esce dal fascicolo nel modo peggiore"
+    },
+    {
+      "scena": 4,
+      "fase": "Crisi",
+      "titolo": "Il posto di blocco",
+      "suggerimento_posta": "L'ultimo confine di regione con la denuncia ormai dappertutto: se va male, arrivano dal professore scortati, o non arrivano affatto"
+    },
+    {
+      "scena": 5,
+      "fase": "Risoluzione",
+      "titolo": "L'istituto del professor Lanza",
+      "suggerimento_posta": "La visita, con Vanessa e i suoi legali alle porte: se va male, il giudice si esprime venerdì con una perizia sola"
+    }
+  ],
+  "note_mappatura": "Formato 1: pers.A/B con campo 'detesta' (tratti narrativi, w-pitch-0 e w-pitch-1); 'spinte' con due risposte per seme (w-pitch-2..9 secondo PITCH_TEMPLATE). Estensione proposta e opzionale: 'png' = personaggi non giocanti centrali (qui Augusto, il terzo passeggero); un caricatore che non la conosce può ignorarla senza perdere nulla. Le dipendenze di Asia sono trattate come storia e percorso, mai come risorsa di gioco. Campo 'premessa': contesto narrativo da leggere al tavolo prima del pitch; non mappa su un campo del wizard (un caricatore può mostrarlo nel riepilogo)."
+}

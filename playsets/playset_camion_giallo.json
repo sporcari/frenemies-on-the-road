@@ -1,0 +1,75 @@
+{
+  "formato": 1,
+  "playset": "Morgana, Lampo e il camion giallo",
+  "fonte": "playset originale, tono Comedy (family friendly), candidato default per gli esempi",
+  "nGiocatori": 2,
+  "tono": "Comedy",
+  "premessa": "Domani all'alba la famiglia di Bea trasloca dall'altra parte della città. Durante l'ultimo giro al parco, Morgana e Lampo sono rimasti indietro: davanti a loro una notte intera di quartiere, alti venti centimetri, con il collezionista Mirko in agguato e gli scatoloni che si chiudono uno a uno.",
+  "missione": "Tornare nello scatolone dei giochi di Bea PRIMA che all'alba parta il camion giallo del trasloco.",
+  "primaDiff": "Dimenticati al parco, Morgana e Lampo sono finiti nella cesta degli oggetti smarriti che il custode porta nel deposito ogni sera. Il deposito riapre lunedì: uscire dalla cesta e dal parco prima che giri la chiave.",
+  "pers": {
+    "A": {
+      "nome": "Capitana Morgana",
+      "desc": "Action figure di piratessa, edizione limitata: sciabola di plastica, uncino con la corda. Spavalda, impulsiva: salta prima di guardare. Bea l'ha vinta alla fiera con l'ultimo gettone.",
+      "detesta": "Lampo ha paura di tutto ma vuole fare amicizia anche coi pericoli: abbraccia prima, ragiona poi."
+    },
+    "B": {
+      "nome": "Lampo",
+      "desc": "Bradipo di peluche, morbido e ansioso, ricucito due volte. Primo peluche di Bea, il giocattolo della nanna. Le bambole bionde dalle lunghe gambe affusolate lo trattano da reliquia, e gira una voce crudele: che puzzi di vomito. Si chiama Lampo per ironia, e lo sa.",
+      "detesta": "Morgana salta prima di guardare e chiama arrembaggio qualsiasi piano. Prima o poi qualcuno si strappa, e di solito è lui."
+    }
+  },
+  "nemici": "Mirko, il collezionista del quartiere: teche di vetro col cartellino, che si aprono solo dall'esterno. E il furetto Zanna, che fiuta la plastica pregiata a un isolato di distanza.",
+  "caos": "La città di notte vista da venti centimetri: irrigatori a orario, tombini come voragini, il cane del vicino, il temporale, il furgone dei rifiuti all'alba.",
+  "spinte": {
+    "picche": [
+      "Ha giurato sul cappello: nessuno della ciurma resta indietro. E la ciurma è Bea.",
+      "Con uncino e corda si arrampica ovunque, e non ha paura di niente."
+    ],
+    "cuori": [
+      "Senza Lampo, Bea non dorme. E domani è la prima notte nella casa nuova.",
+      "Di un peluche si fidano tutti. E da qualsiasi altezza, rimbalza."
+    ],
+    "quadri": [
+      "Mirko pattuglia il quartiere in bici, con la torcia frontale e Zanna nel cestino.",
+      "Morgana è il pezzo che manca alla collezione: stanotte o mai più."
+    ],
+    "fiori": [
+      "Irrigatori alle sei, temporale in arrivo, e quattro strade larghe come oceani.",
+      "La voce che Lampo puzzi di vomito l'ha messa in giro Morgana, per gelosia. Lui non lo sa."
+    ]
+  },
+  "geografia_scene": [
+    {
+      "scena": 1,
+      "fase": "Innesco",
+      "titolo": "La cesta degli smarriti",
+      "suggerimento_posta": "Uscire dal parco prima della chiusura. Se va male: la notte comincia dal deposito oggetti smarriti, con una serratura in più"
+    },
+    {
+      "scena": 2,
+      "fase": "Adattamento",
+      "titolo": "Il viale dei platani",
+      "suggerimento_posta": "Attraversare le prime strade. Se va male: Zanna fiuta la loro pista"
+    },
+    {
+      "scena": 3,
+      "fase": "Frattura",
+      "titolo": "La cameretta di Mirko",
+      "suggerimento_posta": "Passare dal giardino del collezionista senza finire in teca. Se va male: la verità sulla diceria esce nel posto peggiore"
+    },
+    {
+      "scena": 4,
+      "fase": "Crisi",
+      "titolo": "Il temporale",
+      "suggerimento_posta": "L'ultimo isolato sotto la pioggia, con la bici di Mirko alle spalle. Se va male: arrivano fradici, scuciti e in ritardo"
+    },
+    {
+      "scena": 5,
+      "fase": "Risoluzione",
+      "titolo": "Il camion giallo",
+      "suggerimento_posta": "Il portellone è aperto e gli scatoloni salgono uno a uno. Se va male: il camion parte e loro restano sul marciapiede"
+    }
+  ],
+  "note_mappatura": "Formato 1: pers.A/B con campo 'detesta' (tratti narrativi, w-pitch-0 e w-pitch-1); 'spinte' con due risposte per seme (w-pitch-2..9 secondo PITCH_TEMPLATE). Pensato come playset family friendly: l'antagonista è un collezionista dispettoso, il pericolo massimo è una teca di vetro, e il segreto che incrina l'alleanza (la diceria messa in giro da Morgana) porta un tema vero, le voci crudeli tra compagni, con l'arco di riscatto già pronto: il viaggio è l'occasione di Morgana per rimediare. Campo 'premessa': contesto narrativo da leggere al tavolo prima del pitch; non mappa su un campo del wizard (un caricatore può mostrarlo nel riepilogo)."
+}

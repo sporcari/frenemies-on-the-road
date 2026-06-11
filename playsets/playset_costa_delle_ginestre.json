@@ -1,0 +1,81 @@
+{
+  "formato": 1,
+  "playset": "Nico, Marta e la Costa delle Ginestre",
+  "fonte": "playset originale, tono Romance (attivista e avvocatessa contro la speculazione)",
+  "nGiocatori": 2,
+  "tono": "Romance",
+  "premessa": "Helios Sviluppo ha già venduto la Costa delle Ginestre sulla carta: porti turistici e resort al posto della baia. La valutazione d'impatto che ha aperto la strada è falsificata, e l'unico che può dimostrarlo è il geologo che firmò la perizia originale, sparito da dieci anni. Il comitato ha appena perso il ricorso: restano cinque giorni, un furgone, un attivista e l'avvocatessa che nessuno si aspettava dalla loro parte.",
+  "missione": "Portare il geologo Sandri a deporre in consiglio PRIMA che venerdì la giunta firmi la convenzione che apre i cantieri sulla Costa delle Ginestre.",
+  "primaDiff": "Il ricorso è stato respinto stamattina: la via legale è chiusa. E nessuno sa dove sia Sandri: l'unico indizio è nell'archivio del suo vecchio socio, che oggi lavora per la società del progetto.",
+  "pers": {
+    "A": {
+      "nome": "Nico",
+      "desc": "Attivista ambientalista, cresciuto nei centri sociali. Megafono, catene ai cancelli, azione diretta. Nella baia ci porta i ragazzini del quartiere ogni estate.",
+      "detesta": "Marta parla la lingua dei nemici, veste come loro e vince con le loro regole. E lui non riesce a smettere di starla a sentire."
+    },
+    "B": {
+      "nome": "Marta",
+      "desc": "Avvocatessa di città, tailleur e procedura, uscita da uno studio che difende quelli come Helios. Questo è il primo caso che ha scelto, invece di accettarlo.",
+      "detesta": "Nico crede che urlare sia un argomento e che un cancello chiuso sia un invito. E arriva sempre in ritardo, sempre nel momento giusto."
+    }
+  },
+  "nemici": "Helios Sviluppo, la società del progetto: vigilanza privata sui cantieri, pagine comprate sui giornali locali, mezzo consiglio già allineato. E lo studio legale che la difende è quello da cui Marta se n'è andata: conoscono ogni sua mossa prima che la faccia.",
+  "caos": "Il maestrale che ferma i traghetti, la litoranea che frana, il furgone del comitato con la frizione bruciata, e la stampa locale che pubblica sempre la cosa sbagliata nel giorno peggiore.",
+  "spinte": {
+    "picche": [
+      "Se cementificano la baia, ai ragazzini del quartiere resta solo il quartiere.",
+      "Mobilita cento persone con tre vocali, e nessun cancello chiuso resta un problema a lungo."
+    ],
+    "cuori": [
+      "Se perde il primo caso che ha scelto, torna a vincere cause in cui non crede.",
+      "Sa quale cavillo tiene sveglio un assessore, e mezzo palazzo le deve un favore."
+    ],
+    "quadri": [
+      "Vigilanza privata, giornali compiacenti, e gli ex colleghi di Marta che conoscono ogni sua mossa.",
+      "I capitali sono già spesi: se la firma salta, i soci che non compaiono non perdonano."
+    ],
+    "fiori": [
+      "Il maestrale ferma i traghetti, la litoranea frana, il furgone non supera le salite.",
+      "Sul masterplan di Helios c'è la firma di Marta, giovane associata. Nico non lo sa. E Sandri se la ricorda."
+    ]
+  },
+  "png": [
+    {
+      "nome": "Sandri",
+      "desc": "Il geologo che firmò la perizia vera e vide sparire quella falsa. Dieci anni di silenzio in un faro, un rimorso che non è invecchiato, e nessuna voglia di fidarsi di chi arriva dalla città."
+    }
+  ],
+  "geografia_scene": [
+    {
+      "scena": 1,
+      "fase": "Innesco",
+      "titolo": "L'archivio del socio",
+      "suggerimento_posta": "Trovare l'indirizzo di Sandri nello studio di chi lavora per Helios. Se va male: Helios sa che lo stanno cercando, e parte prima di loro"
+    },
+    {
+      "scena": 2,
+      "fase": "Adattamento",
+      "titolo": "La litoranea",
+      "suggerimento_posta": "Risalire la costa col furgone del comitato. Se va male: la vigilanza li aggancia e la stampa li brucia"
+    },
+    {
+      "scena": 3,
+      "fase": "Frattura",
+      "titolo": "Il faro di Sandri",
+      "suggerimento_posta": "Convincere un uomo che non si fida di nessuno. Se va male: la firma di Marta esce dalla bocca sbagliata"
+    },
+    {
+      "scena": 4,
+      "fase": "Crisi",
+      "titolo": "Il maestrale",
+      "suggerimento_posta": "Tornare con Sandri, traghetti fermi e Helios alle calcagna. Se va male: arrivano a voto iniziato"
+    },
+    {
+      "scena": 5,
+      "fase": "Risoluzione",
+      "titolo": "Il consiglio comunale",
+      "suggerimento_posta": "La deposizione, con l'aula piena e i soci di Helios in prima fila. Se va male: la firma apre i cantieri"
+    }
+  ],
+  "note_mappatura": "Formato 1: pers.A/B con campo 'detesta' (tratti narrativi, w-pitch-0 e w-pitch-1); 'spinte' con due risposte per seme (w-pitch-2..9 secondo PITCH_TEMPLATE); estensione opzionale 'png'. Tono Romance: i due 'detesta' sono scritti per leggersi anche come attrazione, e il segreto dei Fiori minaccia insieme l'alleanza e il sentimento; la dominanza di Cuori nel finale si legge come legame che prevale, non come semplice riconciliazione. Campo 'premessa': contesto narrativo da leggere al tavolo prima del pitch; non mappa su un campo del wizard (un caricatore può mostrarlo nel riepilogo)."
+}
