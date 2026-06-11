@@ -383,7 +383,7 @@ function nuovoLato(chiave, nome, semi){
   const mazzo = [];
   semi.forEach(s=>{ for(let v=1; v<=10; v++) mazzo.push(carta(s,v)); });
   return {chiave, nome, semi, mazzo:mischia(mazzo), mano:[], prese:[], scope:[],
-          astaCarta:null, riserva:[], bonus:0, peccatoScena:-1};
+          astaCarta:null, riserva:[], bonus:0};
 }
 function nuovaPartita(){
   idc = 0;
@@ -414,7 +414,6 @@ function nuovaPartita(){
     astaWinner:null,
     astaPicks:{P:null,O:null},
     ultimaGiocata:"",
-    pendingJolly:null,     // {attore, cartaId, valore, comboIds}
     jollyEntrato:false, jollyIntroVisto:false, figureComprate:[],
     png:{},                // metadati PNG-figura acquistati: chiave "<fig><seme>" -> {nome, desc}
     pngNarr:[],            // PNG narrativi creati in narrazione: {seme, nome, desc, scena}
@@ -555,7 +554,6 @@ function latoCheAgisce(){
   const f=G.fase;
   if(f==="setup") return ownerSetup();
   if(f==="fine_scena"||f==="jolly_intro"||f==="neutralizza"||f==="finale"||f==="primo_conteggio") return G.hostLato;
-  if(f==="counter") return G.pendingJolly ? altro(G.pendingJolly.attore) : G.attore;
   if(f==="narrazione") return G.narrLato || G.attore;
   if(f==="mercato") return G.mercatoLato || G.hostLato;
   if(f==="asta_rivela") return G.rivela && G.rivela.win ? G.rivela.win : G.attore;
@@ -587,7 +585,6 @@ function rSpettatore(){
     extra=`<div style="display:flex;justify-content:center;margin:10px 0">${G.narr.html}</div>
       <div class="pannello"><span class="etichetta">${chi} sta narrando</span><div class="lettura">${G.narr.sugg}</div></div>`;
   }
-  if(f==="counter") extra=`<div class="banner">È in corso una decisione segreta…</div>`;
   if(f==="setup"){
     extra=`<div class="pannello">
       <span class="etichetta">Creazione della partita — passo ${G.passo+1}/${PASSI_WIZ.length}: ${PASSI_WIZ[G.passo]}</span>
@@ -599,7 +596,7 @@ function rSpettatore(){
     ${G.ultimaGiocata && (f==="turno"||f==="asta")?`<div class="banner">${G.ultimaGiocata}</div>`:""}
     ${extra}
     <div class="cartellone" style="margin-top:14px"><div class="grande">Tocca a ${chi}</div>
-      <div class="sc">${f==="counter"?"decisione in corso":f==="narrazione"?"narrazione in corso":"attendi la mossa"}</div></div>`;
+      <div class="sc">${f==="narrazione"?"narrazione in corso":"attendi la mossa"}</div></div>`;
 }
 
 /* ---------------- velo ---------------- */
@@ -661,7 +658,6 @@ function render(){
   else if(f==="apertura") rApertura();
   else if(f==="turno") rTurno();
   else if(f==="narrazione") rNarrazione();
-  else if(f==="counter") rCounter();
   else if(f==="fine_scena") rFineScena();
   else if(f==="primo_conteggio") rPrimoConteggio();
   else if(f==="colpi") rColpi();
@@ -1155,7 +1151,6 @@ function prossimoTurno(){
 function rTurno(){
   const l=G.attore, L=lato(l);
   const g=carteGiocabili(l);
-  const peccObj = peccatoDisponibile(l);
   const sr = spinteResidue(l);
   SC.innerHTML = `
     ${intestazioneScena()}
@@ -1165,7 +1160,6 @@ function rTurno(){
       <div class="tot-lato o">♦+♣ Opposizione <b>${totaleOpp()}</b></div>
     </div>
     <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto — una presa qui sarebbe scopa</span>'}</div>
-    ${peccObj?`<button class="secondaria" id="btnPeccato" style="margin-bottom:10px">⚡ Fai emergere il peccato del Jolly avversario (+5 punti)</button>`:""}
     <div class="mano-area${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}">
       <div class="mano-titolo">
         <span class="etichetta" style="margin:0">${g.daAsta?"Ultima giocata — la carta dell'asta":"Mano di "+nomeLato(l)+(latoDiviso(l)?" — gioca "+nomeControllore(l)+" "+SIMBOLI[G.controllo[l]]:"")}</span>
@@ -1178,7 +1172,6 @@ function rTurno(){
       <div class="mazzo-carte" id="manoTurno">${ordina(g.carte).map(c=>cartaHTML(c)).join("")}</div>
       <div id="pannelloAzione"></div>
     </div>`;
-  if(peccObj) document.getElementById("btnPeccato").addEventListener("click",()=>eseguiPeccato(l,peccObj));
   SC.querySelectorAll("#manoTurno .carta").forEach(el=>{
     el.addEventListener("click",()=>{
       SC.querySelectorAll("#manoTurno .carta").forEach(x=>x.classList.remove("sel"));
@@ -1453,19 +1446,20 @@ function effettoFigura(c, poi){
 function opzioniJolly(c){
   const box=document.getElementById("pannelloAzione");
   if(G.piatto.length===0){
-    box.innerHTML=`<div class="banner">Piatto vuoto: il piano scorretto non ha appigli. Il Jolly finisce tra le tue scope come risorsa fallita, esposta all'avversario.</div>
-      <div class="opzioni"><button id="jFallisce">Gioca comunque il Jolly</button></div>`;
-    document.getElementById("jFallisce").addEventListener("click",()=>{
+    box.innerHTML=`<div class="banner">Piatto vuoto: il Jolly non ha niente da catturare. Verrà semplicemente scartato, il piatto resta vuoto.</div>
+      <div class="opzioni"><button id="jScarta">Scarta il Jolly</button></div>`;
+    document.getElementById("jScarta").addEventListener("click",()=>{
       const l=G.attore;
       rimuoviDaMano(l,c,false);
-      c.esposta=true; lato(l).scope.push(c);
-      G.ultimaGiocata=`${nomeLato(l)} gioca il Jolly su piatto vuoto: il piano scorretto fallisce senza alcun vantaggio.`;
+      G.scartiComuni.push(c);
+      G.svuotoConScopa=null;
+      G.ultimaGiocata=`${nomeLato(l)} scarta il Jolly: niente da catturare nel piatto vuoto.`;
       vaiNarrazione(c,"piatto","",null,
-        `<b>Il piano fallisce.</b> Narra il tentativo scorretto che non trova appigli: la bugia che nessuno beve, la trappola scattata a vuoto. Il Jolly resta tra le tue scope come risorsa fallita, esposta agli occhi dell'avversario.`);
+        `<b>Occasione mancata.</b> Il piano scorretto non trova appigli: il Jolly viene scartato e il tavolo resta com'era.`);
     });
     return;
   }
-  let html=`<div class="banner">Dichiara il valore del Jolly (1–10). Ricorda: dovrai narrare <b>come ottieni il vantaggio con un mezzo moralmente discutibile</b>.</div><div class="opzioni">`;
+  let html=`<div class="banner">Dichiara il valore del Jolly (1–10). Mossa <b>sleale</b>: il vantaggio sul tavolo è tuo, ma il <b>punto andrà all'avversario</b>. Narra come ottieni il successo <b>contro i principi e la lealtà</b>.</div><div class="opzioni">`;
   for(let v=1;v<=10;v++){
     const ha=combosPresa(v).length>0;
     html+=`<button data-v="${v}" ${ha?"":"disabled style='opacity:.3'"}>${v}</button>`;
@@ -1479,89 +1473,30 @@ function opzioniJolly(c){
     jc.innerHTML=`<div class="opzioni" style="margin-top:8px">`+combos.map((cmb,i)=>
       `<button data-c="${i}">Come ${v}: prendi ${cmb.map(x=>(x.fig?FIGURE[x.fig].nome.charAt(0):x.val)+SIMBOLI[x.seme]).join(" + ")}${cmb.length===G.piatto.length?" — SCOPA!":""}</button>`).join("")+`</div>`;
     jc.querySelectorAll("button[data-c]").forEach(bb=>bb.addEventListener("click",()=>{
-      G.pendingJolly={attore:G.attore, carta:c, valore:v, combo:combos[parseInt(bb.dataset.c)]};
-      G.fase="counter";
-      velo(altro(G.attore),render);   // decisione segreta dell'avversario, sempre
+      giocaJolly(c, v, combos[parseInt(bb.dataset.c)]);
     }));
   }));
 }
-
-function rCounter(){
-  const pj=G.pendingJolly, dif=altro(pj.attore), D=lato(dif);
-  if(G.modalita==="solo" && dif==="O"){
-    SC.innerHTML=`${intestazioneScena()}<h2 class="ts">Mossa scorretta in corso</h2>
-      <div class="banner">Giochi il <b>JOLLY come ${pj.valore}</b>. L'Opposizione valuta la mossa…</div>`;
-    return;
-  }
-  const haJolly=D.mano.some(x=>x.jolly);
-  SC.innerHTML=`
-    ${intestazioneScena()}
-    <h2 class="ts">Mossa scorretta in corso</h2>
-    <div class="banner">${nomeLato(pj.attore)} gioca il <b>JOLLY come ${pj.valore}</b> e vuole prendere:
-      <div class="mazzo-carte" style="margin-top:8px">${pj.combo.map(x=>cartaHTML(x,"mini")).join("")}</div>
-      ${pj.combo.length===G.piatto.length?"<b>Sarebbe SCOPA.</b>":""}
-    </div>
-    ${haJolly
-      ? `<p class="sotto">Hai un Jolly in mano: puoi smascherare il tentativo. Se lo fai, prendi <b>tutte le carte del piatto</b> e i due Jolly escono dal gioco.</p>
-         <div style="display:flex;gap:10px;flex-wrap:wrap">
-           <button class="azione" style="flex:1" id="cSi">COUNTER — Smaschera</button>
-           <button class="secondaria" style="flex:1" id="cNo">Lascia correre</button>
-         </div>`
-      : `<p class="sotto">Non hai modo di opporti a questa mossa.</p>
-         <button class="azione" id="cNo">Continua</button>`}`;
-  document.getElementById("cNo").addEventListener("click",()=>risolviJolly(false));
-  if(haJolly) document.getElementById("cSi").addEventListener("click",()=>risolviJolly(true));
-}
-function risolviJolly(counter){
-  const pj=G.pendingJolly, l=pj.attore, L=lato(l), dif=altro(l), D=lato(dif);
-  rimuoviDaMano(l,pj.carta,false);
-  G.pendingJolly=null;
-  G.saltaVelo=true;   // il difensore ha già il tablet in mano
-  if(counter){
-    const jollyDif=D.mano.find(x=>x.jolly);
-    D.mano=D.mano.filter(x=>x.id!==jollyDif.id);
-    const cap=[...G.piatto]; G.piatto=[];
-    if(cap.length){ D.prese.push(cap[0]); G.scartiComuni.push(...cap.slice(1)); }   // counter = 1 presa; resto agli scarti
-    G.svuotoConScopa=null;   // il counter svuota il piatto ma NON è una scopa
-    G.ultimaGiocata=`COUNTER! ${nomeLato(dif)} smaschera il tentativo: prende tutto il piatto, entrambi i Jolly escono dal gioco.`;
-    vaiNarrazione(null,"presa","",null,
-      `<b>COUNTER.</b> ${nomeLato(dif)} narra come il tentativo scorretto viene smascherato: la trappola smontata davanti a tutti, il piano esposto — e tutto ciò che era in scena finisce nelle sue mani.`, dif);
-    return;
-  }
-  G.piatto=G.piatto.filter(x=>!pj.combo.some(y=>y.id===x.id));
-  G.scartiComuni.push(...pj.combo);   // carte catturate col Jolly → scarti comuni
+function giocaJolly(c, v, combo){
+  const l=G.attore, L=lato(l), avv=altro(l), A=lato(avv);
+  rimuoviDaMano(l,c,false);
+  G.piatto=G.piatto.filter(x=>!combo.some(y=>y.id===x.id));
+  G.scartiComuni.push(...combo);   // carte catturate → scarti comuni
   if(G.piatto.length===0){
-    pj.carta.peccato=true; L.scope.push(pj.carta); L.peccatoScena=G.scena;
-    aggiungiScopa(l);
-    G.svuotoConScopa=l;   // scopa col Jolly: piatto svuotato da l
-    G.ultimaGiocata=`${nomeLato(l)} — SCOPA col Jolly come ${pj.valore}. Resta un peccato latente.`;
-    vaiNarrazione(pj.carta,"scopa","",null,
-      `<b>SVOLTA scorretta.</b> ${nomeLato(l)} narra il mezzo moralmente discutibile con cui ripulisce la scena in un colpo solo — una bugia, una minaccia, una scorciatoia. Il vantaggio è pieno, ma il <b>peccato resta latente</b>: in una scena futura potrebbe tornare a chiedere il conto.`);
+    // SCOPA col Jolly: il piatto è pulito (vantaggio di chi gioca), ma il marcatore (3 punti) va all'AVVERSARIO
+    A.scope.push(c); aggiungiScopa(avv);
+    G.svuotoConScopa=l;   // chi ripulisce il piatto vince la posta della scena
+    G.ultimaGiocata=`${nomeLato(l)} — SCOPA col Jolly come ${v}. Il piatto è ripulito, ma la scopa (3 punti) va a ${nomeLato(avv)}.`;
+    vaiNarrazione(c,"scopa","",null,
+      `<b>Svolta sleale.</b> ${nomeLato(l)} ripulisce la scena con un mezzo che tradisce principi e lealtà: il vantaggio è pieno, ma il merito — e i 3 punti — finiscono a ${nomeLato(avv)}.`);
   }else{
-    L.prese.push(pj.carta);
-    G.svuotoConScopa=null;   // presa col Jolly: piatto non vuoto
-    G.ultimaGiocata=`${nomeLato(l)} — presa col Jolly come ${pj.valore}.`;
-    vaiNarrazione(pj.carta,"presa","",null,
-      `<b>Vantaggio scorretto.</b> ${nomeLato(l)} narra come ottiene questo successo parziale con un mezzo moralmente discutibile — tecnicamente sbagliato, sicuramente efficace.`);
+    // PRESA col Jolly: il marcatore (1 punto) va all'AVVERSARIO
+    A.prese.push(c);
+    G.svuotoConScopa=null;
+    G.ultimaGiocata=`${nomeLato(l)} — presa col Jolly come ${v}. Il punto della presa va a ${nomeLato(avv)}.`;
+    vaiNarrazione(c,"presa","",null,
+      `<b>Vantaggio sleale.</b> ${nomeLato(l)} ottiene un successo andando contro i principi e la lealtà: il vantaggio è suo, ma il punto della presa va a ${nomeLato(avv)}.`);
   }
-}
-
-/* peccato latente: l'avversario può farlo emergere in una scena successiva */
-function peccatoDisponibile(l){
-  const S=lato(altro(l));
-  if(S.peccatoScena>=0 && S.peccatoScena<G.scena){
-    const j=S.scope.find(x=>x.jolly && x.peccato);
-    if(j) return j;
-  }
-  return null;
-}
-function eseguiPeccato(l, jollyCard){
-  const S=lato(altro(l));
-  S.scope=S.scope.filter(x=>x.id!==jollyCard.id);
-  S.peccatoScena=-1;
-  lato(l).bonus+=5;
-  G.ultimaGiocata=`Il peccato emerge: il Jolly di ${nomeLato(altro(l))} viene eliminato e ${nomeLato(l)} ottiene 5 punti. Narra come il passato torna a chiedere il conto.`;
-  render();
 }
 
 /* ================= FINE SCENA ================= */
@@ -1638,7 +1573,7 @@ function rFineScena(){
 /* ================= MERCATO ================= */
 function avviaMercato(){
   // ordine: 1) Jolly nei mazzi (fine 3ª scena, PRIMA della pesca)  2) pesca nuova mano  3) acquisti
-  if(G.scena===2 && !G.jollyEntrato) entraJollyNeiMazzi();
+  if(G.scena===1 && !G.jollyEntrato) entraJollyNeiMazzi();   // dopo la 2ª scena
   const preScena5 = (G.scena===3);
   G.mercatoLato = G.modalita==="online" ? "P" : null;
   // prima della 5ª non si pesca qui: la scelta delle 4 carte (mano estesa) avviene DOPO il mercato,
@@ -1703,12 +1638,10 @@ function rMercato(){
   function pannelloLato(l){
     const L=lato(l);
     const punti=puntiMercato(l);
-    const pecc=peccatoDisponibile(l);
     return `<div class="pannello">
       <span class="etichetta">${nomeLato(l)} ${L.semi.map(s=>SIMBOLI[s]).join("")}</span>
       <div class="punti-big" id="punti-${l}">${punti}</div>
       <div class="contatori">prese ${L.prese.length} (×1) · scope ${L.scope.filter(c=>!c.esposta).length} (×3)${L.bonus?` · bonus ${L.bonus}`:""}</div>
-      ${pecc?`<button class="secondaria" style="margin-top:8px;width:100%" data-pecc="${l}">⚡ Fai emergere il peccato avversario (+5)</button>`:""}
       <div style="margin-top:10px">
         ${Object.entries(FIGURE).map(([k,f])=>{
           const presa=figuraTipoComprata(l,k);   // una figura per tipo per lato
@@ -1735,14 +1668,10 @@ function rMercato(){
     if(puntiMercato(l)<FIGURE[f].costo) return;
     chiediPng(l,f,s,b);
   }));
-  SC.querySelectorAll("button[data-pecc]").forEach(b=>b.addEventListener("click",()=>{
-    const l=b.dataset.pecc, j=peccatoDisponibile(l);
-    if(j){ eseguiPeccato(l,j); G.fase="mercato"; render(); }
-  }));
   document.getElementById("m-fine").addEventListener("click",()=>{
     if(online && G.mercatoLato==="P"){ G.mercatoLato="O"; render(); return }
     G.mercatoLato=null;
-    if(G.scena===2 && !G.jollyIntroVisto){ G.jollyIntroVisto=true; G.fase="jolly_intro"; render(); }
+    if(G.scena===1 && !G.jollyIntroVisto){ G.jollyIntroVisto=true; G.fase="jolly_intro"; render(); }
     else if(G.scena===3){ avviaManoEstesa(); }   // prima della 5ª: la scelta delle 4 carte è DOPO il mercato
     else avanzaScena();
   });
@@ -1805,23 +1734,22 @@ function pagaCosto(l, costo){
   return true;
 }
 function entraJollyNeiMazzi(){
+  // un solo Jolly, nel mazzo dei Protagonisti
   G.jollyEntrato=true;
-  ["P","O"].forEach(l=>{
-    const L=lato(l), j=carta(null,0,null,true);
-    j.seme="jolly";
-    L.mazzo.splice(Math.floor(Math.random()*(L.mazzo.length+1)),0,j);
-  });
+  const L=lato("P"), j=carta(null,0,null,true);
+  j.seme="jolly";
+  L.mazzo.splice(Math.floor(Math.random()*(L.mazzo.length+1)),0,j);
 }
 function rJollyIntro(){
   SC.innerHTML=`
     <h2 class="ts">Qualcosa cambia sulla strada</h2>
     <div class="cartellone"><div class="grande">Entra il Jolly</div>
-      <div class="sc">uno per mazzo, mescolato tra le carte</div></div>
+      <div class="sc">uno solo, nel mazzo dei Protagonisti</div></div>
     <div class="pannello" style="font-size:14px">
-      Il Jolly vale quanto dichiari (1–10) e serve solo per fare presa o scopa — mai nell'asta.
-      Quando lo giochi, <b>narri come ottieni il vantaggio con un mezzo moralmente discutibile</b>.
-      Una scopa col Jolly lascia un <b>peccato latente</b> che l'avversario potrà far emergere.
-      E se l'avversario ha il proprio Jolly in mano, può fare <b>counter</b>: smaschera la mossa, prende tutto il piatto, ed entrambi i Jolly escono dal gioco.
+      Il Jolly vale quanto dichiari (1–10) e serve <b>solo per catturare</b> (presa o scopa) — mai nell'asta.
+      È una mossa <b>sleale</b>: il vantaggio sul tavolo è di chi lo gioca, ma il <b>punto va all'avversario</b> (presa = 1, scopa = 3).
+      Narra sempre come ottieni il successo <b>andando contro i principi e la lealtà</b>.
+      Se a piatto vuoto resta solo il Jolly, viene scartato senza effetto.
     </div>
     <button class="azione" id="j-ok">Si riparte</button>`;
   document.getElementById("j-ok").addEventListener("click",avanzaScena);
@@ -2102,16 +2030,14 @@ const REGOLE={
     Attenzione: le figure lasciate nel piatto all'inizio dell'ultima scena vengono <b>neutralizzate</b> (vedi Quinta scena).`},
   jolly:{titolo:"Il Jolly",html:`
     <h3>Ingresso e uso</h3>
-    Il Jolly entra nei mazzi al termine della <b>terza scena</b>. Non può essere usato nell'asta. Chi lo gioca <b>dichiara il valore (1–10)</b> e lo usa per fare presa o scopa.
+    Un solo Jolly, nel <b>mazzo dei Protagonisti</b>, entra al termine della <b>seconda scena</b>. Non può essere usato nell'asta. Chi lo gioca <b>dichiara il valore (1–10)</b> e lo usa <b>solo per catturare</b> (presa o scopa).
+    <h3>Mossa sleale: il punto va all'avversario</h3>
+    Il vantaggio sul tavolo è di chi gioca il Jolly (ripulisce o alleggerisce il piatto), ma il <b>marcatore va all'avversario</b>: una presa col Jolly = <b>1 punto all'avversario</b>, una scopa = <b>3 punti all'avversario</b>.
     <h3>Vincolo narrativo</h3>
-    Giocandolo si deve narrare <b>come si ottiene il vantaggio con un mezzo moralmente discutibile</b>.
+    Si narra sempre un successo ottenuto <b>andando contro i principi e la lealtà</b>.
     <div class="es">"Kai minaccia il teste con informazioni false per farlo parlare — tecnicamente illegale, sicuramente efficace."</div>
-    <h3>Il peccato del Jolly</h3>
-    Una <b>scopa</b> col Jolly lascia un <i>peccato latente</i>. In una scena successiva l'avversario può farlo emergere: elimina il Jolly dal gioco, ottiene <b>5 punti</b>, e narra come il passato torna a chiedere il conto.
-    <h3>Counter</h3>
-    Se l'avversario ha il proprio Jolly in mano può smascherare la mossa (facoltativo): prende <b>tutte le carte del piatto</b> come presa, ed entrambi i Jolly escono dal gioco.
     <h3>Piatto vuoto</h3>
-    Jolly giocato su piatto vuoto: nessuna presa, finisce tra le scope come <b>risorsa fallita</b>, esposta all'avversario.`},
+    Se a piatto vuoto resta solo il Jolly, viene <b>scartato</b> senza effetto e il piatto resta vuoto.`},
   pitch:{titolo:"Risorse del pitch",html:`
     <h3>Le dieci domande (9.5–9.6)</h3>
     Sei poste dall'Opposizione ai Protagonisti (cosa si detestano, perché tengono all'obiettivo, gli assi nella manica — ♠ e ♥) e quattro poste dai Protagonisti all'Opposizione (mezzi temibili e motivazioni ♦, catastrofi e crepe nell'alleanza ♣). Le risposte vengono scritte e <b>diventano risorse di gioco</b>.
@@ -2146,7 +2072,7 @@ const REGOLE={
     <tr><td>Perso</td><td>Persi</td><td><b>Disfatta totale</b> — fallimento completo</td></tr></table>`}
 };
 const AIUTO_FASE={asta:"asta",asta_rivela:"asta",apertura:"asta",turno:"azioni",narrazione:"semi",
-  counter:"jolly",fine_scena:"lettura",mano_estesa:"scena5",neutralizza:"scena5",primo_conteggio:"scena5",colpi:"scena5",mercato:"mercato",
+  fine_scena:"lettura",mano_estesa:"scena5",neutralizza:"scena5",primo_conteggio:"scena5",colpi:"scena5",mercato:"mercato",
   jolly_intro:"jolly",finale:"lettura",setup:"semi",modalita:"semi",lobby:"semi"};
 function apriRegole(chiave){
   const nav=document.getElementById("regoleNav");
@@ -2359,7 +2285,6 @@ function iaScheduler(){
   if(f==="asta"&&G.attore==="O") iaAsta();
   else if(f==="apertura"&&G.attore==="O") iaApertura();
   else if(f==="turno"&&G.attore==="O") iaTurno();
-  else if(f==="counter"&&G.pendingJolly&&altro(G.pendingJolly.attore)==="O") iaCounter();
   else if(f==="narrazione"&&(G.narrLato||G.attore)==="O") iaNarrazione();
   else if(f==="mercato") iaMercato();
   else if(f==="mano_estesa"&&G.attore==="O") iaManoEstesa();
@@ -2391,42 +2316,17 @@ async function iaTurno(){
   const g=carteGiocabili("O");
   const ops=[];
   for(const c of g.carte){
-    if(c.jolly){
-      if(G.piatto.length===0){
-        ops.push({desc:"gioca il JOLLY su piatto vuoto: il piano fallisce, il Jolly finisce esposto tra le tue scope a valore 0",
-          esegui:()=>{ rimuoviDaMano("O",c,false); c.esposta=true; lato("O").scope.push(c);
-            G.ultimaGiocata=`${nomeLato("O")} gioca il Jolly su piatto vuoto: il piano scorretto fallisce senza alcun vantaggio.`;
-            vaiNarrazione(c,"piatto","",null,`<b>Il piano fallisce.</b> Il tentativo scorretto non trova appigli. Il Jolly resta esposto tra le scope dell'Opposizione.`);}});
-      }else{
-        for(let v=1;v<=10;v++) combosPresa(v).forEach(cmb=>ops.push({
-          desc:`JOLLY dichiarato come ${v}: prendi ${cmb.map(x=>nomeCarta(x)).join(" + ")}${cmb.length===G.piatto.length?" — SCOPA (ma lascia un peccato latente)":""}. L'avversario potrà fare counter se ha il suo Jolly`,
-          esegui:()=>{ G.pendingJolly={attore:"O",carta:c,valore:v,combo:cmb}; G.fase="counter"; velo("P",render); }}));
-      }
-    }else{
-      combosPresa(c.val).forEach(cmb=>ops.push({
-        desc:`con ${nomeCarta(c)} prendi ${cmb.map(x=>nomeCarta(x)).join(" + ")}${cmb.length===G.piatto.length?" — SCOPA":""}`,
-        esegui:()=>giocaCarta(c,cmb,g.daAsta)}));
-      ops.push({desc:`gioca ${nomeCarta(c)} nel piatto (nessuna presa)`, esegui:()=>giocaCarta(c,null,g.daAsta)});
-    }
+    // l'Opposizione non ha mai il Jolly (sta solo nel mazzo dei Protagonisti)
+    combosPresa(c.val).forEach(cmb=>ops.push({
+      desc:`con ${nomeCarta(c)} prendi ${cmb.map(x=>nomeCarta(x)).join(" + ")}${cmb.length===G.piatto.length?" — SCOPA":""}`,
+      esegui:()=>giocaCarta(c,cmb,g.daAsta)}));
+    ops.push({desc:`gioca ${nomeCarta(c)} nel piatto (nessuna presa)`, esegui:()=>giocaCarta(c,null,g.daAsta)});
   }
   const r=await chiamaClaude(`È IL TUO TURNO. ${g.daAsta?"Questa è la tua ultima giocata: la carta dell'asta.":""}\nOPZIONI:\n${ops.map((o,i)=>i+": "+o.desc).join("\n")}\nJSON: {"scelta": <numero>}`);
   let i=(r&&Number.isInteger(r.scelta)&&ops[r.scelta])?r.scelta:-1;
   if(i<0){ i=ops.findIndex(o=>o.desc.includes("prendi")); if(i<0) i=Math.floor(Math.random()*ops.length); }
   iaBusy=false;
   ops[i].esegui();
-}
-
-async function iaCounter(){
-  iaBusy=true;
-  const pj=G.pendingJolly;
-  const ha=lato("O").mano.some(c=>c.jolly);
-  let counter=false;
-  if(ha){
-    const r=await chiamaClaude(`L'avversario gioca il JOLLY come ${pj.valore} per prendere ${pj.combo.map(x=>nomeCarta(x)).join(" + ")}. Hai il tuo Jolly in mano: puoi fare COUNTER (smascheri la mossa, prendi TUTTE le ${G.piatto.length} carte del piatto, entrambi i Jolly escono dal gioco) oppure lasciar correre e tenerti il Jolly.\nJSON: {"counter": true|false}`);
-    counter=!!(r&&r.counter);
-  }
-  iaBusy=false;
-  risolviJolly(counter);
 }
 
 async function iaNarrazione(){

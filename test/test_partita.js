@@ -56,8 +56,8 @@ function passo(i){
     if(!carte.length) throw new Error("turno senza carte");
     click(carte[0]);
     const box=document.getElementById("pannelloAzione");
-    const jFall=box.querySelector("#jFallisce");
-    if(jFall){ click(jFall); return "jolly-fallito" }
+    const jScarta=box.querySelector("#jScarta");
+    if(jScarta){ click(jScarta); return "jolly-scartato" }
     const jv=[...box.querySelectorAll("button[data-v]")].filter(b=>!b.disabled);
     if(jv.length){
       click(jv[0]);
@@ -69,7 +69,6 @@ function passo(i){
     click(opz[opz.length-1].dataset.piatto?opz[Math.floor(Math.random()*opz.length)]:opz[0]);
     return "gioca";
   }
-  if(f==="counter"){ click(document.getElementById("cNo")); return f }
   if(f==="narrazione"){
     const sp=[...document.querySelectorAll("button[data-spinta]")];
     if(sp.length){

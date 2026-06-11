@@ -30,6 +30,8 @@ Queste sono ormai regole ufficiali, integrate nel regolamento e marcate *(v1.1)*
 17. **Figure: prezzi e una per tipo (§21, v1.3)**: costi Fante 4, Regina 7, Re 10 (valori in gioco 8/9/10 invariati). La figura di mezzo è rinominata **Regina** (`FIGURE.D.nome`). Vincolo: una figura per tipo per lato (`figuraTipoComprata(l,f)`), sostituisce la copia-unica-per-seme; nel mercato, comprato un tipo, spariscono entrambi i pulsanti di quel tipo per quel lato.
 18. **§34 da riscrivere**: la partita d'esempio narrata usa ancora la vecchia economia (costi 8/9/10, "scopa tappata", "copia unica", "scope+prese") e i vecchi colpi di scena. Va riscritta sul transcript seed 13 rigenerato.
 
+19. **Jolly ridisegnato (§22, v1.3)**: un solo Jolly, **solo nel mazzo dei Protagonisti**, entra dopo la **2ª scena** (`entraJollyNeiMazzi` su un solo lato; ingresso e `jolly_intro` a `G.scena===1`). Si usa solo per catturare (`opzioniJolly`→`giocaJolly`): il marcatore va nel campo dell'**avversario** (presa→`A.prese` 1 pt, scopa→`A.scope` 3 pt), ma chi gioca conserva il vantaggio di scena (`G.svuotoConScopa=l`). A piatto vuoto col solo Jolly → scartato (`G.scartiComuni`). **Rimossi**: counter (`rCounter`/`risolviJolly`/`iaCounter`/fase `counter`/`pendingJolly`) e peccato latente (`peccatoDisponibile`/`eseguiPeccato`/`peccatoScena`/pulsanti in turno e mercato). L'IA non ha più il ramo Jolly (l'Opposizione non lo possiede mai).
+
 ## 2. Interpretazioni implementative da validare al playtest
 
 Punti dove il regolamento tace e il codice ha adottato una scelta. Funzionano, ma vanno confermati o corretti giocando:

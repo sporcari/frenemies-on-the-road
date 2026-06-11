@@ -61,7 +61,7 @@ Durante la partita emergono in modo naturale temi come:
 - collaborazione vs individualismo
 - sacrificio vs sopravvivenza
 
-Il sistema del Jolly, in particolare, introduce il tema del compromesso morale: il vantaggio ottenuto "nel modo sbagliato" porta conseguenze che tornano più avanti nella storia.
+Il sistema del Jolly, in particolare, introduce il tema del compromesso morale: il vantaggio ottenuto "nel modo sbagliato" ha un prezzo immediato — il merito, e i punti, finiscono all'avversario.
 
 > La domanda centrale che il gioco pone è: **cosa sei disposto a fare pur di ottenere ciò che vuoi?**
 
@@ -152,7 +152,7 @@ Stato iniziale:
 - I Jolly non sono ancora in gioco
 - I mazzi iniziali contengono solo le carte numeriche (**Asso–10**) dei rispettivi semi: **20 carte per lato**
 
-Le figure entrano nei mazzi tramite acquisto nel mercato tra le scene. Il Jolly entra dopo la terza scena.
+Le figure entrano nei mazzi tramite acquisto nel mercato tra le scene. Il Jolly (uno solo, nel mazzo dei Protagonisti) entra dopo la seconda scena.
 
 > **Nota (v1.1):** 20 carte bastano esattamente per le cinque scene (4 pescate a scena). Quando il mazzo finisce, la partita finisce: non esiste alcun rimescolo degli scarti nel mazzo. Gli unici rientri sono il recupero dei Protagonisti a scena vinta e le figure acquistate.
 
@@ -380,7 +380,7 @@ Si sommano i valori delle carte presenti nel piatto:
 
 Chi ha il totale più alto vince la posta della scena.
 
-> **Scena chiusa da una scopa (v1.3):** se la scena finisce con il **piatto vuoto** perché l'ultima giocata è stata una **scopa**, la posta è vinta da **chi ha fatto la scopa**, anche se i totali del piatto sarebbero 0-0. (Un piatto svuotato dal counter di un Jolly non è una scopa: in quel caso la posta resta in equilibrio.)
+> **Scena chiusa da una scopa (v1.3):** se la scena finisce con il **piatto vuoto** perché l'ultima giocata è stata una **scopa**, la posta è vinta da **chi ha fatto la scopa**, anche se i totali del piatto sarebbero 0-0. (Vale anche per la scopa fatta col Jolly: la posta va a chi ha ripulito il piatto, mentre i 3 punti vanno all'avversario.)
 
 **Se vincono i Protagonisti:** la posta della scena è raggiunta; recuperano 1 carta del **proprio seme** (♥/♠) dagli **scarti comuni**, messa in fondo al mazzo.
 
@@ -458,47 +458,34 @@ Le figure hanno una doppia natura: meccanica (carte forti con effetti speciali) 
 
 ## 22. Il Jolly: ingresso, uso e conseguenze
 
-### 22.1 — Ingresso
+### 22.1 — Ingresso *(v1.3)*
 
-Il Jolly viene aggiunto ai mazzi al termine della terza scena (salvo varianti).
+C'è **un solo Jolly**, nel **mazzo dei Protagonisti**, aggiunto al termine della **seconda scena**.
 
-### 22.2 — Uso
+### 22.2 — Uso *(v1.3)*
 
 - Non può essere usato nell'asta d'inizio scena
 - Il giocatore decide quale valore assume (da 1 a 10)
-- Può essere usato per fare una presa o una scopa
+- Serve **solo per catturare** (presa); se la cattura svuota il piatto è una scopa
 
-### 22.3 — Vincolo narrativo
+### 22.3 — Mossa sleale: il punto va all'avversario *(v1.3)*
 
-Quando si gioca il Jolly, si deve narrare come si ottiene il vantaggio tramite un **mezzo moralmente discutibile**.
+Il Jolly dà a chi lo gioca il **vantaggio sul tavolo** (ripulisce o alleggerisce il piatto), ma il suo **marcatore va nel campo dell'avversario**:
 
-> **Esempio:** Frank usa il Jolly come 9 per fare presa. Narra: "Frank agita un fascicolo falso sotto il naso del sergente dell'archivio: o collabora, o il suo nome ci finisce dentro. Tecnicamente un ricatto, sicuramente efficace."
+- presa col Jolly → **1 punto all'avversario**
+- scopa col Jolly → **3 punti all'avversario**
 
-### 22.4 — Il peccato del Jolly
+Chi gioca il Jolly conserva comunque il vantaggio di scena (se la scopa svuota il piatto a fine scena, vince la posta), ma regala i punti. Non c'è più né il *peccato latente* né il *counter* della v1.1–v1.2: il costo è immediato.
 
-Se si realizza una scopa con il Jolly, quel Jolly lascia un *peccato latente*.
+### 22.4 — Vincolo narrativo
 
-In una scena successiva, l'avversario può:
+Si narra sempre un successo ottenuto **andando contro i principi e la lealtà**.
 
-- Eliminarlo dal gioco
-- Ottenere un vantaggio economico di 5
-- Narrare come il peccato emerga
+> **Esempio:** Frank usa il Jolly come 9 per fare presa. Narra: "Frank agita un fascicolo falso sotto il naso del sergente dell'archivio: o collabora, o il suo nome ci finisce dentro." Il vantaggio è suo, ma quel punto, contabilmente, va all'Opposizione.
 
-### 22.5 — Counter di Jolly
+### 22.5 — Caso limite: Jolly su piatto vuoto *(v1.3)*
 
-Se un giocatore usa un Jolly e l'avversario ha anch'egli un Jolly in mano, può fare counter (facoltativo):
-
-- Il tentativo scorretto viene smascherato
-- Il giocatore che ha fatto counter prende **tutte le carte del piatto** come presa
-- Entrambi i Jolly vengono rimossi dal gioco
-
-> **Esempio:** L'Opposizione gioca il Jolly come 7 per fare scopa. I Protagonisti rivelano il proprio Jolly: "Skunk fiuta la trappola al volo, è il suo mestiere: smonta la soffiata falsa davanti a tutti e la messinscena crolla."
-
-### 22.6 — Caso limite: Jolly su piatto vuoto
-
-Se un giocatore ha in mano solo un Jolly e il piatto è vuoto: gioca il Jolly, non fa presa su nulla, il Jolly finisce tra le sue scope come **risorsa negativa esposta all'avversario**.
-
-Narrativamente: il piano scorretto fallisce senza portare alcun vantaggio.
+Se un giocatore ha in mano solo il Jolly e il piatto è vuoto: il Jolly viene **scartato** senza effetto e il piatto resta vuoto.
 
 ---
 
@@ -646,11 +633,11 @@ Nell'ultima scena emergono due strategie principali che si oppongono:
    ├── Pesca della nuova mano
    └── Mercato: acquisto figure → mazzo → rimescola
 
-3. DOPO LA TERZA SCENA
-   └── I Jolly entrano nei mazzi
+3. DOPO LA SECONDA SCENA
+   └── Il Jolly entra nel mazzo dei Protagonisti
 
 4. QUINTA SCENA
-   ├── Mano estesa (5–7 carte) → scelta di 4 + riserva
+   ├── Mercato, poi mano estesa (più di 4 carte) → scelta di 4 + riserva
    ├── Figure sul piatto → rimosse, neutralizzate, contano come scope avversarie
    ├── Round normale
    ├── Primo conteggio → esito apparente
@@ -931,6 +918,7 @@ Resta la lettura del diario (§27), che corregge il trionfo: salita nella cella,
 3. **§23.1** — La mano finale della quinta scena si sceglie **dopo il mercato** (così le figure appena comprate possono entrarvi); la scelta di 4 carte scatta con **più di 4 carte** rimaste nel mazzo.
 4. **§17, §20** — **Economia semplificata.** Ogni presa vale **1 punto**, ogni scopa **3 punti** (sia al mercato sia nel conteggio finale; i punti non spesi mantengono il valore). Le carte catturate dal piatto vanno subito in una **pila di scarti comune**; si tengono solo le carte che fanno presa (in verticale) o scopa (in orizzontale) come marcatori. Recupero dei Protagonisti ed effetto del Re pescano dagli scarti comuni (per il proprio seme).
 5. **§21** — **Prezzi figure ribassati:** Fante 4, Regina 7, Re 10 (valori in gioco invariati: 8/9/10). La figura di mezzo si chiama **Regina**. **Una figura per tipo per giocatore:** al massimo un Fante, una Regina, un Re in tutta la partita (sostituisce la "copia unica per seme").
+6. **§22** — **Jolly ridisegnato.** Uno solo, nel mazzo dei Protagonisti, entra dopo la **seconda** scena (prima: uno per mazzo dopo la terza). Si usa solo per catturare; il **marcatore va all'avversario** (presa = 1 punto, scopa = 3 punti all'avversario): il vantaggio è di chi lo gioca, i punti no. **Rimossi il peccato latente e il counter.** A piatto vuoto con solo il Jolly in mano, viene scartato senza effetto.
 
 ## v1.2 (giugno 2026)
 

@@ -130,16 +130,14 @@ function passo(){
     const scelta=(jollyEl && G().piatto.length>0) ? jollyEl : (nonJolly[0]||carte[0]);
     click(scelta);
     const box=document.getElementById("pannelloAzione");
-    const jFall=box.querySelector("#jFallisce");
-    if(jFall){ click(jFall); jollyGiocati++; logUltima(); return "jolly-fallito" }
+    const jScarta=box.querySelector("#jScarta");
+    if(jScarta){ click(jScarta); jollyGiocati++; logUltima(); return "jolly-scartato" }
     const jv=[...box.querySelectorAll("button[data-v]")].filter(b=>!b.disabled);
     if(jv.length){
       const scelto=jv[jv.length-1];   // il valore più alto disponibile: più drammatico
       click(scelto);
       const jc=[...box.querySelectorAll("#jollyCombos button[data-c]")];
-      click(jc[0]); jollyGiocati++;
-      const pj=G().pendingJolly;
-      log(`   → ${nomeL(a)} dichiara il JOLLY come ${pj.valore} per prendere ${pj.combo.map(cstr).join(" + ")}. Tocca all'avversario decidere.`);
+      click(jc[0]); jollyGiocati++; logUltima();
       return "jolly";
     }
     const opz=[...box.querySelectorAll(".opzioni button")];
@@ -147,13 +145,6 @@ function passo(){
     click(opz[opz.length-1].dataset.piatto?opz[Math.floor(rnd()*opz.length)]:opz[0]);
     logUltima();
     return "gioca";
-  }
-
-  if(f==="counter"){
-    const si=document.getElementById("cSi");
-    if(si){ counterFatto=true; click(si); logUltima(); return "counter-si" }
-    log(`   → l'avversario non può (o non vuole) opporsi.`);
-    click(document.getElementById("cNo")); logUltima(); return "counter-no";
   }
 
   if(f==="narrazione"){
@@ -199,7 +190,7 @@ function passo(){
     click(document.getElementById("m-fine")); return f;
   }
 
-  if(f==="jolly_intro"){ log(``); log(`-- Dopo la terza scena: i JOLLY entrano nei mazzi. --`); click(document.getElementById("j-ok")); return f }
+  if(f==="jolly_intro"){ log(``); log(`-- Dopo la seconda scena: il JOLLY entra nel mazzo dei Protagonisti. --`); click(document.getElementById("j-ok")); return f }
 
   if(f==="primo_conteggio"){
     log(``); log(`-- PRIMO CONTEGGIO (esito apparente) --`);

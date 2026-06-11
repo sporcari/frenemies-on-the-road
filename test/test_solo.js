@@ -53,18 +53,12 @@ async function main(){
       const c=[...document.querySelectorAll("#manoTurno .carta")];
       click(c[0]);
       const box=document.getElementById("pannelloAzione");
-      const jf=box.querySelector("#jFallisce");
-      if(jf){ click(jf); await dorme(20); continue }
+      const js=box.querySelector("#jScarta");
+      if(js){ click(js); await dorme(20); continue }
       const jv=[...box.querySelectorAll("button[data-v]")].filter(b=>!b.disabled);
       if(jv.length){ click(jv[0]); click([...box.querySelectorAll("#jollyCombos button[data-c]")][0]); await dorme(20); continue }
       const o=[...box.querySelectorAll(".opzioni button")];
       click(o[0]); await dorme(20); continue;
-    }
-    if(f==="counter"){
-      // difensore P: decide l'umano (lascia correre); difensore O: ci pensa lo scheduler
-      const pj=G().pendingJolly;
-      if(pj && pj.attore==="O"){ click(document.getElementById("cNo")); await dorme(20); continue }
-      await dorme(60); continue;
     }
     if(f==="narrazione"){
       const latoNarr=G().narrLato||G().attore;
