@@ -18,6 +18,7 @@
   --asfalto:#15161a; --notte:#1f2128; --pannello:#262932; --bordo:#3a3e4a;
   --osso:#efe9dc; --grigio:#9a9483; --mezzeria:#f5a623; --faro:#ffd23f;
   --cuori:#e4572e; --picche:#d8d3c8; --quadri:#4f7cac; --fiori:#6a994e;
+  --latoP:#3a6ea5; --latoO:#c0392b;   /* header del log: blu protagonisti, rosso antagonisti */
   --r:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -110,6 +111,8 @@ button.secondaria{
   padding:calc(8px*var(--k,1)) 12px;font-size:max(11.5px,calc(13px*var(--k,1)));font-style:italic;margin-bottom:calc(10px*var(--k,1));
 }
 .banner.scopa{border-left-color:var(--faro);background:rgba(255,210,63,.12);font-weight:600;font-style:normal}
+.spinta-riga{display:flex;gap:9px;align-items:flex-start;width:100%;text-align:left;background:var(--notte);border:1px solid var(--mezzeria);border-radius:10px;color:var(--osso);font-family:'IBM Plex Sans',sans-serif;font-size:max(12.5px,calc(13.5px*var(--k,1)));line-height:1.4;padding:calc(9px*var(--k,1)) 12px;margin-top:8px;cursor:pointer}
+.spinta-riga .sm{flex:0 0 auto;font-weight:700;font-size:max(13px,calc(15px*var(--k,1)))}
 .scena-banner{border:1px solid var(--bordo);border-left:3px solid var(--mezzeria);background:rgba(245,166,35,.05);border-radius:0 8px 8px 0;padding:calc(7px*var(--k,1)) 12px;margin-bottom:calc(10px*var(--k,1))}
 .scena-banner .st{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.5px;color:var(--osso);font-size:max(13px,calc(15px*var(--k,1)))}
 .scena-banner .sp{font-size:max(11px,calc(12.5px*var(--k,1)));color:var(--osso);margin-top:3px;line-height:1.35}
@@ -169,12 +172,15 @@ button.secondaria{
 #storiaLog{padding:12px 14px}
 #storiaLog .lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mezzeria);display:block;margin-bottom:8px;position:sticky;top:0;background:var(--notte);padding:2px 0 6px}
 #storiaLog .sc{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--grigio);margin:10px 0 5px;border-top:1px dashed var(--bordo);padding-top:7px}
-#storiaLog .voce{margin-bottom:10px}
-#storiaLog .voce-bar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:3px 8px;border-left:3px solid var(--mezzeria);background:rgba(255,255,255,.04);border-radius:6px 6px 0 0}
-#storiaLog .voce-bar .chi{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.5px;font-size:12px}
-#storiaLog .voce-bar .carta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--osso)}
-#storiaLog .voce-bar .mossa{margin-left:auto;font-size:10.5px;color:var(--grigio);white-space:nowrap}
-#storiaLog .voce-testo{font-size:13px;line-height:1.45;padding:5px 9px;border-left:3px solid var(--bordo)}
+#storiaLog .voce{margin-bottom:9px}
+#storiaLog .voce-bar{display:flex;align-items:center;gap:6px;padding:2px 8px;border-radius:6px 6px 0 0;color:#fff}
+#storiaLog .voce.p .voce-bar{background:var(--latoP)}
+#storiaLog .voce.o .voce-bar{background:var(--latoO)}
+#storiaLog .voce-bar .carta{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600}
+#storiaLog .voce-bar .mossa{margin-left:auto;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.5px;font-size:10px}
+#storiaLog .voce-testo{font-size:13px;line-height:1.45;padding:5px 8px}
+#storiaLog .voce.p .voce-testo{border-left:2px solid var(--latoP)}
+#storiaLog .voce.o .voce-testo{border-left:2px solid var(--latoO)}
 #storiaLog .vuoto{color:var(--grigio);font-style:italic;font-size:12px}
 #iaBadge{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:#1a1206;color:var(--mezzeria);border:1px solid var(--mezzeria);border-radius:20px;padding:7px 16px;font-size:13px;z-index:60;display:none;letter-spacing:.5px}
 .compra{display:flex;gap:6px}
@@ -285,17 +291,18 @@ button.secondaria{
 const SIMBOLI = {cuori:"♥", picche:"♠", quadri:"♦", fiori:"♣"};
 const FASI_NARR = ["Innesco","Adattamento","Frattura","Crisi","Risoluzione"];
 const FASI_FUNZ = ["Collaborazione forzata, minaccia iniziale","Viaggio, preparativi, primi segnali di fiducia","Evento destabilizzante, dubbio sulla coppia o sulla missione","Peggioramento, verità che emergono, situazione sopraffacente","Sforzo massimo, scelta decisiva, esito finale"];
+// spinta:false = domanda solo narrativa (i due "detesta", nella pagina dei protagonisti); le altre 8 sono spinte (2 per seme).
 const PITCH_TEMPLATE=[
-  {seme:"picche",  q:(a,b)=>`Cosa ${a} (♠) detesta di ${b} (♥)?`},
-  {seme:"cuori",   q:(a,b)=>`Cosa ${b} (♥) detesta di ${a} (♠)?`},
-  {seme:"picche",  q:(a,b)=>`Perché per ${a} (♠) è importante l'obiettivo?`},
-  {seme:"cuori",   q:(a,b)=>`Perché per ${b} (♥) è importante l'obiettivo?`},
-  {seme:"picche",  q:(a,b)=>`Quale dote o risorsa di ${a} (♠) potrebbe essere un asso nella manica?`},
-  {seme:"cuori",   q:(a,b)=>`Quale dote o risorsa di ${b} (♥) potrebbe essere un asso nella manica?`},
-  {seme:"quadri",  q:()=>`Quali sono i mezzi, metodi o armi più temibili della fazione nemica? (♦)`},
-  {seme:"quadri",  q:()=>`Perché l'Opposizione deve assolutamente impedire ai protagonisti di ottenere quello che vogliono? (♦)`},
-  {seme:"fiori",   q:()=>`Quali catastrofi o eventi imprevedibili possono manifestarsi in questa ambientazione? (♣)`},
-  {seme:"fiori",   q:()=>`Che cosa i protagonisti non hanno considerato e potrebbe far saltare la loro alleanza? (♣)`}
+  {seme:"picche", spinta:false, ph:"una frase su cosa non sopporta dell'altro", q:(a,b)=>`Cosa ${a} (♠) detesta di ${b} (♥)?`},
+  {seme:"cuori",  spinta:false, ph:"una frase su cosa non sopporta dell'altro", q:(a,b)=>`Cosa ${b} (♥) detesta di ${a} (♠)?`},
+  {seme:"picche", ph:"breve frase che spiega la sua motivazione", q:(a,b)=>`Perché per ${a} (♠) è importante l'obiettivo?`},
+  {seme:"cuori",  ph:"breve frase che spiega la sua motivazione", q:(a,b)=>`Perché per ${b} (♥) è importante l'obiettivo?`},
+  {seme:"picche", ph:"breve frase sui suoi talenti speciali", q:(a,b)=>`Quale dote o risorsa di ${a} (♠) potrebbe essere un asso nella manica?`},
+  {seme:"cuori",  ph:"breve frase sui suoi talenti speciali", q:(a,b)=>`Quale dote o risorsa di ${b} (♥) potrebbe essere un asso nella manica?`},
+  {seme:"quadri", ph:"i mezzi più temibili dei nemici", q:()=>`Quali sono i mezzi, metodi o armi più temibili della fazione nemica? (♦)`},
+  {seme:"quadri", ph:"perché devono fermarli a ogni costo", q:()=>`Perché l'Opposizione deve assolutamente impedire ai protagonisti di ottenere quello che vogliono? (♦)`},
+  {seme:"fiori",  ph:"una catastrofe che può colpirli", q:()=>`Quali catastrofi o eventi imprevedibili possono manifestarsi in questa ambientazione? (♣)`},
+  {seme:"fiori",  ph:"la crepa che può spaccare l'alleanza", q:()=>`Che cosa i protagonisti non hanno considerato e potrebbe far saltare la loro alleanza? (♣)`}
 ];
 const AMBIENTE = {
   picche:"In movimento, sotto pressione: ambiente caotico, situazione frenetica.",
@@ -392,29 +399,23 @@ const MISSIONI=[
   "Raggiungere la figlia che ha tagliato i ponti, attraverso tutto il paese, PRIMA che parta per un posto da cui non si torna"
 ];
 // Playset pronti, incorporati. Formato di scambio (file .json) e import/export: vedi caricaPlaysetObj/esportaPlaysetFile.
-// pitch = 10 risposte nell'ordine di PITCH_TEMPLATE; scene = titolo/posta pre-suggeriti per le 5 scene (opzionale).
+// pers.A/B.detesta = spunto narrativo; spinte = 8 (2 per seme); scene = titolo/posta pre-suggeriti (opzionale).
 const PLAYSET=[
   {
     nome:"Frank, Skunk e il jet di Vargas",
     tono:"Action",
     missione:"Entro 36 ore Vargas atterrerà con un jet privato dalla Colombia su una pista segreta del New Mexico per un meeting con i boss locali, e ripartirà: una volta decollato, nessuna estradizione lo riporterà davanti a un giudice. Arrivare alla pista e farlo arrestare in flagranza prima del decollo.",
     primaDiff:"Skunk è in cella: i poliziotti corrotti lo hanno arrestato con un pretesto per consegnarlo agli uomini di Vargas dentro la prigione, dove un coltello costa poco e nessuno fa domande. Bisogna tirarlo fuori prima che qualcuno arrivi a lui.",
-    persA:{nome:"Frank", desc:"Ex poliziotto sospeso per eccesso di forza. Cinico, metodico, conosce il distretto come le sue tasche. Si è fatto terra bruciata attorno: senza distintivo, senza colleghi, senza coperture."},
-    persB:{nome:"Skunk", desc:"Suo ex informatore. Truffatore, ricettatore, intrallazzone dei bassifondi: sopravvive di chiacchiere, favori e bugie. Sa dove atterra Vargas dall'ultima telefonata del fratello Jorge, e non lo rivela: è la sua assicurazione sulla vita."},
+    persA:{nome:"Frank", desc:"Ex poliziotto sospeso per eccesso di forza. Cinico, metodico, conosce il distretto come le sue tasche. Si è fatto terra bruciata attorno: senza distintivo, senza colleghi, senza coperture.", detesta:"Mente per riflesso: ogni cosa che tocca diventa un traffico."},
+    persB:{nome:"Skunk", desc:"Suo ex informatore. Truffatore, ricettatore, intrallazzone dei bassifondi: sopravvive di chiacchiere, favori e bugie. Sa dove atterra Vargas dall'ultima telefonata del fratello Jorge, e non lo rivela: è la sua assicurazione sulla vita.", detesta:"Frank lo ha usato e scaricato: lo tratta da spia, mai da socio."},
     nemici:"L'organizzazione di Vargas: una rete di poliziotti corrotti dentro il distretto e una coppia di sicari pazienti che non hanno fretta.",
     caos:"La tempesta di sabbia in arrivo, un'auto con trecentomila chilometri, la sfortuna delle contee sbagliate.",
-    pitch:[
-      "Non dice mai tutta la verità, nemmeno quando gli converrebbe; ogni cosa che tocca diventa un traffico.",
-      "Lo ha spremuto per anni come informatore e scaricato quando non serviva più; lo tratta ancora come una spia, mai come un socio.",
-      "Un arresto in flagranza di Vargas è l'unica cosa che può ridargli il distintivo e dimostrare che su di lui si sbagliavano tutti.",
-      "Vargas ha fatto uccidere suo fratello Jorge; non gli interessa il processo, gli interessa vederlo cadere.",
-      "Conosce ogni strada secondaria del distretto e sa quali colleghi sono sul libro paga di Vargas.",
-      "Con una telefonata procura qualsiasi cosa: un'auto pulita, dei documenti, un tetto per la notte, un silenzio.",
-      "La rete di poliziotti corrotti dentro il distretto e i due sicari che non hanno fretta.",
-      "Quel meeting è il momento di massima esposizione della vita di Vargas. Se qualcuno sa della pista, va trovato e zittito prima che il jet tocchi terra.",
-      "La tempesta di sabbia che chiude la statale, un'auto con trecentomila chilometri nel deserto, posti di blocco a sorpresa nelle contee sbagliate.",
-      "Jorge è stato ucciso al posto di Skunk, perché la spia era lui. E Frank non lo sa."
-    ],
+    spinte:{
+      picche:["Inchiodare Vargas è l'unico modo per riavere il distintivo.", "Conosce ogni scorciatoia del distretto e chi è sul libro paga di Vargas."],
+      cuori:["Vargas ha ucciso suo fratello Jorge: vuole vendetta, non giustizia.", "Con una telefonata trova un'auto pulita, documenti, un silenzio."],
+      quadri:["Poliziotti corrotti ovunque e due sicari che non hanno fretta.", "Se qualcuno sa della pista, va zittito prima che il jet atterri."],
+      fiori:["Tempesta in arrivo, un'auto sfiancata, posti di blocco a sorpresa.", "Jorge è morto al posto di Skunk: la spia era lui. E Frank non lo sa."]
+    },
     scene:[
       {titolo:"La cella", posta:"Tirare fuori Skunk prima del trasferimento: se va male, escono braccati e con mezzo distretto alle calcagna"},
       {titolo:"La statale", posta:"Sparire verso ovest: se va male, i sicari agganciano la loro traccia"},
@@ -842,7 +843,7 @@ function rLobby(){
 }
 
 /* ================= WIZARD DI CREAZIONE ================= */
-const PASSI_WIZ=["Il gioco","Giocatori","Tono","Missione","Protagonisti","Opposizione","Le domande","Pronti a partire"];
+const PASSI_WIZ=["Il gioco","Giocatori","Tono","Missione","Protagonisti","Opposizione","Le spinte","Pronti a partire"];
 function caso(a){return a[Math.floor(Math.random()*a.length)]}
 function salvaCampi(){
   const g=id=>{const e=document.getElementById(id);return e?e.value:null};
@@ -875,11 +876,22 @@ function caricaPlaysetObj(ps){
   if(pers && pers.B){ G.pers.B.nome=pers.B.nome||""; G.pers.B.desc=pers.B.desc||""; }
   if(ps.nemici!=null) G.nemici=ps.nemici;
   if(ps.caos!=null) G.caos=ps.caos;
-  if(Array.isArray(ps.pitch)) ps.pitch.forEach((r,k)=>{
-    if(!G.pitch[k]) return;
-    G.pitch[k].risposta = (typeof r==="string") ? r : (r&&r.risposta)||"";
-    G.pitch[k].usata = false;
-  });
+  // indici del pitch: narrativi (i due "detesta") e spinte raggruppate per seme, derivati da PITCH_TEMPLATE
+  const narrIdx=PITCH_TEMPLATE.map((t,i)=>i).filter(i=>PITCH_TEMPLATE[i].spinta===false);
+  const spintaIdx={}; PITCH_TEMPLATE.forEach((t,i)=>{ if(t.spinta!==false){ (spintaIdx[t.seme]=spintaIdx[t.seme]||[]).push(i); } });
+  const setRisp=(i,r)=>{ if(G.pitch[i]!=null){ G.pitch[i].risposta=(typeof r==="string")?r:(r&&r.risposta)||""; G.pitch[i].usata=false; } };
+  if(Array.isArray(ps.pitch)){
+    // vecchio formato piatto: 10 voci per indice
+    ps.pitch.forEach((r,k)=>setRisp(k,r));
+  }else{
+    // nuovo formato: "detesta" dentro pers, spinte raggruppate per seme
+    if(pers && pers.A && pers.A.detesta!=null && narrIdx[0]!=null) setRisp(narrIdx[0], pers.A.detesta);
+    if(pers && pers.B && pers.B.detesta!=null && narrIdx[1]!=null) setRisp(narrIdx[1], pers.B.detesta);
+    if(ps.spinte && typeof ps.spinte==="object") Object.keys(ps.spinte).forEach(seme=>{
+      const arr=ps.spinte[seme], idxs=spintaIdx[seme]||[];
+      if(Array.isArray(arr)) arr.forEach((r,k)=>{ if(idxs[k]!=null) setRisp(idxs[k], r); });
+    });
+  }
   // titolo/posta pre-suggeriti per le scene (geografia_scene del formato, o scene compatte)
   const scene = ps.geografia_scene || ps.scene;
   if(Array.isArray(scene)) scene.forEach((s,idx)=>{
@@ -918,6 +930,9 @@ function chiediPlayset(){
 function esportaPlaysetFile(){
   // esporta il pitch corrente nel formato di scambio standard, come file .json scaricabile
   const nA=G.pers.A.nome||"P1", nB=G.pers.B.nome||"P2";
+  const narrIdx=PITCH_TEMPLATE.map((t,i)=>i).filter(i=>PITCH_TEMPLATE[i].spinta===false);
+  const spinte={};
+  PITCH_TEMPLATE.forEach((t,i)=>{ if(t.spinta!==false){ (spinte[t.seme]=spinte[t.seme]||[]).push((G.pitch[i]||{}).risposta||""); } });
   const ps={
     formato:1,
     playset:nA+" & "+nB,
@@ -925,10 +940,13 @@ function esportaPlaysetFile(){
     tono:G.tono||"",
     missione:G.missione||"",
     primaDiff:G.primaDiff||"",
-    pers:{A:{nome:G.pers.A.nome,desc:G.pers.A.desc}, B:{nome:G.pers.B.nome,desc:G.pers.B.desc}},
+    pers:{
+      A:{nome:G.pers.A.nome, desc:G.pers.A.desc, detesta:(G.pitch[narrIdx[0]]||{}).risposta||""},
+      B:{nome:G.pers.B.nome, desc:G.pers.B.desc, detesta:(G.pitch[narrIdx[1]]||{}).risposta||""}
+    },
     nemici:G.nemici||"",
     caos:G.caos||"",
-    pitch:G.pitch.map((p,i)=>({seme:p.seme, domanda:PITCH_TEMPLATE[i].q(nA,nB), risposta:p.risposta||""})),
+    spinte:spinte,
     geografia_scene:(G.scene||[]).map((s,i)=>(s&&(s.titolo||s.posta))?{scena:i+1, fase:FASI_NARR[i], titolo:s.titolo||"", suggerimento_posta:s.posta||""}:null).filter(Boolean)
   };
   const blob=new Blob([JSON.stringify(ps,null,2)],{type:"application/json"});
@@ -1038,38 +1056,42 @@ function rSetup(){
       <div class="pannello"><span class="etichetta">Protagonista 1 · tende a ♠</span>
         <input type="text" id="w-persA" value="${G.pers.A.nome}" placeholder="Nome">
         <span class="etichetta" style="margin-top:8px">Chi è</span>
-        <textarea id="w-descA" rows="3">${G.pers.A.desc}</textarea></div>
+        <textarea id="w-descA" rows="3">${G.pers.A.desc}</textarea>
+        <span class="etichetta" style="margin-top:8px">${PITCH_TEMPLATE[0].q(nA(),nB())} <i style="text-transform:none;letter-spacing:0">spunto narrativo, senza effetto</i></span>
+        <input type="text" id="w-pitch-0" value="${G.pitch[0].risposta.replace(/"/g,'&quot;')}" placeholder="${PITCH_TEMPLATE[0].ph}"></div>
       <div class="pannello"><span class="etichetta">Protagonista 2 · tende a ♥</span>
         <input type="text" id="w-persB" value="${G.pers.B.nome}" placeholder="Nome">
         <span class="etichetta" style="margin-top:8px">Chi è</span>
-        <textarea id="w-descB" rows="3">${G.pers.B.desc}</textarea></div>
+        <textarea id="w-descB" rows="3">${G.pers.B.desc}</textarea>
+        <span class="etichetta" style="margin-top:8px">${PITCH_TEMPLATE[1].q(nA(),nB())} <i style="text-transform:none;letter-spacing:0">spunto narrativo, senza effetto</i></span>
+        <input type="text" id="w-pitch-1" value="${G.pitch[1].risposta.replace(/"/g,'&quot;')}" placeholder="${PITCH_TEMPLATE[1].ph}"></div>
     </div>`;
 
   else if(p===6){
     const domandeHtml=(da,a)=>G.pitch.map((x,i)=>({x,i})).slice(da,a).map(({x,i})=>`
       <span class="etichetta" style="margin-top:10px">${SIMBOLI[x.seme]} ${PITCH_TEMPLATE[i].q(nA(),nB())}</span>
-      <input type="text" id="w-pitch-${i}" value="${x.risposta.replace(/"/g,'&quot;')}">`).join("");
+      <input type="text" id="w-pitch-${i}" value="${x.risposta.replace(/"/g,'&quot;')}" placeholder="${PITCH_TEMPLATE[i].ph||""}">`).join("");
     const domandeRO=(da,a)=>G.pitch.map((x,i)=>({x,i})).slice(da,a).map(({x,i})=>`
       <span class="etichetta" style="margin-top:10px">${SIMBOLI[x.seme]} ${PITCH_TEMPLATE[i].q(nA(),nB())}</span>
       <div class="lettura" style="margin-top:2px">${x.risposta||"—"}</div>`).join("");
-    const claudeOpp = G.modalita==="solo" && G.oppGenerata;   // le domande all'Opposizione le ha già scritte Claude
+    const claudeOpp = G.modalita==="solo" && G.oppGenerata;   // le spinte dell'Opposizione le ha già scritte Claude
     const online=G.modalita==="online", sub=G.passoSub||0;
-    const mostraP = !online || sub===0;   // domande sui protagonisti + prima difficoltà
-    const mostraO = !online || sub===1;   // domande sull'opposizione
+    const mostraP = !online || sub===0;   // spinte dei protagonisti + prima difficoltà
+    const mostraO = !online || sub===1;   // spinte dell'opposizione
     corpo=`
-    <h2 class="ts">Le domande del pitch${online?(sub===0?" — i Protagonisti":" — l'Opposizione"):""}</h2>
-    <p class="sotto">Le risposte scritte diventano <b>risorse di gioco</b>: una volta ciascuna, portandole in narrazione, trasformano una presa in scopa (max una per seme per lato).</p>
+    <h2 class="ts">Le spinte del pitch${online?(sub===0?" — i Protagonisti":" — l'Opposizione"):""}</h2>
+    <p class="sotto">Otto spinte, due per seme. <b>Portando in narrazione questo aspetto potrai trasformare una presa in una scopa</b> (una sola per seme per lato).</p>
     ${mostraP?`<div class="pannello">
-      <span class="etichetta">Ai Protagonisti — poste dall'Opposizione</span>
-      ${domandeHtml(0,6)}
+      <span class="etichetta">♠♥ Le spinte dei Protagonisti</span>
+      ${domandeHtml(2,6)}
     </div>`:""}
     ${mostraO?`<div class="pannello">
-      <span class="etichetta">All'Opposizione — ${claudeOpp?"definite da Claude":"poste dai Protagonisti"}</span>
+      <span class="etichetta">♦♣ Le spinte dell'Opposizione${claudeOpp?" — definite da Claude":""}</span>
       ${claudeOpp?domandeRO(6,10):domandeHtml(6,10)}
     </div>`:""}
     ${mostraP?`<div class="pannello">
       <span class="etichetta">La prima difficoltà — risposta condivisa</span>
-      <p class="sotto" style="margin:4px 0 8px">Che cosa vi impedisce di raggiungere l'obiettivo subito? Rispondete tutti insieme. Non è una risorsa spuntabile: è il materiale della Scena 1.</p>
+      <p class="sotto" style="margin:4px 0 8px">Che cosa vi impedisce di raggiungere l'obiettivo subito? Rispondete tutti insieme. Non è una spinta: è il materiale della Scena 1.</p>
       <textarea id="w-primadiff" rows="2" placeholder="Il primo ostacolo da superare…">${G.primaDiff||""}</textarea>
     </div>`:""}`;
   }
@@ -1434,14 +1456,14 @@ function spinteResidue(l){
   // (risposta scritta, seme del lato, non ancora usata, seme non già bruciato; vietate nell'ultima scena)
   if(G.scena>=4) return [];
   return G.pitch.map((p,i)=>({p,i}))
-    .filter(({p})=>p.risposta && semiLato(l).includes(p.seme) && !p.usata && !G.spinte[l][p.seme]);
+    .filter(({p,i})=>PITCH_TEMPLATE[i].spinta!==false && p.risposta && semiLato(l).includes(p.seme) && !p.usata && !G.spinte[l][p.seme]);
 }
 function spinteDisponibili(l){
   if(G.scena>=4 || !G.narr || !G.narr.boostCard) return [];
   const c=lato(l).prese.find(x=>x.id===G.narr.boostCard);
   if(!c) return [];
   return G.pitch.map((p,i)=>({p,i}))
-    .filter(({p})=>p.seme===c.seme && semiLato(l).includes(p.seme) && p.risposta && !p.usata && !G.spinte[l][p.seme]);
+    .filter(({p,i})=>PITCH_TEMPLATE[i].spinta!==false && p.seme===c.seme && semiLato(l).includes(p.seme) && p.risposta && !p.usata && !G.spinte[l][p.seme]);
 }
 function eseguiSpinta(idxPitch){
   const l=G.narrLato||G.attore, L=lato(l), p=G.pitch[idxPitch];
@@ -1506,8 +1528,8 @@ function rNarrazione(){
     ${n.boostCard && spinteDisponibili(G.narrLato||G.attore).length ? `
     <div class="pannello">
       <span class="etichetta">⚡ Risorse del pitch — spunta la risposta del seme della presa: SCOPA vera, il piatto si svuota</span>
-      <div class="opzioni">${spinteDisponibili(G.narrLato||G.attore).map(({p,i})=>
-        `<button data-spinta="${i}">${SIMBOLI[p.seme]} «${p.risposta.length>60?p.risposta.slice(0,60)+"…":p.risposta}»</button>`).join("")}</div>
+      ${spinteDisponibili(G.narrLato||G.attore).map(({p,i})=>
+        `<button class="spinta-riga" data-spinta="${i}"><span class="sm" style="color:var(--${p.seme})">${SIMBOLI[p.seme]}</span> «${p.risposta}»</button>`).join("")}
     </div>`:""}
     ${(G.pngNarr||[]).length?`<div class="spinte-mano"><span class="lbl">PNG creati</span>${(G.pngNarr||[]).map(p=>`<span class="spinta-chip" style="border-left-color:var(--${p.seme})"><b style="color:var(--${p.seme})">${SIMBOLI[p.seme]}</b> ${p.nome||"(senza nome)"}</span>`).join("")}</div>`:""}
     ${ioNarro?`<div class="pannello">
@@ -1580,10 +1602,10 @@ function storiaLabel(){
   return `<span class="lbl">Storia della partita${chiave}</span>`;
 }
 function mossaInfo(tipo){
-  if(tipo==="scopa")    return {ic:"💥", txt:"scopa"};
-  if(tipo==="presa")    return {ic:"✋", txt:"presa"};
-  if(tipo==="apertura") return {ic:"🎬", txt:"apertura"};
-  return {ic:"▭", txt:"elemento"};   // giocata nel piatto
+  if(tipo==="scopa")    return {ic:"💥", txt:"Scopa"};
+  if(tipo==="presa")    return {ic:"✋", txt:"Presa"};
+  if(tipo==="apertura") return {ic:"🎬", txt:"Apertura"};
+  return {ic:"➕", txt:"Novità"};   // giocata nel piatto
 }
 function renderStoria(){
   if(!G.storia.length) return `${storiaLabel()}<div class="vuoto">Si riempirà con le narrazioni, tue e di Claude.</div>`;
@@ -1591,14 +1613,12 @@ function renderStoria(){
   for(const v of G.storia){
     if(v.scena!==ultScena){ html+=`<div class="sc">Scena ${v.scena+1}: ${FASI_NARR[v.scena]||""}</div>`; ultScena=v.scena; }
     const m=mossaInfo(v.tipo);
-    const col=v.seme?`var(--${v.seme})`:"var(--mezzeria)";
     html+=`<div class="voce ${v.lato==="O"?"o":"p"}">
-      <div class="voce-bar" style="border-left-color:${col}">
-        <span class="chi" style="color:${col}">${nomeLato(v.lato)}</span>
+      <div class="voce-bar">
         ${v.carta?`<span class="carta">${v.carta}</span>`:""}
         <span class="mossa">${m.ic} ${m.txt}</span>
       </div>
-      <div class="voce-testo" style="border-left-color:${col}">${v.testo}</div>
+      <div class="voce-testo">${v.testo}</div>
     </div>`;
   }
   return html;
@@ -2313,8 +2333,8 @@ const REGOLE={
     <h3>Piatto vuoto</h3>
     Se a piatto vuoto resta solo il Jolly, viene <b>scartato</b> senza effetto e il piatto resta vuoto.`},
   pitch:{titolo:"Risorse del pitch",html:`
-    <h3>Le dieci domande (9.5–9.6)</h3>
-    Sei poste dall'Opposizione ai Protagonisti (cosa si detestano, perché tengono all'obiettivo, gli assi nella manica — ♠ e ♥) e quattro poste dai Protagonisti all'Opposizione (mezzi temibili e motivazioni ♦, catastrofi e crepe nell'alleanza ♣). Le risposte vengono scritte e <b>diventano risorse di gioco</b>.
+    <h3>Spinte e tratti (9.5–9.6)</h3>
+    I due <b>"cosa si detestano"</b> sono <b>tratti dei protagonisti</b>: solo narrativi, senza effetto in gioco. Le <b>spinte</b> sono <b>otto, due per seme</b>: motivazione e asso di ciascun protagonista (♠ e ♥) più, dall'Opposizione, mezzi e movente (♦) e catastrofi e crepe (♣). Le risposte delle spinte <b>diventano risorse di gioco</b>.
     <h3>La prima difficoltà (9.7)</h3>
     Dopo le domande, tutti rispondono insieme: <b>che cosa vi impedisce di raggiungere l'obiettivo subito?</b> La risposta non è spuntabile: appartiene al tavolo e inquadra la <b>Scena 1</b>.
     <h3>Uso meccanico (9.8)</h3>
@@ -2543,7 +2563,7 @@ MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Con i punti compr
 
 JOLLY: un solo Jolly, solo nel mazzo dei Protagonisti, entra dopo la 2ª scena. Tu non lo possiedi mai. Chi lo gioca dichiara il valore e cattura, ma il marcatore va all'AVVERSARIO (presa 1, scopa 3 all'altro lato): se i Protagonisti lo usano, quel punto va a te. Si narra come un vantaggio ottenuto contro i propri principi.
 
-RISORSE DEL PITCH (spinte): dopo una presa normale puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e le carte rimaste nel piatto finiscono tra le tue prese. La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola; massimo una spinta per seme per lato; VIETATA nell'ultima scena.
+RISORSE DEL PITCH (spinte): sono otto, due per seme (le tue sono ♦ e ♣). Dopo una presa normale puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e le carte rimaste nel piatto finiscono tra le tue prese. La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola; massimo una spinta per seme per lato; VIETATA nell'ultima scena. (I tratti "cosa i protagonisti si detestano" sono solo narrativi, non spinte.)
 
 QUINTA SCENA: la mano finale si sceglie dopo il mercato; le carte oltre le 4 vanno in RISERVA. Le figure lasciate nel piatto a inizio ultima scena vengono neutralizzate. Dopo il primo conteggio si gioca a COLPI DI SCENA: a turni alterni (inizia chi sta perdendo) cali una carta dalla riserva, che entra nel piatto e può eliminare una carta di seme avversario di valore pari o inferiore (finisce negli scarti; la tua resta). Finché hai riserva devi giocare. Poi il conteggio definitivo decide l'esito della missione.
 
@@ -2554,14 +2574,17 @@ NARRAZIONE: quando narri sei il mondo che rema contro i protagonisti. ♦ = nemi
 function setupPerIA(){
   // parte STATICA per partita (va nel blocco system cacheato: deve restare byte-identica)
   const P=G.pers||{A:{},B:{}};
-  const pitch=G.pitch.map(p=>(p.risposta&&p.risposta.trim())?`${SIMBOLI[p.seme]} ${p.risposta.trim()}`:"").filter(Boolean).join("\n");
+  const detA=((G.pitch[0]||{}).risposta||"").trim(), detB=((G.pitch[1]||{}).risposta||"").trim();
+  // solo le risposte spuntabili (le 8 spinte); i due "detesta" sono tratti dei protagonisti, non spinte
+  const spinte=G.pitch.map((p,i)=>({p,i})).filter(({i})=>PITCH_TEMPLATE[i].spinta!==false)
+    .map(({p})=>(p.risposta&&p.risposta.trim())?`${SIMBOLI[p.seme]} ${p.risposta.trim()}`:"").filter(Boolean).join("\n");
   return `LA PARTITA. Missione dei Protagonisti: ${G.missione||"-"}.
 Tono: ${G.tono||"-"}.
-Protagonisti: ${P.A.nome||"P1"} ♠ ${(P.A.desc||"").trim()} | ${P.B.nome||"P2"} ♥ ${(P.B.desc||"").trim()}.
+Protagonisti: ${P.A.nome||"P1"} ♠ ${(P.A.desc||"").trim()}${detA?` (detesta dell'altro: ${detA})`:""} | ${P.B.nome||"P2"} ♥ ${(P.B.desc||"").trim()}${detB?` (detesta dell'altro: ${detB})`:""}.
 Opposizione: nemici ♦ ${G.nemici||"-"}; caos ♣ ${G.caos||"-"}.
 La prima difficoltà (inquadra la scena 1): ${G.primaDiff||"-"}.
-Risorse del pitch (fiction condivisa):
-${pitch||"-"}`;
+Spinte del pitch (risorse spuntabili, fiction condivisa):
+${spinte||"-"}`;
 }
 function statoPerIA(){
   // parte DINAMICA per chiamata (va nel messaggio user)
