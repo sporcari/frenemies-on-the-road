@@ -18,7 +18,7 @@
   --asfalto:#15161a; --notte:#1f2128; --pannello:#262932; --bordo:#3a3e4a;
   --osso:#efe9dc; --grigio:#9a9483; --mezzeria:#f5a623; --faro:#ffd23f;
   --cuori:#e4572e; --picche:#d8d3c8; --quadri:#4f7cac; --fiori:#6a994e;
-  --latoP:#3a6ea5; --latoO:#c0392b;   /* header del log: blu protagonisti, rosso antagonisti */
+  --viola:#6a4c93;                    /* barra del log: protagonisti (antagonisti = grigio asfalto) */
   --r:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -145,6 +145,16 @@ button.secondaria{
 #velo .nome{font-family:'Oswald',sans-serif;font-size:clamp(28px,7vw,44px);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--faro)}
 #velo button{max-width:320px}
 
+/* ---------- overlay "Claude sta generando" (solo vs Claude) ---------- */
+#veloIA{
+  position:fixed;inset:0;background:rgba(15,16,20,.94);z-index:65;display:none;
+  flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center;
+}
+#veloIA.attivo{display:flex}
+#veloIA .nome{font-family:'Oswald',sans-serif;font-size:clamp(26px,6vw,40px);font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--faro)}
+#veloIA h3{font-family:'Oswald',sans-serif;font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--grigio);margin:0}
+#veloIA .strada-velo{width:min(420px,80vw);height:6px;background:repeating-linear-gradient(90deg,var(--mezzeria) 0 26px,transparent 26px 48px);border-radius:3px}
+
 /* ---------- overlay diario / modali ---------- */
 .overlay{position:fixed;inset:0;background:rgba(10,11,14,.92);z-index:40;display:none;overflow-y:auto;padding:20px}
 .overlay.attivo{display:block}
@@ -172,15 +182,27 @@ button.secondaria{
 #storiaLog{padding:12px 14px}
 #storiaLog .lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mezzeria);display:block;margin-bottom:8px;position:sticky;top:0;background:var(--notte);padding:2px 0 6px}
 #storiaLog .sc{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--grigio);margin:10px 0 5px;border-top:1px dashed var(--bordo);padding-top:7px}
+/* barra dei tab del log: un tab per scena, scena corrente in primo piano.
+   px fissi come tutto #storiaLog: la colonna scorre da sé, fuori dal fit di adattaViewport (solo main). */
+#storiaTabs{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 9px;padding-bottom:8px;border-bottom:1px dashed var(--bordo)}
+#storiaTabs .storiaTab{display:inline-flex;align-items:center;gap:6px;min-height:28px;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.5px;text-transform:uppercase;color:var(--grigio);background:transparent;border:1px solid var(--bordo);border-radius:6px;padding:4px 10px;cursor:pointer;transition:background .12s,border-color .12s,color .12s}
+#storiaTabs .storiaTab:hover{color:var(--osso);border-color:var(--grigio)}
+#storiaTabs .storiaTab.att{color:var(--osso);background:var(--pannello);border-color:var(--mezzeria);font-weight:600}
+#storiaTabs .storiaTab:focus-visible{outline:2px solid var(--mezzeria);outline-offset:1px}
+#storiaTabs .tdot{width:8px;height:8px;border-radius:50%;flex:none}
+#storiaTabs .tdot.p{background:var(--viola)}        /* hanno vinto i Protagonisti */
+#storiaTabs .tdot.o{background:var(--grigio)}       /* ha vinto l'Opposizione/Claude */
+#storiaTabs .tdot.n{background:transparent;border:1px solid var(--bordo)}  /* parità o scena in corso */
 #storiaLog .voce{margin-bottom:9px}
-#storiaLog .voce-bar{display:flex;align-items:center;gap:6px;padding:2px 8px;border-radius:6px 6px 0 0;color:#fff}
-#storiaLog .voce.p .voce-bar{background:var(--latoP)}
-#storiaLog .voce.o .voce-bar{background:var(--latoO)}
-#storiaLog .voce-bar .carta{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600}
-#storiaLog .voce-bar .mossa{margin-left:auto;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.5px;font-size:10px}
+#storiaLog .voce-bar{display:flex;align-items:center;gap:6px;padding:4px 9px;border-radius:6px 6px 0 0}
+#storiaLog .voce.p .voce-bar{background:var(--viola);color:#fff}                                /* protagonisti = viola, testo bianco */
+#storiaLog .voce.o .voce-bar{background:var(--pannello);color:var(--osso);border:1px solid var(--bordo)} /* antagonisti = grigio asfalto, testo osso */
+#storiaLog .voce-bar .chi{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.5px;font-size:11px;font-weight:600}
+#storiaLog .voce-bar .crt{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600}
+#storiaLog .voce-bar .mossa{margin-left:auto;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.5px;font-size:10px;display:flex;align-items:center;gap:3px}
 #storiaLog .voce-testo{font-size:13px;line-height:1.45;padding:5px 8px}
-#storiaLog .voce.p .voce-testo{border-left:2px solid var(--latoP)}
-#storiaLog .voce.o .voce-testo{border-left:2px solid var(--latoO)}
+#storiaLog .voce.p .voce-testo{border-left:2px solid var(--viola)}
+#storiaLog .voce.o .voce-testo{border-left:2px solid var(--bordo)}
 #storiaLog .vuoto{color:var(--grigio);font-style:italic;font-size:12px}
 #iaBadge{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:#1a1206;color:var(--mezzeria);border:1px solid var(--mezzeria);border-radius:20px;padding:7px 16px;font-size:13px;z-index:60;display:none;letter-spacing:.5px}
 .compra{display:flex;gap:6px}
@@ -233,6 +255,12 @@ button.secondaria{
   <div class="nome" id="veloNome"></div>
   <div class="strada-velo"></div>
   <button class="azione" id="veloBtn">Sono pronto</button>
+</div>
+
+<div id="veloIA">
+  <div class="nome">🃏 Claude</div>
+  <h3>sta generando…</h3>
+  <div class="strada-velo"></div>
 </div>
 
 <div class="overlay" id="ovDiario">
@@ -699,10 +727,30 @@ if(MAIN_EL){
 }
 
 const FASI_CONDIVISE=new Set(["fine_scena","asta_rivela","jolly_intro","neutralizza","finale","mercato","primo_conteggio"]);
+function claudeStaGiocando(){
+  // Visibilità dell'overlay "Claude sta generando": rispecchia, da G, le condizioni
+  // di dispatch di iaScheduler (azione di turno dell'Opposizione in modalità vs Claude),
+  // così l'overlay copre subito i campi modificabili (es. apertura) senza farli lampeggiare.
+  // ESCLUSO il mercato, che è condiviso e non va mai coperto. Nelle fasi che restano in
+  // attesa dell'umano (narrazione, esito) l'overlay lo nasconde la ia*() dopo aver iniettato
+  // il testo. Pura lettura di G, non muta nulla.
+  if(G.modalita!=="solo") return false;
+  const f=G.fase;
+  if(f==="asta"&&G.attore==="O") return true;
+  if(f==="apertura"&&G.attore==="O") return true;
+  if(f==="turno"&&G.attore==="O") return true;
+  if(f==="narrazione"&&(G.narrLato||G.attore)==="O") return true;
+  if(f==="mano_estesa"&&G.attore==="O") return true;
+  if(f==="colpi"&&G.attore==="O") return true;
+  if(f==="fine_scena"&&G.scene[G.scena]&&G.scene[G.scena].vincitore==="O") return true;
+  return false;
+}
+function veloIA(on){ const v=document.getElementById("veloIA"); if(v) v.classList.toggle("attivo", on); }
 function render(){
   aggiornaHeader();
   inviaStato();
   const f = G.fase;
+  veloIA(claudeStaGiocando());
   if(f==="modalita"){ rModalita(); return }
   if(f==="lobby"){ rLobby(); return }
   if(spettatore() && !FASI_CONDIVISE.has(f)){ rSpettatore(); return }
@@ -1505,6 +1553,8 @@ function rNarrazione(){
       ${intestazioneScena()}
       ${G.ultimaGiocata?`<div class="banner ${n.tipo==="scopa"?"scopa":""}">${G.ultimaGiocata}</div>`:""}
       <div style="display:flex;justify-content:center;margin:10px 0">${n.html}</div>
+      <span class="etichetta">Il piatto ora</span>
+      <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto</span>'}</div>
       <div class="pannello">
         <span class="etichetta">🃏 Claude · l'Opposizione${n.seme?" "+SIMBOLI[n.seme]:""}</span>
         <div style="font-size:max(12px,calc(13.5px*var(--k,1)));color:var(--grigio);margin-bottom:8px">${descrizioneMossaO(n)}</div>
@@ -1521,6 +1571,8 @@ function rNarrazione(){
     ${intestazioneScena()}
     ${G.ultimaGiocata?`<div class="banner ${n.tipo==="scopa"?"scopa":""}">${G.ultimaGiocata}</div>`:""}
     <div style="display:flex;justify-content:center;margin:10px 0">${n.html}</div>
+    <span class="etichetta">Il piatto ora</span>
+    <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto</span>'}</div>
     <div class="pannello">
       <span class="etichetta">Ora narra${latoDiviso(G.narrLato||G.attore)?" — "+nomeControllore(G.narrLato||G.attore):""}</span>
       <div class="lettura">${n.sugg}</div>
@@ -1605,17 +1657,44 @@ function mossaInfo(tipo){
   if(tipo==="scopa")    return {ic:"💥", txt:"Scopa"};
   if(tipo==="presa")    return {ic:"✋", txt:"Presa"};
   if(tipo==="apertura") return {ic:"🎬", txt:"Apertura"};
+  if(tipo==="esito")    return {ic:"🏁", txt:"Esito"};
   return {ic:"➕", txt:"Novità"};   // giocata nel piatto
+}
+// Stato del log a tab. È UI pura, FUORI da G (come veloIA/iaBusy): G si replica
+// tra i client online, la scena che il giocatore sta guardando nel log no.
+// storiaTabAttiva = indice scena visualizzata; storiaScenaMax = ultima scena vista,
+// per l'auto-follow (quando compare una nuova scena il tab torna alla corrente).
+let storiaTabAttiva=null, storiaScenaMax=-1;
+function scenePresentiStoria(){
+  const s=new Set();
+  for(const v of G.storia) s.add(v.scena);
+  return [...s].sort((a,b)=>a-b);
 }
 function renderStoria(){
   if(!G.storia.length) return `${storiaLabel()}<div class="vuoto">Si riempirà con le narrazioni, tue e di Claude.</div>`;
-  let html=storiaLabel(), ultScena=-1;
+  const scene=scenePresentiStoria();
+  const corrente=scene[scene.length-1];
+  const attiva=scene.includes(storiaTabAttiva)?storiaTabAttiva:corrente;
+  let html=storiaLabel();
+  // barra tab: una scena per tab. La corrente mostra numero + fase, le altre solo il numero.
+  // Pallino del vincitore: viola = Protagonisti, grigio = Opposizione, neutro = parità o in corso.
+  html+=`<div id="storiaTabs">`;
+  for(const i of scene){
+    const v=G.scene[i]&&G.scene[i].vincitore;
+    const dot=v==="P"?"p":(v==="O"?"o":"n");
+    const etich=i===corrente?`${i+1} · ${FASI_NARR[i]||""}`:`${i+1}`;
+    html+=`<button type="button" class="storiaTab${i===attiva?" att":""}" data-scena="${i}"><span class="tdot ${dot}"></span>${etich}</button>`;
+  }
+  html+=`</div>`;
+  // contenuto: solo le voci della scena attiva
+  html+=`<div class="sc">Scena ${attiva+1}: ${FASI_NARR[attiva]||""}</div>`;
   for(const v of G.storia){
-    if(v.scena!==ultScena){ html+=`<div class="sc">Scena ${v.scena+1}: ${FASI_NARR[v.scena]||""}</div>`; ultScena=v.scena; }
+    if(v.scena!==attiva) continue;
     const m=mossaInfo(v.tipo);
     html+=`<div class="voce ${v.lato==="O"?"o":"p"}">
       <div class="voce-bar">
-        ${v.carta?`<span class="carta">${v.carta}</span>`:""}
+        <span class="chi">${nomeLato(v.lato)}</span>
+        ${v.carta?`<span class="crt">${v.carta}</span>`:""}
         <span class="mossa">${m.ic} ${m.txt}</span>
       </div>
       <div class="voce-testo">${v.testo}</div>
@@ -1629,9 +1708,22 @@ function aggiornaStoriaLog(f){
   const mostra = G.modalita==="solo" && f!=="modalita" && f!=="lobby" && f!=="setup";
   col.classList.toggle("attivo", mostra);
   if(!mostra) return;
+  // auto-follow: porta il tab attivo alla scena corrente alla prima apertura e ogni volta
+  // che il log entra in una scena nuova; se l'utente ha aperto a mano un tab passato ci resta
+  // finché la partita non avanza di scena.
+  const scene=scenePresentiStoria();
+  if(scene.length){
+    const corrente=scene[scene.length-1];
+    if(storiaTabAttiva===null || corrente>storiaScenaMax) storiaTabAttiva=corrente;
+    if(!scene.includes(storiaTabAttiva)) storiaTabAttiva=corrente;
+    storiaScenaMax=Math.max(storiaScenaMax, corrente);
+  }
   const vicinoFondo = col.scrollHeight - col.scrollTop - col.clientHeight < 60;   // l'utente stava leggendo il fondo?
   log.innerHTML=renderStoria();
   const kb=log.querySelector("#storiaChiave"); if(kb) kb.addEventListener("click", ()=>chiediSetupClaude(false));
+  log.querySelectorAll(".storiaTab").forEach(t=>t.addEventListener("click", ()=>{
+    const i=+t.dataset.scena; if(!isNaN(i)){ storiaTabAttiva=i; aggiornaStoriaLog(f); }   // cambio tab: solo UI, niente render() globale
+  }));
   if(vicinoFondo) col.scrollTop=col.scrollHeight;   // resta sull'ultima voce, ma se è risalito a leggere non lo strappo via
 }
 function creaPng(){
@@ -1837,6 +1929,7 @@ function chiudiScena(){
 function rFineScena(){
   const rec=G.scene[G.scena];
   const vincNome = rec.vincitore==="parita" ? "PARITÀ" : nomeLato(rec.vincitore);
+  const claudeEsito = G.modalita==="solo" && rec.vincitore==="O";   // vs Claude: l'esito lo scrive l'Opposizione (sola lettura)
   SC.innerHTML=`
     <h2 class="ts">Fine della scena ${G.scena+1}</h2>
     ${rec.titolo?`<p class="sotto">«${rec.titolo}»${rec.posta?" — "+rec.posta:""}</p>`:""}
@@ -1852,13 +1945,15 @@ function rFineScena(){
       <div class="lettura">${LETT_RAPP[rec.rapporto]}</div>
     </div>
     <div class="pannello">
-      <span class="etichetta">Com'è finita la scena — riassunto per il diario</span>
-      <textarea id="fs-riassunto" rows="3" placeholder="Due righe su come si è chiusa la scena…">${rec.riassunto||""}</textarea>
+      <span class="etichetta">${claudeEsito?"🃏 Claude · com'è finita la scena":"Com'è finita la scena — riassunto per il diario"}</span>
+      ${claudeEsito
+        ? `<div class="lettura" id="fsEsitoSlot" style="min-height:48px">${rec.riassunto?`<div id="fsEsito">🃏 ${rec.riassunto}</div>`:""}</div>`
+        : `<textarea id="fs-riassunto" rows="3" placeholder="Due righe su come si è chiusa la scena…">${rec.riassunto||""}</textarea>`}
     </div>
-    <div class="banner">Le carte restano nel piatto: chi aprirà la prossima scena potrà già fare presa o scopa.</div>
-    <button class="azione" id="fs-avanti">${G.scena===4?"Vai al finale":"Vai al mercato"}</button>`;
+    ${G.scena<4?`<div class="banner">Le carte restano nel piatto: chi aprirà la prossima scena potrà già fare presa o scopa.</div>`:""}
+    <button class="azione" id="fs-avanti"${claudeEsito&&!rec.riassunto?" disabled":""}>${G.scena===4?"Vai al finale":"Vai al mercato"}</button>`;
   document.getElementById("fs-avanti").addEventListener("click",()=>{
-    rec.riassunto=document.getElementById("fs-riassunto").value;
+    if(!claudeEsito) rec.riassunto=document.getElementById("fs-riassunto").value;
     if(G.scena===4){ G.fase="finale"; render(); return }
     avviaMercato();
   });
@@ -2172,6 +2267,8 @@ function eseguiColpo(l, riservaCard, bersaglio){
 function conteggioDefinitivo(){
   chiudiScena();
   G.colpi=null;
+  // vs Claude: se la scena finale va all'Opposizione, l'esito lo scrive Claude (schermata fine_scena → "Vai al finale")
+  if(G.modalita==="solo" && G.scene[G.scena].vincitore==="O"){ G.fase="fine_scena"; render(); return; }
   G.fase="finale"; render();
 }
 
@@ -2652,6 +2749,7 @@ function iaScheduler(){
   else if(f==="mercato") iaMercato();
   else if(f==="mano_estesa"&&G.attore==="O") iaManoEstesa();
   else if(f==="colpi"&&G.attore==="O") iaColpi();
+  else if(f==="fine_scena"&&G.scene[G.scena]&&G.scene[G.scena].vincitore==="O") iaEsitoScena();
 }
 
 async function iaAsta(){
@@ -2693,7 +2791,7 @@ async function iaTurno(){
 }
 
 async function iaNarrazione(){
-  if(document.getElementById("iaNarr")) return;
+  if(document.getElementById("iaNarr")){ veloIA(false); return; }
   iaBusy=true;
   const spinte=spinteDisponibili("O");
   const haBoost=G.narr&&G.narr.boostCard&&spinte.length>0;
@@ -2721,7 +2819,28 @@ async function iaNarrazione(){
     const ok=document.getElementById("narrOk"); if(ok) ok.disabled=false;   // narrazione pronta: l'umano può avanzare
     aggiungiStoria("O", iaNarrTesto, {tipo:G.narr&&G.narr.tipo, carta:G.narr&&G.narr.carta, seme:G.narr&&G.narr.seme});
   }
+  veloIA(false);   // testo iniettato (sola lettura): scopri lo schermo così l'umano legge e avanza
   iaNarrTesto=null; iaBusy=false;
+}
+
+async function iaEsitoScena(){
+  if(document.getElementById("fsEsito")){ veloIA(false); return; }   // già iniettato
+  iaBusy=true;
+  const rec=G.scene[G.scena];
+  const r=await chiamaClaude(`LA SCENA È FINITA A TUO FAVORE (Opposizione): piatto ♥+♠ ${rec.totP} contro ♦+♣ ${rec.totO}. I Protagonisti non raggiungono la posta della scena "${rec.titolo||""}"${rec.posta?` («${rec.posta}»)`:""}. Narra in 1-2 frasi, in italiano, dal punto di vista dell'Opposizione, come si chiude la scena a tuo vantaggio, coerente con la storia finora.\nJSON: {"esito":"..."}`);
+  const testo=(r&&r.esito)||"L'Opposizione chiude la scena a proprio favore: per i protagonisti la posta sfuma.";
+  rec.riassunto=testo;
+  aggiungiStoria("O", testo, {tipo:"esito"});
+  const slot=document.getElementById("fsEsitoSlot");
+  if(slot && !document.getElementById("fsEsito")){
+    const div=document.createElement("div");
+    div.id="fsEsito";
+    div.textContent="🃏 "+testo;
+    slot.appendChild(div);
+    const ok=document.getElementById("fs-avanti"); if(ok) ok.disabled=false;   // esito pronto: l'umano può avanzare
+  }
+  veloIA(false);   // esito iniettato (sola lettura): scopri lo schermo così l'umano legge e avanza
+  iaBusy=false;
 }
 
 async function generaOpposizioneIA(){
