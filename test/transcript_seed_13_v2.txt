@@ -5,141 +5,142 @@
 == SCENA 1 — La cella ==
    Posta: Tirare fuori Skunk prima del trasferimento: se va male, escono braccati e con mezzo distretto alle calcagna
    PROTAGONISTI — mano: 5♠ 3♠ 8♥ | piatto: (vuoto)
-   → Paola — 8 di Cuori: giocata nel piatto — un nuovo elemento entra in scena.
+   → Paola — 8 di Cuori: giocata nel piatto — una nuova risorsa entra in scena.
    OPPOSIZIONE — mano: 7♦ 5♣ 10♦ 4♣ | piatto: 8♥
-   → Omar — 7 di Quadri: giocata nel piatto — un nuovo elemento entra in scena.
+   → Omar — 7 di Quadri: giocata nel piatto — una nuova risorsa entra in scena.
    PROTAGONISTI — mano: 5♠ 3♠ | piatto: 8♥ 7♦
-   → Paola — 3 di Picche: giocata nel piatto — un nuovo elemento entra in scena.
+   → Paola — 3 di Picche: giocata nel piatto — una nuova risorsa entra in scena.
    OPPOSIZIONE — mano: 5♣ 10♦ 4♣ | piatto: 8♥ 7♦ 3♠
-   → Omar — 10 di Quadri: presa di 2 carte — un successo parziale, o con un costo.
+   → Omar — 10 di Quadri: presa di 2 carte — un successo, magari con un costo.
    PROTAGONISTI — mano: 5♠ | piatto: 8♥
-   → Paola — 5 di Picche: giocata nel piatto — un nuovo elemento entra in scena.
+   → Paola — 5 di Picche: giocata nel piatto — una nuova risorsa entra in scena.
    OPPOSIZIONE — mano: 5♣ 4♣ | piatto: 8♥ 5♠
-   → Omar — 4 di Fiori: giocata nel piatto — un nuovo elemento entra in scena.
+   → Omar — 4 di Fiori: giocata nel piatto — una nuova risorsa entra in scena.
    PROTAGONISTI — mano:  | piatto: 8♥ 5♠ 4♣
-   → Paola — 6 di Cuori: giocata nel piatto — un nuovo elemento entra in scena.
+   → Paola — 6 di Cuori: giocata nel piatto — una nuova risorsa entra in scena.
    OPPOSIZIONE — mano: 5♣ | piatto: 8♥ 5♠ 4♣ 6♥
-   → Omar — 5 di Fiori: presa di 1 carta — un successo parziale, o con un costo.
+   → Omar — 5 di Fiori: presa di 1 carta — un successo, magari con un costo.
    FINE SCENA 1: piatto 14 a 4 → vince PROTAGONISTI. Seme dominante: ♥ (diario: su).
    PROTAGONISTI — mano: 9♥ 4♥ 4♠ 3♥
    OPPOSIZIONE — mano: 10♣ 5♦ 9♣ 8♦
-   Asta: Protagonisti 4♠ contro Opposizione 5♦ → iniziativa a OPPOSIZIONE.
+   Asta: Protagonisti 3♥ contro Opposizione 5♦ → iniziativa a OPPOSIZIONE.
 
 == SCENA 2 — La statale ==
    Posta: Sparire verso ovest: se va male, i sicari agganciano la loro traccia
    Nel piatto dalla scena precedente: 8♥ 4♣ 6♥
    OPPOSIZIONE — mano: 10♣ 9♣ 8♦ | piatto: 8♥ 4♣ 6♥
-   → Omar — 8 di Quadri: presa di 1 carta — un successo parziale, o con un costo.
+   → Omar — 8 di Quadri: presa di 1 carta — un successo, magari con un costo.
    → SPINTA DEL PITCH: viene spuntata «♦ «La rete di poliziotti corrotti e i due sicari pazienti»» — la presa diventa una scopa vera: il piatto si svuota nelle prese di chi spunta.
-   → Omar — 8 di Quadri: presa di 1 carta — un successo parziale, o con un costo. ⚡ Risorsa del pitch attivata: la presa diventa SCOPA e raccoglie le 2 carte rimaste nel piatto.
-   PROTAGONISTI — mano: 9♥ 4♥ 3♥ 4♠ | piatto: (vuoto)
-   → Paola — 3 di Cuori: giocata nel piatto — un nuovo elemento entra in scena.
+   → Omar — 8 di Quadri: presa di 1 carta — un successo, magari con un costo. ⚡ Risorsa del pitch attivata: la presa diventa SCOPA e raccoglie le 2 carte rimaste nel piatto.
+   PROTAGONISTI — mano: 9♥ 4♥ 4♠ 3♥ | piatto: (vuoto)
+   → Paola — 3 di Cuori: giocata nel piatto — una nuova risorsa entra in scena.
    OPPOSIZIONE — mano: 10♣ 9♣ | piatto: 3♥
-   → Omar — 9 di Fiori: giocata nel piatto — un nuovo elemento entra in scena.
+   → Omar — 9 di Fiori: giocata nel piatto — una nuova risorsa entra in scena.
    PROTAGONISTI — mano: 9♥ 4♥ 4♠ | piatto: 3♥ 9♣
-   → Paola — 4 di Cuori: giocata nel piatto — un nuovo elemento entra in scena.
+   → Paola — 4 di Cuori: giocata nel piatto — una nuova risorsa entra in scena.
    OPPOSIZIONE — mano: 10♣ | piatto: 3♥ 9♣ 4♥
-   → Omar — 10 di Fiori: giocata nel piatto — un nuovo elemento entra in scena.
+   → Omar — 10 di Fiori: giocata nel piatto — una nuova risorsa entra in scena.
    PROTAGONISTI — mano: 9♥ 4♠ | piatto: 3♥ 9♣ 4♥ 10♣
-   → Paola — 9 di Cuori: presa di 1 carta — un successo parziale, o con un costo.
+   → Paola — 9 di Cuori: presa di 1 carta — un successo, magari con un costo.
    OPPOSIZIONE — mano:  | piatto: 3♥ 4♥ 10♣
-   → Omar — 5 di Quadri: giocata nel piatto — un nuovo elemento entra in scena.
+   → Omar — 5 di Quadri: giocata nel piatto — una nuova risorsa entra in scena.
    PROTAGONISTI — mano: 4♠ | piatto: 3♥ 4♥ 10♣ 5♦
-   → Paola — 4 di Picche: presa di 1 carta — un successo parziale, o con un costo.
+   → Paola — 4 di Picche: presa di 1 carta — un successo, magari con un costo.
    FINE SCENA 2: piatto 3 a 15 → vince OPPOSIZIONE. Seme dominante: ♣ (diario: su).
    MERCATO: OPPOSIZIONE compra il FANTE di quadri ♦.
 
 -- Dopo la seconda scena: il JOLLY entra nel mazzo dei Protagonisti. --
    PROTAGONISTI — mano: 1♠ 10♠ 10♥ 9♠
    OPPOSIZIONE — mano: 3♦ 1♣ 1♦ 4♦
-   Asta: Protagonisti 9♠ contro Opposizione 4♦ → iniziativa a PROTAGONISTI.
+   Asta: Protagonisti 10♠ contro Opposizione 3♦ → iniziativa a PROTAGONISTI.
 
 == SCENA 3 — Il deserto ==
    Posta: Attraversare il deserto interi: se va male, quello che non si sono detti esplode
    Nel piatto dalla scena precedente: 3♥ 10♣ 5♦
-   PROTAGONISTI — mano: 1♠ 10♠ 10♥ | piatto: 3♥ 10♣ 5♦
-   → Paola — 10 di Cuori: giocata nel piatto — un nuovo elemento entra in scena.
-   OPPOSIZIONE — mano: 3♦ 1♣ 1♦ 4♦ | piatto: 3♥ 10♣ 5♦ 10♥
-   → Omar — 1 di Quadri: giocata nel piatto — un nuovo elemento entra in scena.
-   PROTAGONISTI — mano: 1♠ 10♠ | piatto: 3♥ 10♣ 5♦ 10♥ 1♦
-   → Paola — 1 di Picche: giocata nel piatto — un nuovo elemento entra in scena.
-   OPPOSIZIONE — mano: 3♦ 1♣ 4♦ | piatto: 3♥ 10♣ 5♦ 10♥ 1♦ 1♠
-   → Omar — 3 di Quadri: giocata nel piatto — un nuovo elemento entra in scena.
-   PROTAGONISTI — mano: 10♠ | piatto: 3♥ 10♣ 5♦ 10♥ 1♦ 1♠ 3♦
-   → Paola — 10 di Picche: presa di 4 carte — un successo parziale, o con un costo.
-   → SPINTA DEL PITCH: viene spuntata «♠ «Solo l'arresto in flagranza di Vargas può ridargli il distintivo»» — la presa diventa una scopa vera: il piatto si svuota nelle prese di chi spunta.
-   → Paola — 10 di Picche: presa di 4 carte — un successo parziale, o con un costo. ⚡ Risorsa del pitch attivata: la presa diventa SCOPA e raccoglie le 3 carte rimaste nel piatto.
-   OPPOSIZIONE — mano: 1♣ 4♦ | piatto: (vuoto)
-   → Omar — 4 di Quadri: giocata nel piatto — un nuovo elemento entra in scena.
-   PROTAGONISTI — mano:  | piatto: 4♦
-   → Paola — 9 di Picche: giocata nel piatto — un nuovo elemento entra in scena.
-   OPPOSIZIONE — mano: 1♣ | piatto: 4♦ 9♠
-   → Omar — 1 di Fiori: giocata nel piatto — un nuovo elemento entra in scena.
-   FINE SCENA 3: piatto 9 a 5 → vince PROTAGONISTI. Seme dominante: ♠ (diario: giu).
+   PROTAGONISTI — mano: 1♠ 10♥ 9♠ | piatto: 3♥ 10♣ 5♦
+   → Paola — 10 di Cuori: presa di 1 carta — un successo, magari con un costo.
+   → SPINTA DEL PITCH: viene spuntata «♥ «Vargas ha fatto uccidere suo fratello Jorge»» — la presa diventa una scopa vera: il piatto si svuota nelle prese di chi spunta.
+   → Paola — 10 di Cuori: presa di 1 carta — un successo, magari con un costo. ⚡ Risorsa del pitch attivata: la presa diventa SCOPA e raccoglie le 2 carte rimaste nel piatto.
+   OPPOSIZIONE — mano: 1♣ 1♦ 4♦ 3♦ | piatto: (vuoto)
+   → Omar — 1 di Quadri: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano: 1♠ 9♠ | piatto: 1♦
+   → Paola — 1 di Picche: SCOPA! Il piatto è ripulito — un successo pieno, una svolta.
+   OPPOSIZIONE — mano: 1♣ 4♦ 3♦ | piatto: (vuoto)
+   → Omar — 3 di Quadri: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano: 9♠ | piatto: 3♦
+   → Paola — 9 di Picche: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano: 1♣ 4♦ | piatto: 3♦ 9♠
+   → Omar — 4 di Quadri: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano:  | piatto: 3♦ 9♠ 4♦
+   → Paola — 10 di Picche: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano: 1♣ | piatto: 3♦ 9♠ 4♦ 10♠
+   → Omar — 1 di Fiori: giocata nel piatto — una nuova risorsa entra in scena.
+   FINE SCENA 3: piatto 19 a 8 → vince PROTAGONISTI. Seme dominante: ♠ (diario: giu).
    MERCATO: PROTAGONISTI compra il FANTE di cuori ♥.
    PROTAGONISTI — mano: 5♥ 8♠ 6♠ 7♠
-   OPPOSIZIONE — mano: 6♣ 2♦ 8♣ 6♦
-   Asta: Protagonisti 6♠ contro Opposizione 8♣ → iniziativa a OPPOSIZIONE.
+   OPPOSIZIONE — mano: F♦ 6♦ 8♣ 9♦
+   Asta: Protagonisti 6♠ contro Opposizione 6♦ → iniziativa a OPPOSIZIONE.
 
 == SCENA 4 — L'ultima notte ==
    Posta: Arrivare in vista della pista: se va male, qualcuno li sta già aspettando
-   Nel piatto dalla scena precedente: 4♦ 9♠ 1♣
-   OPPOSIZIONE — mano: 6♣ 2♦ 6♦ | piatto: 4♦ 9♠ 1♣
-   → Omar — 2 di Quadri: giocata nel piatto — un nuovo elemento entra in scena.
-   PROTAGONISTI — mano: 5♥ 8♠ 7♠ 6♠ | piatto: 4♦ 9♠ 1♣ 2♦
-   → Paola — 5 di Cuori: presa di 2 carte — un successo parziale, o con un costo.
-   OPPOSIZIONE — mano: 6♣ 6♦ | piatto: 9♠ 2♦
-   → Omar — 6 di Quadri: giocata nel piatto — un nuovo elemento entra in scena.
-   PROTAGONISTI — mano: 8♠ 7♠ 6♠ | piatto: 9♠ 2♦ 6♦
-   → Paola — 6 di Picche: presa di 1 carta — un successo parziale, o con un costo.
-   OPPOSIZIONE — mano: 6♣ | piatto: 9♠ 2♦
-   → Omar — 6 di Fiori: giocata nel piatto — un nuovo elemento entra in scena.
-   PROTAGONISTI — mano: 8♠ 7♠ | piatto: 9♠ 2♦ 6♣
-   → Paola — 7 di Picche: giocata nel piatto — un nuovo elemento entra in scena.
-   OPPOSIZIONE — mano:  | piatto: 9♠ 2♦ 6♣ 7♠
-   → Omar — 8 di Fiori: presa di 2 carte — un successo parziale, o con un costo.
-   PROTAGONISTI — mano: 8♠ | piatto: 9♠ 7♠
-   → Paola — 8 di Picche: giocata nel piatto — un nuovo elemento entra in scena.
-   FINE SCENA 4: piatto 24 a 0 → vince PROTAGONISTI. Seme dominante: ♠ (diario: giu).
+   Nel piatto dalla scena precedente: 3♦ 9♠ 4♦ 10♠ 1♣
+   OPPOSIZIONE — mano: F♦ 8♣ 9♦ | piatto: 3♦ 9♠ 4♦ 10♠ 1♣
+   → Omar — Fante di Quadri: presa di 3 carte — un successo, magari con un costo.
+   → effetto FANTE: guarda le prime 4 carte del mazzo e le riordina.
+   PROTAGONISTI — mano: 5♥ 8♠ 7♠ 6♠ | piatto: 9♠ 10♠
+   → Paola — 5 di Cuori: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano: 8♣ 9♦ | piatto: 9♠ 10♠ 5♥
+   → Omar — 9 di Quadri: presa di 1 carta — un successo, magari con un costo.
+   PROTAGONISTI — mano: 8♠ 7♠ 6♠ | piatto: 10♠ 5♥
+   → Paola — 6 di Picche: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano: 8♣ | piatto: 10♠ 5♥ 6♠
+   → Omar — 8 di Fiori: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano: 8♠ 7♠ | piatto: 10♠ 5♥ 6♠ 8♣
+   → Paola — 7 di Picche: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano:  | piatto: 10♠ 5♥ 6♠ 8♣ 7♠
+   → Omar — 6 di Quadri: presa di 1 carta — un successo, magari con un costo.
+   PROTAGONISTI — mano: 8♠ | piatto: 10♠ 5♥ 8♣ 7♠
+   → Paola — 8 di Picche: presa di 1 carta — un successo, magari con un costo.
+   FINE SCENA 4: piatto 22 a 0 → vince PROTAGONISTI. Seme dominante: ♠ (diario: giu).
    MANO ESTESA (scena 5): PROTAGONISTI tiene 4 carte, il resto va in riserva per i colpi di scena.
    MANO ESTESA (scena 5): OPPOSIZIONE tiene 4 carte, il resto va in riserva per i colpi di scena.
-   PROTAGONISTI — mano: 2♥ JOLLY 1♥ 7♥
-   OPPOSIZIONE — mano: F♦ 9♦ 3♣ 2♣
-   Asta: Protagonisti 7♥ contro Opposizione 9♦ → iniziativa a OPPOSIZIONE.
+   PROTAGONISTI — mano: 3♥ 1♥ 2♥ JOLLY
+   OPPOSIZIONE — mano: 3♣ 2♣ 6♣ 2♦
+   Asta: Protagonisti 2♥ contro Opposizione 6♣ → iniziativa a OPPOSIZIONE.
 
 == SCENA 5 — La pista ==
    Posta: Il meeting: se va male, il jet riparte con Vargas a bordo
-   Nel piatto dalla scena precedente: 9♠ 7♠ 8♠
-   OPPOSIZIONE — mano: F♦ 3♣ 2♣ | piatto: 9♠ 7♠ 8♠
-   → Omar — Fante di Quadri: giocata nel piatto — un nuovo elemento entra in scena.
-   PROTAGONISTI — mano: 2♥ JOLLY 1♥ 7♥ | piatto: 9♠ 7♠ 8♠ F♦
-   → Paola — presa col Jolly come 9. Il punto della presa va a Omar.
-   OPPOSIZIONE — mano: 3♣ 2♣ | piatto: 7♠ 8♠ F♦
-   → Omar — 2 di Fiori: giocata nel piatto — un nuovo elemento entra in scena.
-   PROTAGONISTI — mano: 2♥ 1♥ 7♥ | piatto: 7♠ 8♠ F♦ 2♣
-   → Paola — 1 di Cuori: giocata nel piatto — un nuovo elemento entra in scena.
-   OPPOSIZIONE — mano: 3♣ | piatto: 7♠ 8♠ F♦ 2♣ 1♥
-   → Omar — 3 di Fiori: presa di 2 carte — un successo parziale, o con un costo.
-   PROTAGONISTI — mano: 2♥ 7♥ | piatto: 7♠ 8♠ F♦
-   → Paola — 2 di Cuori: giocata nel piatto — un nuovo elemento entra in scena.
-   OPPOSIZIONE — mano:  | piatto: 7♠ 8♠ F♦ 2♥
-   → Omar — 9 di Quadri: giocata nel piatto — un nuovo elemento entra in scena.
-   PROTAGONISTI — mano: 7♥ | piatto: 7♠ 8♠ F♦ 2♥ 9♦
-   → Paola — 7 di Cuori: presa di 1 carta — un successo parziale, o con un costo.
+   Nel piatto dalla scena precedente: 10♠ 5♥ 7♠
+   OPPOSIZIONE — mano: 3♣ 2♣ 2♦ | piatto: 10♠ 5♥ 7♠
+   → Omar — 2 di Quadri: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano: 3♥ 1♥ JOLLY 2♥ | piatto: 10♠ 5♥ 7♠ 2♦
+   → Paola — presa col Jolly come 10. Il punto della presa va a Omar.
+   OPPOSIZIONE — mano: 3♣ 2♣ | piatto: 5♥ 7♠ 2♦
+   → Omar — 2 di Fiori: presa di 1 carta — un successo, magari con un costo.
+   PROTAGONISTI — mano: 3♥ 1♥ 2♥ | piatto: 5♥ 7♠
+   → Paola — 1 di Cuori: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano: 3♣ | piatto: 5♥ 7♠ 1♥
+   → Omar — 3 di Fiori: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano: 3♥ 2♥ | piatto: 5♥ 7♠ 1♥ 3♣
+   → Paola — 2 di Cuori: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano:  | piatto: 5♥ 7♠ 1♥ 3♣ 2♥
+   → Omar — 6 di Fiori: presa di 2 carte — un successo, magari con un costo.
+   PROTAGONISTI — mano: 3♥ | piatto: 7♠ 3♣ 2♥
+   → Paola — 3 di Cuori: presa di 1 carta — un successo, magari con un costo.
 
 -- PRIMO CONTEGGIO (esito apparente) --
-   Piatto finale: 8♠ F♦ 2♥ 9♦
-   → COLPO DI SCENA! Paola mette in gioco Fante di Cuori ed elimina Fante di Quadri.
-   → COLPO DI SCENA! Omar mette in gioco 7 di Fiori ed elimina 2 di Cuori.
-   → COLPO DI SCENA! Paola mette in gioco 8 di Cuori ed elimina 7 di Fiori.
-   → COLPO DI SCENA! Paola mette in gioco 10 di Cuori ed elimina 9 di Quadri.
+   Piatto finale: 7♠ 2♥
+   → COLPO DI SCENA! Omar mette in gioco 7 di Fiori ed elimina 7 di Picche.
+   → COLPO DI SCENA! Paola mette in gioco 7 di Cuori ed elimina 7 di Fiori.
+   → COLPO DI SCENA! Paola mette in gioco Fante di Cuori.
    → COLPO DI SCENA! Paola mette in gioco 2 di Picche.
-   → COLPO DI SCENA! Paola mette in gioco 3 di Picche.
+   → COLPO DI SCENA! Paola mette in gioco 5 di Picche.
+   → COLPO DI SCENA! Paola mette in gioco 9 di Picche.
 
 -- CONTEGGIO DEFINITIVO E FINALE --
-   Piatto finale: 8♠ F♥ 8♥ 10♥ 2♠ 3♠
-   Valori nel piatto: Protagonisti (♥+♠) 39 contro Opposizione (♦+♣) 0.
-   Punti complessivi (scope + prese): Protagonisti 3 (3 prese), Opposizione 3 (3 prese).
-   Esito: VITTORIA TOTALE
-   Scope — Protagonisti: nessuna · Opposizione: nessuna
+   Piatto finale: 2♥ 7♥ F♥ 2♠ 5♠ 9♠
+   Valori nel piatto: Protagonisti (♥+♠) 33 contro Opposizione (♦+♣) 0.
+   Punti complessivi (scope + prese): Protagonisti 4 (2 prese), Opposizione 6 (6 prese).
+   Esito: PER IL ROTTO DELLA CUFFIA
+   Scope — Protagonisti: 1♠ · Opposizione: nessuna
    Diario del rapporto per scena: su, su, giu, giu, su

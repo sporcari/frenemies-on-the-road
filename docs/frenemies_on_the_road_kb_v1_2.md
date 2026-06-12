@@ -328,7 +328,7 @@ Dopo l'asta:
 
 Nel proprio turno un giocatore può:
 
-- **Giocare una carta nel piatto** → introduce un nuovo elemento nella scena
+- **Giocare una carta nel piatto** → introduce una propria risorsa nella scena (possibile solo se quella carta non può catturare: vedi §16, presa obbligatoria)
 - **Fare una presa normale** → rimuove carte dal piatto secondo le regole della Scopa
 - **Fare una scopa** → se la presa svuota completamente il piatto
 
@@ -336,19 +336,29 @@ Nel proprio turno un giocatore può:
 
 ### 15.1 — Giocare una carta nel piatto = Introdurre
 
-Aggiunge un elemento con cui l'avversario dovrà fare i conti. Non risolve ciò che è già nel piatto.
+Ogni lato **dispone una propria risorsa** in scena. Non risolve nulla di ciò che è già nel piatto: predispone. Il senso dipende dal lato.
 
-> **Esempio:** Giocare un 7 di Quadri = una nuova minaccia entra in scena (una pattuglia sul libro paga di Vargas blocca lo svincolo della statale).
+- **Protagonisti:** un elemento, un fatto o un'azione del personaggio che non supera un ostacolo adesso, ma che potrà tornare utile e preparare un vantaggio (un conoscente che compare, un'opportunità notata nell'ambiente, una relazione che nasce, un oggetto o una prova prodotta, un travestimento).
+- **Opposizione:** un nuovo elemento, un'azione degli antagonisti o un fatto che causerà problemi o nuovi ostacoli (♦ Quadri = nemici con intenzione; ♣ Fiori = caos e sfortuna).
 
-### 15.2 — Fare una presa normale = Superamento parziale / gestione con costo
+> **Esempio (Opposizione):** Giocare un 7 di Quadri = una nuova minaccia entra in scena (una pattuglia sul libro paga di Vargas blocca lo svincolo della statale).
+>
+> **Esempio (Protagonisti):** Giocare una carta = ti metti un cappello e degli occhiali scuri per non farti riconoscere. Non sei al sicuro, ma è un vantaggio che potrai sfruttare più avanti.
 
-Produce avanzamento e genera risorse economiche (carte prese = punti per il mercato). Narrativamente rappresenta un successo parziale, oppure un successo con costo, oppure il superamento di un ostacolo senza risolvere tutto.
+### 15.2 — Fare una presa = superare un ostacolo, con eventuale costo
 
-> **Esempio:** Presa con un 8 di Cuori → Skunk convince il gestore del motel a registrarli con nomi falsi, ma quello si tiene la patente di Frank "come garanzia".
+Togli una risorsa **all'avversario** (prendi le carte dell'altro lato dal piatto). È un **successo vero**, anche se può costare un compromesso o un sacrificio: non è un risultato "parziale". La carta tolta dal piatto è l'appiglio narrativo, perché rappresenta ciò che superi o neutralizzi. Genera inoltre risorse economiche (carte prese = punti per il mercato).
+
+- **Protagonisti:** superano un ostacolo che l'Opposizione aveva messo in scena.
+- **Opposizione:** toglie ai protagonisti una risorsa, oppure ne mostra l'inutilità (si ritorce contro di loro).
+
+> **Esempio (Protagonisti):** il 6 di Fiori era la carta di credito bloccata. Fai la presa e dichiari: "Vado a impegnare il mio orologio d'oro e ottengo un bel gruzzolo di contanti". L'ostacolo è superato, a un prezzo.
+>
+> **Esempio (Opposizione):** i protagonisti avevano introdotto il secondino gentile, vecchio compagno di scuola. L'Opposizione prende quella carta: appena lui si allontana, telefona al gran cattivo per avvertirlo che li tiene in pugno. Il vantaggio apparente era una trappola.
 
 ### 15.3 — Fare una scopa = Successo pieno / svolta / ribaltamento
 
-Quando la presa lascia il piatto vuoto. Vale di più di una presa normale, viene segnata separatamente, è una risorsa persistente importante.
+Quando la presa lascia il piatto vuoto: togli all'avversario **ogni** risorsa in scena in un colpo solo. Un successo pieno **sopra ogni aspettativa**, quasi un colpo di fortuna. Vale di più di una presa normale, viene segnata separatamente, è una risorsa persistente importante.
 
 > **Esempio:** Scopa con un 6 di Picche → Frank disarma i due sicari nel parcheggio nel giro di dieci secondi. La strada è libera, la situazione è ribaltata.
 
@@ -359,6 +369,10 @@ Le prese seguono la logica della Scopa tradizionale:
 - Una carta può prendere **una carta di uguale valore** presente sul piatto
 - Oppure può prendere **un gruppo di carte la cui somma** è uguale al valore della carta giocata
 - Se il piatto viene completamente svuotato → **scopa**
+
+**Presa obbligatoria.** Se la carta che giochi può fare una presa o una scopa, **non** può essere messa nel piatto: la cattura è obbligatoria. L'obbligo riguarda la singola carta giocata, non l'intero turno (puoi sempre mettere nel piatto un'altra carta che non cattura); quando la carta ha più catture possibili (singola, gruppo, presa o scopa) la scelta tra esse resta libera.
+
+**Cattura di una carta del proprio lato.** Se sei costretto a prendere una carta del tuo stesso lato (stesso schieramento), raccontalo come un'azione maldestra in cui le due anime del lato si sono ostacolate o annullate a vicenda: **Cuori e Picche** per i Protagonisti, **Fiori e Quadri** per l'Opposizione.
 
 ## 17. Gestione di prese e scope
 
@@ -660,9 +674,9 @@ Per giocare correttamente bisogna sempre distinguere tre funzioni fondamentali:
 
 | Azione | Significato meccanico | Significato narrativo |
 |---|---|---|
-| Giocare nel piatto | Aggiunge un elemento | Introdurre |
-| Fare una presa | Rimuove carte dal piatto | Superamento parziale / gestione con costo |
-| Fare una scopa | Svuota il piatto | Successo pieno / svolta / ribaltamento |
+| Giocare nel piatto | Aggiunge una carta | Disporre una propria risorsa (vantaggio per i Protagonisti, ostacolo per l'Opposizione) |
+| Fare una presa | Rimuove carte dal piatto | Togliere una risorsa all'avversario: un successo, con eventuale costo |
+| Fare una scopa | Svuota il piatto | Successo pieno sopra ogni aspettativa / svolta |
 
 ---
 
@@ -822,7 +836,7 @@ Skunk è in cella. I poliziotti corrotti lo hanno arrestato con un pretesto per 
 
 ---
 
-## 34. Partita d'esempio: trentasei ore *(v1.3)*
+## 34. Partita d'esempio: trentasei ore *(v1.4)*
 
 Una partita vera a 2 giocatori, giocata dall'inizio alla fine con lo scenario demo (§33) e riportata integralmente: ogni carta, ogni presa e ogni conteggio sono reali e verificati dal motore di gioco (seme 13). Paola gioca i Protagonisti (Frank ♠ e Skunk ♥), Omar gioca l'Opposizione (i nemici ♦ e il caos ♣). Le meccaniche sono tra parentesi, i richiami alle regole nei riquadri.
 
@@ -844,11 +858,11 @@ Fine del round: nel piatto restano 8♥, 4♣ e 6♥. **Protagonisti 14, Opposiz
 
 *Posta: sparire verso ovest; se va male, i sicari agganciano la loro traccia.*
 
-Asta: 4♠ contro 5♦, iniziativa all'Opposizione. Omar apre prendendo l'8♥ con l'**8♦** e subito **spunta la risposta ♦ del pitch** "la rete di poliziotti corrotti e i due sicari pazienti": due uomini in giacca scura scendono dal SUV davanti al diner.
+Asta: 3♥ contro 5♦, iniziativa all'Opposizione. Omar apre prendendo l'8♥ con l'**8♦** e subito **spunta la risposta ♦ del pitch** "la rete di poliziotti corrotti e i due sicari pazienti": due uomini in giacca scura scendono dal SUV davanti al diner.
 
 > **Spinta del pitch (§9.8, scopa vera):** la risposta entra in narrazione e la presa diventa una **scopa che svuota il piatto** — 4♣ e 6♥ finiscono negli scarti comuni. L'8♦ va in orizzontale tra le scope di Omar: **3 punti**. Quella risposta ♦ è ora spuntata: Omar non potrà usare un'altra spinta ♦ per tutta la partita.
 
-Segue un lungo tira e molla: Paola semina 3♥ e 4♥, Omar 9♣ e 10♣; Paola prende il 9♣ col **9♥**, Omar cala il 5♦ d'asta, Paola chiude prendendo il 4♥ col **4♠**. Resta nel piatto 3♥, 10♣, 5♦: **3 a 15**, scena all'Opposizione. Dominante ♣: a fermarli è stata la tempesta, non i sicari. Eppure il diario sale — l'unico seme dei protagonisti rimasto sul tavolo è un cuore.
+Segue un lungo tira e molla: Paola semina **3♥** (la carta d'asta che le è tornata in mano) e **4♥**, Omar 9♣ e 10♣; Paola prende il 9♣ col **9♥**, Omar cala il 5♦ d'asta, Paola chiude prendendo il 4♥ col **4♠**. Resta nel piatto 3♥, 10♣, 5♦: **3 a 15**, scena all'Opposizione. Dominante ♣: a fermarli è stato il caos della strada, non i sicari. Eppure il diario sale — l'unico seme dei protagonisti rimasto sul tavolo è un cuore.
 
 Al mercato Omar compra il **Fante di Quadri** (un informatore nel distretto): costa **4**, e paga con le sue due prese e la scopa appena fatta; i marcatori spesi vanno negli scarti comuni (§20).
 
@@ -858,51 +872,53 @@ Al mercato Omar compra il **Fante di Quadri** (un informatore nel distretto): co
 
 *Posta: attraversare il deserto interi; se va male, quello che non si sono detti esplode.*
 
-Asta: 9♠ contro 4♦, iniziativa ai Protagonisti. È la scena della posta in gioco: dopo che il piatto si gonfia (10♥, 1♦, 1♠, 3♦), Paola cala il **10♠**, prende quattro carte e **spunta la risposta ♠** "Solo l'arresto in flagranza di Vargas può ridargli il distintivo": nel silenzio del deserto Frank ricorda a voce alta perché è partito, il nome pulito che ha appeso a questo arresto.
+Asta: 10♠ contro 3♦, iniziativa ai Protagonisti. Sul tavolo i 3♥, 10♣, 5♦ della scena prima. Paola apre prendendo il 10♣ col **10♥** e **spunta la risposta ♥** "Vargas ha fatto uccidere suo fratello Jorge": nel silenzio del deserto la verità che Skunk si porta dentro affiora, e la presa diventa **scopa** che svuota il piatto.
 
-> **Spinta del pitch (§9.8):** la presa diventa **scopa** e svuota il piatto. Il 10♠ va tra le scope di Paola (**3 punti**). Anche la ♠ è ora spuntata: niente più spinte ♠ per i Protagonisti.
+> **Spinta del pitch (§9.8):** il 10♥ va tra le scope di Paola (**3 punti**). La ♥ è ora spuntata: niente più spinte ♥ per i Protagonisti.
 
-Si chiude con due giocate piccole; resta nel piatto 4♦, 9♠, 1♣: **9 a 5**, scena ai Protagonisti. Ma il seme dominante è ♠ e il diario **scende**: hanno vinto con la durezza di Frank, e qualcosa tra loro si incrina.
+Omar rilancia il **1♦**; Paola lo prende col **1♠** e fa **scopa vera** (§15.3) — il piatto si svuota una seconda volta: la durezza di Frank chiude un discorso in un colpo solo. Poi il round si spegne in giocate piccole: Omar 3♦, Paola 9♠, Omar 4♦, Paola cala il 10♠ d'asta, Omar chiude col 1♣. Restano nel piatto 3♦, 9♠, 4♦, 10♠, 1♣: **19 a 8**, scena ai Protagonisti. Ma il seme dominante è ♠ e il diario **scende**: due scope di fila vinte di forza, e qualcosa tra loro si tende.
 
-Al mercato Paola compra il **Fante di Cuori** (costo 4): il contatto di Skunk dentro la sicurezza dell'aeroporto.
+Al mercato Paola compra il **Fante di Cuori** (costo 4): il contatto di Skunk dentro la sicurezza dell'aeroporto. Per pagarlo brucia le due prese della scena 2 e una delle due scope appena fatte; in piedi resta solo quella del **1♠**.
 
 > **Una figura per tipo (§21, v1.3):** comprato il loro Fante, i Protagonisti non potranno comprarne un altro per tutta la partita — un solo Fante, una sola Regina, un solo Re a testa.
 
 ### Scena 4 — L'ultima notte (Crisi)
 
-Asta: 6♠ contro 8♣, iniziativa all'Opposizione. Sul tavolo i 4♦, 9♠, 1♣ rimasti.
+Asta: 6♠ contro 6♦, iniziativa all'Opposizione. Sul tavolo i 3♦, 9♠, 4♦, 10♠, 1♣ rimasti dal deserto.
 
-È un round di prese fitte: Paola prende col **5♥** (4♦ + 1♣) e col **6♠** (6♦), Omar ribatte con l'**8♣** d'asta (2♦ + 6♣). Ma alla fine sul tavolo restano solo picche pesanti: 9♠, 7♠, 8♠. Conteggio **24 a 0**, scena ai Protagonisti, dominante ♠: continuano a vincere, ma con le maniere forti, e il diario scende di nuovo.
+Omar apre calando il **Fante di Quadri**, ma l'unica presa che la carta consente è sulle **sue stesse carte** (3♦ + 4♦ + 1♣ = 8): la cattura è obbligatoria (§16) e l'informatore finisce per pestare i piedi ai suoi — Quadri e Fiori che si annullano a vicenda. Tre carte dell'Opposizione lasciano il tavolo e diventano marcatori per il mercato, ma il piatto resta ai Protagonisti (e l'effetto del Fante gli lascia riordinare le prime carte del mazzo). Poi: Paola semina **5♥**, Omar prende il 9♠ col **9♦**, Paola gioca 6♠, Omar 8♣, Paola 7♠; Omar prende il 6♠ col **6♦**, Paola chiude prendendo l'8♣ con l'**8♠**. Restano nel piatto 10♠, 5♥, 7♠: **22 a 0**, scena ai Protagonisti, dominante ♠ — continuano a vincere, ma con le maniere forti, e il diario scende di nuovo.
 
-> Quel piatto da 24 (tutto ♠) **resta sul tavolo** per la Risoluzione: sarà la base ricchissima del conteggio finale. Prima dell'ultima scena: il **mercato** (nessuno compra) e poi la **mano estesa** (§23) — ognuno prende le carte rimaste, ne tiene 4, mette il resto in riserva per i colpi di scena. E nella mano di Paola, finalmente, c'è il **Jolly**.
+> **L'Opposizione fa punti cedendo il tavolo:** prendendo (anche le proprie carte) Omar accumula marcatori per il conteggio finale, ma svuota il piatto del proprio colore — ecco perché chiuderà la partita avanti nei punti pur con un piatto a zero.
+>
+> Quel piatto (quasi tutto ♠) **resta sul tavolo** per la Risoluzione: sarà la base del conteggio finale. Prima dell'ultima scena: il **mercato** (nessuno compra) e poi la **mano estesa** (§23) — ognuno prende le carte rimaste, ne tiene 4, mette il resto in riserva per i colpi di scena. E nella mano di Paola, finalmente, c'è il **Jolly**.
 
 ### Scena 5 — La pista (Risoluzione)
 
 *Posta: il meeting; se va male, il jet riparte con Vargas a bordo.*
 
-Asta: 7♥ contro 9♦, iniziativa all'Opposizione. Sul tavolo già 9♠, 7♠, 8♠. Omar apre calando il suo **Fante di Quadri** nel piatto: l'informatore del distretto si piazza al cancello. Paola risponde con la mossa sleale: gioca il **Jolly dichiarato come 9** e prende il 9♠.
+Asta: 2♥ contro 6♣, iniziativa all'Opposizione. Sul tavolo già 10♠, 5♥, 7♠. Omar apre col **2♦** (un ultimo posto di blocco). Paola risponde con la mossa sleale: gioca il **Jolly dichiarato come 10** e si porta via il 10♠.
 
-> **Il Jolly (§22, v1.3):** un successo ottenuto contro i principi e la lealtà. Paola si porta via una picche pesante dal tavolo, ma **il punto della presa va a Omar**: il vantaggio è suo, il punto all'avversario. Frank fa quello che si era giurato di non rifare più.
+> **Il Jolly (§22, v1.3):** un successo ottenuto contro i principi e la lealtà. Paola toglie dal tavolo una picche pesante, ma **il punto della presa va a Omar**: il vantaggio è suo, il punto all'avversario. Frank fa quello che si era giurato di non rifare più.
 
-Il round prosegue: Omar prende col **3♣** (2♣ + 1♥), Paola chiude prendendo il 7♠ col **7♥**.
+Il round prosegue: Omar prende il 2♦ col **2♣**, Paola semina 1♥, Omar 3♣, Paola 2♥; Omar prende due carte (5♥ + 1♥) col **6♣**, Paola chiude prendendo il 3♣ col **3♥**. Sul tavolo restano 7♠ e 2♥.
 
-**Primo conteggio** (§24), l'esito apparente, con quattro carte sul tavolo: 8♠, il Fante di Quadri, 2♥ e 9♦. **Opposizione 18, Protagonisti 10**: con due figure pesanti dei nemici sul tavolo, il jet sembra pronto a ripartire.
+**Primo conteggio** (§24), l'esito apparente: **9 a 0** per i Protagonisti. Sembra fatta — ma è il momento dei colpi di scena, e li inizia chi sta (apparentemente) perdendo: l'Opposizione.
 
-Ma i colpi di scena li inizia chi perde, e i Protagonisti hanno la riserva piena. Paola cala il **Fante di Cuori** ed **elimina il Fante di Quadri** (valore pari, ≤): il contatto di Skunk smaschera l'informatore corrotto. Omar risponde col **7♣** ed elimina il 2♥. Ma Paola non si ferma: l'**8♥** spazza via il 7♣, il **10♥** elimina il 9♦, e poi mette in gioco anche **2♠** e **3♠** — la riserva dell'Opposizione è già esaurita.
+Omar cala il **7♦** ed **elimina il 7♠** (valore pari, ≤): i sicari spazzano via l'uomo di Frank al cancello. Paola ribatte col **7♥** ed elimina il 7♦. Poi, riserva piena, scarica tutto: il **Fante di Cuori** (il contatto di Skunk prende posizione, ma non ha bersagli avversari da eliminare), e a seguire **2♠**, **5♠** e **9♠**, mentre la riserva dell'Opposizione è già esaurita.
 
 > **Colpi di scena (§24, v1.3):** finché si ha riserva, si gioca **obbligatoriamente**; ogni carta entra nel piatto e può **eliminare** una carta avversaria di valore pari o inferiore (la tua resta sul tavolo, l'altra va negli scarti). Si finisce quando entrambe le riserve sono vuote.
 
 ### Il finale
 
-Conteggio definitivo: sul tavolo 8♠, Fante di Cuori, 8♥, 10♥, 2♠, 3♠. **Protagonisti 39, Opposizione 0.** Il piatto è schiacciante: Vargas viene ammanettato sulla pista, con i boss locali come testimoni involontari.
+Conteggio definitivo: sul tavolo 2♥, 7♥, Fante di Cuori, 2♠, 5♠, 9♠. **Protagonisti 33, Opposizione 0.** Il piatto è schiacciante: Vargas viene ammanettato sulla pista, davanti ai boss arrivati per il meeting.
 
-Poi i punti complessivi (§26): presa = 1, scopa = 3. Ma le due scope fatte con le spinte sono finite **entrambe al mercato** (spese per comprare i due Fanti), così restano solo le prese non spese: **Protagonisti 3, Opposizione 3**. Piatto stravinto e punti in pareggio: è **Vittoria Totale**.
+Ma i punti complessivi (§26) raccontano un'altra storia. Con la formula scope (intatte 2, spese 1) più le carte prese: ai Protagonisti resta una sola scopa intatta, quella del **1♠** (2), più due prese (2), totale **4**; l'Opposizione, che ha rastrellato marcatori in tutte le scene — anche prendendo le proprie carte — e si è perfino intascata il punto regalato col Jolly, arriva a **6**. Piatto stravinto, punti persi: è una vittoria **per il rotto della cuffia**. L'obiettivo è raggiunto, ma pagando un prezzo.
 
-> **Nota (§22):** uno dei 3 punti dell'Opposizione è proprio quello che Paola le ha **regalato col Jolly**. Il vantaggio sul tavolo è stato dei Protagonisti; quel punto, no.
+> **Nota (§22):** uno dei 6 punti dell'Opposizione è proprio quello che Paola le ha **regalato col Jolly**. Il vantaggio sul tavolo è stato dei Protagonisti; quel punto, no.
 
-Resta la lettura del diario (§27): **su, su, giù, giù, su**. Salita nella cella e sulla statale, poi due discese nel deserto e nell'ultima notte, e di nuovo salita davanti al jet. Frank e Skunk hanno rischiato di perdersi a metà strada — vincendo con la durezza — e si sono ritrovati solo alla fine. E nell'ultimo piatto la natura dell'opposizione parla chiaro: ♦ e ♣ a 0. Alla resa dei conti né i sicari né il caos li hanno fermati: a un passo dal traguardo, l'unico vero pericolo era la scorciatoia di Frank.
+Resta la lettura del diario (§27): **su, su, giù, giù, su**. Salita nella cella e sulla statale, poi due discese nel deserto e nell'ultima notte (vinte di forza, ♠ su ♠), e di nuovo salita davanti al jet. Tre scene di connessione contro due di distanza: alla fine Frank e Skunk si sono ritrovati. E nell'ultimo piatto la natura dell'opposizione tace — ♦ e ♣ a 0: né i nemici organizzati né il caos restano sul tavolo. A pesare, semmai, è stata la scorciatoia di Frank, che è costata il conteggio dei marcatori.
 
-> La lezione della partita: si può **stravincere sul tavolo e pagare comunque un prezzo**. I Protagonisti hanno dominato quattro scene su cinque, ma il diario ricorda quanto sono stati vicini a spezzarsi — e il punto regalato col Jolly resta lì, a dire che certi vantaggi si pagano.
+> La lezione della partita: si può **stravincere sul tavolo e pagare comunque un prezzo**. I Protagonisti hanno dominato il piatto in ogni scena tranne una, ma il punteggio dei marcatori — e il punto regalato col Jolly — ricorda che certi vantaggi si comprano cari.
 
 ---
 
@@ -913,6 +929,8 @@ Resta la lettura del diario (§27): **su, su, giù, giù, su**. Salita nella cel
 1. **§9.5 / §9.8** — Le due domande "cosa A detesta di B" e "cosa B detesta di A" diventano **tratti dei protagonisti, solo narrativi** (nessun effetto in gioco), e nel wizard stanno nella pagina dei Protagonisti. Le spinte spuntabili scendono da dieci a **otto, due per seme**: motivazione e asso dei Protagonisti (♠/♥), mezzi e movente dei nemici (♦), catastrofi e crepe (♣).
 2. **§9.1** — Tra i toni di riferimento si aggiunge **poliziesco** (la lista resta indicativa, non vincolante).
 3. **§33** — Lo scenario demo prende un titolo proprio, **"La strada della vendetta"**, e il suo tono passa da *action* a **poliziesco** (protagonisti invariati: Frank e Skunk). Allineati il playset incorporato nell'app e il file `playsets/frank_skunk_playset.json`.
+4. **§14, §15** — Chiarito il significato narrativo dei tre gesti, ora **lato-dipendente**. Introdurre = ogni lato dispone una propria risorsa (Protagonisti: un elemento/fatto/azione che prepara un vantaggio futuro; Opposizione: un ostacolo o una minaccia). Presa = togliere una risorsa all'avversario; è un **successo** vero, anche se può avere un costo (non più "superamento parziale"); la carta tolta dal piatto è l'appiglio narrativo. Scopa = successo pieno **sopra ogni aspettativa**. Esempi riscritti per entrambi i lati. Allineati anche `REGOLE` e `REGOLE_IA` nell'app.
+5. **§16** — **Presa obbligatoria:** se la carta giocata può catturare, non può essere messa nel piatto (obbligo per-carta; resta libera la scelta tra le catture possibili). Se si è costretti a prendere una carta del **proprio lato**, si narra un'azione maldestra in cui le due anime del lato (Cuori/Picche o Fiori/Quadri) si sono ostacolate o annullate a vicenda.
 
 ## v1.3 (giugno 2026)
 

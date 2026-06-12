@@ -1182,7 +1182,7 @@ function rSetup(){
       <b>caos, sfortuna, incomprensioni</b> ♣.<br><br>
       Un giocatore guida i Protagonisti ♥♠, l'altro l'Opposizione ♦♣. La storia si sviluppa in
       <b>cinque scene</b>, da <i>${FASI_NARR[0]}</i> a <i>${FASI_NARR[4]}</i>. Le carte giocate scrivono
-      la fiction: ogni presa è un successo parziale, ogni scopa una svolta, e a fine scena il piatto
+      la fiction: ogni presa è un successo (con un possibile costo), ogni scopa una svolta, e a fine scena il piatto
       racconta chi ha deciso l'esito — e se i due si sono avvicinati o allontanati.<br><br>
       Alla fine non conta solo se ce la fanno. <b>Conta chi diventano lungo la strada.</b>
     </div>
@@ -1587,13 +1587,16 @@ function mostraOpzioni(c, daAsta){
   combos.forEach((cmb,i)=>{
     html+=`<button data-cmb="${i}">Prendi ${cmb.map(x=>(x.fig?FIGURE[x.fig].nome.charAt(0):x.val)+SIMBOLI[x.seme]).join(" + ")}${cmb.length===G.piatto.length?" — SCOPA!":""}</button>`;
   });
-  html+=`<button class="neutra" data-piatto="1">Metti nel piatto</button></div>`;
+  // cattura obbligatoria: si può mettere nel piatto solo se la carta non può prendere
+  if(combos.length===0) html+=`<button class="neutra" data-piatto="1">Metti nel piatto</button>`;
+  html+=`</div>`;
   if(c.fig) html+=`<div class="banner" style="margin-top:10px">${FIGURE[c.fig].nome} — ${FIGURE[c.fig].eff}</div>`;
   box.innerHTML=html;
   box.querySelectorAll("button[data-cmb]").forEach(b=>{
     b.addEventListener("click",()=>giocaCarta(c, combos[parseInt(b.dataset.cmb)], daAsta));
   });
-  box.querySelector("button[data-piatto]").addEventListener("click",()=>giocaCarta(c, null, daAsta));
+  const bp=box.querySelector("button[data-piatto]");
+  if(bp) bp.addEventListener("click",()=>giocaCarta(c, null, daAsta));
 }
 
 function rimuoviDaMano(l, c, daAsta){
@@ -1604,6 +1607,8 @@ function rimuoviDaMano(l, c, daAsta){
 
 function giocaCarta(c, combo, daAsta){
   const l=G.attore, L=lato(l);
+  // cattura obbligatoria: se la carta può prendere, non può essere messa nel piatto
+  if(!combo && !c.jolly && combosPresa(c.val).length>0) return;
   rimuoviDaMano(l,c,daAsta);
   let msg = `${nomeLato(l)} — ${nomeCarta(c)}: `;
   let tipo="piatto", dettagli="";
@@ -1619,17 +1624,19 @@ function giocaCarta(c, combo, daAsta){
     }else{
       L.prese.push(c);  // la carta che ha fatto presa: marcatore (1 punto)
       tipo="presa";
-      msg+=`presa di ${combo.length} cart${combo.length>1?"e":"a"} — un successo parziale, o con un costo.`;
+      msg+=`presa di ${combo.length} cart${combo.length>1?"e":"a"} — un successo, magari con un costo.`;
     }
   }else{
     G.piatto.push(c);
-    msg+=`giocata nel piatto — un nuovo elemento entra in scena.`;
+    msg+=`giocata nel piatto — una nuova risorsa entra in scena.`;
   }
   G.ultimaGiocata=msg;
   G.svuotoConScopa = (tipo==="scopa") ? l : null;   // scopa = piatto svuotato da l; presa/piatto = non vuoto
+  // azione maldestra: presa/scopa che cattura una carta del proprio lato
+  const stessoLato = !!(combo && combo.some(x=>!x.jolly && semiLato(l).includes(x.seme)));
   // effetto figura dopo la narrazione, prima del cambio turno
   const dopo = c.fig ? ()=>effettoFigura(c, ()=>prossimoTurno()) : null;
-  vaiNarrazione(c, tipo, dettagli, dopo);
+  vaiNarrazione(c, tipo, dettagli, dopo, undefined, undefined, stessoLato);
   if(tipo==="presa" && !c.jolly){ G.narr.boostCard=c.id; render(); }
 }
 
@@ -1645,14 +1652,27 @@ function suggSeme(seme){
   }
   return "";
 }
-function suggerimento(c, tipo, dettagli){
+function suggerimento(c, tipo, dettagli, latoNarr, stessoLato){
+  const prot = latoNarr!=="O";   // default: lato Protagonisti
   let testo="";
   if(tipo==="piatto"){
-    testo=`<b>Introduci.</b> Stai aggiungendo un elemento con cui l'avversario dovrà fare i conti — non risolve ciò che è già in scena, lo complica.`;
+    testo = prot
+      ? `<b>Introduci.</b> Disponi una tua risorsa in scena: un elemento, un fatto o un'azione che non supera nulla adesso, ma che potrà tornarti utile e prepararti un vantaggio.`
+      : `<b>Introduci.</b> Metti in scena un ostacolo: un nuovo elemento, un'azione degli antagonisti o un imprevisto con cui i protagonisti dovranno fare i conti.`;
   }else if(tipo==="presa"){
-    testo=`<b>Superamento parziale.</b> Narra un successo con un costo, o un ostacolo gestito senza risolvere tutto: gli elementi presi (${dettagli}) escono di scena, ma lasciano un segno.`;
+    testo = prot
+      ? `<b>Superi un ostacolo.</b> È un successo, anche se può costare un compromesso o un sacrificio. Parti dagli elementi che togli dal piatto (${dettagli}): rappresentano l'ostacolo che superi.`
+      : `<b>Togli una risorsa ai protagonisti.</b> È un successo, anche se può avere un costo. Gli elementi che prendi (${dettagli}) erano un loro vantaggio: spariscono, oppure si rivelano inutili e si ritorcono contro di loro.`;
   }else if(tipo==="scopa"){
-    testo=`<b>SVOLTA.</b> Successo pieno, ribaltamento: la scena si ripulisce in un colpo solo. Concediti il momento — è una delle giocate che la storia ricorderà.`;
+    testo = (prot
+      ? `<b>SVOLTA.</b> Spazzi via in un colpo solo ogni ostacolo rimasto in scena: `
+      : `<b>SVOLTA.</b> Annienti in un colpo solo ogni vantaggio dei protagonisti: `)
+      + `un successo pieno, sopra ogni aspettativa, quasi un colpo di fortuna. Concediti il momento — è una delle giocate che la storia ricorderà.`;
+  }
+  if(stessoLato && (tipo==="presa"||tipo==="scopa")){
+    testo += prot
+      ? `<br><br><b>Azione maldestra.</b> Hai preso una carta del tuo stesso lato: raccontalo come un pasticcio in cui Cuori e Picche, le due anime dei protagonisti, si sono ostacolati o annullati a vicenda.`
+      : `<br><br><b>Azione maldestra.</b> Hai preso una carta del tuo stesso lato: raccontalo come un pasticcio in cui Fiori e Quadri, il caos e i nemici organizzati, si sono intralciati o annullati a vicenda.`;
   }
   let extra="";
   if(c && c.fig){
@@ -1697,22 +1717,23 @@ function eseguiSpinta(idxPitch){
   G.svuotoConScopa = l;   // la spinta è una scopa vera: piatto svuotato da l
   G.narr.boostCard=null;
   G.narr.tipo="scopa";
-  G.narr.sugg=`<b>RISORSA DEL PITCH — la presa diventa SCOPA${residue?" e svuota il piatto":""}.</b> Porta in narrazione, come scena, rivelazione o flashback: <i>«${p.risposta}»</i>. Il momento cambia peso: da successo parziale a svolta.`;
+  G.narr.sugg=`<b>RISORSA DEL PITCH — la presa diventa SCOPA${residue?" e svuota il piatto":""}.</b> Porta in narrazione, come scena, rivelazione o flashback: <i>«${p.risposta}»</i>. Il momento cambia peso: da presa a svolta.`;
   G.ultimaGiocata+=` ⚡ Risorsa del pitch attivata: la presa diventa SCOPA${residue?` e raccoglie le ${residue} carte rimaste nel piatto`:""}.`;
   render();
 }
 let narrDopo=null;
-function vaiNarrazione(c, tipo, dettagli, dopoNarrazione, suggOverride, narrLato){
-  G.narr={html:c?cartaHTML(c):"", tipo, sugg:suggOverride||suggerimento(c,tipo,dettagli), seme:(c && !c.jolly && c.seme)?c.seme:null, fig:(c && c.fig)?c.fig:null,
+function vaiNarrazione(c, tipo, dettagli, dopoNarrazione, suggOverride, narrLato, stessoLato){
+  const lN = narrLato || G.attore;
+  G.narr={html:c?cartaHTML(c):"", tipo, sugg:suggOverride||suggerimento(c,tipo,dettagli,lN,stessoLato), seme:(c && !c.jolly && c.seme)?c.seme:null, fig:(c && c.fig)?c.fig:null,
     carta:c?(c.jolly?"Jolly":(c.fig?FIGURE[c.fig].nome.charAt(0):c.val)+SIMBOLI[c.seme]):null};
-  G.narrLato = narrLato || G.attore;
+  G.narrLato = lN;
   narrDopo=dopoNarrazione;
   G.fase="narrazione"; render();
 }
 function descrizioneMossaO(n){
   const q=n.seme==="quadri", f=n.seme==="fiori";
   if(n.tipo==="scopa") return "Ribalta la scena a proprio favore.";
-  if(n.tipo==="presa") return q?"I nemici guadagnano terreno." : f?"Il caos complica le cose ai protagonisti." : "Superamento parziale.";
+  if(n.tipo==="presa") return q?"I nemici guadagnano terreno." : f?"Il caos complica le cose ai protagonisti." : "Toglie una risorsa ai protagonisti.";
   return q?"Introduce le fazioni nemiche in scena." : f?"Scatena un imprevisto: il caos entra in gioco." : "Introduce un nuovo elemento.";
 }
 function rNarrazione(){
@@ -2554,12 +2575,14 @@ const REGOLE={
     I giocatori si alternano, iniziando dal vincitore dell'iniziativa: <b>4 giocate a testa</b>. Il vincitore gioca 3 carte dalla mano e cala quella d'asta come quarta e ultima.`},
   azioni:{titolo:"Azioni e prese",html:`
     <h3>Nel proprio turno</h3>
-    <ul><li><b>Giocare una carta nel piatto</b> = <i>Introdurre</i>: aggiungi un elemento con cui l'avversario dovrà fare i conti. Non risolve ciò che è già in scena.</li>
-    <li><b>Fare una presa</b> = <i>Superamento parziale</i>: successo con un costo, ostacolo gestito senza risolvere tutto. Genera risorse per il mercato.</li>
-    <li><b>Fare una scopa</b> = <i>Svolta</i>: la presa svuota il piatto. Successo pieno, ribaltamento. Vale molto di più di una presa.</li></ul>
+    <ul><li><b>Giocare una carta nel piatto</b> = <i>Introdurre</i>: disponi una tua risorsa in scena. Non risolve nulla, predispone. Per i <b>Protagonisti</b> è un elemento/fatto/azione che potrà tornare utile (un conoscente che compare, un'opportunità notata, una relazione che nasce, un oggetto, un travestimento). Per l'<b>Opposizione</b> è un ostacolo o una minaccia con cui i protagonisti dovranno fare i conti.</li>
+    <li><b>Fare una presa</b> = <i>togliere una risorsa all'avversario</i>: un successo vero, anche se può costare un compromesso o un sacrificio. La carta che togli dal piatto è l'appiglio: i Protagonisti superano un ostacolo dell'Opposizione, l'Opposizione spazza via (o rende inutile) un vantaggio dei protagonisti. Genera risorse per il mercato.</li>
+    <li><b>Fare una scopa</b> = <i>Svolta</i>: la presa svuota il piatto. Successo pieno, sopra ogni aspettativa, quasi un colpo di fortuna. Vale molto di più di una presa.</li></ul>
     <h3>Regole di presa (come nella Scopa)</h3>
-    Una carta prende <b>una carta di uguale valore</b> nel piatto, oppure <b>un gruppo di carte la cui somma</b> è uguale al suo valore. Se il piatto si svuota → scopa.
-    <div class="es">"Presa con un 8 di Cuori → Nora convince il portiere a lasciarli passare, ma lui li guarderà con sospetto da qui in poi."</div>
+    Una carta prende <b>una carta di uguale valore</b> nel piatto, oppure <b>un gruppo di carte la cui somma</b> è uguale al suo valore. Se il piatto si svuota → scopa.<br>
+    <b>La presa è obbligatoria:</b> se la carta che giochi può prendere, <b>non</b> puoi metterla nel piatto, devi catturare (puoi però giocare nel piatto un'altra carta che non prende).<br>
+    Se sei costretto a prendere una carta del <b>tuo stesso lato</b>, raccontalo come un'azione maldestra in cui le due anime del lato (Cuori e Picche, oppure Fiori e Quadri) si sono ostacolate o annullate a vicenda.
+    <div class="es">"Presa: il 6♣ era la carta di credito bloccata. Vai a impegnare l'orologio d'oro e ti riempi le tasche di contanti: l'ostacolo è superato, a un prezzo."</div>
     <h3>Il piatto resta</h3>
     A fine scena le carte rimaste nel piatto <b>non si toccano</b>: chi apre la scena successiva può già fare presa o scopa.`},
   lettura:{titolo:"Fine scena e letture",html:`
@@ -2823,9 +2846,9 @@ STRUTTURA: 5 scene (Innesco, Adattamento, Frattura, Crisi, Risoluzione). Ogni sc
 ASTA E APERTURA: a inizio scena ogni lato pesca 4 carte e ne gioca 1 coperta per l'iniziativa; la più alta vince (il Jolly non partecipa; in parità vince chi NON ha avuto l'iniziativa nella scena precedente, alla scena 1 l'Opposizione). La carta d'asta del vincitore torna come sua ULTIMA giocata del round; quella del perdente torna in mano. Chi vince apre la scena: sceglie un titolo e dichiara la posta.
 
 ROUND: ci si alterna a partire dal vincitore dell'iniziativa, 4 giocate a testa. Nel tuo turno puoi:
-- Giocare una carta nel piatto = INTRODURRE un elemento con cui l'avversario dovrà fare i conti.
-- Fare una PRESA (vale 1 punto) = superamento parziale: una carta prende una carta di pari valore nel piatto, oppure un gruppo la cui somma è pari al suo valore.
-- Fare una SCOPA (vale 3 punti) = svolta: la presa svuota il piatto. Vale molto più di una presa.
+- Giocare una carta nel piatto = INTRODURRE una tua risorsa: un ostacolo, una minaccia o un imprevisto (♦ nemici con intenzione, ♣ caos e sfortuna) con cui i protagonisti dovranno fare i conti. Non risolve nulla, predispone.
+- Fare una PRESA (vale 1 punto) = togli una risorsa ai protagonisti, o ne mostri l'inutilità (si ritorce contro di loro): un successo, anche se può avere un costo. Una carta prende una carta di pari valore nel piatto, oppure un gruppo la cui somma è pari al suo valore. La presa è OBBLIGATORIA: se la carta che giochi può prendere, devi catturare, non puoi metterla nel piatto. Se sei costretto a prendere una TUA carta (♦/♣), narra Fiori e Quadri che si intralciano o si annullano a vicenda.
+- Fare una SCOPA (vale 3 punti) = svolta: la presa svuota il piatto, annienti in un colpo ogni vantaggio dei protagonisti. Successo pieno, sopra ogni aspettativa. Vale molto più di una presa.
 
 FINE SCENA: si sommano i valori delle carte rimaste nel piatto: ♦+♣ contano per te, ♥+♠ per i Protagonisti; la posta la vince il totale più alto. MA se la scena si chiude col piatto vuoto perché l'ultima giocata è stata una scopa, la posta la vince chi ha fatto la scopa. Il piatto NON si svuota tra le scene: chi apre la successiva può già prendere. Se vincono i Protagonisti recuperano 1 carta dagli scarti; se vinci tu, la loro posta fallisce.
 
@@ -2840,7 +2863,7 @@ RISORSE DEL PITCH (spinte): sono otto, due per seme (le tue sono ♦ e ♣). Dop
 
 QUINTA SCENA: la mano finale si sceglie dopo il mercato; le carte oltre le 4 vanno in RISERVA. Le figure lasciate nel piatto a inizio ultima scena vengono neutralizzate. Dopo il primo conteggio si gioca a COLPI DI SCENA: a turni alterni (inizia chi sta perdendo) cali una carta dalla riserva, che entra nel piatto e può eliminare una carta di seme avversario di valore pari o inferiore (finisce negli scarti; la tua resta). Finché hai riserva devi giocare. Poi il conteggio definitivo decide l'esito della missione.
 
-STRATEGIA: prendi quando puoi, soprattutto carte alte dei semi avversari (♥♠) per toglierle dal loro totale; preferisci lasciare nel piatto le carte alte dei TUOI semi (♦♣) così pesano per te a fine scena. Nell'asta una carta alta vince l'iniziativa ma esce dal tuo round. Per la riserva dei colpi finali servono carte ALTE dei tuoi semi.
+STRATEGIA: prendere è obbligatorio — se la carta che giochi può catturare, cattura, non puoi lasciarla nel piatto; scegli quindi CON CURA quale carta giocare. Conviene prendere le carte alte dei semi avversari (♥♠) per toglierle dal loro totale; per lasciare invece nel piatto le tue carte alte (♦♣), così pesano per te a fine scena, gioca una carta che NON cattura (e occhio a non essere costretto a prendere le tue stesse carte). Nell'asta una carta alta vince l'iniziativa ma esce dal tuo round. Per la riserva dei colpi finali servono carte ALTE dei tuoi semi.
 
 NARRAZIONE: quando narri sei il mondo che rema contro i protagonisti. ♦ = nemici con un piano (sicari pazienti, poliziotti corrotti, fazioni ostili); ♣ = caos e sfortuna (tempeste, guasti, attriti, PNG molesti). Resta coerente con la storia già scritta, la missione, la posta della scena e le risposte del pitch. Asciutto e cinematografico, 1-2 frasi. Esempi di tono: "Due uomini in giacca scura scendono da un SUV davanti al diner: hanno le foto." (♦) "Una gomma esplode in mezzo al deserto e la tempesta di sabbia è già all'orizzonte." (♣)`;
 
@@ -2954,10 +2977,12 @@ async function iaTurno(){
   const ops=[];
   for(const c of g.carte){
     // l'Opposizione non ha mai il Jolly (sta solo nel mazzo dei Protagonisti)
-    combosPresa(c.val).forEach(cmb=>ops.push({
+    const cmbs=combosPresa(c.val);
+    cmbs.forEach(cmb=>ops.push({
       desc:`con ${nomeCarta(c)} prendi ${cmb.map(x=>nomeCarta(x)).join(" + ")}${cmb.length===G.piatto.length?" — SCOPA":""}`,
       esegui:()=>giocaCarta(c,cmb,g.daAsta)}));
-    ops.push({desc:`gioca ${nomeCarta(c)} nel piatto (nessuna presa)`, esegui:()=>giocaCarta(c,null,g.daAsta)});
+    // cattura obbligatoria: l'opzione "nel piatto" c'è solo se la carta non può prendere
+    if(cmbs.length===0) ops.push({desc:`gioca ${nomeCarta(c)} nel piatto (nessuna presa)`, esegui:()=>giocaCarta(c,null,g.daAsta)});
   }
   const r=await chiamaClaude(`È IL TUO TURNO. ${g.daAsta?"Questa è la tua ultima giocata: la carta dell'asta.":""}\nOPZIONI:\n${ops.map((o,i)=>i+": "+o.desc).join("\n")}\nJSON: {"scelta": <numero>}`);
   let i=(r&&Number.isInteger(r.scelta)&&ops[r.scelta])?r.scelta:-1;
