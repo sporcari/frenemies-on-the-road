@@ -89,7 +89,7 @@ function passo(){
     set("w-nemici","L'organizzazione di Vargas: poliziotti corrotti e due sicari pazienti");
     set("w-caos","La tempesta di sabbia, un'auto con trecentomila chilometri, la sfortuna");
     for(let k=0;k<10;k++) set("w-pitch-"+k,PITCH[k]);
-    if(G().passo===2){ const b=[...document.querySelectorAll('button[data-tono]')].find(x=>x.dataset.tono==="Action"); if(b&&G().tono!=="Action"){ click(b); return "tono" } }
+    if(G().passo===2){ const b=[...document.querySelectorAll('button[data-tono]')].find(x=>x.dataset.tono==="Poliziesco"); if(b&&G().tono!=="Poliziesco"){ click(b); return "tono" } }
     click(document.getElementById("w-avanti")); return "setup"+G().passo;
   }
 

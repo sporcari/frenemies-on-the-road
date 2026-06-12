@@ -71,5 +71,5 @@
       "suggerimento_posta": "L'eclissi. Se va male: il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata"
     }
   ],
-  "note_mappatura": "Formato 1: pers.A/B con campo 'detesta' (tratti narrativi, w-pitch-0 e w-pitch-1, nessun effetto in gioco); 'spinte' con due risposte per seme (risorse spuntabili, w-pitch-2..9 secondo PITCH_TEMPLATE). I Quadri contengono due fazioni con moventi opposti: la Loggia (vuole l'artefatto) e i Veglianti (vogliono che resti sepolto); chi gioca l'Opposizione può attingere a entrambe e perfino metterle l'una contro l'altra. Campo 'premessa': contesto narrativo da leggere al tavolo prima del pitch; non mappa su un campo del wizard (un caricatore può mostrarlo nel riepilogo)."
+  "note_mappatura": "Formato 1: pers.A/B con campo 'detesta' (tratti narrativi, w-pitch-0 e w-pitch-1, nessun effetto in gioco); 'spinte' con due risposte per seme (risorse spuntabili, w-pitch-2..9 secondo PITCH_TEMPLATE). I Quadri contengono due fazioni con moventi opposti: la Loggia (vuole l'artefatto) e i Veglianti (vogliono che resti sepolto); chi gioca l'Opposizione può attingere a entrambe e perfino metterle l'una contro l'altra. Campo 'premessa': contesto narrativo da leggere al tavolo prima del pitch; mappa sul campo Premessa del wizard (pagina Missione, sopra l'obiettivo) e compare anche nella scheda Missione e nel riepilogo."
 }

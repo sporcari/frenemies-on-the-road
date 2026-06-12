@@ -1,9 +1,9 @@
 {
   "formato": 1,
-  "playset": "Frank, Skunk e il jet di Vargas",
-  "fonte": "frenemies_on_the_road_kb_v1_2.md, sezione 33 (scenario demo)",
+  "playset": "La strada della vendetta",
+  "fonte": "frenemies_on_the_road_kb_v1_2.md, sezione 33 (scenario demo); protagonisti Frank e Skunk",
   "nGiocatori": 2,
-  "tono": "Action",
+  "tono": "Poliziesco",
   "missione": "Entro 36 ore Vargas atterrerà con un jet privato dalla Colombia su una pista segreta del New Mexico per un meeting con i boss locali, e ripartirà: una volta decollato, nessuna estradizione lo riporterà davanti a un giudice. Arrivare alla pista e farlo arrestare in flagranza prima del decollo.",
   "primaDiff": "Skunk è in cella: i poliziotti corrotti lo hanno arrestato con un pretesto per consegnarlo agli uomini di Vargas dentro la prigione, dove un coltello costa poco e nessuno fa domande. Bisogna tirarlo fuori prima che qualcuno arrivi a lui.",
   "pers": {

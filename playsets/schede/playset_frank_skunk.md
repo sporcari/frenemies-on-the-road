@@ -1,6 +1,6 @@
-# Frank, Skunk e il jet di Vargas
+# La strada della vendetta
 
-*Playset per Frenemies on the Road · tono Poliziesco*
+*Playset per Frenemies on the Road · tono Poliziesco · protagonisti Frank e Skunk*
 
 ## Premessa
 

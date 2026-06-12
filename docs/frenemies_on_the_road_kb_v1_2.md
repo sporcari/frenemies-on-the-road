@@ -162,7 +162,7 @@ Prima della prima scena si costruisce la fiction di base. Questa fase è fondame
 
 ### 9.1 — Scelta del tono
 
-I giocatori scelgono un tono di riferimento, ad esempio: action, comedy, dramedy, romance. Il tono non cambia le regole, ma orienta il modo in cui si formulano le scene e si interpretano i risultati meccanici — il significato narrativo dei semi si adatta automaticamente al registro scelto.
+I giocatori scelgono un tono di riferimento, ad esempio: action, poliziesco, comedy, dramedy, romance. Il tono non cambia le regole, ma orienta il modo in cui si formulano le scene e si interpretano i risultati meccanici — il significato narrativo dei semi si adatta automaticamente al registro scelto.
 
 ### 9.2 — La coppia dei protagonisti
 
@@ -762,11 +762,11 @@ Ogni missione ha una struttura precisa: **un obiettivo concreto** + **una scaden
 
 ---
 
-## 33. Lo scenario demo: Frank, Skunk e il jet di Vargas *(v1.2)*
+## 33. Lo scenario demo: La strada della vendetta *(v1.2)*
 
-Tutti gli esempi di questo regolamento, e la partita d'esempio in appendice, usano lo stesso scenario. È un pitch completo: si può giocare così com'è o usarlo come modello.
+Tutti gli esempi di questo regolamento, e la partita d'esempio in appendice, usano lo stesso scenario (i protagonisti sono Frank e Skunk). È un pitch completo: si può giocare così com'è o usarlo come modello.
 
-**Tono:** action, con venature dramedy.
+**Tono:** poliziesco, con venature dramedy.
 
 **Protagonisti**
 
@@ -908,6 +908,12 @@ Resta la lettura del diario (§27): **su, su, giù, giù, su**. Salita nella cel
 
 # REGISTRO MODIFICHE
 
+## v1.4 (giugno 2026)
+
+1. **§9.5 / §9.8** — Le due domande "cosa A detesta di B" e "cosa B detesta di A" diventano **tratti dei protagonisti, solo narrativi** (nessun effetto in gioco), e nel wizard stanno nella pagina dei Protagonisti. Le spinte spuntabili scendono da dieci a **otto, due per seme**: motivazione e asso dei Protagonisti (♠/♥), mezzi e movente dei nemici (♦), catastrofi e crepe (♣).
+2. **§9.1** — Tra i toni di riferimento si aggiunge **poliziesco** (la lista resta indicativa, non vincolante).
+3. **§33** — Lo scenario demo prende un titolo proprio, **"La strada della vendetta"**, e il suo tono passa da *action* a **poliziesco** (protagonisti invariati: Frank e Skunk). Allineati il playset incorporato nell'app e il file `playsets/frank_skunk_playset.json`.
+
 ## v1.3 (giugno 2026)
 
 1. **§18** — Scena chiusa da una **scopa** a piatto vuoto: la posta è vinta da chi ha fatto la scopa (non più parità 0-0). Vale anche per l'esito apparente della quinta scena (poi seguono i colpi di scena). Un piatto svuotato dal counter di un Jolly resta invece in equilibrio.
@@ -940,4 +946,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.3*
+*Frenemies on the Road — Knowledge Base v1.4*
