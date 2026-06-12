@@ -1,7 +1,7 @@
 /* Frenemies on the Road — service worker.
    Strategia network-first: in rete si scarica sempre la versione nuova
    (niente versioni stantie durante lo sviluppo), la cache serve solo offline. */
-const CACHE = "frenemies-v1";
+const CACHE = "frenemies-v2";
 const BASE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", e => {
@@ -22,7 +22,9 @@ self.addEventListener("fetch", e => {
   /* PeerJS e API Anthropic passano sempre dalla rete, mai dalla cache */
   if (url.origin !== location.origin && !url.hostname.includes("fonts.")) return;
   e.respondWith(
-    fetch(e.request)
+    /* cache:"reload" salta la cache HTTP del browser: la network-first prende
+       sempre il file fresco dal server, non una copia stantia (la cache CACHE serve solo offline) */
+    fetch(e.request, { cache: "reload" })
       .then(r => {
         const copia = r.clone();
         caches.open(CACHE).then(c => c.put(e.request, copia));

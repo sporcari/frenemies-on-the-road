@@ -17,8 +17,9 @@
 :root{
   --asfalto:#15161a; --notte:#1f2128; --pannello:#262932; --bordo:#3a3e4a;
   --osso:#efe9dc; --grigio:#9a9483; --mezzeria:#f5a623; --faro:#ffd23f;
-  --cuori:#e4572e; --picche:#d8d3c8; --quadri:#4f7cac; --fiori:#6a994e;
-  --viola:#6a4c93;                    /* barra del log: protagonisti (antagonisti = grigio asfalto) */
+  --cuori:#e4572e; --picche:#d8d3c8; --quadri:#6cb2e0; --fiori:#6a994e;
+  --viola:#6a4c93;                    /* barra del log: protagonisti */
+  --acciaio:#2f6d8c;                  /* barra del log: antagonisti (teal, distinto dagli sfondi scuri) */
   --r:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -38,7 +39,12 @@ header h1 .amp{color:var(--mezzeria)}
 .hbtns button{background:var(--notte);border:1px solid var(--bordo);border-radius:8px;color:var(--osso);font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:7px 10px;cursor:pointer}
 
 #corpo{flex:1 1 auto;display:flex;min-height:0}
-main{flex:1 1 auto;min-width:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(16px*var(--k,1));display:flex;flex-direction:column}
+main{flex:1 1 auto;min-width:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:calc(16px*var(--k,1));display:flex;flex-direction:column;border-left:6px solid transparent}   /* barra verticale a sinistra: colore del lato di turno */
+main.bar-p{border-left-color:var(--viola)}     /* turno dei Protagonisti */
+main.bar-o{border-left-color:var(--acciaio)}   /* turno degli Antagonisti */
+#latoTurno{display:none;align-self:flex-start;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1px;font-weight:600;color:#fff;font-size:max(10px,calc(11px*var(--k,1)));padding:3px 11px;border-radius:8px;margin-bottom:calc(8px*var(--k,1))}   /* etichetta lato di turno, in alto a sinistra */
+#latoTurno.bar-p{display:block;background:var(--viola)}
+#latoTurno.bar-o{display:block;background:var(--acciaio)}
 #scena-corrente{max-width:980px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column}
 #storiaCol{flex:0 0 clamp(220px,24vw,320px);border-left:1px solid var(--bordo);background:var(--notte);overflow-y:auto;display:none}
 #storiaCol.attivo{display:block}
@@ -121,9 +127,16 @@ button.secondaria{
 .spinte-mano .lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mezzeria)}
 .spinta-chip{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--bordo);border-left:3px solid var(--bordo);border-radius:6px;padding:3px 8px;font-size:max(10.5px,calc(12px*var(--k,1)));background:rgba(245,166,35,.05)}
 .spinta-chip i{font-style:italic;color:var(--grigio)}
-.pannello.png-prot{background:rgba(106,153,78,.16);border-color:#3f5a36}
-.pannello.png-opp{background:rgba(228,87,46,.16);border-color:#6e3326}
+.spinta-check{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;flex:0 0 auto;border:1.5px solid var(--bordo);border-radius:4px;font-size:11px;line-height:1;color:transparent}   /* casella spinta nelle schede: vuota = disponibile */
+.spinta-check.on{background:var(--mezzeria);border-color:var(--mezzeria);color:#1a1206}   /* spuntata = spinta gia usata */
+.pannello.png-prot{background:rgba(106,76,147,.22);border-color:var(--viola)}     /* PNG dei Protagonisti: viola del lato */
+.pannello.png-opp{background:rgba(47,109,140,.22);border-color:var(--acciaio)}    /* PNG dell'Opposizione: acciaio del lato */
 .mano-area{margin-top:auto}
+.mano-area.lato-p{background:rgba(106,76,147,.22);border:1px solid var(--viola);border-radius:var(--r);padding:calc(10px*var(--k,1))}   /* mano dei Protagonisti: tinta viola del lato, cornice viola pieno del log */
+.mano-area.lato-o{background:rgba(47,109,140,.22);border:1px solid var(--acciaio);border-radius:var(--r);padding:calc(10px*var(--k,1))}   /* mano degli Antagonisti: tinta acciaio del lato, cornice acciaio pieno del log */
+/* stesso colore del lato anche per i pannelli mano-asta e box narrazione */
+.pannello.lato-p{background:rgba(106,76,147,.22);border-color:var(--viola)}
+.pannello.lato-o{background:rgba(47,109,140,.22);border-color:var(--acciaio)}
 .mano-titolo{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:calc(8px*var(--k,1))}
 .contatori{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--grigio);letter-spacing:1px}
 .opzioni{display:flex;gap:8px;flex-wrap:wrap;margin-top:calc(12px*var(--k,1))}
@@ -191,18 +204,18 @@ button.secondaria{
 #storiaTabs .storiaTab:focus-visible{outline:2px solid var(--mezzeria);outline-offset:1px}
 #storiaTabs .tdot{width:8px;height:8px;border-radius:50%;flex:none}
 #storiaTabs .tdot.p{background:var(--viola)}        /* hanno vinto i Protagonisti */
-#storiaTabs .tdot.o{background:var(--grigio)}       /* ha vinto l'Opposizione/Claude */
+#storiaTabs .tdot.o{background:var(--acciaio)}      /* ha vinto l'Opposizione/Claude */
 #storiaTabs .tdot.n{background:transparent;border:1px solid var(--bordo)}  /* parità o scena in corso */
 #storiaLog .voce{margin-bottom:9px}
 #storiaLog .voce-bar{display:flex;align-items:center;gap:6px;padding:4px 9px;border-radius:6px 6px 0 0}
 #storiaLog .voce.p .voce-bar{background:var(--viola);color:#fff}                                /* protagonisti = viola, testo bianco */
-#storiaLog .voce.o .voce-bar{background:var(--pannello);color:var(--osso);border:1px solid var(--bordo)} /* antagonisti = grigio asfalto, testo osso */
+#storiaLog .voce.o .voce-bar{background:var(--acciaio);color:#fff}                              /* antagonisti = acciaio/teal, testo bianco */
 #storiaLog .voce-bar .chi{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.5px;font-size:11px;font-weight:600}
 #storiaLog .voce-bar .crt{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600}
 #storiaLog .voce-bar .mossa{margin-left:auto;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.5px;font-size:10px;display:flex;align-items:center;gap:3px}
 #storiaLog .voce-testo{font-size:13px;line-height:1.45;padding:5px 8px}
 #storiaLog .voce.p .voce-testo{border-left:2px solid var(--viola)}
-#storiaLog .voce.o .voce-testo{border-left:2px solid var(--bordo)}
+#storiaLog .voce.o .voce-testo{border-left:2px solid var(--acciaio)}
 #storiaLog .vuoto{color:var(--grigio);font-style:italic;font-size:12px}
 #iaBadge{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);background:#1a1206;color:var(--mezzeria);border:1px solid var(--mezzeria);border-radius:20px;padding:7px 16px;font-size:13px;z-index:60;display:none;letter-spacing:.5px}
 .compra{display:flex;gap:6px}
@@ -244,7 +257,7 @@ button.secondaria{
   </div>
 </header>
 <div id="corpo">
-<main><div id="scena-corrente"></div></main>
+<main><div id="latoTurno"></div><div id="scena-corrente"></div></main>
 <aside id="storiaCol"><div id="storiaLog"></div></aside>
 </div>
 </div>
@@ -360,7 +373,7 @@ const FIGURE = {
 };
 
 /* ---------------- materiali di ispirazione (knowledge base) ---------------- */
-const TONI=["Action","Comedy","Dramedy","Romance"];
+const TONI=["Action","Poliziesco","Comedy","Dramedy","Romance"];
 const COPPIE=[
   // famiglia
   "Padre burbero e anaffettivo / Figlio sensibile che si è allontanato dalla famiglia",
@@ -426,16 +439,20 @@ const MISSIONI=[
   "Portare il testimone scomodo dall'altra parte degli Stati Uniti PRIMA che qualcuno lo trovi — senza volare, senza lasciare tracce",
   "Raggiungere la figlia che ha tagliato i ponti, attraverso tutto il paese, PRIMA che parta per un posto da cui non si torna"
 ];
-// Playset pronti, incorporati. Formato di scambio (file .json) e import/export: vedi caricaPlaysetObj/esportaPlaysetFile.
-// pers.A/B.detesta = spunto narrativo; spinte = 8 (2 per seme); scene = titolo/posta pre-suggeriti (opzionale).
+// Playset pronti, incorporati (file unico, niente build: copie allineate a mano da playsets/*.json).
+// Formato di scambio (.json) e import/export: vedi caricaPlaysetObj/esportaPlaysetFile.
+// pers.A/B.detesta = spunto narrativo; spinte = 8 (2 per seme); premessa = contesto da leggere al tavolo;
+// png = personaggi non giocanti centrali (opzionale); geografia_scene = titolo/posta pre-suggeriti (opzionale).
 const PLAYSET=[
   {
-    nome:"Frank, Skunk e il jet di Vargas",
-    tono:"Action",
+    playset:"La strada della vendetta",
+    tono:"Poliziesco",
     missione:"Entro 36 ore Vargas atterrerà con un jet privato dalla Colombia su una pista segreta del New Mexico per un meeting con i boss locali, e ripartirà: una volta decollato, nessuna estradizione lo riporterà davanti a un giudice. Arrivare alla pista e farlo arrestare in flagranza prima del decollo.",
     primaDiff:"Skunk è in cella: i poliziotti corrotti lo hanno arrestato con un pretesto per consegnarlo agli uomini di Vargas dentro la prigione, dove un coltello costa poco e nessuno fa domande. Bisogna tirarlo fuori prima che qualcuno arrivi a lui.",
-    persA:{nome:"Frank", desc:"Ex poliziotto sospeso per eccesso di forza. Cinico, metodico, conosce il distretto come le sue tasche. Si è fatto terra bruciata attorno: senza distintivo, senza colleghi, senza coperture.", detesta:"Mente per riflesso: ogni cosa che tocca diventa un traffico."},
-    persB:{nome:"Skunk", desc:"Suo ex informatore. Truffatore, ricettatore, intrallazzone dei bassifondi: sopravvive di chiacchiere, favori e bugie. Sa dove atterra Vargas dall'ultima telefonata del fratello Jorge, e non lo rivela: è la sua assicurazione sulla vita.", detesta:"Frank lo ha usato e scaricato: lo tratta da spia, mai da socio."},
+    pers:{
+      A:{nome:"Frank", desc:"Ex poliziotto sospeso per eccesso di forza. Cinico, metodico, conosce il distretto come le sue tasche. Si è fatto terra bruciata attorno: senza distintivo, senza colleghi, senza coperture.", detesta:"Mente per riflesso: ogni cosa che tocca diventa un traffico."},
+      B:{nome:"Skunk", desc:"Suo ex informatore. Truffatore, ricettatore, intrallazzone dei bassifondi: sopravvive di chiacchiere, favori e bugie. Sa dove atterra Vargas dall'ultima telefonata del fratello Jorge, e non lo rivela: è la sua assicurazione sulla vita.", detesta:"Frank lo ha usato e scaricato: lo tratta da spia, mai da socio."}
+    },
     nemici:"L'organizzazione di Vargas: una rete di poliziotti corrotti dentro il distretto e una coppia di sicari pazienti che non hanno fretta.",
     caos:"La tempesta di sabbia in arrivo, un'auto con trecentomila chilometri, la sfortuna delle contee sbagliate.",
     spinte:{
@@ -444,12 +461,123 @@ const PLAYSET=[
       quadri:["Poliziotti corrotti ovunque e due sicari che non hanno fretta.", "Se qualcuno sa della pista, va zittito prima che il jet atterri."],
       fiori:["Tempesta in arrivo, un'auto sfiancata, posti di blocco a sorpresa.", "Jorge è morto al posto di Skunk: la spia era lui. E Frank non lo sa."]
     },
-    scene:[
-      {titolo:"La cella", posta:"Tirare fuori Skunk prima del trasferimento: se va male, escono braccati e con mezzo distretto alle calcagna"},
-      {titolo:"La statale", posta:"Sparire verso ovest: se va male, i sicari agganciano la loro traccia"},
-      {titolo:"Il deserto", posta:"Attraversare il deserto interi: se va male, quello che non si sono detti esplode"},
-      {titolo:"L'ultima notte", posta:"Arrivare in vista della pista: se va male, qualcuno li sta già aspettando"},
-      {titolo:"La pista", posta:"Il meeting: se va male, il jet riparte con Vargas a bordo"}
+    geografia_scene:[
+      {scena:1, fase:"Innesco", titolo:"La cella", suggerimento_posta:"Tirare fuori Skunk prima del trasferimento: se va male, escono braccati e con mezzo distretto alle calcagna"},
+      {scena:2, fase:"Adattamento", titolo:"La statale", suggerimento_posta:"Sparire verso ovest: se va male, i sicari agganciano la loro traccia"},
+      {scena:3, fase:"Frattura", titolo:"Il deserto", suggerimento_posta:"Attraversare il deserto interi: se va male, quello che non si sono detti esplode"},
+      {scena:4, fase:"Crisi", titolo:"L'ultima notte", suggerimento_posta:"Arrivare in vista della pista: se va male, qualcuno li sta già aspettando"},
+      {scena:5, fase:"Risoluzione", titolo:"La pista", suggerimento_posta:"Il meeting: se va male, il jet riparte con Vargas a bordo"}
+    ]
+  },
+  {
+    playset:"Morgana, Lampo e il camion giallo",
+    tono:"Comedy",
+    premessa:"Domani all'alba la famiglia di Bea trasloca dall'altra parte della città. Durante l'ultimo giro al parco, Morgana e Lampo sono rimasti indietro: davanti a loro una notte intera di quartiere, alti venti centimetri, con il collezionista Mirko in agguato e gli scatoloni che si chiudono uno a uno.",
+    missione:"Tornare nello scatolone dei giochi di Bea PRIMA che all'alba parta il camion giallo del trasloco.",
+    primaDiff:"Dimenticati al parco, Morgana e Lampo sono finiti nella cesta degli oggetti smarriti che il custode porta nel deposito ogni sera. Il deposito riapre lunedì: uscire dalla cesta e dal parco prima che giri la chiave.",
+    pers:{
+      A:{nome:"Capitana Morgana", desc:"Action figure di piratessa, edizione limitata: sciabola di plastica, uncino con la corda. Spavalda, impulsiva: salta prima di guardare. Bea l'ha vinta alla fiera con l'ultimo gettone.", detesta:"Lampo ha paura di tutto ma vuole fare amicizia anche coi pericoli: abbraccia prima, ragiona poi."},
+      B:{nome:"Lampo", desc:"Bradipo di peluche, morbido e ansioso, ricucito due volte. Primo peluche di Bea, il giocattolo della nanna. Le bambole bionde dalle lunghe gambe affusolate lo trattano da reliquia, e gira una voce crudele: che puzzi di vomito. Si chiama Lampo per ironia, e lo sa.", detesta:"Morgana salta prima di guardare e chiama arrembaggio qualsiasi piano. Prima o poi qualcuno si strappa, e di solito è lui."}
+    },
+    nemici:"Mirko, il collezionista del quartiere: teche di vetro col cartellino, che si aprono solo dall'esterno. E il furetto Zanna, che fiuta la plastica pregiata a un isolato di distanza.",
+    caos:"La città di notte vista da venti centimetri: irrigatori a orario, tombini come voragini, il cane del vicino, il temporale, il furgone dei rifiuti all'alba.",
+    spinte:{
+      picche:["Ha giurato sul cappello: nessuno della ciurma resta indietro. E la ciurma è Bea.", "Con uncino e corda si arrampica ovunque, e non ha paura di niente."],
+      cuori:["Senza Lampo, Bea non dorme. E domani è la prima notte nella casa nuova.", "Di un peluche si fidano tutti. E da qualsiasi altezza, rimbalza."],
+      quadri:["Mirko pattuglia il quartiere in bici, con la torcia frontale e Zanna nel cestino.", "Morgana è il pezzo che manca alla collezione: stanotte o mai più."],
+      fiori:["Irrigatori alle sei, temporale in arrivo, e quattro strade larghe come oceani.", "La voce che Lampo puzzi di vomito l'ha messa in giro Morgana, per gelosia. Lui non lo sa."]
+    },
+    geografia_scene:[
+      {scena:1, fase:"Innesco", titolo:"La cesta degli smarriti", suggerimento_posta:"Uscire dal parco prima della chiusura. Se va male: la notte comincia dal deposito oggetti smarriti, con una serratura in più"},
+      {scena:2, fase:"Adattamento", titolo:"Il viale dei platani", suggerimento_posta:"Attraversare le prime strade. Se va male: Zanna fiuta la loro pista"},
+      {scena:3, fase:"Frattura", titolo:"La cameretta di Mirko", suggerimento_posta:"Passare dal giardino del collezionista senza finire in teca. Se va male: la verità sulla diceria esce nel posto peggiore"},
+      {scena:4, fase:"Crisi", titolo:"Il temporale", suggerimento_posta:"L'ultimo isolato sotto la pioggia, con la bici di Mirko alle spalle. Se va male: arrivano fradici, scuciti e in ritardo"},
+      {scena:5, fase:"Risoluzione", titolo:"Il camion giallo", suggerimento_posta:"Il portellone è aperto e gli scatoloni salgono uno a uno. Se va male: il camion parte e loro restano sul marciapiede"}
+    ]
+  },
+  {
+    playset:"Nico, Marta e la Costa delle Ginestre",
+    tono:"Romance",
+    premessa:"Helios Sviluppo ha già venduto la Costa delle Ginestre sulla carta: porti turistici e resort al posto della baia. La valutazione d'impatto che ha aperto la strada è falsificata, e l'unico che può dimostrarlo è il geologo che firmò la perizia originale, sparito da dieci anni. Il comitato ha appena perso il ricorso: restano cinque giorni, un furgone, un attivista e l'avvocatessa che nessuno si aspettava dalla loro parte.",
+    missione:"Portare il geologo Sandri a deporre in consiglio PRIMA che venerdì la giunta firmi la convenzione che apre i cantieri sulla Costa delle Ginestre.",
+    primaDiff:"Il ricorso è stato respinto stamattina: la via legale è chiusa. E nessuno sa dove sia Sandri: l'unico indizio è nell'archivio del suo vecchio socio, che oggi lavora per la società del progetto.",
+    pers:{
+      A:{nome:"Nico", desc:"Attivista ambientalista, cresciuto nei centri sociali. Megafono, catene ai cancelli, azione diretta. Nella baia ci porta i ragazzini del quartiere ogni estate.", detesta:"Marta parla la lingua dei nemici, veste come loro e vince con le loro regole. E lui non riesce a smettere di starla a sentire."},
+      B:{nome:"Marta", desc:"Avvocatessa di città, tailleur e procedura, uscita da uno studio che difende quelli come Helios. Questo è il primo caso che ha scelto, invece di accettarlo.", detesta:"Nico crede che urlare sia un argomento e che un cancello chiuso sia un invito. E arriva sempre in ritardo, sempre nel momento giusto."}
+    },
+    nemici:"Helios Sviluppo, la società del progetto: vigilanza privata sui cantieri, pagine comprate sui giornali locali, mezzo consiglio già allineato. E lo studio legale che la difende è quello da cui Marta se n'è andata: conoscono ogni sua mossa prima che la faccia.",
+    caos:"Il maestrale che ferma i traghetti, la litoranea che frana, il furgone del comitato con la frizione bruciata, e la stampa locale che pubblica sempre la cosa sbagliata nel giorno peggiore.",
+    spinte:{
+      picche:["Se cementificano la baia, ai ragazzini del quartiere resta solo il quartiere.", "Mobilita cento persone con tre vocali, e nessun cancello chiuso resta un problema a lungo."],
+      cuori:["Se perde il primo caso che ha scelto, torna a vincere cause in cui non crede.", "Sa quale cavillo tiene sveglio un assessore, e mezzo palazzo le deve un favore."],
+      quadri:["Vigilanza privata, giornali compiacenti, e gli ex colleghi di Marta che conoscono ogni sua mossa.", "I capitali sono già spesi: se la firma salta, i soci che non compaiono non perdonano."],
+      fiori:["Il maestrale ferma i traghetti, la litoranea frana, il furgone non supera le salite.", "Sul masterplan di Helios c'è la firma di Marta, giovane associata. Nico non lo sa. E Sandri se la ricorda."]
+    },
+    png:[
+      {nome:"Sandri", desc:"Il geologo che firmò la perizia vera e vide sparire quella falsa. Dieci anni di silenzio in un faro, un rimorso che non è invecchiato, e nessuna voglia di fidarsi di chi arriva dalla città."}
+    ],
+    geografia_scene:[
+      {scena:1, fase:"Innesco", titolo:"L'archivio del socio", suggerimento_posta:"Trovare l'indirizzo di Sandri nello studio di chi lavora per Helios. Se va male: Helios sa che lo stanno cercando, e parte prima di loro"},
+      {scena:2, fase:"Adattamento", titolo:"La litoranea", suggerimento_posta:"Risalire la costa col furgone del comitato. Se va male: la vigilanza li aggancia e la stampa li brucia"},
+      {scena:3, fase:"Frattura", titolo:"Il faro di Sandri", suggerimento_posta:"Convincere un uomo che non si fida di nessuno. Se va male: la firma di Marta esce dalla bocca sbagliata"},
+      {scena:4, fase:"Crisi", titolo:"Il maestrale", suggerimento_posta:"Tornare con Sandri, traghetti fermi e Helios alle calcagna. Se va male: arrivano a voto iniziato"},
+      {scena:5, fase:"Risoluzione", titolo:"Il consiglio comunale", suggerimento_posta:"La deposizione, con l'aula piena e i soci di Helios in prima fila. Se va male: la firma apre i cantieri"}
+    ]
+  },
+  {
+    playset:"Federico, Asia e la coupé di papà",
+    tono:"Dramedy",
+    premessa:"Augusto vive con Vanessa, la seconda moglie, trent'anni meno di lui. Da quando i figli si sono allontanati è lei a filtrare telefonate, visite e firme, e ora ha mosso l'attacco finale: con la perizia del dottor Maino e uno studio legale ha chiesto al giudice di interdirlo, chiuderlo in una casa di riposo e prendere il controllo del patrimonio. Federico e Asia, che non si parlano da anni, scoprono tutto a una settimana dall'udienza. Resta una sola carta: la controperizia del professor Lanza. E una sola macchina su cui Augusto accetti di salire.",
+    missione:"Portare papà Augusto dal professor Lanza, a milleottocento chilometri, PRIMA che venerdì il giudice decida sull'interdizione.",
+    primaDiff:"Augusto è in 'osservazione volontaria' nella clinica del dottor Maino, e le visite dei figli sono sospese su richiesta della moglie, per il suo bene. Prima di tutto bisogna entrare in quella clinica. E poi uscirne in tre.",
+    pers:{
+      A:{nome:"Federico", desc:"Il fratello maggiore: noioso, iper responsabile, ricco e di successo. Dirige fondi, delega tutto, non sbaglia un appuntamento da vent'anni. Con il padre non parla da dieci, convinto che fosse Augusto a non volerlo vedere.", detesta:"Asia trasforma ogni stanza in cui entra in un dopofesta: promette, sparisce, ricomincia. E tutti, sempre, la perdonano."},
+      B:{nome:"Asia", desc:"La sorella minore: spontanea, festaiola, una lista di ex da evitare lunga tre regioni. Ha attraversato le dipendenze e ci cammina ancora accanto, un giorno alla volta. È stata l'ultima a vedere Augusto, ed è stata lei ad accorgersi che qualcosa non tornava.", detesta:"Federico ha trasformato la distanza in un'agenda: tratta la famiglia come un consiglio di amministrazione. Sempre giusto, sempre puntuale, mai presente."}
+    },
+    nemici:"Vanessa, la matrigna: più giovane di Augusto di trent'anni, paziente come un avvocato e armata come uno studio legale. Con lei il dottor Maino, autore della perizia, e i legali che hanno già preparato ogni carta. Dal momento in cui Augusto esce dalla clinica, hanno anche la denuncia perfetta: sottrazione di persona incapace.",
+    caos:"Milleottocento chilometri su una coupé azzurra del '72, l'unica macchina su cui Augusto accetti di salire. Le carte di credito bloccate, i contanti che evaporano, e le regole non negoziabili di papà: si pranza alle 12.30 in punto, si dorme solo nei motel con le piastrelle verdi, e la radio non si tocca.",
+    spinte:{
+      picche:["È la sua ultima occasione di recuperare il tempo perduto con suo padre, prima di perderlo per sempre.", "Il suo nome apre porte: direttori, notai e primari lo ricevono senza appuntamento."],
+      cuori:["Augusto è l'unico che non ha mai smesso di crederle: stavolta tocca a lei esserci.", "Parla con tutti e tutti le parlano: la verità viaggia ai piani bassi."],
+      quadri:["La denuncia di sottrazione mette in allerta polizia e ospedali lungo tutto il percorso.", "Se la controperizia arriva, emergono i prelievi già fatti: Vanessa diventerebbe imputata."],
+      fiori:["La coupé che bolle, i contanti agli sgoccioli, e le regole di papà che non ammettono deroghe.", "Nel fascicolo c'è una procura firmata da Federico anni fa, senza leggerla. Asia non lo sa."]
+    },
+    png:[
+      {nome:"Augusto", desc:"Il padre: lucido come un mattino d'inverno e testardo come la sua coupé. Ha le sue regole, i suoi orari e una memoria che funziona benissimo, soprattutto per le cose che i figli vorrebbero dimenticare. Non è il premio del viaggio: è il terzo passeggero, e ogni tanto guida lui."},
+      {nome:"Professor Lanza", desc:"L'unico luminare che può confutare la perizia del dottor Maino, e l'unico collega che Augusto abbia mai rispettato. Ottantaquattro anni: non viaggia, visita solo di persona nel suo istituto."}
+    ],
+    geografia_scene:[
+      {scena:1, fase:"Innesco", titolo:"La clinica", suggerimento_posta:"Entrare a vedere Augusto e uscirne in tre: se va male, escono braccati e con la denuncia già in viaggio"},
+      {scena:2, fase:"Adattamento", titolo:"La statale del sud", suggerimento_posta:"Imparare a viaggiare in tre, alle regole di papà: se va male, perdono mezza giornata e la polizia guadagna terreno"},
+      {scena:3, fase:"Frattura", titolo:"Il motel delle piastrelle verdi", suggerimento_posta:"Una notte ferma, troppe domande: se va male, la firma di Federico esce dal fascicolo nel modo peggiore"},
+      {scena:4, fase:"Crisi", titolo:"Il posto di blocco", suggerimento_posta:"L'ultimo confine di regione con la denuncia ormai dappertutto: se va male, arrivano dal professore scortati, o non arrivano affatto"},
+      {scena:5, fase:"Risoluzione", titolo:"L'istituto del professor Lanza", suggerimento_posta:"La visita, con Vanessa e i suoi legali alle porte: se va male, il giudice si esprime venerdì con una perizia sola"}
+    ]
+  },
+  {
+    playset:"Vera, Otto e il Sole di Mezzanotte",
+    tono:"Action",
+    premessa:"Il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto, giace nella cripta di Zerzura, la città perduta sepolta dalle sabbie. La Loggia del Basilisco gli dà la caccia da decenni, i Veglianti la custodiscono perché nessuno la trovi, e la traduzione di Otto ha appena riacceso la corsa. L'unica mappa è il taccuino di Aldo Falco, il padre di Vera, sparito nel deserto cercandola.",
+    missione:"Prendere il Sole di Mezzanotte nella cripta di Zerzura, che l'eclissi apre tra cinque giorni, PRIMA che ci arrivi la Loggia del Basilisco.",
+    primaDiff:"Il taccuino del professor Aldo Falco, l'unico che abbia mai mappato la strada per Zerzura prima di sparire, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito.",
+    pers:{
+      A:{nome:"Vera Falco", desc:"Eroina d'azione: atletica, impulsiva, irruente. Cresciuta nei cantieri di scavo del padre Aldo. Guida, scala, cavalca e spara meglio di chiunque la insegua.", detesta:"Otto si paralizza davanti a qualsiasi cosa strisci o voli, e prima di muovere un passo deve leggere qualcosa."},
+      B:{nome:"Otto Lenzi", desc:"Filologo delle lingue morte, topo di biblioteca, fobie catalogate in ordine alfabetico. La sua traduzione di una stele ha riacceso la caccia a Zerzura, e non se lo perdona.", detesta:"Vera agisce prima di pensare e fa saltare in aria cose che andrebbero studiate: tratta i reperti come maniglie."}
+    },
+    nemici:"La Loggia del Basilisco: collezionisti spietati, fondi illimitati, infiltrati in ogni porto. E i Veglianti di Zerzura: l'ordine del deserto che custodisce la città e cancella le tracce di chi la cerca, convinto che spostare il Sole di Mezzanotte significhi la fine.",
+    caos:"Il deserto: la tempesta in anticipo, le piste che spariscono, un camion che beve più olio che gasolio, le trappole della cripta. E gli scorpioni, ovunque.",
+    spinte:{
+      picche:["Suo padre è sparito cercando Zerzura: trovarla è restituirgli il nome.", "Nessuno guida, scala o spara come Vera: dove finisce la strada, comincia lei."],
+      cuori:["La caccia l'ha riaperta la sua traduzione: se finisce male, è colpa sua.", "Legge sette lingue morte e ha una faccia di cui tutti si fidano."],
+      quadri:["La Loggia ha sicari in ogni porto; i Veglianti hanno costruito le trappole.", "La Loggia vuole l'artefatto, i Veglianti temono la fine: nessuno li lascerà arrivare alla cripta."],
+      fiori:["Tempeste in anticipo, pozzi secchi, piste cancellate, un camion che perde olio.", "Aldo Falco è vivo: è un Vegliante. Otto lo ha capito, e tace."]
+    },
+    geografia_scene:[
+      {scena:1, fase:"Innesco", titolo:"L'asta del Cairo", suggerimento_posta:"Prendere il taccuino di Aldo. Se va male: la Loggia compra la strada e un giorno di vantaggio"},
+      {scena:2, fase:"Adattamento", titolo:"Il treno per El Qara", suggerimento_posta:"Guadagnare il deserto. Se va male: la Loggia sa che faccia hanno e su che treno sono"},
+      {scena:3, fase:"Frattura", titolo:"Il mare di sabbia", suggerimento_posta:"Attraversare le dune col taccuino. Se va male: quello che Otto tace esce nel posto peggiore"},
+      {scena:4, fase:"Crisi", titolo:"L'accampamento", suggerimento_posta:"Raggiungere l'ingresso prima dell'alba. Se va male: alla cripta li aspettano la Loggia da una parte e i Veglianti dall'altra"},
+      {scena:5, fase:"Risoluzione", titolo:"La cripta del Sole", suggerimento_posta:"L'eclissi. Se va male: il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata"}
     ]
   }
 ];
@@ -468,9 +596,9 @@ function nuovoLato(chiave, nome, semi){
 function nuovaPartita(){
   idc = 0;
   return {
-    fase:"modalita", passo:0, passoSub:0,   // passoSub: metà della fase domande in online (0=Protagonisti, 1=Opposizione)
+    fase:"modalita", passo:0, passoSub:0,   // passoSub: residuo (le spinte ora sono su pagine separate); mantenuto per compatibilità dei salvataggi
     modalita:"locale", hostLato:"P",
-    nomi:{P:"", O:""}, missione:"", primaDiff:"", tono:"",
+    nomi:{P:"", O:""}, premessa:"", missione:"", primaDiff:"", tono:"",
     nGiocatori:2,
     giocatori:{picche:"",cuori:"",quadri:"",fiori:""},
     modo3:"maggioranza",
@@ -647,8 +775,10 @@ function ownerSetup(){
   if(G.modalita!=="online") return G.hostLato;
   const p=G.passo;
   if(p===4) return "P";                              // i protagonisti
-  if(p===5) return "O";                              // l'opposizione
-  if(p===6) return (G.passoSub||0)===0 ? "P" : "O";  // le domande: prima i protagonisti, poi l'opposizione
+  if(p===5) return "O";                              // l'opposizione (nemici e caos)
+  if(p===6) return "P";                              // le spinte dei protagonisti
+  if(p===7) return "O";                              // le spinte dell'opposizione
+  if(p===8) return "P";                              // la difficoltà iniziale (risposta condivisa, la imposta il lato Protagonisti)
   return G.hostLato;                                 // intro, giocatori, tono, missione, riepilogo
 }
 function spettatore(){ return rete.attiva && G.modalita==="online" && latoCheAgisce()!==rete.mioLato }
@@ -751,6 +881,12 @@ function render(){
   inviaStato();
   const f = G.fase;
   veloIA(claudeStaGiocando());
+  // barra verticale + etichetta del lato di turno (sola lettura di G; neutre nei menù e nel wizard di setup)
+  const latoBar = (f==="modalita"||f==="lobby"||f==="setup") ? null : latoCheAgisce();
+  const mainEl = document.querySelector("main"), lblEl = document.getElementById("latoTurno");
+  const barCls = latoBar==="P" ? "bar-p" : latoBar==="O" ? "bar-o" : "";
+  mainEl.classList.remove("bar-p","bar-o"); lblEl.classList.remove("bar-p","bar-o");
+  if(barCls){ mainEl.classList.add(barCls); lblEl.classList.add(barCls); lblEl.textContent=nomeLato(latoBar); }
   if(f==="modalita"){ rModalita(); return }
   if(f==="lobby"){ rLobby(); return }
   if(spettatore() && !FASI_CONDIVISE.has(f)){ rSpettatore(); return }
@@ -891,10 +1027,11 @@ function rLobby(){
 }
 
 /* ================= WIZARD DI CREAZIONE ================= */
-const PASSI_WIZ=["Il gioco","Giocatori","Tono","Missione","Protagonisti","Opposizione","Le spinte","Pronti a partire"];
+const PASSI_WIZ=["Il gioco","Giocatori","Tono","Missione","Protagonisti","Opposizione","Spinte protagonisti","Spinte opposizione","Difficoltà iniziale","Pronti a partire"];
 function caso(a){return a[Math.floor(Math.random()*a.length)]}
 function salvaCampi(){
   const g=id=>{const e=document.getElementById(id);return e?e.value:null};
+  const pm=g("w-premessa"); if(pm!==null) G.premessa=pm;
   const v=g("w-missione"); if(v!==null) G.missione=v;
   const pd=g("w-primadiff"); if(pd!==null) G.primaDiff=pd;
   const np=g("w-nomeP"); if(np!==null) G.nomi.P=np;
@@ -918,6 +1055,7 @@ function caricaPlaysetObj(ps){
   if(!ps || typeof ps!=="object"){ alert("Playset non valido."); return; }
   const pers = ps.pers || {A:ps.persA, B:ps.persB};
   if(ps.tono!=null) G.tono=ps.tono;
+  if(ps.premessa!=null) G.premessa=ps.premessa;
   if(ps.missione!=null) G.missione=ps.missione;
   if(ps.primaDiff!=null) G.primaDiff=ps.primaDiff;
   if(pers && pers.A){ G.pers.A.nome=pers.A.nome||""; G.pers.A.desc=pers.A.desc||""; }
@@ -951,21 +1089,44 @@ function caricaPlaysetObj(ps){
   });
   if(G.nGiocatori!==2 && typeof ps.nGiocatori==="number" && G.modalita!=="solo") G.nGiocatori=ps.nGiocatori;
   if(G.modalita==="solo"){ G.oppGenerata=true; G.oppTentata=false; }   // il playset fornisce già l'Opposizione: niente auto-generazione
-  if(G.fase==="setup") G.passo=PASSI_WIZ.length-1;   // salta al riepilogo per rivedere il pitch caricato
+  if(G.fase==="setup") G.passo=PASSI_WIZ.indexOf("Missione");   // apre dalla pagina della missione: scorri il pitch compilato
   chiudiModale();
   render();
 }
 function caricaPlayset(i){ caricaPlaysetObj(PLAYSET[i]); }
+function titoloPlayset(p){ return p.playset||p.nome||"Playset"; }
+function schedaPlayset(p){
+  // la scheda di anteprima a fianco dell'elenco: premessa, personaggi, obiettivo
+  const pers=p.pers||{A:p.persA,B:p.persB}, A=pers.A||{}, B=pers.B||{};
+  const persHtml=(A.nome||A.desc||B.nome||B.desc)?`<div class="riga2">
+      <div class="pannello"><span class="etichetta">${A.nome||"Protagonista ♠"} ♠</span><div style="font-size:13px">${A.desc||""}</div></div>
+      <div class="pannello"><span class="etichetta">${B.nome||"Protagonista ♥"} ♥</span><div style="font-size:13px">${B.desc||""}</div></div>
+    </div>`:"";
+  return `<div class="cartellone" style="padding:9px 12px;margin-bottom:10px"><div class="grande" style="font-size:17px">${titoloPlayset(p)}</div><div class="sc">${p.tono||"tono libero"} · cinque scene</div></div>
+    ${p.premessa?`<div class="pannello"><span class="etichetta">La premessa</span><div style="font-size:13.5px;line-height:1.6">${p.premessa}</div></div>`:""}
+    ${p.missione?`<div class="pannello"><span class="etichetta">L'obiettivo del viaggio</span><div style="font-size:13.5px">${p.missione}</div></div>`:""}
+    ${persHtml}`;
+}
+let psSelez=0;
 function chiediPlayset(){
-  const lista=PLAYSET.map((p,i)=>`<button class="secondaria" data-ps="${i}" style="display:block;width:100%;text-align:left;margin-bottom:8px">📋 ${p.nome||p.playset||"Playset"} <span style="color:var(--grigio);font-size:12px">— ${p.tono||"tono libero"}</span></button>`).join("");
-  modale(`<h2 class="ts">Carica un playset</h2>
-    <p class="sotto">Un pitch pronto: missione, protagonisti, opposizione e le dieci risposte. Potrai comunque modificare ogni campo.</p>
-    ${lista}
-    <label class="secondaria" style="display:block;text-align:center;cursor:pointer;margin-bottom:8px">📁 Carica da file (.json)
-      <input type="file" id="ps-file" accept="application/json,.json" style="display:none"></label>
-    <div style="margin-top:8px"><button class="secondaria" id="psNo">Annulla</button></div>`);
-  document.getElementById("modaleCorpo").querySelectorAll("button[data-ps]").forEach(b=>
-    b.addEventListener("click",()=>caricaPlayset(parseInt(b.dataset.ps))));
+  if(psSelez<0||psSelez>=PLAYSET.length) psSelez=0;
+  const lista=PLAYSET.map((p,i)=>`<button class="secondaria" data-ps="${i}" style="display:block;width:100%;text-align:left;margin:0;padding:7px 14px;font-size:13px;${i===psSelez?"border-color:var(--mezzeria);background:rgba(245,166,35,.12)":""}">📋 ${titoloPlayset(p)} <span style="color:var(--grigio);font-size:11px">— ${p.tono||"tono libero"}</span></button>`).join("");
+  modale(`<h2 class="ts">Scegli uno scenario</h2>
+    <div style="display:flex;flex-direction:column;gap:8px;margin:10px 0 14px">
+      ${lista}
+    </div>
+    <div id="ps-scheda" style="margin-bottom:14px">${schedaPlayset(PLAYSET[psSelez])}</div>
+    <div style="display:flex;gap:10px;align-items:stretch">
+      <label class="secondaria" style="flex:1 1 0;box-sizing:border-box;cursor:pointer;margin:0;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--notte);border:1px solid var(--bordo);border-radius:12px;color:var(--osso);font-family:'Oswald',sans-serif;font-size:14px;letter-spacing:1px;text-transform:uppercase;padding:11px 18px">📁 Carica da file (.json)
+        <input type="file" id="ps-file" accept="application/json,.json" style="display:none"></label>
+      <button class="azione" id="psAvvia" style="flex:2 1 0;width:auto;font-size:max(16px,calc(19px*var(--k,1)));padding:calc(18px*var(--k,1)) 24px">Avvia scenario</button>
+      <button class="secondaria" id="psNo" style="flex:1 1 0;width:auto">Annulla</button>
+    </div>`);
+  const corpo=document.getElementById("modaleCorpo");
+  corpo.style.maxWidth="min(96vw,1040px)";
+  corpo.querySelectorAll("button[data-ps]").forEach(b=>
+    b.addEventListener("click",()=>{ psSelez=parseInt(b.dataset.ps); chiediPlayset(); }));
+  document.getElementById("psAvvia").addEventListener("click",()=>caricaPlayset(psSelez));
   const fileInp=document.getElementById("ps-file");
   if(fileInp) fileInp.addEventListener("change",e=>{
     const f=e.target.files&&e.target.files[0]; if(!f) return;
@@ -986,6 +1147,7 @@ function esportaPlaysetFile(){
     playset:nA+" & "+nB,
     nGiocatori:G.nGiocatori,
     tono:G.tono||"",
+    premessa:G.premessa||"",
     missione:G.missione||"",
     primaDiff:G.primaDiff||"",
     pers:{
@@ -1091,6 +1253,11 @@ function rSetup(){
     <h2 class="ts">La missione</h2>
     <p class="sotto">Un obiettivo concreto + una scadenza improrogabile: il successo o il fallimento saranno definitivi.</p>
     <div class="pannello">
+      <span class="etichetta">La premessa</span>
+      <p class="sotto" style="margin:4px 0 8px">Il contesto da cui parte la storia: dove siete, chi siete, cosa è appena successo. Da leggere al tavolo prima di partire.</p>
+      <textarea id="w-premessa" rows="4" placeholder="Il punto di partenza della storia…">${G.premessa||""}</textarea>
+    </div>
+    <div class="pannello">
       <span class="etichetta">La posta del viaggio</span>
       <textarea id="w-missione" rows="3" placeholder="…PRIMA che…">${G.missione}</textarea>
       <button class="secondaria" id="w-ispMiss" style="margin-top:10px">🎲 Ispirami</button>
@@ -1104,18 +1271,31 @@ function rSetup(){
       <div class="pannello"><span class="etichetta">Protagonista 1 · tende a ♠</span>
         <input type="text" id="w-persA" value="${G.pers.A.nome}" placeholder="Nome">
         <span class="etichetta" style="margin-top:8px">Chi è</span>
-        <textarea id="w-descA" rows="3">${G.pers.A.desc}</textarea>
+        <textarea id="w-descA" rows="5">${G.pers.A.desc}</textarea>
         <span class="etichetta" style="margin-top:8px">${PITCH_TEMPLATE[0].q(nA(),nB())} <i style="text-transform:none;letter-spacing:0">spunto narrativo, senza effetto</i></span>
-        <input type="text" id="w-pitch-0" value="${G.pitch[0].risposta.replace(/"/g,'&quot;')}" placeholder="${PITCH_TEMPLATE[0].ph}"></div>
+        <textarea id="w-pitch-0" rows="4" placeholder="${PITCH_TEMPLATE[0].ph}">${G.pitch[0].risposta}</textarea></div>
       <div class="pannello"><span class="etichetta">Protagonista 2 · tende a ♥</span>
         <input type="text" id="w-persB" value="${G.pers.B.nome}" placeholder="Nome">
         <span class="etichetta" style="margin-top:8px">Chi è</span>
-        <textarea id="w-descB" rows="3">${G.pers.B.desc}</textarea>
+        <textarea id="w-descB" rows="5">${G.pers.B.desc}</textarea>
         <span class="etichetta" style="margin-top:8px">${PITCH_TEMPLATE[1].q(nA(),nB())} <i style="text-transform:none;letter-spacing:0">spunto narrativo, senza effetto</i></span>
-        <input type="text" id="w-pitch-1" value="${G.pitch[1].risposta.replace(/"/g,'&quot;')}" placeholder="${PITCH_TEMPLATE[1].ph}"></div>
+        <textarea id="w-pitch-1" rows="4" placeholder="${PITCH_TEMPLATE[1].ph}">${G.pitch[1].risposta}</textarea></div>
     </div>`;
 
   else if(p===6){
+    const domandeHtml=(da,a)=>G.pitch.map((x,i)=>({x,i})).slice(da,a).map(({x,i})=>`
+      <span class="etichetta" style="margin-top:10px">${SIMBOLI[x.seme]} ${PITCH_TEMPLATE[i].q(nA(),nB())}</span>
+      <input type="text" id="w-pitch-${i}" value="${x.risposta.replace(/"/g,'&quot;')}" placeholder="${PITCH_TEMPLATE[i].ph||""}">`).join("");
+    corpo=`
+    <h2 class="ts">Le spinte dei Protagonisti</h2>
+    <p class="sotto">Quattro spinte, due per protagonista (♠ e ♥): la motivazione e l'asso nella manica. <b>Portando in narrazione una di queste potrai trasformare una presa in una scopa</b> (una sola per seme per lato).</p>
+    <div class="pannello">
+      <span class="etichetta">♠♥ Le spinte dei Protagonisti</span>
+      ${domandeHtml(2,6)}
+    </div>`;
+  }
+
+  else if(p===7){
     const domandeHtml=(da,a)=>G.pitch.map((x,i)=>({x,i})).slice(da,a).map(({x,i})=>`
       <span class="etichetta" style="margin-top:10px">${SIMBOLI[x.seme]} ${PITCH_TEMPLATE[i].q(nA(),nB())}</span>
       <input type="text" id="w-pitch-${i}" value="${x.risposta.replace(/"/g,'&quot;')}" placeholder="${PITCH_TEMPLATE[i].ph||""}">`).join("");
@@ -1123,26 +1303,22 @@ function rSetup(){
       <span class="etichetta" style="margin-top:10px">${SIMBOLI[x.seme]} ${PITCH_TEMPLATE[i].q(nA(),nB())}</span>
       <div class="lettura" style="margin-top:2px">${x.risposta||"—"}</div>`).join("");
     const claudeOpp = G.modalita==="solo" && G.oppGenerata;   // le spinte dell'Opposizione le ha già scritte Claude
-    const online=G.modalita==="online", sub=G.passoSub||0;
-    const mostraP = !online || sub===0;   // spinte dei protagonisti + prima difficoltà
-    const mostraO = !online || sub===1;   // spinte dell'opposizione
     corpo=`
-    <h2 class="ts">Le spinte del pitch${online?(sub===0?" — i Protagonisti":" — l'Opposizione"):""}</h2>
-    <p class="sotto">Otto spinte, due per seme. <b>Portando in narrazione questo aspetto potrai trasformare una presa in una scopa</b> (una sola per seme per lato).</p>
-    ${mostraP?`<div class="pannello">
-      <span class="etichetta">♠♥ Le spinte dei Protagonisti</span>
-      ${domandeHtml(2,6)}
-    </div>`:""}
-    ${mostraO?`<div class="pannello">
+    <h2 class="ts">Le spinte dell'Opposizione</h2>
+    <p class="sotto">Quattro spinte, due per seme (♦ e ♣): mezzi e movente dei nemici, catastrofi e crepe. <b>Portando in narrazione una di queste potrai trasformare una presa in una scopa</b> (una sola per seme per lato).</p>
+    <div class="pannello">
       <span class="etichetta">♦♣ Le spinte dell'Opposizione${claudeOpp?" — definite da Claude":""}</span>
       ${claudeOpp?domandeRO(6,10):domandeHtml(6,10)}
-    </div>`:""}
-    ${mostraP?`<div class="pannello">
-      <span class="etichetta">La prima difficoltà — risposta condivisa</span>
-      <p class="sotto" style="margin:4px 0 8px">Che cosa vi impedisce di raggiungere l'obiettivo subito? Rispondete tutti insieme. Non è una spinta: è il materiale della Scena 1.</p>
-      <textarea id="w-primadiff" rows="2" placeholder="Il primo ostacolo da superare…">${G.primaDiff||""}</textarea>
-    </div>`:""}`;
+    </div>`;
   }
+
+  else if(p===8) corpo=`
+    <h2 class="ts">La difficoltà iniziale</h2>
+    <p class="sotto">Che cosa vi impedisce di raggiungere l'obiettivo subito? Rispondete tutti insieme. Non è una spinta: è il materiale della Scena 1.</p>
+    <div class="pannello">
+      <span class="etichetta">La prima difficoltà — risposta condivisa</span>
+      <textarea id="w-primadiff" rows="6" placeholder="Il primo ostacolo da superare…">${G.primaDiff||""}</textarea>
+    </div>`;
 
   else if(p===5){
     const canaleIA = claudeKey || inArtefatto();
@@ -1176,6 +1352,7 @@ function rSetup(){
     <h2 class="ts">Il pitch</h2>
     <div class="cartellone"><div class="grande">${G.pers.A.nome||"P1"} & ${G.pers.B.nome||"P2"}</div>
       <div class="sc">${G.tono||"tono libero"} · cinque scene</div></div>
+    ${G.premessa?`<div class="pannello"><span class="etichetta">Premessa</span><div style="font-size:13.5px;line-height:1.6">${G.premessa}</div></div>`:""}
     ${G.missione?`<div class="pannello"><span class="etichetta">Missione</span><div style="font-size:14.5px">${G.missione}</div></div>`:""}
     ${G.primaDiff?`<div class="pannello"><span class="etichetta">Prima difficoltà — Scena 1</span><div style="font-size:13.5px">${G.primaDiff}</div></div>`:""}
     ${G.pers.A.desc||G.pers.B.desc?`<div class="riga2">
@@ -1216,20 +1393,16 @@ function rSetup(){
   });
   const reopp=document.getElementById("w-reopp");
   if(reopp) reopp.addEventListener("click",()=>{ salvaCampi(); G.oppGenerata=false; G.oppTentata=false; render(); });
-  const online=G.modalita==="online";
   const av=document.getElementById("w-avanti");
   av.addEventListener("click",()=>{
     salvaCampi();
-    if(online && p===6 && (G.passoSub||0)===0){ G.passoSub=1; render(); return }   // domande: passa all'Opposizione
     if(p===PASSI_WIZ.length-1){ iniziaScena(); return }
-    G.passoSub=0; G.passo++; render();
+    G.passo++; render();
   });
   const ind=document.getElementById("w-indietro");
   if(ind) ind.addEventListener("click",()=>{
     salvaCampi();
-    if(online && p===6 && (G.passoSub||0)===1){ G.passoSub=0; render(); return }   // domande: torna ai Protagonisti
-    if(online && p===7){ G.passo=6; G.passoSub=1; render(); return }                // dal riepilogo torna alle domande dell'Opposizione
-    G.passoSub=0; G.passo--; render();
+    G.passo--; render();
   });
 }
 
@@ -1260,7 +1433,7 @@ function rAsta(){
       <div class="tot-lato o">♦+♣ Opposizione <b>${totaleOpp()}</b></div>
     </div>
     <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto — la prima presa sarebbe scopa</span>'}</div>
-    <div class="pannello${G.modalita==="solo"&&G.attore==="O"?" ia-nascosta":""}"><span class="etichetta">La tua mano</span><div class="mazzo-carte" id="manoAsta">
+    <div class="pannello lato-${G.attore.toLowerCase()}${G.modalita==="solo"&&G.attore==="O"?" ia-nascosta":""}"><span class="etichetta">La tua mano</span><div class="mazzo-carte" id="manoAsta">
       ${ordina(L.mano).map(c=>cartaHTML(c, c.jolly?"":"")).join("")}
     </div></div>
     <button class="azione" id="confAsta" disabled>Gioca coperta</button>`;
@@ -1378,6 +1551,8 @@ function rTurno(){
   const l=G.attore, L=lato(l);
   const g=carteGiocabili(l);
   const sr = spinteResidue(l);
+  const spinteConteggio = {}; semiLato(l).forEach(s=>spinteConteggio[s]=0); sr.forEach(({p})=>spinteConteggio[p.seme]++);
+  const recapSpinte = "spinte "+semiLato(l).map(s=>`<span style="color:var(--${s})">${SIMBOLI[s]}</span> ${spinteConteggio[s]}`).join(" · ");
   SC.innerHTML = `
     ${intestazioneScena()}
     ${G.ultimaGiocata?`<div class="banner ${G.ultimaGiocata.includes("SCOPA")?"scopa":""}">${G.ultimaGiocata}</div>`:""}
@@ -1386,15 +1561,11 @@ function rTurno(){
       <div class="tot-lato o">♦+♣ Opposizione <b>${totaleOpp()}</b></div>
     </div>
     <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto — una presa qui sarebbe scopa</span>'}</div>
-    <div class="mano-area${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}">
+    <div class="mano-area lato-${l.toLowerCase()}${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}">
       <div class="mano-titolo">
         <span class="etichetta" style="margin:0">${g.daAsta?"Ultima giocata — la carta dell'asta":"Mano di "+nomeLato(l)+(latoDiviso(l)?" — gioca "+nomeControllore(l)+" "+SIMBOLI[G.controllo[l]]:"")}</span>
-        <span class="contatori">prese ${L.prese.length} · scope ${L.scope.filter(c=>!c.esposta).length} · mazzo ${L.mazzo.length}</span>
+        <span class="contatori">prese ${L.prese.length} · scope ${L.scope.filter(c=>!c.esposta).length} · mazzo ${L.mazzo.length}${G.scena<4?" · "+recapSpinte:""}</span>
       </div>
-      ${sr.length?`<div class="spinte-mano">
-        <span class="lbl">⚡ Spinte disponibili</span>
-        ${sr.map(({p})=>`<span class="spinta-chip" style="border-left-color:var(--${p.seme})"><b style="color:var(--${p.seme})">${SIMBOLI[p.seme]}</b> <i>«${p.risposta.length>32?p.risposta.slice(0,32)+"…":p.risposta}»</i></span>`).join("")}
-      </div>`:""}
       <div class="mazzo-carte" id="manoTurno">${ordina(g.carte).map(c=>cartaHTML(c)).join("")}</div>
       <div id="pannelloAzione"></div>
     </div>`;
@@ -1584,7 +1755,7 @@ function rNarrazione(){
         `<button class="spinta-riga" data-spinta="${i}"><span class="sm" style="color:var(--${p.seme})">${SIMBOLI[p.seme]}</span> «${p.risposta}»</button>`).join("")}
     </div>`:""}
     ${(G.pngNarr||[]).length?`<div class="spinte-mano"><span class="lbl">PNG creati</span>${(G.pngNarr||[]).map(p=>`<span class="spinta-chip" style="border-left-color:var(--${p.seme})"><b style="color:var(--${p.seme})">${SIMBOLI[p.seme]}</b> ${p.nome||"(senza nome)"}</span>`).join("")}</div>`:""}
-    ${ioNarro?`<div class="pannello">
+    ${ioNarro?`<div class="pannello lato-${(G.narrLato||G.attore).toLowerCase()}">
       <span class="etichetta">La tua narrazione (Claude la legge per restare coerente con la storia)</span>
       <textarea id="narrInput" placeholder="Racconta cosa accade in questo momento della storia, poi tocca Narrato.">${G.narr.bozza||""}</textarea>
     </div>`:""}
@@ -1677,7 +1848,7 @@ function renderStoria(){
   const attiva=scene.includes(storiaTabAttiva)?storiaTabAttiva:corrente;
   let html=storiaLabel();
   // barra tab: una scena per tab. La corrente mostra numero + fase, le altre solo il numero.
-  // Pallino del vincitore: viola = Protagonisti, grigio = Opposizione, neutro = parità o in corso.
+  // Pallino del vincitore: viola = Protagonisti, acciaio = Opposizione, neutro = parità o in corso.
   html+=`<div id="storiaTabs">`;
   for(const i of scene){
     const v=G.scene[i]&&G.scene[i].vincitore;
@@ -1755,7 +1926,7 @@ function creaPng(){
 
 /* ================= FIGURE ================= */
 function modale(html){ document.getElementById("modaleCorpo").innerHTML=html; document.getElementById("ovModale").classList.add("attivo") }
-function chiudiModale(){ document.getElementById("ovModale").classList.remove("attivo") }
+function chiudiModale(){ const c=document.getElementById("modaleCorpo"); c.style.maxWidth=""; document.getElementById("ovModale").classList.remove("attivo") }
 
 function effettoFigura(c, poi){
   const l=G.attore, L=lato(l), A=lato(altro(l));
@@ -2540,10 +2711,14 @@ function apriSchede(tab){
   const vuoto=`<p class="sotto">Niente da mostrare qui: si compila nella creazione della partita.</p>`;
   // blocco domanda+risposta del pitch, filtrato per seme
   const qa=(semi)=>G.pitch.map((x,i)=>({x,i})).filter(({x})=>semi.includes(x.seme) && x.risposta)
-    .map(({x,i})=>`<div style="margin-top:10px">
+    .map(({x,i})=>{
+      const isSpinta=PITCH_TEMPLATE[i].spinta!==false;   // i due "detesta" non sono spinte: niente casella
+      const check=isSpinta?`<span class="spinta-check${x.usata?" on":""}" title="${x.usata?"Spinta già usata":"Spinta ancora disponibile"}">✓</span>`:"";
+      return `<div style="margin-top:10px">
       <span class="etichetta" style="margin-bottom:2px">${SIMBOLI[x.seme]} ${PITCH_TEMPLATE[i].q(G.pers.A.nome||"P1",G.pers.B.nome||"P2")}</span>
-      <div style="font-size:13.5px">${x.risposta}${x.usata?` <span style="color:var(--grigio);font-style:italic">· risorsa già spesa</span>`:""}</div>
-    </div>`).join("");
+      <div style="display:flex;align-items:center;gap:7px;font-size:13.5px">${check}<span>${x.risposta}</span></div>
+    </div>`;
+    }).join("");
   const cartello=(grande,sc)=>`<div class="cartellone"><div class="grande">${grande}</div><div class="sc">${sc}</div></div>`;
   const TABS={
     A:{label:`♠ ${G.pers.A.nome||"Picche"}`, html:()=>{
@@ -2561,7 +2736,8 @@ function apriSchede(tab){
       return cartello("L'Opposizione","nemici ♦ · caos ♣")+(corpo||vuoto);
     }},
     M:{label:"Missione", html:()=>{
-      const corpo=(G.missione?`<div class="pannello"><span class="etichetta">L'obiettivo del viaggio — la posta</span><div style="font-size:14.5px">${G.missione}</div></div>`:"")
+      const corpo=(G.premessa?`<div class="pannello"><span class="etichetta">La premessa</span><div style="font-size:13.5px;line-height:1.6">${G.premessa}</div></div>`:"")
+        +(G.missione?`<div class="pannello"><span class="etichetta">L'obiettivo del viaggio — la posta</span><div style="font-size:14.5px">${G.missione}</div></div>`:"")
         +(G.primaDiff?`<div class="pannello"><span class="etichetta">Prima difficoltà — Scena 1</span><div style="font-size:13.5px">${G.primaDiff}</div></div>`:"");
       return cartello(`${nA} & ${nB}`,`${G.tono||"tono libero"} · cinque scene`)+(corpo||vuoto);
     }},
@@ -2676,7 +2852,7 @@ function setupPerIA(){
   const spinte=G.pitch.map((p,i)=>({p,i})).filter(({i})=>PITCH_TEMPLATE[i].spinta!==false)
     .map(({p})=>(p.risposta&&p.risposta.trim())?`${SIMBOLI[p.seme]} ${p.risposta.trim()}`:"").filter(Boolean).join("\n");
   return `LA PARTITA. Missione dei Protagonisti: ${G.missione||"-"}.
-Tono: ${G.tono||"-"}.
+Tono: ${G.tono||"-"}.${G.premessa?`\nPremessa: ${G.premessa}`:""}
 Protagonisti: ${P.A.nome||"P1"} ♠ ${(P.A.desc||"").trim()}${detA?` (detesta dell'altro: ${detA})`:""} | ${P.B.nome||"P2"} ♥ ${(P.B.desc||"").trim()}${detB?` (detesta dell'altro: ${detB})`:""}.
 Opposizione: nemici ♦ ${G.nemici||"-"}; caos ♣ ${G.caos||"-"}.
 La prima difficoltà (inquadra la scena 1): ${G.primaDiff||"-"}.
