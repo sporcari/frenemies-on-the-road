@@ -1395,7 +1395,7 @@ function rSetup(){
         <div class="lettura">${G.nemici||"—"}</div>
         <span class="etichetta" style="margin-top:10px">♣ Il caos (definito da Claude)</span>
         <div class="lettura">${G.caos||"—"}</div>
-        <div style="margin-top:10px"><button class="secondaria" id="w-reopp">🃏 Reinventa</button></div>
+        <div style="margin-top:10px"><button class="secondaria" id="w-reopp">🔁 Rigenera</button></div>
       </div>`;
     else if(claudeAttivo) oppCorpo=`
       <div class="pannello"><div class="lettura">🃏 Claude sta inventando l'Opposizione…</div></div>`;
@@ -1457,7 +1457,16 @@ function rSetup(){
     document.getElementById("w-descB").value=b;
   });
   const reopp=document.getElementById("w-reopp");
-  if(reopp) reopp.addEventListener("click",()=>{ salvaCampi(); G.oppGenerata=false; G.oppTentata=false; render(); });
+  if(reopp) reopp.addEventListener("click",()=>{
+    salvaCampi();
+    if(G.oppGenerata && canaleIA()){
+      // rigenerazione: chiedi il feedback (facoltativo) e rigenera tenendone conto
+      rifiutoRiprova(async fb=>{ await generaOpposizioneIA(fb); iaBusy=false; });
+    }else{
+      // prima generazione ("lascia decidere a Claude"): la fa partire l'auto-scheduler dopo il render
+      G.oppGenerata=false; G.oppTentata=false; render();
+    }
+  });
   const av=document.getElementById("w-avanti");
   av.addEventListener("click",()=>{
     salvaCampi();
@@ -1569,6 +1578,7 @@ function rAstaRivela(){
 /* ================= APERTURA ================= */
 function rApertura(){
   const rec=G.scene[G.scena];
+  const claudeApre=G.modalita==="solo" && G.attore==="O" && canaleIA();   // apertura di Claude rivedibile/rigenerabile
   SC.innerHTML = `
     <h2 class="ts">Scena ${G.scena+1} — ${FASI_NARR[G.scena]}</h2>
     <p class="sotto">${nomeLato(G.attore)} ha l'iniziativa: dichiara la posta della scena e le dà un titolo.</p>
@@ -1581,13 +1591,18 @@ function rApertura(){
       <input type="text" id="a-titolo" value="${rec.titolo}">
     </div>
     ${G.piatto.length?`<div class="banner">Nel piatto restano ${G.piatto.length} carte dalla scena precedente: chi apre può già fare presa o scopa.</div>`:""}
-    <button class="azione" id="a-via">Apri la scena</button>`;
+    ${claudeApre?`<p class="sotto">Claude ha proposto titolo e posta: puoi modificarli, accettarli con "Apri la scena" o farli rigenerare.</p>`:""}
+    <div style="display:flex;gap:10px">
+      <button class="azione" style="flex:1" id="a-via">Apri la scena</button>
+      ${claudeApre?`<button class="secondaria" id="a-riprova" title="Fai rigenerare titolo e posta a Claude">🔁 Rigenera</button>`:""}
+    </div>`;
   document.getElementById("a-via").addEventListener("click",()=>{
     rec.titolo=document.getElementById("a-titolo").value;
     rec.posta=document.getElementById("a-posta").value;
     aggiungiStoria(G.attore, `Apertura: "${rec.titolo}". Posta: ${rec.posta}`, {tipo:"apertura"});
     G.fase="turno"; render();
   });
+  const ar=document.getElementById("a-riprova"); if(ar) ar.addEventListener("click", rigeneraApertura);
 }
 
 /* ================= TURNO ================= */
@@ -1866,11 +1881,15 @@ function rNarrazione(){
         <div style="font-size:max(12px,calc(13.5px*var(--k,1)));color:var(--grigio);margin-bottom:8px">${descrizioneMossaO(n)}</div>
         <div class="lettura" id="iaNarrSlot" style="font-size:max(14px,calc(16px*var(--k,1)));line-height:1.5"></div>
       </div>
-      <button class="azione" id="narrOk" disabled>Avanti</button>`;
+      <div style="display:flex;gap:10px">
+        <button class="azione" style="flex:1" id="narrOk" disabled>Avanti</button>
+        ${canaleIA()?`<button class="secondaria" id="narrRiprova" disabled title="Fai rigenerare la narrazione a Claude">🔁 Rigenera</button>`:""}
+      </div>`;
     document.getElementById("narrOk").addEventListener("click",()=>{
       const fn=narrDopo; narrDopo=null; G.narr=null; G.narrLato=null;
       if(fn) fn(); else prossimoTurno();
     });
+    const rp=document.getElementById("narrRiprova"); if(rp) rp.addEventListener("click", rigeneraNarrazione);
     return;
   }
   SC.innerHTML=`
@@ -2306,12 +2325,16 @@ function rFineScena(){
         : `<textarea id="fs-riassunto" rows="3" placeholder="Due righe su come si è chiusa la scena…">${rec.riassunto||""}</textarea>`}
     </div>
     ${G.scena<4?`<div class="banner">Le carte restano nel piatto: chi aprirà la prossima scena potrà già fare presa o scopa.</div>`:""}
-    <button class="azione" id="fs-avanti"${claudeEsito&&!rec.riassunto?" disabled":""}>${G.scena===4?"Vai al finale":"Vai al mercato"}</button>`;
+    <div style="display:flex;gap:10px">
+      <button class="azione" style="flex:1" id="fs-avanti"${claudeEsito&&!rec.riassunto?" disabled":""}>${G.scena===4?"Vai al finale":"Vai al mercato"}</button>
+      ${claudeEsito&&canaleIA()?`<button class="secondaria" id="fsRiprova"${rec.riassunto?"":" disabled"} title="Fai rigenerare l'esito a Claude">🔁 Rigenera</button>`:""}
+    </div>`;
   document.getElementById("fs-avanti").addEventListener("click",()=>{
     if(!claudeEsito && !ritirataEsito) rec.riassunto=document.getElementById("fs-riassunto").value;
     if(G.scena===4){ G.fase="finale"; render(); return }
     avviaMercato();
   });
+  const fsr=document.getElementById("fsRiprova"); if(fsr) fsr.addEventListener("click", rigeneraEsito);
 }
 
 /* ================= MERCATO ================= */
@@ -3080,12 +3103,16 @@ Tue prese ${O.prese.length}, tue scope ${O.scope.length} · prese avversarie ${P
 Totali del piatto ora: Protagonisti ${totaleProt()}, Opposizione ${totaleOpp()}.${figure?`\nFigure comprate: ${figure}.`:""}${pngN?`\nPNG narrativi: ${pngN}.`:""}`;
 }
 
-async function chiamaClaude(istruzioni){
+async function chiamaClaude(istruzioni, feedback){
   // system STATICO (regole + setup): cacheato dal proxy, byte-identico per tutta la partita
   const sys=REGOLE_IA+"\n\n"+setupPerIA();
   // user DINAMICO: storia + stato attuale + istruzione di fase
   const storia=storiaTestoIA();
-  const userMsg=(storia?storia+"\n\n":"")+statoPerIA()+"\n\n"+istruzioni+"\nRispondi SOLO con un oggetto JSON valido, senza testo prima o dopo e senza markdown.";
+  // feedback != null: rigenerazione chiesta dal giocatore ("rifiuto, riprova"); il testo (anche vuoto) guida la nuova versione
+  let istr=istruzioni;
+  if(feedback!=null) istr+="\n\nIL GIOCATORE HA RIFIUTATO la tua risposta precedente e ne chiede una DIVERSA."
+    +(feedback?` Cosa non andava, parole sue: «${feedback}». Tienine conto e correggi.`:" Cambia tono o contenuto in modo netto, non riproporre la stessa idea.");
+  const userMsg=(storia?storia+"\n\n":"")+statoPerIA()+"\n\n"+istr+"\nRispondi SOLO con un oggetto JSON valido, senza testo prima o dopo e senza markdown.";
   try{
     iaBadge(true);
     let testo;
@@ -3115,6 +3142,113 @@ async function chiamaClaude(istruzioni){
     return JSON.parse(testo);
   }catch(e){ console.warn("IA non raggiungibile, mossa automatica:",e.message); return null }
   finally{ iaBadge(false) }
+}
+
+// ---- "rifiuto, riprova": rigenerazione di un contenuto Claude su richiesta del giocatore ----
+// Disponibile SOLO con un canale Claude reale: senza, il contenuto è un fallback deterministico
+// e non avrebbe senso ritentarlo (i test headless restano così invariati).
+function canaleIA(){ return !!(claudeKey || inArtefatto()); }
+// Modale facoltativo: il giocatore può scrivere cosa non va (o lasciare vuoto) e far rigenerare.
+function rifiutoRiprova(onRigenera){
+  iaBusy=true;   // blocca iaScheduler mentre l'umano decide e Claude rigenera
+  modale(`<h2 class="ts">🔁 Rigenera</h2>
+    <p class="sotto">Claude rigenererà questo contenuto. Se vuoi, scrivi cosa non andava (tono, coerenza, contenuto). Puoi anche lasciare vuoto.</p>
+    <textarea id="fbTesto" rows="3" placeholder="Cosa non ti convince? (facoltativo)"></textarea>
+    <div style="display:flex;gap:10px;margin-top:12px">
+      <button class="secondaria" style="flex:1" id="fbNo">Annulla</button>
+      <button class="azione" style="flex:1" id="fbSi">Rigenera</button>
+    </div>`);
+  const t=document.getElementById("fbTesto"); if(t) t.focus();
+  document.getElementById("fbNo").addEventListener("click",()=>{ iaBusy=false; chiudiModale(); });
+  document.getElementById("fbSi").addEventListener("click",()=>{
+    const fb=(document.getElementById("fbTesto").value||"").trim();
+    chiudiModale();
+    onRigenera(fb);   // onRigenera è async e azzera iaBusy quando ha finito
+  });
+}
+// L'ultima voce del log narrativo è il contenuto di Claude appena rifiutato: la rimuovo
+// così la rigenerazione non eredita il testo scartato nella continuità della storia.
+function scartaUltimaStoriaO(){
+  const s=G.storia;
+  if(s.length && s[s.length-1].lato==="O") s.pop();
+}
+// Istruzioni di fase estratte per riuso tra prima generazione e rigenerazione (unica fonte).
+function regSemeTxt(seme){
+  return seme==="quadri"
+    ? "La carta è di ♦ Quadri: narra i NEMICI ATTIVI (fazioni ostili, inseguitori, poliziotti corrotti, minacce organizzate che agiscono con intenzione)."
+    : seme==="fiori"
+    ? "La carta è di ♣ Fiori: narra il CAOS e la sfortuna (imprevisti, guasti, incidenti, attriti, PNG molesti), non un nemico organizzato."
+    : "";
+}
+function istruzNarrBase(){
+  return `Hai appena agito: "${G.ultimaGiocata||""}". ${regSemeTxt(G.narr&&G.narr.seme)} Narra la mossa in 1-2 frasi, in italiano, dal punto di vista dell'Opposizione, coerente con la storia finora.`;
+}
+function istruzApertura(){
+  return `Hai vinto l'iniziativa: APRI LA SCENA. Scegli un titolo evocativo (2-4 parole) e dichiara la posta (cosa succede se va male per i Protagonisti), coerenti con la missione e con la fase narrativa.`;
+}
+function istruzEsito(rec){
+  return `LA SCENA È FINITA A TUO FAVORE (Opposizione): piatto ♥+♠ ${rec.totP} contro ♦+♣ ${rec.totO}. I Protagonisti non raggiungono la posta della scena "${rec.titolo||""}"${rec.posta?` («${rec.posta}»)`:""}. Narra in 1-2 frasi, in italiano, dal punto di vista dell'Opposizione, come si chiude la scena a tuo vantaggio, coerente con la storia finora.`;
+}
+// Iniezione del testo (sola lettura) + aggiornamento di G; riusata da prima generazione e rigenerazione.
+function iniettaNarr(testo){
+  const slot=document.getElementById("iaNarrSlot");
+  if(slot && !document.getElementById("iaNarr")){
+    const div=document.createElement("div");
+    div.id="iaNarr";
+    div.textContent="🃏 "+testo;
+    slot.appendChild(div);
+    const ok=document.getElementById("narrOk"); if(ok) ok.disabled=false;   // narrazione pronta: l'umano può avanzare
+    const rp=document.getElementById("narrRiprova"); if(rp) rp.disabled=false;
+    aggiungiStoria("O", testo, {tipo:G.narr&&G.narr.tipo, carta:G.narr&&G.narr.carta, seme:G.narr&&G.narr.seme});
+  }
+}
+function iniettaEsito(testo){
+  const rec=G.scene[G.scena];
+  rec.riassunto=testo;
+  aggiungiStoria("O", testo, {tipo:"esito"});
+  const slot=document.getElementById("fsEsitoSlot");
+  if(slot){
+    let div=document.getElementById("fsEsito");
+    if(!div){ div=document.createElement("div"); div.id="fsEsito"; slot.appendChild(div); }
+    div.textContent="🃏 "+testo;
+  }
+  const ok=document.getElementById("fs-avanti"); if(ok) ok.disabled=false;   // esito pronto: l'umano può avanzare
+  const rp=document.getElementById("fsRiprova"); if(rp) rp.disabled=false;
+}
+function rigeneraNarrazione(){
+  if(!document.getElementById("iaNarr")) return;   // niente da rigenerare
+  rifiutoRiprova(async fb=>{
+    scartaUltimaStoriaO();
+    const v=document.getElementById("iaNarr"); if(v) v.remove();
+    const ok=document.getElementById("narrOk"); if(ok) ok.disabled=true;
+    const rp=document.getElementById("narrRiprova"); if(rp) rp.disabled=true;
+    veloIA(true);
+    const r=await chiamaClaude(istruzNarrBase()+`\nJSON: {"narrazione":"..."}`, fb);
+    iniettaNarr((r&&r.narrazione)||"L'Opposizione stringe il cerchio, senza fretta.");
+    veloIA(false); iaBusy=false;
+  });
+}
+function rigeneraEsito(){
+  if(!document.getElementById("fsEsito")) return;
+  rifiutoRiprova(async fb=>{
+    scartaUltimaStoriaO();
+    const ok=document.getElementById("fs-avanti"); if(ok) ok.disabled=true;
+    const rp=document.getElementById("fsRiprova"); if(rp) rp.disabled=true;
+    veloIA(true);
+    const r=await chiamaClaude(istruzEsito(G.scene[G.scena])+`\nJSON: {"esito":"..."}`, fb);
+    iniettaEsito((r&&r.esito)||"L'Opposizione chiude la scena a proprio favore: per i protagonisti la posta sfuma.");
+    veloIA(false); iaBusy=false;
+  });
+}
+function rigeneraApertura(){
+  rifiutoRiprova(async fb=>{
+    const ti=document.getElementById("a-titolo"), po=document.getElementById("a-posta");
+    veloIA(true);
+    const r=await chiamaClaude(istruzApertura()+`\nJSON: {"titolo":"...","posta":"..."}`, fb);
+    if(ti) ti.value=(r&&r.titolo)||FASI_NARR[G.scena];
+    if(po) po.value=(r&&r.posta)||FASI_FUNZ[G.scena];
+    veloIA(false); iaBusy=false;
+  });
 }
 
 function clicca(el){ if(el) el.dispatchEvent(new Event("click",{bubbles:true})) }
@@ -3148,12 +3282,15 @@ async function iaAsta(){
 
 async function iaApertura(){
   iaBusy=true;
-  const r=await chiamaClaude(`Hai vinto l'iniziativa: APRI LA SCENA. Scegli un titolo evocativo (2-4 parole) e dichiara la posta (cosa succede se va male per i Protagonisti), coerenti con la missione e con la fase narrativa.\nJSON: {"titolo":"...","posta":"..."}`);
+  const r=await chiamaClaude(istruzApertura()+`\nJSON: {"titolo":"...","posta":"..."}`);
   const ti=document.getElementById("a-titolo"), po=document.getElementById("a-posta");
   if(ti) ti.value=(r&&r.titolo)||FASI_NARR[G.scena];
   if(po) po.value=(r&&r.posta)||FASI_FUNZ[G.scena];
   iaBusy=false;
-  clicca(document.getElementById("a-via"));
+  // con un canale Claude reale, fermati a far rivedere (titolo/posta restano modificabili, c'è il pulsante riprova);
+  // senza canale è un fallback deterministico: avanza in automatico come prima
+  if(canaleIA()) veloIA(false);
+  else clicca(document.getElementById("a-via"));
 }
 
 async function iaTurno(){
@@ -3213,13 +3350,7 @@ async function iaNarrazione(){
   const spinte=spinteDisponibili("O");
   const haBoost=G.narr&&G.narr.boostCard&&spinte.length>0;
   if(iaNarrTesto===null){
-    const seme=G.narr&&G.narr.seme;
-    const regSeme = seme==="quadri"
-      ? "La carta è di ♦ Quadri: narra i NEMICI ATTIVI (fazioni ostili, inseguitori, poliziotti corrotti, minacce organizzate che agiscono con intenzione)."
-      : seme==="fiori"
-      ? "La carta è di ♣ Fiori: narra il CAOS e la sfortuna (imprevisti, guasti, incidenti, attriti, PNG molesti), non un nemico organizzato."
-      : "";
-    const r=await chiamaClaude(`Hai appena agito: "${G.ultimaGiocata||""}". ${regSeme} Narra la mossa in 1-2 frasi, in italiano, dal punto di vista dell'Opposizione, coerente con la storia finora.${haBoost?`\nPuoi anche SPUNTARE la risorsa del pitch corrispondente al seme della carta con cui hai preso, per trasformare questa presa in SCOPA vera: le carte rimaste nel piatto finiscono tra le tue prese. Risorse disponibili:\n${spinte.map(({p,i},k)=>k+": "+SIMBOLI[p.seme]+" "+p.risposta).join("\n")}\nUsala solo se la risorsa entra davvero nella narrazione: è una svolta, non un bonus.`:""}\nJSON: {"narrazione":"...", "spinta": ${haBoost?"<numero> oppure null":"null"}}`);
+    const r=await chiamaClaude(istruzNarrBase()+`${haBoost?`\nPuoi anche SPUNTARE la risorsa del pitch corrispondente al seme della carta con cui hai preso, per trasformare questa presa in SCOPA vera: le carte rimaste nel piatto finiscono tra le tue prese. Risorse disponibili:\n${spinte.map(({p,i},k)=>k+": "+SIMBOLI[p.seme]+" "+p.risposta).join("\n")}\nUsala solo se la risorsa entra davvero nella narrazione: è una svolta, non un bonus.`:""}\nJSON: {"narrazione":"...", "spinta": ${haBoost?"<numero> oppure null":"null"}}`);
     iaNarrTesto=(r&&r.narrazione)||"L'Opposizione stringe il cerchio, senza fretta.";
     if(haBoost&&r&&Number.isInteger(r.spinta)&&spinte[r.spinta]){
       iaBusy=false;
@@ -3227,15 +3358,7 @@ async function iaNarrazione(){
       return;
     }
   }
-  const slot=document.getElementById("iaNarrSlot");
-  if(slot && !document.getElementById("iaNarr")){
-    const div=document.createElement("div");
-    div.id="iaNarr";
-    div.textContent="🃏 "+iaNarrTesto;
-    slot.appendChild(div);
-    const ok=document.getElementById("narrOk"); if(ok) ok.disabled=false;   // narrazione pronta: l'umano può avanzare
-    aggiungiStoria("O", iaNarrTesto, {tipo:G.narr&&G.narr.tipo, carta:G.narr&&G.narr.carta, seme:G.narr&&G.narr.seme});
-  }
+  iniettaNarr(iaNarrTesto);
   veloIA(false);   // testo iniettato (sola lettura): scopri lo schermo così l'umano legge e avanza
   iaNarrTesto=null; iaBusy=false;
 }
@@ -3244,29 +3367,21 @@ async function iaEsitoScena(){
   if(document.getElementById("fsEsito")){ veloIA(false); return; }   // già iniettato
   iaBusy=true;
   const rec=G.scene[G.scena];
-  const r=await chiamaClaude(`LA SCENA È FINITA A TUO FAVORE (Opposizione): piatto ♥+♠ ${rec.totP} contro ♦+♣ ${rec.totO}. I Protagonisti non raggiungono la posta della scena "${rec.titolo||""}"${rec.posta?` («${rec.posta}»)`:""}. Narra in 1-2 frasi, in italiano, dal punto di vista dell'Opposizione, come si chiude la scena a tuo vantaggio, coerente con la storia finora.\nJSON: {"esito":"..."}`);
-  const testo=(r&&r.esito)||"L'Opposizione chiude la scena a proprio favore: per i protagonisti la posta sfuma.";
-  rec.riassunto=testo;
-  aggiungiStoria("O", testo, {tipo:"esito"});
-  const slot=document.getElementById("fsEsitoSlot");
-  if(slot && !document.getElementById("fsEsito")){
-    const div=document.createElement("div");
-    div.id="fsEsito";
-    div.textContent="🃏 "+testo;
-    slot.appendChild(div);
-    const ok=document.getElementById("fs-avanti"); if(ok) ok.disabled=false;   // esito pronto: l'umano può avanzare
-  }
+  const r=await chiamaClaude(istruzEsito(rec)+`\nJSON: {"esito":"..."}`);
+  iniettaEsito((r&&r.esito)||"L'Opposizione chiude la scena a proprio favore: per i protagonisti la posta sfuma.");
   veloIA(false);   // esito iniettato (sola lettura): scopri lo schermo così l'umano legge e avanza
   iaBusy=false;
 }
 
-async function generaOpposizioneIA(){
+async function generaOpposizioneIA(feedback){
   // setup vs Claude: l'Opposizione (nemici ♦, caos ♣, risposte pitch 6-9) la inventa Claude
-  if(G.oppGenerata===true || oppGenInCorso) return;
+  // feedback != null: rigenerazione chiesta dal giocatore ("rifiuto, riprova"), forzata anche se già generata
+  if(oppGenInCorso) return;
+  if(G.oppGenerata===true && feedback==null) return;
   oppGenInCorso=true;
   const r=await chiamaClaude(`SETUP. Sei l'Opposizione: sulla base della missione dei Protagonisti e di chi sono, inventa la TUA fazione e le tue risorse, coerenti, cinematografiche e in italiano. Frasi brevi.
 JSON: {"nemici":"...", "caos":"...", "q6":"...", "q7":"...", "q8":"...", "q9":"..."}
-nemici (♦) = chi insegue e ostacola i protagonisti con intenzione; caos (♣) = la sfortuna e gli imprevisti che li perseguitano; q6 = i mezzi/metodi/armi più temibili della fazione nemica; q7 = perché l'Opposizione deve assolutamente impedire ai protagonisti di riuscire; q8 = catastrofi o eventi imprevedibili dell'ambientazione; q9 = cosa i protagonisti non hanno considerato e potrebbe far saltare la loro alleanza.`);
+nemici (♦) = chi insegue e ostacola i protagonisti con intenzione; caos (♣) = la sfortuna e gli imprevisti che li perseguitano; q6 = i mezzi/metodi/armi più temibili della fazione nemica; q7 = perché l'Opposizione deve assolutamente impedire ai protagonisti di riuscire; q8 = catastrofi o eventi imprevedibili dell'ambientazione; q9 = cosa i protagonisti non hanno considerato e potrebbe far saltare la loro alleanza.`, feedback);
   if(r && (r.nemici || r.caos)){
     if(r.nemici) G.nemici=String(r.nemici);
     if(r.caos) G.caos=String(r.caos);

@@ -21,6 +21,7 @@ solo alle milestone.
 npm i jsdom (una volta sola), poi dalla radice del repo:
 - node test/test_partita.js  e  NG=4 node test/test_partita.js
 - node test/test_adatta.js  e  node test/test_solo.js
+- node test/test_riprova.js (meccanismo "Rigenera" vs Claude; seed fisso)
 - SEED=13 TRANSCRIPT=1 node test/partita_esempio.js e diff del transcript
   generato con test/transcript_seed_13_v2.txt: se cambia, il §34 del
   regolamento va riscritto
