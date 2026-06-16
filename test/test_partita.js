@@ -60,9 +60,10 @@ function passo(i){
     if(jScarta){ click(jScarta); return "jolly-scartato" }
     const jv=[...box.querySelectorAll("button[data-v]")].filter(b=>!b.disabled);
     if(jv.length){
+      const figura=!!box.querySelector("#figCombos");   // figura e Jolly condividono i bottoni data-v
       click(jv[0]);
-      const jc=[...box.querySelectorAll("#jollyCombos button[data-c]")];
-      click(jc[0]); return "jolly";
+      const jc=[...box.querySelectorAll("#jollyCombos button[data-c], #figCombos button[data-c]")];
+      click(jc[0]); return figura?"figura":"jolly";
     }
     const opz=[...box.querySelectorAll(".opzioni button")];
     if(!opz.length) throw new Error("nessuna opzione di gioco");

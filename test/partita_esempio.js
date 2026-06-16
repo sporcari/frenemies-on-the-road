@@ -7,7 +7,7 @@ const SEED=parseInt(process.env.SEED||"1");
 
 let html=fs.readFileSync(require("path").join(__dirname,"..","index.html"),"utf8");
 html=html.replace(/<script src=[^>]+><\/script>/g,"");
-html=html.replace("/* ================= AVVIO ================= */","window.__G=()=>G; window.__idc=()=>idc;\n/* AVVIO */");
+html=html.replace("/* ================= AVVIO ================= */","window.__G=()=>G; window.__idc=()=>idc; window.__comboFiguraDefault=comboFiguraDefault; window.__combosPresa=combosPresa;\n/* AVVIO */");
 // RNG con seed (mulberry32) iniettato in testa al primo script inline: governa mescolate e scelte
 html=html.replace("<script>",`<script>
 (function(){let s=${SEED}>>>0;Math.random=function(){s|=0;s=(s+0x6D2B79F5)|0;let t=Math.imul(s^(s>>>15),1|s);t=(t+Math.imul(t^(t>>>7),61|t))^t;return((t^(t>>>14))>>>0)/4294967296};})();
@@ -132,6 +132,22 @@ function passo(){
     const box=document.getElementById("pannelloAzione");
     const jScarta=box.querySelector("#jScarta");
     if(jScarta){ click(jScarta); jollyGiocati++; logUltima(); return "jolly-scartato" }
+    const figSac=box.querySelector("#figSacrificio"); if(figSac){ click(figSac); logUltima(); return "fig-sacrificio" }
+    const figMet=box.querySelector("#figMetti"); if(figMet){ click(figMet); logUltima(); return "fig-piatto" }
+    const cid=parseInt(scelta.dataset.id);
+    const attore=G().attore, manoA=G().lati[attore];
+    const cardObj=(manoA.mano.find(x=>x.id===cid))||(manoA.astaCarta&&manoA.astaCarta.id===cid?manoA.astaCarta:null);
+    if(cardObj && cardObj.fig){
+      // figura (UI stile Jolly): riproduci la presa di default scegliendo il valore = somma del default
+      const def=window.__comboFiguraDefault(attore, cardObj.val);
+      const v=def.reduce((s,x)=>s+x.val,0);
+      click([...box.querySelectorAll("button[data-v]")].find(b=>parseInt(b.dataset.v)===v));
+      const combos=window.__combosPresa(v);
+      const wantIds=def.map(x=>x.id).sort((a,b)=>a-b).join(",");
+      const idx=combos.findIndex(cmb=>cmb.map(x=>x.id).sort((a,b)=>a-b).join(",")===wantIds);
+      const fc=[...box.querySelectorAll("#figCombos button[data-c]")];
+      click(fc[idx>=0?idx:0]); logUltima(); return "fig-presa";
+    }
     const jv=[...box.querySelectorAll("button[data-v]")].filter(b=>!b.disabled);
     if(jv.length){
       const scelto=jv[jv.length-1];   // il valore più alto disponibile: più drammatico
@@ -140,9 +156,6 @@ function passo(){
       click(jc[0]); jollyGiocati++; logUltima();
       return "jolly";
     }
-    const figSac=box.querySelector("#figSacrificio"); if(figSac){ click(figSac); logUltima(); return "fig-sacrificio" }
-    const figMet=box.querySelector("#figMetti"); if(figMet){ click(figMet); logUltima(); return "fig-piatto" }
-    const figCat=box.querySelector("#figCattura"); if(figCat){ click(figCat); logUltima(); return "fig-presa" }
     const opz=[...box.querySelectorAll(".opzioni button")];
     if(!opz.length) throw new Error("nessuna opzione");
     click(opz[opz.length-1].dataset.piatto?opz[Math.floor(rnd()*opz.length)]:opz[0]);

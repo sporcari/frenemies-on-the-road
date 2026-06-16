@@ -111,6 +111,8 @@ Punti dove il regolamento tace e il codice ha adottato una scelta. Funzionano, m
 
 - **Schede PNG con i colori del lato** (giugno 2026): nelle Schede → PNG, i pannelli dei PNG passano dai vecchi verde/rosso (`.png-prot`/`.png-opp`) ai colori del lato coerenti col resto: viola per i PNG dei Protagonisti (♥♠), acciaio per quelli dell'Opposizione (♦♣), sfondo `.22` e cornice piena `var(--viola)`/`var(--acciaio)`. Solo CSS. Requisito di Saverio.
 
+- **Figure giocate con l'interfaccia del Jolly** (giugno 2026): `opzioniFigura` non mostra più la selezione libera delle carte del piatto (tocca-le-carte, somma ≤ valore). Ora, come il Jolly, la figura **dichiara un valore** tramite pulsanti (Fante 1–8, Regina 1–9, Re 1–10; i valori senza prese sono disabilitati) e poi sceglie tra le **prese esatte** di quella somma (`combosPresa(v)`, contenitore `#figCombos`). È un cambio di **sola interfaccia**: l'unione delle prese esatte per ogni v da 1 a max coincide con "tutti i sottoinsiemi di somma ≤ max", quindi l'insieme delle prese possibili e gli esiti non cambiano, e la regola KB §16 (cattura flessibile, somma ≤ valore) resta valida (nessuna modifica a KB, REGOLE, REGOLE_IA). Restano invariati i rami sacrificio (piatto vuoto) e "metti nel piatto" (nessuna carta alla portata). L'IA continua a usare `comboFiguraDefault` direttamente, fuori dalla UI. Driver di collaudo aggiornati: `test_partita.js` segue i `data-v`/`data-c` anche per le figure; `partita_esempio.js` riproduce la presa di default (espone `__comboFiguraDefault`/`__combosPresa`, sceglie il valore = somma del default e il combo corrispondente) così il **transcript seed 13 resta invariato**. Requisito di Saverio.
+
 ## 5. Roadmap e stato
 
 | Cosa | Stato |

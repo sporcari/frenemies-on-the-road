@@ -1672,50 +1672,41 @@ function mostraOpzioni(c, daAsta){
 
 function opzioniFigura(c, daAsta){
   const box=document.getElementById("pannelloAzione");
-  const val=c.val;
+  const max=c.val;          // valore massimo della figura: Fante 8, Regina 9, Re 10
+  const nome=FIGURE[c.fig].nome;
+  const effBanner=`<div class="banner" style="margin-top:10px">${nome} — ${FIGURE[c.fig].eff}</div>`;
   const pot=()=>G.piatto.filter(x=>!x.jolly);
   const p0=pot();
   if(p0.length===0){
-    box.innerHTML=`<div class="banner" style="margin-top:0">Piatto vuoto. ${FIGURE[c.fig].nome} si sacrifica: un gesto eroico che vale una <b>scopa</b>.</div>
-      <div class="opzioni"><button id="figSacrificio">Sacrificio — SCOPA con ${FIGURE[c.fig].nome}</button></div>
-      <div class="banner" style="margin-top:10px">${FIGURE[c.fig].nome} — ${FIGURE[c.fig].eff}</div>`;
+    box.innerHTML=`<div class="banner" style="margin-top:0">Piatto vuoto. ${nome} si sacrifica: un gesto eroico che vale una <b>scopa</b>.</div>
+      <div class="opzioni"><button id="figSacrificio">Sacrificio — SCOPA con ${nome}</button></div>${effBanner}`;
     document.getElementById("figSacrificio").addEventListener("click",()=>giocaCarta(c,"sacrificio",daAsta));
     return;
   }
-  if(Math.min(...p0.map(x=>x.val))>val){
-    box.innerHTML=`<div class="banner" style="margin-top:0">Nessuna carta sul tavolo è alla portata di ${FIGURE[c.fig].nome} (valore ${val}): entra nel piatto.</div>
-      <div class="opzioni"><button class="neutra" id="figMetti">Metti nel piatto</button></div>
-      <div class="banner" style="margin-top:10px">${FIGURE[c.fig].nome} — ${FIGURE[c.fig].eff}</div>`;
+  if(Math.min(...p0.map(x=>x.val))>max){
+    box.innerHTML=`<div class="banner" style="margin-top:0">Nessuna carta sul tavolo è alla portata di ${nome} (valore fino a ${max}): entra nel piatto.</div>
+      <div class="opzioni"><button class="neutra" id="figMetti">Metti nel piatto</button></div>${effBanner}`;
     document.getElementById("figMetti").addEventListener("click",()=>giocaCarta(c,null,daAsta));
     return;
   }
-  const sel=new Set(comboFiguraDefault(G.attore,val).map(x=>x.id));
-  function disegna(){
-    const cur=pot();
-    const somma=cur.filter(x=>sel.has(x.id)).reduce((s,x)=>s+x.val,0);
-    const tutto=cur.length>0 && cur.every(x=>sel.has(x.id));
-    const valido=somma>0 && somma<=val;
-    box.innerHTML=`
-      <div class="banner" style="margin-top:0">${FIGURE[c.fig].nome} cattura un gruppo di somma ≤ ${val}. Tocca le carte del piatto. Selezionato <b>${somma}</b> / ${val}${tutto?" — SCOPA":""}.</div>
-      <div id="figPiatto" class="mazzo-carte">${cur.map(x=>cartaHTML(x,"mini"+(sel.has(x.id)?" sel":""))).join("")}</div>
-      <div class="opzioni" style="margin-top:10px">
-        <button id="figCattura" ${valido?"":"disabled"}>${tutto?"Cattura tutto — SCOPA":"Cattura le selezionate"}</button>
-      </div>
-      <div class="banner" style="margin-top:10px">${FIGURE[c.fig].nome} — ${FIGURE[c.fig].eff}</div>`;
-    box.querySelectorAll("#figPiatto .carta").forEach(el=>el.addEventListener("click",()=>{
-      const id=parseInt(el.dataset.id);
-      if(sel.has(id)) sel.delete(id); else sel.add(id);
-      disegna();
-    }));
-    const bc=document.getElementById("figCattura");
-    if(bc) bc.addEventListener("click",()=>{
-      const combo=pot().filter(x=>sel.has(x.id));
-      const s=combo.reduce((t,x)=>t+x.val,0);
-      if(combo.length===0 || s>val) return;
-      giocaCarta(c, combo, daAsta);
-    });
+  // come il Jolly: la figura sceglie un valore (1..max), poi mostra le prese esatte di quella somma
+  let html=`<div class="banner" style="margin-top:0">${nome} sceglie un valore (1–${max}) e cattura una presa di quella somma. Tocca il valore.</div><div class="opzioni">`;
+  for(let v=1;v<=max;v++){
+    const ha=combosPresa(v).length>0;
+    html+=`<button data-v="${v}" ${ha?"":"disabled style='opacity:.3'"}>${v}</button>`;
   }
-  disegna();
+  html+=`</div><div id="figCombos"></div>${effBanner}`;
+  box.innerHTML=html;
+  box.querySelectorAll("button[data-v]").forEach(b=>b.addEventListener("click",()=>{
+    const v=parseInt(b.dataset.v);
+    const combos=combosPresa(v);
+    const fc=document.getElementById("figCombos");
+    fc.innerHTML=`<div class="opzioni" style="margin-top:8px">`+combos.map((cmb,i)=>
+      `<button data-c="${i}">Come ${v}: prendi ${cmb.map(x=>(x.fig?FIGURE[x.fig].nome.charAt(0):x.val)+SIMBOLI[x.seme]).join(" + ")}${cmb.length===G.piatto.length?" — SCOPA!":""}</button>`).join("")+`</div>`;
+    fc.querySelectorAll("button[data-c]").forEach(bb=>bb.addEventListener("click",()=>{
+      giocaCarta(c, combos[parseInt(bb.dataset.c)], daAsta);
+    }));
+  }));
 }
 
 function rimuoviDaMano(l, c, daAsta){
