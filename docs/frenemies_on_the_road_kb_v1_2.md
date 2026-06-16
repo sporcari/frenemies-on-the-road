@@ -107,7 +107,7 @@ Ogni scena deve:
 
 - svolgersi in un luogo o contesto diverso
 - collocarsi in un momento successivo della storia
-- avere una **posta di scena** chiara: qualcosa che, se vinta, avvicina i protagonisti all'obiettivo finale; se persa, li allontana o peggiora la situazione.
+- avere una **posta di scena** chiara: una difficoltà concreta o un obiettivo intermedio che, se vinto, avvicina i protagonisti all'obiettivo finale e, se perso, li ostacola senza precludere l'obiettivo, che resta raggiungibile fino all'ultima scena (vedi §12.2).
 
 ## 7. Modalità di gioco
 
@@ -306,12 +306,22 @@ Chi vince l'asta sceglie il titolo della scena e definisce la posta della scena.
 
 ### 12.2 — Posta della scena
 
-La posta è una formulazione chiara di ciò che è in gioco nel round.
+La posta è una **difficoltà concreta da superare** o un **obiettivo intermedio** da ottenere in quella scena: procurarsi o ottenere qualcosa (un oggetto, un'informazione, un alleato), riuscire a entrare in un luogo, riuscire a uscire da un luogo. Non è un esito vago ("andare bene o andare male"): è una cosa precisa che si vince o si perde.
 
-- Se i protagonisti vincono la scena → si avvicinano all'obiettivo finale
-- Se la perdono → se ne allontanano o la situazione peggiora
+Va formulata esplicitando **entrambi i rami**, cosa accade se la vincono i Protagonisti e cosa accade se la vince l'Opposizione:
 
-> **Esempio di posta:** "Tirare fuori Skunk dalla centrale prima del trasferimento in prigione, senza che il distretto capisca chi lo sta aiutando."
+- **Se la vincono i Protagonisti** → ottengono l'obiettivo intermedio e si avvicinano all'obiettivo finale
+- **Se la vince l'Opposizione** → la posta fallisce, i protagonisti vengono ostacolati e avranno più difficoltà a raggiungere l'obiettivo finale
+
+Perdere una posta **non pregiudica mai del tutto** l'obiettivo finale, che resta **sempre raggiungibile fino all'ultima scena**: una posta persa alza il prezzo e complica la situazione, non chiude la partita in anticipo (vedi §9.3).
+
+> **Esempio di posta:** "Tirare fuori Skunk dalla centrale prima del trasferimento in prigione, senza che il distretto capisca chi lo sta aiutando. Se la vincono i Protagonisti, escono con Skunk e una pista verso Vargas; se vince l'Opposizione, restano a mani vuote e con mezzo distretto sulle loro tracce."
+
+### 12.3 — Continuità: ogni scena parte dall'esito della posta precedente
+
+L'apertura di una scena si aggancia sempre a **com'è finita la posta della scena precedente**: lo stato in cui si trovano i protagonisti deve essere conseguenza diretta di quell'esito. Se la posta è stata persa, la nuova scena parte da una situazione ostacolata o peggiorata; se è stata vinta, da una situazione di vantaggio raggiunto.
+
+> **Esempio:** se nella Scena 1 i Protagonisti **non** riescono a uscire dalla cella, la Scena 2 non può aprirsi con loro che corrono già per strada: sono ancora dentro, o appena trascinati altrove, o in una situazione peggiore. La fuga su strada presupporrebbe una posta che invece è stata persa.
 
 ## 13. Struttura del round
 
@@ -342,6 +352,8 @@ Ogni lato **dispone una propria risorsa** in scena. Non risolve nulla di ciò ch
 
 - **Protagonisti:** un elemento, un fatto o un'azione del personaggio che non supera un ostacolo adesso, ma che potrà tornare utile e preparare un vantaggio (un conoscente che compare, un'opportunità notata nell'ambiente, una relazione che nasce, un oggetto o una prova prodotta, un travestimento).
 - **Opposizione:** un nuovo elemento, un'azione degli antagonisti o un fatto che causerà problemi o nuovi ostacoli (♦ Quadri = nemici con intenzione; ♣ Fiori = caos e sfortuna).
+
+**Introdurre non annulla.** La narrazione con cui introduci una carta **non può** annullare, distruggere o vanificare un elemento già messo in gioco dall'altro lato: aggiunge il tuo, non cancella il suo. Finché una carta avversaria è nel piatto, l'elemento che rappresenta resta in piedi nella fiction. L'unico modo per neutralizzare un elemento dell'avversario (toglierlo, mostrarne l'inutilità, ribaltarlo) è una **presa** o una **scopa** (§15.2, §15.3): il fatto narrativo segue sempre il fatto meccanico.
 
 > **Esempio (Opposizione):** Giocare un 7 di Quadri = una nuova minaccia entra in scena (una pattuglia sul libro paga di Vargas blocca lo svincolo della statale).
 >
@@ -961,6 +973,13 @@ Resta la lettura del diario (§27): **su, su, giù, giù, giù**. Salita nella c
 ---
 
 # REGISTRO MODIFICHE
+
+## v1.7 (giugno 2026)
+
+1. **§12.2** — **Come scrivere la posta.** La posta è una difficoltà concreta da superare o un obiettivo intermedio da ottenere (procurarsi qualcosa, entrare in un luogo, uscirne) e va formulata esplicitando **entrambi i rami**: cosa accade se la vincono i Protagonisti e cosa se la vince l'Opposizione. Perdere una posta **non pregiudica mai del tutto** l'obiettivo finale, che resta raggiungibile fino all'ultima scena.
+2. **§12.3** — **Continuità tra le scene.** Ogni scena si apre dall'esito della posta precedente: lo stato dei protagonisti è conseguenza diretta di com'è finita la scena prima (se non sono usciti dalla cella, la scena dopo non può iniziare con loro in fuga per strada).
+3. **§15.1** — **Introdurre non annulla.** Introdurre una carta aggiunge un proprio elemento e non può cancellare con la narrazione un elemento avversario già in gioco; un elemento dell'altro lato si neutralizza solo con una presa o una scopa.
+4. **§6** — Aggiornata la definizione di posta di scena con rimando a §12.2. Allineati `REGOLE` e `REGOLE_IA` in `index.html`.
 
 ## v1.6 (giugno 2026)
 
