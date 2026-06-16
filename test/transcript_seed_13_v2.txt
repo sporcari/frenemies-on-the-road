@@ -3,7 +3,7 @@
    Asta: Protagonisti 6♥ contro Opposizione 4♣ → iniziativa a PROTAGONISTI.
 
 == SCENA 1 — La cella ==
-   Posta: Tirare fuori Skunk prima del trasferimento: se va male, escono braccati e con mezzo distretto alle calcagna
+   Posta: Tirare fuori Skunk prima del trasferimento. Se va bene: escono con Skunk e una pista verso Vargas. Se va male: escono braccati e con mezzo distretto alle calcagna
    PROTAGONISTI — mano: 5♠ 3♠ 8♥ | piatto: (vuoto)
    → Paola — 8 di Cuori: giocata nel piatto — una nuova risorsa entra in scena.
    OPPOSIZIONE — mano: 7♦ 5♣ 10♦ 4♣ | piatto: 8♥
@@ -26,7 +26,7 @@
    Asta: Protagonisti 3♥ contro Opposizione 5♦ → iniziativa a OPPOSIZIONE.
 
 == SCENA 2 — La statale ==
-   Posta: Sparire verso ovest: se va male, i sicari agganciano la loro traccia
+   Posta: Sparire verso ovest. Se va bene: seminano gli inseguitori e guadagnano strada. Se va male: i sicari agganciano la loro traccia
    Nel piatto dalla scena precedente: 8♥ 4♣ 6♥
    OPPOSIZIONE — mano: 10♣ 9♣ 8♦ | piatto: 8♥ 4♣ 6♥
    → Omar — 8 di Quadri: presa di 1 carta — un successo, magari con un costo.
@@ -55,7 +55,7 @@
    Asta: Protagonisti 10♠ contro Opposizione 3♦ → iniziativa a PROTAGONISTI.
 
 == SCENA 3 — Il deserto ==
-   Posta: Attraversare il deserto interi: se va male, quello che non si sono detti esplode
+   Posta: Attraversare il deserto interi. Se va bene: arrivano dall'altra parte più uniti. Se va male: quello che non si sono detti esplode
    Nel piatto dalla scena precedente: 3♥ 10♣ 5♦
    PROTAGONISTI — mano: 1♠ 10♥ 9♠ | piatto: 3♥ 10♣ 5♦
    → Paola — 10 di Cuori: presa di 1 carta — un successo, magari con un costo.
@@ -82,7 +82,7 @@
    Asta: Protagonisti 6♠ contro Opposizione 6♦ → iniziativa a OPPOSIZIONE.
 
 == SCENA 4 — L'ultima notte ==
-   Posta: Arrivare in vista della pista: se va male, qualcuno li sta già aspettando
+   Posta: Arrivare in vista della pista. Se va bene: prendono posizione col favore del buio. Se va male: qualcuno li sta già aspettando
    Nel piatto dalla scena precedente: 3♦ 9♠ 4♦ 10♠ 1♣
    OPPOSIZIONE — mano: F♦ 8♣ 9♦ | piatto: 3♦ 9♠ 4♦ 10♠ 1♣
    → Omar — Fante di Quadri: presa di 1 carta — un successo, magari con un costo.
@@ -110,7 +110,7 @@
    Asta: Protagonisti 1♥ contro Opposizione 2♣ → iniziativa a OPPOSIZIONE.
 
 == SCENA 5 — La pista ==
-   Posta: Il meeting: se va male, il jet riparte con Vargas a bordo
+   Posta: Il meeting. Se va bene: fermano Vargas prima del decollo. Se va male: il jet riparte con Vargas a bordo
    Nel piatto dalla scena precedente: 4♦ 10♠ 7♠ 8♠
    OPPOSIZIONE — mano: D♦ 2♦ 3♣ | piatto: 4♦ 10♠ 7♠ 8♠
    → Omar — 2 di Quadri: giocata nel piatto — una nuova risorsa entra in scena.

@@ -890,7 +890,7 @@ Una partita vera a 2 giocatori, giocata dall'inizio alla fine con lo scenario de
 
 ### Scena 1 — La cella (Innesco)
 
-*Posta: tirare fuori Skunk prima del trasferimento; se va male, escono braccati e con mezzo distretto alle calcagna.*
+*Posta: tirare fuori Skunk prima del trasferimento. Se va bene: escono con Skunk e una pista verso Vargas. Se va male: escono braccati e con mezzo distretto alle calcagna.*
 
 All'asta Paola gioca coperto un 6♥, Omar un 4♣: iniziativa ai Protagonisti.
 
@@ -904,7 +904,7 @@ Fine del round: nel piatto restano 8♥, 4♣ e 6♥. **Protagonisti 14, Opposiz
 
 ### Scena 2 — La statale (Adattamento)
 
-*Posta: sparire verso ovest; se va male, i sicari agganciano la loro traccia.*
+*Posta: sparire verso ovest. Se va bene: seminano gli inseguitori e guadagnano strada. Se va male: i sicari agganciano la loro traccia.*
 
 Asta: 3♥ contro 5♦, iniziativa all'Opposizione. Sul tavolo gli 8♥, 4♣, 6♥ della cella. Omar apre prendendo l'8♥ con l'**8♦** e subito **spunta la risposta ♦ del pitch**, la rete di poliziotti corrotti e i due sicari pazienti: due uomini in giacca scura scendono dal SUV davanti al diner.
 
@@ -918,7 +918,7 @@ Al mercato Omar compra il **Fante di Quadri** (un informatore nel distretto): **
 
 ### Scena 3 — Il deserto (Frattura)
 
-*Posta: attraversare il deserto interi; se va male, quello che non si sono detti esplode.*
+*Posta: attraversare il deserto interi. Se va bene: arrivano dall'altra parte più uniti. Se va male: quello che non si sono detti esplode.*
 
 Asta: 10♠ contro 3♦, iniziativa ai Protagonisti. Sul tavolo i 3♥, 10♣, 5♦ rimasti. Paola apre prendendo il 10♣ col **10♥** e **spunta la risposta ♥** del pitch, Vargas ha fatto uccidere suo fratello Jorge: nel silenzio del deserto la verità che Skunk si porta dentro affiora, e la presa diventa **scopa** che svuota il piatto.
 
@@ -932,7 +932,7 @@ Al mercato Paola compra il **Fante di Cuori** (**costo 3**): il contatto di Skun
 
 ### Scena 4 — L'ultima notte (Crisi)
 
-*Posta: arrivare in vista della pista prima dell'alba; se va male, qualcuno li sta già aspettando.*
+*Posta: arrivare in vista della pista prima dell'alba. Se va bene: prendono posizione col favore del buio. Se va male: qualcuno li sta già aspettando.*
 
 Asta: 6♠ contro 6♦, iniziativa all'Opposizione. Sul tavolo i 3♦, 9♠, 4♦, 10♠, 1♣ rimasti dal deserto.
 
@@ -944,7 +944,7 @@ Al mercato Omar compra la **Regina di Quadri** (**costo 5**): la manipolatrice, 
 
 ### Scena 5 — La pista (Risoluzione)
 
-*Posta: il meeting; se va male, il jet riparte con Vargas a bordo.*
+*Posta: il meeting. Se va bene: fermano Vargas prima del decollo. Se va male: il jet riparte con Vargas a bordo.*
 
 Asta: 1♥ contro 2♣, iniziativa all'Opposizione. Sul tavolo già 4♦, 10♠, 7♠, 8♠. Omar apre col **2♦** (un ultimo posto di blocco). Paola risponde con la mossa sleale: gioca il **Jolly dichiarato come 10** e si porta via il 10♠.
 

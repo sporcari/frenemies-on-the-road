@@ -39,11 +39,11 @@ const PITCH=[
 ];
 const TITOLI=["La cella","La statale","Il deserto","L'ultima notte","La pista"];
 const POSTE=[
- "Tirare fuori Skunk prima del trasferimento: se va male, escono braccati e con mezzo distretto alle calcagna",
- "Sparire verso ovest: se va male, i sicari agganciano la loro traccia",
- "Attraversare il deserto interi: se va male, quello che non si sono detti esplode",
- "Arrivare in vista della pista: se va male, qualcuno li sta già aspettando",
- "Il meeting: se va male, il jet riparte con Vargas a bordo"
+ "Tirare fuori Skunk prima del trasferimento. Se va bene: escono con Skunk e una pista verso Vargas. Se va male: escono braccati e con mezzo distretto alle calcagna",
+ "Sparire verso ovest. Se va bene: seminano gli inseguitori e guadagnano strada. Se va male: i sicari agganciano la loro traccia",
+ "Attraversare il deserto interi. Se va bene: arrivano dall'altra parte più uniti. Se va male: quello che non si sono detti esplode",
+ "Arrivare in vista della pista. Se va bene: prendono posizione col favore del buio. Se va male: qualcuno li sta già aspettando",
+ "Il meeting. Se va bene: fermano Vargas prima del decollo. Se va male: il jet riparte con Vargas a bordo"
 ];
 
 /* ---------- transcript ---------- */
