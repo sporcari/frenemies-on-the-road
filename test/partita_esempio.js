@@ -140,6 +140,9 @@ function passo(){
       click(jc[0]); jollyGiocati++; logUltima();
       return "jolly";
     }
+    const figSac=box.querySelector("#figSacrificio"); if(figSac){ click(figSac); logUltima(); return "fig-sacrificio" }
+    const figMet=box.querySelector("#figMetti"); if(figMet){ click(figMet); logUltima(); return "fig-piatto" }
+    const figCat=box.querySelector("#figCattura"); if(figCat){ click(figCat); logUltima(); return "fig-presa" }
     const opz=[...box.querySelectorAll(".opzioni button")];
     if(!opz.length) throw new Error("nessuna opzione");
     click(opz[opz.length-1].dataset.piatto?opz[Math.floor(rnd()*opz.length)]:opz[0]);
@@ -182,7 +185,7 @@ function passo(){
     if(acquisti<3){
       const b=[...document.querySelectorAll("button[data-f]")].find(x=>!x.disabled);
       if(b){
-        const NOMI_FIG={F:"il FANTE",D:"la DAMA",R:"il RE"};
+        const NOMI_FIG={F:"il FANTE",D:"la REGINA",R:"il RE"};
         log(`   MERCATO: ${nomeL(b.dataset.l)} compra ${NOMI_FIG[b.dataset.f]||b.dataset.f} di ${b.dataset.s} ${SYM[b.dataset.s]}.`);
         click(b); acquisti++; return "compra";   // apre il modale nome/desc, gestito al passo dopo
       }
@@ -228,11 +231,10 @@ try{
       const outcome=esito?esito.textContent.trim():"?";
       log(``); log(`-- CONTEGGIO DEFINITIVO E FINALE --`);
       log(`   Piatto finale: ${piatto()}`);
-      const sv=c=>c.esposta?0:(c.tappata?1:2);
-      const pv=l=>g.lati[l].scope.reduce((a,c)=>a+sv(c),0)+g.lati[l].prese.length;
+      const pv=l=>{const L=g.lati[l];return (L.bonus||0)+L.prese.reduce((a,c)=>a+(c.fig?2:1),0)+L.scope.filter(c=>!c.esposta).length*4;};
       const ps=l=>g.piatto.filter(c=>g.lati[l].semi.includes(c.seme)).reduce((a,c)=>a+(c.jolly?0:(c.fig?{F:8,D:9,R:10}[c.fig]:c.val)),0);
       log(`   Valori nel piatto: Protagonisti (♥+♠) ${ps("P")} contro Opposizione (♦+♣) ${ps("O")}.`);
-      log(`   Punti complessivi (scope + prese): Protagonisti ${pv("P")} (${g.lati.P.prese.length} prese), Opposizione ${pv("O")} (${g.lati.O.prese.length} prese).`);
+      log(`   Punti complessivi (presa 1, figura 2, scopa 4): Protagonisti ${pv("P")} (${g.lati.P.prese.length} prese, ${g.lati.P.scope.length} scope), Opposizione ${pv("O")} (${g.lati.O.prese.length} prese, ${g.lati.O.scope.length} scope).`);
       log(`   Esito: ${outcome}`);
       log(`   Scope — Protagonisti: ${g.lati.P.scope.map(cstr).join(" ")||"nessuna"} · Opposizione: ${g.lati.O.scope.map(cstr).join(" ")||"nessuna"}`);
       log(`   Diario del rapporto per scena: ${g.scene.map(s=>s?s.rapporto:"-").join(", ")}`);

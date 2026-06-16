@@ -226,7 +226,7 @@ La risposta si scrive ma, a differenza delle altre, non è una risorsa spuntabil
 
 Le spinte sono **otto, due per seme** (♠ e ♥ dai Protagonisti, ♦ e ♣ dall'Opposizione). I due "cosa si detestano" (§9.5) **non** sono spinte: sono tratti narrativi dei protagonisti, senza effetto.
 
-Dopo una presa normale, il giocatore può spuntare la risposta corrispondente al seme della carta con cui ha preso: la presa diventa una scopa a tutti gli effetti. La carta di presa va nel mazzetto delle scope e le carte rimaste nel piatto finiscono tra le prese di chi ha spuntato, esattamente come per una scopa normale.
+Dopo una presa normale, il giocatore può spuntare la risposta corrispondente al seme della carta con cui ha preso: la presa diventa una scopa a tutti gli effetti. La carta di presa va nel mazzetto delle scope e le carte rimaste nel piatto finiscono negli scarti comuni, esattamente come per una scopa normale.
 
 Tre condizioni. La risposta spuntata deve entrare esplicitamente nella narrazione, come scena presente, rivelazione o flashback. Ogni risposta si usa una sola volta, e vale comunque il limite di **una spinta per seme per lato** in tutta la partita. La spinta **non si può usare nell'ultima scena**: nella Risoluzione il piatto si svuota solo con una scopa vera.
 
@@ -332,6 +332,8 @@ Nel proprio turno un giocatore può:
 - **Fare una presa normale** → rimuove carte dal piatto secondo le regole della Scopa
 - **Fare una scopa** → se la presa svuota completamente il piatto
 
+In alternativa, chi non ha l'iniziativa e ha una sola carta in mano può **arrendersi alla scena** invece di giocarla (vedi §18.1).
+
 ## 15. Significato meccanico e narrativo di giocata, presa e scopa
 
 ### 15.1 — Giocare una carta nel piatto = Introdurre
@@ -362,6 +364,8 @@ Quando la presa lascia il piatto vuoto: togli all'avversario **ogni** risorsa in
 
 > **Esempio:** Scopa con un 6 di Picche → Frank disarma i due sicari nel parcheggio nel giro di dieci secondi. La strada è libera, la situazione è ribaltata.
 
+> **Sacrificio di una figura (v1.6):** una figura giocata quando il piatto è già vuoto non può catturare nulla, così si sacrifica con un gesto eroico e vale comunque una **scopa** (il suo effetto speciale scatta lo stesso). Narrativamente è l'alleato che si immola per spalancare la strada.
+
 ## 16. Regole di presa
 
 Le prese seguono la logica della Scopa tradizionale:
@@ -374,17 +378,19 @@ Le prese seguono la logica della Scopa tradizionale:
 
 **Cattura di una carta del proprio lato.** Se sei costretto a prendere una carta del tuo stesso lato (stesso schieramento), raccontalo come un'azione maldestra in cui le due anime del lato si sono ostacolate o annullate a vicenda: **Cuori e Picche** per i Protagonisti, **Fiori e Quadri** per l'Opposizione.
 
+**Cattura flessibile delle figure (v1.6).** Una figura (Fante, Regina, Re) cattura in modo più ampio di una carta numerica: prende dal piatto un gruppo di carte la cui somma è **minore o uguale** al suo valore (Fante 8, Regina 9, Re 10), comprese eventuali carte dei propri semi. Anche per le figure la cattura è obbligatoria: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 2 punti (vedi §17). Se invece nessuna carta del piatto è alla sua portata, la figura entra nel piatto come una giocata normale; se il piatto è vuoto si applica il sacrificio (§15.3). L'effetto speciale della figura (§21) scatta in ogni caso.
+
 ## 17. Gestione di prese e scope
 
-### 17.1 — Prese *(v1.3)*
+### 17.1 — Prese *(v1.6)*
 
-La carta con cui fai la presa si **tiene da parte in verticale**: vale **1 punto**. Le carte catturate dal piatto vanno **subito nella pila degli scarti comune** e non danno punti.
+La carta con cui fai la presa si **tiene da parte in verticale**: una presa con una carta numerica vale **1 punto**, una presa con una **figura** vale **2 punti**. Le carte catturate dal piatto vanno **subito nella pila degli scarti comune** e non danno punti.
 
-### 17.2 — Scope *(v1.3)*
+### 17.2 — Scope *(v1.6)*
 
-La carta con cui fai la scopa si **tiene da parte in orizzontale**: vale **3 punti**. Le carte catturate vanno anch'esse negli scarti comuni.
+La carta con cui fai la scopa si **tiene da parte in orizzontale**: vale **4 punti**. Le carte catturate vanno anch'esse negli scarti comuni.
 
-- Ogni presa vale **1 punto**, ogni scopa **3 punti**, sia in fase di acquisto sia nel conteggio finale (i punti non spesi mantengono lo stesso valore).
+- Ogni presa numerica vale **1 punto**, ogni presa con figura **2 punti**, ogni scopa **4 punti**, sia in fase di acquisto sia nel conteggio finale (i punti non spesi mantengono lo stesso valore).
 
 ## 18. Fine del round e vittoria della scena
 
@@ -397,13 +403,26 @@ Si sommano i valori delle carte presenti nel piatto:
 
 Chi ha il totale più alto vince la posta della scena.
 
-> **Scena chiusa da una scopa (v1.3):** se la scena finisce con il **piatto vuoto** perché l'ultima giocata è stata una **scopa**, la posta è vinta da **chi ha fatto la scopa**, anche se i totali del piatto sarebbero 0-0. (Vale anche per la scopa fatta col Jolly: la posta va a chi ha ripulito il piatto, mentre i 3 punti vanno all'avversario.)
+> **Scena chiusa da una scopa (v1.3):** se la scena finisce con il **piatto vuoto** perché l'ultima giocata è stata una **scopa**, la posta è vinta da **chi ha fatto la scopa**, anche se i totali del piatto sarebbero 0-0. (Vale anche per la scopa fatta col Jolly: la posta va a chi ha ripulito il piatto, mentre i 4 punti vanno all'avversario.)
 
 **Se vincono i Protagonisti:** la posta della scena è raggiunta; recuperano 1 carta del **proprio seme** (♥/♠) dagli **scarti comuni**, messa in fondo al mazzo.
 
 **Se vince l'Opposizione:** la posta della scena fallisce, la situazione peggiora per i protagonisti. Nessun recupero.
 
 > **Il piatto resta (v1.1):** a fine scena le carte rimaste nel piatto **non si toccano**: restano sul tavolo per la scena successiva. Chi apre la nuova scena può quindi già fare presa o scopa con la prima giocata.
+
+### 18.1 Arrendersi alla scena *(v1.6)*
+
+Il giocatore che non ha vinto l'iniziativa può rinunciare alla scena invece di giocare la sua ultima carta. La resa è possibile solo nelle scene 1-4, solo a chi non ha l'iniziativa e solo quando gli resta una sola carta in mano: nella pratica è la sua ultima giocata del round (in due giocatori, l'ottava e ultima carta, che cala chi ha perso l'asta). Serve quando quella carta non può cambiare l'esito: invece di sprecarla, la si toglie dal round e si cede la posta all'avversario, raccontando come ci si ritira per riorganizzarsi.
+
+Ci sono due modi di arrendersi, ciascuno usabile una sola volta per lato in tutta la partita:
+
+- **Ritirata strategica:** la carta viene rimescolata nel proprio mazzo. Non vale punti, ma diventa una carta in più per la mano estesa e per i colpi di scena della quinta scena.
+- **Resa onorevole:** la carta viene tenuta tra le proprie prese come un normale marcatore, e vale il suo punteggio (1 punto, 2 se è una figura).
+
+In entrambi i casi la posta della scena va all'avversario senza conteggio. Se a cedere è l'Opposizione, i Protagonisti raggiungono la posta e recuperano una carta del proprio seme dagli scarti comuni, come per una scena vinta normalmente. La carta della resa non entra nel piatto: il piatto resta com'è dopo le giocate dell'avversario e passa alla scena successiva come sempre.
+
+Se invece non ci si arrende, si gioca la carta e la scena si conta normalmente (i totali del piatto, oppure la scopa che svuota il piatto): la resa non è un modo per cambiare il conteggio, ma per non sprecare una carta che non lo cambierebbe.
 
 ---
 
@@ -422,10 +441,11 @@ Ordine corretto (importante per non annullare gli effetti del Fante):
 
 Risorse disponibili:
 
-- Ogni **presa** → **1 punto**
-- Ogni **scopa** → **3 punti**
+- Ogni **presa** con una carta numerica → **1 punto**
+- Ogni **presa** con una **figura** → **2 punti**
+- Ogni **scopa** → **4 punti**
 
-Il pagamento spende prima il **bonus**, poi le **prese**, poi le **scope**; i marcatori spesi vanno negli **scarti comuni**. Le figure acquistate entrano nel mazzo — non in mano, non negli scarti.
+Il pagamento spende prima il **bonus**, poi le **prese**, poi le **scope**; i marcatori spesi vanno negli **scarti comuni**. Le figure acquistate entrano nel mazzo, non in mano e non negli scarti.
 
 > **Una figura per tipo (v1.3):** ogni giocatore può comprare al massimo **un Fante, una Regina, un Re** in tutta la partita (a prescindere dal seme).
 
@@ -435,9 +455,11 @@ Le figure hanno una doppia natura: meccanica (carte forti con effetti speciali) 
 
 | Figura | Costo acquisto | Valore in gioco |
 |---|---|---|
-| Fante | 4 punti | 8 |
-| Regina | 7 punti | 9 |
-| Re | 10 punti | 10 |
+| Fante | 3 punti | 8 |
+| Regina | 5 punti | 9 |
+| Re | 8 punti | 10 |
+
+> **Cattura flessibile (v1.6):** in gioco una figura cattura un gruppo di carte la cui somma è minore o uguale al suo valore (vedi §16), non solo l'esatto pari, e la presa con una figura vale 2 punti (§17). I costi 3/5/8 fanno costare uguale le due strade verso un Re: comprare un Re, oppure un Fante più una Regina.
 
 ### Fante — L'informatore
 
@@ -451,7 +473,7 @@ Le figure hanno una doppia natura: meccanica (carte forti con effetti speciali) 
 
 ### Regina — La manipolatrice
 
-**Effetto meccanico:** l'avversario scarta una carta a caso dalla mano e la sostituisce con la prima carta del suo mazzo.
+**Effetto meccanico:** l'avversario scarta una carta a caso dalla mano e la sostituisce con la prima carta del suo mazzo. Nell'ultima scena, quando il mazzo è esaurito ma restano carte in **riserva**, la carta di rimpiazzo si pesca dalla riserva (la prima); se non c'è né mazzo né riserva, l'avversario resta semplicemente con una carta in meno.
 
 **Funzione:** disruption, riduce il controllo della mano avversaria.
 
@@ -490,7 +512,7 @@ C'è **un solo Jolly**, nel **mazzo dei Protagonisti**, aggiunto al termine dell
 Il Jolly dà a chi lo gioca il **vantaggio sul tavolo** (ripulisce o alleggerisce il piatto), ma il suo **marcatore va nel campo dell'avversario**:
 
 - presa col Jolly → **1 punto all'avversario**
-- scopa col Jolly → **3 punti all'avversario**
+- scopa col Jolly → **4 punti all'avversario**
 
 Chi gioca il Jolly conserva comunque il vantaggio di scena (se la scopa svuota il piatto a fine scena, vince la posta), ma regala i punti. Non c'è più né il *peccato latente* né il *counter* della v1.1–v1.2: il costo è immediato.
 
@@ -503,6 +525,16 @@ Si narra sempre un successo ottenuto **andando contro i principi e la lealtà**.
 ### 22.5 — Caso limite: Jolly su piatto vuoto *(v1.3)*
 
 Se un giocatore ha in mano solo il Jolly e il piatto è vuoto: il Jolly viene **scartato** senza effetto e il piatto resta vuoto.
+
+### 22.6 — Il peccato emerge: il marcatore del Jolly all'Opposizione *(v1.5)*
+
+Quando i Protagonisti giocano il Jolly (§22.3), il marcatore che ne nasce entra nel campo dell'Opposizione come una sua normale presa (1 punto) o scopa (4 punti): è una risorsa spendibile a tutti gli effetti. L'Opposizione può darle uno solo di tre destini: spenderla al mercato per concorrere all'acquisto di una figura, tenerla fino al conteggio finale dove vale i suoi punti, oppure usarla come effetto.
+
+L'effetto si attiva nel turno dell'Opposizione, come **azione aggiuntiva** alla giocata o alla presa normale (non la sostituisce): l'Opposizione consuma il marcatore e **toglie dal piatto la carta di valore più basso tra quelle dei Protagonisti** (Cuori o Picche), che finisce negli **scarti comuni**. Si usa una sola volta, da quando il Jolly è stato giocato e in un turno di qualunque scena, **compreso il round della quinta, ma non durante i colpi di scena**. Se nel piatto non c'è nessuna carta dei Protagonisti l'effetto non è attivabile, perché manca il bersaglio.
+
+Narrativamente è il momento in cui il compromesso torna a galla: uno dei due protagonisti scopre cosa ha fatto l'altro, e fra loro si apre un conflitto. Il vantaggio sleale preso in una scena si paga più avanti, sia sul tavolo (una carta dei Protagonisti in meno nel piatto può ribaltare la posta di quella scena) sia nel rapporto.
+
+> **Esempio:** a fine scena 4 i totali sono vicini. Nel suo turno l'Opposizione cala la sua carta e in più spende il marcatore del Jolly, togliendo dal piatto il 2♥ dei Protagonisti, il più basso. Narra che davanti a Skunk emerge una vecchia spiata di Frank: la posta della scena si ribalta e in macchina cala il gelo.
 
 ---
 
@@ -517,6 +549,8 @@ Se un giocatore ha **più di 4 carte** rimanenti nel mazzo (la mano finale si sc
 - Le prende tutte in mano
 - Sceglie 4 carte con cui giocherà la scena
 - Le altre vengono tenute da parte come **riserva**
+
+La riserva alimenta i colpi di scena (§24), ma è anche la fonte da cui si pesca quando un effetto lo richiede e il mazzo è ormai esaurito: in particolare la Regina avversaria (§21) rimpiazza dalla riserva la carta che costringe a scartare.
 
 ### 23.2 — Figure nel piatto
 
@@ -573,6 +607,8 @@ Il finale si determina incrociando chi ha vinto il piatto con chi ha vinto ai pu
 | Vinto | Persi | **Vittoria per il rotto della cuffia** — l'obiettivo è raggiunto, ma pagando un prezzo |
 | Perso | Persi | **Disfatta totale** — fallimento completo |
 | Perso | Vinti | **Sconfitta con aspetti positivi** — l'obiettivo fallisce, ma qualcosa è salvato o imparato |
+
+> **Parità ai punti:** se i punti complessivi finiscono pari, la parità va a chi ha vinto il piatto. Con il piatto vinto l'esito è quindi **Vittoria totale**, con il piatto perso è **Disfatta totale**. (Il piatto, a sua volta, se i valori sono pari si assegna prima per numero di scope e poi per numero di prese.)
 
 ## 27. Lettura del piatto a fine scena
 
@@ -836,9 +872,9 @@ Skunk è in cella. I poliziotti corrotti lo hanno arrestato con un pretesto per 
 
 ---
 
-## 34. Partita d'esempio: trentasei ore *(v1.4)*
+## 34. Partita d'esempio: trentasei ore *(v1.6)*
 
-Una partita vera a 2 giocatori, giocata dall'inizio alla fine con lo scenario demo (§33) e riportata integralmente: ogni carta, ogni presa e ogni conteggio sono reali e verificati dal motore di gioco (seme 13). Paola gioca i Protagonisti (Frank ♠ e Skunk ♥), Omar gioca l'Opposizione (i nemici ♦ e il caos ♣). Le meccaniche sono tra parentesi, i richiami alle regole nei riquadri.
+Una partita vera a 2 giocatori, giocata dall'inizio alla fine con lo scenario demo (§33) e riportata integralmente: ogni carta, ogni presa e ogni conteggio sono reali e verificati dal motore di gioco (seme 13). Paola gioca i Protagonisti (Frank ♠ e Skunk ♥), Omar gioca l'Opposizione (i nemici ♦ e il caos ♣). Le meccaniche sono tra parentesi, i richiami alle regole nei riquadri. Il punteggio è quello di v1.6: una presa numerica vale 1 punto, una presa con figura 2, una scopa 4.
 
 ### Scena 1 — La cella (Innesco)
 
@@ -848,23 +884,23 @@ All'asta Paola gioca coperto un 6♥, Omar un 4♣: iniziativa ai Protagonisti.
 
 > Il 6♥ di Paola resta da parte e sarà la sua **ultima giocata** del round; il 4♣ di Omar **torna nella sua mano** (§11).
 
-Il round: Paola apre con **8♥** (un messaggio dalla cella al secondino), Omar mette **7♦** (il trasferimento anticipato a stanotte), Paola cala **3♠** (Frank entra dal retro). Omar prende 7♦ + 3♠ col **10♦** (presa, §16): il sergente corrotto dà l'allarme. Paola gioca **5♠**, Omar **4♣** (l'allarme antincendio), Paola la carta d'asta **6♥** (la faccia di Skunk convince due detenuti). Omar chiude prendendo il 5♠ col **5♣**.
+Paola apre con **8♥** (un messaggio che esce dalla cella). Omar cala **7♦** (il trasferimento spostato a stanotte), Paola mette **3♠** (Frank entra dal retro). Omar prende 7♦ e 3♠ in un colpo col **10♦** (presa di gruppo, §16): il sergente corrotto fa scattare il primo allarme. Paola semina **5♠**, Omar **4♣** (l'allarme antincendio che svuota i corridoi), e Paola cala la carta d'asta **6♥**: la faccia di Skunk convince due detenuti a coprirli. Omar chiude prendendo il 5♠ col **5♣**.
 
-Fine del round: nel piatto restano 8♥, 4♣ e 6♥. **Protagonisti 14, Opposizione 4**: la scena è loro, Skunk è fuori. Seme dominante ♥ — ne sono usciti con i favori e la parlantina di Skunk, non con la forza — e il diario del rapporto segna una salita (§27).
+Fine del round: nel piatto restano 8♥, 4♣ e 6♥. **Protagonisti 14, Opposizione 4**: la scena è loro, Skunk è fuori. Seme dominante ♥, sono usciti con i favori e la parlantina più che con la forza, e il diario del rapporto segna una salita (§27).
 
-> **Economia (§17, v1.3):** le carte catturate (7♦, 3♠, 5♠) vanno subito negli **scarti comuni**; Omar tiene in verticale solo le due carte con cui ha preso, il 10♦ e il 5♣: due marcatori di presa, **2 punti** al mercato. **Il piatto resta sul tavolo** (§18): 8♥, 4♣, 6♥ aspettano la scena 2.
+> **Economia (§17/§20, v1.6):** le carte catturate (7♦, 3♠, 5♠) vanno subito negli **scarti comuni**; Omar tiene in verticale solo le due carte con cui ha preso, il 10♦ e il 5♣, due marcatori di presa da **1 punto l'uno**. Il piatto (8♥, 4♣, 6♥) **resta sul tavolo** (§18) e aspetta la scena 2.
 
 ### Scena 2 — La statale (Adattamento)
 
 *Posta: sparire verso ovest; se va male, i sicari agganciano la loro traccia.*
 
-Asta: 3♥ contro 5♦, iniziativa all'Opposizione. Omar apre prendendo l'8♥ con l'**8♦** e subito **spunta la risposta ♦ del pitch** "la rete di poliziotti corrotti e i due sicari pazienti": due uomini in giacca scura scendono dal SUV davanti al diner.
+Asta: 3♥ contro 5♦, iniziativa all'Opposizione. Sul tavolo gli 8♥, 4♣, 6♥ della cella. Omar apre prendendo l'8♥ con l'**8♦** e subito **spunta la risposta ♦ del pitch**, la rete di poliziotti corrotti e i due sicari pazienti: due uomini in giacca scura scendono dal SUV davanti al diner.
 
-> **Spinta del pitch (§9.8, scopa vera):** la risposta entra in narrazione e la presa diventa una **scopa che svuota il piatto** — 4♣ e 6♥ finiscono negli scarti comuni. L'8♦ va in orizzontale tra le scope di Omar: **3 punti**. Quella risposta ♦ è ora spuntata: Omar non potrà usare un'altra spinta ♦ per tutta la partita.
+> **Spinta del pitch (§9.8, scopa vera):** la risposta entra in narrazione e la presa diventa una **scopa che svuota il piatto**, 4♣ e 6♥ finiscono negli scarti comuni. L'8♦ va in orizzontale tra le scope di Omar (**4 punti**). Quella risposta ♦ è ora spuntata: niente più spinte ♦ per l'Opposizione.
 
-Segue un lungo tira e molla: Paola semina **3♥** (la carta d'asta che le è tornata in mano) e **4♥**, Omar 9♣ e 10♣; Paola prende il 9♣ col **9♥**, Omar cala il 5♦ d'asta, Paola chiude prendendo il 4♥ col **4♠**. Resta nel piatto 3♥, 10♣, 5♦: **3 a 15**, scena all'Opposizione. Dominante ♣: a fermarli è stato il caos della strada, non i sicari. Eppure il diario sale — l'unico seme dei protagonisti rimasto sul tavolo è un cuore.
+Poi un lungo tira e molla: Paola rimette in gioco il **3♥** d'asta tornato in mano, Omar il **9♣**, Paola il **4♥**, Omar il **10♣**. Paola prende il 9♣ col **9♥**, Omar cala il **5♦** d'asta, Paola chiude prendendo il 4♥ col **4♠**. Restano nel piatto 3♥, 10♣, 5♦: **3 a 15**, scena all'Opposizione. Dominante ♣: a fermarli è il caos della strada più dei sicari. Eppure il diario sale ancora, perché l'unico seme dei protagonisti rimasto sul tavolo è un cuore.
 
-Al mercato Omar compra il **Fante di Quadri** (un informatore nel distretto): costa **4**, e paga con le sue due prese e la scopa appena fatta; i marcatori spesi vanno negli scarti comuni (§20).
+Al mercato Omar compra il **Fante di Quadri** (un informatore nel distretto): **costa 3** (§21, v1.6) e lo paga con le due prese della cella e la scopa appena fatta; i marcatori spesi vanno negli scarti comuni (§20).
 
 > **Dopo la seconda scena il Jolly entra nel mazzo dei Protagonisti** (§22, v1.3): uno solo, mescolato tra le carte, e ce l'hanno solo loro. Da qui ogni pescata può portare in mano il compromesso.
 
@@ -872,57 +908,74 @@ Al mercato Omar compra il **Fante di Quadri** (un informatore nel distretto): co
 
 *Posta: attraversare il deserto interi; se va male, quello che non si sono detti esplode.*
 
-Asta: 10♠ contro 3♦, iniziativa ai Protagonisti. Sul tavolo i 3♥, 10♣, 5♦ della scena prima. Paola apre prendendo il 10♣ col **10♥** e **spunta la risposta ♥** "Vargas ha fatto uccidere suo fratello Jorge": nel silenzio del deserto la verità che Skunk si porta dentro affiora, e la presa diventa **scopa** che svuota il piatto.
+Asta: 10♠ contro 3♦, iniziativa ai Protagonisti. Sul tavolo i 3♥, 10♣, 5♦ rimasti. Paola apre prendendo il 10♣ col **10♥** e **spunta la risposta ♥** del pitch, Vargas ha fatto uccidere suo fratello Jorge: nel silenzio del deserto la verità che Skunk si porta dentro affiora, e la presa diventa **scopa** che svuota il piatto.
 
-> **Spinta del pitch (§9.8):** il 10♥ va tra le scope di Paola (**3 punti**). La ♥ è ora spuntata: niente più spinte ♥ per i Protagonisti.
+> **Spinta del pitch (§9.8):** il 10♥ va tra le scope di Paola (**4 punti**). La ♥ è ora spuntata: niente più spinte ♥ per i Protagonisti.
 
-Omar rilancia il **1♦**; Paola lo prende col **1♠** e fa **scopa vera** (§15.3) — il piatto si svuota una seconda volta: la durezza di Frank chiude un discorso in un colpo solo. Poi il round si spegne in giocate piccole: Omar 3♦, Paola 9♠, Omar 4♦, Paola cala il 10♠ d'asta, Omar chiude col 1♣. Restano nel piatto 3♦, 9♠, 4♦, 10♠, 1♣: **19 a 8**, scena ai Protagonisti. Ma il seme dominante è ♠ e il diario **scende**: due scope di fila vinte di forza, e qualcosa tra loro si tende.
+Omar rilancia il **1♦**; Paola lo prende col **1♠** e fa **scopa vera** (§15.3), il piatto si svuota una seconda volta: la durezza di Frank chiude un discorso in un colpo solo. Poi il round si spegne in giocate piccole: Omar **3♦**, Paola **9♠**, Omar **4♦**, Paola cala il **10♠** d'asta, Omar chiude col **1♣**. Restano nel piatto 3♦, 9♠, 4♦, 10♠, 1♣: **19 a 8**, scena ai Protagonisti. Ma il seme dominante è ♠ e il diario **scende**: due scope vinte di forza, e qualcosa tra loro si tende.
 
-Al mercato Paola compra il **Fante di Cuori** (costo 4): il contatto di Skunk dentro la sicurezza dell'aeroporto. Per pagarlo brucia le due prese della scena 2 e una delle due scope appena fatte; in piedi resta solo quella del **1♠**.
+Al mercato Paola compra il **Fante di Cuori** (**costo 3**): il contatto di Skunk dentro la sicurezza dell'aeroporto. Per pagarlo brucia le due prese della statale e una delle due scope appena fatte; in piedi le resta solo quella del **1♠**.
 
 > **Una figura per tipo (§21, v1.3):** comprato il loro Fante, i Protagonisti non potranno comprarne un altro per tutta la partita — un solo Fante, una sola Regina, un solo Re a testa.
 
 ### Scena 4 — L'ultima notte (Crisi)
 
+*Posta: arrivare in vista della pista prima dell'alba; se va male, qualcuno li sta già aspettando.*
+
 Asta: 6♠ contro 6♦, iniziativa all'Opposizione. Sul tavolo i 3♦, 9♠, 4♦, 10♠, 1♣ rimasti dal deserto.
 
-Omar apre calando il **Fante di Quadri**, ma l'unica presa che la carta consente è sulle **sue stesse carte** (3♦ + 4♦ + 1♣ = 8): la cattura è obbligatoria (§16) e l'informatore finisce per pestare i piedi ai suoi — Quadri e Fiori che si annullano a vicenda. Tre carte dell'Opposizione lasciano il tavolo e diventano marcatori per il mercato, ma il piatto resta ai Protagonisti (e l'effetto del Fante gli lascia riordinare le prime carte del mazzo). Poi: Paola semina **5♥**, Omar prende il 9♠ col **9♦**, Paola gioca 6♠, Omar 8♣, Paola 7♠; Omar prende il 6♠ col **6♦**, Paola chiude prendendo l'8♣ con l'**8♠**. Restano nel piatto 10♠, 5♥, 7♠: **22 a 0**, scena ai Protagonisti, dominante ♠ — continuano a vincere, ma con le maniere forti, e il diario scende di nuovo.
+Omar apre calando il **Fante di Quadri**. La figura cattura in modo flessibile, un gruppo di somma minore o uguale a 8 (§16), ma la presa obbligata che il tavolo gli offre è una sola carta, e per giunta una delle **sue**: il Fante prende l'**1♣**, Quadri che pesta i piedi a Fiori, l'informatore che per zelo brucia una pedina della stessa rete. Le picche dei Protagonisti restano tutte sul tavolo (effetto del Fante, §21: Omar guarda le prime quattro carte del proprio mazzo e le riordina). Poi: Paola semina **5♥**, Omar prende il 9♠ col **9♦**, Paola gioca **6♠**, Omar cala l'**8♣** che prende 3♦ e 5♥ in coppia, Paola **7♠**, Omar prende il 6♠ col **6♦**, Paola chiude con l'**8♠** lasciato sul tavolo. Restano nel piatto 4♦, 10♠, 7♠, 8♠: **25 a 4**, scena ai Protagonisti, dominante ♠, continuano a vincere ma con le maniere forti, e il diario scende di nuovo.
 
-> **L'Opposizione fa punti cedendo il tavolo:** prendendo (anche le proprie carte) Omar accumula marcatori per il conteggio finale, ma svuota il piatto del proprio colore — ecco perché chiuderà la partita avanti nei punti pur con un piatto a zero.
->
-> Quel piatto (quasi tutto ♠) **resta sul tavolo** per la Risoluzione: sarà la base del conteggio finale. Prima dell'ultima scena: il **mercato** (nessuno compra) e poi la **mano estesa** (§23) — ognuno prende le carte rimaste, ne tiene 4, mette il resto in riserva per i colpi di scena. E nella mano di Paola, finalmente, c'è il **Jolly**.
+> **L'Opposizione fa punti cedendo il tavolo:** prendendo, anche a scapito delle proprie carte, Omar accumula quattro marcatori per il mercato e per il conteggio finale, ma svuota il piatto del proprio colore. È così che chiuderà avanti nei punti pur con un piatto a zero.
+
+Al mercato Omar compra la **Regina di Quadri** (**costo 5**): la manipolatrice, una talpa più in alto nella catena. La paga esattamente con i quattro marcatori della scena, fra cui la presa fatta col Fante che, da figura, vale **2 punti**. Quel piatto quasi tutto ♠ **resta sul tavolo** per la Risoluzione, sarà la base del conteggio finale. Prima dell'ultima scena, la **mano estesa** (§23): ognuno tiene 4 carte e mette il resto in riserva per i colpi di scena. E nella mano di Paola, finalmente, c'è il **Jolly**.
 
 ### Scena 5 — La pista (Risoluzione)
 
 *Posta: il meeting; se va male, il jet riparte con Vargas a bordo.*
 
-Asta: 2♥ contro 6♣, iniziativa all'Opposizione. Sul tavolo già 10♠, 5♥, 7♠. Omar apre col **2♦** (un ultimo posto di blocco). Paola risponde con la mossa sleale: gioca il **Jolly dichiarato come 10** e si porta via il 10♠.
+Asta: 1♥ contro 2♣, iniziativa all'Opposizione. Sul tavolo già 4♦, 10♠, 7♠, 8♠. Omar apre col **2♦** (un ultimo posto di blocco). Paola risponde con la mossa sleale: gioca il **Jolly dichiarato come 10** e si porta via il 10♠.
 
-> **Il Jolly (§22, v1.3):** un successo ottenuto contro i principi e la lealtà. Paola toglie dal tavolo una picche pesante, ma **il punto della presa va a Omar**: il vantaggio è suo, il punto all'avversario. Frank fa quello che si era giurato di non rifare più.
+> **Il Jolly (§22):** un successo ottenuto contro i principi e la lealtà. Paola toglie dal tavolo una picche pesante, ma **il punto della presa va a Omar**: il vantaggio è suo, il punto all'avversario. Frank fa quello che si era giurato di non rifare.
 
-Il round prosegue: Omar prende il 2♦ col **2♣**, Paola semina 1♥, Omar 3♣, Paola 2♥; Omar prende due carte (5♥ + 1♥) col **6♣**, Paola chiude prendendo il 3♣ col **3♥**. Sul tavolo restano 7♠ e 2♥.
+Il round prosegue: Omar prende l'8♠ con la **Regina di Quadri** (presa con figura, §16) e ne sfrutta l'effetto, la manipolatrice (§21): i Protagonisti scartano una carta a caso dalla mano, il 3♥. Il mazzo di Paola è ormai esaurito, ma la riserva no, così pesca proprio da lì e si ritrova in mano il **7♥** (§21, §23.1). Paola semina **1♥**, Omar prende 2♦ e 1♥ in coppia col **3♣**, Paola gioca **2♥**, Omar prende il 2♥ col **2♣**, e Paola chiude calando il **7♥**, che cattura il 7♠. Sul tavolo resta solo il 4♦.
 
-**Primo conteggio** (§24), l'esito apparente: **9 a 0** per i Protagonisti. Sembra fatta — ma è il momento dei colpi di scena, e li inizia chi sta (apparentemente) perdendo: l'Opposizione.
+**Primo conteggio** (§24), l'esito apparente: sul tavolo resta solo il 4♦, quindi **4 a 0** per l'Opposizione. Sembra perduta, ed è il momento dei colpi di scena: li apre chi sta (in apparenza) perdendo, cioè i Protagonisti.
 
-Omar cala il **7♦** ed **elimina il 7♠** (valore pari, ≤): i sicari spazzano via l'uomo di Frank al cancello. Paola ribatte col **7♥** ed elimina il 7♦. Poi, riserva piena, scarica tutto: il **Fante di Cuori** (il contatto di Skunk prende posizione, ma non ha bersagli avversari da eliminare), e a seguire **2♠**, **5♠** e **9♠**, mentre la riserva dell'Opposizione è già esaurita.
+Apre Paola scaricando la riserva: il **Fante di Cuori** elimina subito il 4♦ (la figura cattura fino a 8). Omar risponde col **6♣**, senza bersagli. Paola cala il **2♠**, Omar il **7♣** che elimina il 2♠: i sicari spazzano via l'uomo di Frank al cancello. Paola torna a premere col **5♠**, poi col **9♠** che elimina il 6♣, mentre la riserva dell'Opposizione è già esaurita.
 
 > **Colpi di scena (§24, v1.3):** finché si ha riserva, si gioca **obbligatoriamente**; ogni carta entra nel piatto e può **eliminare** una carta avversaria di valore pari o inferiore (la tua resta sul tavolo, l'altra va negli scarti). Si finisce quando entrambe le riserve sono vuote.
 
 ### Il finale
 
-Conteggio definitivo: sul tavolo 2♥, 7♥, Fante di Cuori, 2♠, 5♠, 9♠. **Protagonisti 33, Opposizione 0.** Il piatto è schiacciante: Vargas viene ammanettato sulla pista, davanti ai boss arrivati per il meeting.
+Conteggio definitivo: sul tavolo Fante di Cuori, 7♣, 5♠, 9♠. **Protagonisti 22, Opposizione 7.** Il piatto è loro: Vargas viene ammanettato sulla pista, davanti ai boss arrivati per il meeting.
 
-Ma i punti complessivi (§26) raccontano un'altra storia. Con la formula scope (intatte 2, spese 1) più le carte prese: ai Protagonisti resta una sola scopa intatta, quella del **1♠** (2), più due prese (2), totale **4**; l'Opposizione, che ha rastrellato marcatori in tutte le scene — anche prendendo le proprie carte — e si è perfino intascata il punto regalato col Jolly, arriva a **6**. Piatto stravinto, punti persi: è una vittoria **per il rotto della cuffia**. L'obiettivo è raggiunto, ma pagando un prezzo.
+E stavolta anche i punti complessivi (§26) reggono. Col punteggio di v1.6 (presa 1, presa con figura 2, scopa 4, e ciò che è stato speso al mercato vale 0), ai Protagonisti restano la scopa intatta del **1♠** (4 punti) e la presa del **7♥** (1 punto): **5** in tutto. L'Opposizione arriva anch'essa a **5**: la presa con la **Regina** che da figura vale 2, due piccole prese da 1, e il punto che Paola le ha **regalato col Jolly**. La sua unica scopa e tutte le prese della crisi le aveva già bruciate per comprare le figure. Pari ai punti, **5 a 5**: e con il piatto stravinto il pareggio basta (§26), è una **Vittoria totale**. Proprio il 7♥ ripescato dalla riserva, la carta che la Regina aveva provato a strappare di mano a Paola, è la presa che chiude i conti.
 
-> **Nota (§22):** uno dei 6 punti dell'Opposizione è proprio quello che Paola le ha **regalato col Jolly**. Il vantaggio sul tavolo è stato dei Protagonisti; quel punto, no.
+> **Nota (§22):** uno dei 5 punti dell'Opposizione è quello che Paola le ha **regalato col Jolly**. Senza, i Protagonisti avrebbero vinto i punti 5 a 4; con quel punto è un pari 5 a 5. L'esito non cambia, resta una Vittoria totale grazie al piatto stravinto, ma la scorciatoia di Frank è costata la **vittoria netta ai punti**.
 
-Resta la lettura del diario (§27): **su, su, giù, giù, su**. Salita nella cella e sulla statale, poi due discese nel deserto e nell'ultima notte (vinte di forza, ♠ su ♠), e di nuovo salita davanti al jet. Tre scene di connessione contro due di distanza: alla fine Frank e Skunk si sono ritrovati. E nell'ultimo piatto la natura dell'opposizione tace — ♦ e ♣ a 0: né i nemici organizzati né il caos restano sul tavolo. A pesare, semmai, è stata la scorciatoia di Frank, che è costata il conteggio dei marcatori.
+Resta la lettura del diario (§27): **su, su, giù, giù, giù**. Salita nella cella e sulla statale, poi tre discese: il deserto e l'ultima notte vinti di forza (♠ su ♠) e la pista chiusa allo stesso modo. Due scene di vicinanza contro tre di distanza: hanno raggiunto l'obiettivo, ma da soli più che insieme. E nell'ultimo piatto, tra i semi dell'opposizione, i Quadri tacciono (♦ a 0: nessun nemico organizzato resta sul tavolo) ma i Fiori no, il 7♣ è ancora lì: a insidiarli fino in fondo è stato più il caos della coppia che i sicari. A pesare, semmai, è stata la scorciatoia di Frank col Jolly, che ha tenuto l'Opposizione a pari e ha negato ai Protagonisti la vittoria netta ai punti.
 
-> La lezione della partita: si può **stravincere sul tavolo e pagare comunque un prezzo**. I Protagonisti hanno dominato il piatto in ogni scena tranne una, ma il punteggio dei marcatori — e il punto regalato col Jolly — ricorda che certi vantaggi si comprano cari.
+> La lezione della partita: anche una **Vittoria totale** può lasciare il segno. I Protagonisti hanno dominato il piatto in ogni scena tranne una e centrato l'obiettivo, ma il punto regalato col Jolly ha tenuto l'Opposizione a pari nei marcatori: certi vantaggi presi nel modo sbagliato si comprano cari, anche quando si vince.
 
 ---
 
 # REGISTRO MODIFICHE
+
+## v1.6 (giugno 2026)
+
+1. **§17, §20** — **Punteggio ribilanciato.** Una presa con carta numerica vale 1 punto, una presa con una **figura** vale 2 punti, una **scopa** vale 4 punti (al mercato e nel conteggio finale). Prima era presa 1, scopa 3.
+2. **§16** — **Cattura flessibile delle figure.** Una figura cattura un gruppo di carte di somma **minore o uguale** al suo valore (8/9/10), anche carte dei propri semi; la cattura resta obbligatoria se nel piatto c'è un bersaglio alla sua portata, altrimenti la figura entra nel piatto. L'effetto speciale scatta comunque.
+3. **§15.3** — **Sacrificio della figura.** Una figura giocata su piatto vuoto si sacrifica e vale una scopa (l'effetto scatta lo stesso).
+4. **§21** — **Costi figure ribassati:** Fante 3, Regina 5, Re 8 (valori in gioco invariati 8/9/10), così le due strade verso un Re costano uguale (un Re, oppure un Fante più una Regina). Prima erano 4/7/10.
+5. **§18.1** — **Resa alla scena.** Chi non ha l'iniziativa, con una sola carta in mano, nelle scene 1-4 può cedere la posta invece di giocarla, in due modi (una volta ciascuno per lato): **Ritirata strategica** (rimescola la carta nel mazzo, più riserva per i colpi di scena) e **Resa onorevole** (tiene la carta tra le prese, 1 o 2 punti).
+6. **§22.3, §22.6** — Adeguato il marcatore del Jolly al nuovo punteggio: scopa col Jolly vale 4 punti all'Opposizione (la presa resta 1).
+7. **§21** — Nell'ultima scena la **Regina** pesca il rimpiazzo dalla **riserva** quando il mazzo è esaurito: la carta scartata all'avversario non resta senza sostituzione finché ci sono carte messe da parte per i colpi di scena.
+8. **§34** — Partita d'esempio rigenerata sulle regole v1.6 (seed 13) e riscritta.
+
+## v1.5 (giugno 2026)
+
+1. **§22.6** — **Terzo uso del Jolly, per l'Opposizione.** Il marcatore che il Jolly lascia nel campo dell'Opposizione (1 da presa, 3 da scopa) resta una risorsa normale, ma oltre a poterlo spendere al mercato o tenerlo per il conteggio finale l'Opposizione può usarlo come **effetto**: nel proprio turno, come azione aggiuntiva alla giocata o alla presa, consuma il marcatore e toglie dal piatto la carta di valore più basso dei Protagonisti (Cuori o Picche), che va negli scarti comuni. Una sola volta, in un turno di qualunque scena fino al round della quinta, **non** durante i colpi di scena; non attivabile se nel piatto non ci sono carte dei Protagonisti. Narrativamente è il peccato che emerge e incrina la coppia. Non va confuso col vecchio *counter* (rimosso in v1.3): quello bloccava la cattura sul momento, questo è una resa dei conti differita.
 
 ## v1.4 (giugno 2026)
 
@@ -934,7 +987,7 @@ Resta la lettura del diario (§27): **su, su, giù, giù, su**. Salita nella cel
 
 ## v1.3 (giugno 2026)
 
-1. **§18** — Scena chiusa da una **scopa** a piatto vuoto: la posta è vinta da chi ha fatto la scopa (non più parità 0-0). Vale anche per l'esito apparente della quinta scena (poi seguono i colpi di scena). Un piatto svuotato dal counter di un Jolly resta invece in equilibrio.
+1. **§18** — Scena chiusa da una **scopa** a piatto vuoto: la posta è vinta da chi ha fatto la scopa (non più parità 0-0). Vale anche per l'esito apparente della quinta scena (poi seguono i colpi di scena).
 2. **§24** — **Colpi di scena riscritti.** Si gioca a turni alterni e, finché si hanno carte in riserva, **si gioca obbligatoriamente**: la carta entra nel piatto e può **eliminare** una carta avversaria di valore **pari o inferiore** (la carta giocata resta sul tavolo; quella eliminata va negli scarti). Prima invece si *sostituiva* una carta avversaria di valore maggiore o uguale. La fase finisce quando entrambe le riserve sono esaurite.
 3. **§23.1** — La mano finale della quinta scena si sceglie **dopo il mercato** (così le figure appena comprate possono entrarvi); la scelta di 4 carte scatta con **più di 4 carte** rimaste nel mazzo.
 4. **§17, §20** — **Economia semplificata.** Ogni presa vale **1 punto**, ogni scopa **3 punti** (sia al mercato sia nel conteggio finale; i punti non spesi mantengono il valore). Le carte catturate dal piatto vanno subito in una **pila di scarti comune**; si tengono solo le carte che fanno presa (in verticale) o scopa (in orizzontale) come marcatori. Recupero dei Protagonisti ed effetto del Re pescano dagli scarti comuni (per il proprio seme).
@@ -964,4 +1017,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.4*
+*Frenemies on the Road — Knowledge Base v1.6*
