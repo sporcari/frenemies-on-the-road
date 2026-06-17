@@ -24,9 +24,9 @@ Dimenticati al parco, Morgana e Lampo sono finiti nella cesta degli oggetti smar
 
 ## Opposizione
 
-**Nemici (Quadri).** Mirko, il collezionista del quartiere: teche di vetro col cartellino, che si aprono solo dall'esterno. E il furetto Zanna, che fiuta la plastica pregiata a un isolato di distanza.
+**Nemici (Quadri).** Mirko, il collezionista del quartiere: teche di vetro col cartellino, che si aprono solo dall'esterno. E il furetto Zanna, che fiuta la plastica pregiata a un isolato di distanza. E Cloe, la bambola che spadroneggia tra i giochi di Bea: vuole lo scatolone tutto per sé e ha deciso che quei due, stanotte, non ci salgono. Recluta gli altri giocattoli e sa esattamente dove colpire chi è già insicuro.
 
-**Caos (Fiori).** La città di notte vista da venti centimetri: irrigatori a orario, tombini come voragini, il cane del vicino, il temporale, il furgone dei rifiuti all'alba.
+**Caos (Fiori).** La città di notte vista da venti centimetri: irrigatori a orario, tombini come voragini, il cane del vicino, il temporale, il furgone dei rifiuti all'alba. E gli animali del parco, per cui un giocattolo smarrito è solo qualcosa da sgranocchiare, da nascondere nella tana o da seppellire: la gazza che ruba tutto ciò che luccica, lo scoiattolo che riempie il nido, il cane randagio che sotterra i suoi tesori.
 
 ## Spinte
 
@@ -48,8 +48,8 @@ Dimenticati al parco, Morgana e Lampo sono finiti nella cesta degli oggetti smar
 
 ## Geografia delle scene (indicativa)
 
-1. **Innesco · La cesta degli smarriti.** Uscire dal parco prima della chiusura. Se va male: la notte comincia dal deposito oggetti smarriti, con una serratura in più.
-2. **Adattamento · Il viale dei platani.** Attraversare le prime strade. Se va male: Zanna fiuta la loro pista.
-3. **Frattura · La cameretta di Mirko.** Passare dal giardino del collezionista senza finire in teca. Se va male: la verità sulla diceria esce nel posto peggiore.
-4. **Crisi · Il temporale.** L'ultimo isolato sotto la pioggia, con la bici di Mirko alle spalle. Se va male: arrivano fradici, scuciti e in ritardo.
-5. **Risoluzione · Il camion giallo.** Il portellone è aperto e gli scatoloni salgono uno a uno. Se va male: il camion parte e loro restano sul marciapiede.
+1. **Innesco · La cesta degli smarriti.** Uscire dal parco prima della chiusura. Se va bene: sono fuori e la notte è ancora giovane. Se va male: la notte comincia dal deposito oggetti smarriti, con una serratura in più.
+2. **Adattamento · Il viale dei platani.** Attraversare le prime strade. Se va bene: trovano il ritmo e prendono margine. Se va male: Zanna fiuta la loro pista.
+3. **Frattura · La cameretta di Mirko.** Passare dal giardino del collezionista senza finire in teca. Se va bene: ne escono con un alleato in più. Se va male: la verità sulla diceria esce nel posto peggiore.
+4. **Crisi · Il temporale.** L'ultimo isolato sotto la pioggia, con la bici di Mirko alle spalle. Se va bene: tagliano per primi, fradici ma in tempo. Se va male: arrivano fradici, scuciti e in ritardo.
+5. **Risoluzione · Il camion giallo.** Il portellone è aperto e gli scatoloni salgono uno a uno. Se va bene: salgono a bordo prima della chiusura. Se va male: il camion parte e loro restano sul marciapiede.
