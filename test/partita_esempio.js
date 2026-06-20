@@ -86,8 +86,8 @@ function passo(){
     set("w-missione",MISSIONE); set("w-primadiff",PRIMADIFF);
     set("w-persA","Frank"); set("w-descA","Ex poliziotto sospeso per eccesso di forza. Cinico, metodico.");
     set("w-persB","Skunk"); set("w-descB","Suo ex informatore. Truffatore, intrallazzone dei bassifondi.");
-    set("w-nemici","L'organizzazione di Vargas: poliziotti corrotti e due sicari pazienti");
-    set("w-caos","La tempesta di sabbia, un'auto con trecentomila chilometri, la sfortuna");
+    set("w-nemici-input","L'organizzazione di Vargas: poliziotti corrotti e due sicari pazienti");
+    set("w-caos-input","La tempesta di sabbia, un'auto con trecentomila chilometri, la sfortuna");
     for(let k=0;k<10;k++) set("w-pitch-"+k,PITCH[k]);
     if(G().passo===2){ const b=[...document.querySelectorAll('button[data-tono]')].find(x=>x.dataset.tono==="Poliziesco"); if(b&&G().tono!=="Poliziesco"){ click(b); return "tono" } }
     click(document.getElementById("w-avanti")); return "setup"+G().passo;
