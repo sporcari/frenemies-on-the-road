@@ -38,8 +38,14 @@ async function main(){
       const set=(id,v)=>{const e=document.getElementById(id); if(e) e.value=v};
       set("w-nomeP","Tester"); set("w-missione","Arrestare Vargas PRIMA che il jet riparta");
       set("w-primadiff","Skunk è in cella"); set("w-persA","Frank"); set("w-persB","Skunk");
-      set("w-nemici","Sicari e corrotti"); set("w-caos","Tempesta e sfortuna");
       for(let k=0;k<10;k++) set("w-pitch-"+k,"Risposta "+(k+1));
+      // passo Opposizione (5): nemici/caos sono liste, ogni voce si aggiunge con il "+" (input + button[data-add])
+      if(G().passo===5){
+        const aggiungi=(chiave,voce)=>{const e=document.getElementById("w-"+chiave+"-input"); if(e){e.value=voce; const b=document.querySelector('button[data-add="'+chiave+'"]'); if(b) click(b);}};
+        aggiungi("nemici","Sicari di Vargas"); aggiungi("nemici","Poliziotti corrotti");
+        aggiungi("caos","Tempesta di sabbia"); aggiungi("caos","Auto sfasciata");
+        await dorme(20);
+      }
       click(document.getElementById("w-avanti")); await dorme(20); continue;
     }
 
@@ -115,6 +121,9 @@ async function main(){
       console.log("log narrativo:", g.storia.length, "voci (P:"+storiaP+" O:"+storiaO+")");
       if(storiaP===0) { console.error("FALLITO: nessuna narrazione umana registrata nel log"); process.exit(1) }
       if(storiaO===0) { console.error("FALLITO: nessuna narrazione di Claude registrata nel log"); process.exit(1) }
+      console.log("opposizione (liste):", "nemici="+JSON.stringify(g.nemici), "caos="+JSON.stringify(g.caos));
+      if(!Array.isArray(g.nemici)||g.nemici.length!==2) { console.error("FALLITO: nemici non è una lista di 2 voci"); process.exit(1) }
+      if(!Array.isArray(g.caos)||g.caos.length!==2) { console.error("FALLITO: caos non è una lista di 2 voci"); process.exit(1) }
       console.log("modalità solo OK (tutti i fallback esercitati, log narrativo popolato)");
       process.exit(0);
     }

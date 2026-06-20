@@ -33,7 +33,7 @@ window.fetch=async(url,opts)=>{
   if(/"narrazione"/.test(msg)) obj={narrazione:"Narrazione di Claude num "+nGen, spinta:null};
   else if(/"titolo"/.test(msg)) obj={titolo:"Titolo "+nGen, posta:"Posta "+nGen};
   else if(/"esito"/.test(msg)) obj={esito:"Esito di Claude num "+nGen};
-  else if(/"nemici"/.test(msg)) obj={nemici:"Nemici "+nGen, caos:"Caos "+nGen, q6:"q6-"+nGen, q7:"q7-"+nGen, q8:"q8-"+nGen, q9:"q9-"+nGen};
+  else if(/"nemici"/.test(msg)) obj={nemici:["Nemici "+nGen,"Corrotti "+nGen], caos:["Caos "+nGen], q6:"q6-"+nGen, q7:"q7-"+nGen, q8:"q8-"+nGen, q9:"q9-"+nGen};
   else if(/"acquisti"/.test(msg)) obj={acquisti:[]};
   else if(/"scelta"/.test(msg)) obj={scelta:0};
   return { json: async()=>({content:[{type:"text",text:JSON.stringify(obj)}]}) };
@@ -76,15 +76,15 @@ async function main(){
       const set=(id,v)=>{const e=document.getElementById(id); if(e) e.value=v};
       set("w-nomeP","Tester"); set("w-missione","Arrestare Vargas PRIMA che il jet riparta");
       set("w-primadiff","Skunk e in cella"); set("w-persA","Frank"); set("w-persB","Skunk");
-      set("w-nemici","Sicari e corrotti"); set("w-caos","Tempesta e sfortuna");
+      set("w-nemici-input","Sicari e corrotti"); set("w-caos-input","Tempesta e sfortuna");
       for(let k=0;k<10;k++) set("w-pitch-"+k,"Risposta "+(k+1));
       // passo Opposizione (5): Claude la genera da se; appena pronta, prova la rigenerazione una volta
       if(G().passo===5){
         if(!okSetup){
           if(G().oppGenerata && document.getElementById("w-reopp")){
-            const prima=G().nemici;
+            const prima=G().nemici.join("|");   // ora G.nemici è un array: confronto per contenuto
             const fatto=await rigeneraVia("w-reopp","rendili piu cinici");
-            const dopo=G().nemici;
+            const dopo=G().nemici.join("|");
             if(!fatto) fallisci("setup: modale Rigenera non aperto");
             if(!dopo || dopo===prima) fallisci("setup: nemici non rigenerati ("+prima+" -> "+dopo+")");
             okSetup=true;
