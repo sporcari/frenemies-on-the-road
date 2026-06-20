@@ -187,7 +187,11 @@ Prima delle domande si definisce contro chi e contro che cosa viaggiano i protag
 - **Quadri — i nemici organizzati:** chi li insegue o li ostacola con intenzione (fazioni, forze dell'ordine, criminali, istituzioni).
 - **Fiori — il caos:** la sfortuna, gli imprevisti e gli attriti che li perseguitano.
 
-Definirla prima dà alle domande del pitch un riferimento concreto: chiedere quali sono i mezzi più temibili della fazione nemica ha senso solo se la fazione nemica ha già un volto.
+I nemici **non devono per forza formare un'unica fazione coesa, né essere in combutta tra loro** *(v1.8)*: possono essere attori diversi, perfino rivali, che per ragioni differenti vogliono la stessa posta o ostacolano i protagonisti. Quello che li accomuna non è uno scopo condiviso, ma il fatto che tutti, di fatto, remano contro. Tutti questi attori si esprimono comunque sul seme ♦.
+
+> **Esempio:** nel "Sole di Mezzanotte" i nemici sono due ordini in conflitto, la Loggia del Basilisco che vuole l'artefatto e i Veglianti che vogliono solo che resti dov'è: opposti tra loro, ma entrambi ostacolano chi cerca la cripta. Nel "camion giallo" il collezionista Mirko dà la caccia ai giocattoli per esporli, mentre la bambola Cloe vuole solo che quei due non tornino nello scatolone: moventi diversi, stesso seme ♦.
+
+Definirla prima dà alle domande del pitch un riferimento concreto: chiedere quali sono i mezzi più temibili dei nemici ha senso solo se i nemici hanno già un volto.
 
 ### 9.5 — Domande ai Protagonisti (poste dall'Opposizione) *(v1.4)*
 
@@ -973,6 +977,10 @@ Resta la lettura del diario (§27): **su, su, giù, giù, giù**. Salita nella c
 ---
 
 # REGISTRO MODIFICHE
+
+## v1.8 (giugno 2026)
+
+1. **§9.4** — **I nemici possono essere attori diversi.** Il seme ♦ (Quadri) non deve per forza essere un'unica fazione coesa: possono essere attori diversi, perfino rivali tra loro, che per ragioni differenti vogliono la stessa posta o ostacolano i protagonisti. Li accomuna solo il fatto di remare contro, e si esprimono tutti sul seme ♦. Allineati `REGOLE` (sezione "I quattro semi"), `REGOLE_IA` e il testo del passo "Opposizione" nel wizard di `index.html`.
 
 ## v1.7 (giugno 2026)
 

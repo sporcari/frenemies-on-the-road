@@ -52,8 +52,8 @@ Augusto è in 'osservazione volontaria' nella clinica del dottor Maino, e le vis
 
 ## Geografia delle scene (indicativa)
 
-1. **Innesco · La clinica.** Entrare a vedere Augusto e uscirne in tre: se va male, escono braccati e con la denuncia già in viaggio.
-2. **Adattamento · La statale del sud.** Imparare a viaggiare in tre, alle regole di papà: se va male, perdono mezza giornata e la polizia guadagna terreno.
-3. **Frattura · Il motel delle piastrelle verdi.** Una notte ferma, troppe domande: se va male, la firma di Federico esce dal fascicolo nel modo peggiore.
-4. **Crisi · Il posto di blocco.** L'ultimo confine di regione con la denuncia ormai dappertutto: se va male, arrivano dal professore scortati, o non arrivano affatto.
-5. **Risoluzione · L'istituto del professor Lanza.** La visita, con Vanessa e i suoi legali alle porte: se va male, il giudice si esprime venerdì con una perizia sola.
+1. **Innesco · La clinica.** Entrare a vedere Augusto e uscirne in tre. Se va bene: escono insieme senza dare nell'occhio. Se va male: escono braccati e con la denuncia già in viaggio.
+2. **Adattamento · La statale del sud.** Imparare a viaggiare in tre, alle regole di papà. Se va bene: trovano un ritmo e guadagnano strada. Se va male: perdono mezza giornata e la polizia guadagna terreno.
+3. **Frattura · Il motel delle piastrelle verdi.** Una notte ferma, troppe domande. Se va bene: si chiariscono e ripartono più saldi. Se va male: la firma di Federico esce dal fascicolo nel modo peggiore.
+4. **Crisi · Il posto di blocco.** L'ultimo confine di regione con la denuncia ormai dappertutto. Se va bene: passano il confine puliti. Se va male: arrivano dal professore scortati, o non arrivano affatto.
+5. **Risoluzione · L'istituto del professor Lanza.** La visita, con Vanessa e i suoi legali alle porte. Se va bene: il professore visita Augusto e mette nero su bianco. Se va male: il giudice si esprime venerdì con una perizia sola.

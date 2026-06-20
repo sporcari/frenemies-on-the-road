@@ -54,31 +54,31 @@
       "scena": 1,
       "fase": "Innesco",
       "titolo": "La clinica",
-      "suggerimento_posta": "Entrare a vedere Augusto e uscirne in tre: se va male, escono braccati e con la denuncia già in viaggio"
+      "suggerimento_posta": "Entrare a vedere Augusto e uscirne in tre. Se va bene: escono insieme senza dare nell'occhio. Se va male: escono braccati e con la denuncia già in viaggio"
     },
     {
       "scena": 2,
       "fase": "Adattamento",
       "titolo": "La statale del sud",
-      "suggerimento_posta": "Imparare a viaggiare in tre, alle regole di papà: se va male, perdono mezza giornata e la polizia guadagna terreno"
+      "suggerimento_posta": "Imparare a viaggiare in tre, alle regole di papà. Se va bene: trovano un ritmo e guadagnano strada. Se va male: perdono mezza giornata e la polizia guadagna terreno"
     },
     {
       "scena": 3,
       "fase": "Frattura",
       "titolo": "Il motel delle piastrelle verdi",
-      "suggerimento_posta": "Una notte ferma, troppe domande: se va male, la firma di Federico esce dal fascicolo nel modo peggiore"
+      "suggerimento_posta": "Una notte ferma, troppe domande. Se va bene: si chiariscono e ripartono più saldi. Se va male: la firma di Federico esce dal fascicolo nel modo peggiore"
     },
     {
       "scena": 4,
       "fase": "Crisi",
       "titolo": "Il posto di blocco",
-      "suggerimento_posta": "L'ultimo confine di regione con la denuncia ormai dappertutto: se va male, arrivano dal professore scortati, o non arrivano affatto"
+      "suggerimento_posta": "L'ultimo confine di regione con la denuncia ormai dappertutto. Se va bene: passano il confine puliti. Se va male: arrivano dal professore scortati, o non arrivano affatto"
     },
     {
       "scena": 5,
       "fase": "Risoluzione",
       "titolo": "L'istituto del professor Lanza",
-      "suggerimento_posta": "La visita, con Vanessa e i suoi legali alle porte: se va male, il giudice si esprime venerdì con una perizia sola"
+      "suggerimento_posta": "La visita, con Vanessa e i suoi legali alle porte. Se va bene: il professore visita Augusto e mette nero su bianco. Se va male: il giudice si esprime venerdì con una perizia sola"
     }
   ],
   "note_mappatura": "Formato 1: pers.A/B con campo 'detesta' (tratti narrativi, w-pitch-0 e w-pitch-1); 'spinte' con due risposte per seme (w-pitch-2..9 secondo PITCH_TEMPLATE). Estensione proposta e opzionale: 'png' = personaggi non giocanti centrali (qui Augusto, il terzo passeggero); un caricatore che non la conosce può ignorarla senza perdere nulla. Le dipendenze di Asia sono trattate come storia e percorso, mai come risorsa di gioco. Campo 'premessa': contesto narrativo da leggere al tavolo prima del pitch; mappa sul campo Premessa del wizard (pagina Missione, sopra l'obiettivo) e compare anche nella scheda Missione e nel riepilogo."

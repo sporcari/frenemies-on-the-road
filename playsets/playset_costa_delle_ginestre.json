@@ -50,31 +50,31 @@
       "scena": 1,
       "fase": "Innesco",
       "titolo": "L'archivio del socio",
-      "suggerimento_posta": "Trovare l'indirizzo di Sandri nello studio di chi lavora per Helios. Se va male: Helios sa che lo stanno cercando, e parte prima di loro"
+      "suggerimento_posta": "Trovare l'indirizzo di Sandri nello studio di chi lavora per Helios. Se va bene: hanno la pista e un giorno di vantaggio. Se va male: Helios sa che lo stanno cercando, e parte prima di loro"
     },
     {
       "scena": 2,
       "fase": "Adattamento",
       "titolo": "La litoranea",
-      "suggerimento_posta": "Risalire la costa col furgone del comitato. Se va male: la vigilanza li aggancia e la stampa li brucia"
+      "suggerimento_posta": "Risalire la costa col furgone del comitato. Se va bene: arrivano senza farsi notare. Se va male: la vigilanza li aggancia e la stampa li brucia"
     },
     {
       "scena": 3,
       "fase": "Frattura",
       "titolo": "Il faro di Sandri",
-      "suggerimento_posta": "Convincere un uomo che non si fida di nessuno. Se va male: la firma di Marta esce dalla bocca sbagliata"
+      "suggerimento_posta": "Convincere un uomo che non si fida di nessuno. Se va bene: Sandri accetta di testimoniare. Se va male: la firma di Marta esce dalla bocca sbagliata"
     },
     {
       "scena": 4,
       "fase": "Crisi",
       "titolo": "Il maestrale",
-      "suggerimento_posta": "Tornare con Sandri, traghetti fermi e Helios alle calcagna. Se va male: arrivano a voto iniziato"
+      "suggerimento_posta": "Tornare con Sandri, traghetti fermi e Helios alle calcagna. Se va bene: arrivano in aula in tempo. Se va male: arrivano a voto iniziato"
     },
     {
       "scena": 5,
       "fase": "Risoluzione",
       "titolo": "Il consiglio comunale",
-      "suggerimento_posta": "La deposizione, con l'aula piena e i soci di Helios in prima fila. Se va male: la firma apre i cantieri"
+      "suggerimento_posta": "La deposizione, con l'aula piena e i soci di Helios in prima fila. Se va bene: la firma viene smontata davanti a tutti. Se va male: la firma apre i cantieri"
     }
   ],
   "note_mappatura": "Formato 1: pers.A/B con campo 'detesta' (tratti narrativi, w-pitch-0 e w-pitch-1); 'spinte' con due risposte per seme (w-pitch-2..9 secondo PITCH_TEMPLATE); estensione opzionale 'png'. Tono Romance: i due 'detesta' sono scritti per leggersi anche come attrazione, e il segreto dei Fiori minaccia insieme l'alleanza e il sentimento; la dominanza di Cuori nel finale si legge come legame che prevale, non come semplice riconciliazione. Campo 'premessa': contesto narrativo da leggere al tavolo prima del pitch; mappa sul campo Premessa del wizard (pagina Missione, sopra l'obiettivo) e compare anche nella scheda Missione e nel riepilogo."

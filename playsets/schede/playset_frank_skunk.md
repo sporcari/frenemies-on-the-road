@@ -48,8 +48,8 @@ Skunk è in cella: i poliziotti corrotti lo hanno arrestato con un pretesto per 
 
 ## Geografia delle scene (indicativa)
 
-1. **Innesco · La cella.** Tirare fuori Skunk prima del trasferimento: se va male, escono braccati e con mezzo distretto alle calcagna.
-2. **Adattamento · La statale.** Sparire verso ovest: se va male, i sicari agganciano la loro traccia.
-3. **Frattura · Il deserto.** Attraversare il deserto interi: se va male, quello che non si sono detti esplode.
-4. **Crisi · L'ultima notte.** Arrivare in vista della pista: se va male, qualcuno li sta già aspettando.
-5. **Risoluzione · La pista.** Il meeting: se va male, il jet riparte con Vargas a bordo.
+1. **Innesco · La cella.** Tirare fuori Skunk prima del trasferimento. Se va bene: escono con Skunk e una pista verso Vargas. Se va male: escono braccati e con mezzo distretto alle calcagna.
+2. **Adattamento · La statale.** Sparire verso ovest. Se va bene: seminano gli inseguitori e guadagnano strada. Se va male: i sicari agganciano la loro traccia.
+3. **Frattura · Il deserto.** Attraversare il deserto interi. Se va bene: arrivano dall'altra parte più uniti. Se va male: quello che non si sono detti esplode.
+4. **Crisi · L'ultima notte.** Arrivare in vista della pista. Se va bene: prendono posizione col favore del buio. Se va male: qualcuno li sta già aspettando.
+5. **Risoluzione · La pista.** Il meeting. Se va bene: fermano Vargas prima del decollo. Se va male: il jet riparte con Vargas a bordo.

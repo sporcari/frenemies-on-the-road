@@ -39,11 +39,11 @@
     ]
   },
   "geografia_scene": [
-    { "scena": 1, "fase": "Innesco", "titolo": "La cella", "suggerimento_posta": "Tirare fuori Skunk prima del trasferimento: se va male, escono braccati e con mezzo distretto alle calcagna" },
-    { "scena": 2, "fase": "Adattamento", "titolo": "La statale", "suggerimento_posta": "Sparire verso ovest: se va male, i sicari agganciano la loro traccia" },
-    { "scena": 3, "fase": "Frattura", "titolo": "Il deserto", "suggerimento_posta": "Attraversare il deserto interi: se va male, quello che non si sono detti esplode" },
-    { "scena": 4, "fase": "Crisi", "titolo": "L'ultima notte", "suggerimento_posta": "Arrivare in vista della pista: se va male, qualcuno li sta già aspettando" },
-    { "scena": 5, "fase": "Risoluzione", "titolo": "La pista", "suggerimento_posta": "Il meeting: se va male, il jet riparte con Vargas a bordo" }
+    { "scena": 1, "fase": "Innesco", "titolo": "La cella", "suggerimento_posta": "Tirare fuori Skunk prima del trasferimento. Se va bene: escono con Skunk e una pista verso Vargas. Se va male: escono braccati e con mezzo distretto alle calcagna" },
+    { "scena": 2, "fase": "Adattamento", "titolo": "La statale", "suggerimento_posta": "Sparire verso ovest. Se va bene: seminano gli inseguitori e guadagnano strada. Se va male: i sicari agganciano la loro traccia" },
+    { "scena": 3, "fase": "Frattura", "titolo": "Il deserto", "suggerimento_posta": "Attraversare il deserto interi. Se va bene: arrivano dall'altra parte più uniti. Se va male: quello che non si sono detti esplode" },
+    { "scena": 4, "fase": "Crisi", "titolo": "L'ultima notte", "suggerimento_posta": "Arrivare in vista della pista. Se va bene: prendono posizione col favore del buio. Se va male: qualcuno li sta già aspettando" },
+    { "scena": 5, "fase": "Risoluzione", "titolo": "La pista", "suggerimento_posta": "Il meeting. Se va bene: fermano Vargas prima del decollo. Se va male: il jet riparte con Vargas a bordo" }
   ],
   "note_mappatura": "Mappatura sui campi dello stato G / wizard. pers.A/B -> w-persA/w-descA e il terzo campo 'detesta' (spunto narrativo, w-pitch-0 e w-pitch-1, nessun effetto in gioco). spinte: due risposte per seme, sono le risorse che trasformano una presa in scopa (max una per seme per lato) e mappano su w-pitch-2..9 secondo PITCH_TEMPLATE. tono ammesso: Action, Comedy, Dramedy, Romance o vuoto. geografia_scene: titolo/posta pre-suggeriti per le 5 scene (opzionale). Il vecchio formato con 'pitch' piatto resta accettato in caricamento."
 }

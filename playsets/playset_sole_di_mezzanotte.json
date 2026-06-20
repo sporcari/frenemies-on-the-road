@@ -44,31 +44,31 @@
       "scena": 1,
       "fase": "Innesco",
       "titolo": "L'asta del Cairo",
-      "suggerimento_posta": "Prendere il taccuino di Aldo. Se va male: la Loggia compra la strada e un giorno di vantaggio"
+      "suggerimento_posta": "Prendere il taccuino di Aldo. Se va bene: hanno la mappa e un giorno di vantaggio. Se va male: la Loggia compra la strada e un giorno di vantaggio"
     },
     {
       "scena": 2,
       "fase": "Adattamento",
       "titolo": "Il treno per El Qara",
-      "suggerimento_posta": "Guadagnare il deserto. Se va male: la Loggia sa che faccia hanno e su che treno sono"
+      "suggerimento_posta": "Guadagnare il deserto. Se va bene: spariscono nelle sabbie senza una coda. Se va male: la Loggia sa che faccia hanno e su che treno sono"
     },
     {
       "scena": 3,
       "fase": "Frattura",
       "titolo": "Il mare di sabbia",
-      "suggerimento_posta": "Attraversare le dune col taccuino. Se va male: quello che Otto tace esce nel posto peggiore"
+      "suggerimento_posta": "Attraversare le dune col taccuino. Se va bene: arrivano alla cripta col segreto intatto. Se va male: quello che Otto tace esce nel posto peggiore"
     },
     {
       "scena": 4,
       "fase": "Crisi",
       "titolo": "L'accampamento",
-      "suggerimento_posta": "Raggiungere l'ingresso prima dell'alba. Se va male: alla cripta li aspettano la Loggia da una parte e i Veglianti dall'altra"
+      "suggerimento_posta": "Raggiungere l'ingresso prima dell'alba. Se va bene: scendono nella cripta col favore del buio. Se va male: alla cripta li aspettano la Loggia da una parte e i Veglianti dall'altra"
     },
     {
       "scena": 5,
       "fase": "Risoluzione",
       "titolo": "La cripta del Sole",
-      "suggerimento_posta": "L'eclissi. Se va male: il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata"
+      "suggerimento_posta": "L'eclissi. Se va bene: mettono in salvo il Sole di Mezzanotte. Se va male: il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata"
     }
   ],
   "note_mappatura": "Formato 1: pers.A/B con campo 'detesta' (tratti narrativi, w-pitch-0 e w-pitch-1, nessun effetto in gioco); 'spinte' con due risposte per seme (risorse spuntabili, w-pitch-2..9 secondo PITCH_TEMPLATE). I Quadri contengono due fazioni con moventi opposti: la Loggia (vuole l'artefatto) e i Veglianti (vogliono che resti sepolto); chi gioca l'Opposizione può attingere a entrambe e perfino metterle l'una contro l'altra. Campo 'premessa': contesto narrativo da leggere al tavolo prima del pitch; mappa sul campo Premessa del wizard (pagina Missione, sopra l'obiettivo) e compare anche nella scheda Missione e nel riepilogo."

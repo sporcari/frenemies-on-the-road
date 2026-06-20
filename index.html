@@ -1401,8 +1401,8 @@ function rSetup(){
       <div class="pannello"><div class="lettura">🃏 Claude sta inventando l'Opposizione…</div></div>`;
     else oppCorpo=`
       <div class="pannello">
-        <span class="etichetta">♦ I nemici organizzati — chi li insegue, chi li ostacola con intenzione</span>
-        <textarea id="w-nemici" rows="2" placeholder="Forze dell'ordine, criminali, istituzioni…">${G.nemici}</textarea>
+        <span class="etichetta">♦ I nemici: chi li insegue o li ostacola con intenzione (anche attori diversi, perfino rivali, con ragioni diverse)</span>
+        <textarea id="w-nemici" rows="2" placeholder="Forze dell'ordine, un rivale personale, un opportunista… anche più attori non in combutta tra loro">${G.nemici}</textarea>
         <span class="etichetta" style="margin-top:10px">♣ Il caos — la sfortuna, gli imprevisti, gli attriti che li perseguitano</span>
         <textarea id="w-caos" rows="2" placeholder="Un'auto che non parte mai, il tempo che cambia, vecchi conti in sospeso…">${G.caos}</textarea>
         ${G.modalita==="solo"&&canaleIA?`<div style="margin-top:10px"><button class="secondaria" id="w-reopp">🃏 Lascia decidere a Claude</button></div>`:""}
@@ -2748,7 +2748,7 @@ const REGOLE={
     <table><tr><th>Seme</th><th>Significato in scena</th></tr>
     <tr><td>♠ Picche</td><td>I protagonisti agiscono con <b>forza, imposizione, conflitto diretto</b>: pressione, scontro, decisioni prese senza chiedere.</td></tr>
     <tr><td>♥ Cuori</td><td>I protagonisti agiscono con <b>dialogo, connessione, empatia</b>: qualcuno si apre, convince, ascolta.</td></tr>
-    <tr><td>♦ Quadri</td><td>I <b>nemici attivi</b>: fazioni ostili, inseguitori, minacce organizzate, risorse avversarie intenzionali.</td></tr>
+    <tr><td>♦ Quadri</td><td>I <b>nemici attivi</b>: fazioni ostili, inseguitori, minacce organizzate, risorse avversarie intenzionali. Non devono essere un'unica fazione: possono essere attori diversi, anche rivali tra loro, che per ragioni differenti vogliono la posta o ostacolano i protagonisti.</td></tr>
     <tr><td>♣ Fiori</td><td>Il <b>caos</b>: sfortuna, incidenti, attriti tra protagonisti, PNG problematici, complicazioni impreviste.</td></tr></table>
     <div class="es">"Due uomini in giacca scura scendono da un SUV davanti al diner. Hanno le foto di Frank e Skunk." (♦) — "L'auto riparte, ma dopo mezzo chilometro una gomma esplode. Sono in mezzo al deserto." (♣)</div>`},
   asta:{titolo:"Asta e apertura",html:`
@@ -3049,7 +3049,7 @@ let claudeModel="claude-sonnet-4-6";   // modello scelto dal giocatore (default 
 let oppGenInCorso=false;   // generazione dell'Opposizione (setup solo) in corso
 function iaBadge(on){ const b=document.getElementById("iaBadge"); if(b) b.style.display=on?"block":"none" }
 
-const REGOLE_IA=`Sei l'OPPOSIZIONE in "Frenemies on the Road", gioco narrativo competitivo su meccaniche tipo Scopa, ambientazione road movie notturno. Controlli i semi ♦ Quadri (i nemici attivi: fazioni ostili, inseguitori, minacce organizzate) e ♣ Fiori (il caos: sfortuna, incidenti, attriti, complicazioni impreviste). L'umano controlla i Protagonisti, ♥ Cuori (dialogo, connessione, empatia) e ♠ Picche (forza, imposizione, conflitto diretto). Giochi e narri SOLO il tuo lato.
+const REGOLE_IA=`Sei l'OPPOSIZIONE in "Frenemies on the Road", gioco narrativo competitivo su meccaniche tipo Scopa, ambientazione road movie notturno. Controlli i semi ♦ Quadri (i nemici attivi: fazioni ostili, inseguitori, minacce organizzate; non per forza una sola fazione, anche attori diversi e rivali tra loro che per ragioni differenti vogliono la posta o ostacolano i protagonisti) e ♣ Fiori (il caos: sfortuna, incidenti, attriti, complicazioni impreviste). L'umano controlla i Protagonisti, ♥ Cuori (dialogo, connessione, empatia) e ♠ Picche (forza, imposizione, conflitto diretto). Giochi e narri SOLO il tuo lato.
 
 STRUTTURA: 5 scene (Innesco, Adattamento, Frattura, Crisi, Risoluzione). Ogni scena: asta, apertura, round di giocate, fine scena; tra le scene c'è il mercato. La partita si decide sul piatto della quinta scena.
 
