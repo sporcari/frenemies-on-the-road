@@ -23,7 +23,7 @@
   "caos": "Il deserto: la tempesta in anticipo, le piste che spariscono, un camion che beve più olio che gasolio, le trappole della cripta. E gli scorpioni, ovunque.",
   "spinte": {
     "picche": [
-      "Suo padre è sparito cercando Zerzura: trovarla è restituirgli il nome.",
+      "Suo padre è sparito cercando Zerzura: trovarla vuol dire realizzare il suo sogno e dare un senso al suo sacrificio.",
       "Nessuno guida, scala o spara come Vera: dove finisce la strada, comincia lei."
     ],
     "cuori": [
@@ -44,19 +44,19 @@
       "scena": 1,
       "fase": "Innesco",
       "titolo": "L'asta del Cairo",
-      "suggerimento_posta": "Prendere il taccuino di Aldo. Se va bene: hanno la mappa e un giorno di vantaggio. Se va male: la Loggia compra la strada e un giorno di vantaggio"
+      "suggerimento_posta": "Prendere il taccuino di Aldo. Se va bene: hanno la mappa e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio"
     },
     {
       "scena": 2,
       "fase": "Adattamento",
       "titolo": "Il treno per El Qara",
-      "suggerimento_posta": "Guadagnare il deserto. Se va bene: spariscono nelle sabbie senza una coda. Se va male: la Loggia sa che faccia hanno e su che treno sono"
+      "suggerimento_posta": "Raggiungere El Qara in tempo. Se va bene: si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male: arrivano troppo tardi e restano senza quell'aiuto prezioso"
     },
     {
       "scena": 3,
       "fase": "Frattura",
       "titolo": "Il mare di sabbia",
-      "suggerimento_posta": "Attraversare le dune col taccuino. Se va bene: arrivano alla cripta col segreto intatto. Se va male: quello che Otto tace esce nel posto peggiore"
+      "suggerimento_posta": "Orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se va bene: i protagonisti possono accamparsi e prepararsi alla ricerca. Se va male: si perdono nel deserto"
     },
     {
       "scena": 4,

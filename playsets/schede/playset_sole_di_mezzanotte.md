@@ -31,7 +31,7 @@ Il taccuino del professor Aldo Falco, l'unico che abbia mai mappato la strada pe
 ## Spinte
 
 **Picche (Vera Falco)**
-1. Suo padre è sparito cercando Zerzura: trovarla è restituirgli il nome.
+1. Suo padre è sparito cercando Zerzura: trovarla vuol dire realizzare il suo sogno e dare un senso al suo sacrificio.
 2. Nessuno guida, scala o spara come Vera: dove finisce la strada, comincia lei.
 
 **Cuori (Otto Lenzi)**
@@ -48,8 +48,8 @@ Il taccuino del professor Aldo Falco, l'unico che abbia mai mappato la strada pe
 
 ## Geografia delle scene (indicativa)
 
-1. **Innesco · L'asta del Cairo.** Prendere il taccuino di Aldo. Se va bene: hanno la mappa e un giorno di vantaggio. Se va male: la Loggia compra la strada e un giorno di vantaggio.
-2. **Adattamento · Il treno per El Qara.** Guadagnare il deserto. Se va bene: spariscono nelle sabbie senza una coda. Se va male: la Loggia sa che faccia hanno e su che treno sono.
-3. **Frattura · Il mare di sabbia.** Attraversare le dune col taccuino. Se va bene: arrivano alla cripta col segreto intatto. Se va male: quello che Otto tace esce nel posto peggiore.
+1. **Innesco · L'asta del Cairo.** Prendere il taccuino di Aldo. Se va bene: hanno la mappa e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio.
+2. **Adattamento · Il treno per El Qara.** Raggiungere El Qara in tempo. Se va bene: si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male: arrivano troppo tardi e restano senza quell'aiuto prezioso.
+3. **Frattura · Il mare di sabbia.** Orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se va bene: i protagonisti possono accamparsi e prepararsi alla ricerca. Se va male: si perdono nel deserto.
 4. **Crisi · L'accampamento.** Raggiungere l'ingresso prima dell'alba. Se va bene: scendono nella cripta col favore del buio. Se va male: alla cripta li aspettano la Loggia da una parte e i Veglianti dall'altra.
 5. **Risoluzione · La cripta del Sole.** L'eclissi. Se va bene: mettono in salvo il Sole di Mezzanotte. Se va male: il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata.

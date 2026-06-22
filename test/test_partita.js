@@ -16,6 +16,9 @@ let compratoUnaVolta=false, spinteUsate=0, colpiFatti=0, pngCreato=false, log=[]
 function passo(i){
   // modali degli effetti figura
   if(modaleAttivo()){
+    const fm=document.getElementById("fanteManoOk");   // eccezione Fante: scegli la carta da mandare in fondo
+    if(fm){ const c=[...document.querySelectorAll("#fanteManoCarte .carta")].find(x=>!x.classList.contains("jolly"))||document.querySelector("#fanteManoCarte .carta");
+      if(c) click(c); click(fm); return "fante-mano" }
     const f=document.getElementById("fanteOk"), rNo=document.getElementById("reNo");
     if(f){ click(f); return "fante" }
     if(rNo){ click(rNo); return "re-no" }

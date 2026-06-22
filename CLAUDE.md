@@ -22,9 +22,11 @@ npm i jsdom (una volta sola), poi dalla radice del repo:
 - node test/test_partita.js  e  NG=4 node test/test_partita.js
 - node test/test_adatta.js  e  node test/test_solo.js
 - node test/test_riprova.js (meccanismo "Rigenera" vs Claude; seed fisso)
-- SEED=13 TRANSCRIPT=1 node test/partita_esempio.js e diff del transcript
-  generato con test/transcript_seed_13_v2.txt: se cambia, il §34 del
-  regolamento va riscritto
+- SEED=23 SEED2=43 TRANSCRIPT=1 node test/partita_esempio.js e diff del
+  transcript generato (test/transcript_seed_23_43.txt) con
+  test/transcript_seed_23_43_v2.txt: se cambia, il §34 del regolamento va
+  riscritto. NB l'esempio usa DUE seed: SEED governa le scene 1-2, SEED2 le
+  scene 3-5 (l'RNG si rigenera a fine 2ª scena, sul solo mazzo residuo).
 
 ## Protocollo per le modifiche alle REGOLE
 Le regole sono duplicate in più punti: una modifica che tocca le regole va
@@ -34,7 +36,7 @@ ancora la regola vecchia):
 2. docs/frenemies_on_the_road_kb_v1_2.md - la fonte di verità: testo della
    regola e, se serve, l'esempio (§33 scenario demo, §34 partita d'esempio) e
    il registro modifiche. Se cambia il transcript (vedi Collaudo), rigenera
-   test/transcript_seed_13_v2.txt e riallinea il §34.
+   test/transcript_seed_23_43_v2.txt e riallinea il §34.
 3. index.html - tre rappresentazioni delle stesse regole, da tenere in sync:
    - costante REGOLE: il regolamento in-app per i giocatori (pulsante "?"),
      inclusi i suoi esempi (blocchi `.es`).

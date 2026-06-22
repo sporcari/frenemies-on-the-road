@@ -154,7 +154,7 @@ Stato iniziale:
 
 Le figure entrano nei mazzi tramite acquisto nel mercato tra le scene. Il Jolly (uno solo, nel mazzo dei Protagonisti) entra dopo la seconda scena.
 
-> **Nota (v1.1):** 20 carte bastano esattamente per le cinque scene (4 pescate a scena). Quando il mazzo finisce, la partita finisce: non esiste alcun rimescolo degli scarti nel mazzo. Gli unici rientri sono il recupero dei Protagonisti a scena vinta e le figure acquistate.
+> **Nota (v1.1):** 20 carte bastano esattamente per le cinque scene (4 pescate a scena). Quando il mazzo finisce, la partita finisce: non esiste alcun rimescolo degli scarti nel mazzo. Gli unici ingressi di carte nel mazzo sono le figure acquistate al mercato e la carta che la Ritirata strategica rimescola nel proprio mazzo (§18.1); il Jolly, inoltre, entra una sola volta dopo la seconda scena nel mazzo dei Protagonisti.
 
 ## 9. Preparazione narrativa: il pitch
 
@@ -317,7 +317,13 @@ Va formulata esplicitando **entrambi i rami**, cosa accade se la vincono i Prota
 - **Se la vincono i Protagonisti** → ottengono l'obiettivo intermedio e si avvicinano all'obiettivo finale
 - **Se la vince l'Opposizione** → la posta fallisce, i protagonisti vengono ostacolati e avranno più difficoltà a raggiungere l'obiettivo finale
 
-Perdere una posta **non pregiudica mai del tutto** l'obiettivo finale, che resta **sempre raggiungibile fino all'ultima scena**: una posta persa alza il prezzo e complica la situazione, non chiude la partita in anticipo (vedi §9.3).
+La posta **non è mai davvero indispensabile** per l'obiettivo finale, che resta **sempre raggiungibile fino all'ultima scena**: vincerla è un vantaggio che avvicina al traguardo, perderla è un problema che lo complica, ma la missione resta possibile in entrambi i casi (vedi §9.3). Va intesa come un vantaggio da conquistare o un guaio da evitare lungo la strada, non come un cancello obbligato: una posta che, se persa, chiuderebbe la partita in anticipo è scritta male.
+
+**Principi per una buona posta.**
+
+- **Il cosa, non il come *(v1.13)*:** la posta dice qual è l'obiettivo concreto in gioco, mai il modo di ottenerlo, che deve emergere dalle giocate. Va lasciata abbastanza aperta. "Orientarsi nel deserto e raggiungere l'oasi" è una buona posta (ci si orienta con le stelle, una mappa, l'istinto dei cammelli, un sogno); "orientarsi col taccuino" è peggiore, perché prescrive il mezzo e prenarra ciò che dovrebbe nascere dalla scena.
+- **Climax (crescendo) *(v1.10)*:** la posta dovrebbe crescere di scena in scena, diventando via via più drammatica, ardua, essenziale o potenzialmente distruttiva. Non bruciare subito le poste più estreme: tienile per le scene centrali e finali. Se già nella Scena 1 la posta mette in gioco qualcosa come finire in un carcere di massima sicurezza, e a vincerla è l'Opposizione, da lì in poi la storia diventa un'evasione e perde di vista la missione vera. A titolo indicativo, non vincolante, la posta in palio può salire così: **tempo** (Scena 1), **una risorsa preziosa** (Scena 2), **motivazione o morale** (Scena 3), **la tenuta dell'alleanza** tra i protagonisti (Scena 4), **l'esito dell'intera avventura** (Scena 5).
+- **Fail forward *(v1.10)*:** anche quando è persa, una buona posta lascia ai protagonisti qualcosa per andare avanti, cioè esperienza, una nuova opportunità o una nuova risorsa da spendere lungo il viaggio verso l'obiettivo finale. Il fallimento alza il prezzo e complica le cose, ma non deve inchiodarli in una situazione frustrante e senza uscita: fa comunque avanzare la storia.
 
 > **Esempio di posta:** "Tirare fuori Skunk dalla centrale prima del trasferimento in prigione, senza che il distretto capisca chi lo sta aiutando. Se la vincono i Protagonisti, escono con Skunk e una pista verso Vargas; se vince l'Opposizione, restano a mani vuote e con mezzo distretto sulle loro tracce."
 
@@ -337,6 +343,8 @@ Dopo l'asta:
 4. Il vincitore dell'asta sarà il primo a restare senza carte: in quel momento gioca la carta tenuta da parte come ultima giocata meccanica del round
 
 > **Chiarimento (v1.1):** entrambi i giocatori giocano **4 carte a testa**. Il vincitore dell'iniziativa gioca 3 carte dalla mano e cala quella d'asta come quarta e ultima; il perdente gioca tutte e 4 le carte della sua mano. A fine round nessuna carta resta in mano.
+
+> **Chi gioca l'ultima carta (v1.9):** poiché il vincitore dell'asta è il primo a restare senza carte, l'**ultimissima carta del round** è quella di chi ha **perso l'asta**. (Per chi narra l'esito vedi §18: dalla v1.14 lo narra chi perde la posta, non più automaticamente chi gioca l'ultima carta; resta però la ragione della regola di parità.)
 
 ## 14. Azioni possibili durante il turno
 
@@ -421,9 +429,11 @@ Chi ha il totale più alto vince la posta della scena.
 
 > **Scena chiusa da una scopa (v1.3):** se la scena finisce con il **piatto vuoto** perché l'ultima giocata è stata una **scopa**, la posta è vinta da **chi ha fatto la scopa**, anche se i totali del piatto sarebbero 0-0. (Vale anche per la scopa fatta col Jolly: la posta va a chi ha ripulito il piatto, mentre i 4 punti vanno all'avversario.)
 
-**Se vincono i Protagonisti:** la posta della scena è raggiunta; recuperano 1 carta del **proprio seme** (♥/♠) dagli **scarti comuni**, messa in fondo al mazzo.
+**Se vincono i Protagonisti:** la posta della scena è raggiunta e i protagonisti si avvicinano all'obiettivo finale.
 
-**Se vince l'Opposizione:** la posta della scena fallisce, la situazione peggiora per i protagonisti. Nessun recupero.
+**Se vince l'Opposizione:** la posta della scena fallisce e la situazione peggiora per i protagonisti.
+
+> **Chi narra l'esito (v1.14):** chi ha **vinto l'asta** ha inquadrato la scena scegliendone titolo e posta (§12); a raccontare **com'è finita** è invece chi ha **perso la posta**, cioè il lato che ha perso la scena, così da poterne calcare le ombre e i costi. In caso di **parità** dei totali narra chi ha **vinto l'asta** (per non far incatenare due narrazioni di fila a chi ha appena giocato l'ultima carta del round, cioè il perdente d'asta). Vale anche per la resa (§18.1): chi si arrende cede la posta e quindi ne narra l'esito. *(Prima della v1.14 l'esito lo narrava chi perdeva l'asta, a prescindere da chi vinceva la scena.)*
 
 > **Il piatto resta (v1.1):** a fine scena le carte rimaste nel piatto **non si toccano**: restano sul tavolo per la scena successiva. Chi apre la nuova scena può quindi già fare presa o scopa con la prima giocata.
 
@@ -436,7 +446,7 @@ Ci sono due modi di arrendersi, ciascuno usabile una sola volta per lato in tutt
 - **Ritirata strategica:** la carta viene rimescolata nel proprio mazzo. Non vale punti, ma diventa una carta in più per la mano estesa e per i colpi di scena della quinta scena.
 - **Resa onorevole:** la carta viene tenuta tra le proprie prese come un normale marcatore, e vale il suo punteggio (1 punto, 2 se è una figura).
 
-In entrambi i casi la posta della scena va all'avversario senza conteggio. Se a cedere è l'Opposizione, i Protagonisti raggiungono la posta e recuperano una carta del proprio seme dagli scarti comuni, come per una scena vinta normalmente. La carta della resa non entra nel piatto: il piatto resta com'è dopo le giocate dell'avversario e passa alla scena successiva come sempre.
+In entrambi i casi la posta della scena va all'avversario senza conteggio. Se a cedere è l'Opposizione, i Protagonisti raggiungono la posta come per una scena vinta normalmente. La carta della resa non entra nel piatto: il piatto resta com'è dopo le giocate dell'avversario e passa alla scena successiva come sempre.
 
 Se invece non ci si arrende, si gioca la carta e la scena si conta normalmente (i totali del piatto, oppure la scopa che svuota il piatto): la resa non è un modo per cambiare il conteggio, ma per non sprecare una carta che non lo cambierebbe.
 
@@ -450,7 +460,7 @@ Ordine corretto (importante per non annullare gli effetti del Fante):
 
 1. Si pesca la nuova mano di 4 carte per la scena successiva
 2. Si effettuano gli acquisti
-3. Le carte acquistate vengono aggiunte al mazzo
+3. Le carte acquistate vengono aggiunte al mazzo (**eccezione: il Fante entra subito in mano**, vedi §21)
 4. Il mazzo viene rimescolato
 
 ## 20. Economia di acquisto
@@ -477,9 +487,19 @@ Le figure hanno una doppia natura: meccanica (carte forti con effetti speciali) 
 
 > **Cattura flessibile (v1.6):** in gioco una figura cattura un gruppo di carte la cui somma è minore o uguale al suo valore (vedi §16), non solo l'esatto pari, e la presa con una figura vale 2 punti (§17). I costi 3/5/8 fanno costare uguale le due strade verso un Re: comprare un Re, oppure un Fante più una Regina.
 
+### 21.1 — Comprare una figura significa creare un PNG *(v1.12)*
+
+Comprare una figura significa **preparare l'ingresso di un PNG importante e potente**, i cui effetti sulla vicenda saranno probabilmente di grande impatto. La potenza del personaggio va di pari passo con il valore della carta (Fante < Regina < Re) e vale su due piani insieme: in fiction e nelle meccaniche associate alla figura, che si innescano nel momento in cui la carta viene giocata. **Nel momento in cui la si compra, alla figura si dà un nome, un ruolo e un aspetto**, e la si annota su una index card (o un post-it) tenuta in vista al tavolo, dal lato del proprietario, segnando anche il valore della carta a cui corrisponde. Da quel momento quella figura è un personaggio non giocante a tutti gli effetti, a disposizione di tutto il tavolo: rientra in scena quando la carta viene giocata, e il suo effetto meccanico è ciò che quel personaggio fa nella storia. Non si compra "un Fante", ma *quell'*alleato, con un volto e un nome.
+
+È la stessa pratica con cui si annota un PNG introdotto in scena (§14) quando lo si sente importante per il seguito, qui però resa **obbligatoria** dall'acquisto di una figura: una figura senza nome non si compra. Questo vincolo lega da subito la carta forte alla storia ed evita le figure anonime giocate solo come numeri alti.
+
+> **Esempio:** comprato un Fante, non resta "il Fante" ma diventa una persona, per esempio una guida del deserto che conosce piste e pozzi e fiuta in anticipo cosa aspetta oltre la prossima duna (proprio l'effetto del Fante: guardare e riordinare le prossime pescate). Vedi gli acquisti narrati nel §34.
+
 ### Fante — L'informatore
 
-**Effetto meccanico:** guarda le prime 4 carte del proprio mazzo; può decidere se e quali mettere in fondo.
+**Effetto meccanico:** guarda le prime 4 carte del proprio mazzo; può decidere se e quali mettere in fondo. Come per le altre figure, l'effetto si attiva **quando la carta viene giocata**.
+
+**Consegna all'acquisto (eccezione, v1.12):** a differenza di Regina e Re, che entrano nel mazzo e vengono rimescolate, il **Fante appena comprato entra subito in mano** per la scena successiva; per restare a quattro carte, una carta della mano (a scelta) va **in fondo al mazzo**. Così l'informatore è disponibile fin dalla prima scena dopo l'acquisto e non rischia di restare sepolto nel mazzo o di uscire troppo tardi (per esempio nell'ultima scena, quando non avrebbe più pescate da preparare). Se il Fante si compra al mercato che precede l'ultima scena, dove la mano non è ancora stata scelta (mano estesa, §23.1), entra invece nel mazzo come le altre figure: lì la scelta delle quattro carte è comunque libera, quindi lo si può tenere lo stesso.
 
 **Funzione:** controllo del draw, preparazione delle prossime pescate.
 
@@ -696,7 +716,7 @@ Nell'ultima scena emergono due strategie principali che si oppongono:
    ├── Il vincitore sceglie titolo, ambiente iniziale e posta della scena
    ├── Round: si alternano giocate, prese e scope (4 carte a testa)
    ├── Fine round: si somma il piatto → chi vince la scena?
-   │   ├── Protagonisti vincono → recuperano 1 carta casuale dagli scarti
+   │   ├── Protagonisti vincono → la posta è raggiunta
    │   └── Opposizione vince → situazione peggiora
    ├── Il piatto resta sul tavolo per la scena successiva
    ├── Pesca della nuova mano
@@ -828,155 +848,103 @@ Ogni missione ha una struttura precisa: **un obiettivo concreto** + **una scaden
 
 ---
 
-## 33. Lo scenario demo: La strada della vendetta *(v1.2)*
+## 33. Lo scenario demo: Il sole di mezzanotte *(v1.12)*
 
-Tutti gli esempi di questo regolamento, e la partita d'esempio in appendice, usano lo stesso scenario (i protagonisti sono Frank e Skunk). È un pitch completo: si può giocare così com'è o usarlo come modello.
+Tutti gli esempi di questo regolamento, e la partita d'esempio in appendice, usano lo stesso scenario (i protagonisti sono Vera e Otto). È un pitch completo: si può giocare così com'è o usarlo come modello.
 
-**Tono:** poliziesco, con venature dramedy.
+**Tono:** action, avventura archeologica.
 
 **Protagonisti**
 
-- **Frank (Picche):** ex poliziotto sospeso per eccesso di forza. Cinico, metodico, conosce il distretto come le sue tasche. Si è fatto terra bruciata attorno: sospeso, scaricato dai colleghi, con mezzo distretto sul libro paga di Vargas.
-- **Skunk (Cuori):** suo ex informatore. Truffatore, ricettatore, intrallazzone dei bassifondi: sopravvive di chiacchiere, favori e bugie.
-- **Differenza evidente:** la legge contro la strada, il metodo contro l'improvvisazione.
-- **Conflitto interno:** è stata una spiata sbagliata di Skunk a portare Frank al raid in cui ha esagerato e perso il distintivo. E Frank vuole Vargas in manette, Skunk lo vuole rovinato a qualunque costo.
+- **Vera Falco (Picche):** eroina d'azione, atletica, impulsiva, irruente. Cresciuta nei cantieri di scavo del padre Aldo, guida, scala, cavalca e spara meglio di chiunque la insegua.
+- **Otto Lenzi (Cuori):** filologo delle lingue morte, topo di biblioteca, fobie catalogate in ordine alfabetico. La sua traduzione di una stele ha riacceso la caccia a Zerzura, e non se lo perdona.
+- **Differenza evidente:** l'azione contro lo studio, l'istinto contro il metodo.
+- **Conflitto interno:** è stata la traduzione di Otto a riaprire la caccia che ha già inghiottito il padre di Vera. E Vera cerca l'artefatto per ritrovare il padre, Otto per rimediare a quello che ha scatenato.
 
-**Obiettivo finale:** entro 36 ore Vargas atterrerà con un jet privato dalla Colombia su una pista segreta del New Mexico per un meeting con i boss locali, e ripartirà: una volta decollato, nessuna estradizione lo riporterà mai davanti a un giudice. Bisogna arrivare alla pista e farlo arrestare in flagranza prima del decollo.
+**Obiettivo finale:** prendere il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto, nella cripta di Zerzura, la città perduta sepolta dalle sabbie. La cripta si apre solo con l'eclissi, tra cinque giorni. Bisogna arrivarci prima che ci arrivi la Loggia del Basilisco: se l'artefatto finisce nei suoi caveau, nessuno lo rivedrà mai.
 
 **Perché restano incollati**
 
-- Skunk sa tutto dall'ultima telefonata di suo fratello Jorge, che gestiva la pista per Vargas: una telefonata d'addio, fatta poche ore prima di essere ucciso, come se sapesse. E non sono solo coordinate: come funziona la sicurezza, chi controlla cosa, da dove si passa, chi si può comprare. Anche con la mappa in mano, senza Skunk ci si ferma al primo cancello.
-- Skunk non rivela niente: quello che sa è la sua assicurazione sulla vita e la sua unica merce di scambio. E vuole esserci, vuole guardare Vargas in faccia mentre lo ammanettano. Guida lui, un bivio alla volta.
-- Frank da solo non può muoversi: senza distintivo, senza colleghi, senza coperture. Ma senza Frank, Skunk non arriva vivo al confine della contea.
-- Vargas non può spostare il meeting: i boss stanno già convergendo da mezzo paese e il jet ha una finestra di volo. E non ha motivo di temerlo: della pista sa solo la sua cerchia più stretta. Non immagina che Jorge, la sua vecchia logistica, abbia fatto un'ultima telefonata prima di morire.
+- L'unica mappa per Zerzura è il taccuino di Aldo Falco, il padre di Vera, sparito nel deserto cercandola. Ma il taccuino è scritto in lingue morte e cifrato: solo Otto sa leggerlo.
+- Otto sa tradurre le stele e disinnescare le trappole sulla carta, ma davanti a uno scorpione, a un dirupo o a una sparatoria si paralizza: senza Vera non arriva vivo nemmeno ai margini del deserto.
+- La Loggia del Basilisco non può fermarsi: ha speso decenni e fondi illimitati su Zerzura, e l'eclissi non aspetta. Inseguono da vicino, con la stessa mappa comprata all'asta.
+- I Veglianti non possono lasciare che qualcuno tocchi l'artefatto: sono convinti che spostare il Sole di Mezzanotte significhi la fine, e cancellano le tracce di chiunque si avvicini alla città.
 
 **Opposizione**
 
-- **Quadri (nemici attivi):** l'organizzazione di Vargas, con mezzo distretto sul libro paga e una coppia di sicari pazienti.
-- **Fiori (caos):** la tempesta di sabbia in arrivo, un'auto con trecentomila chilometri, la sfortuna.
+- **Quadri (nemici attivi):** la Loggia del Basilisco (collezionisti spietati, fondi illimitati, infiltrati in ogni porto) e i Veglianti di Zerzura (l'ordine del deserto che custodisce la città e cancella le tracce di chi la cerca). Due fazioni rivali tra loro, ma entrambe vogliono fermarli.
+- **Fiori (caos):** il deserto. La tempesta in anticipo, le piste che spariscono, un camion che beve più olio che gasolio, le trappole della cripta. E gli scorpioni, ovunque.
 
 **Tratti di relazione (narrativi, §9.5)**
 
-- Cosa Frank detesta di Skunk: non dice mai tutta la verità, nemmeno quando gli converrebbe; ogni cosa che tocca diventa un traffico.
-- Cosa Skunk detesta di Frank: lo ha spremuto per anni come informatore e scaricato quando non serviva più; lo tratta ancora come una spia, mai come un socio.
+- Cosa Vera detesta di Otto: si paralizza davanti a qualsiasi cosa strisci o voli, e prima di muovere un passo deve leggere qualcosa.
+- Cosa Otto detesta di Vera: agisce prima di pensare e fa saltare in aria cose che andrebbero studiate; tratta i reperti come maniglie.
 
 **Le quattro spinte dei Protagonisti (§9.5, ♠/♥)**
 
-1. (♠) Perché conta per Frank: un arresto in flagranza di Vargas è l'unica cosa che può ridargli il distintivo e dimostrare che su di lui si sbagliavano tutti.
-2. (♥) Perché conta per Skunk: Vargas ha fatto uccidere suo fratello Jorge; non gli interessa il processo, gli interessa vederlo cadere.
-3. (♠) Asso nella manica di Frank: conosce ogni strada secondaria del distretto e sa quali colleghi sono sul libro paga di Vargas.
-4. (♥) Asso nella manica di Skunk: con una telefonata procura qualsiasi cosa: un'auto pulita, dei documenti, un tetto per la notte, un silenzio.
+1. (♠) Perché conta per Vera: suo padre è sparito cercando Zerzura; trovarla vuol dire realizzare il suo sogno e dare un senso al suo sacrificio.
+2. (♥) Perché conta per Otto: la caccia l'ha riaperta la sua traduzione; se finisce male, è colpa sua.
+3. (♠) Asso nella manica di Vera: nessuno guida, scala o spara come lei; dove finisce la strada, comincia lei.
+4. (♥) Asso nella manica di Otto: legge sette lingue morte e ha una faccia di cui tutti si fidano.
 
 **Le quattro risposte dell'Opposizione (§9.6)**
 
-1. (Quadri) Mezzi temibili: la rete di poliziotti corrotti dentro il distretto e i due sicari che non hanno fretta.
-2. (Quadri) Perché impedirlo: quel meeting è il momento di massima esposizione della vita di Vargas. Se qualcuno sa della pista, va trovato e zittito prima che il jet tocchi terra.
-3. (Fiori) Catastrofi possibili: la tempesta di sabbia che chiude la statale, un'auto con trecentomila chilometri nel deserto, posti di blocco a sorpresa nelle contee sbagliate.
-4. (Fiori) Cosa non hanno considerato: Jorge è stato ucciso al posto di Skunk, perché la spia era lui. E Frank non lo sa.
+1. (Quadri) Mezzi temibili: la Loggia ha sicari in ogni porto, i Veglianti hanno costruito le trappole della cripta.
+2. (Quadri) Perché impedirlo: la Loggia vuole l'artefatto, i Veglianti temono la fine; nessuno dei due li lascerà arrivare alla cripta.
+3. (Fiori) Catastrofi possibili: tempeste in anticipo, pozzi secchi, piste cancellate, un camion che perde olio nel mezzo del nulla.
+4. (Fiori) Cosa non hanno considerato: Aldo Falco è vivo, è diventato un Vegliante. Otto lo ha capito, e tace.
 
 **La prima difficoltà (§9.7, risposta condivisa)**
 
-Skunk è in cella. I poliziotti corrotti lo hanno arrestato con un pretesto per consegnarlo agli uomini di Vargas dentro la prigione, dove un coltello costa poco e nessuno fa domande. Bisogna tirarlo fuori prima che qualcuno arrivi a lui, e l'unico che può provarci è un poliziotto sospeso che in centrale non può nemmeno entrare dalla porta principale.
+Il taccuino del professor Aldo Falco, l'unico che abbia mai mappato la strada per Zerzura prima di sparire, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito.
 
 **Una geografia per le cinque scene** (indicativa, non vincolante)
 
-1. **Innesco:** la città di Frank, tirare Skunk fuori dalla cella.
-2. **Adattamento:** la statale verso ovest, imparare a viaggiare insieme.
-3. **Frattura:** il deserto, dove i segreti pesano più dei chilometri.
-4. **Crisi:** i dintorni della pista, l'ultima notte prima dell'atterraggio.
-5. **Risoluzione:** il meeting, con il jet già a terra.
+1. **Innesco:** l'asta del Cairo, mettere le mani sul taccuino di Aldo.
+2. **Adattamento:** il treno per El Qara, sparire verso il deserto senza una coda.
+3. **Frattura:** il mare di sabbia, dove i segreti pesano più delle dune.
+4. **Crisi:** l'accampamento, l'ultima notte prima dell'ingresso nella cripta.
+5. **Risoluzione:** la cripta del Sole, con l'eclissi che la apre.
 
 ---
 
-## 34. Partita d'esempio: trentasei ore *(v1.6)*
+## 34. Partita d'esempio: cinque giorni per l'eclissi *(v1.12)*
 
-Una partita vera a 2 giocatori, giocata dall'inizio alla fine con lo scenario demo (§33) e riportata integralmente: ogni carta, ogni presa e ogni conteggio sono reali e verificati dal motore di gioco (seme 13). Paola gioca i Protagonisti (Frank ♠ e Skunk ♥), Omar gioca l'Opposizione (i nemici ♦ e il caos ♣). Le meccaniche sono tra parentesi, i richiami alle regole nei riquadri. Il punteggio è quello di v1.6: una presa numerica vale 1 punto, una presa con figura 2, una scopa 4.
+> **In riscrittura.** Questa sezione viene ricostruita in forma narrativa estesa sulla partita d'esempio canonica, riportata integralmente e verificata dal motore in `test/transcript_seed_23_43_v2.txt` (due seed: SEED=23 per le scene 1-2, SEED2=43 per le scene 3-5). Le righe qui sotto ne riassumono l'esito; la narrazione scena per scena segue.
 
-### Scena 1 — La cella (Innesco)
+Una partita vera a 2 giocatori con lo scenario demo (§33): Paola gioca i Protagonisti (Vera ♠ e Otto ♥), Omar l'Opposizione (i nemici ♦, la Loggia del Basilisco e i Veglianti di Zerzura, e il caos ♣, il deserto). Punteggio: presa numerica 1, presa con figura 2, scopa 4; ciò che si spende al mercato vale 0.
 
-*Posta: tirare fuori Skunk prima del trasferimento. Se va bene: escono con Skunk e una pista verso Vargas. Se va male: escono braccati e con mezzo distretto alle calcagna.*
-
-All'asta Paola gioca coperto un 6♥, Omar un 4♣: iniziativa ai Protagonisti.
-
-> Il 6♥ di Paola resta da parte e sarà la sua **ultima giocata** del round; il 4♣ di Omar **torna nella sua mano** (§11).
-
-Paola apre con **8♥** (un messaggio che esce dalla cella). Omar cala **7♦** (il trasferimento spostato a stanotte), Paola mette **3♠** (Frank entra dal retro). Omar prende 7♦ e 3♠ in un colpo col **10♦** (presa di gruppo, §16): il sergente corrotto fa scattare il primo allarme. Paola semina **5♠**, Omar **4♣** (l'allarme antincendio che svuota i corridoi), e Paola cala la carta d'asta **6♥**: la faccia di Skunk convince due detenuti a coprirli. Omar chiude prendendo il 5♠ col **5♣**.
-
-Fine del round: nel piatto restano 8♥, 4♣ e 6♥. **Protagonisti 14, Opposizione 4**: la scena è loro, Skunk è fuori. Seme dominante ♥, sono usciti con i favori e la parlantina più che con la forza, e il diario del rapporto segna una salita (§27).
-
-> **Economia (§17/§20, v1.6):** le carte catturate (7♦, 3♠, 5♠) vanno subito negli **scarti comuni**; Omar tiene in verticale solo le due carte con cui ha preso, il 10♦ e il 5♣, due marcatori di presa da **1 punto l'uno**. Il piatto (8♥, 4♣, 6♥) **resta sul tavolo** (§18) e aspetta la scena 2.
-
-### Scena 2 — La statale (Adattamento)
-
-*Posta: sparire verso ovest. Se va bene: seminano gli inseguitori e guadagnano strada. Se va male: i sicari agganciano la loro traccia.*
-
-Asta: 3♥ contro 5♦, iniziativa all'Opposizione. Sul tavolo gli 8♥, 4♣, 6♥ della cella. Omar apre prendendo l'8♥ con l'**8♦** e subito **spunta la risposta ♦ del pitch**, la rete di poliziotti corrotti e i due sicari pazienti: due uomini in giacca scura scendono dal SUV davanti al diner.
-
-> **Spinta del pitch (§9.8, scopa vera):** la risposta entra in narrazione e la presa diventa una **scopa che svuota il piatto**, 4♣ e 6♥ finiscono negli scarti comuni. L'8♦ va in orizzontale tra le scope di Omar (**4 punti**). Quella risposta ♦ è ora spuntata: niente più spinte ♦ per l'Opposizione.
-
-Poi un lungo tira e molla: Paola rimette in gioco il **3♥** d'asta tornato in mano, Omar il **9♣**, Paola il **4♥**, Omar il **10♣**. Paola prende il 9♣ col **9♥**, Omar cala il **5♦** d'asta, Paola chiude prendendo il 4♥ col **4♠**. Restano nel piatto 3♥, 10♣, 5♦: **3 a 15**, scena all'Opposizione. Dominante ♣: a fermarli è il caos della strada più dei sicari. Eppure il diario sale ancora, perché l'unico seme dei protagonisti rimasto sul tavolo è un cuore.
-
-Al mercato Omar compra il **Fante di Quadri** (un informatore nel distretto): **costa 3** (§21, v1.6) e lo paga con le due prese della cella e la scopa appena fatta; i marcatori spesi vanno negli scarti comuni (§20).
-
-> **Dopo la seconda scena il Jolly entra nel mazzo dei Protagonisti** (§22, v1.3): uno solo, mescolato tra le carte, e ce l'hanno solo loro. Da qui ogni pescata può portare in mano il compromesso.
-
-### Scena 3 — Il deserto (Frattura)
-
-*Posta: attraversare il deserto interi. Se va bene: arrivano dall'altra parte più uniti. Se va male: quello che non si sono detti esplode.*
-
-Asta: 10♠ contro 3♦, iniziativa ai Protagonisti. Sul tavolo i 3♥, 10♣, 5♦ rimasti. Paola apre prendendo il 10♣ col **10♥** e **spunta la risposta ♥** del pitch, Vargas ha fatto uccidere suo fratello Jorge: nel silenzio del deserto la verità che Skunk si porta dentro affiora, e la presa diventa **scopa** che svuota il piatto.
-
-> **Spinta del pitch (§9.8):** il 10♥ va tra le scope di Paola (**4 punti**). La ♥ è ora spuntata: niente più spinte ♥ per i Protagonisti.
-
-Omar rilancia il **1♦**; Paola lo prende col **1♠** e fa **scopa vera** (§15.3), il piatto si svuota una seconda volta: la durezza di Frank chiude un discorso in un colpo solo. Poi il round si spegne in giocate piccole: Omar **3♦**, Paola **9♠**, Omar **4♦**, Paola cala il **10♠** d'asta, Omar chiude col **1♣**. Restano nel piatto 3♦, 9♠, 4♦, 10♠, 1♣: **19 a 8**, scena ai Protagonisti. Ma il seme dominante è ♠ e il diario **scende**: due scope vinte di forza, e qualcosa tra loro si tende.
-
-Al mercato Paola compra il **Fante di Cuori** (**costo 3**): il contatto di Skunk dentro la sicurezza dell'aeroporto. Per pagarlo brucia le due prese della statale e una delle due scope appena fatte; in piedi le resta solo quella del **1♠**.
-
-> **Una figura per tipo (§21, v1.3):** comprato il loro Fante, i Protagonisti non potranno comprarne un altro per tutta la partita — un solo Fante, una sola Regina, un solo Re a testa.
-
-### Scena 4 — L'ultima notte (Crisi)
-
-*Posta: arrivare in vista della pista prima dell'alba. Se va bene: prendono posizione col favore del buio. Se va male: qualcuno li sta già aspettando.*
-
-Asta: 6♠ contro 6♦, iniziativa all'Opposizione. Sul tavolo i 3♦, 9♠, 4♦, 10♠, 1♣ rimasti dal deserto.
-
-Omar apre calando il **Fante di Quadri**. La figura cattura in modo flessibile, un gruppo di somma minore o uguale a 8 (§16), ma la presa obbligata che il tavolo gli offre è una sola carta, e per giunta una delle **sue**: il Fante prende l'**1♣**, Quadri che pesta i piedi a Fiori, l'informatore che per zelo brucia una pedina della stessa rete. Le picche dei Protagonisti restano tutte sul tavolo (effetto del Fante, §21: Omar guarda le prime quattro carte del proprio mazzo e le riordina). Poi: Paola semina **5♥**, Omar prende il 9♠ col **9♦**, Paola gioca **6♠**, Omar cala l'**8♣** che prende 3♦ e 5♥ in coppia, Paola **7♠**, Omar prende il 6♠ col **6♦**, Paola chiude con l'**8♠** lasciato sul tavolo. Restano nel piatto 4♦, 10♠, 7♠, 8♠: **25 a 4**, scena ai Protagonisti, dominante ♠, continuano a vincere ma con le maniere forti, e il diario scende di nuovo.
-
-> **L'Opposizione fa punti cedendo il tavolo:** prendendo, anche a scapito delle proprie carte, Omar accumula quattro marcatori per il mercato e per il conteggio finale, ma svuota il piatto del proprio colore. È così che chiuderà avanti nei punti pur con un piatto a zero.
-
-Al mercato Omar compra la **Regina di Quadri** (**costo 5**): la manipolatrice, una talpa più in alto nella catena. La paga esattamente con i quattro marcatori della scena, fra cui la presa fatta col Fante che, da figura, vale **2 punti**. Quel piatto quasi tutto ♠ **resta sul tavolo** per la Risoluzione, sarà la base del conteggio finale. Prima dell'ultima scena, la **mano estesa** (§23): ognuno tiene 4 carte e mette il resto in riserva per i colpi di scena. E nella mano di Paola, finalmente, c'è il **Jolly**.
-
-### Scena 5 — La pista (Risoluzione)
-
-*Posta: il meeting. Se va bene: fermano Vargas prima del decollo. Se va male: il jet riparte con Vargas a bordo.*
-
-Asta: 1♥ contro 2♣, iniziativa all'Opposizione. Sul tavolo già 4♦, 10♠, 7♠, 8♠. Omar apre col **2♦** (un ultimo posto di blocco). Paola risponde con la mossa sleale: gioca il **Jolly dichiarato come 10** e si porta via il 10♠.
-
-> **Il Jolly (§22):** un successo ottenuto contro i principi e la lealtà. Paola toglie dal tavolo una picche pesante, ma **il punto della presa va a Omar**: il vantaggio è suo, il punto all'avversario. Frank fa quello che si era giurato di non rifare.
-
-Il round prosegue: Omar prende l'8♠ con la **Regina di Quadri** (presa con figura, §16) e ne sfrutta l'effetto, la manipolatrice (§21): i Protagonisti scartano una carta a caso dalla mano, il 3♥. Il mazzo di Paola è ormai esaurito, ma la riserva no, così pesca proprio da lì e si ritrova in mano il **7♥** (§21, §23.1). Paola semina **1♥**, Omar prende 2♦ e 1♥ in coppia col **3♣**, Paola gioca **2♥**, Omar prende il 2♥ col **2♣**, e Paola chiude calando il **7♥**, che cattura il 7♠. Sul tavolo resta solo il 4♦.
-
-**Primo conteggio** (§24), l'esito apparente: sul tavolo resta solo il 4♦, quindi **4 a 0** per l'Opposizione. Sembra perduta, ed è il momento dei colpi di scena: li apre chi sta (in apparenza) perdendo, cioè i Protagonisti.
-
-Apre Paola scaricando la riserva: il **Fante di Cuori** elimina subito il 4♦ (la figura cattura fino a 8). Omar risponde col **6♣**, senza bersagli. Paola cala il **2♠**, Omar il **7♣** che elimina il 2♠: i sicari spazzano via l'uomo di Frank al cancello. Paola torna a premere col **5♠**, poi col **9♠** che elimina il 6♣, mentre la riserva dell'Opposizione è già esaurita.
-
-> **Colpi di scena (§24, v1.3):** finché si ha riserva, si gioca **obbligatoriamente**; ogni carta entra nel piatto e può **eliminare** una carta avversaria di valore pari o inferiore (la tua resta sul tavolo, l'altra va negli scarti). Si finisce quando entrambe le riserve sono vuote.
-
-### Il finale
-
-Conteggio definitivo: sul tavolo Fante di Cuori, 7♣, 5♠, 9♠. **Protagonisti 22, Opposizione 7.** Il piatto è loro: Vargas viene ammanettato sulla pista, davanti ai boss arrivati per il meeting.
-
-E stavolta anche i punti complessivi (§26) reggono. Col punteggio di v1.6 (presa 1, presa con figura 2, scopa 4, e ciò che è stato speso al mercato vale 0), ai Protagonisti restano la scopa intatta del **1♠** (4 punti) e la presa del **7♥** (1 punto): **5** in tutto. L'Opposizione arriva anch'essa a **5**: la presa con la **Regina** che da figura vale 2, due piccole prese da 1, e il punto che Paola le ha **regalato col Jolly**. La sua unica scopa e tutte le prese della crisi le aveva già bruciate per comprare le figure. Pari ai punti, **5 a 5**: e con il piatto stravinto il pareggio basta (§26), è una **Vittoria totale**. Proprio il 7♥ ripescato dalla riserva, la carta che la Regina aveva provato a strappare di mano a Paola, è la presa che chiude i conti.
-
-> **Nota (§22):** uno dei 5 punti dell'Opposizione è quello che Paola le ha **regalato col Jolly**. Senza, i Protagonisti avrebbero vinto i punti 5 a 4; con quel punto è un pari 5 a 5. L'esito non cambia, resta una Vittoria totale grazie al piatto stravinto, ma la scorciatoia di Frank è costata la **vittoria netta ai punti**.
-
-Resta la lettura del diario (§27): **su, su, giù, giù, giù**. Salita nella cella e sulla statale, poi tre discese: il deserto e l'ultima notte vinti di forza (♠ su ♠) e la pista chiusa allo stesso modo. Due scene di vicinanza contro tre di distanza: hanno raggiunto l'obiettivo, ma da soli più che insieme. E nell'ultimo piatto, tra i semi dell'opposizione, i Quadri tacciono (♦ a 0: nessun nemico organizzato resta sul tavolo) ma i Fiori no, il 7♣ è ancora lì: a insidiarli fino in fondo è stato più il caos della coppia che i sicari. A pesare, semmai, è stata la scorciatoia di Frank col Jolly, che ha tenuto l'Opposizione a pari e ha negato ai Protagonisti la vittoria netta ai punti.
-
-> La lezione della partita: anche una **Vittoria totale** può lasciare il segno. I Protagonisti hanno dominato il piatto in ogni scena tranne una e centrato l'obiettivo, ma il punto regalato col Jolly ha tenuto l'Opposizione a pari nei marcatori: certi vantaggi presi nel modo sbagliato si comprano cari, anche quando si vince.
+**Esito:** i Protagonisti vincono la posta di tutte e cinque le scene, eppure perdono ai punti. In gioco compaiono **tutte e tre le figure**: il **Fante di Cuori** comprato da Paola, che le entra subito in mano (§21) e fa scopa nelle dune; la **Regina di Cuori**, che Paola schiera nei colpi di scena finali (dove elimina una carta e viene a sua volta eliminata); e il **Re di Quadri** di Omar, che nella cripta si sacrifica per una scopa. In più il **Jolly** (un punto regalato all'Opposizione), due spinte del pitch (♥ e ♠) e quattro colpi di scena. Al conteggio definitivo i Protagonisti **stravincono il piatto 12-0 ma perdono ai punti 2-8**: è una **Vittoria per il rotto della cuffia** (§26): le scope che avevano fatto le hanno spese per le figure, e il Jolly ha regalato il punto, perché dominare il tavolo non basta. Diario del rapporto: **su, pari, pari, su, giù**.
 
 ---
 
 # REGISTRO MODIFICHE
+
+## v1.14 (giugno 2026)
+
+1. **§13/§18: L'esito lo narra chi perde la posta (non più chi perde l'asta).** Cambia chi racconta com'è finita la scena: ora è il lato che ha **perso la posta** (la scena), così da poterne calcare le ombre e i costi. In caso di **parità** dei totali narra chi ha **vinto l'asta** (per non far incatenare due narrazioni di fila a chi ha appena giocato l'ultima carta del round, cioè il perdente d'asta). L'inquadratura iniziale resta a chi vince l'asta; la resa (§18.1) è coerente (chi cede la posta ne narra l'esito). Supera la regola v1.9 (esito al perdente d'asta, "chi apre non chiude"). Allineati KB §13 (nota ultima carta) e §18 (nota "chi narra l'esito"), `REGOLE` e `REGOLE_IA` in `index.html`, manuale §5.10. Motore: `latoCheAgisce('fine_scena')`, `claudeEsito` in `rFineScena` e l'instradamento in `conteggioDefinitivo` ora puntano al perdente della posta (in parità al vincitore d'asta). Aggiornati `test/test_riprova.js` (default SEED=2, in cui i Protagonisti vincono almeno una scena, così l'Opposizione/Claude narra il suo esito) e l'actual play del §34/Appendice B (gli esiti delle scene vinte dai Protagonisti li narra ora l'Opposizione).
+
+## v1.13 (giugno 2026)
+
+1. **§12.2: La posta dice il cosa, non il come (e non è mai indispensabile).** Aggiunto alla guida sulla posta il principio **Il cosa, non il come**: la posta indica l'obiettivo concreto in gioco ma mai il modo di ottenerlo, che deve emergere dalle giocate, e va lasciata abbastanza aperta ("orientarsi nel deserto" sì; "orientarsi col taccuino" no, perché prescrive il mezzo e prenarra ciò che dovrebbe nascere dalla scena). Rafforzato anche il principio, già presente, che la posta **non è mai indispensabile** per l'obiettivo finale: vincerla è un vantaggio, perderla un problema, ma la missione resta raggiungibile fino all'ultima scena in entrambi i casi. Solo guida narrativa, nessun effetto sul motore. Allineati `REGOLE` ("Come scrivere la posta") e `REGOLE_IA` ("ASTA E APERTURA") in `index.html`, e il manuale (§5.2). Aggiornata di conseguenza la posta della **Scena 3** della partita d'esempio (da "attraversare le dune col taccuino" a "orientarsi nel deserto e raggiungere l'oasi", che illustra meglio entrambi i principi) in `playsets/playset_sole_di_mezzanotte.json`, scheda, `index.html`, `test/partita_esempio.js` e `test/transcript_seed_23_43_v2.txt`.
+
+## v1.12 (giugno 2026)
+
+1. **§21.1: Comprare una figura significa creare un PNG.** Comprare una figura prepara l'ingresso di un PNG importante e potente (potenza Fante < Regina < Re), su due piani, in fiction e nelle meccaniche che scattano quando la carta viene giocata. All'acquisto le si dà sempre nome, ruolo e aspetto e la si registra su una index card dal lato del proprietario, col valore della carta: diventa un personaggio non giocante a tutti gli effetti, e una figura senza nome non si compra. Pratica già applicata dall'app (modale Nome/Descrizione all'acquisto) ma finora non scritta come regola. Allineati `REGOLE` (sezione "Le figure") e `REGOLE_IA` in `index.html`, e il manuale del giocatore (§6.3).
+2. **§21 (Fante): consegna in mano all'acquisto.** A differenza di Regina e Re (che entrano nel mazzo e vengono rimescolate, effetto sul gioco), il Fante appena comprato **entra subito in mano** per la scena successiva, e una carta della mano (a scelta) va in fondo al mazzo. Motivo: un Fante pescato tardi, o uscito nell'ultima scena, sprecava il suo effetto; così è subito utile. L'effetto del Fante resta invariato e si attiva quando la carta viene giocata. Al mercato prima dell'ultima scena (mano non ancora scelta) il Fante entra nel mazzo come le altre figure ma resta selezionabile nella mano estesa (§23.1). Allineati il motore (`acquistaFigura`/`fanteInMano` in `index.html`, con auto-risoluzione per l'IA), `REGOLE`, `REGOLE_IA`, manuale §6.3, ordine del mercato §19.
+3. **§33/§34: Scenario demo convertito in "Il sole di mezzanotte".** Lo scenario demo passa da Frank/Skunk a **Vera Falco (♠) e Otto Lenzi (♥)**, caccia archeologica al Sole di Mezzanotte nella cripta di Zerzura (Loggia del Basilisco + Veglianti come nemici ♦, il deserto come caos ♣), per renderlo family-friendly. La partita d'esempio del §34 usa **due seed** (SEED=23 per le scene 1-2, SEED2=43 per le scene 3-5; l'RNG si rigenera a fine 2ª scena sul solo mazzo residuo, così le scene 1-2 restano fisse e si possono curare le 3-5). Esito: i Protagonisti vincono tutte le poste ma **stravincono il piatto 12-0 perdendo ai punti 2-8** → **Vittoria per il rotto della cuffia**, diario su, pari, pari, su, giù. Vetrina completa: tutte e tre le figure (Fante e Regina di Paola, Re di Omar), Jolly, due spinte (♥/♠) e quattro colpi di scena (con la Regina schierata dalla riserva). Politica di mercato del driver: Paola compra subito il Fante poi la Regina, Omar punta al Re. Aggiornati `test/partita_esempio.js`, `test/transcript_seed_23_43_v2.txt` e `CLAUDE.md`. *In corso: riscrittura del §34 in forma narrativa estesa e sweep degli esempi inline ancora su Frank/Skunk.*
+
+## v1.11 (giugno 2026)
+
+1. **§18: Rimosso il recupero dei Protagonisti.** I Protagonisti non recuperano più una carta del proprio seme dagli scarti comuni quando vincono la posta della scena: vincere avvicina solo all'obiettivo finale. Motivazione: i Protagonisti hanno già un vantaggio di mazzo con il Jolly (una carta in più dopo la seconda scena), e il rientro di carte resta possibile per entrambi i lati con la Ritirata strategica (§18.1). Aggiornati di conseguenza §8 (ingressi di carte nel mazzo: figure acquistate, carta della Ritirata strategica, Jolly), §18.1 (la resa dell'Opposizione fa solo raggiungere la posta), §29 (flusso). Allineati `REGOLE`, `REGOLE_IA` e il motore (`chiudiScena`) in `index.html`, e il manuale del giocatore (§2.1, §5.11, §5.12, flusso §10.3, diagramma della scena). **Conseguenza sul §34:** il motore cambia, quindi la partita d'esempio a seed 13 e il transcript di riferimento vanno rigenerati e il §34 riscritto (in sospeso).
+
+## v1.10 (giugno 2026)
+
+1. **§12.2: Due principi per una buona posta.** Aggiunti, alla guida su come scrivere la posta, il **Climax** (la posta cresce di scena in scena, sempre più drammatica, ardua o decisiva; non bruciare subito le poste estreme, o un fallimento precoce dirotta la storia, per esempio in un'evasione, lontano dalla missione; con una scala di esempio non vincolante: tempo, una risorsa preziosa, motivazione/morale, tenuta dell'alleanza, esito finale) e il **Fail forward** (anche persa, una buona posta lascia ai protagonisti esperienza, un'opportunità o una risorsa per proseguire verso l'obiettivo; complica, non blocca in un vicolo cieco frustrante). Solo guida narrativa, nessun effetto sul motore. Allineati `REGOLE` ("Come scrivere la posta") e `REGOLE_IA` ("ASTA E APERTURA") in `index.html`, e il manuale del giocatore.
+
+## v1.9 (giugno 2026)
+
+1. **§13, §18: Chi narra l'esito della scena.** Chi vince l'asta inquadra la scena (titolo e posta); a narrare com'è finita è invece chi ha **perso l'asta**, cioè chi gioca l'ultimissima carta del round (o chi si arrende, §18.1), **a prescindere da chi vince la scena**. Chiarito anche che, essendo il vincitore dell'asta il primo a restare senza carte, l'ultima carta del round in assoluto è del perdente dell'asta. Allineati `REGOLE` (sezioni "Asta e apertura" e "Fine scena e letture") e `REGOLE_IA` in `index.html`, e il comportamento del codice: la fase di fine scena è instradata a chi ha perso l'asta (`latoCheAgisce`), e in modalità vs Claude l'esito lo scrive l'Opposizione quando è lei ad aver perso l'asta (non più "quando vince la scena"). Aggiornato `test/test_riprova.js` di conseguenza.
 
 ## v1.8 (giugno 2026)
 
@@ -1044,4 +1012,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.6*
+*Frenemies on the Road — Knowledge Base v1.14*

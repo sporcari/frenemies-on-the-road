@@ -3,10 +3,12 @@
 // pulsanti di rigenerazione compaiono, e lo stub di rete risponde con testi SEMPRE DIVERSI
 // (un contatore), così la rigenerazione è verificabile: ogni "Rigenera" deve cambiare il
 // contenuto mostrato e NON deve duplicare le voci del log narrativo.
-// Seed fisso (mulberry32) per riproducibilità. Uso: npm i jsdom && SEED=7 node test/test_riprova.js
+// Seed fisso (mulberry32) per riproducibilità. Uso: npm i jsdom && SEED=2 node test/test_riprova.js
+// (default SEED=2: vincitori scene O,O,O,P,P, così i Protagonisti vincono almeno una scena e
+//  l'Opposizione/Claude narra il suo esito, come richiede la regola "narra chi perde la posta").
 const {JSDOM}=require("jsdom");
 const fs=require("fs");
-const SEED=parseInt(process.env.SEED||"7");
+const SEED=parseInt(process.env.SEED||"2");
 
 let html=fs.readFileSync(require("path").join(__dirname,"..","index.html"),"utf8");
 html=html.replace(/<script src=[^>]+><\/script>/g,"");
@@ -157,7 +159,7 @@ async function main(){
     }
     if(f==="fine_scena"){
       const rec=G().scene[G().scena];
-      const claudeEsito = G().modalita==="solo" && rec.vincitore==="O" && !rec.perRitirata;
+      const claudeEsito = G().modalita==="solo" && !rec.perRitirata && (rec.vincitore==="P" || (rec.vincitore==="parita" && rec.iniziativa==="O"));   // l'esito lo narra chi perde la posta: l'Opposizione quando vince la scena i Protagonisti (in parità chi ha vinto l'asta)
       if(claudeEsito && !document.getElementById("fsEsito")){ await dorme(40); continue }   // aspetta l'iniezione dell'esito
       if(claudeEsito && !okEsito){
         const fsE=document.getElementById("fsEsito");
@@ -212,7 +214,7 @@ async function main(){
       if(!okSetup)  fallisci("setup Opposizione mai rigenerato");
       if(!okNarr)   fallisci("narrazione mai rigenerata");
       if(!okApert)  fallisci("apertura mai rigenerata (Claude non ha mai aperto una scena con questo seed)");
-      if(!okEsito)  fallisci("esito mai rigenerato (l'Opposizione non ha mai vinto una scena con questo seed)");
+      if(!okEsito)  fallisci("esito mai rigenerato (i Protagonisti non hanno mai vinto una scena con questo seed, quindi Claude non ha mai narrato un esito)");
       console.log("OK: tutti i contenuti di Claude rigenerabili, log coerente");
       process.exit(0);
     }

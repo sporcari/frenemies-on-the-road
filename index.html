@@ -602,15 +602,15 @@ const PLAYSET=[
       "Gli scorpioni, ovunque."
     ],
     spinte:{
-      picche:["Suo padre è sparito cercando Zerzura: trovarla è restituirgli il nome.", "Nessuno guida, scala o spara come Vera: dove finisce la strada, comincia lei."],
+      picche:["Suo padre è sparito cercando Zerzura: trovarla vuol dire realizzare il suo sogno e dare un senso al suo sacrificio.", "Nessuno guida, scala o spara come Vera: dove finisce la strada, comincia lei."],
       cuori:["La caccia l'ha riaperta la sua traduzione: se finisce male, è colpa sua.", "Legge sette lingue morte e ha una faccia di cui tutti si fidano."],
       quadri:["La Loggia ha sicari in ogni porto; i Veglianti hanno costruito le trappole.", "La Loggia vuole l'artefatto, i Veglianti temono la fine: nessuno li lascerà arrivare alla cripta."],
       fiori:["Tempeste in anticipo, pozzi secchi, piste cancellate, un camion che perde olio.", "Aldo Falco è vivo: è un Vegliante. Otto lo ha capito, e tace."]
     },
     geografia_scene:[
-      {scena:1, fase:"Innesco", titolo:"L'asta del Cairo", suggerimento_posta:"Prendere il taccuino di Aldo. Se va bene: hanno la mappa e un giorno di vantaggio. Se va male: la Loggia compra la strada e un giorno di vantaggio"},
-      {scena:2, fase:"Adattamento", titolo:"Il treno per El Qara", suggerimento_posta:"Guadagnare il deserto. Se va bene: spariscono nelle sabbie senza una coda. Se va male: la Loggia sa che faccia hanno e su che treno sono"},
-      {scena:3, fase:"Frattura", titolo:"Il mare di sabbia", suggerimento_posta:"Attraversare le dune col taccuino. Se va bene: arrivano alla cripta col segreto intatto. Se va male: quello che Otto tace esce nel posto peggiore"},
+      {scena:1, fase:"Innesco", titolo:"L'asta del Cairo", suggerimento_posta:"Prendere il taccuino di Aldo. Se va bene: hanno la mappa e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio"},
+      {scena:2, fase:"Adattamento", titolo:"Il treno per El Qara", suggerimento_posta:"Raggiungere El Qara in tempo. Se va bene: si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male: arrivano troppo tardi e restano senza quell'aiuto prezioso"},
+      {scena:3, fase:"Frattura", titolo:"Il mare di sabbia", suggerimento_posta:"Orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se va bene: i protagonisti possono accamparsi e prepararsi alla ricerca. Se va male: si perdono nel deserto"},
       {scena:4, fase:"Crisi", titolo:"L'accampamento", suggerimento_posta:"Raggiungere l'ingresso prima dell'alba. Se va bene: scendono nella cripta col favore del buio. Se va male: alla cripta li aspettano la Loggia da una parte e i Veglianti dall'altra"},
       {scena:5, fase:"Risoluzione", titolo:"La cripta del Sole", suggerimento_posta:"L'eclissi. Se va bene: mettono in salvo il Sole di Mezzanotte. Se va male: il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata"}
     ]
@@ -901,7 +901,13 @@ function uniscitiStanza(codice, cb){
 function latoCheAgisce(){
   const f=G.fase;
   if(f==="setup") return ownerSetup();
-  if(f==="fine_scena"||f==="jolly_intro"||f==="neutralizza"||f==="finale"||f==="primo_conteggio") return G.hostLato;
+  if(f==="fine_scena"){                              // l'esito lo narra chi ha PERSO la posta; in parità chi ha vinto l'asta
+    const rec=G.scene[G.scena];
+    if(!rec) return G.hostLato;
+    if(rec.vincitore==="P"||rec.vincitore==="O") return altro(rec.vincitore);
+    return rec.iniziativa || G.hostLato;
+  }
+  if(f==="jolly_intro"||f==="neutralizza"||f==="finale"||f==="primo_conteggio") return G.hostLato;
   if(f==="narrazione") return G.narrLato || G.attore;
   if(f==="mercato") return G.mercatoLato || G.hostLato;
   if(f==="asta_rivela") return G.rivela && G.rivela.win ? G.rivela.win : G.attore;
@@ -1010,7 +1016,7 @@ function claudeStaGiocando(){
   if(f==="narrazione"&&(G.narrLato||G.attore)==="O") return true;
   if(f==="mano_estesa"&&G.attore==="O") return true;
   if(f==="colpi"&&G.attore==="O") return true;
-  if(f==="fine_scena"&&G.scene[G.scena]&&G.scene[G.scena].vincitore==="O") return true;
+  if(f==="fine_scena"&&G.scene[G.scena]&&!G.scene[G.scena].perRitirata&&latoCheAgisce()==="O") return true;
   return false;
 }
 function veloIA(on){ const v=document.getElementById("veloIA"); if(v) v.classList.toggle("attivo", on); }
@@ -2385,21 +2391,13 @@ function chiudiScena(){
   rec.dominante = (somme[0].t===0 || somme[0].t===somme[1].t) ? "parita" : somme[0].s;
   const tc=totaleSeme("cuori"), tp=totaleSeme("picche");
   rec.rapporto = tc>tp?"su":tp>tc?"giu":"pari";
-  // recupero dei protagonisti: una carta del loro seme (♥/♠) dagli scarti comuni, in fondo al mazzo
-  rec.recupero=null;
-  const recuperabili=G.scartiComuni.filter(x=>lato("P").semi.includes(x.seme));
-  if(rec.vincitore==="P" && recuperabili.length>0){
-    const c=recuperabili[Math.floor(Math.random()*recuperabili.length)];
-    G.scartiComuni=G.scartiComuni.filter(x=>x.id!==c.id);
-    lato("P").mazzo.push(c);
-    rec.recupero=nomeCarta(c);
-  }
+  rec.recupero=null;   // (rimosso in v1.11: i Protagonisti non recuperano più una carta a scena vinta)
 }
 function rFineScena(){
   const rec=G.scene[G.scena];
   const vincNome = rec.vincitore==="parita" ? "PARITÀ" : nomeLato(rec.vincitore);
   const ritirataEsito = !!rec.perRitirata;   // scena ceduta per ritirata: l'esito è già scritto da chi si è arreso
-  const claudeEsito = G.modalita==="solo" && rec.vincitore==="O" && !ritirataEsito;   // vs Claude: l'esito lo scrive l'Opposizione (sola lettura)
+  const claudeEsito = G.modalita==="solo" && !ritirataEsito && latoCheAgisce()==="O";   // l'esito lo narra chi ha perso la posta (in parità chi ha vinto l'asta); se tocca all'Opposizione lo scrive Claude (sola lettura)
   SC.innerHTML=`
     <h2 class="ts">Fine della scena ${G.scena+1}</h2>
     ${rec.titolo?`<p class="sotto">«${rec.titolo}»${rec.posta?" — "+rec.posta:""}</p>`:""}
@@ -2550,16 +2548,57 @@ function acquistaFigura(l,f,s,nome,desc,b){
   G.figureComprate.push(f+s);
   G.png=G.png||{};
   G.png[f+s]={nome:(nome||"").trim(), desc:(desc||"").trim()};
-  L.mazzo.push(carta(s, FIGURE[f].val, f));
-  L.mazzo=mischia(L.mazzo);
-  // tutti i bottoni di QUESTO tipo per il lato spariscono (una sola figura per tipo)
-  SC.querySelectorAll(`button[data-l="${l}"][data-f="${f}"]`).forEach(x=>{ if(document.contains(x)) x.outerHTML=`<span class="fig-esaurita" title="già acquistata">✓</span>`; });
-  const es=document.getElementById("esito-"+l);
-  if(es){ es.style.display="block";
-    es.innerHTML=(es.innerHTML?es.innerHTML+"<br>":"")+`Acquistato ${FIGURE[f].nome} ${SIMBOLI[s]}${(nome||"").trim()?` — “${nome.trim()}”`:""} — entra nel mazzo, rimescolato.`; }
-  const pel=document.getElementById("punti-"+l); if(pel) pel.textContent=puntiMercato(l);
-  SC.querySelectorAll(`button[data-l="${l}"]`).forEach(x=>{ x.disabled = puntiMercato(l)<FIGURE[x.dataset.f].costo; });
-  inviaStato();
+  const fig=carta(s, FIGURE[f].val, f);
+  const etichetta=`Acquistato ${FIGURE[f].nome} ${SIMBOLI[s]}${(nome||"").trim()?` — “${nome.trim()}”`:""}`;
+  const finalizza=(coda)=>{
+    // tutti i bottoni di QUESTO tipo per il lato spariscono (una sola figura per tipo)
+    SC.querySelectorAll(`button[data-l="${l}"][data-f="${f}"]`).forEach(x=>{ if(document.contains(x)) x.outerHTML=`<span class="fig-esaurita" title="già acquistata">✓</span>`; });
+    const es=document.getElementById("esito-"+l);
+    if(es){ es.style.display="block";
+      es.innerHTML=(es.innerHTML?es.innerHTML+"<br>":"")+etichetta+" — "+coda; }
+    const pel=document.getElementById("punti-"+l); if(pel) pel.textContent=puntiMercato(l);
+    SC.querySelectorAll(`button[data-l="${l}"]`).forEach(x=>{ x.disabled = puntiMercato(l)<FIGURE[x.dataset.f].costo; });
+    inviaStato();
+  };
+  // ECCEZIONE FANTE (v1.12): l'informatore entra SUBITO in mano per la scena successiva
+  // (se la mano è già stata pescata), e una carta della mano va in fondo al mazzo.
+  // Regina e Re, invece, entrano nel mazzo e vengono rimescolati (effetto sul gioco).
+  if(f==="F" && L.mano.length>0){
+    L.mano.push(fig);
+    if(G.modalita==="solo" && l==="O"){
+      // l'IA non passa dal modale: manda in fondo la carta numerica più bassa (tiene Jolly e figure)
+      const cand=L.mano.filter(c=>c.fig!=="F" && !c.jolly);
+      const giu=(cand.length?cand:L.mano.filter(c=>c.fig!=="F")).slice().sort((a,b)=>a.val-b.val)[0];
+      if(giu){ L.mano=L.mano.filter(x=>x.id!==giu.id); L.mazzo.push(giu); }
+      finalizza("entra subito in mano; una carta va in fondo al mazzo.");
+    } else {
+      fanteInMano(l, ()=>finalizza("entra subito in mano; una carta va in fondo al mazzo."));
+    }
+  } else {
+    L.mazzo.push(fig);
+    L.mazzo=mischia(L.mazzo);
+    finalizza("entra nel mazzo, rimescolato.");
+  }
+}
+// Modale dell'eccezione Fante: scegli una carta della mano da mandare in fondo al mazzo.
+function fanteInMano(l, poi){
+  const L=lato(l);
+  modale(`<h2 class="ts">Il Fante entra in mano</h2>
+    <p class="sotto">L'informatore si unisce alla mano della prossima scena. Tocca una carta da mandare in fondo al mazzo, poi conferma.</p>
+    <div class="mazzo-carte${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}" id="fanteManoCarte">${L.mano.map(x=>cartaHTML(x)).join("")}</div>
+    <button class="azione" id="fanteManoOk" style="margin-top:14px" disabled>Manda in fondo</button>`);
+  let sel=null;
+  const btn=document.getElementById("fanteManoOk");
+  document.querySelectorAll("#fanteManoCarte .carta").forEach(el=>el.addEventListener("click",()=>{
+    document.querySelectorAll("#fanteManoCarte .carta").forEach(x=>x.classList.remove("sel"));
+    el.classList.add("sel"); sel=parseInt(el.dataset.id); btn.disabled=false;
+  }));
+  btn.addEventListener("click",()=>{
+    if(sel==null) return;
+    const i=L.mano.findIndex(x=>x.id===sel);
+    if(i>=0){ const c=L.mano.splice(i,1)[0]; L.mazzo.push(c); }   // in fondo al mazzo (pescaFinoA pesca dalla testa)
+    chiudiModale(); poi();
+  });
 }
 function chiediPng(l,f,s,b){
   const fig=FIGURE[f];
@@ -2751,8 +2790,10 @@ function eseguiColpo(l, riservaCard, bersaglio){
 function conteggioDefinitivo(){
   chiudiScena();
   G.colpi=null;
-  // vs Claude: se la scena finale va all'Opposizione, l'esito lo scrive Claude (schermata fine_scena → "Vai al finale")
-  if(G.modalita==="solo" && G.scene[G.scena].vincitore==="O"){ G.fase="fine_scena"; render(); return; }
+  // vs Claude: l'esito lo narra chi ha perso la posta della scena finale (in parità chi ha vinto l'asta); se è l'Opposizione, lo scrive Claude (schermata fine_scena → "Vai al finale")
+  const _rec=G.scene[G.scena];
+  const _narr=(_rec.vincitore==="P"||_rec.vincitore==="O")?altro(_rec.vincitore):_rec.iniziativa;
+  if(G.modalita==="solo" && _narr==="O"){ G.fase="fine_scena"; render(); return; }
   G.fase="finale"; render();
 }
 
@@ -2864,11 +2905,14 @@ const REGOLE={
     <tr><td>♦</td><td>Attacco del nemico, imboscata, territorio avversario</td></tr>
     <tr><td>♣</td><td>Evento imprevisto, luogo instabile, caos immediato</td></tr></table>
     <h3>Come scrivere la posta</h3>
-    La posta è una <b>difficoltà concreta</b> da superare o un <b>obiettivo intermedio</b> da ottenere: procurarsi qualcosa, riuscire a entrare in un luogo, riuscire a uscirne. Va detto esplicitamente cosa succede <b>se la vincono i Protagonisti</b> (ottengono l'obiettivo e si avvicinano al traguardo) e cosa <b>se vince l'Opposizione</b> (la posta fallisce, la situazione si complica). Perderla non preclude mai l'obiettivo finale, che resta raggiungibile fino all'ultima scena.<br>
+    La posta è una <b>difficoltà concreta</b> da superare o un <b>obiettivo intermedio</b> da ottenere: procurarsi qualcosa, riuscire a entrare in un luogo, riuscire a uscirne. Va detto esplicitamente cosa succede <b>se la vincono i Protagonisti</b> (ottengono l'obiettivo e si avvicinano al traguardo) e cosa <b>se vince l'Opposizione</b> (la posta fallisce, la situazione si complica). La posta non è mai indispensabile: vincerla avvicina al traguardo, perderla complica, ma l'obiettivo finale resta raggiungibile fino all'ultima scena.<br>
+    <b>Il cosa, non il come:</b> la posta dice l'obiettivo concreto, mai il modo di ottenerlo (che emerge dalle giocate); lasciala abbastanza aperta. "Orientarsi nel deserto" sì; "orientarsi col taccuino" no, perché prenarra ciò che dovrebbe nascere dalla scena.<br>
+    <b>Climax:</b> la posta cresce di scena in scena, sempre più drammatica, ardua o decisiva; non bruciare subito le poste più estreme (se già nella Scena 1 si rischia il carcere di massima sicurezza e vince l'Opposizione, la storia diventa un'evasione e perde di vista la missione). Scala indicativa (non vincolante): tempo nella Scena 1, una risorsa preziosa nella 2, motivazione/morale nella 3, la tenuta dell'alleanza nella 4, l'esito dell'intera avventura nella 5.<br>
+    <b>Fail forward:</b> anche persa, una buona posta lascia ai protagonisti esperienza, un'opportunità o una risorsa per proseguire verso l'obiettivo; complica, ma non li blocca in un vicolo cieco frustrante.<br>
     <b>Continuità:</b> ogni scena parte dall'esito della posta precedente. Se i protagonisti non sono usciti dalla cella, la scena dopo non può aprirsi con loro già in fuga per strada.
     <div class="es">"Tirare fuori Skunk prima del trasferimento. Se vincono i Protagonisti: escono con Skunk e una pista verso Vargas. Se vince l'Opposizione: restano a mani vuote, con mezzo distretto alle calcagna."</div>
     <h3>Struttura del round</h3>
-    I giocatori si alternano, iniziando dal vincitore dell'iniziativa: <b>4 giocate a testa</b>. Il vincitore gioca 3 carte dalla mano e cala quella d'asta come quarta e ultima.`},
+    I giocatori si alternano, iniziando dal vincitore dell'iniziativa: <b>4 giocate a testa</b>. Il vincitore gioca 3 carte dalla mano e cala quella d'asta come sua quarta e ultima; l'<b>ultimissima carta del round</b> è però quella di chi ha perso l'asta.`},
   azioni:{titolo:"Azioni e prese",html:`
     <h3>Nel proprio turno</h3>
     <ul><li><b>Giocare una carta nel piatto</b> = <i>Introdurre</i>: disponi una tua risorsa in scena. Non risolve nulla, predispone. Per i <b>Protagonisti</b> è un elemento/fatto/azione che potrà tornare utile (un conoscente che compare, un'opportunità notata, una relazione che nasce, un oggetto, un travestimento). Per l'<b>Opposizione</b> è un ostacolo o una minaccia con cui i protagonisti dovranno fare i conti. <b>Introdurre non annulla:</b> aggiungi un tuo elemento, non cancelli con il racconto quello dell'avversario; un elemento avversario si neutralizza solo con una presa o una scopa.</li>
@@ -2885,10 +2929,12 @@ const REGOLE={
   lettura:{titolo:"Fine scena e letture",html:`
     <h3>Vittoria della scena</h3>
     Quando entrambe le mani sono esaurite si sommano i valori delle carte nel <b>piatto</b>: ♥+♠ = Protagonisti, ♦+♣ = Opposizione. Il totale più alto vince la posta.<br>
-    <b>Se vincono i Protagonisti:</b> posta raggiunta, recuperano 1 carta casuale dagli scarti (in fondo al mazzo). <b>Se vince l'Opposizione:</b> la posta fallisce, nessun recupero.<br>
+    <b>Se vincono i Protagonisti:</b> posta raggiunta, si avvicinano all'obiettivo finale. <b>Se vince l'Opposizione:</b> la posta fallisce, la situazione peggiora.<br>
     <b>Scopa a piatto vuoto:</b> se la scena finisce con il piatto vuoto perché l'ultima giocata è stata una scopa, la posta la vince chi ha fatto la scopa.
+    <h3>Chi narra l'esito</h3>
+    Chi ha <b>vinto l'asta</b> ha inquadrato la scena (titolo e posta); a raccontare <b>com'è finita</b> è invece chi ha <b>perso la posta</b> (la scena), così da poterne calcare le ombre e i costi. In caso di <b>parità</b> dei totali narra chi ha <b>vinto l'asta</b> (per non far narrare due volte di fila chi ha appena giocato l'ultima carta del round). Vale anche per la resa (§18.1): chi cede la posta ne narra l'esito.
     <h3>Arrendersi alla scena</h3>
-    Chi <b>non ha l'iniziativa</b>, con una <b>sola carta</b> in mano e nelle <b>scene 1-4</b>, può cedere la posta invece di giocare l'ultima carta (utile quando quella carta non cambierebbe l'esito). Due modi, una volta ciascuno per lato: <b>Ritirata strategica</b> (rimescola la carta nel mazzo, più riserva per i colpi di scena) e <b>Resa onorevole</b> (tiene la carta tra le prese, 1 punto, 2 se figura). La posta va all'avversario senza conteggio; se a cedere è l'Opposizione, i Protagonisti recuperano come per una scena vinta.
+    Chi <b>non ha l'iniziativa</b>, con una <b>sola carta</b> in mano e nelle <b>scene 1-4</b>, può cedere la posta invece di giocare l'ultima carta (utile quando quella carta non cambierebbe l'esito). Due modi, una volta ciascuno per lato: <b>Ritirata strategica</b> (rimescola la carta nel mazzo, più riserva per i colpi di scena) e <b>Resa onorevole</b> (tiene la carta tra le prese, 1 punto, 2 se figura). La posta va all'avversario senza conteggio; se a cedere è l'Opposizione, i Protagonisti raggiungono la posta come per una scena vinta.
     <h3>Lettura del piatto — chi ha deciso l'esito (27.1)</h3>
     Il seme col valore più alto nel piatto racconta <i>come</i> è andata, indipendentemente da chi ha vinto:
     ♠ forza dei protagonisti · ♥ dialogo dei protagonisti · ♦ l'opposizione organizzata · ♣ la sfortuna e il caos.
@@ -2907,11 +2953,15 @@ const REGOLE={
   figure:{titolo:"Le figure",html:`
     <h3>Doppia natura</h3>
     Meccanica (carte forti con effetti) e narrativa (alleati o PNG significativi). Si può comprare al massimo <b>una figura per tipo</b>.
+    <h3>Comprare una figura crea un PNG</h3>
+    Comprare una figura prepara l'ingresso di un PNG importante e potente (la potenza cresce Fante &lt; Regina &lt; Re), su due piani: in fiction e nelle meccaniche, che scattano quando giochi la carta. Al momento dell'acquisto decidi <b>nome, ruolo e aspetto</b> e li annoti su una index card dal tuo lato, col <b>valore</b> della carta. Da lì è un personaggio a tutti gli effetti, e il suo effetto meccanico è ciò che fa nella storia. <b>Una figura senza nome non si compra.</b>
     <table><tr><th>Figura</th><th>Costo</th><th>Valore</th><th>Effetto</th></tr>
     <tr><td><b>Fante</b> — l'informatore</td><td>3</td><td>8</td><td>Guarda le prime 4 carte del proprio mazzo; può mettere in fondo quelle che vuole.</td></tr>
     <tr><td><b>Regina</b> — la manipolatrice</td><td>5</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo.</td></tr>
     <tr><td><b>Re</b> — il deus ex machina</td><td>8</td><td>10</td><td>Scambia una carta della mano con una degli scarti comuni dello stesso seme.</td></tr></table>
     <b>Cattura flessibile:</b> in gioco le figure catturano un gruppo di somma minore o uguale al loro valore (vedi Azioni e prese), e una presa con figura vale 2 punti. I costi 3/5/8 rendono pari le due strade verso un Re: un Re, oppure un Fante più una Regina.
+    <h3>Il Fante entra in mano</h3>
+    Eccezione alla consegna: Regina e Re entrano nel mazzo e vengono rimescolati (effetto sul gioco). Il <b>Fante</b> invece, appena comprato, <b>entra subito in mano</b> per la scena successiva; per restare a 4 carte, una carta della mano va <b>in fondo al mazzo</b>. Così l'informatore è subito pronto e non resta sepolto nel mazzo. Il suo effetto (guarda le prime 4 del mazzo) scatta comunque <b>quando lo giochi</b>.
     <div class="es">"Jess — la nostra fonte all'interno della stazione — ci dice dove si trovano le prove e quando le sentinelle cambiano turno." (Fante)</div>
     Attenzione: le figure lasciate nel piatto all'inizio dell'ultima scena vengono <b>neutralizzate</b> (vedi Quinta scena).`},
   jolly:{titolo:"Il Jolly",html:`
@@ -3154,19 +3204,20 @@ const REGOLE_IA=`Sei l'OPPOSIZIONE in "Frenemies on the Road", gioco narrativo c
 
 STRUTTURA: 5 scene (Innesco, Adattamento, Frattura, Crisi, Risoluzione). Ogni scena: asta, apertura, round di giocate, fine scena; tra le scene c'è il mercato. La partita si decide sul piatto della quinta scena.
 
-ASTA E APERTURA: a inizio scena ogni lato pesca 4 carte e ne gioca 1 coperta per l'iniziativa; la più alta vince (il Jolly non partecipa; in parità vince chi NON ha avuto l'iniziativa nella scena precedente, alla scena 1 l'Opposizione). La carta d'asta del vincitore torna come sua ULTIMA giocata del round; quella del perdente torna in mano. Chi vince apre la scena: sceglie un titolo e dichiara la POSTA. La posta è una difficoltà concreta da superare o un obiettivo intermedio da ottenere (procurarsi qualcosa, riuscire a entrare in un luogo, riuscire a uscirne), non un esito vago. Formulala esplicitando ENTRAMBI i rami: cosa ottengono i Protagonisti se la vincono (si avvicinano all'obiettivo finale), cosa va storto se la vinci tu (sono ostacolati). Perdere una posta non preclude mai l'obiettivo finale, che resta raggiungibile fino all'ultima scena: complica, non chiude. CONTINUITÀ: aggancia sempre l'apertura all'esito della scena precedente; lo stato dei protagonisti è conseguenza di com'è finita la posta prima (se non sono usciti dalla cella non puoi aprirli già in fuga per strada).
+ASTA E APERTURA: a inizio scena ogni lato pesca 4 carte e ne gioca 1 coperta per l'iniziativa; la più alta vince (il Jolly non partecipa; in parità vince chi NON ha avuto l'iniziativa nella scena precedente, alla scena 1 l'Opposizione). La carta d'asta del vincitore torna come sua ULTIMA giocata del round; quella del perdente torna in mano. Chi vince apre la scena: sceglie un titolo e dichiara la POSTA. La posta è una difficoltà concreta da superare o un obiettivo intermedio da ottenere (procurarsi qualcosa, riuscire a entrare in un luogo, riuscire a uscirne), non un esito vago. Formulala esplicitando ENTRAMBI i rami: cosa ottengono i Protagonisti se la vincono (si avvicinano all'obiettivo finale), cosa va storto se la vinci tu (sono ostacolati). La posta non è mai indispensabile: vincerla avvicina al traguardo, perderla complica, ma l'obiettivo finale resta raggiungibile fino all'ultima scena. IL COSA, NON IL COME: la posta dice l'obiettivo concreto, mai il modo di ottenerlo (che emerge dalle giocate), e va lasciata abbastanza aperta ("orientarsi nel deserto" sì, "orientarsi col taccuino" no, perché prenarra ciò che deve nascere dalla scena). CLIMAX: fai crescere la posta di scena in scena (sempre più drammatica, ardua o decisiva); non bruciare subito le poste estreme (se già alla scena 1 si rischia il carcere di massima sicurezza e vinci tu, la storia diventa un'evasione e perde la missione). Scala indicativa (non vincolante): scena 1 il tempo, scena 2 una risorsa preziosa, scena 3 la motivazione/il morale, scena 4 la tenuta dell'alleanza tra i protagonisti, scena 5 l'esito dell'intera avventura. FAIL FORWARD: anche quando i protagonisti perdono la posta, lasciagli qualcosa per andare avanti (esperienza, un'opportunità, una risorsa verso l'obiettivo); complica, non bloccarli in un vicolo cieco. CONTINUITÀ: aggancia sempre l'apertura all'esito della scena precedente; lo stato dei protagonisti è conseguenza di com'è finita la posta prima (se non sono usciti dalla cella non puoi aprirli già in fuga per strada).
 
 ROUND: ci si alterna a partire dal vincitore dell'iniziativa, 4 giocate a testa. Nel tuo turno puoi:
 - Giocare una carta nel piatto = INTRODURRE una tua risorsa: un ostacolo, una minaccia o un imprevisto (♦ nemici con intenzione, ♣ caos e sfortuna) con cui i protagonisti dovranno fare i conti. Non risolve nulla, predispone. La tua narrazione AGGIUNGE un tuo elemento, NON annulla quello dei protagonisti: finché una loro carta è nel piatto, ciò che rappresenta resta in piedi. Un elemento avversario lo neutralizzi (lo togli, lo ribalti, ne mostri l'inutilità) solo con una PRESA o una SCOPA.
 - Fare una PRESA (vale 1 punto) = togli una risorsa ai protagonisti, o ne mostri l'inutilità (si ritorce contro di loro): un successo, anche se può avere un costo. Una carta prende una carta di pari valore nel piatto, oppure un gruppo la cui somma è pari al suo valore. La presa è OBBLIGATORIA: se la carta che giochi può prendere, devi catturare, non puoi metterla nel piatto. Se sei costretto a prendere una TUA carta (♦/♣), narra Fiori e Quadri che si intralciano o si annullano a vicenda. Con una FIGURA (Fante 8, Regina 9, Re 10) la presa vale 2 e la cattura è FLESSIBILE: prende un gruppo di somma MINORE O UGUALE al valore della figura, anche carte dei tuoi semi; se nessuna carta è alla sua portata la figura entra nel piatto; se il piatto è vuoto la figura si sacrifica con un gesto eroico e fa SCOPA.
 - Fare una SCOPA (vale 4 punti) = svolta: la presa svuota il piatto, annienti in un colpo ogni vantaggio dei protagonisti. Successo pieno, sopra ogni aspettativa. Vale molto più di una presa.
 
-FINE SCENA: si sommano i valori delle carte rimaste nel piatto: ♦+♣ contano per te, ♥+♠ per i Protagonisti; la posta la vince il totale più alto. MA se la scena si chiude col piatto vuoto perché l'ultima giocata è stata una scopa, la posta la vince chi ha fatto la scopa. Il piatto NON si svuota tra le scene: chi apre la successiva può già prendere. Se vincono i Protagonisti recuperano 1 carta dagli scarti; se vinci tu, la loro posta fallisce.
+FINE SCENA: si sommano i valori delle carte rimaste nel piatto: ♦+♣ contano per te, ♥+♠ per i Protagonisti; la posta la vince il totale più alto. MA se la scena si chiude col piatto vuoto perché l'ultima giocata è stata una scopa, la posta la vince chi ha fatto la scopa. Il piatto NON si svuota tra le scene: chi apre la successiva può già prendere. Se vincono i Protagonisti la posta è raggiunta; se vinci tu, la loro posta fallisce e la situazione peggiora per loro. CHI NARRA L'ESITO: chi ha vinto l'asta ha inquadrato la scena (titolo e posta); a raccontare com'è finita è chi ha PERSO LA POSTA (la scena), così da poterne calcare le ombre e i costi. In parità dei totali narra chi ha vinto l'asta. Quindi narri TU l'esito quando i Protagonisti vincono la scena (è la tua sconfitta: raccontala con onestà, calcando sulle ombre e sul prezzo che pagheranno); se la scena la vinci tu, l'esito lo narrano i Protagonisti.
 
 MERCATO (tra le scene): ogni presa vale 1 punto (2 se fatta con una figura), ogni scopa 4. Con i punti compri figure (max una per tipo) che entrano nel tuo mazzo:
-- Fante (costo 3, valore 8): guardi le prime 4 carte del tuo mazzo e scegli quali mettere in fondo.
+- Fante (costo 3, valore 8): appena comprato entra SUBITO in mano per la scena dopo (una carta della mano va in fondo al mazzo); quando lo giochi, guardi le prime 4 carte del tuo mazzo e scegli quali mettere in fondo.
 - Regina (costo 5, valore 9): l'avversario scarta una carta a caso dalla mano e pesca dal mazzo.
 - Re (costo 8, valore 10): scambi una carta della mano con una degli scarti comuni dello stesso seme.
+Ogni figura che compri è un PNG: dalle subito un nome e un breve ruolo (chi è), e richiamalo quando giochi quella carta e quando narri (il suo effetto meccanico è ciò che quel personaggio fa nella storia).
 
 JOLLY: un solo Jolly, solo nel mazzo dei Protagonisti, entra dopo la 2ª scena. Tu non lo possiedi mai. Chi lo gioca dichiara il valore e cattura, ma il marcatore va all'AVVERSARIO (presa 1, scopa 4 all'altro lato): se i Protagonisti lo usano, quel punto va a te. Si narra come un vantaggio ottenuto contro i propri principi.
 
@@ -3291,8 +3342,19 @@ function istruzNarrBase(){
 function istruzApertura(){
   return `Hai vinto l'iniziativa: APRI LA SCENA. Scegli un titolo evocativo (2-4 parole) e dichiara la posta (cosa succede se va male per i Protagonisti), coerenti con la missione e con la fase narrativa.`;
 }
+function esitoFallback(rec){
+  return rec.vincitore==="P" ? "I protagonisti la spuntano: la posta della scena è loro."
+    : rec.vincitore==="O" ? "L'Opposizione chiude la scena a proprio favore: per i protagonisti la posta sfuma."
+    : "La scena si chiude in equilibrio: la posta resta sospesa.";
+}
 function istruzEsito(rec){
-  return `LA SCENA È FINITA A TUO FAVORE (Opposizione): piatto ♥+♠ ${rec.totP} contro ♦+♣ ${rec.totO}. I Protagonisti non raggiungono la posta della scena "${rec.titolo||""}"${rec.posta?` («${rec.posta}»)`:""}. Narra in 1-2 frasi, in italiano, dal punto di vista dell'Opposizione, come si chiude la scena a tuo vantaggio, coerente con la storia finora.`;
+  const piatto=`piatto ♥+♠ ${rec.totP} contro ♦+♣ ${rec.totO}`;
+  const esito = rec.vincitore==="P"
+    ? `LA SCENA È ANDATA AI PROTAGONISTI (${piatto}): raggiungono la posta della scena.`
+    : rec.vincitore==="O"
+    ? `LA SCENA È ANDATA A TE, OPPOSIZIONE (${piatto}): i protagonisti non raggiungono la posta.`
+    : `LA SCENA FINISCE IN EQUILIBRIO (${piatto}): la posta resta sospesa.`;
+  return `${esito} Scena "${rec.titolo||""}"${rec.posta?` («${rec.posta}»)`:""}. Hai perso l'asta e hai giocato l'ultima carta del round: tocca a te (Opposizione) narrare in 1-2 frasi, in italiano, come si chiude la scena, raccontando l'esito con onestà anche se a vincere sono i Protagonisti, coerente con la storia finora.`;
 }
 // Iniezione del testo (sola lettura) + aggiornamento di G; riusata da prima generazione e rigenerazione.
 function iniettaNarr(testo){
@@ -3341,7 +3403,7 @@ function rigeneraEsito(){
     const rp=document.getElementById("fsRiprova"); if(rp) rp.disabled=true;
     veloIA(true);
     const r=await chiamaClaude(istruzEsito(G.scene[G.scena])+`\nJSON: {"esito":"..."}`, fb);
-    iniettaEsito((r&&r.esito)||"L'Opposizione chiude la scena a proprio favore: per i protagonisti la posta sfuma.");
+    iniettaEsito((r&&r.esito)||esitoFallback(G.scene[G.scena]));
     veloIA(false); iaBusy=false;
   });
 }
@@ -3372,7 +3434,7 @@ function iaScheduler(){
   else if(f==="mercato") iaMercato();
   else if(f==="mano_estesa"&&G.attore==="O") iaManoEstesa();
   else if(f==="colpi"&&G.attore==="O") iaColpi();
-  else if(f==="fine_scena"&&G.scene[G.scena]&&G.scene[G.scena].vincitore==="O"&&!G.scene[G.scena].perRitirata) iaEsitoScena();
+  else if(f==="fine_scena"&&G.scene[G.scena]&&altro(G.scene[G.scena].iniziativa)==="O"&&!G.scene[G.scena].perRitirata) iaEsitoScena();
 }
 
 async function iaAsta(){
@@ -3473,7 +3535,7 @@ async function iaEsitoScena(){
   iaBusy=true;
   const rec=G.scene[G.scena];
   const r=await chiamaClaude(istruzEsito(rec)+`\nJSON: {"esito":"..."}`);
-  iniettaEsito((r&&r.esito)||"L'Opposizione chiude la scena a proprio favore: per i protagonisti la posta sfuma.");
+  iniettaEsito((r&&r.esito)||esitoFallback(G.scene[G.scena]));
   veloIA(false);   // esito iniettato (sola lettura): scopri lo schermo così l'umano legge e avanza
   iaBusy=false;
 }

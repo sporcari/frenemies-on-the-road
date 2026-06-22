@@ -4,13 +4,17 @@
 const {JSDOM}=require("jsdom");
 const fs=require("fs");
 const SEED=parseInt(process.env.SEED||"1");
+// Secondo seed opzionale: governa SOLO le scene 3-5 (mercato di fine 2ª scena, rimescoli e scelte).
+// Le scene 1-2 restano quelle di SEED; a fine Scena 2 si rigenera l'RNG col SEED2, rimescolando
+// il solo mazzo residuo (le carte già giocate sono fuori dal mazzo). Se assente, vale SEED.
+const SEED2=parseInt(process.env.SEED2||String(SEED));
 
 let html=fs.readFileSync(require("path").join(__dirname,"..","index.html"),"utf8");
 html=html.replace(/<script src=[^>]+><\/script>/g,"");
 html=html.replace("/* ================= AVVIO ================= */","window.__G=()=>G; window.__idc=()=>idc; window.__comboFiguraDefault=comboFiguraDefault; window.__combosPresa=combosPresa;\n/* AVVIO */");
 // RNG con seed (mulberry32) iniettato in testa al primo script inline: governa mescolate e scelte
 html=html.replace("<script>",`<script>
-(function(){let s=${SEED}>>>0;Math.random=function(){s|=0;s=(s+0x6D2B79F5)|0;let t=Math.imul(s^(s>>>15),1|s);t=(t+Math.imul(t^(t>>>7),61|t))^t;return((t^(t>>>14))>>>0)/4294967296};})();
+(function(){let s=${SEED}>>>0;window.__reseed=function(n){s=n>>>0};Math.random=function(){s|=0;s=(s+0x6D2B79F5)|0;let t=Math.imul(s^(s>>>15),1|s);t=(t+Math.imul(t^(t>>>7),61|t))^t;return((t^(t>>>14))>>>0)/4294967296};})();
 `);
 
 const dom=new JSDOM(html,{runScripts:"dangerously",pretendToBeVisual:true});
@@ -22,28 +26,28 @@ function fase(){ return window.__G ? G().fase : "?" }
 const veloAttivo=()=>document.getElementById("velo").classList.contains("attivo");
 const modaleAttivo=()=>document.getElementById("ovModale").classList.contains("attivo");
 
-/* ---------- materiale demo (scenario §33) ---------- */
-const MISSIONE="Entro 36 ore Vargas atterrerà su una pista segreta del New Mexico per un meeting con i boss locali, e ripartirà: bisogna farlo arrestare in flagranza PRIMA del decollo.";
-const PRIMADIFF="Skunk è in cella: i poliziotti corrotti lo hanno arrestato per farlo uccidere in prigione dagli uomini di Vargas.";
+/* ---------- materiale demo (scenario §33): Vera, Otto e il Sole di Mezzanotte ---------- */
+const MISSIONE="Prendere il Sole di Mezzanotte nella cripta di Zerzura, che l'eclissi apre tra cinque giorni, PRIMA che ci arrivi la Loggia del Basilisco.";
+const PRIMADIFF="Il taccuino del professor Aldo Falco, l'unico che abbia mai mappato la strada per Zerzura prima di sparire, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito.";
 const PITCH=[
- "Skunk non dice mai tutta la verità: ogni cosa che tocca diventa un traffico",
- "Frank lo tratta ancora da spia, mai da socio",
- "Solo l'arresto in flagranza di Vargas può ridargli il distintivo",
- "Vargas ha fatto uccidere suo fratello Jorge",
- "Frank conosce ogni strada secondaria e i colleghi sul libro paga",
- "Skunk procura qualsiasi cosa con una telefonata",
- "La rete di poliziotti corrotti e i due sicari pazienti",
- "Il meeting è il momento di massima esposizione di Vargas",
- "Tempesta di sabbia, un'auto a pezzi, posti di blocco a sorpresa",
- "Jorge è stato ucciso al posto di Skunk: la spia era lui, e Frank non lo sa"
+ "Otto si paralizza davanti a qualsiasi cosa strisci o voli, e prima di muovere un passo deve leggere qualcosa",
+ "Vera agisce prima di pensare e fa saltare in aria cose che andrebbero studiate: tratta i reperti come maniglie",
+ "Suo padre è sparito cercando Zerzura: trovarla vuol dire realizzare il suo sogno e dare un senso al suo sacrificio",
+ "La caccia l'ha riaperta la sua traduzione: se finisce male, è colpa sua",
+ "Nessuno guida, scala o spara come Vera: dove finisce la strada, comincia lei",
+ "Legge sette lingue morte e ha una faccia di cui tutti si fidano",
+ "La Loggia ha sicari in ogni porto; i Veglianti hanno costruito le trappole",
+ "La Loggia vuole l'artefatto, i Veglianti temono la fine: nessuno li lascerà arrivare alla cripta",
+ "Tempeste in anticipo, pozzi secchi, piste cancellate, un camion che perde olio",
+ "Aldo Falco è vivo: è un Vegliante. Otto lo ha capito, e tace"
 ];
-const TITOLI=["La cella","La statale","Il deserto","L'ultima notte","La pista"];
+const TITOLI=["L'asta del Cairo","Il treno per El Qara","Il mare di sabbia","L'accampamento","La cripta del Sole"];
 const POSTE=[
- "Tirare fuori Skunk prima del trasferimento. Se va bene: escono con Skunk e una pista verso Vargas. Se va male: escono braccati e con mezzo distretto alle calcagna",
- "Sparire verso ovest. Se va bene: seminano gli inseguitori e guadagnano strada. Se va male: i sicari agganciano la loro traccia",
- "Attraversare il deserto interi. Se va bene: arrivano dall'altra parte più uniti. Se va male: quello che non si sono detti esplode",
- "Arrivare in vista della pista. Se va bene: prendono posizione col favore del buio. Se va male: qualcuno li sta già aspettando",
- "Il meeting. Se va bene: fermano Vargas prima del decollo. Se va male: il jet riparte con Vargas a bordo"
+ "Prendere il taccuino di Aldo. Se va bene: hanno la mappa e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio",
+ "Raggiungere El Qara in tempo. Se va bene: si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male: arrivano troppo tardi e restano senza quell'aiuto prezioso",
+ "Orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se va bene: i protagonisti possono accamparsi e prepararsi alla ricerca. Se va male: si perdono nel deserto",
+ "Raggiungere l'ingresso prima dell'alba. Se va bene: scendono nella cripta col favore del buio. Se va male: alla cripta li aspettano la Loggia da una parte e i Veglianti dall'altra",
+ "L'eclissi. Se va bene: mettono in salvo il Sole di Mezzanotte. Se va male: il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata"
 ];
 
 /* ---------- transcript ---------- */
@@ -56,6 +60,8 @@ const nomeL=l=>l==="P"?"PROTAGONISTI":"OPPOSIZIONE";
 function log(s){ T.push(s) }
 
 let spinteUsate=0, colpiFatti=0, acquisti=0, jollyGiocati=0, counterFatto=false, ultimaLoggata="";
+const greedyOmar={};   // decisione (memoizzata per scena) se l'IA spende al mercato
+let reseedFatto=false;   // l'RNG è già passato a SEED2 a fine 2ª scena
 const astaScelte={P:null,O:null};
 let spintaScena=-1;
 function logUltima(){
@@ -65,6 +71,17 @@ function logUltima(){
 
 function passo(){
   if(modaleAttivo()){
+    const fm=document.getElementById("fanteManoOk");
+    if(fm){   // eccezione Fante: entra in mano, una carta della mano va in fondo al mazzo
+      const g=G();
+      const lBuy=["P","O"].find(x=>g.lati[x].mano.length>4 && g.lati[x].mano.some(c=>c.fig==="F"));
+      const scartabili=g.lati[lBuy].mano.filter(c=>c.fig!=="F" && !c.jolly);   // tieni Jolly e figure
+      const cand=(scartabili.length?scartabili:g.lati[lBuy].mano.filter(c=>c.fig!=="F")).sort((a,b)=>a.val-b.val)[0];
+      const el=[...document.querySelectorAll("#fanteManoCarte .carta")].find(x=>parseInt(x.dataset.id)===cand.id);
+      click(el); click(fm);
+      log(`   → FANTE assoldato: entra in mano, ${cstr(cand)} va in fondo al mazzo.`);
+      return "fante-mano";
+    }
     const f=document.getElementById("fanteOk"), rNo=document.getElementById("reNo");
     if(f){ log("   → effetto FANTE: guarda le prime 4 carte del mazzo e le riordina."); click(f); return "fante" }
     if(rNo){ log("   → effetto RE: nessuno scambio con gli scarti."); click(rNo); return "re-no" }
@@ -84,12 +101,12 @@ function passo(){
     const set=(id,v)=>{const e=document.getElementById(id); if(e) e.value=v};
     set("w-nomeP","Paola"); set("w-nomeO","Omar");
     set("w-missione",MISSIONE); set("w-primadiff",PRIMADIFF);
-    set("w-persA","Frank"); set("w-descA","Ex poliziotto sospeso per eccesso di forza. Cinico, metodico.");
-    set("w-persB","Skunk"); set("w-descB","Suo ex informatore. Truffatore, intrallazzone dei bassifondi.");
-    set("w-nemici-input","L'organizzazione di Vargas: poliziotti corrotti e due sicari pazienti");
-    set("w-caos-input","La tempesta di sabbia, un'auto con trecentomila chilometri, la sfortuna");
+    set("w-persA","Vera Falco"); set("w-descA","Eroina d'azione: atletica, impulsiva, irruente. Cresciuta nei cantieri di scavo del padre Aldo. Guida, scala, cavalca e spara meglio di chiunque la insegua.");
+    set("w-persB","Otto Lenzi"); set("w-descB","Filologo delle lingue morte, topo di biblioteca, fobie catalogate in ordine alfabetico. La sua traduzione di una stele ha riacceso la caccia a Zerzura, e non se lo perdona.");
+    set("w-nemici-input","La Loggia del Basilisco e i Veglianti di Zerzura: due ordini rivali, ma entrambi vogliono fermarli");
+    set("w-caos-input","Il deserto: tempeste in anticipo, piste che spariscono, un camion che perde olio, le trappole della cripta, gli scorpioni");
     for(let k=0;k<10;k++) set("w-pitch-"+k,PITCH[k]);
-    if(G().passo===2){ const b=[...document.querySelectorAll('button[data-tono]')].find(x=>x.dataset.tono==="Poliziesco"); if(b&&G().tono!=="Poliziesco"){ click(b); return "tono" } }
+    if(G().passo===2){ const b=[...document.querySelectorAll('button[data-tono]')].find(x=>x.dataset.tono==="Action"); if(b&&G().tono!=="Action"){ click(b); return "tono" } }
     click(document.getElementById("w-avanti")); return "setup"+G().passo;
   }
 
@@ -178,6 +195,9 @@ function passo(){
   if(f==="fine_scena"){
     const g=G(), rec=g.scene[g.scena];
     log(`   FINE SCENA ${g.scena+1}: piatto ${rec.totP} a ${rec.totO} → vince ${rec.vincitore==="parita"?"NESSUNO (parità)":nomeL(rec.vincitore)}. Seme dominante: ${SYM[rec.dominante]||rec.dominante||"—"} (diario: ${rec.rapporto}).`);
+    // a fine 2ª scena, prima del mercato, l'RNG passa a SEED2: scene 3-5 governate dal secondo seed,
+    // sul solo mazzo residuo (le carte giocate nelle scene 1-2 sono già fuori dal mazzo).
+    if(g.scena===1 && SEED2!==SEED && !reseedFatto){ window.__reseed(SEED2); reseedFatto=true; }
     click(document.getElementById("fs-avanti")); return f;
   }
 
@@ -195,13 +215,17 @@ function passo(){
   }
 
   if(f==="mercato"){
-    if(acquisti<3){
-      const b=[...document.querySelectorAll("button[data-f]")].find(x=>!x.disabled);
-      if(b){
-        const NOMI_FIG={F:"il FANTE",D:"la REGINA",R:"il RE"};
-        log(`   MERCATO: ${nomeL(b.dataset.l)} compra ${NOMI_FIG[b.dataset.f]||b.dataset.f} di ${b.dataset.s} ${SYM[b.dataset.s]}.`);
-        click(b); acquisti++; return "compra";   // apre il modale nome/desc, gestito al passo dopo
-      }
+    // Politica curata per l'esempio "vetrina": far comparire tutte e tre le figure.
+    // Paola: prima il Fante (entra in mano), poi la Regina quando se la può permettere (mai il Re).
+    // Omar: punta al Re, lo compra solo quando se lo può permettere (altrimenti risparmia).
+    const NOMI_FIG={F:"il FANTE",D:"la REGINA",R:"il RE"};
+    const btns=[...document.querySelectorAll("button[data-f]")].filter(x=>!x.disabled);
+    const pick = btns.find(x=>x.dataset.l==="P" && x.dataset.f==="F")
+              || btns.find(x=>x.dataset.l==="P" && x.dataset.f==="D")
+              || btns.find(x=>x.dataset.l==="O" && x.dataset.f==="R");
+    if(pick){
+      log(`   MERCATO: ${nomeL(pick.dataset.l)} compra ${NOMI_FIG[pick.dataset.f]} di ${pick.dataset.s} ${SYM[pick.dataset.s]}.`);
+      click(pick); acquisti++; return "compra";
     }
     click(document.getElementById("m-fine")); return f;
   }
@@ -255,8 +279,9 @@ try{
       const riass=`SEED=${SEED} ok scene=${vinte} scopeP=${g.lati.P.scope.length} scopeO=${g.lati.O.scope.length} jolly=${jollyGiocati} counter=${counterFatto} spinte=${spinteUsate} colpi=${colpiFatti} acquisti=${acquisti} outcome="${outcome}"`;
       console.log(riass);
       if(process.env.TRANSCRIPT){
-        fs.writeFileSync(`transcript_seed_${SEED}.txt`, T.join("\n"));
-        console.log(`transcript: transcript_seed_${SEED}.txt (${T.length} righe)`);
+        const fnT=`transcript_seed_${SEED}${SEED2!==SEED?"_"+SEED2:""}.txt`;
+        fs.writeFileSync(fnT, T.join("\n"));
+        console.log(`transcript: ${fnT} (${T.length} righe)`);
       }
       process.exit(0);
     }
