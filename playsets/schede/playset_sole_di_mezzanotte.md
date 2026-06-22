@@ -4,7 +4,7 @@
 
 ## Premessa
 
-Il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto, giace nella cripta di Zerzura, la città perduta sepolta dalle sabbie. La Loggia del Basilisco gli dà la caccia da decenni, i Veglianti la custodiscono perché nessuno la trovi, e la traduzione di Otto ha appena riacceso la corsa. L'unica mappa è il taccuino di Aldo Falco, il padre di Vera, sparito nel deserto cercandola.
+Il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto, giace nella cripta di Zerzura, la città perduta sepolta dalle sabbie. La Loggia del Basilisco gli dà la caccia da decenni, i Veglianti la custodiscono perché nessuno la trovi, e la traduzione di Otto ha appena riacceso la corsa. Come arrivarci lo dice solo il prezioso taccuino di appunti di Aldo Falco, il padre di Vera, sparito nel deserto cercandola.
 
 ## Missione
 
@@ -12,7 +12,7 @@ Il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto, giac
 
 ## Prima difficoltà
 
-Il taccuino del professor Aldo Falco, l'unico che abbia mai mappato la strada per Zerzura prima di sparire, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito.
+Il taccuino del professor Aldo Falco, l'unico che abbia mai annotato la via per Zerzura prima di sparire, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito.
 
 ## Protagonisti
 
@@ -48,7 +48,7 @@ Il taccuino del professor Aldo Falco, l'unico che abbia mai mappato la strada pe
 
 ## Geografia delle scene (indicativa)
 
-1. **Innesco · L'asta del Cairo.** Prendere il taccuino di Aldo. Se va bene: hanno la mappa e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio.
+1. **Innesco · L'asta del Cairo.** Prendere il taccuino di Aldo. Se va bene: hanno gli appunti su come raggiungere l'artefatto e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio.
 2. **Adattamento · Il treno per El Qara.** Raggiungere El Qara in tempo. Se va bene: si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male: arrivano troppo tardi e restano senza quell'aiuto prezioso.
 3. **Frattura · Il mare di sabbia.** Orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se va bene: i protagonisti possono accamparsi e prepararsi alla ricerca. Se va male: si perdono nel deserto.
 4. **Crisi · L'accampamento.** Raggiungere l'ingresso prima dell'alba. Se va bene: scendono nella cripta col favore del buio. Se va male: alla cripta li aspettano la Loggia da una parte e i Veglianti dall'altra.

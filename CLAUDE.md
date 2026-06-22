@@ -22,11 +22,15 @@ npm i jsdom (una volta sola), poi dalla radice del repo:
 - node test/test_partita.js  e  NG=4 node test/test_partita.js
 - node test/test_adatta.js  e  node test/test_solo.js
 - node test/test_riprova.js (meccanismo "Rigenera" vs Claude; seed fisso)
-- SEED=23 SEED2=43 TRANSCRIPT=1 node test/partita_esempio.js e diff del
-  transcript generato (test/transcript_seed_23_43.txt) con
-  test/transcript_seed_23_43_v2.txt: se cambia, il §34 del regolamento va
-  riscritto. NB l'esempio usa DUE seed: SEED governa le scene 1-2, SEED2 le
-  scene 3-5 (l'RNG si rigenera a fine 2ª scena, sul solo mazzo residuo).
+- SEED=23 SEED2=43 SEED3=5 TRANSCRIPT=1 node test/partita_esempio.js e diff del
+  transcript generato (transcript_seed_23_43_5.txt, nella radice) con
+  test/transcript_seed_23_43_5_v2.txt: se cambia, il §34 del regolamento va
+  riscritto. NB l'esempio usa TRE seed: SEED governa le scene 1-2, SEED2 la
+  scena 3, SEED3 le scene 4-5 (l'RNG si rigenera a fine 2ª scena con SEED2 e a
+  fine 3ª scena con SEED3, ogni volta sul solo mazzo residuo). Così le scene 1-3
+  restano fisse e curate, e le 4-5 si sono scelte col terzo seed (Opposizione che
+  vince la Crisi con la spinta ♣ e compra il Re). Il driver alza a 3 il tetto
+  delle spinte usate, per far spendere all'Opposizione la spinta rimasta in scena 4.
 
 ## Protocollo per le modifiche alle REGOLE
 Le regole sono duplicate in più punti: una modifica che tocca le regole va

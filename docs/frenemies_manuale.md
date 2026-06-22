@@ -27,7 +27,7 @@
 
 **Capitolo 10. Come giocare bene.** Strategie e il principio che tiene insieme tutto.
 
-**Appendice A. Lo scenario demo: La strada della vendetta.** Un pitch completo, pronto da giocare.
+**Appendice A. Lo scenario demo: Il sole di mezzanotte.** Un pitch completo, pronto da giocare.
 
 **Appendice B. Partita d'esempio: cinque giorni per l'eclissi.** Una partita vera dall'inizio alla fine.
 
@@ -164,7 +164,7 @@ Oltre alla posta, ogni scena ha anche un titolo, scelto da chi la apre (vedi Cap
 
 Prima di giocare la prima scena si costruisce insieme la fiction di base. Questa fase si chiama pitch, e non è un preambolo facoltativo: è dove nascono i materiali narrativi che diventeranno risorse meccaniche vere. Vale la pena prendersi il tempo per farla bene.
 
-Se vuoi un esempio completo e pronto all'uso, l'Appendice A contiene un intero pitch già scritto, lo scenario demo "La strada della vendetta", che useremo per tutti gli esempi del manuale.
+Se vuoi un esempio completo e pronto all'uso, l'Appendice A contiene un intero pitch già scritto, lo scenario demo "Il sole di mezzanotte", lo stesso che gioca la partita d'esempio dell'Appendice B.
 
 ## 3.1 Scegliere il tono
 
@@ -705,63 +705,63 @@ E lo stesso flusso, passo per passo:
 
 ---
 
-# Appendice A. Lo scenario demo: La strada della vendetta
+# Appendice A. Lo scenario demo: Il sole di mezzanotte
 
-Questo è un pitch completo: tutti gli esempi del manuale, e la partita d'esempio dell'Appendice B, usano questo scenario. Lo puoi giocare così com'è, oppure usarlo come modello per costruirne uno tuo.
+Questo è il pitch completo dello scenario demo, lo stesso che gioca la partita d'esempio dell'Appendice B. Lo puoi giocare così com'è, oppure usarlo come modello per costruirne uno tuo.
 
-**Tono:** poliziesco, con venature dramedy.
+**Tono:** action, avventura archeologica.
 
 **I protagonisti**
 
-- **Frank (Picche):** ex poliziotto sospeso per eccesso di forza. Cinico, metodico, conosce il distretto come le sue tasche. Si è fatto terra bruciata attorno: sospeso, scaricato dai colleghi, con mezzo distretto sul libro paga di Vargas.
-- **Skunk (Cuori):** suo ex informatore. Truffatore, ricettatore, intrallazzone dei bassifondi, sopravvive di chiacchiere, favori e bugie.
-- **La differenza evidente:** la legge contro la strada, il metodo contro l'improvvisazione.
-- **Il conflitto interno:** è stata una spiata sbagliata di Skunk a portare Frank al raid in cui ha esagerato e perso il distintivo. E Frank vuole Vargas in manette; Skunk lo vuole rovinato a qualunque costo.
+- **Vera Falco (Picche):** eroina d'azione, atletica, impulsiva, irruente. Cresciuta nei cantieri di scavo del padre Aldo, guida, scala, cavalca e spara meglio di chiunque la insegua.
+- **Otto Lenzi (Cuori):** filologo delle lingue morte, topo di biblioteca, con le fobie catalogate in ordine alfabetico. La sua traduzione di una stele ha riacceso la caccia a Zerzura, e non se lo perdona.
+- **La differenza evidente:** l'azione contro lo studio, l'istinto contro il metodo.
+- **Il conflitto interno:** è stata la traduzione di Otto a riaprire la caccia che ha già inghiottito il padre di Vera. E Vera cerca l'artefatto per ritrovare il padre; Otto, per rimediare a quello che ha scatenato.
 
-**L'obiettivo finale:** entro 36 ore Vargas atterrerà con un jet privato dalla Colombia su una pista segreta del New Mexico per un meeting con i boss locali, e ripartirà. Una volta decollato, nessuna estradizione lo riporterà mai davanti a un giudice. Bisogna arrivare alla pista e farlo arrestare in flagranza prima del decollo.
+**L'obiettivo finale:** prendere il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto, nella cripta di Zerzura, la città perduta sepolta dalle sabbie. La cripta si apre solo con l'eclissi, tra cinque giorni. Bisogna arrivarci prima della Loggia del Basilisco: se l'artefatto finisce nei suoi caveau, nessuno lo rivedrà mai.
 
 **Perché restano incollati l'uno all'altro**
 
-- Skunk sa tutto dall'ultima telefonata di suo fratello Jorge, che gestiva la pista per Vargas: una telefonata d'addio, fatta poche ore prima di essere ucciso, come se sapesse. E non sono solo coordinate: come funziona la sicurezza, chi controlla cosa, da dove si passa, chi si può comprare. Anche con la mappa in mano, senza Skunk ci si ferma al primo cancello.
-- Skunk non rivela niente: quello che sa è la sua assicurazione sulla vita e la sua unica merce di scambio. E vuole esserci, vuole guardare Vargas in faccia mentre lo ammanettano. Guida lui, un bivio alla volta.
-- Frank da solo non può muoversi: senza distintivo, senza colleghi, senza coperture. Ma senza Frank, Skunk non arriva vivo al confine della contea.
-- Vargas non può spostare il meeting: i boss stanno già convergendo da mezzo paese e il jet ha una finestra di volo. E non ha motivo di temere nessuno: della pista sa solo la sua cerchia più stretta. Non immagina che Jorge, la sua vecchia logistica, abbia fatto un'ultima telefonata prima di morire.
+- Come arrivare a Zerzura lo dice solo il prezioso taccuino di appunti di Aldo Falco, il padre di Vera, sparito nel deserto cercandola. Ma il taccuino è scritto in lingue morte e cifrato: solo Otto sa leggerlo.
+- Otto sa tradurre le stele e disinnescare le trappole sulla carta, ma davanti a uno scorpione, a un dirupo o a una sparatoria si paralizza: senza Vera non arriva vivo nemmeno ai margini del deserto.
+- La Loggia del Basilisco non può fermarsi: ha speso decenni e fondi illimitati su Zerzura, e l'eclissi non aspetta. Insegue da vicino, sulle stesse tracce.
+- I Veglianti non possono lasciare che qualcuno tocchi l'artefatto: sono convinti che spostare il Sole di Mezzanotte significhi la fine, e cancellano le tracce di chiunque si avvicini alla città.
 
 **L'Opposizione**
 
-- **Quadri (nemici attivi):** l'organizzazione di Vargas, con mezzo distretto sul libro paga e una coppia di sicari pazienti.
-- **Fiori (caos):** la tempesta di sabbia in arrivo, un'auto con trecentomila chilometri, la sfortuna.
+- **Quadri (nemici attivi):** la Loggia del Basilisco (collezionisti spietati, fondi illimitati, infiltrati in ogni porto) e i Veglianti di Zerzura (l'ordine del deserto che custodisce la città e cancella le tracce di chi la cerca). Due fazioni rivali tra loro, ma entrambe vogliono fermare i protagonisti.
+- **Fiori (caos):** il deserto. La tempesta in anticipo, le piste che spariscono, un camion che beve più olio che gasolio, le trappole della cripta. E gli scorpioni, ovunque.
 
 **I tratti di relazione (narrativi)**
 
-- Cosa Frank detesta di Skunk: non dice mai tutta la verità, nemmeno quando gli converrebbe; ogni cosa che tocca diventa un traffico.
-- Cosa Skunk detesta di Frank: lo ha spremuto per anni come informatore e scaricato quando non serviva più; lo tratta ancora come una spia, mai come un socio.
+- Cosa Vera detesta di Otto: si paralizza davanti a qualsiasi cosa strisci o voli, e prima di muovere un passo deve leggere qualcosa.
+- Cosa Otto detesta di Vera: agisce prima di pensare e fa saltare in aria cose che andrebbero studiate; tratta i reperti come maniglie.
 
 **Le quattro spinte dei Protagonisti**
 
-1. (Picche) Perché conta per Frank: un arresto in flagranza di Vargas è l'unica cosa che può ridargli il distintivo e dimostrare che su di lui si sbagliavano tutti.
-2. (Cuori) Perché conta per Skunk: Vargas ha fatto uccidere suo fratello Jorge; non gli interessa il processo, gli interessa vederlo cadere.
-3. (Picche) Asso nella manica di Frank: conosce ogni strada secondaria del distretto e sa quali colleghi sono sul libro paga di Vargas.
-4. (Cuori) Asso nella manica di Skunk: con una telefonata procura qualsiasi cosa, un'auto pulita, dei documenti, un tetto per la notte, un silenzio.
+1. (Picche) Perché conta per Vera: suo padre è sparito cercando Zerzura; trovarla vuol dire realizzare il suo sogno e dare un senso al suo sacrificio.
+2. (Cuori) Perché conta per Otto: la caccia l'ha riaperta la sua traduzione; se finisce male, è colpa sua.
+3. (Picche) Asso nella manica di Vera: nessuno guida, scala o spara come lei; dove finisce la strada, comincia lei.
+4. (Cuori) Asso nella manica di Otto: legge sette lingue morte e ha una faccia di cui tutti si fidano.
 
 **Le quattro spinte dell'Opposizione**
 
-1. (Quadri) Mezzi temibili: la rete di poliziotti corrotti dentro il distretto e i due sicari che non hanno fretta.
-2. (Quadri) Perché impedirlo: quel meeting è il momento di massima esposizione della vita di Vargas. Se qualcuno sa della pista, va trovato e zittito prima che il jet tocchi terra.
-3. (Fiori) Catastrofi possibili: la tempesta di sabbia che chiude la statale, un'auto con trecentomila chilometri nel deserto, posti di blocco a sorpresa nelle contee sbagliate.
-4. (Fiori) Cosa non hanno considerato: Jorge è stato ucciso al posto di Skunk, perché la spia era lui. E Frank non lo sa.
+1. (Quadri) Mezzi temibili: la Loggia ha sicari in ogni porto, i Veglianti hanno costruito le trappole della cripta.
+2. (Quadri) Perché impedirlo: la Loggia vuole l'artefatto, i Veglianti temono la fine; nessuno dei due li lascerà arrivare alla cripta.
+3. (Fiori) Catastrofi possibili: tempeste in anticipo, pozzi secchi, piste cancellate, un camion che perde olio nel mezzo del nulla.
+4. (Fiori) Cosa non hanno considerato: Aldo Falco è vivo, è diventato un Vegliante. Otto lo ha capito, e tace.
 
 **La prima difficoltà (risposta condivisa)**
 
-Skunk è in cella. I poliziotti corrotti lo hanno arrestato con un pretesto per consegnarlo agli uomini di Vargas dentro la prigione, dove un coltello costa poco e nessuno fa domande. Bisogna tirarlo fuori prima che qualcuno arrivi a lui, e l'unico che può provarci è un poliziotto sospeso che in centrale non può nemmeno entrare dalla porta principale.
+Il taccuino del professor Aldo Falco, l'unico che abbia mai annotato la via per Zerzura prima di sparire, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito.
 
 **Una geografia per le cinque scene** (indicativa, non vincolante)
 
-1. **Innesco:** la città di Frank, tirare Skunk fuori dalla cella.
-2. **Adattamento:** la statale verso ovest, imparare a viaggiare insieme.
-3. **Frattura:** il deserto, dove i segreti pesano più dei chilometri.
-4. **Crisi:** i dintorni della pista, l'ultima notte prima dell'atterraggio.
-5. **Risoluzione:** il meeting, con il jet già a terra.
+1. **Innesco:** l'asta del Cairo, mettere le mani sul taccuino di Aldo.
+2. **Adattamento:** il treno per El Qara, sparire verso il deserto senza una coda alle spalle.
+3. **Frattura:** il mare di sabbia, dove i segreti pesano più delle dune.
+4. **Crisi:** l'accampamento, l'ultima notte prima dell'ingresso nella cripta.
+5. **Risoluzione:** la cripta del Sole, con l'eclissi che la apre.
 
 ---
 
@@ -777,13 +777,13 @@ Per seguire la partita serve conoscere il pitch da cui parte. Lo riassumiamo qui
 
 **La coppia (i Protagonisti).** *Vera Falco* (♠) è un'eroina d'azione: atletica, impulsiva, cresciuta nei cantieri di scavo del padre. Guida, scala e spara meglio di chiunque la insegua. *Otto Lenzi* (♥) è un filologo delle lingue morte, topo di biblioteca, con le fobie catalogate in ordine alfabetico. Sono *frenemies*: Vera non sopporta che Otto debba leggere qualcosa prima di muovere un passo; Otto non sopporta che Vera agisca prima di pensare e tratti i reperti come maniglie.
 
-**L'obiettivo.** Prendere il Sole di Mezzanotte, l'artefatto sepolto nella cripta di Zerzura, la città perduta sotto le sabbie, che l'eclissi riaprirà tra cinque giorni. Bisogna arrivarci prima della Loggia del Basilisco. L'unica mappa è il taccuino di Aldo Falco, il padre di Vera, sparito nel deserto cercando proprio Zerzura.
+**L'obiettivo.** Prendere il Sole di Mezzanotte, l'artefatto sepolto nella cripta di Zerzura, la città perduta sotto le sabbie, che l'eclissi riaprirà tra cinque giorni. Bisogna arrivarci prima della Loggia del Basilisco. Come arrivarci lo dice solo il prezioso taccuino di appunti di Aldo Falco, il padre di Vera, sparito nel deserto cercando proprio la città perduta.
 
 **L'Opposizione.** I *nemici* (♦) sono due ordini che vogliono fermarli: la Loggia del Basilisco, collezionisti spietati con fondi illimitati e infiltrati in ogni porto, e i Veglianti di Zerzura, l'ordine del deserto che custodisce la città e ha disseminato di trappole la strada. Il *caos* (♣) è il deserto stesso: la tempesta in anticipo, le piste che spariscono, i mezzi che si rompono, le trappole della cripta.
 
 ## La prima difficoltà
 
-La partita si apre sulla prima difficoltà del pitch: il taccuino di Aldo Falco, l'unico che abbia mai mappato la strada per Zerzura, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito. È da qui che parte la Scena 1.
+La partita si apre sulla prima difficoltà del pitch: il taccuino di Aldo Falco, l'unico che abbia mai annotato la via per Zerzura, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito. È da qui che parte la Scena 1.
 
 ## Scena 1. Innesco
 
@@ -792,12 +792,12 @@ All'asta Paola cala coperto il 9♥, Omar il 3♣: vince Paola, e l'iniziativa �
 **Paola stabilisce il titolo e la posta della scena.**
 {: .azione }
 
-<div class="fiction"><span class="titolo-scena">L'asta del Cairo</span><em>Posta: prendere il taccuino di Aldo. Se va bene, hanno la mappa e un giorno di vantaggio. Se va male, il taccuino finisce nelle mani della Loggia e quel giorno di vantaggio se lo tengono loro.</em></div>
+<div class="fiction"><span class="titolo-scena">L'asta del Cairo</span><em>Posta: prendere il taccuino di Aldo. Se va bene, hanno gli appunti su come raggiungere l'artefatto e un giorno di vantaggio. Se va male, il taccuino finisce nelle mani della Loggia e quel giorno di vantaggio se lo tengono loro.</em></div>
 
 **Paola fa il framing iniziale.**
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>In una sala privata del Cairo si batte all'asta l'unica mappa per Zerzura, il taccuino di Aldo Falco, sparito nel deserto cercandola. Sotto i lampadari la Loggia del Basilisco prende posto con le sue valigette, mentre i lotti minori passano di mano e il banditore scalda la sala. Vera e Otto, da qualche parte là fuori, non hanno nemmeno l'invito.</div>
+<div class="fiction"><span class="chi">Paola narra</span>In una sala privata del Cairo si batte all'asta il prezioso taccuino di appunti di Aldo Falco, l'unico che dica come arrivare a Zerzura; lui è sparito nel deserto cercandola. Sotto i lampadari la Loggia del Basilisco prende posto con le sue valigette, mentre i lotti minori passano di mano e il banditore scalda la sala. Vera e Otto, da qualche parte là fuori, non hanno nemmeno l'invito.</div>
 
 **Paola gioca il 5♥** nel piatto: introduce una risorsa. Aggiungere una carta significa mettere in scena qualcosa che potrà tornare utile più avanti, e in ♥, il seme dei legami, la risorsa naturale è un alleato. Paola crea il PNG annotandolo su una index card: «Hatim, vecchio amico di Otto, concierge dell'hotel», il contatto che farà entrare la coppia.
 {: .azione }
@@ -841,12 +841,10 @@ All'asta Paola cala coperto il 9♥, Omar il 3♣: vince Paola, e l'iniziativa �
 
 Fine del round: nel piatto restano l'8♠, il 9♥ e il 10♣. **Protagonisti 17, Opposizione 10:** la scena è dei Protagonisti, il taccuino è in mano a Vera e Otto. Seme dominante ♣: a deciderla è stato il caos, l'attrito tra i due più della Loggia. Eppure nel piatto il 9♥ batte l'8♠: pur litigando, in questa prima notte si sono avvicinati, e il diario del rapporto segna una salita.
 
-**Avendo perso la scena, l'esito lo racconta Omar.**
+**Avendo perso la scena, l'esito lo racconta Omar.** Nel piatto domina ♣, il caos: a decidere la scena è stato l'attrito tra Vera e Otto più della Loggia, e chi narra l'esito lo tinge del seme che ha deciso. Così, pur raccontando una vittoria dei Protagonisti, Omar la rende una crepa che si allarga tra i due.
 {: .azione }
 
 <div class="fiction"><span class="chi">Omar narra</span>"Otto esce maldestramente da una finestrella del bagno, mentre continua a parlare con gli uomini di sorveglianza al di là della porta, per ingannarli. Una volta in strada si ritrova davanti Vera e inizia a inveire contro di lei, mentre la donna lo strattona per la giacca dicendogli di sbrigarsi, perché hanno un treno da prendere. Hanno ottenuto il taccuino, ma una grossa crepa si sta aprendo sul fronte dei due protagonisti."</div>
-
-> **Come il seme dominante guida l'esito.** Nel piatto domina ♣, il caos: a decidere la scena è stato l'attrito tra Vera e Otto più della Loggia. E si vede nel modo in cui Omar narra l'esito: pur essendo una vittoria dei Protagonisti, la racconta come una crepa che si allarga tra i due. Chi narra l'esito lo tinge del seme che ha deciso la scena.
 
 ## Scena 2. Adattamento
 
@@ -875,7 +873,7 @@ All'asta Paola cala il 3♥, Omar l'8♦: vince Omar, e l'iniziativa è dell'Opp
 **Omar gioca il 10♦ e cattura il 10♣, poi spunta la spinta di ♦ del pitch:** la presa diventa una scopa vera e svuota il piatto (l'8♠, il 9♥, il 7♦ e il 3♥ finiscono nelle prese di Omar). La spinta del pitch è la risorsa scritta in preparazione che porta in scena le trappole dei Veglianti: una presa normale si trasforma in successo pieno. E un colpo così totale, una scopa, chiede una fiction altrettanto grossa: il binario morto che ribalta la situazione.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>Poi una mossa formidabile degli antagonisti. Alì salta sul treno: un pugno stende il capotreno e il guerriero risale i corridoi verso lo scompartimento. Ma non è solo: più avanti un secondo Vegliante aziona uno scambio, il treno devia su un binario morto che finisce nel nulla, e con quella deviazione salta tutto, la posizione di Vera e il piano di Otto.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Poi una mossa formidabile degli antagonisti. Alì raggiunge la locomotiva e ci salta sopra, stordisce con un pugno il macchinista, poi si lancia di corsa lungo i corridoi verso lo scompartimento di Vera e Otto. E non è solo: più avanti un secondo Vegliante aziona uno scambio, il treno devia su un binario morto che finisce nel nulla, e con quella deviazione salta tutto, la posizione di Vera e il piano di Otto.</div>
 
 > **Spinta del pitch (scopa vera):** una presa normale, portando in scena la risposta del pitch, diventa una scopa che ripulisce il piatto. Il 10♦ va tra le scope di Omar (4 punti). La spinta di ♦ è ora usata.
 
@@ -906,14 +904,10 @@ All'asta Paola cala il 3♥, Omar l'8♦: vince Omar, e l'iniziativa è dell'Opp
 
 Fine del round: piatto vuoto, **0 a 0,** e la scena va ai Protagonisti, che l'hanno chiusa con una scopa. La carovana e le guide del deserto sono loro; il diario del rapporto resta in bilico, pari.
 
-**Avendo perso la scena, l'esito lo racconta Omar.**
+**Avendo perso la scena, l'esito lo racconta Omar.** Per quasi tutta la scena aveva dominato l'Opposizione (Alì, ♦), ma la scopa finale dei Protagonisti ha svuotato il piatto: a fine scena non resta nessun seme, è parità, e la chiusura netta cancella la lettura del dominante. Così Omar non può attribuire la sconfitta al caso o a un colpo del nemico: deve ammettere un successo netto dei Protagonisti, e gli resta solo da calcarne il prezzo.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>"Sì, il treno si ferma in tempo, e i passeggeri portano quasi in trionfo la coraggiosa donna europea. I Veglianti restano a mani vuote: Vera e Otto scendono a El Qara con la carovana e le guide che cercavano. Però Alì il taccuino se l'è preso, e il deserto vero deve ancora cominciare. Per stavolta se la sono cavata, e perfino insieme. Se la godano: la sabbia inghiotte alleanze ben più solide della loro."</div>
-
-> **Come il seme dominante guida l'esito.** Per quasi tutta la scena aveva dominato l'Opposizione (Alì, ♦), ma la scopa finale dei Protagonisti svuota il piatto: a fine scena non resta nessun seme, è parità. La chiusura netta cancella la lettura del dominante: a narrare è Omar, che ha perso la posta, e proprio perché nessun seme domina non può dare la colpa al caso o a un colpo del nemico, ma deve ammettere un successo netto dei Protagonisti, limitandosi a calcarne il prezzo.
-
-> Nota di continuità: il taccuino strappato da Alì non è più rilevante (si può dare per perso, o immaginare che Vera ne avesse ricopiato la mappa). Nelle scene successive basta parlare di "la mappa".
+<div class="fiction"><span class="chi">Omar narra</span>"Sì, il treno si ferma in tempo, e i passeggeri portano quasi in trionfo la coraggiosa donna europea: Vera e Otto scendono a El Qara con la carovana e le guide che cercavano. Ma non si montino la testa. Alì il taccuino di Aldo Falco se l'è portato via, e quelle pagine valgono più di tutte le guide del deserto: dentro ci sono gli appunti per arrivare all'artefatto e i segreti per superarne le antiche insidie. Si godano pure la carovana: senza il taccuino, a Zerzura forse non ci arrivano nemmeno, e di sicuro non ci entrano."</div>
 
 ## Mercato, tra la seconda e la terza scena
 
@@ -985,14 +979,24 @@ All'asta Paola cala il 4♠, Omar il 5♦: vince Omar, e l'iniziativa è dell'Op
 
 Fine del round: piatto vuoto, **0 a 0**, e la scena va ai Protagonisti, che con due scope (Kalim e il 9♠) hanno dominato il tavolo. Hanno raggiunto l'oasi e possono accamparsi; Paola incassa 8 punti, le sue due scope. Il diario del rapporto si legge dai Cuori e dalle Picche rimasti nel piatto: qui il piatto è vuoto, e il diario segna **parità**. E narrativamente torna: nella scena i due si sono avvicinati (la notte al fuoco) ma hanno anche litigato di brutto (l'acqua persa per la disattenzione di Otto), e le due cose si fanno da contrappeso.
 
-**Avendo perso la scena, l'esito lo racconta Omar.**
+**Avendo perso la scena, l'esito lo racconta Omar.** Anche qui la chiusura è una scopa e il piatto resta vuoto: nessun seme domina, è parità, una vittoria netta dei Protagonisti. Omar la racconta come tale, calcandone le ombre; ma lo stato della coppia non lo decide il seme dominante, lo dà il diario (Cuori contro Picche), che qui resta in equilibrio.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>"All'oasi piantano le tende e tirano il fiato: il deserto l'hanno passato, e ora possono mettersi a cercare l'ingresso di Zerzura. Una vittoria, lo ammetto. Ma un prezzo il deserto l'ha riscosso comunque: la notte al fuoco li aveva riavvicinati, poi la stupida lite per l'acqua persa li ha rispediti a muso duro, e ripartono né più uniti né più divisi di prima. Intanto la cripta aspetta. E lei la disattenzione di un tappo non la perdona."</div>
+<div class="fiction"><span class="chi">Omar narra</span>"All'oasi piantano le tende e tirano il fiato: il deserto l'hanno passato, e ora possono mettersi a cercare l'ingresso di Zerzura prima dell'eclissi, sperando che gli indizi memorizzati da Otto bastino. Ma il biplano è rientrato alla base, e racconterà alla Loggia di averli localizzati; e chissà quante informazioni vitali sono rimaste nel taccuino di Aldo, ormai in mano ai Veglianti..."</div>
 
-> **Come il seme dominante guida l'esito.** Di nuovo la chiusura è una scopa e il piatto resta vuoto: nessun seme dominante, parità. È una vittoria netta, e Omar (che ha perso la scena) la racconta come tale, calcandone le ombre. Lo stato della coppia non lo dà il seme dominante ma il diario (Cuori contro Picche), che qui resta in equilibrio.
+## Mercato, tra la terza e la quarta scena
 
-> **A seguire:** il mercato dopo la Scena 3 (dove Paola compra la Regina ♥) e le scene 4 e 5.
+Dopo la Scena 3 Paola ha di nuovo punti da spendere: le due scope del mare di sabbia (8 punti) sommate ai 2 che le restavano fanno 10.
+
+**Paola compra la Regina di Cuori (costa 5 punti, le restano 5).** A differenza del Fante, la Regina entra nel mazzo e si rimescola, non in mano: comparirà più avanti. Il suo effetto, quando verrà giocata, è da manipolatrice: costringe l'avversario a scartare una carta a caso. Come per ogni figura, Paola crea il PNG su una index card: «Pablo Gutiérrez, aviatore della Loggia folgorato da Vera, prima o poi pronto a tradirla (Regina ♥, valore 9)».
+{: .azione }
+
+<div class="fiction"><span class="chi">Paola narra</span>Il pilota che Vera ha costretto a virare e a rientrare all'accampamento della Loggia si chiama Pablo Gutiérrez: ardito aviatore e affascinante avventuriero, mercenario al soldo dei suoi padroni. Lei non l'ha buttato giù, ma da quando l'ha respinto con un pezzo di vetro e un revolver lui non riesce più a togliersela dalla testa, folgorato dalla sua bellezza e dalla sua risolutezza. Non passa subito dalla loro parte, ma è solo questione di tempo: prima o poi Pablo tradirà la Loggia, e quel giorno sarà dalla parte di Vera.</div>
+
+**Omar non compra: tiene i punti.** Con quello che ha messo da parte, l'Opposizione punta a una figura più potente, da calare al momento giusto nella cripta.
+{: .azione }
+
+> **A seguire:** le scene 4 e 5.
 
 ---
 

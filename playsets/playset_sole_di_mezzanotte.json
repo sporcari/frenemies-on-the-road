@@ -4,9 +4,9 @@
   "fonte": "playset originale, tono Action (avventura archeologica)",
   "nGiocatori": 2,
   "tono": "Action",
-  "premessa": "Il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto, giace nella cripta di Zerzura, la città perduta sepolta dalle sabbie. La Loggia del Basilisco gli dà la caccia da decenni, i Veglianti la custodiscono perché nessuno la trovi, e la traduzione di Otto ha appena riacceso la corsa. L'unica mappa è il taccuino di Aldo Falco, il padre di Vera, sparito nel deserto cercandola.",
+  "premessa": "Il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto, giace nella cripta di Zerzura, la città perduta sepolta dalle sabbie. La Loggia del Basilisco gli dà la caccia da decenni, i Veglianti la custodiscono perché nessuno la trovi, e la traduzione di Otto ha appena riacceso la corsa. Come arrivarci lo dice solo il prezioso taccuino di appunti di Aldo Falco, il padre di Vera, sparito nel deserto cercandola.",
   "missione": "Prendere il Sole di Mezzanotte nella cripta di Zerzura, che l'eclissi apre tra cinque giorni, PRIMA che ci arrivi la Loggia del Basilisco.",
-  "primaDiff": "Il taccuino del professor Aldo Falco, l'unico che abbia mai mappato la strada per Zerzura prima di sparire, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito.",
+  "primaDiff": "Il taccuino del professor Aldo Falco, l'unico che abbia mai annotato la via per Zerzura prima di sparire, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito.",
   "pers": {
     "A": {
       "nome": "Vera Falco",
@@ -44,7 +44,7 @@
       "scena": 1,
       "fase": "Innesco",
       "titolo": "L'asta del Cairo",
-      "suggerimento_posta": "Prendere il taccuino di Aldo. Se va bene: hanno la mappa e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio"
+      "suggerimento_posta": "Prendere il taccuino di Aldo. Se va bene: hanno gli appunti su come raggiungere l'artefatto e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio"
     },
     {
       "scena": 2,

@@ -865,9 +865,9 @@ Tutti gli esempi di questo regolamento, e la partita d'esempio in appendice, usa
 
 **Perché restano incollati**
 
-- L'unica mappa per Zerzura è il taccuino di Aldo Falco, il padre di Vera, sparito nel deserto cercandola. Ma il taccuino è scritto in lingue morte e cifrato: solo Otto sa leggerlo.
+- Come arrivare a Zerzura lo dice solo il prezioso taccuino di appunti di Aldo Falco, il padre di Vera, sparito nel deserto cercandola. Ma il taccuino è scritto in lingue morte e cifrato: solo Otto sa leggerlo.
 - Otto sa tradurre le stele e disinnescare le trappole sulla carta, ma davanti a uno scorpione, a un dirupo o a una sparatoria si paralizza: senza Vera non arriva vivo nemmeno ai margini del deserto.
-- La Loggia del Basilisco non può fermarsi: ha speso decenni e fondi illimitati su Zerzura, e l'eclissi non aspetta. Inseguono da vicino, con la stessa mappa comprata all'asta.
+- La Loggia del Basilisco non può fermarsi: ha speso decenni e fondi illimitati su Zerzura, e l'eclissi non aspetta. Inseguono da vicino, sulle stesse tracce.
 - I Veglianti non possono lasciare che qualcuno tocchi l'artefatto: sono convinti che spostare il Sole di Mezzanotte significhi la fine, e cancellano le tracce di chiunque si avvicini alla città.
 
 **Opposizione**
@@ -896,7 +896,7 @@ Tutti gli esempi di questo regolamento, e la partita d'esempio in appendice, usa
 
 **La prima difficoltà (§9.7, risposta condivisa)**
 
-Il taccuino del professor Aldo Falco, l'unico che abbia mai mappato la strada per Zerzura prima di sparire, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito.
+Il taccuino del professor Aldo Falco, l'unico che abbia mai annotato la via per Zerzura prima di sparire, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito.
 
 **Una geografia per le cinque scene** (indicativa, non vincolante)
 

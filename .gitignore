@@ -3,4 +3,4 @@ package-lock.json
 package.json
 .DS_Store
 test/transcript_seed_*.txt
-!test/transcript_seed_23_43_v2.txt
+!test/transcript_seed_23_43_5_v2.txt

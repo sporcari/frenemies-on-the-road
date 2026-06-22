@@ -6,8 +6,31 @@ mossa per mossa (motivazioni strategiche incluse), prima di trasformarlo nel for
 dell'Appendice B. Le scene 1-2 e il mercato 2/3 sono già scritti nel manuale; questo file parte dalla
 Scena 3.
 
-I fatti meccanici di ogni scena sono presi da `test/transcript_seed_23_43_v2.txt` (fonte di verità delle
+I fatti meccanici di ogni scena sono presi dal transcript di riferimento (fonte di verità delle
 carte). La dettatura di Saverio va ancorata a quelle carte.
+
+---
+
+## STATO CORRENTE — RIPRENDERE DA QUI (fine sessione, giugno 2026)
+
+**Esempio canonico = TRE seed: `SEED=23 SEED2=43 SEED3=5`.** SEED → scene 1-2, SEED2 → scena 3, SEED3 → scene 4-5 (reseed a fine S2 con SEED2 e a fine S3 con SEED3). Reference: `test/transcript_seed_23_43_5_v2.txt`. Collaudo: `SEED=23 SEED2=43 SEED3=5 TRANSCRIPT=1 node test/partita_esempio.js` poi diff con la reference (deve essere identico). Il driver alza a 3 il tetto spinte (`spinteUsate<3`).
+
+**Cosa è GIÀ SCRITTO nel manuale (`docs/frenemies_manuale.md`, Appendice B):** pitch in breve, prima difficoltà, **Scena 1**, **Scena 2**, **Mercato 2/3** (Fante=Kalim), **Scena 3** (con esito finale aggiornato), **Mercato 3/4** (Regina ♥ = Pablo Gutiérrez). Tutto rigenera il PDF con `python3 docs/genera_pdf_manuale.py`.
+
+**Cosa MANCA da scrivere (fiction), nell'ordine:**
+1. **Scena 4 — L'accampamento (Crisi)** — scheletro carte più sotto in questo file. Iniziativa ai Protagonisti (Paola inquadra); l'Opposizione vince con la **scopa della spinta ♣** (il deserto li travolge). Esito narrato da **Paola** (perde la posta). DA DETTARE/BOZZARE; aperto: se/come esce il segreto su Aldo (spinta ♣ Fiori #2 "Aldo è vivo, è un Vegliante" NON ancora usata in gioco).
+2. **Mercato 4/5** — Omar compra il **Re ♦** (ancora da battezzare: "deus ex machina", in cripta si sacrifica per una scopa).
+3. **Scena 5 — La cripta del Sole (Risoluzione)** — scheletro più sotto. Re♦ scopa, Jolly (4 pt a Omar), colpi di scena (Pablo/Regina entra, elimina, è eliminato) → ribaltone piatto 12-0 → per il rotto della cuffia.
+
+**FORMATO (fisso) dell'Appendice B:** ogni passo = riga d'azione in chiaro (chi cala quale carta, effetto in gioco, **+ motivazione strategica**) con `{: .azione }`, poi un `<div class="fiction"><span class="chi">Paola narra</span>…</div>` (box **monocolore**, SOLO fiction, didascalia "Paola narra"/"Omar narra"; per posta+titolo `<span class="titolo-scena">`). Apertura scena: due passi del vincitore d'asta (stabilisce titolo+posta → box; fa il framing → box). Esito/conteggio in testo normale FUORI dai box. **Semi a icona ♠♥♦♣.** Nei box NON usare termini di gioco (niente "posta"/"mappa"). CSS in `docs/genera_pdf_manuale.py`. Niente lineette lunghe (—).
+
+**Regole stabilite questa sessione:** v1.13 posta "il cosa non il come / mai indispensabile"; v1.14 **l'esito lo narra chi PERDE la posta** (parità → chi vince l'asta). "La mappa" → "il prezioso taccuino di appunti su come raggiungere l'artefatto" ovunque. Esito narrato dal seme dominante (♣=caos/attrito, ♦=nemici, ♠/♥=Protagonisti con forza/dialogo); scopa di chiusura → piatto vuoto → seme dominante e diario in parità.
+
+**PNG creati (su index card all'acquisto/introduzione):** Hatim (5♥, concierge), assistente del banditore, sgherri/Loggia, Alì (7♦, guerriero Veglianti), Gustav Koenig (9♥, luogotenente Loggia), **Kalim** (Fante ♥, guida del deserto, fratello del macchinista), **Pablo Gutiérrez** (Regina ♥, aviatore della Loggia folgorato da Vera, prima o poi traditore). **DA BATTEZZARE: Re ♦** (figura dell'Opposizione, mercato 4/5).
+
+**ALTRO LAVORO IN SOSPESO (v1.12):** sweep degli **esempi inline ancora Frank/Skunk** nel manuale (capitoli 3-7, ~16 occorrenze: righe indicative 181/187/235/251/263/269/275/329/407/494/535/537/539/562/574/617), e gli esempi inline della KB + i blocchi `.es`/esempi di tono in `REGOLE`/`REGOLE_IA` in `index.html`. Da convertire a Vera/Otto **pescando dall'actual play una volta finito** (richiesta di Saverio).
+
+**Git:** ramo `manuale-actual-play-appendice-b`, ultimo commit di checkpoint + commit di fine sessione. PDF del manuale e PDF KB esclusi dai commit (policy / KB PDF stale, da rigenerare a milestone).
 
 ---
 
@@ -51,7 +74,45 @@ Punti: Paola fa 2 scope (8 punti) in questa scena; Omar 0. (Paola aveva 2 punti 
 
 **CAMBIO DI REGOLA (Saverio, v1.14): l'esito lo narra chi PERDE la posta** (non più chi perde l'asta), per caricarlo di ombre. Parità dei totali → narra chi vince l'asta (evita due narrazioni di fila del perdente d'asta = ultima carta). Propagato a KB §13/§18 + registro/footer v1.14, REGOLE, REGOLE_IA, manuale §5.10, motore (3 punti: latoCheAgisce fine_scena, claudeEsito in rFineScena, instradamento in conteggioDefinitivo), test_riprova SEED 7→2, diario decisioni #34. **Actual play:** le 3 scene le vince Paola → esiti narrati da Omar; Scena 1 già Omar (cambiata solo la motivazione "perso la scena"), Scene 2-3 passate da Paola a Omar e riscritte nella sua voce cupa (acknowledge la vittoria dei Protagonisti ma calca su costo/ombre/foreshadowing). Tutti i test verdi.
 
+**Correzioni Saverio (Scena 2):** (a) esito di Omar: NON "Veglianti a mani vuote" — Alì il taccuino l'ha preso, e Omar lo rigira come minaccia (il taccuino ha la strada per Zerzura e i segreti per superarne le insidie). (b) Rimossa la nota di continuità (niente "Vera ha ricopiato la mappa"): il taccuino è perso davvero ai Veglianti. (c) Mossa 3 (10♦): Alì raggiunge la locomotiva e ci salta sopra, stordisce con un pugno il **macchinista**, poi corre lungo i corridoi verso lo scompartimento; un secondo Vegliante aziona lo scambio. Coerenza: spiega perché alla mossa 8 Vera trova il macchinista svenuto (prima c'era un incoerente "capotreno"). Ora "macchinista" è il filo unico (stordito M3 → trovato svenuto M8 → grato offre Kalim al mercato).
+
+**RISOLTO — niente "mappa", si parla del "prezioso taccuino di appunti su come raggiungere l'artefatto"** (scelta di Saverio: più generico, lascia margine di manovra in gioco, in linea con "il cosa non il come"). Sostituito ovunque (manuale, playset json, scheda, index.html, partita_esempio.js, KB §33): premessa "L'unica mappa è il taccuino" → "Come arrivarci lo dice solo il prezioso taccuino di appunti…"; posta S1 "hanno la mappa" → "hanno gli appunti su come raggiungere l'artefatto"; "mappato la strada" → "annotato la via"; esito S2 di Omar "la strada per la città perduta" → "gli appunti per arrivare all'artefatto"; KB §33 "la Loggia insegue con la stessa mappa comprata all'asta" → "sulle stesse tracce" (toglie anche la contraddizione: Vera ruba il taccuino prima dell'asta). RESTANO di proposito: l'esempio generico di orientamento ("con una mappa" tra stelle/cammelli/sogno, è un metodo non il taccuino) e l'Appendice A (Frank/Skunk). Transcript: cambia solo la riga della posta, _v2 aggiornato.
+
 **STATO Scena 3:** fiction scritta come **bozza curata** (non dettata) nel manuale, sezione "## Scena 3. Frattura". Beat principali della bozza: framing del deserto senza punti di riferimento; minacce dell'Opposizione = Veglianti che cancellano le piste (6♦), colonna della Loggia motorizzata (9♦), Veglianti in vedetta (5♦); caos = otre d'acqua perso (2♣); risorse di Paola = Kalim/Fante legge il deserto e fa scopa (effetto: scout), notte al fuoco in cui Otto e Vera si riavvicinano (10♥), Vera trova un pozzo (4♠), e la chiusura con la spinta ♠ di Vera che li porta all'oasi (9♠ → scopa). Esito (Paola narra): raggiungono l'oasi, ma Vera vede Otto scrivere di nascosto qualcosa che tace (aggancio al segreto: Aldo vivo/Vegliante, da far esplodere in Crisi). **DA RIVEDERE con Saverio** (dettatura/correzioni). Regina ♥ comprata dopo S3 = nome ancora da decidere.
+
+## Scene 4-5 + mercati (SEED3=5) — scheletro meccanico
+
+**Mercato 3/4:** Paola compra la **Regina ♥** (5 punti). Omar non compra (risparmia per il Re).
+
+**Scena 4 — L'accampamento (Crisi).** Asta 3♠ vs 1♣ → iniziativa **Protagonisti** (Paola inquadra). Posta: raggiungere l'ingresso prima dell'alba (bene: scendono col buio; male: alla cripta li aspettano Loggia e Veglianti).
+1. Paola `4♥` giocata
+2. Omar `3♦` giocata
+3. Paola `8♥` giocata
+4. Omar `1♣` giocata
+5. Paola `7♠` presa di 2 (cattura 4♥+3♦)
+6. Omar `7♣` giocata
+7. Paola `3♠` giocata
+8. Omar `8♣` prende l'8♥, poi **SPINTA ♣** «Tempeste in anticipo, pozzi secchi, piste cancellate, un camion che perde olio» → **SCOPA** (raccoglie 1♣ 7♣ 3♠).
+**Fine S4:** piatto 0‑0 → **vince OPPOSIZIONE** (scopa di chiusura di Omar), seme dominante parità, diario **pari**. Esito narrato da **Paola** (perde la posta → narra lei, regola v1.14): è la prima volta che i Protagonisti narrano la loro sconfitta.
+
+**Mercato 4/5:** **Omar compra il Re ♦** (8 punti, ci arriva grazie alla scopa della spinta). Poi mano estesa.
+
+**Scena 5 — La cripta del Sole (Risoluzione).** Asta 1♥ vs 4♦ → iniziativa **Opposizione** (Omar inquadra). Posta: l'eclissi (bene: salvano il Sole; male: esce nella valigetta sbagliata). Piatto di partenza vuoto.
+1. Omar **Re ♦** → **SCOPA** (su piatto vuoto si sacrifica, gesto eroico; effetto Re: nessuno scambio)
+2. Paola `1♥` giocata
+3. Omar `4♣` giocata
+4. Paola **Jolly come 5** → **SCOPA**, ma i 4 punti vanno a Omar (mossa sleale)
+5. Omar `5♣` giocata
+6. Paola `2♥` giocata
+7. Omar `4♦` giocata
+8. Paola `6♥` presa di 2 (cattura 2♥+4♦); resta nel piatto il 5♣
+**Primo conteggio (apparente):** piatto = 5♣ (Opposizione avanti); punti 8‑2 per Omar → sembra disfatta.
+**Colpi di scena:** Paola **Regina ♥** elimina 5♣ → Omar **9♣** elimina la Regina → Paola **2♠** → Paola **10♠** elimina 9♣.
+**Conteggio definitivo:** piatto 2♠ 10♠ → Protagonisti **12‑0**; punti Prot 2 (2 prese) vs Opp 8 (2 scope: R♦ + Jolly) → **PER IL ROTTO DELLA CUFFIA**. Diario finale: su, pari, pari, pari, giù. Esito finale narrato da **Omar** (i Protagonisti vincono il piatto → l'Opposizione lo narra).
+
+**PNG da battezzare:** ~~Regina ♥~~ **FATTA** (vedi sotto) e Re ♦ (figura dell'Opposizione comprata da Omar dopo S4, "deus ex machina"; in cripta si sacrifica per una scopa) — ancora da battezzare.
+
+**Dettatura Saverio (Regina ♥, mercato 3/4):** «La Regina potrebbe essere Pablo Gutierrez, l'ardito pilota di biplano ed affascinante avventuriero al soldo della Loggia che si rimasto perdutamente innamorato di Vera quando lei gli ha sparato addosso nel deserto.» → **Regina ♥ = Pablo Gutiérrez**, pilota del biplano abbattuto da Vera in Scena 3, innamoratosi di lei, defeziona dalla Loggia e diventa alleato dei Protagonisti. Callback perfetto al biplano della Scena 3. In cripta (colpi di scena) entra, elimina il 5♣ e viene eliminato dal 9♣ di Omar (si sacrifica per Vera). NB (correzione Saverio): al mercato 3/4 NON li ha ancora raggiunti (la carta è mescolata nel mazzo) — è solo folgorato da Vera (sconfitto da un vetro = il ciondolo, e un revolver) e prima o poi tradirà la Loggia. Entra davvero solo quando si gioca la carta, in cripta.
 
 ### Dettatura di Saverio (verbatim)
 

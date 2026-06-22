@@ -8,6 +8,10 @@ const SEED=parseInt(process.env.SEED||"1");
 // Le scene 1-2 restano quelle di SEED; a fine Scena 2 si rigenera l'RNG col SEED2, rimescolando
 // il solo mazzo residuo (le carte già giocate sono fuori dal mazzo). Se assente, vale SEED.
 const SEED2=parseInt(process.env.SEED2||String(SEED));
+// Terzo seed opzionale: governa SOLO le scene 4-5 (mercato di fine 3ª scena, rimescoli e scelte).
+// Le scene 1-3 restano quelle di SEED/SEED2; a fine Scena 3 si rigenera l'RNG col SEED3, rimescolando
+// il solo mazzo residuo. Se assente, vale SEED2 (nessun effetto: scene 4-5 restano governate da SEED2).
+const SEED3=parseInt(process.env.SEED3||String(SEED2));
 
 let html=fs.readFileSync(require("path").join(__dirname,"..","index.html"),"utf8");
 html=html.replace(/<script src=[^>]+><\/script>/g,"");
@@ -28,7 +32,7 @@ const modaleAttivo=()=>document.getElementById("ovModale").classList.contains("a
 
 /* ---------- materiale demo (scenario §33): Vera, Otto e il Sole di Mezzanotte ---------- */
 const MISSIONE="Prendere il Sole di Mezzanotte nella cripta di Zerzura, che l'eclissi apre tra cinque giorni, PRIMA che ci arrivi la Loggia del Basilisco.";
-const PRIMADIFF="Il taccuino del professor Aldo Falco, l'unico che abbia mai mappato la strada per Zerzura prima di sparire, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito.";
+const PRIMADIFF="Il taccuino del professor Aldo Falco, l'unico che abbia mai annotato la via per Zerzura prima di sparire, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito.";
 const PITCH=[
  "Otto si paralizza davanti a qualsiasi cosa strisci o voli, e prima di muovere un passo deve leggere qualcosa",
  "Vera agisce prima di pensare e fa saltare in aria cose che andrebbero studiate: tratta i reperti come maniglie",
@@ -43,7 +47,7 @@ const PITCH=[
 ];
 const TITOLI=["L'asta del Cairo","Il treno per El Qara","Il mare di sabbia","L'accampamento","La cripta del Sole"];
 const POSTE=[
- "Prendere il taccuino di Aldo. Se va bene: hanno la mappa e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio",
+ "Prendere il taccuino di Aldo. Se va bene: hanno gli appunti su come raggiungere l'artefatto e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio",
  "Raggiungere El Qara in tempo. Se va bene: si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male: arrivano troppo tardi e restano senza quell'aiuto prezioso",
  "Orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se va bene: i protagonisti possono accamparsi e prepararsi alla ricerca. Se va male: si perdono nel deserto",
  "Raggiungere l'ingresso prima dell'alba. Se va bene: scendono nella cripta col favore del buio. Se va male: alla cripta li aspettano la Loggia da una parte e i Veglianti dall'altra",
@@ -62,6 +66,7 @@ function log(s){ T.push(s) }
 let spinteUsate=0, colpiFatti=0, acquisti=0, jollyGiocati=0, counterFatto=false, ultimaLoggata="";
 const greedyOmar={};   // decisione (memoizzata per scena) se l'IA spende al mercato
 let reseedFatto=false;   // l'RNG è già passato a SEED2 a fine 2ª scena
+let reseed3Fatto=false;  // l'RNG è già passato a SEED3 a fine 3ª scena
 const astaScelte={P:null,O:null};
 let spintaScena=-1;
 function logUltima(){
@@ -182,7 +187,7 @@ function passo(){
 
   if(f==="narrazione"){
     const sp=[...document.querySelectorAll("button[data-spinta]")];
-    if(sp.length && spinteUsate<2 && G().scena>=1 && spintaScena!==G().scena){
+    if(sp.length && spinteUsate<3 && G().scena>=1 && spintaScena!==G().scena){
       spintaScena=G().scena;
       spinteUsate++;
       const b=sp[0];
@@ -198,6 +203,8 @@ function passo(){
     // a fine 2ª scena, prima del mercato, l'RNG passa a SEED2: scene 3-5 governate dal secondo seed,
     // sul solo mazzo residuo (le carte giocate nelle scene 1-2 sono già fuori dal mazzo).
     if(g.scena===1 && SEED2!==SEED && !reseedFatto){ window.__reseed(SEED2); reseedFatto=true; }
+    // a fine 3ª scena, prima del mercato 3/4, l'RNG passa a SEED3: scene 4-5 governate dal terzo seed.
+    if(g.scena===2 && SEED3!==SEED2 && !reseed3Fatto){ window.__reseed(SEED3); reseed3Fatto=true; }
     click(document.getElementById("fs-avanti")); return f;
   }
 
@@ -279,7 +286,7 @@ try{
       const riass=`SEED=${SEED} ok scene=${vinte} scopeP=${g.lati.P.scope.length} scopeO=${g.lati.O.scope.length} jolly=${jollyGiocati} counter=${counterFatto} spinte=${spinteUsate} colpi=${colpiFatti} acquisti=${acquisti} outcome="${outcome}"`;
       console.log(riass);
       if(process.env.TRANSCRIPT){
-        const fnT=`transcript_seed_${SEED}${SEED2!==SEED?"_"+SEED2:""}.txt`;
+        const fnT=`transcript_seed_${SEED}${SEED2!==SEED?"_"+SEED2:""}${SEED3!==SEED2?"_"+SEED3:""}.txt`;
         fs.writeFileSync(fnT, T.join("\n"));
         console.log(`transcript: ${fnT} (${T.length} righe)`);
       }
