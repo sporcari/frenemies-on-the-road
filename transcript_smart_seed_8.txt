@@ -1,0 +1,142 @@
+   Asta: Protagonisti 3♥ contro Opposizione 5♣ → iniziativa a OPPOSIZIONE.
+
+== SCENA 1 — L'asta del Cairo ==
+   Posta: Prendere il taccuino di Aldo. Se va bene: hanno gli appunti su come raggiungere l'artefatto e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio
+   OPPOSIZIONE — mano: 9♦ 9♣ 8♣ | piatto: (vuoto)
+   → Omar — 9 di Quadri: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano: 4♠ 3♠ 6♠ 3♥ | piatto: 9♦
+   → Paola — 3 di Cuori: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano: 9♣ 8♣ | piatto: 9♦ 3♥
+   → Omar — 9 di Fiori: presa di 1 carta — un successo, magari con un costo.
+   PROTAGONISTI — mano: 4♠ 3♠ 6♠ | piatto: 3♥
+   → Paola — 3 di Picche: SCOPA! Il piatto è ripulito — un successo pieno, una svolta.
+   OPPOSIZIONE — mano: 8♣ | piatto: (vuoto)
+   → Omar — 8 di Fiori: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano: 4♠ 6♠ | piatto: 8♣
+   → Paola — 4 di Picche: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano:  | piatto: 8♣ 4♠
+   → Omar — 5 di Fiori: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano: 6♠ | piatto: 8♣ 4♠ 5♣
+   → PROTAGONISTI — RESA ONOREVOLE: ultima carta (6♠) ininfluente, cede la scena.
+   FINE SCENA 1: piatto 4 a 13 → vince OPPOSIZIONE. Seme dominante: ♣ (diario: giu).
+   MERCATO: PROTAGONISTI compra la REGINA di cuori ♥.
+   Asta: Protagonisti 2♥ contro Opposizione 2♣ → iniziativa a PROTAGONISTI.
+
+== SCENA 2 — Il treno per El Qara ==
+   Posta: Raggiungere El Qara in tempo. Se va bene: si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male: arrivano troppo tardi e restano senza quell'aiuto prezioso
+   Nel piatto dalla scena precedente: 8♣ 4♠ 5♣
+   PROTAGONISTI — mano: 8♥ 9♥ 5♥ | piatto: 8♣ 4♠ 5♣
+   → Paola — 8 di Cuori: presa di 1 carta — un successo, magari con un costo.
+   → SPINTA DEL PITCH: «♥ «La caccia l'ha riaperta la sua traduzione: se finisce male, è colpa sua»» — la presa diventa scopa e svuota il piatto.
+   → Paola — 8 di Cuori: presa di 1 carta — un successo, magari con un costo. ⚡ Risorsa del pitch attivata: la presa diventa SCOPA e raccoglie le 2 carte rimaste nel piatto.
+   OPPOSIZIONE — mano: 10♦ 6♣ 3♦ 2♣ | piatto: (vuoto)
+   → Omar — 3 di Quadri: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano: 9♥ 5♥ | piatto: 3♦
+   → Paola — 9 di Cuori: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano: 10♦ 6♣ 2♣ | piatto: 3♦ 9♥
+   → Omar — 2 di Fiori: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano: 5♥ | piatto: 3♦ 9♥ 2♣
+   → Paola — 5 di Cuori: presa di 2 carte — un successo, magari con un costo.
+   OPPOSIZIONE — mano: 10♦ 6♣ | piatto: 9♥
+   → Omar — 6 di Fiori: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano:  | piatto: 9♥ 6♣
+   → Paola — 2 di Cuori: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano: 10♦ | piatto: 9♥ 6♣ 2♥
+   → Omar — 10 di Quadri: giocata nel piatto — una nuova risorsa entra in scena.
+   FINE SCENA 2: piatto 11 a 16 → vince OPPOSIZIONE. Seme dominante: ♥ (diario: su).
+   MERCATO: PROTAGONISTI compra il FANTE di cuori ♥.
+   → FANTE assoldato: entra in mano, 2♠ va in fondo al mazzo.
+
+-- Dopo la seconda scena: il JOLLY entra nel mazzo dei Protagonisti. --
+   Asta: Protagonisti 6♥ contro Opposizione 2♦ → iniziativa a PROTAGONISTI.
+
+== SCENA 3 — Il mare di sabbia ==
+   Posta: Orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se va bene: i protagonisti possono accamparsi e prepararsi alla ricerca. Se va male: si perdono nel deserto
+   Nel piatto dalla scena precedente: 9♥ 6♣ 2♥ 10♦
+   PROTAGONISTI — mano: 7♠ 10♥ F♥ | piatto: 9♥ 6♣ 2♥ 10♦
+   → Paola — 10 di Cuori: presa di 1 carta — un successo, magari con un costo.
+   OPPOSIZIONE — mano: 6♦ 4♦ 4♣ 2♦ | piatto: 9♥ 6♣ 2♥
+   → Omar — 2 di Quadri: presa di 1 carta — un successo, magari con un costo.
+   → SPINTA DEL PITCH: «♦ «La Loggia ha sicari in ogni porto; i Veglianti hanno costruito le trappole»» — la presa diventa scopa e svuota il piatto.
+   → Omar — 2 di Quadri: presa di 1 carta — un successo, magari con un costo. ⚡ Risorsa del pitch attivata: la presa diventa SCOPA e raccoglie le 2 carte rimaste nel piatto.
+   PROTAGONISTI — mano: 7♠ F♥ | piatto: (vuoto)
+   → Paola — Fante di Cuori: SCOPA! Fante si sacrifica con un gesto eroico — un successo pieno dal nulla.
+   → effetto FANTE: guarda le prime 4 carte del mazzo e le riordina.
+   OPPOSIZIONE — mano: 6♦ 4♦ 4♣ | piatto: (vuoto)
+   → Omar — 4 di Quadri: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano: 7♠ | piatto: 4♦
+   → Paola — 7 di Picche: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano: 6♦ 4♣ | piatto: 4♦ 7♠
+   → Omar — 4 di Fiori: presa di 1 carta — un successo, magari con un costo.
+   PROTAGONISTI — mano:  | piatto: 7♠
+   → Paola — 6 di Cuori: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano: 6♦ | piatto: 7♠ 6♥
+   → Omar — 6 di Quadri: presa di 1 carta — un successo, magari con un costo.
+   FINE SCENA 3: piatto 7 a 0 → vince PROTAGONISTI. Seme dominante: ♠ (diario: giu).
+   MERCATO: OPPOSIZIONE compra la REGINA di quadri ♦.
+   Asta: Protagonisti D♥ contro Opposizione 10♣ → iniziativa a OPPOSIZIONE.
+
+== SCENA 4 — Nella città perduta ==
+   Posta: Trovare l'accesso alla cripta. Se va bene: sono a un passo dall'obiettivo. Se va male: restano in balia dei nemici e delle insidie della città perduta
+   Nel piatto dalla scena precedente: 7♠
+   OPPOSIZIONE — mano: 5♦ 7♦ 7♣ | piatto: 7♠
+   → Omar — 7 di Quadri: SCOPA! Il piatto è ripulito — un successo pieno, una svolta.
+   PROTAGONISTI — mano: 7♥ 1♠ 1♥ D♥ | piatto: (vuoto)
+   → Paola — Regina di Cuori: SCOPA! Regina si sacrifica con un gesto eroico — un successo pieno dal nulla.
+   OPPOSIZIONE — mano: 5♦ D♦ | piatto: (vuoto)
+   → Omar — Regina di Quadri: SCOPA! Regina si sacrifica con un gesto eroico — un successo pieno dal nulla.
+   PROTAGONISTI — mano: 1♠ 1♥ 9♠ | piatto: (vuoto)
+   → Paola — 9 di Picche: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano: 5♦ | piatto: 9♠
+   → Omar — 5 di Quadri: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano: 1♠ 1♥ | piatto: 9♠ 5♦
+   → Paola — 1 di Cuori: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano:  | piatto: 9♠ 5♦ 1♥
+   → Omar — 10 di Fiori: presa di 2 carte — un successo, magari con un costo.
+   → SPINTA DEL PITCH: «♣ «Tempeste in anticipo, pozzi secchi, piste cancellate, un camion che perde olio»» — la presa diventa scopa e svuota il piatto.
+   → Omar — 10 di Fiori: presa di 2 carte — un successo, magari con un costo. ⚡ Risorsa del pitch attivata: la presa diventa SCOPA e raccoglie le 1 carte rimaste nel piatto.
+   PROTAGONISTI — mano: 1♠ | piatto: (vuoto)
+   → Paola — 1 di Picche: giocata nel piatto — una nuova risorsa entra in scena.
+   FINE SCENA 4: piatto 1 a 0 → vince PROTAGONISTI. Seme dominante: ♠ (diario: giu).
+   MERCATO: PROTAGONISTI compra il RE di cuori ♥.
+   MERCATO: OPPOSIZIONE compra il RE di quadri ♦.
+   MERCATO: OPPOSIZIONE compra il FANTE di quadri ♦.
+   MANO ESTESA (scena 5): PROTAGONISTI tiene 4 carte, il resto in riserva.
+   MANO ESTESA (scena 5): OPPOSIZIONE tiene 4 carte, il resto in riserva.
+   Asta: Protagonisti R♥ contro Opposizione R♦ → iniziativa a PROTAGONISTI.
+
+== SCENA 5 — La cripta del Sole ==
+   Posta: L'eclissi. Se va bene: mettono in salvo il Sole di Mezzanotte. Se va male: il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata
+   Nel piatto dalla scena precedente: 1♠
+   PROTAGONISTI — mano: 4♥ 2♠ JOLLY | piatto: 1♠
+   → Paola — 4 di Cuori: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano: 1♦ F♦ 8♦ R♦ | piatto: 1♠ 4♥
+   → Omar — Fante di Quadri: SCOPA! Il piatto è ripulito — un successo pieno, una svolta.
+   PROTAGONISTI — mano: 2♠ JOLLY | piatto: (vuoto)
+   → Paola scarta il Jolly: niente da catturare nel piatto vuoto.
+   OPPOSIZIONE — mano: 1♦ 8♦ R♦ | piatto: (vuoto)
+   → Omar — Re di Quadri: SCOPA! Re si sacrifica con un gesto eroico — un successo pieno dal nulla.
+   → effetto RE: nessuno scambio con gli scarti.
+   PROTAGONISTI — mano: 2♠ | piatto: (vuoto)
+   → Paola — 2 di Picche: giocata nel piatto — una nuova risorsa entra in scena.
+   OPPOSIZIONE — mano: 1♦ 8♦ | piatto: 2♠
+   → Omar — 1 di Quadri: giocata nel piatto — una nuova risorsa entra in scena.
+   PROTAGONISTI — mano:  | piatto: 2♠ 1♦
+   → Paola — Re di Cuori: SCOPA! Il piatto è ripulito — un successo pieno, una svolta.
+   OPPOSIZIONE — mano: 8♦ | piatto: (vuoto)
+   → Omar — 8 di Quadri: giocata nel piatto — una nuova risorsa entra in scena.
+
+-- PRIMO CONTEGGIO (esito apparente) --
+   Piatto finale: 8♦ (Prot 0 · Opp 8)
+   → COLPO DI SCENA! Paola mette in gioco 5 di Picche.
+   → COLPO DI SCENA! Omar mette in gioco 1 di Fiori.
+   → COLPO DI SCENA! Paola mette in gioco 8 di Picche.
+   → COLPO DI SCENA! Omar mette in gioco 3 di Fiori.
+   → COLPO DI SCENA! Paola mette in gioco 10 di Picche.
+
+-- CONTEGGIO DEFINITIVO E FINALE --
+   Piatto finale: 8♦ 5♠ 1♣ 8♠ 3♣ 10♠
+   Valori nel piatto: Protagonisti (♥+♠) 23 contro Opposizione (♦+♣) 12.
+   Punti (presa 1, figura 2, scopa 4): Protagonisti 4, Opposizione 8.
+   Esito: PER IL ROTTO DELLA CUFFIA
+   Diario del rapporto per scena: giu, su, giu, giu, giu
