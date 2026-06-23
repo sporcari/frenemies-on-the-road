@@ -24,6 +24,10 @@ import datetime
 # margini ~11mm): lo scaliamo per riempirlo, mantenendo le proporzioni.
 LAND_W_MM = 268
 LAND_H_MM = 165
+# Riquadro per un diagramma su pagina VERTICALE (A4 portrait, margini 18/20mm):
+# area utile ~174 x 257mm, lasciamo spazio per didascalia e numero di pagina.
+PORT_W_MM = 174
+PORT_H_MM = 235
 
 import markdown
 from weasyprint import HTML
@@ -96,6 +100,12 @@ figure.diagramma figcaption {{ font-size: 9.5pt; color: #888; margin-top: 8px; f
         justify-content: center; align-items: center; }}
 .diag-pagina figure.diagramma {{ margin: 0; }}
 .diag-pagina figure.diagramma svg {{ max-height: 168mm; }}
+.diag-pagina-v {{ page-break-before: always; page-break-after: always;
+        break-before: page; break-after: page;
+        height: 245mm; display: flex; flex-direction: column;
+        justify-content: center; align-items: center; }}
+.diag-pagina-v figure.diagramma {{ margin: 0; }}
+.diag-pagina-v figure.diagramma svg {{ max-height: 235mm; }}
 .cover {{ text-align: center; margin-top: 38mm; page-break-after: always; }}
 .cover .titolo {{ font-family: 'Oswald','Arial Narrow',sans-serif; font-size: 40pt;
         color: {ORO}; letter-spacing: 1px; line-height: 1.05; }}
@@ -181,22 +191,24 @@ def svg(vb_w, vb_h, body):
             f'font-family="{FONT}">{body}</svg>')
 
 
-def figura(inner, didascalia, compatta=False):
+def figura(inner, didascalia, compatta=False, verticale=False):
     # I diagrammi piccoli e larghi (compatta=True) scorrono inline col testo.
     if compatta:
         return (f'<figure class="diagramma">{inner}'
                 f'<figcaption>{_esc(didascalia)}</figcaption></figure>')
-    # I diagrammi grandi prendono una pagina ORIZZONTALE tutta per se e vengono
-    # scalati per riempirla (il piu distesi possibile), proporzioni intatte.
+    # I diagrammi grandi prendono una pagina tutta per se (orizzontale di default,
+    # verticale se verticale=True) e vengono scalati per riempirla, proporzioni intatte.
+    w_mm, h_mm = (PORT_W_MM, PORT_H_MM) if verticale else (LAND_W_MM, LAND_H_MM)
     m = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', inner)
     if m:
         vw, vh = float(m.group(1)), float(m.group(2))
-        s = min(LAND_W_MM / vw, LAND_H_MM / vh)
+        s = min(w_mm / vw, h_mm / vh)
         inner = inner.replace(
             "<svg ", f'<svg style="width:{vw*s:.1f}mm;height:{vh*s:.1f}mm" ', 1)
     fig = (f'<figure class="diagramma">{inner}'
            f'<figcaption>{_esc(didascalia)}</figcaption></figure>')
-    return f'<div class="diag-pagina">{fig}</div>'
+    cls = "diag-pagina-v" if verticale else "diag-pagina"
+    return f'<div class="{cls}">{fig}</div>'
 
 
 # ---------------------------------------------------------------------------
@@ -236,64 +248,55 @@ def diag_cinque_scene():
 
 
 def diag_flusso_scena():
-    W, H = 760, 716
+    W, H = 760, 624
     cx = 380
     parts = []
 
-    def step(y, titolo, sotto=None, fill=CREMA):
-        x, w, h = 215, 330, 52
+    def box(y, lines, fill=CREMA, w=384, xc=None, size=11.5):
+        xc = cx if xc is None else xc
+        x = xc - w / 2
+        h = 22 + len(lines) * 16
         parts.append(rect(x, y, w, h, fill, BORDO, rx=10))
-        if sotto:
-            parts.append(txt(cx, y + 22, titolo, 12.5, SCURO, "bold"))
-            parts.append(txt(cx, y + 40, sotto, 10, "#555"))
-        else:
-            parts.append(txt(cx, y + 31, titolo, 12.5, SCURO, "bold"))
+        cy = y + (h - (len(lines) - 1) * 16) / 2 + 4
+        for ln in lines:
+            parts.append(txt(xc, cy, ln, size, SCURO, "bold"))
+            cy += 16
         return y + h
 
     y = 8
-    yb = step(y, "Pesca: 4 carte per lato"); parts.append(arrow(cx, yb, cx, yb + 18))
-    y = yb + 18
-    yb = step(y, "Asta per l'iniziativa", "carta coperta, si rivela, vince la piu alta")
-    parts.append(arrow(cx, yb, cx, yb + 18)); y = yb + 18
-    yb = step(y, "Apertura della scena", "titolo, ambiente e posta (i due rami)")
-    parts.append(arrow(cx, yb, cx, yb + 18)); y = yb + 18
-    yb = step(y, "Round", "giocate alternate, prese e scope (4 carte a testa)")
-    parts.append(arrow(cx, yb, cx, yb + 18)); y = yb + 18
-    yb = step(y, "Fine round: si somma il piatto")
+    yb = box(y, ["Ciascun giocatore pesca", "la propria mano di 4 carte"])
+    parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
+    yb = box(y, ["Asta per determinare l'iniziativa"])
+    parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
+    yb = box(y, ["Chi ha l'iniziativa stabilisce", "la posta e il titolo della scena"])
+    parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
+    yb = box(y, ["L'altro fa il framing iniziale: la situazione", "e l'atmosfera in cui si trovano i protagonisti"])
+    parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
+    yb = box(y, ["A partire da chi ha l'iniziativa, si svolgono", "4 turni, giocando una carta alla volta"])
     parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
 
-    # decisione
-    dcy = y + 46
-    parts.append(diamante(cx, dcy, 132, 46, ORO, "#8a5908", ["Chi vince", "la posta?"], 12))
-    # rami
-    bw, bh = 300, 74
-    lx, rx = 40, 420
-    by = dcy + 66
-    parts.append(card(lx, by, bw, bh, "Protagonisti", ["posta raggiunta:", "si avvicinano all'obiettivo"],
-                      BLU, riga_size=10))
-    parts.append(card(rx, by, bw, bh, "Opposizione", ["posta fallita:", "la situazione peggiora"],
-                      ROSSO, riga_size=10))
-    parts.append(arrow(cx - 70, dcy + 24, lx + bw / 2, by - 2, BLU, 2))
-    parts.append(arrow(cx + 70, dcy + 24, rx + bw / 2, by - 2, ROSSO, 2))
+    # decisione: resa onorevole all'ultimo turno
+    dcy = y + 48
+    parts.append(diamante(cx, dcy, 152, 48, ORO, "#8a5908",
+                          ["Chi gioca l'ultimo turno", "concede la scena?"], 11))
 
-    # merge
-    my = by + bh + 22
-    yb = step(my, "Il piatto resta sul tavolo", "passa alla scena successiva", "#eef3e9")
-    parts.append(arrow(lx + bw / 2, by + bh, cx - 60, my - 2, BLU, 2))
-    parts.append(arrow(rx + bw / 2, by + bh, cx + 60, my - 2, ROSSO, 2))
-    parts.append(arrow(cx, yb, cx, yb + 18)); y = yb + 18
-    yb = step(y, "Pesca nuova mano, poi Mercato", "acquisto delle figure, rimescolo")
+    by = dcy + 68
+    lxc, rxc = 150, 610
+    lb = box(by, ["Ritirata strategica:", "narra la resa onorevole"], fill="#eef3e9", w=270, xc=lxc, size=11)
+    rb = box(by, ["Si legge il piatto e si stabilisce", "chi vince la posta"], w=292, xc=rxc, size=11)
+    parts.append(arrow(cx - 152, dcy, lxc + 4, by - 2, GRIGIO, 2))
+    parts.append(arrow(cx + 152, dcy, rxc - 4, by - 2, GRIGIO, 2))
+    parts.append(txt(196, 418, "Sì", 11.5, SCURO, "bold"))
+    parts.append(txt(566, 418, "No", 11.5, SCURO, "bold"))
 
-    # loop a destra verso l'alto (oltre il bordo delle card dei rami)
-    rxline = 740
-    parts.append(f'<path d="M {cx+165} {y+26} H {rxline} V 34 H {cx+170}" '
-                 f'fill="none" stroke="{GRIGIO}" stroke-width="2" stroke-dasharray="5 4"/>')
-    parts.append(arrow(cx + 175, 34, cx + 168, 34, GRIGIO, 2))
-    parts.append(f'<text x="{rxline-6}" y="{(y+26+34)/2}" font-family="{FONT}" font-size="10" '
-                 f'fill="{GRIGIO}" text-anchor="end" transform="rotate(90 {rxline-6} {(y+26+34)/2})">'
-                 f'scena successiva (1-5)</text>')
+    my = lb + 22
+    yb = box(my, ["Chi ha perso la posta narra", "come si conclude la scena"], fill="#fbf1d8")
+    parts.append(arrow(lxc, lb, cx - 70, my - 2, GRIGIO, 2))
+    parts.append(arrow(rxc, lb, cx + 70, my - 2, GRIGIO, 2))
     return figura(svg(W, H, "".join(parts)),
-                  "Una scena, passo per passo. Lo stesso ciclo si ripete per cinque scene.")
+                  "Una scena, passo per passo: chi vince l'asta fissa posta e titolo, "
+                  "l'altro apre la scena, si gioca e chi perde la posta ne narra l'esito.",
+                  verticale=True)
 
 
 def diag_tre_gesti():
@@ -368,45 +371,72 @@ def diag_esiti():
 
 
 def diag_flusso_partita():
-    W, H = 760, 560
-    cx = 300
-    bw = 420
-    x = cx - bw / 2
+    W, H = 760, 668
+    cx = 400
     parts = []
 
-    def blocco(y, n, tit, sotto, fill, htxt="#ffffff"):
-        h = 62
-        parts.append(rect(x, y, bw, h, "#ffffff", BORDO, rx=12))
-        parts.append(rect(x, y, 54, h, fill, rx=12, sw=0))
-        parts.append(f'<rect x="{x+27}" y="{y}" width="27" height="{h}" fill="{fill}"/>')
-        parts.append(txt(x + 27, y + h / 2 + 7, n, 22, htxt, "bold"))
-        parts.append(txt(x + 70, y + 26, tit, 13.5, SCURO, "bold", "start"))
-        parts.append(txt(x + 70, y + 46, sotto, 10, "#555", "normal", "start"))
+    def box(y, lines, fill=CREMA, w=300, xc=None, size=11.5):
+        xc = cx if xc is None else xc
+        x = xc - w / 2
+        h = 22 + len(lines) * 16
+        parts.append(rect(x, y, w, h, fill, BORDO, rx=10))
+        cy = y + (h - (len(lines) - 1) * 16) / 2 + 4
+        for ln in lines:
+            parts.append(txt(xc, cy, ln, size, SCURO, "bold"))
+            cy += 16
         return y + h
 
+    lxlane = 120          # corsia di sinistra per i rami "No" e i loop
+    sx = cx - 150         # bordo sinistro della colonna principale
+
     y = 8
-    yb = blocco(y, "1", "Preparazione (il pitch)", "tono, coppia, obiettivo, opposizione, domande", ORO)
-    parts.append(arrow(cx, yb, cx, yb + 20)); y = yb + 20
-    yb = blocco(y, "2", "Le cinque scene", "pesca, asta, posta, round, conteggio, mercato", BLU)
-    # loop sulle scene
-    parts.append(f'<path d="M {x} {y+20} H 70 V {y+42} H {x}" fill="none" '
+    yb = box(y, ["Pitch"]); parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
+    sc_top = y
+    yb = box(y, ["Scene 1-4"]); sc_mid = (y + yb) / 2
+    parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
+
+    # bivio mercato
+    d1 = y + 48
+    parts.append(diamante(cx, d1, 150, 48, ORO, "#8a5908", ["È terminata", "la scena 4?"], 12))
+    # ramo No -> Mercato (a sinistra) e loop verso Scene 1-4
+    mtop = d1 - 35
+    mb = box(mtop, ["Mercato:", "si comprano figure", "da aggiungere al mazzo"],
+             fill="#eef3e9", w=216, xc=lxlane, size=10.5)
+    parts.append(arrow(cx - 150, d1, lxlane + 108, d1, GRIGIO, 2))
+    parts.append(txt(cx - 161, d1 - 8, "No", 11.5, SCURO, "bold"))
+    parts.append(f'<path d="M {lxlane} {mtop} V {sc_mid} H {sx-2}" fill="none" '
                  f'stroke="{GRIGIO}" stroke-width="2" stroke-dasharray="5 4"/>')
-    parts.append(arrow(x - 8, y + 42, x - 1, y + 42, GRIGIO, 2))
-    parts.append(f'<text x="60" y="{y+31}" font-family="{FONT}" font-size="9.5" fill="{GRIGIO}" '
-                 f'text-anchor="middle" transform="rotate(-90 60 {y+31})">ripeti 1-5</text>')
-    # callout Jolly a destra della scena 2
-    jx = x + bw + 22
-    parts.append(rect(jx, y + 2, 168, 58, "#fbf1d8", ORO_CHIARO, rx=10, sw=1.5))
-    parts.append(txt(jx + 84, y + 24, "Dopo la 2ª scena", 11, ORO, "bold"))
-    parts.append(txt(jx + 84, y + 42, "il Jolly entra tra i", 10, SCURO))
-    parts.append(txt(jx + 84, y + 55, "Protagonisti", 10, SCURO))
-    parts.append(arrow(x + bw, y + 31, jx - 1, y + 31, ORO_CHIARO, 2))
-    parts.append(arrow(cx, yb, cx, yb + 20)); y = yb + 20
-    yb = blocco(y, "3", "Quinta scena (Risoluzione)", "mano estesa, colpi di scena, conteggio", ROSSO)
-    parts.append(arrow(cx, yb, cx, yb + 20)); y = yb + 20
-    yb = blocco(y, "4", "Finale", "piatto + punti = uno dei quattro esiti", VERDE)
+    parts.append(arrow(sx - 8, sc_mid, sx - 1, sc_mid, GRIGIO, 2))
+    # ramo Sì -> prosegue
+    parts.append(arrow(cx, d1 + 48, cx, d1 + 64, GRIGIO, 2))
+    parts.append(txt(cx + 16, d1 + 60, "Sì", 11.5, SCURO, "bold")); y = d1 + 64
+
+    yb = box(y, ["Ultima scena"]); parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
+    yb = box(y, ["Colpi di scena"]); parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
+    yb = box(y, ["Lettura del finale e domande"]); parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
+    ep_top = y
+    yb = box(y, ["Epilogo: vignette a turno"]); ep_mid = (y + yb) / 2
+    parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
+
+    # bivio epilogo
+    d2 = y + 48
+    parts.append(diamante(cx, d2, 168, 48, ORO, "#8a5908", ["Hanno passato", "entrambi i giocatori?"], 11))
+    # ramo No -> torna all'Epilogo
+    parts.append(f'<path d="M {cx-168} {d2} H {lxlane} V {ep_mid} H {sx-2}" fill="none" '
+                 f'stroke="{GRIGIO}" stroke-width="2" stroke-dasharray="5 4"/>')
+    parts.append(arrow(sx - 8, ep_mid, sx - 1, ep_mid, GRIGIO, 2))
+    parts.append(txt(cx - 192, d2 - 8, "No", 11.5, SCURO, "bold"))
+    # ramo Sì -> Fine
+    parts.append(arrow(cx, d2 + 48, cx, d2 + 64, GRIGIO, 2))
+    parts.append(txt(cx + 16, d2 + 60, "Sì", 11.5, SCURO, "bold"))
+    fcy = d2 + 96
+    parts.append(f'<circle cx="{cx}" cy="{fcy}" r="32" fill="{VERDE}" stroke="{BORDO}" stroke-width="1.5"/>')
+    parts.append(txt(cx, fcy + 5, "Fine", 13, "#ffffff", "bold"))
+
     return figura(svg(W, H, "".join(parts)),
-                  "La partita nel suo insieme: la preparazione, le cinque scene, e il finale.")
+                  "La partita nel suo insieme: il pitch, le quattro scene col mercato, "
+                  "l'ultima scena coi colpi di scena, il finale e l'epilogo a vignette.",
+                  verticale=True)
 
 
 def diag_asta():
@@ -513,10 +543,11 @@ def diag_turno():
                   "La giocata del turno: introdurre, prendere, o promuovere una presa a scopa con una spinta del pitch (del seme della carta).")
 
 
+# NB: diag_asta e diag_turno restano definiti ma non sono più usati nel manuale
+# (i flowchart di dettaglio asta/turno sono stati rimossi: la struttura della
+# scena è coperta dal diagramma flusso-scena a inizio Capitolo 3).
 DIAGRAMMI = {
     "cinque-scene": diag_cinque_scene,
-    "asta": diag_asta,
-    "turno": diag_turno,
     "flusso-scena": diag_flusso_scena,
     "tre-gesti": diag_tre_gesti,
     "esiti": diag_esiti,

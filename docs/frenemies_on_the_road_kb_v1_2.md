@@ -226,7 +226,7 @@ Dopo le due serie di domande, tutti i giocatori rispondono insieme a un'ultima d
 
 > **Che cosa vi impedisce di raggiungere l'obiettivo subito? Qual è la prima difficoltà da superare?**
 
-La risposta si scrive ma, a differenza delle altre, non è una risorsa spuntabile: appartiene a tutto il tavolo. È il materiale della Scena 1 (Innesco): chi vince l'iniziativa della prima scena la usa per inquadrarla.
+La risposta si scrive ma, a differenza delle altre, non è una risorsa spuntabile: si decide insieme, ma **l'ultima parola spetta all'Opposizione** *(v1.17)*. È il materiale della Scena 1 (Innesco): chi vince l'iniziativa della prima scena la usa per inquadrarla.
 
 > **Esempio (scenario demo, §33):** Skunk è in cella. I poliziotti corrotti lo hanno arrestato con un pretesto per consegnarlo agli uomini di Vargas dentro la prigione. Bisogna tirarlo fuori prima che qualcuno arrivi a lui: la Scena 1 nasce da qui.
 
@@ -301,9 +301,11 @@ La carta usata nell'asta dal **vincitore** non viene persa: verrà rigiocata all
 
 ## 12. Apertura della scena: titolo, ambiente, posta
 
-Chi vince l'asta sceglie il titolo della scena e definisce la posta della scena.
+Chi vince l'asta sceglie il titolo della scena e definisce la posta della scena. Poi è **l'altro giocatore**, quello senza iniziativa, a **fare il framing iniziale** *(v1.18)*: descrive la situazione e l'atmosfera in cui si trovano i protagonisti all'apertura. Così l'inquadratura della scena è condivisa, il vincitore dell'asta ne fissa la cornice (titolo e posta) e l'altro la mette in scena.
 
 ### 12.1 — Ambiente iniziale in base al seme della carta d'asta vincente
+
+L'atmosfera iniziale la mette in scena il giocatore senza iniziativa (§12), seguendo come suggerimento il seme della carta con cui l'avversario ha vinto l'asta:
 
 | Seme | Atmosfera iniziale |
 |---|---|
@@ -950,6 +952,14 @@ Una partita vera a 2 giocatori con lo scenario demo (§33): Paola gioca i Protag
 
 # REGISTRO MODIFICHE
 
+## v1.18 (giugno 2026) — il framing iniziale lo fa il giocatore senza iniziativa
+
+1. **§12: l'apertura della scena si divide in due.** Chi vince l'asta sceglie titolo e posta (la cornice); poi è **l'altro giocatore**, quello senza iniziativa, a **fare il framing iniziale**, mettendo in scena la situazione e l'atmosfera in cui si trovano i protagonisti (prima li imponeva lo stesso vincitore dell'asta). La tabella seme→atmosfera (§12.1) resta e la usa chi fa il framing, seguendo come suggerimento il seme della carta con cui l'avversario ha vinto l'asta. Propagato a manuale §3.3 e §8.3, `REGOLE` ("Apertura della scena") e `REGOLE_IA` in `index.html`. (Regola sociale al tavolo: non cambia il motore; in vs Claude è riflessa nel testo di `REGOLE_IA`.)
+
+## v1.17 (giugno 2026) — la prima difficoltà la decide l'Opposizione
+
+1. **§9.7: l'ultima parola sulla prima difficoltà spetta all'Opposizione.** La risposta condivisa che inquadra la Scena 1 si decide insieme al tavolo, ma in caso di disaccordo decide l'Opposizione (prima «apparteneva a tutto il tavolo» senza un arbitro). Resta che chi vince l'iniziativa della Scena 1 la usa per inquadrarla. Propagato a manuale §2.7, `REGOLE` (Risorse del pitch) e al prompt del wizard di setup in `index.html`.
+
 ## v1.16 (giugno 2026) — i Qualcuno, definizione del gioco, finale a due piani ed epilogo
 
 1. **§15.1: Terminologia «i Qualcuno».** Si dà un nome a un concetto già presente in forma sparsa (il PNG da annotare quando importante, §14/§15.1; la figura battezzata all'acquisto, §21.1) e lo si generalizza: un **Qualcuno** è qualsiasi elemento rilevante della storia (persone, gruppi, popoli, luoghi, oggetti) dotato di **una propria volontà** e di un ruolo o destino da seguire; gli si dà un nome e lo si annota (un Qualcuno senza nome non esiste). La volontà è il discrimine ed esclude la scenografia passiva; vale anche per i collettivi, e catturarne uno collettivo ne toglie la presenza nella scena, non l'esistenza nella storia. La **figura** resta un caso particolare di Qualcuno. Propagato a manuale §5.6, `REGOLE` (Azioni e prese) e `REGOLE_IA` in `index.html`; §21.1 ora rinvia al Qualcuno (§15.1).
@@ -1057,4 +1067,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.16*
+*Frenemies on the Road — Knowledge Base v1.18*

@@ -7,7 +7,7 @@
 
 ## Indice
 
-**Capitolo 1. Benvenuto a bordo: una panoramica generale.** Di cosa parla il gioco, la fiction di riferimento, i materiali e i due mazzi, le cinque scene, il significato dei quattro semi, come si gioca e come finisce.
+**Capitolo 1. Benvenuto a bordo: una panoramica generale.** Di cosa parla il gioco, la fiction di riferimento, i materiali e i due mazzi, le cinque scene, il significato dei quattro semi, come si gioca, come finisce e il flusso della partita a colpo d'occhio.
 
 **Capitolo 2. Prima di partire: il pitch.** Come si costruisce la storia che giocherete, prima di toccare le carte.
 
@@ -77,7 +77,7 @@ Mentre giocherete, affioreranno temi come fiducia contro diffidenza, controllo c
 
 ## 1.4 La forma della partita: cinque scene
 
-La partita dura cinque scene, e ogni scena è un round. Le cinque scene non sono intercambiabili: formano una curva narrativa precisa.
+La partita dura cinque scene, e ogni scena è un round. Le cinque scene seguono di solito una curva narrativa, lo stesso arco di tante storie di questo tipo: la collaborazione forzata dell'inizio, l'equilibrio fragile, il dubbio, il crollo, la scelta decisiva. Non è un vincolo, ma un'ispirazione per impostare le scene.
 
 | Scena | Nome | Funzione narrativa |
 |---|---|---|
@@ -89,7 +89,6 @@ La partita dura cinque scene, e ogni scena è un round. Le cinque scene non sono
 
 <!-- DIAGRAMMA: cinque-scene -->
 
-Prendete queste indicazioni come ispirazione, la sequenza Innesco, Adattamento, Frattura, Crisi è solo per aiutare i giocatori a impostare le scene.
 Qualunque cosa accada in gioco, ogni scena dovrebbe rispettare tre regole di buon senso narrativo:
 
 - svolgersi in un luogo o in un contesto diverso da quello precedente;
@@ -107,7 +106,7 @@ Il mazzo si divide tra i giocatori nel seguente modo:
 | Mazzo | Contenuto |
 |---|---|
 | Mazzo Protagonisti | Cuori + Picche |
-| Mazzo Opposizione | Fiori + Quadri | 
+| Mazzo Opposizione | Fiori + Quadri |
 
 Prima di cominciare, prepara i mazzi così:
 
@@ -132,8 +131,7 @@ Durante ogni scena i giocatori si sfidano a una sorta di scopa. A turno giocano 
 
 All'inizio della prima scena il piatto è vuoto. Al termine di qualunque scena si stabilisce chi vince la posta in base a quali carte sono rimaste nel piatto: se la somma di Cuori e Picche supera quella di Quadri e Fiori la posta va ai Protagonisti, altrimenti all'Opposizione. Le carte che non sono state prese rimangono nel piatto per la scena successiva.
 
-Le mosse possibili, aggiungere una carta al piatto, fare una presa, fare una scopa, hanno ciascuna un preciso significato narrativo.
-Inoltre anche il seme della carta giocata contribuisce a ispirare la narrazione che accompagna la mossa in base a quanto mostrato nel paragrafo precedente.
+Le mosse possibili, aggiungere una carta al piatto, fare una presa, fare una scopa, hanno ciascuna un preciso significato narrativo. Inoltre anche il seme della carta giocata contribuisce a ispirare la narrazione che accompagna la mossa, in base a quanto mostrato nel paragrafo precedente.
 
 | Mossa | Significato narrativo | Effetto meccanico |
 |---|---|---|
@@ -166,46 +164,78 @@ L'esito della missione dei protagonisti si decide nell'ultima scena: chi vince q
 
 Oltre all'esito della missione, la storia racconterà anche il destino del rapporto tra i due protagonisti: se sono cresciuti come coppia, o se finita l'avventura non vorranno più rivedersi. Stabilito l'esito, i giocatori racconteranno a turno, con brevi scenette, il destino dei vari personaggi, fino all'ultima dissolvenza al nero.
 
+## 1.10 Flusso della partita
+
+Ecco, a colpo d'occhio, come si sviluppa una partita dall'inizio alla fine.
+
+<!-- DIAGRAMMA: flusso-partita -->
+
+In breve, fase per fase:
+
+- **Pitch.** Prima di toccare le carte si costruisce insieme la storia di base (coppia, obiettivo, Opposizione, domande), da cui nascono le spinte e la prima difficoltà (Capitolo 2).
+- **Scene 1-4.** Il cuore del gioco: ogni scena è una sfida a carte che si apre con un'asta e si chiude con una posta vinta o persa (Capitolo 3).
+- **Mercato.** Tra una scena e l'altra si spendono i punti accumulati per comprare le figure, che entrano nel mazzo; poi si torna in scena (Capitolo 4).
+- **Ultima scena.** La quinta scena, la Risoluzione, si gioca con una mano estesa: è qui che si decide l'obiettivo finale (Capitolo 6).
+- **Colpi di scena.** Le carte tenute da parte si rivelano una alla volta e possono ribaltare l'esito apparente (Capitolo 6).
+- **Lettura del finale e domande.** Si incrociano missione e prestigio per leggere uno dei quattro esiti, e si risponde alle domande di fine partita (Capitolo 7).
+- **Epilogo.** A turno, brevi vignette raccontano il destino dei personaggi, fino all'ultima dissolvenza (Capitolo 7).
+
 ---
 
 # Capitolo 2. Prima di partire: il pitch
 
-Prima di giocare la prima scena si costruisce insieme la fiction di base. Questa fase si chiama pitch, e non è un preambolo facoltativo: è dove nascono i materiali narrativi che diventeranno risorse meccaniche vere. Vale la pena prendersi il tempo per farla bene.
+Prima di giocare la prima scena si costruisce insieme la fiction di base. Questa fase si chiama pitch, e non è un preambolo facoltativo: è il dominio entro il quale si svilupperà la storia.
 
-Se vuoi un esempio completo e pronto all'uso, l'Appendice A contiene un intero pitch già scritto, lo scenario demo "Il sole di mezzanotte", lo stesso che gioca la partita d'esempio dell'Appendice B.
+Se vuoi un esempio completo e pronto all'uso, in appendice troverai diversi playset con dei pitch pronti per l'uso.
 
-## 2.1 Scegliere il tono
+## 2.1 Scegliere il genere e il tono
 
-Per prima cosa scegliete un tono di riferimento: action, poliziesco, comedy, dramedy, romance, o quello che preferite. Il tono non cambia nessuna regola, ma orienta il modo in cui formulate le scene e interpretate i risultati: lo stesso seme, in una commedia o in un poliziesco, vorrà dire cose diverse, e il significato si adatta da solo al registro che avete scelto.
+Per prima cosa scegliete un genere di riferimento della giocata: action, poliziesco, comedy, romance, fantasy, fantascienza o quello che preferite. E il tono: leggero, pesante, comico, commovente, demenziale, spaventoso. Queste scelte condivise non hanno un effetto meccanico, ma servono a mettere in chiaro cosa sarà in tema e cosa fuori, e ad allinearsi sulla stessa frequenza d'onda.
 
-## 2.2 La coppia dei protagonisti
+N.B. Ovviamente se la narrazione di un giocatore viene ritenuta per qualche motivo eccessiva o sgradevole o fuori dal tono e dal genere, gli altri possono farlo presente.
 
-Poi definite i due protagonisti: chi è il personaggio Picche e chi è il personaggio Cuori. La coppia deve avere tre ingredienti:
+## 2.2 L'obiettivo finale
 
-- una differenza evidente;
-- un conflitto interno tra loro;
-- un motivo per collaborare nonostante tutto.
+Ovvero la missione che i protagonisti devono necessariamente portare a termine insieme. L'obiettivo finale, ovvero lo scopo della missione, deve essere chiaro, urgente e definitivo. Deve implicare una scadenza o un'occasione irripetibile: se i protagonisti falliscono entro la fine della storia, l'occasione è persa per sempre.
 
-Per esempio, nello scenario demo Picche è Frank, ex poliziotto sospeso per eccesso di forza, cinico e metodico; Cuori è Skunk, suo ex informatore, truffatore e intrallazzone dei bassifondi. Una spiata sbagliata di Skunk è costata a Frank il distintivo. Collaborano perché Skunk ha in testa la pista del cattivo e il modo di superarne la sicurezza, mentre Frank, che si è fatto terra bruciata attorno, da solo non può più muovere un passo.
+Un esempio, sempre dallo scenario demo: "Tra cinque giorni un'eclissi riaprirà la cripta di Zerzura, la città perduta sepolta dalle sabbie, e con essa il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto. Bisogna arrivare alla cripta e prendere l'artefatto prima della Loggia del Basilisco: una volta chiuso nei suoi caveau, nessuno lo rivedrà mai."
 
-## 2.3 L'obiettivo finale
+Se siete a corto di idee pensate al 90% dei blockbuster di Hollywood e vedrete che la missione è sempre qualcosa tipo:
 
-L'obiettivo finale deve essere chiaro, urgente e definitivo, e deve contenere o implicare una scadenza: se i protagonisti falliscono entro la fine della storia, l'occasione è persa per sempre.
+- Recuperare qualcosa di nascosto o protetto
+- Proteggere qualcosa o qualcuno durante un viaggio pericoloso
+- Fuggire e raggiungere la salvezza
+- Rivelare o smascherare una verità celata
+- Arrestare o neutralizzare una minaccia
 
-Un esempio, sempre dallo scenario demo: "Entro 36 ore Vargas atterrerà con un jet privato dalla Colombia su una pista segreta del New Mexico per un meeting con i boss locali, e ripartirà. Una volta decollato, nessuna estradizione lo riporterà mai davanti a un giudice. Bisogna arrivare alla pista e farlo arrestare in flagranza prima del decollo."
+Parlate al tavolo e fate un rapido brainstorming, ma non bloccatevi alla ricerca della missione perfetta. Pensate semplice e ricordate che quello che conta è il viaggio.
+
+## 2.3 La coppia dei protagonisti
+
+Come abbiamo già detto è necessario stabilire chi siano i due protagonisti: chi è il personaggio Picche e chi è il personaggio Cuori. La coppia deve avere tre ingredienti:
+
+- delle evidenti incompatibilità;
+- questioni irrisolte o conflitti tra loro;
+- la necessità di collaborare nonostante tutto.
+
+Per esempio, nello scenario demo Picche è Vera Falco, eroina d'azione atletica e impulsiva, cresciuta nei cantieri di scavo del padre; Cuori è Otto Lenzi, filologo delle lingue morte, topo di biblioteca con le fobie catalogate in ordine alfabetico. È stata una traduzione di Otto a riaccendere la caccia che ha già inghiottito il padre di Vera. Collaborano perché servono le capacità di entrambi per ritrovare la città perduta.
+
+Scegliere una buona coppia di protagonisti è molto più importante di un buon obiettivo finale: quello, in fin dei conti, è ciò che nel gergo cinematografico si chiama McGuffin, un espediente per avviare la storia e motivare i personaggi. Anche in questo caso siate propositivi e ascoltate i suggerimenti di tutti, anche se l'ultima decisione sui protagonisti spetta al giocatore che li interpreta.
 
 ## 2.4 L'Opposizione
 
 Prima di passare alle domande, decidete contro chi e contro che cosa viaggiano i protagonisti. Sono due cose distinte, una per seme:
 
-- **Quadri, i nemici organizzati:** chi insegue o ostacola i protagonisti con intenzione (fazioni, forze dell'ordine, criminali, istituzioni).
+- **Quadri, i nemici:** chi insegue, ostacola i protagonisti o vuole semplicemente annientarli (fazioni, gruppi organizzati, forze dell'ordine, criminali, istituzioni).
 - **Fiori, il caos:** la sfortuna, gli imprevisti e gli attriti che li perseguitano.
 
 Attenzione a un punto che dà molta libertà: i nemici non devono per forza formare un'unica fazione coesa, né essere d'accordo tra loro. Possono essere attori diversi, perfino rivali, che per ragioni differenti vogliono la stessa cosa o ostacolano i protagonisti. Quello che li accomuna non è uno scopo condiviso: è il fatto che, di fatto, remano tutti contro. E si esprimono tutti sul seme Quadri.
 
-Per esempio, in uno scenario fantasy i nemici potrebbero essere due ordini in conflitto, uno che vuole l'artefatto e uno che vuole solo che resti dov'è: opposti tra loro, eppure entrambi ostacolano chi cerca la cripta. In una storia più leggera, un collezionista che dà la caccia a dei giocattoli per esporli e una bambola gelosa che vuole solo restare l'unica preferita: moventi diversi, stesso seme Quadri.
+Per esempio, nello scenario demo i nemici Quadri sono due ordini rivali: la Loggia del Basilisco, che vuole l'artefatto per i propri caveau, e i Veglianti di Zerzura, che vogliono solo che resti dov'è e cancellano le tracce di chiunque si avvicini. Opposti tra loro, eppure entrambi ostacolano chi cerca la cripta.
 
-Definire l'Opposizione prima delle domande serve a dare alle domande un riferimento concreto: chiedere quali siano i mezzi più temibili dei nemici ha senso solo se i nemici hanno già un volto.
+Per quanto riguarda i Fiori, ci finisce dentro tutto l'imprevedibile: dalle tempeste all'auto che si guasta, allo sciopero dei controllori di volo, alle debolezze dei protagonisti che emergeranno nei momenti meno opportuni.
+
+Fate un brainstorming e siate precisi soprattutto nello stabilire i nemici (Quadri); tutto il resto del mondo, che potrà ostacolare i Protagonisti, può essere inventato sul momento durante la giocata.
 
 ## 2.5 Le domande ai Protagonisti
 
@@ -216,7 +246,7 @@ Le prime due sono tratti di relazione. Si scrivono insieme, quando definite la c
 1. Cosa il primo protagonista detesta del secondo?
 2. Cosa il secondo protagonista detesta del primo?
 
-Le altre quattro, invece, diventano spinte: risorse vere che potrete spendere in gioco (vedi 2.8). Due appartengono al personaggio Picche, due al personaggio Cuori.
+Le altre quattro, invece, diventano Spinte: risorse vere che potrete spendere meccanicamente in gioco (vedi 2.8). Due appartengono al personaggio Picche, due al personaggio Cuori.
 
 3. Perché per il personaggio Picche è importante l'obiettivo? (spinta Picche)
 4. Perché per il personaggio Cuori è importante l'obiettivo? (spinta Cuori)
@@ -238,25 +268,25 @@ Dopo le due serie di domande, tutto il tavolo risponde insieme a un'ultima doman
 
 > Che cosa vi impedisce di raggiungere l'obiettivo subito? Qual è la prima difficoltà da superare?
 
-Questa risposta si scrive, ma a differenza delle altre non è una risorsa spuntabile: appartiene a tutto il tavolo. È il materiale grezzo della Scena 1, l'Innesco: chi vincerà l'iniziativa della prima scena la userà per inquadrarla.
+Questa risposta viene stabilita insieme dai due giocatori, anche se l'ultima parola appartiene all'Opposizione. È il materiale grezzo della Scena 1.
 
-Nello scenario demo, per esempio, la prima difficoltà è che Skunk è in cella: i poliziotti corrotti lo hanno arrestato con un pretesto per consegnarlo agli uomini del cattivo dentro la prigione. Bisogna tirarlo fuori prima che qualcuno arrivi a lui. La Scena 1 nasce esattamente da qui.
+Nello scenario demo, per esempio, la prima difficoltà è che il taccuino di Aldo Falco, l'unico che annoti la via per Zerzura, stasera va all'asta in una sala privata del Cairo: la Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito. La Scena 1 nasce esattamente da qui.
 
 ## 2.8 Come si usano le spinte in gioco
 
-Alla fine del pitch avete otto spinte, due per seme: due Picche e due Cuori scritte dai Protagonisti, due Quadri e due Fiori scritte dall'Opposizione. (Le due risposte su "cosa si detestano" non sono spinte: restano tratti narrativi, senza effetto.)
+Alla fine del pitch avete otto spinte, due per seme: due Picche e due Cuori scritte dai Protagonisti, due Quadri e due Fiori scritte dall'Opposizione.
 
 Ecco a che cosa servono. Dopo una presa normale, il giocatore può spuntare una spinta del seme della carta con cui ha appena preso: in quel momento la presa diventa una scopa a tutti gli effetti. La carta di presa va nel mazzetto delle scope e le altre carte rimaste nel piatto finiscono negli scarti comuni, esattamente come in una scopa qualsiasi.
 
 Tre condizioni regolano questo potere:
 
-- la spinta spuntata deve entrare davvero nella narrazione, come scena presente, rivelazione o flashback;
+- la spinta usata deve entrare davvero nella narrazione, come scena presente, rivelazione o flashback;
 - ogni spinta si usa una sola volta, e vale comunque il limite di una spinta per seme, per lato, in tutta la partita;
 - una spinta non si può usare nell'ultima scena: nella Risoluzione il piatto si svuota solo con una scopa vera.
 
 L'idea è che sia la carta giusta, nel momento giusto, a sbloccare la rivelazione: il legame con il seme non è un dettaglio, è il senso della regola.
 
-Un esempio. L'Opposizione ha scritto, come spinta di Fiori: "Il fratello di Skunk è stato ucciso al posto suo, perché la vera spia era lui. E Frank non lo sa." Alla terza scena il giocatore dell'Opposizione prende con una carta di Fiori e spunta questa spinta con un flashback: l'ultima telefonata del fratello, l'addio di chi sa che non arriverà a domani. La rivelazione spacca la coppia, la presa diventa una scopa, e il piatto si svuota nelle prese di chi ha spuntato.
+Un esempio. L'Opposizione ha scritto, come spinta di Fiori: "Aldo Falco è vivo: è diventato un Vegliante. Otto lo ha capito, e tace." In una scena avanzata il giocatore dell'Opposizione prende con una carta di Fiori e spunta questa spinta con una rivelazione: tra i custodi incappucciati della cripta Vera riconosce il passo di suo padre, e capisce che Otto lo sapeva già da giorni. La rivelazione spacca la coppia, la presa diventa una scopa, e il piatto si svuota nelle prese di chi ha spuntato.
 
 ---
 
@@ -285,13 +315,11 @@ In caso di parità, se le due carte hanno lo stesso valore, l'iniziativa va a ch
 
 Vincere l'asta non è automaticamente un vantaggio: ogni scelta ha due facce, e vale la pena pesarle.
 
-Giocare una carta alta nell'asta, e quindi puntare a vincere l'iniziativa, ha diversi pregi. Ti dà il diritto di fissare la posta e di fare il framing della scena (titolo e atmosfera). E, dato che la carta d'asta del vincitore torna in gioco come sua ultima giocata, mandi una carta alta proprio in fondo, quando è più facile che trovi qualcosa da catturare: una carta alta fa presa o scopa più spesso. In più, se la scena eredita un piatto non vuoto da quella precedente, chi ha l'iniziativa gioca per primo e può fare subito una presa su quelle carte. Il rovescio della medaglia: se il piatto è vuoto, giocare per primo significa per forza introdurre una carta, che l'avversario può catturare subito, magari con una scopa ai tuoi danni.
+Giocare una carta alta nell'asta, e quindi puntare a vincere l'iniziativa, ha diversi pregi. Ti dà il diritto di fissare il titolo e la posta della scena (il framing iniziale, invece, tocca all'altro). E, dato che la carta d'asta del vincitore torna in gioco come sua ultima giocata, mandi una carta alta proprio in fondo, quando è più facile che trovi qualcosa da catturare: una carta alta fa presa o scopa più spesso. In più, se la scena eredita un piatto non vuoto da quella precedente, chi ha l'iniziativa gioca per primo e può fare subito una presa su quelle carte. Il rovescio della medaglia: se il piatto è vuoto, giocare per primo significa per forza introdurre una carta, che l'avversario può catturare subito, magari con una scopa ai tuoi danni.
 
 Non avere l'iniziativa ha vantaggi speculari. Sei tu a chiudere la scena, giocando l'ultima carta (e a narrarne l'esito, vedi §3.10). E se il piatto è vuoto o ha solo carte basse, puoi aprire il tuo gioco proprio con una scopa, raccogliendo quello che l'avversario è stato costretto a calare per primo.
 
 Non c'è una scelta giusta in assoluto: conviene valutare la propria mano, il piatto ereditato e il momento della partita, e decidere di conseguenza la propria strategia.
-
-<!-- DIAGRAMMA: asta -->
 
 ## 3.2 La posta della scena
 
@@ -326,7 +354,9 @@ Un esempio di crescendo, niente affatto vincolante ma utile a dare l'idea di com
 
 ## 3.3 L'apertura della scena: titolo e atmosfera
 
-Oltre alla posta, chi vince l'asta dà alla scena un titolo: la sua identità, come il capitolo di un libro o l'episodio di una miniserie (vedi anche il Capitolo 1). Poi ne imposta l'atmosfera iniziale.
+Oltre alla posta, chi vince l'asta dà alla scena un titolo: la sua identità, come il capitolo di un libro o l'episodio di una miniserie (vedi anche il Capitolo 1).
+
+A quel punto è l'altro giocatore, quello senza iniziativa, a fare il framing iniziale: descrive la situazione e l'atmosfera in cui si trovano i protagonisti all'apertura della scena. Così l'inquadratura è condivisa: chi ha vinto l'asta ne fissa la cornice (titolo e posta), l'altro la mette in scena.
 
 L'atmosfera la suggerisce il seme della carta d'asta vincente, e può tradursi in un ambiente, in una situazione o in un'interazione. È un suggerimento più che un vincolo: uno spunto per inquadrare l'inizio della scena, non una regola da rispettare alla lettera.
 
@@ -401,8 +431,6 @@ Le prese seguono la logica della Scopa tradizionale:
 **La presa è obbligatoria.** Se la carta che giochi può fare una presa o una scopa, non puoi metterla nel piatto: la cattura è obbligata. L'obbligo riguarda la singola carta, non l'intero turno (puoi sempre giocare un'altra carta che non cattura). E quando una carta avrebbe più catture possibili, singola o di gruppo, presa o scopa, sei libero di scegliere quale fare.
 
 **Catturare una carta del tuo stesso lato.** A volte sei costretto a prendere una carta del tuo stesso schieramento. Raccontalo come un'azione maldestra in cui le due anime del lato si sono ostacolate o annullate a vicenda: Cuori e Picche per i Protagonisti, Fiori e Quadri per l'Opposizione.
-
-<!-- DIAGRAMMA: turno -->
 
 ## 3.8 Segnare prese e scope: il punteggio
 
@@ -682,13 +710,11 @@ Se devi ricordare una cosa sola, ricorda la differenza tra le tre mosse. È ques
 
 ## 8.3 Il flusso completo, a colpo d'occhio
 
-<!-- DIAGRAMMA: flusso-partita -->
-
-E lo stesso flusso, passo per passo:
+Il flusso della partita, che hai visto a colpo d'occhio nel diagramma del Capitolo 1 (§1.10), qui è ripercorso passo per passo:
 
 **1. Preparazione (il pitch).** Tono; coppia dei protagonisti; obiettivo finale; Opposizione (Quadri nemici, Fiori caos); domande ai Protagonisti (poste dall'Opposizione); domande all'Opposizione (poste dai Protagonisti); prima difficoltà condivisa, che inquadra la Scena 1.
 
-**2. Per ogni scena (da 1 a 5).** Pesca di 4 carte per lato; asta (carta coperta, si rivela, chi è più alto vince l'iniziativa; in parità, a chi non l'ha avuta la scena prima, e alla scena 1 all'Opposizione); il vincitore sceglie titolo, ambiente iniziale e posta; round, in cui si alternano giocate, prese e scope (4 carte a testa); fine round, si somma il piatto e si vede chi vince la scena (se vincono i Protagonisti la posta è raggiunta, se vince l'Opposizione la situazione peggiora); il piatto resta sul tavolo per la scena successiva; mercato (acquisto delle figure, che entrano nel mazzo; se compri, il mazzo si rimescola); poi si pesca la nuova mano.
+**2. Per ogni scena (da 1 a 5).** Pesca di 4 carte per lato; asta (carta coperta, si rivela, chi è più alto vince l'iniziativa; in parità, a chi non l'ha avuta la scena prima, e alla scena 1 all'Opposizione); il vincitore sceglie titolo e posta, mentre l'altro fa il framing iniziale (ambiente e atmosfera, sul seme della carta d'asta vincente); round, in cui si alternano giocate, prese e scope (4 carte a testa); fine round, si somma il piatto e si vede chi vince la scena (se vincono i Protagonisti la posta è raggiunta, se vince l'Opposizione la situazione peggiora); il piatto resta sul tavolo per la scena successiva; mercato (acquisto delle figure, che entrano nel mazzo; se compri, il mazzo si rimescola); poi si pesca la nuova mano.
 
 **3. Dopo la seconda scena.** Il Jolly entra nel mazzo dei Protagonisti.
 
@@ -782,17 +808,17 @@ La partita si apre sulla prima difficoltà del pitch: il taccuino di Aldo Falco,
 
 > **Le carte in mano.** Protagonisti (Paola): 9♥ 5♠ 8♠ 5♥. Opposizione (Omar): 2♦ 1♦ 3♣ 10♣. Il piatto è vuoto: si parte da zero.
 
-All'asta Paola cala coperto il 9♥, Omar il 3♣: vince Paola, e l'iniziativa è dei Protagonisti. Avere l'iniziativa è un vantaggio doppio: permette di stabilire posta e framing della scena, e la carta calata all'asta (qui il 9♥) viene messa da parte come ultima giocata del round, là dove è più facile fare una presa o perfino una scopa. Per questo conviene puntare alto. Il 3♣ di Omar, invece, torna nella sua mano. Avendo vinto l'iniziativa, è Paola a definire la scena.
+All'asta Paola cala coperto il 9♥, Omar il 3♣: vince Paola, e l'iniziativa è dei Protagonisti. Avere l'iniziativa è un vantaggio doppio: permette di stabilire titolo e posta della scena, e la carta calata all'asta (qui il 9♥) viene messa da parte come ultima giocata del round, là dove è più facile fare una presa o perfino una scopa. Per questo conviene puntare alto. Il 3♣ di Omar, invece, torna nella sua mano. Avendo vinto l'iniziativa, è Paola a fissare titolo e posta; il framing iniziale toccherà a Omar.
 
 **Paola stabilisce il titolo e la posta della scena.**
 {: .azione }
 
 <div class="fiction"><span class="titolo-scena">L'asta del Cairo</span><em>Posta: prendere il taccuino di Aldo. Se va bene, hanno gli appunti su come raggiungere l'artefatto e un giorno di vantaggio. Se va male, il taccuino finisce nelle mani della Loggia e quel giorno di vantaggio se lo tengono loro.</em></div>
 
-**Paola fa il framing iniziale.**
+**Omar fa il framing iniziale.**
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>In una sala privata del Cairo si batte all'asta il prezioso taccuino di appunti di Aldo Falco, l'unico che dica come arrivare a Zerzura; lui è sparito nel deserto cercandola. Sotto i lampadari la Loggia del Basilisco prende posto con le sue valigette, mentre i lotti minori passano di mano e il banditore scalda la sala. Vera e Otto, da qualche parte là fuori, non hanno nemmeno l'invito.</div>
+<div class="fiction"><span class="chi">Omar narra</span>In una sala privata del Cairo si batte all'asta il prezioso taccuino di appunti di Aldo Falco, l'unico che dica come arrivare a Zerzura; lui è sparito nel deserto cercandola. Sotto i lampadari la Loggia del Basilisco prende posto con le sue valigette, mentre i lotti minori passano di mano e il banditore scalda la sala. Vera e Otto, da qualche parte là fuori, non hanno nemmeno l'invito.</div>
 
 **Paola gioca il 5♥** nel piatto: introduce una risorsa. Aggiungere una carta significa mettere in scena qualcosa che potrà tornare utile più avanti, e in ♥, il seme dei legami, la risorsa naturale è un alleato. Paola crea il PNG annotandolo su una index card: «Hatim, vecchio amico di Otto, concierge dell'hotel», il contatto che farà entrare la coppia.
 {: .azione }
@@ -852,10 +878,10 @@ All'asta Paola cala il 3♥, Omar l'8♦: vince Omar, e l'iniziativa è dell'Opp
 
 <div class="fiction"><span class="titolo-scena">Il treno per El Qara</span><em>Posta: raggiungere El Qara in tempo. Se va bene, si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male, arrivano troppo tardi e restano senza quell'aiuto prezioso.</em></div>
 
-**Omar fa il framing iniziale.**
+**Paola fa il framing iniziale.**
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>Il treno a vapore corre verso El Qara, sbuffando nel deserto che comincia. Nello scompartimento Vera e Otto siedono uno di fronte all'altra, scuri in volto, e non si rivolgono la parola: la lite del Cairo è ancora tutta lì. Hanno un giorno solo per arrivare in tempo, agganciare la carovana dei mercanti di datteri e ingaggiare le guide che sole sanno leggere le dune.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Il treno a vapore corre verso El Qara, sbuffando nel deserto che comincia. Nello scompartimento Vera e Otto siedono uno di fronte all'altra, scuri in volto, e non si rivolgono la parola: la lite del Cairo è ancora tutta lì. Hanno un giorno solo per arrivare in tempo, agganciare la carovana dei mercanti di datteri e ingaggiare le guide che sole sanno leggere le dune.</div>
 
 **Omar gioca il 7♦** nel piatto: dispone una minaccia che è anche un nuovo PNG. In ♦ il nemico attivo prende corpo in un personaggio, da annotare su una index card: Alì, il guerriero dei Veglianti che si avvicina al treno.
 {: .azione }
@@ -931,10 +957,10 @@ All'asta Paola cala il 4♠, Omar il 5♦: vince Omar, e l'iniziativa è dell'Op
 
 <div class="fiction"><span class="titolo-scena">Il mare di sabbia</span><em>Posta: orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se va bene: i protagonisti si accampano e si preparano alla ricerca. Se va male: si perdono nel deserto.</em></div>
 
-**Omar fa il framing iniziale.**
+**Paola fa il framing iniziale.**
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>Oltre El Qara finisce ogni strada e comincia il mare di sabbia: dune fino all'orizzonte, identiche in ogni direzione, e un sole che cancella le ombre e i punti di riferimento. Da qualche parte là dentro c'è l'oasi più vicina a Zerzura; sbagliare rotta significa girare in tondo finché l'acqua finisce. Vera e Otto partono coi cammelli di Kalim, ancora senza essersi davvero riappacificati.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Oltre El Qara finisce ogni strada e comincia il mare di sabbia: dune fino all'orizzonte, identiche in ogni direzione, e un sole che cancella le ombre e i punti di riferimento. Da qualche parte là dentro c'è l'oasi più vicina a Zerzura; sbagliare rotta significa girare in tondo finché l'acqua finisce. Vera e Otto partono coi cammelli di Kalim, ancora senza essersi davvero riappacificati.</div>
 
 **Omar gioca il 6♦** nel piatto: nel piatto vuoto non c'è nulla da catturare, così dispone una minaccia.
 {: .azione }
@@ -1006,10 +1032,10 @@ All'asta Paola cala il 3♠, Omar l'asso di Fiori: vince Paola, e per la prima v
 
 <div class="fiction"><span class="titolo-scena">Nella città perduta</span><em>Posta: trovare l'accesso alla cripta. Se va bene: sono a un passo dall'obiettivo. Se va male: restano in balìa dei nemici e delle insidie della città perduta.</em></div>
 
-**Paola fa il framing iniziale.**
+**Omar fa il framing iniziale.**
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Partiti all'alba, Vera e Otto sono giunti alla grande piana dove, secondo i calcoli dello studioso, un tempo sorgeva l'antica città di Zerzura. Ma al posto di edifici e antiche vestigia ci sono solo i miraggi creati dal sole allo zenit e un vento maligno che getta sabbia nei loro occhi stanchi.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Partiti all'alba, Vera e Otto sono giunti alla grande piana dove, secondo i calcoli dello studioso, un tempo sorgeva l'antica città di Zerzura. Ma al posto di edifici e antiche vestigia ci sono solo i miraggi creati dal sole allo zenit e un vento maligno che getta sabbia nei loro occhi stanchi.</div>
 
 **Paola apre con il 7♠** nel piatto vuoto: con l'iniziativa tocca a lei muovere per prima, e una carta lasciata sola nel vuoto si espone alla cattura.
 {: .azione }
