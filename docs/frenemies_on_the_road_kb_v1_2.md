@@ -9,7 +9,7 @@
 
 Frenemies on the Road è uno story-game in cui i giocatori creano insieme una storia, giocando una partita a carte ispirata alla scopa che li vede in competizione su due fronti: Protagonisti e Opposizione. Il voler vincere ogni scena genera la tensione narrativa, creando di continuo nuove difficoltà tra i Protagonisti e la loro missione, il cui esito resta in bilico fino all'ultima carta. È un gioco insieme collaborativo e competitivo, e questa apparente contraddizione è proprio il cuore di Frenemies on the Road.
 
-È un gioco narrativo competitivo per 2, 3 o 4 giocatori che mette al centro una coppia di protagonisti incompatibili, costretti a collaborare per raggiungere un obiettivo prima che sia troppo tardi.
+È un gioco narrativo competitivo per 2, 3 o 4 giocatori che mette al centro una coppia di protagonisti incompatibili, costretti a collaborare per compiere una missione prima che sia troppo tardi.
 
 È un gioco di:
 
@@ -46,7 +46,7 @@ Cosa hanno in comune queste storie:
 La fiction che emerge durante il gioco è costruita attorno a:
 
 - due protagonisti con visioni opposte
-- un obiettivo urgente e definitivo
+- una missione urgente e definitiva
 - un mondo che reagisce contro di loro
 
 L'opposizione non è solo "il cattivo". Sono nemici organizzati (forze dell'ordine, criminali, istituzioni) ma anche caos, sfortuna, incomprensioni, errori.
@@ -111,7 +111,7 @@ Ogni scena deve:
 
 - svolgersi in un luogo o contesto diverso
 - collocarsi in un momento successivo della storia
-- avere una **posta di scena** chiara: una difficoltà concreta o un obiettivo intermedio che, se vinto, avvicina i protagonisti all'obiettivo finale e, se perso, li ostacola senza precludere l'obiettivo, che resta raggiungibile fino all'ultima scena (vedi §12.2).
+- avere una **posta di scena** chiara: una difficoltà concreta o un obiettivo intermedio che, se vinto, avvicina i protagonisti alla missione e, se perso, li ostacola senza precluderla, e la missione resta raggiungibile fino all'ultima scena (vedi §12.2).
 
 ## 7. Modalità di gioco
 
@@ -178,11 +178,11 @@ Si definiscono chi è il personaggio Picche e chi è il personaggio Cuori. La co
 
 > **Esempio (scenario demo, §33):** Frank (Picche), ex poliziotto sospeso per eccesso di forza, cinico e metodico. Skunk (Cuori), suo ex informatore, truffatore e intrallazzone dei bassifondi. Una spiata sbagliata di Skunk è costata a Frank il distintivo; collaborano perché Skunk ha in testa la pista di Vargas e il modo di superarne la sicurezza, mentre Frank, che si è fatto terra bruciata attorno, da solo non può più muovere un passo.
 
-### 9.3 — L'obiettivo finale
+### 9.3 — La Missione
 
-L'obiettivo finale deve essere chiaro, urgente e definitivo. Deve contenere o implicare una scadenza temporale: se i protagonisti falliscono entro la fine della storia, l'occasione è persa definitivamente.
+La missione deve essere chiara, urgente e definitiva. Deve contenere o implicare una scadenza temporale: se i protagonisti falliscono entro la fine della storia, l'occasione è persa definitivamente.
 
-> **Esempio di obiettivo:** "Entro 36 ore Vargas atterrerà con un jet privato dalla Colombia su una pista segreta del New Mexico per un meeting con i boss locali, e ripartirà: una volta decollato, nessuna estradizione lo riporterà davanti a un giudice. Bisogna arrivare alla pista e farlo arrestare in flagranza prima del decollo."
+> **Esempio di missione:** "Entro 36 ore Vargas atterrerà con un jet privato dalla Colombia su una pista segreta del New Mexico per un meeting con i boss locali, e ripartirà: una volta decollato, nessuna estradizione lo riporterà davanti a un giudice. Bisogna arrivare alla pista e farlo arrestare in flagranza prima del decollo."
 
 ### 9.4 — L'Opposizione *(v1.2)*
 
@@ -206,8 +206,8 @@ Le prime due domande sono **tratti di relazione**: si scrivono insieme ai protag
 
 Le altre quattro diventano **spinte** (risorse spuntabili, §9.8): due Picche (P1, che tende a ♠) e due Cuori (P2, che tende a ♥).
 
-3. Perché per P1 è importante l'obiettivo? *(spinta ♠)*
-4. Perché per P2 è importante l'obiettivo? *(spinta ♥)*
+3. Perché per P1 è importante la missione? *(spinta ♠)*
+4. Perché per P2 è importante la missione? *(spinta ♥)*
 5. Quale dote o risorsa di P1 potrebbe essere un asso nella manica? *(spinta ♠)*
 6. Quale dote o risorsa di P2 potrebbe essere un asso nella manica? *(spinta ♥)*
 
@@ -224,7 +224,7 @@ I Protagonisti chiedono all'Opposizione. Le risposte vengono scritte e diventano
 
 Dopo le due serie di domande, tutti i giocatori rispondono insieme a un'ultima domanda:
 
-> **Che cosa vi impedisce di raggiungere l'obiettivo subito? Qual è la prima difficoltà da superare?**
+> **Che cosa vi impedisce di compiere subito la missione? Qual è la prima difficoltà da superare?**
 
 La risposta si scrive ma, a differenza delle altre, non è una risorsa spuntabile: si decide insieme, ma **l'ultima parola spetta all'Opposizione** *(v1.17)*. È il materiale della Scena 1 (Innesco): chi vince l'iniziativa della prima scena la usa per inquadrarla.
 
@@ -320,16 +320,16 @@ La posta è una **difficoltà concreta da superare** o un **obiettivo intermedio
 
 Va formulata esplicitando **entrambi i rami**, cosa accade se la vincono i Protagonisti e cosa accade se la vince l'Opposizione:
 
-- **Se la vincono i Protagonisti** → ottengono l'obiettivo intermedio e si avvicinano all'obiettivo finale
-- **Se la vince l'Opposizione** → la posta fallisce, i protagonisti vengono ostacolati e avranno più difficoltà a raggiungere l'obiettivo finale
+- **Se la vincono i Protagonisti** → ottengono l'obiettivo intermedio e si avvicinano alla missione
+- **Se la vince l'Opposizione** → la posta fallisce, i protagonisti vengono ostacolati e avranno più difficoltà a compiere la missione
 
-La posta **non è mai davvero indispensabile** per l'obiettivo finale, che resta **sempre raggiungibile fino all'ultima scena**: vincerla è un vantaggio che avvicina al traguardo, perderla è un problema che lo complica, ma la missione resta possibile in entrambi i casi (vedi §9.3). Va intesa come un vantaggio da conquistare o un guaio da evitare lungo la strada, non come un cancello obbligato: una posta che, se persa, chiuderebbe la partita in anticipo è scritta male.
+La posta **non è mai davvero indispensabile** per la missione, che resta **sempre raggiungibile fino all'ultima scena**: vincerla è un vantaggio che avvicina al traguardo, perderla è un problema che lo complica, ma la missione resta possibile in entrambi i casi (vedi §9.3). Va intesa come un vantaggio da conquistare o un guaio da evitare lungo la strada, non come un cancello obbligato: una posta che, se persa, chiuderebbe la partita in anticipo è scritta male.
 
 **Principi per una buona posta.**
 
 - **Il cosa, non il come *(v1.13)*:** la posta dice qual è l'obiettivo concreto in gioco, mai il modo di ottenerlo, che deve emergere dalle giocate. Va lasciata abbastanza aperta. "Orientarsi nel deserto e raggiungere l'oasi" è una buona posta (ci si orienta con le stelle, una mappa, l'istinto dei cammelli, un sogno); "orientarsi col taccuino" è peggiore, perché prescrive il mezzo e prenarra ciò che dovrebbe nascere dalla scena.
 - **Climax (crescendo) *(v1.10)*:** la posta dovrebbe crescere di scena in scena, diventando via via più drammatica, ardua, essenziale o potenzialmente distruttiva. Non bruciare subito le poste più estreme: tienile per le scene centrali e finali. Se già nella Scena 1 la posta mette in gioco qualcosa come finire in un carcere di massima sicurezza, e a vincerla è l'Opposizione, da lì in poi la storia diventa un'evasione e perde di vista la missione vera. A titolo indicativo, non vincolante, la posta in palio può salire così: **tempo** (Scena 1), **una risorsa preziosa** (Scena 2), **motivazione o morale** (Scena 3), **la tenuta dell'alleanza** tra i protagonisti (Scena 4), **l'esito dell'intera avventura** (Scena 5).
-- **Fail forward *(v1.10)*:** anche quando è persa, una buona posta lascia ai protagonisti qualcosa per andare avanti, cioè esperienza, una nuova opportunità o una nuova risorsa da spendere lungo il viaggio verso l'obiettivo finale. Il fallimento alza il prezzo e complica le cose, ma non deve inchiodarli in una situazione frustrante e senza uscita: fa comunque avanzare la storia.
+- **Fail forward *(v1.10)*:** anche quando è persa, una buona posta lascia ai protagonisti qualcosa per andare avanti, cioè esperienza, una nuova opportunità o una nuova risorsa da spendere lungo il viaggio verso la missione. Il fallimento alza il prezzo e complica le cose, ma non deve inchiodarli in una situazione frustrante e senza uscita: fa comunque avanzare la storia.
 
 > **Esempio di posta:** "Tirare fuori Skunk dalla centrale prima del trasferimento in prigione, senza che il distretto capisca chi lo sta aiutando. Se la vincono i Protagonisti, escono con Skunk e una pista verso Vargas; se vince l'Opposizione, restano a mani vuote e con mezzo distretto sulle loro tracce."
 
@@ -437,7 +437,7 @@ Chi ha il totale più alto vince la posta della scena.
 
 > **Scena chiusa da una scopa (v1.3):** se la scena finisce con il **piatto vuoto** perché l'ultima giocata è stata una **scopa**, la posta è vinta da **chi ha fatto la scopa**, anche se i totali del piatto sarebbero 0-0. (Vale anche per la scopa fatta col Jolly: la posta va a chi ha ripulito il piatto, mentre i 3 punti vanno all'avversario.)
 
-**Se vincono i Protagonisti:** la posta della scena è raggiunta e i protagonisti si avvicinano all'obiettivo finale.
+**Se vincono i Protagonisti:** la posta della scena è raggiunta e i protagonisti si avvicinano alla missione.
 
 **Se vince l'Opposizione:** la posta della scena fallisce e la situazione peggiora per i protagonisti.
 
@@ -644,7 +644,7 @@ Al termine dell'ultima scena (dopo gli eventuali colpi di scena):
 
 Il finale si legge su **due piani**, la **missione** e il **prestigio**, e dal loro incrocio nascono quattro esiti.
 
-**Primo piano, la missione.** Al termine dei colpi di scena, chi vince il piatto (Cuori + Picche contro Fiori + Quadri) ha raggiunto l'obiettivo o ha fallito: è l'esito esterno della storia.
+**Primo piano, la missione.** Al termine dei colpi di scena, chi vince il piatto (Cuori + Picche contro Fiori + Quadri) ha compiuto la missione o ha fallito: è l'esito esterno della storia.
 
 **Secondo piano, il prestigio.** I punti accumulati e **non spesi** (prese + scope) non dicono se la missione è riuscita, ma quanto un lato se l'è cavata con le proprie forze. Spendere punti per comprare figure significa aver **chiamato aiuto** e dover dividere il merito; tenerli significa **essersi fatti un nome**. Il prestigio vale per entrambi i lati, con segno opposto: per i Protagonisti è una **promessa** di crescita, per l'Opposizione una **minaccia** (l'idra: per ogni testa mozzata ne ricrescono altre).
 
@@ -666,7 +666,7 @@ Oltre ai due piani, il finale si legge su **altre due dimensioni** che non entra
 - **A chi ha vinto la missione:** "I miei personaggi hanno ottenuto davvero quello che volevano?" E se non ha vinto anche ai punti, aggiunge: "Ma a che prezzo, con quale rimpianto?"
 - **A chi ha vinto il punteggio:** "In che modo i miei personaggi sono cresciuti o hanno accresciuto il loro prestigio?"
 - **A chi giocava i Protagonisti:** "Che cosa pensa ora Picche di Cuori, e viceversa? Come si è evoluto il loro rapporto?"
-- **A chi ha perso la missione ma ha vinto più scene dell'avversario,** a scelta una delle due: "Chi ha ottenuto l'obiettivo ignora qualcosa: non è tutto oro quel che luccica. Che cosa gli sfugge?" oppure "Quale riscatto o consolazione i miei personaggi possono trarre da questa storia?"
+- **A chi ha perso la missione ma ha vinto più scene dell'avversario,** a scelta una delle due: "Chi ha compiuto la missione ignora qualcosa: non è tutto oro quel che luccica. Che cosa gli sfugge?" oppure "Quale riscatto o consolazione i miei personaggi possono trarre da questa storia?"
 
 ### 26.2 — L'epilogo *(v1.16)*
 
@@ -735,7 +735,7 @@ Nell'ultima scena emergono due strategie principali che si oppongono:
 1. PREPARAZIONE
    ├── Scelta del tono
    ├── Definizione della coppia protagonista
-   ├── Definizione dell'obiettivo finale
+   ├── Definizione della missione
    ├── Definizione dell'Opposizione (♦ nemici, ♣ caos)
    ├── Domande ai Protagonisti (poste dall'Opposizione)
    ├── Domande all'Opposizione (poste dai Protagonisti)
@@ -952,6 +952,10 @@ Una partita vera a 2 giocatori con lo scenario demo (§33): Paola gioca i Protag
 
 # REGISTRO MODIFICHE
 
+## v1.19 (giugno 2026) — terminologia: «missione» al posto di «obiettivo finale»
+
+1. **Un solo termine per lo scopo della partita.** Il traguardo che i protagonisti devono raggiungere si chiama ora sempre **missione** (non più «obiettivo finale»), allineandosi a come il concetto era già chiamato nel motore (`G.missione`) e nel finale (il piano «missione» degli esiti). «Missione» maiuscola nei titoli ed etichette (§9.3 «La Missione», elenco del pitch), minuscola nella prosa. Restano invariati «obiettivo intermedio» / «obiettivo concreto» per la posta di scena (sono cose diverse). Adattati i verbi dove serviva (raggiungere l'obiettivo → compiere la missione) e sciolta la circolarità nel finale («la missione, cioè se i protagonisti l'hanno compiuta»). Solo terminologia, nessun effetto sul motore. Propagato a KB (§1, §9.3, §12.2, §13, §24, §26, §29, esempi), manuale del giocatore e `REGOLE`/`REGOLE_IA`/etichette UI in `index.html`. Le voci storiche di questo registro restano com'erano.
+
 ## v1.18 (giugno 2026) — il framing iniziale lo fa il giocatore senza iniziativa
 
 1. **§12: l'apertura della scena si divide in due.** Chi vince l'asta sceglie titolo e posta (la cornice); poi è **l'altro giocatore**, quello senza iniziativa, a **fare il framing iniziale**, mettendo in scena la situazione e l'atmosfera in cui si trovano i protagonisti (prima li imponeva lo stesso vincitore dell'asta). La tabella seme→atmosfera (§12.1) resta e la usa chi fa il framing, seguendo come suggerimento il seme della carta con cui l'avversario ha vinto l'asta. Propagato a manuale §3.3 e §8.3, `REGOLE` ("Apertura della scena") e `REGOLE_IA` in `index.html`. (Regola sociale al tavolo: non cambia il motore; in vs Claude è riflessa nel testo di `REGOLE_IA`.)
@@ -1067,4 +1071,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.18*
+*Frenemies on the Road — Knowledge Base v1.19*

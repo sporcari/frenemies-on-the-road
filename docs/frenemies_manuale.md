@@ -68,7 +68,7 @@ A ben vedere, del resto, il conflitto tra due personaggi che non si sopportano e
 La storia che nasce al tavolo si regge su tre pilastri:
 
 - due protagonisti con visioni opposte;
-- un obiettivo urgente e definitivo;
+- una missione urgente e definitiva;
 - un mondo che reagisce contro di loro.
 
 Quando si parla di Opposizione non si intendono soltanto "i cattivi", ovvero le fazioni di nemici che deliberatamente ostacolano o perseguitano i protagonisti, ma anche il caos, la sfortuna e tutti i conflitti che emergeranno tra i protagonisti stessi.
@@ -93,7 +93,7 @@ Qualunque cosa accada in gioco, ogni scena dovrebbe rispettare tre regole di buo
 
 - svolgersi in un luogo o in un contesto diverso da quello precedente;
 - collocarsi in un momento successivo della storia;
-- avere una posta chiara, un obiettivo intermedio concreto che, vinto, avvicina i protagonisti all'obiettivo finale e, perso, li ostacola.
+- avere una posta chiara, un obiettivo intermedio concreto che, vinto, avvicina i protagonisti alla missione e, perso, li ostacola.
 
 Come si formula bene una posta lo vedremo nel Capitolo 3. Per ora basti sapere che la posta è ciò per cui in ogni scena i giocatori e i personaggi si daranno battaglia: un ostacolo da superare, un vantaggio da ottenere. Oltre alla posta, ogni scena ha anche un titolo, scelto da chi la apre (vedi Capitolo 3). Ogni scena si può vedere come il capitolo di un romanzo o l'episodio di una serie TV.
 
@@ -155,7 +155,7 @@ Siate generosi anche quando ci saranno degli "sconfinamenti" nelle narrazioni. I
 
 ## 1.9 Come finisce?
 
-L'esito della missione dei protagonisti si decide nell'ultima scena: chi vince quella ottiene o perde l'obiettivo finale. Ma il come finisce davvero la storia passa attraverso l'interpretazione di come si è svolto tutto il viaggio. Il finale si legge su due piani: la missione, cioè se l'obiettivo è stato raggiunto, e il prestigio, cioè i punti accumulati nel corso della partita con prese e scope, che dicono quanto i protagonisti sono cresciuti e si sono fatti un nome. Dall'incrocio di questi due piani nasce l'esito finale.
+L'esito della missione dei protagonisti si decide nell'ultima scena: chi vince quella compie o fallisce la missione. Ma il come finisce davvero la storia passa attraverso l'interpretazione di come si è svolto tutto il viaggio. Il finale si legge su due piani: la missione, cioè se i protagonisti l'hanno compiuta, e il prestigio, cioè i punti accumulati nel corso della partita con prese e scope, che dicono quanto i protagonisti sono cresciuti e si sono fatti un nome. Dall'incrocio di questi due piani nasce l'esito finale.
 
 - **Vittoria piena:** ce l'hanno fatta al di là di ogni aspettativa, e con le proprie forze.
 - **Per il rotto della cuffia:** a stento ce l'hanno fatta, ma grazie agli aiuti, al caso o a caro prezzo.
@@ -172,19 +172,19 @@ Ecco, a colpo d'occhio, come si sviluppa una partita dall'inizio alla fine.
 
 In breve, fase per fase:
 
-- **Pitch.** Prima di toccare le carte si costruisce insieme la storia di base (coppia, obiettivo, Opposizione, domande), da cui nascono le spinte e la prima difficoltà (Capitolo 2).
-- **Scene 1-4.** Il cuore del gioco: ogni scena è una sfida a carte che si apre con un'asta e si chiude con una posta vinta o persa (Capitolo 3).
-- **Mercato.** Tra una scena e l'altra si spendono i punti accumulati per comprare le figure, che entrano nel mazzo; poi si torna in scena (Capitolo 4).
-- **Ultima scena.** La quinta scena, la Risoluzione, si gioca con una mano estesa: è qui che si decide l'obiettivo finale (Capitolo 6).
-- **Colpi di scena.** Le carte tenute da parte si rivelano una alla volta e possono ribaltare l'esito apparente (Capitolo 6).
-- **Lettura del finale e domande.** Si incrociano missione e prestigio per leggere uno dei quattro esiti, e si risponde alle domande di fine partita (Capitolo 7).
-- **Epilogo.** A turno, brevi vignette raccontano il destino dei personaggi, fino all'ultima dissolvenza (Capitolo 7).
+- **Pitch.** Prima di toccare le carte si definiscono insieme le basi su cui si svilupperà la storia (Personaggi, Missione, Opposizione, Difficoltà iniziale)
+- **Scene 1-4.** Il cuore del gioco: ogni scena è una sfida a carte (Capitolo 3).
+- **Mercato.** Tra una scena e l'altra si spendono i punti accumulati per comprare le figure, che vengono aggiunte al mazzo; Sono carte più potenti. (Capitolo 4).
+- **Ultima scena.** La quinta scena, si gioca sempre con 4 carte, ma se si sono acquistate delle figure ce ne sarà qualcuna in più da tenere di riserva (Capitolo 6).
+- **Colpi di scena.** Con le carte conservate nella riserva i giocatori possono ribaltare l'esito dell'ultima scena, decidendo definitivamente il destino della missione. (Capitolo 6).
+- **Lettura del finale e domande.** Si determina l'esito della storia, quindi si risponde alle domande di fine partita (Capitolo 7).
+- **Epilogo.** A turno, brevi vignette raccontano il destino dei personaggi, coerentemente con l'esito determinato, fino all'ultima dissolvenza (Capitolo 7).
 
 ---
 
 # Capitolo 2. Prima di partire: il pitch
 
-Prima di giocare la prima scena si costruisce insieme la fiction di base. Questa fase si chiama pitch, e non è un preambolo facoltativo: è il dominio entro il quale si svilupperà la storia.
+Prima di giocare la prima scena si pongono le basi della storia che si andrà a creare: i Protagonisti, la loro missione, l'Opposizione.
 
 Se vuoi un esempio completo e pronto all'uso, in appendice troverai diversi playset con dei pitch pronti per l'uso.
 
@@ -194,9 +194,9 @@ Per prima cosa scegliete un genere di riferimento della giocata: action, polizie
 
 N.B. Ovviamente se la narrazione di un giocatore viene ritenuta per qualche motivo eccessiva o sgradevole o fuori dal tono e dal genere, gli altri possono farlo presente.
 
-## 2.2 L'obiettivo finale
+## 2.2 La Missione
 
-Ovvero la missione che i protagonisti devono necessariamente portare a termine insieme. L'obiettivo finale, ovvero lo scopo della missione, deve essere chiaro, urgente e definitivo. Deve implicare una scadenza o un'occasione irripetibile: se i protagonisti falliscono entro la fine della storia, l'occasione è persa per sempre.
+Ovvero l'obiettivo finale che i protagonisti devono ottenere insieme, la cui definizione deve essere chiara, urgente e definitiva. Deve implicare una scadenza o un'occasione irripetibile: se i protagonisti falliscono entro la fine della storia, l'occasione è persa per sempre.
 
 Un esempio, sempre dallo scenario demo: "Tra cinque giorni un'eclissi riaprirà la cripta di Zerzura, la città perduta sepolta dalle sabbie, e con essa il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto. Bisogna arrivare alla cripta e prendere l'artefatto prima della Loggia del Basilisco: una volta chiuso nei suoi caveau, nessuno lo rivedrà mai."
 
@@ -220,7 +220,7 @@ Come abbiamo già detto è necessario stabilire chi siano i due protagonisti: ch
 
 Per esempio, nello scenario demo Picche è Vera Falco, eroina d'azione atletica e impulsiva, cresciuta nei cantieri di scavo del padre; Cuori è Otto Lenzi, filologo delle lingue morte, topo di biblioteca con le fobie catalogate in ordine alfabetico. È stata una traduzione di Otto a riaccendere la caccia che ha già inghiottito il padre di Vera. Collaborano perché servono le capacità di entrambi per ritrovare la città perduta.
 
-Scegliere una buona coppia di protagonisti è molto più importante di un buon obiettivo finale: quello, in fin dei conti, è ciò che nel gergo cinematografico si chiama McGuffin, un espediente per avviare la storia e motivare i personaggi. Anche in questo caso siate propositivi e ascoltate i suggerimenti di tutti, anche se l'ultima decisione sui protagonisti spetta al giocatore che li interpreta.
+Scegliere una buona coppia di protagonisti è molto più importante di una buona missione: quella, in fin dei conti, è ciò che nel gergo cinematografico si chiama McGuffin, un espediente per avviare la storia e motivare i personaggi. Anche in questo caso siate propositivi e ascoltate i suggerimenti di tutti, anche se l'ultima decisione sui protagonisti spetta al giocatore che li interpreta.
 
 ## 2.4 L'Opposizione
 
@@ -248,8 +248,8 @@ Le prime due sono tratti di relazione. Si scrivono insieme, quando definite la c
 
 Le altre quattro, invece, diventano Spinte: risorse vere che potrete spendere meccanicamente in gioco (vedi 2.8). Due appartengono al personaggio Picche, due al personaggio Cuori.
 
-3. Perché per il personaggio Picche è importante l'obiettivo? (spinta Picche)
-4. Perché per il personaggio Cuori è importante l'obiettivo? (spinta Cuori)
+3. Perché per il personaggio Picche è importante la missione? (spinta Picche)
+4. Perché per il personaggio Cuori è importante la missione? (spinta Cuori)
 5. Quale dote o risorsa del personaggio Picche potrebbe essere un asso nella manica? (spinta Picche)
 6. Quale dote o risorsa del personaggio Cuori potrebbe essere un asso nella manica? (spinta Cuori)
 
@@ -266,7 +266,7 @@ Poi sono i Protagonisti a interrogare l'Opposizione. Quattro domande, e tutte e 
 
 Dopo le due serie di domande, tutto il tavolo risponde insieme a un'ultima domanda:
 
-> Che cosa vi impedisce di raggiungere l'obiettivo subito? Qual è la prima difficoltà da superare?
+> Che cosa vi impedisce di compiere subito la missione? Qual è la prima difficoltà da superare?
 
 Questa risposta viene stabilita insieme dai due giocatori, anche se l'ultima parola appartiene all'Opposizione. È il materiale grezzo della Scena 1.
 
@@ -327,10 +327,10 @@ Vinta l'asta, chi ha l'iniziativa apre la scena, e la cosa più importante che f
 
 E va formulata esplicitando entrambi i rami, cosa accade se vincono i Protagonisti e cosa accade se vince l'Opposizione:
 
-- **se vincono i Protagonisti:** ottengono l'obiettivo intermedio e si avvicinano all'obiettivo finale;
-- **se vince l'Opposizione:** la posta fallisce, i protagonisti vengono ostacolati e faranno più fatica a raggiungere l'obiettivo finale.
+- **se vincono i Protagonisti:** ottengono l'obiettivo intermedio e si avvicinano alla missione;
+- **se vince l'Opposizione:** la posta fallisce, i protagonisti vengono ostacolati e faranno più fatica a compiere la missione.
 
-Una cosa importante: la posta non è mai davvero indispensabile per l'obiettivo finale. Vincerla è un vantaggio che avvicina al traguardo, perderla è un problema che lo complica, ma la missione resta raggiungibile fino all'ultima scena in entrambi i casi. Pensa alla posta come a un vantaggio da conquistare o a un guaio da evitare lungo la strada, non come a un cancello obbligato: una posta che, persa, chiuderebbe la partita in anticipo è una posta scritta male.
+Una cosa importante: la posta non è mai davvero indispensabile per la missione. Vincerla è un vantaggio che avvicina al traguardo, perderla è un problema che lo complica, ma la missione resta raggiungibile fino all'ultima scena in entrambi i casi. Pensa alla posta come a un vantaggio da conquistare o a un guaio da evitare lungo la strada, non come a un cancello obbligato: una posta che, persa, chiuderebbe la partita in anticipo è una posta scritta male.
 
 Un esempio di posta ben scritta: "Tirare fuori Skunk dalla centrale prima del trasferimento in prigione, senza che il distretto capisca chi lo sta aiutando. Se vincono i Protagonisti, escono con Skunk e una pista verso il cattivo; se vince l'Opposizione, restano a mani vuote e con mezzo distretto sulle loro tracce."
 
@@ -350,7 +350,7 @@ Un esempio di crescendo, niente affatto vincolante ma utile a dare l'idea di com
 - **Scena 4 (Crisi):** la posta può rinsaldare o far crollare l'alleanza tra i protagonisti.
 - **Scena 5 (Risoluzione):** in gioco c'è l'esito dell'intera avventura.
 
-**Fail forward.** Anche quando viene persa, una buona posta lascia ai protagonisti qualcosa per andare avanti: un po' di esperienza, una nuova opportunità, oppure una nuova risorsa da spendere lungo il viaggio verso l'obiettivo finale. Il fallimento alza il prezzo e complica le cose, ma non deve mai inchiodare i protagonisti in una situazione frustrante e senza uscita. Una scena persa fa avanzare la storia esattamente come una vinta: la spinge solo in una direzione più dura.
+**Fail forward.** Anche quando viene persa, una buona posta lascia ai protagonisti qualcosa per andare avanti: un po' di esperienza, una nuova opportunità, oppure una nuova risorsa da spendere lungo il viaggio verso la missione. Il fallimento alza il prezzo e complica le cose, ma non deve mai inchiodare i protagonisti in una situazione frustrante e senza uscita. Una scena persa fa avanzare la storia esattamente come una vinta: la spinge solo in una direzione più dura.
 
 ## 3.3 L'apertura della scena: titolo e atmosfera
 
@@ -367,9 +367,9 @@ L'atmosfera la suggerisce il seme della carta d'asta vincente, e può tradursi i
 | Quadri | Attacco del nemico, imboscata, territorio favorevole agli avversari |
 | Fiori | Evento imprevisto, luogo neutro ma instabile, caos o ambiguità immediata |
 
-## 3.4 La struttura del round
+## 3.4 La struttura della scena
 
-Vinta l'asta, il round procede così:
+Vinta l'asta, una scena si gioca così:
 
 1. il vincitore mette da parte la carta usata per l'asta;
 2. gioca una nuova carta nel piatto, e con questa apre davvero la scena;
@@ -475,7 +475,7 @@ Letta scena dopo scena, questa prevalenza di seme costruisce il quadro che si ti
 
 A seconda di chi ha vinto la posta:
 
-- **se vincono i Protagonisti:** la posta è raggiunta e si avvicinano all'obiettivo finale;
+- **se vincono i Protagonisti:** la posta è raggiunta e si avvicinano alla missione;
 - **se vince l'Opposizione:** la posta fallisce e la situazione peggiora per i protagonisti.
 
 E il piatto? Il piatto resta. A fine scena le carte rimaste sul tavolo non si toccano: restano lì per la scena successiva. Questo significa che chi apre la nuova scena può già fare una presa, o perfino una scopa, con la sua prima giocata.
@@ -646,7 +646,7 @@ Dopo i colpi di scena viene il finale: il momento in cui si tirano le somme. Si 
 
 Il finale si legge su due piani, la missione e il prestigio, e dal loro incrocio nascono quattro esiti.
 
-Il primo piano è la missione: al termine dei colpi di scena, i protagonisti hanno raggiunto il loro obiettivo o hanno fallito. Il secondo piano è il prestigio: i punti accumulati e non spesi, che dicono quanto i protagonisti se la sono cavata con le proprie forze. Spendere i punti per comprare figure significa aver chiamato aiuto e dover dividere il merito; tenerli significa essersi fatti un nome. Il prestigio vale per entrambi i lati, ma cambia segno: per i protagonisti è una promessa di crescita, per l'Opposizione è una minaccia, l'idra a cui per ogni testa mozzata ne ricrescono altre.
+Il primo piano è la missione: al termine dei colpi di scena, i protagonisti hanno compiuto la loro missione o hanno fallito. Il secondo piano è il prestigio: i punti accumulati e non spesi, che dicono quanto i protagonisti se la sono cavata con le proprie forze. Spendere i punti per comprare figure significa aver chiamato aiuto e dover dividere il merito; tenerli significa essersi fatti un nome. Il prestigio vale per entrambi i lati, ma cambia segno: per i protagonisti è una promessa di crescita, per l'Opposizione è una minaccia, l'idra a cui per ogni testa mozzata ne ricrescono altre.
 
 ## 7.2 I quattro esiti
 
@@ -670,7 +670,7 @@ Per dare voce a tutto questo, ciascun giocatore risponde alle domande che lo rig
 - **A chi ha vinto la missione:** "I miei personaggi hanno ottenuto davvero quello che volevano?" E se non ha vinto anche ai punti, aggiunge: "Ma a che prezzo, con quale rimpianto?"
 - **A chi ha vinto il punteggio:** "In che modo i miei personaggi sono cresciuti o hanno accresciuto il loro prestigio?"
 - **A chi giocava i Protagonisti:** "Che cosa pensa ora Picche di Cuori, e viceversa? Come si è evoluto il loro rapporto?"
-- **A chi ha perso la missione ma ha vinto più scene dell'avversario,** a scelta una delle due: "Chi ha ottenuto l'obiettivo ignora qualcosa: non è tutto oro quel che luccica. Che cosa gli sfugge?" oppure "Quale riscatto o consolazione i miei personaggi possono trarre da questa storia?"
+- **A chi ha perso la missione ma ha vinto più scene dell'avversario,** a scelta una delle due: "Chi ha compiuto la missione ignora qualcosa: non è tutto oro quel che luccica. Che cosa gli sfugge?" oppure "Quale riscatto o consolazione i miei personaggi possono trarre da questa storia?"
 
 ## 7.4 L'epilogo
 
@@ -712,7 +712,7 @@ Se devi ricordare una cosa sola, ricorda la differenza tra le tre mosse. È ques
 
 Il flusso della partita, che hai visto a colpo d'occhio nel diagramma del Capitolo 1 (§1.10), qui è ripercorso passo per passo:
 
-**1. Preparazione (il pitch).** Tono; coppia dei protagonisti; obiettivo finale; Opposizione (Quadri nemici, Fiori caos); domande ai Protagonisti (poste dall'Opposizione); domande all'Opposizione (poste dai Protagonisti); prima difficoltà condivisa, che inquadra la Scena 1.
+**1. Preparazione (il pitch).** Tono; coppia dei protagonisti; missione; Opposizione (Quadri nemici, Fiori caos); domande ai Protagonisti (poste dall'Opposizione); domande all'Opposizione (poste dai Protagonisti); prima difficoltà condivisa, che inquadra la Scena 1.
 
 **2. Per ogni scena (da 1 a 5).** Pesca di 4 carte per lato; asta (carta coperta, si rivela, chi è più alto vince l'iniziativa; in parità, a chi non l'ha avuta la scena prima, e alla scena 1 all'Opposizione); il vincitore sceglie titolo e posta, mentre l'altro fa il framing iniziale (ambiente e atmosfera, sul seme della carta d'asta vincente); round, in cui si alternano giocate, prese e scope (4 carte a testa); fine round, si somma il piatto e si vede chi vince la scena (se vincono i Protagonisti la posta è raggiunta, se vince l'Opposizione la situazione peggiora); il piatto resta sul tavolo per la scena successiva; mercato (acquisto delle figure, che entrano nel mazzo; se compri, il mazzo si rimescola); poi si pesca la nuova mano.
 
@@ -737,7 +737,7 @@ Questo è il pitch completo dello scenario demo, lo stesso che gioca la partita 
 - **La differenza evidente:** l'azione contro lo studio, l'istinto contro il metodo.
 - **Il conflitto interno:** è stata la traduzione di Otto a riaprire la caccia che ha già inghiottito il padre di Vera. E Vera cerca l'artefatto per ritrovare il padre; Otto, per rimediare a quello che ha scatenato.
 
-**L'obiettivo finale:** prendere il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto, nella cripta di Zerzura, la città perduta sepolta dalle sabbie. La cripta si apre solo con l'eclissi, tra cinque giorni. Bisogna arrivarci prima della Loggia del Basilisco: se l'artefatto finisce nei suoi caveau, nessuno lo rivedrà mai.
+**La Missione:** prendere il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto, nella cripta di Zerzura, la città perduta sepolta dalle sabbie. La cripta si apre solo con l'eclissi, tra cinque giorni. Bisogna arrivarci prima della Loggia del Basilisco: se l'artefatto finisce nei suoi caveau, nessuno lo rivedrà mai.
 
 **Perché restano incollati l'uno all'altro**
 
@@ -796,7 +796,7 @@ Per seguire la partita serve conoscere il pitch da cui parte. Lo riassumiamo qui
 
 **La coppia (i Protagonisti).** *Vera Falco* (♠) è un'eroina d'azione: atletica, impulsiva, cresciuta nei cantieri di scavo del padre. Guida, scala e spara meglio di chiunque la insegua. *Otto Lenzi* (♥) è un filologo delle lingue morte, topo di biblioteca, con le fobie catalogate in ordine alfabetico. Sono *frenemies*: Vera non sopporta che Otto debba leggere qualcosa prima di muovere un passo; Otto non sopporta che Vera agisca prima di pensare e tratti i reperti come maniglie.
 
-**L'obiettivo.** Prendere il Sole di Mezzanotte, l'artefatto sepolto nella cripta di Zerzura, la città perduta sotto le sabbie, che l'eclissi riaprirà tra cinque giorni. Bisogna arrivarci prima della Loggia del Basilisco. Come arrivarci lo dice solo il prezioso taccuino di appunti di Aldo Falco, il padre di Vera, sparito nel deserto cercando proprio la città perduta.
+**La Missione.** Prendere il Sole di Mezzanotte, l'artefatto sepolto nella cripta di Zerzura, la città perduta sotto le sabbie, che l'eclissi riaprirà tra cinque giorni. Bisogna arrivarci prima della Loggia del Basilisco. Come arrivarci lo dice solo il prezioso taccuino di appunti di Aldo Falco, il padre di Vera, sparito nel deserto cercando proprio la città perduta.
 
 **L'Opposizione.** I *nemici* (♦) sono due ordini che vogliono fermarli: la Loggia del Basilisco, collezionisti spietati con fondi illimitati e infiltrati in ogni porto, e i Veglianti di Zerzura, l'ordine del deserto che custodisce la città e ha disseminato di trappole la strada. Il *caos* (♣) è il deserto stesso: la tempesta in anticipo, le piste che spariscono, i mezzi che si rompono, le trappole della cripta.
 

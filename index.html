@@ -336,8 +336,8 @@ const FASI_FUNZ = ["Collaborazione forzata, minaccia iniziale","Viaggio, prepara
 const PITCH_TEMPLATE=[
   {seme:"picche", spinta:false, ph:"una frase su cosa non sopporta dell'altro", q:(a,b)=>`Cosa ${a} (♠) detesta di ${b} (♥)?`},
   {seme:"cuori",  spinta:false, ph:"una frase su cosa non sopporta dell'altro", q:(a,b)=>`Cosa ${b} (♥) detesta di ${a} (♠)?`},
-  {seme:"picche", ph:"breve frase che spiega la sua motivazione", q:(a,b)=>`Perché per ${a} (♠) è importante l'obiettivo?`},
-  {seme:"cuori",  ph:"breve frase che spiega la sua motivazione", q:(a,b)=>`Perché per ${b} (♥) è importante l'obiettivo?`},
+  {seme:"picche", ph:"breve frase che spiega la sua motivazione", q:(a,b)=>`Perché per ${a} (♠) è importante la missione?`},
+  {seme:"cuori",  ph:"breve frase che spiega la sua motivazione", q:(a,b)=>`Perché per ${b} (♥) è importante la missione?`},
   {seme:"picche", ph:"breve frase sui suoi talenti speciali", q:(a,b)=>`Quale dote o risorsa di ${a} (♠) potrebbe essere un asso nella manica?`},
   {seme:"cuori",  ph:"breve frase sui suoi talenti speciali", q:(a,b)=>`Quale dote o risorsa di ${b} (♥) potrebbe essere un asso nella manica?`},
   {seme:"quadri", ph:"i mezzi più temibili dei nemici", q:()=>`Quali sono i mezzi, metodi o armi più temibili della fazione nemica? (♦)`},
@@ -1250,7 +1250,7 @@ function schedaPlayset(p){
     </div>`:"";
   return `<div class="cartellone" style="padding:9px 12px;margin-bottom:10px"><div class="grande" style="font-size:17px">${titoloPlayset(p)}</div><div class="sc">${p.tono||"tono libero"} · cinque scene</div></div>
     ${p.premessa?`<div class="pannello"><span class="etichetta">La premessa</span><div style="font-size:13.5px;line-height:1.6">${p.premessa}</div></div>`:""}
-    ${p.missione?`<div class="pannello"><span class="etichetta">L'obiettivo del viaggio</span><div style="font-size:13.5px">${p.missione}</div></div>`:""}
+    ${p.missione?`<div class="pannello"><span class="etichetta">La missione</span><div style="font-size:13.5px">${p.missione}</div></div>`:""}
     ${persHtml}`;
 }
 let psSelez=0;
@@ -1327,7 +1327,7 @@ function rSetup(){
       <b>ispirata alla scopa</b> che li vede in competizione su due fronti: è il voler <b>vincere ogni scena</b> a
       generare la tensione narrativa, e l'esito resta in bilico fino all'ultima carta. Un gioco insieme
       collaborativo e competitivo: questa apparente contraddizione è il cuore del gioco.<br><br>
-      Due protagonisti <b>incompatibili</b> sono costretti a collaborare per raggiungere un obiettivo
+      Due protagonisti <b>incompatibili</b> sono costretti a collaborare per compiere una missione
       prima che sia troppo tardi. Il mondo è contro di loro: <b>nemici organizzati</b> ♦ — ma anche
       <b>caos, sfortuna, incomprensioni</b> ♣.<br><br>
       Un giocatore guida i Protagonisti ♥♠, l'altro l'Opposizione ♦♣. La storia si sviluppa in
@@ -1464,7 +1464,7 @@ function rSetup(){
 
   else if(p===8) corpo=`
     <h2 class="ts">La difficoltà iniziale</h2>
-    <p class="sotto">Che cosa vi impedisce di raggiungere l'obiettivo subito? Rispondete tutti insieme, ma l'ultima parola spetta all'Opposizione. Non è una spinta: è il materiale della Scena 1.</p>
+    <p class="sotto">Che cosa vi impedisce di compiere subito la missione? Rispondete tutti insieme, ma l'ultima parola spetta all'Opposizione. Non è una spinta: è il materiale della Scena 1.</p>
     <div class="pannello">
       <span class="etichetta">La prima difficoltà — risposta condivisa</span>
       <textarea id="w-primadiff" rows="6" placeholder="Il primo ostacolo da superare…">${G.primaDiff||""}</textarea>
@@ -2892,10 +2892,10 @@ const REGOLE={
     <tr><td>♦</td><td>Attacco del nemico, imboscata, territorio avversario</td></tr>
     <tr><td>♣</td><td>Evento imprevisto, luogo instabile, caos immediato</td></tr></table>
     <h3>Come scrivere la posta</h3>
-    La posta è una <b>difficoltà concreta</b> da superare o un <b>obiettivo intermedio</b> da ottenere: procurarsi qualcosa, riuscire a entrare in un luogo, riuscire a uscirne. Va detto esplicitamente cosa succede <b>se la vincono i Protagonisti</b> (ottengono l'obiettivo e si avvicinano al traguardo) e cosa <b>se vince l'Opposizione</b> (la posta fallisce, la situazione si complica). La posta non è mai indispensabile: vincerla avvicina al traguardo, perderla complica, ma l'obiettivo finale resta raggiungibile fino all'ultima scena.<br>
+    La posta è una <b>difficoltà concreta</b> da superare o un <b>obiettivo intermedio</b> da ottenere: procurarsi qualcosa, riuscire a entrare in un luogo, riuscire a uscirne. Va detto esplicitamente cosa succede <b>se la vincono i Protagonisti</b> (ottengono l'obiettivo e si avvicinano al traguardo) e cosa <b>se vince l'Opposizione</b> (la posta fallisce, la situazione si complica). La posta non è mai indispensabile: vincerla avvicina al traguardo, perderla complica, ma la missione resta raggiungibile fino all'ultima scena.<br>
     <b>Il cosa, non il come:</b> la posta dice l'obiettivo concreto, mai il modo di ottenerlo (che emerge dalle giocate); lasciala abbastanza aperta. "Orientarsi nel deserto" sì; "orientarsi col taccuino" no, perché prenarra ciò che dovrebbe nascere dalla scena.<br>
     <b>Climax:</b> la posta cresce di scena in scena, sempre più drammatica, ardua o decisiva; non bruciare subito le poste più estreme (se già nella Scena 1 si rischia il carcere di massima sicurezza e vince l'Opposizione, la storia diventa un'evasione e perde di vista la missione). Scala indicativa (non vincolante): tempo nella Scena 1, una risorsa preziosa nella 2, motivazione/morale nella 3, la tenuta dell'alleanza nella 4, l'esito dell'intera avventura nella 5.<br>
-    <b>Fail forward:</b> anche persa, una buona posta lascia ai protagonisti esperienza, un'opportunità o una risorsa per proseguire verso l'obiettivo; complica, ma non li blocca in un vicolo cieco frustrante.<br>
+    <b>Fail forward:</b> anche persa, una buona posta lascia ai protagonisti esperienza, un'opportunità o una risorsa per proseguire verso la missione; complica, ma non li blocca in un vicolo cieco frustrante.<br>
     <b>Continuità:</b> ogni scena parte dall'esito della posta precedente. Se i protagonisti non sono usciti dalla cella, la scena dopo non può aprirsi con loro già in fuga per strada.
     <div class="es">"Tirare fuori Skunk prima del trasferimento. Se vincono i Protagonisti: escono con Skunk e una pista verso Vargas. Se vince l'Opposizione: restano a mani vuote, con mezzo distretto alle calcagna."</div>
     <h3>Struttura del round</h3>
@@ -2918,7 +2918,7 @@ const REGOLE={
   lettura:{titolo:"Fine scena e letture",html:`
     <h3>Vittoria della scena</h3>
     Quando entrambe le mani sono esaurite si sommano i valori delle carte nel <b>piatto</b>: ♥+♠ = Protagonisti, ♦+♣ = Opposizione. Il totale più alto vince la posta.<br>
-    <b>Se vincono i Protagonisti:</b> posta raggiunta, si avvicinano all'obiettivo finale. <b>Se vince l'Opposizione:</b> la posta fallisce, la situazione peggiora.<br>
+    <b>Se vincono i Protagonisti:</b> posta raggiunta, si avvicinano alla missione. <b>Se vince l'Opposizione:</b> la posta fallisce, la situazione peggiora.<br>
     <b>Scopa a piatto vuoto:</b> se la scena finisce con il piatto vuoto perché l'ultima giocata è stata una scopa, la posta la vince chi ha fatto la scopa.
     <h3>Chi narra l'esito</h3>
     Chi ha <b>vinto l'asta</b> ha inquadrato la scena (titolo e posta); a raccontare <b>com'è finita</b> è invece chi ha <b>perso la posta</b> (la scena), così da poterne calcare le ombre e i costi. In caso di <b>parità</b> dei totali narra chi ha <b>vinto l'asta</b> (per non far narrare due volte di fila chi ha appena giocato l'ultima carta del round). Vale anche per la resa (§18.1): chi cede la posta ne narra l'esito.
@@ -2966,7 +2966,7 @@ const REGOLE={
     <h3>Spinte e tratti (9.5–9.6)</h3>
     I due <b>"cosa si detestano"</b> sono <b>tratti dei protagonisti</b>: solo narrativi, senza effetto in gioco. Le <b>spinte</b> sono <b>otto, due per seme</b>: motivazione e asso di ciascun protagonista (♠ e ♥) più, dall'Opposizione, mezzi e movente (♦) e catastrofi e crepe (♣). Le risposte delle spinte <b>diventano risorse di gioco</b>.
     <h3>La prima difficoltà (9.7)</h3>
-    Dopo le domande, tutti rispondono insieme: <b>che cosa vi impedisce di raggiungere l'obiettivo subito?</b> La risposta non è spuntabile: si decide insieme ma <b>l'ultima parola spetta all'Opposizione</b>, e inquadra la <b>Scena 1</b>.
+    Dopo le domande, tutti rispondono insieme: <b>che cosa vi impedisce di compiere subito la missione?</b> La risposta non è spuntabile: si decide insieme ma <b>l'ultima parola spetta all'Opposizione</b>, e inquadra la <b>Scena 1</b>.
     <h3>Uso meccanico (9.8)</h3>
     Dopo una presa normale si può <b>spuntare la risposta corrispondente al seme della carta di presa</b>: la presa diventa una <b>scopa vera</b> e le carte rimaste nel piatto finiscono tra le prese di chi spunta. Condizioni:
     <ul><li>la risposta deve entrare esplicitamente nella narrazione (scena, rivelazione o flashback)</li>
@@ -2988,7 +2988,7 @@ const REGOLE={
     <h3>Colpi di scena finali (24)</h3>
     Dopo che ciascuno ha giocato le 4 carte si fa il <b>primo conteggio</b>, come in ogni scena: si determina e si <b>narra l'esito apparente</b> (lo racconta chi ha perso la posta). Sembra finita, ma poi si gioca a <b>turni alterni</b> con le carte della <b>riserva</b> (inizia chi sta perdendo): finché hai riserva <b>devi</b> giocare una carta, che <b>entra nel piatto</b> e può <b>eliminare</b> una carta di <b>seme avversario</b> di valore <b>pari o inferiore</b> (va negli scarti; la tua resta sul tavolo). Si rivelano una alla volta. I colpi finiscono quando <b>entrambe le riserve sono esaurite</b>: solo allora il conteggio definitivo dice se la missione è riuscita o fallita.
     <h3>Il finale: i due piani (25–26)</h3>
-    Il finale si legge su due piani. <b>Primo piano, la missione</b> (♥+♠ vs ♦+♣): chi vince il piatto ha raggiunto l'obiettivo o ha fallito; in parità, tie-break sulle scope non spese (alleati sacrificati inclusi) poi sulle prese. <b>Secondo piano, il prestigio</b>: i punti accumulati e non spesi (prese 1, scope 3, lo speso vale 0) dicono quanto te la sei cavata con le tue forze. Spendere punti in figure = aver chiamato aiuto e diviso il merito; tenerli = essersi fatti un nome. Vale per entrambi i lati: per i protagonisti è una promessa, per l'Opposizione una minaccia (l'idra).
+    Il finale si legge su due piani. <b>Primo piano, la missione</b> (♥+♠ vs ♦+♣): chi vince il piatto ha compiuto la missione o ha fallito; in parità, tie-break sulle scope non spese (alleati sacrificati inclusi) poi sulle prese. <b>Secondo piano, il prestigio</b>: i punti accumulati e non spesi (prese 1, scope 3, lo speso vale 0) dicono quanto te la sei cavata con le tue forze. Spendere punti in figure = aver chiamato aiuto e diviso il merito; tenerli = essersi fatti un nome. Vale per entrambi i lati: per i protagonisti è una promessa, per l'Opposizione una minaccia (l'idra).
     <table><tr><th>Missione</th><th>Punti</th><th>Esito</th></tr>
     <tr><td>Vinta</td><td>Vinti</td><td><b>Vittoria piena</b> — ce l'avete fatta, e da soli</td></tr>
     <tr><td>Vinta</td><td>Persi</td><td><b>Per il rotto della cuffia</b> — vinto, ma grazie agli aiuti e a caro prezzo</td></tr>
@@ -3111,7 +3111,7 @@ function apriSchede(tab){
     }},
     M:{label:"Missione", html:()=>{
       const corpo=(G.premessa?`<div class="pannello"><span class="etichetta">La premessa</span><div style="font-size:13.5px;line-height:1.6">${G.premessa}</div></div>`:"")
-        +(G.missione?`<div class="pannello"><span class="etichetta">L'obiettivo del viaggio — la posta</span><div style="font-size:14.5px">${G.missione}</div></div>`:"")
+        +(G.missione?`<div class="pannello"><span class="etichetta">La missione — la posta</span><div style="font-size:14.5px">${G.missione}</div></div>`:"")
         +(G.primaDiff?`<div class="pannello"><span class="etichetta">Prima difficoltà — Scena 1</span><div style="font-size:13.5px">${G.primaDiff}</div></div>`:"");
       return cartello(`${nA} & ${nB}`,`${G.tono||"tono libero"} · cinque scene`)+(corpo||vuoto);
     }},
@@ -3195,7 +3195,7 @@ const REGOLE_IA=`Sei l'OPPOSIZIONE in "Frenemies on the Road", gioco narrativo c
 
 STRUTTURA: 5 scene (Innesco, Adattamento, Frattura, Crisi, Risoluzione). Ogni scena: asta, apertura, round di giocate, fine scena; tra le scene c'è il mercato. La partita si decide sul piatto della quinta scena.
 
-ASTA E APERTURA: a inizio scena ogni lato pesca 4 carte e ne gioca 1 coperta per l'iniziativa; la più alta vince (il Jolly non partecipa; in parità vince chi NON ha avuto l'iniziativa nella scena precedente, alla scena 1 l'Opposizione). La carta d'asta del vincitore torna come sua ULTIMA giocata del round; quella del perdente torna in mano. Chi vince apre la scena: sceglie un titolo e dichiara la POSTA. Poi è l'ALTRO lato, quello SENZA iniziativa, a fare il framing iniziale: mette in scena la situazione e l'atmosfera dell'apertura, suggerita dal seme della carta con cui l'avversario ha vinto l'asta (♠ frenetico e sotto pressione, ♥ tregua o intimità, ♦ attacco o imboscata, ♣ imprevisto e instabilità). Quindi se vinci tu l'asta dichiari titolo e posta e poi i Protagonisti aprono la scena; se vincono loro, dichiarano titolo e posta e tocca a TE fare il framing iniziale. La posta è una difficoltà concreta da superare o un obiettivo intermedio da ottenere (procurarsi qualcosa, riuscire a entrare in un luogo, riuscire a uscirne), non un esito vago. Formulala esplicitando ENTRAMBI i rami: cosa ottengono i Protagonisti se la vincono (si avvicinano all'obiettivo finale), cosa va storto se la vinci tu (sono ostacolati). La posta non è mai indispensabile: vincerla avvicina al traguardo, perderla complica, ma l'obiettivo finale resta raggiungibile fino all'ultima scena. IL COSA, NON IL COME: la posta dice l'obiettivo concreto, mai il modo di ottenerlo (che emerge dalle giocate), e va lasciata abbastanza aperta ("orientarsi nel deserto" sì, "orientarsi col taccuino" no, perché prenarra ciò che deve nascere dalla scena). CLIMAX: fai crescere la posta di scena in scena (sempre più drammatica, ardua o decisiva); non bruciare subito le poste estreme (se già alla scena 1 si rischia il carcere di massima sicurezza e vinci tu, la storia diventa un'evasione e perde la missione). Scala indicativa (non vincolante): scena 1 il tempo, scena 2 una risorsa preziosa, scena 3 la motivazione/il morale, scena 4 la tenuta dell'alleanza tra i protagonisti, scena 5 l'esito dell'intera avventura. FAIL FORWARD: anche quando i protagonisti perdono la posta, lasciagli qualcosa per andare avanti (esperienza, un'opportunità, una risorsa verso l'obiettivo); complica, non bloccarli in un vicolo cieco. CONTINUITÀ: aggancia sempre l'apertura all'esito della scena precedente; lo stato dei protagonisti è conseguenza di com'è finita la posta prima (se non sono usciti dalla cella non puoi aprirli già in fuga per strada).
+ASTA E APERTURA: a inizio scena ogni lato pesca 4 carte e ne gioca 1 coperta per l'iniziativa; la più alta vince (il Jolly non partecipa; in parità vince chi NON ha avuto l'iniziativa nella scena precedente, alla scena 1 l'Opposizione). La carta d'asta del vincitore torna come sua ULTIMA giocata del round; quella del perdente torna in mano. Chi vince apre la scena: sceglie un titolo e dichiara la POSTA. Poi è l'ALTRO lato, quello SENZA iniziativa, a fare il framing iniziale: mette in scena la situazione e l'atmosfera dell'apertura, suggerita dal seme della carta con cui l'avversario ha vinto l'asta (♠ frenetico e sotto pressione, ♥ tregua o intimità, ♦ attacco o imboscata, ♣ imprevisto e instabilità). Quindi se vinci tu l'asta dichiari titolo e posta e poi i Protagonisti aprono la scena; se vincono loro, dichiarano titolo e posta e tocca a TE fare il framing iniziale. La posta è una difficoltà concreta da superare o un obiettivo intermedio da ottenere (procurarsi qualcosa, riuscire a entrare in un luogo, riuscire a uscirne), non un esito vago. Formulala esplicitando ENTRAMBI i rami: cosa ottengono i Protagonisti se la vincono (si avvicinano alla missione), cosa va storto se la vinci tu (sono ostacolati). La posta non è mai indispensabile: vincerla avvicina al traguardo, perderla complica, ma la missione resta raggiungibile fino all'ultima scena. IL COSA, NON IL COME: la posta dice l'obiettivo concreto, mai il modo di ottenerlo (che emerge dalle giocate), e va lasciata abbastanza aperta ("orientarsi nel deserto" sì, "orientarsi col taccuino" no, perché prenarra ciò che deve nascere dalla scena). CLIMAX: fai crescere la posta di scena in scena (sempre più drammatica, ardua o decisiva); non bruciare subito le poste estreme (se già alla scena 1 si rischia il carcere di massima sicurezza e vinci tu, la storia diventa un'evasione e perde la missione). Scala indicativa (non vincolante): scena 1 il tempo, scena 2 una risorsa preziosa, scena 3 la motivazione/il morale, scena 4 la tenuta dell'alleanza tra i protagonisti, scena 5 l'esito dell'intera avventura. FAIL FORWARD: anche quando i protagonisti perdono la posta, lasciagli qualcosa per andare avanti (esperienza, un'opportunità, una risorsa verso la missione); complica, non bloccarli in un vicolo cieco. CONTINUITÀ: aggancia sempre l'apertura all'esito della scena precedente; lo stato dei protagonisti è conseguenza di com'è finita la posta prima (se non sono usciti dalla cella non puoi aprirli già in fuga per strada).
 
 ROUND: ci si alterna a partire dal vincitore dell'iniziativa, 4 giocate a testa. Nel tuo turno puoi:
 - Giocare una carta nel piatto = INTRODURRE una tua risorsa: un ostacolo, una minaccia o un imprevisto (♦ nemici con intenzione, ♣ caos e sfortuna) con cui i protagonisti dovranno fare i conti. Non risolve nulla, predispone. La tua narrazione AGGIUNGE un tuo elemento, NON annulla quello dei protagonisti: finché una loro carta è nel piatto, ciò che rappresenta resta in piedi. Un elemento avversario lo neutralizzi (lo togli, lo ribalti, ne mostri l'inutilità) solo con una PRESA o una SCOPA.
