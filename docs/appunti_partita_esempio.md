@@ -11,14 +11,42 @@ carte). La dettatura di Saverio va ancorata a quelle carte.
 
 ---
 
-## STATO CORRENTE — RIPRENDERE DA QUI (fine sessione, giugno 2026)
+## ⚠️ RIPRENDERE DA QUI (giugno 2026) — REGOLE v1.15: l'esempio va RIGENERATO da zero
+
+Le regole sono cambiate (v1.15, vedi memoria `regole-v115-overhaul` e registro KB v1.15): **scopa=3, presa=1 sempre, Fante nel mazzo con nuovo effetto (sbircia 2/scambia 1), ordine mercato→mescola(se hai comprato)→pesca**. Tutto il vecchio esempio sotto (3 seed 23/43/5, Scena 4 scriptata, scopa=4) è **NON PIÙ VALIDO**: `test/partita_esempio.js` e `test/transcript_seed_23_43_5_v2.txt` vanno rifatti. Motore/REGOLE/KB/manuale/test sono già allineati e verdi; resta da **scegliere un nuovo seed-vetrina, rigenerare il transcript, e riscrivere §34 + Appendice B** (la fiction la detta Saverio).
+
+### Come GENERARE e cercare i seed (driver `test/partita_smart.js`, già su regole v1.15)
+- Partita singola: `SEED=N TRANSCRIPT=1 node test/partita_smart.js` → scrive `transcript_smart_seed_N.txt` (+ riga riassunto).
+- Ricerca a batch con filtro: `ARCO=POPOP BATCH=300 node --max-old-space-size=8192 test/partita_smart.js 2>/dev/null | grep -vE "_location|jsdom|at "`.
+  - `BATCH=N` gioca i seed 1..N (entrambi i lati col gioco ottimale euristico) e stampa: medie (punti netti/spesi/lordi, scope, figure comprate per lato, % vittoria Prot, % "per il rotto della cuffia"), poi i seed che soddisfano TUTTI i criteri, poi i parziali 4/5.
+  - `ARCO=POPOP` (o altro, es. PPOOP) evidenzia i seed con quell'esatta sequenza di vincitori di scena.
+  - Memoria tecnica: JSDOM perde memoria → c'è `window.close()`, ma usa `--max-old-space-size=8192` e BATCH ≤ ~300; l'errore finale `_location` è solo il teardown, innocuo.
+  - **Per il nuovo esempio canonico usa il MERCATO DI DEFAULT** (smart: prima il Fante poi la figura più potente), NON `MERCATO=canonico` (serviva solo a confrontare a parità di pescate il vecchio esempio). `SCOPA`/`FIGPRESA` lasciali ai default (3/1).
+
+### Criteri di SELEZIONE del seed-vetrina (i 5 controllati dal batch + le preferenze di Saverio)
+1. **Poste 3/2** (split bilanciato, non cinquina): `nP/nO` = 3/2 o 2/3.
+2. **Vittoria finale dei Protagonisti "per il rotto della cuffia"**: outcome contiene "ROTTO DELLA CUFFIA" e `finalP>finalO`.
+3. **Ribaltone DOPO i colpi di scena**: al primo conteggio i Protagonisti NON sono avanti (`primoP<=primoO`) e dopo i colpi sì (`finalP>finalO`). La vittoria non deve essere già acquisita al primo conteggio.
+4. **Tutte e 3 le figure comprate** (Fante, Regina, Re presenti tra gli acquisti dei due lati).
+5. **Almeno una resa** (resa onorevole/ritirata di un lato con ultima carta ininfluente).
+Preferenze aggiuntive di Saverio (per scegliere tra i candidati): **arco P,O,P,O,P** (alternato) era il preferito; **scope da entrambi i lati** (showcase più ricco); **una sola resa** (più pulita di tre); le **figure giocate in azione** (non solo comprate) sono un plus; col nuovo Fante che va in mazzo e viene comprato presto, controlla che venga **giocato** e che l'effetto si veda.
+
+### Dopo aver scelto il seed
+- Rifare il driver canonico (`partita_esempio.js`) per le regole v1.15: nuovo modale Fante (`#fanteSwap`/`#fanteNo`), etichette punteggio (presa 1 / scopa 3), via la Scena-4 scriptata e il meccanismo a 3 seed (col nuovo flusso e mescola-se-comprato si può usare un solo SEED, o una linea scriptata nuova). Rigenerare il transcript di riferimento.
+- Riscrivere §34 (KB, togliere la nota "stale") e Appendice B (manuale) con la fiction (Saverio detta, io anchoro alle carte del nuovo transcript). Formato Appendice B invariato (vedi sotto).
+- Rigenerare i PDF (`python3 docs/genera_pdf_manuale.py` e `docs/genera_pdf.py` per la KB) e il `.docx` (`docs/genera_docx_appendiceB.py`).
+- Restano in sospeso anche: sweep esempi inline Frank/Skunk → Vera/Otto; eventuale ritocco costi figure (3/5/8, per ora invariato).
+
+---
+
+## (STORICO, NON PIÙ VALIDO con v1.15) STATO CORRENTE precedente
 
 **Esempio canonico = TRE seed: `SEED=23 SEED2=43 SEED3=5`.** SEED → scene 1-2, SEED2 → scena 3, SEED3 → scene 4-5 (reseed a fine S2 con SEED2 e a fine S3 con SEED3). Reference: `test/transcript_seed_23_43_5_v2.txt`. Collaudo: `SEED=23 SEED2=43 SEED3=5 TRANSCRIPT=1 node test/partita_esempio.js` poi diff con la reference (deve essere identico). Il driver alza a 3 il tetto spinte (`spinteUsate<3`).
 
 **Cosa è GIÀ SCRITTO nel manuale (`docs/frenemies_manuale.md`, Appendice B):** pitch in breve, prima difficoltà, **Scena 1**, **Scena 2**, **Mercato 2/3** (Fante=Kalim), **Scena 3** (con esito finale aggiornato), **Mercato 3/4** (Regina ♥ = Pablo Gutiérrez). Tutto rigenera il PDF con `python3 docs/genera_pdf_manuale.py`.
 
 **Cosa MANCA da scrivere (fiction), nell'ordine:**
-1. **Scena 4 — L'accampamento (Crisi)** — scheletro carte più sotto in questo file. Iniziativa ai Protagonisti (Paola inquadra); l'Opposizione vince con la **scopa della spinta ♣** (il deserto li travolge). Esito narrato da **Paola** (perde la posta). DA DETTARE/BOZZARE; aperto: se/come esce il segreto su Aldo (spinta ♣ Fiori #2 "Aldo è vivo, è un Vegliante" NON ancora usata in gioco).
+1. **Scena 4 — Nella città perduta (Crisi)** — scheletro carte più sotto in questo file. Iniziativa ai Protagonisti (Paola inquadra); l'Opposizione vince con la **scopa della spinta ♣** (il deserto li travolge). Esito narrato da **Paola** (perde la posta). DA DETTARE/BOZZARE; aperto: se/come esce il segreto su Aldo (spinta ♣ Fiori #2 "Aldo è vivo, è un Vegliante" NON ancora usata in gioco).
 2. **Mercato 4/5** — Omar compra il **Re ♦** (ancora da battezzare: "deus ex machina", in cripta si sacrifica per una scopa).
 3. **Scena 5 — La cripta del Sole (Risoluzione)** — scheletro più sotto. Re♦ scopa, Jolly (4 pt a Omar), colpi di scena (Pablo/Regina entra, elimina, è eliminato) → ribaltone piatto 12-0 → per il rotto della cuffia.
 
@@ -84,31 +112,33 @@ Punti: Paola fa 2 scope (8 punti) in questa scena; Omar 0. (Paola aveva 2 punti 
 
 **Mercato 3/4:** Paola compra la **Regina ♥** (5 punti). Omar non compra (risparmia per il Re).
 
-**Scena 4 — L'accampamento (Crisi).** Asta 3♠ vs 1♣ → iniziativa **Protagonisti** (Paola inquadra). Posta: raggiungere l'ingresso prima dell'alba (bene: scendono col buio; male: alla cripta li aspettano Loggia e Veglianti).
-1. Paola `4♥` giocata
-2. Omar `3♦` giocata
-3. Paola `8♥` giocata
+**Scena 4 — Nella città perduta (Crisi).** Asta 3♠ vs 1♣ → iniziativa **Protagonisti** (Paola inquadra). Posta: trovare l'accesso alla cripta (bene: sono a un passo dall'obiettivo; male: restano in balia dei nemici e delle insidie della città perduta). [Posta rivista da Saverio giu 2026: posta = "il cosa" trovare l'accesso, non "prima dell'alba"; e non indispensabile, vedi nota Indiana Jones.]
+
+**LINEA DI GIOCO SCRIPTATA A MANO (Saverio, giu 2026), NON più seed-derivata.** Saverio ha riscritto la successione delle giocate per fare della Crisi una **vittoria totale dell'Opposizione (3 scope)**. Implementata in `test/partita_esempio.js` con `S4_ORDINE`/`s4i` (override del solo turno in `G().scena===3`) e selezione della spinta di Aldo (`S4_SPINTA_TXT`). Verificato col solver minimax (`scratchpad/solver4.js`): con queste carte la scopa di Omar è inevitabile e 3 scope è la linea ottimale per l'Opposizione. Successione:
+1. Paola `7♠` giocata (apre d'attacco nel vuoto)
+2. Omar `7♣` prende 7♠ → **SCOPA**
+3. Paola `4♥` giocata
 4. Omar `1♣` giocata
-5. Paola `7♠` presa di 2 (cattura 4♥+3♦)
-6. Omar `7♣` giocata
-7. Paola `3♠` giocata
-8. Omar `8♣` prende l'8♥, poi **SPINTA ♣** «Tempeste in anticipo, pozzi secchi, piste cancellate, un camion che perde olio» → **SCOPA** (raccoglie 1♣ 7♣ 3♠).
-**Fine S4:** piatto 0‑0 → **vince OPPOSIZIONE** (scopa di chiusura di Omar), seme dominante parità, diario **pari**. Esito narrato da **Paola** (perde la posta → narra lei, regola v1.14): è la prima volta che i Protagonisti narrano la loro sconfitta.
+5. Paola `8♥` giocata
+6. Omar `8♣` prende l'8♥, poi **SPINTA ♣ del segreto** «Aldo Falco è vivo: è un Vegliante. Otto lo ha capito, e tace» → **SCOPA** (raccoglie 4♥ 1♣)
+7. Paola `3♠` giocata (carta d'asta, forzata ultima)
+8. Omar `3♦` prende 3♠ → **SCOPA**
+**Fine S4:** piatto 0‑0 → **vince OPPOSIZIONE**, 3 scope (12 punti), seme dominante parità, diario **pari**. Esito narrato da **Paola** (perde la posta → narra lei, regola v1.14): prima e unica volta che i Protagonisti narrano la loro sconfitta. NB: la spinta usata qui è **il segreto su Aldo** (non più il deserto): la verità taciuta da Otto che esplode e fa crollare il patto. Da qui Aldo è "in scena" come Vegliante: pesa sulla cripta (S5).
 
-**Mercato 4/5:** **Omar compra il Re ♦** (8 punti, ci arriva grazie alla scopa della spinta). Poi mano estesa.
+**Mercato 4/5:** **Omar compra il Re ♦** (8 punti; ci arriva largamente con le 3 scope). Poi mano estesa.
 
-**Scena 5 — La cripta del Sole (Risoluzione).** Asta 1♥ vs 4♦ → iniziativa **Opposizione** (Omar inquadra). Posta: l'eclissi (bene: salvano il Sole; male: esce nella valigetta sbagliata). Piatto di partenza vuoto.
-1. Omar **Re ♦** → **SCOPA** (su piatto vuoto si sacrifica, gesto eroico; effetto Re: nessuno scambio)
-2. Paola `1♥` giocata
+**Scena 5 — La cripta del Sole (Risoluzione).** Asta 6♥ vs R♦ → iniziativa **Opposizione** (Omar inquadra). Posta: l'eclissi (bene: salvano il Sole; male: esce nella valigetta sbagliata). Piatto di partenza vuoto. [SCENA 5 CAMBIATA: lo scripting di S4 ha spostato il flusso RNG, quindi la S5 è una nuova partita rispetto al vecchio scheletro. Le carte qui sotto sono quelle reali del nuovo transcript.]
+1. Omar `4♦` giocata
+2. Paola **SCOPA col Jolly come 4** → piatto ripulito, ma i 4 punti vanno a **Omar** (mossa sleale)
 3. Omar `4♣` giocata
-4. Paola **Jolly come 5** → **SCOPA**, ma i 4 punti vanno a Omar (mossa sleale)
-5. Omar `5♣` giocata
+4. Paola `1♥` giocata
+5. Omar `5♣` prende 1♥+4♣ → **SCOPA**
 6. Paola `2♥` giocata
-7. Omar `4♦` giocata
-8. Paola `6♥` presa di 2 (cattura 2♥+4♦); resta nel piatto il 5♣
-**Primo conteggio (apparente):** piatto = 5♣ (Opposizione avanti); punti 8‑2 per Omar → sembra disfatta.
-**Colpi di scena:** Paola **Regina ♥** elimina 5♣ → Omar **9♣** elimina la Regina → Paola **2♠** → Paola **10♠** elimina 9♣.
-**Conteggio definitivo:** piatto 2♠ 10♠ → Protagonisti **12‑0**; punti Prot 2 (2 prese) vs Opp 8 (2 scope: R♦ + Jolly) → **PER IL ROTTO DELLA CUFFIA**. Diario finale: su, pari, pari, pari, giù. Esito finale narrato da **Omar** (i Protagonisti vincono il piatto → l'Opposizione lo narra).
+7. Omar **Re ♦** prende 2♥ → **SCOPA** (giocato ULTIMO, non più per primo)
+8. Paola `6♥` giocata (resta nel piatto)
+**Primo conteggio (apparente):** piatto = 6♥. Punti: Omar straordinariamente avanti (5 scope), Paola 0 → sembra disfatta totale.
+**Colpi di scena:** Omar **9♣** elimina 6♥ → Paola **Regina ♥** (Pablo) elimina 9♣ → Paola **2♠** → Paola **10♠**.
+**Conteggio definitivo:** piatto D♥ 2♠ 10♠ → Protagonisti **21‑0** (♥+♠ 21 vs ♦+♣ 0); punti Prot 0 vs **Opp 20 (5 scope: 8♣, 3♦, Jolly, 5♣, R♦)** → **PER IL ROTTO DELLA CUFFIA**. Diario finale: su, pari, pari, pari, giù. Esito finale narrato da **Omar** (i Protagonisti vincono il piatto → l'Opposizione lo narra). **Arco nuovo: l'Opposizione domina TUTTO ai punti (20‑0) e schiaccia la Crisi col segreto su Aldo, ma i Protagonisti rubano l'artefatto nei colpi di scena.**
 
 **PNG da battezzare:** ~~Regina ♥~~ **FATTA** (vedi sotto) e Re ♦ (figura dell'Opposizione comprata da Omar dopo S4, "deus ex machina"; in cripta si sacrifica per una scopa) — ancora da battezzare.
 

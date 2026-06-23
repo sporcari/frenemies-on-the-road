@@ -7,25 +7,23 @@
 
 ## Indice
 
-**Capitolo 1. Benvenuto a bordo.** Di cosa parla il gioco, da dove nasce, che cosa proverai mentre giochi.
+**Capitolo 1. Benvenuto a bordo: una panoramica generale.** Di cosa parla il gioco, la fiction di riferimento, i materiali e i due mazzi, le cinque scene, come si gioca e come finisce.
 
-**Capitolo 2. Quello che ti serve.** I materiali, i due mazzi, come si vince, la forma della partita.
+**Capitolo 2. Prima di partire: il pitch.** Come si costruisce la storia che giocherete, prima di toccare le carte.
 
-**Capitolo 3. Prima di partire: il pitch.** Come si costruisce la storia che giocherete, prima di toccare le carte.
+**Capitolo 3. I quattro semi.** Che cosa significa, in scena, ognuno dei quattro semi.
 
-**Capitolo 4. I quattro semi.** Che cosa significa, in scena, ognuno dei quattro semi.
+**Capitolo 4. Come si gioca una scena.** Il cuore del gioco: l'asta, l'apertura, le giocate, le prese, le scope, la chiusura.
 
-**Capitolo 5. Come si gioca una scena.** Il cuore del gioco: l'asta, l'apertura, le giocate, le prese, le scope, la chiusura.
+**Capitolo 5. Tra una scena e l'altra: il mercato.** Come si spendono i punti per comprare le figure, e che cosa fanno.
 
-**Capitolo 6. Tra una scena e l'altra: il mercato.** Come si spendono i punti per comprare le figure, e che cosa fanno.
+**Capitolo 6. Il Jolly.** La scorciatoia che funziona sempre, e si paga sempre.
 
-**Capitolo 7. Il Jolly.** La scorciatoia che funziona sempre, e si paga sempre.
+**Capitolo 7. L'ultima scena.** La mano estesa, i colpi di scena, il conteggio definitivo.
 
-**Capitolo 8. L'ultima scena.** La mano estesa, i colpi di scena, il conteggio definitivo.
+**Capitolo 8. Il finale.** I due piani (missione e prestigio), i quattro esiti, le domande di fine partita e l'epilogo a vignette.
 
-**Capitolo 9. Il finale.** I quattro esiti, e come leggere nel piatto la storia che avete raccontato.
-
-**Capitolo 10. Come giocare bene.** Strategie e il principio che tiene insieme tutto.
+**Capitolo 9. Come giocare bene.** Strategie e il principio che tiene insieme tutto.
 
 **Appendice A. Lo scenario demo: Il sole di mezzanotte.** Un pitch completo, pronto da giocare.
 
@@ -39,21 +37,15 @@
 
 ---
 
-# Capitolo 1. Benvenuto a bordo
+# Capitolo 1. Benvenuto a bordo: una panoramica generale
 
 ## 1.1 Che cos'è Frenemies on the Road
 
-Frenemies on the Road è un gioco narrativo competitivo che mette al centro una coppia di protagonisti incompatibili, costretti a collaborare per raggiungere un obiettivo prima che sia troppo tardi.
+Frenemies on the Road è uno story-game in cui i giocatori creano insieme una storia, giocando una partita a carte ispirata alla scopa che li vede in competizione su due fronti: Protagonisti e Opposizione. Il voler vincere ogni scena genera la tensione narrativa, creando di continuo nuove difficoltà tra i Protagonisti e la loro missione, il cui esito resta in bilico fino all'ultima carta. È un gioco insieme collaborativo e competitivo, e questa apparente contraddizione è proprio il cuore di Frenemies on the Road.
 
-È un gioco di viaggi senza ritorno, missioni disperate, piani improvvisati e relazioni che si spezzano o si trasformano lungo la strada.
+Si gioca in due, oppure in tre o in quattro: la partita resta sempre un lato contro l'altro, i Protagonisti contro l'Opposizione. Per imparare conviene partire in due, ed è così che questo manuale ti insegna a giocare. Le varianti per tre e quattro persone sono spiegate nell'Appendice C.
 
-La cosa più importante da capire subito è questa: il sistema non scrive la storia per voi. La storia emerge dalle carte che giocate, dalle prese che fate, dalle scope che strappate, e dal modo in cui le raccontate. Non sceglierete in anticipo come va a finire. Lo scoprirete giocando.
-
-> Non giochi per raccontare una storia. Giochi, e la storia emerge da quello che fai.
-
-Si gioca in due, oppure in tre o in quattro: la partita resta sempre un lato contro l'altro, i Protagonisti contro l'Opposizione. Per imparare conviene partire in due, ed è così che questo manuale ti insegna a giocare. Le varianti per tre e quattro persone, che cambiano soltanto chi tiene le carte, sono spiegate nell'Appendice C.
-
-## 1.2 Da dove nasce
+## 1.2 La fiction di riferimento
 
 Il gioco vive nello stesso territorio di certi film: coppie mal assortite, gettate insieme dentro una pressione che cresce a ogni chilometro.
 
@@ -67,12 +59,13 @@ Il gioco vive nello stesso territorio di certi film: coppie mal assortite, getta
 | Le follie dell'imperatore | Ribaltamenti e dinamiche relazionali |
 | Il viaggio di Arlo | Crescita attraverso il percorso |
 | Toy Story | Rivalità e gelosia che diventano amicizia |
+| Men in Black | Il novellino e il veterano |
 
 Tutte queste storie hanno due cose in comune. La prima: il viaggio conta quanto la destinazione. La seconda: il vero cuore non è la missione, ma il rapporto tra i due che la affrontano insieme.
 
-A ben vedere, del resto, il conflitto tra due personaggi che non si sopportano e finiscono per contare l'uno sull'altro è il sale di quasi tutte le storie: Gimli e Legolas che si sfidano a chi ne abbatte di più, Han Solo e Leia che litigano fino al bacio, perfino R2-D2 e C-3PO che bisticciano in ogni scena. Gli esempi sono infiniti. Frenemies on the Road prende proprio quell'attrito e lo mette al centro, trasformandolo nel motore del gioco.
+A ben vedere, del resto, il conflitto tra due personaggi che non si sopportano e finiscono per contare l'uno sull'altro è il sale di quasi tutte le storie: Gimli e Legolas, che dopo essersi punzecchiati per tutto il viaggio scoprono, combattendo schiena contro schiena, di essere ormai amici, Han Solo e Leia che litigano fino al bacio, Woody e Buzz che da rivali gelosi diventano inseparabili. Gli esempi sono infiniti. Frenemies on the Road prende proprio quell'attrito e lo mette al centro, trasformandolo nel motore del gioco.
 
-## 1.3 La fiction di riferimento
+## 1.3 I temi che emergono
 
 La storia che nasce al tavolo si regge su tre pilastri:
 
@@ -80,61 +73,11 @@ La storia che nasce al tavolo si regge su tre pilastri:
 - un obiettivo urgente e definitivo;
 - un mondo che reagisce contro di loro.
 
-L'opposizione non è soltanto "il cattivo". Sono nemici organizzati, forze dell'ordine, criminali, istituzioni, ma anche caos, sfortuna, incomprensioni, errori. Il mondo è sempre contro i protagonisti, ma non sempre per gli stessi motivi.
+Quando si parla di Opposizione non si intendono soltanto "i cattivi", ovvero le fazioni di nemici che deliberatamente ostacolano o perseguitano i protagonisti, ma anche il caos, la sfortuna e tutti i conflitti che emergeranno tra i protagonisti stessi.
 
-## 1.4 I temi che emergono
+Mentre giocherete, affioreranno temi come fiducia contro diffidenza, controllo contro caos, morale contro necessità, collaborazione contro individualismo, sacrificio contro sopravvivenza.
 
-Mentre giocate, senza che nessuno li abbia decisi a tavolino, affiorano temi come fiducia contro diffidenza, controllo contro caos, morale contro necessità, collaborazione contro individualismo, sacrificio contro sopravvivenza.
-
-Uno strumento in particolare, il Jolly, porta in scena il tema del compromesso morale: il vantaggio ottenuto nel modo sbagliato ha un prezzo immediato, perché il merito, e i punti, finiscono all'avversario. La domanda che il gioco continua a farti, in fondo, è una sola: che cosa sei disposto a fare pur di ottenere ciò che vuoi?
-
-## 1.5 Che cosa proverai giocando
-
-L'esperienza che Frenemies on the Road cerca di darti poggia su quattro pilastri.
-
-**Tensione strategica.** A ogni turno decidi se controllare la situazione o spingere forte per vincere la scena. Ogni carta giocata ha un peso reale sull'esito finale.
-
-**Narrazione emergente.** La storia si costruisce da sola attraverso le carte giocate, le prese (i successi parziali) e le scope (i momenti decisivi). Il sistema guida la narrazione, non la impone.
-
-**Conflitto relazionale.** Il rapporto tra i protagonisti non è mai stabile: cambia scena dopo scena, e alla fine peserà quanto l'esito della missione.
-
-**Escalation cinematografica.** Le cinque scene seguono una curva precisa, la stessa di tanti film: collaborazione forzata, equilibrio fragile, dubbio, crollo, scelta decisiva. Il finale non è soltanto "vinto" o "perso", ma anche come hai vinto, quanto hai perso, e che cosa è cambiato tra i due protagonisti.
-
----
-
-# Capitolo 2. Quello che ti serve
-
-## 2.1 I materiali
-
-Ti serve un normale mazzo di carte francesi e qualcosa per scrivere: durante la preparazione annoterete alcune risposte che diventeranno risorse vere e proprie in gioco. Niente altro.
-
-I quattro semi si dividono in due schieramenti.
-
-- **Lato Protagonisti:** Cuori e Picche. Cuori è il protagonista empatico e relazionale; Picche è il protagonista duro e impulsivo.
-- **Lato Opposizione:** Fiori e Quadri. Quadri sono i nemici attivi, la fazione ostile; Fiori sono il caos, la sfortuna, le complicazioni.
-
-Da qui nascono i due mazzi del gioco:
-
-| Mazzo | Contenuto |
-|---|---|
-| Mazzo Protagonisti | Cuori + Picche |
-| Mazzo Opposizione | Fiori + Quadri |
-
-Prima di cominciare, prepara i mazzi così:
-
-- togli da entrambi i mazzi tutte le figure (Fante, Regina, Re): entreranno in gioco più tardi, comprandole al mercato;
-- metti da parte il Jolly: entra in gioco solo dopo la seconda scena, e solo dalla parte dei Protagonisti;
-- restano quindi soltanto le carte numeriche, dall'Asso al 10, di ciascun seme: venti carte per lato.
-
-Venti carte bastano esattamente per cinque scene, perché ogni lato ne pesca quattro a scena. Tienilo a mente, perché è una regola con un peso strategico: quando il mazzo finisce, la partita finisce. Non si rimescolano mai gli scarti dentro il mazzo. Gli unici modi per aggiungere carte al mazzo sono le figure comprate al mercato e, una sola volta per lato, la carta della Ritirata strategica (lo vedremo nel Capitolo 5); ai Protagonisti, in più, dopo la seconda scena si aggiunge il Jolly.
-
-## 2.2 Come si vince
-
-La partita è una sfida: il lato Protagonisti contro il lato Opposizione. Si gioca su cinque scene, e ogni scena ha una sua posta, cioè una difficoltà concreta da superare. Vincere o perdere una scena conta, ma non chiude mai la partita in anticipo: l'obiettivo finale resta raggiungibile fino all'ultima carta.
-
-Tutto si decide nell'ultima scena, dove al conteggio del tavolo si aggiungono i colpi di scena. Alla fine si incrociano due cose: chi ha vinto il piatto (l'esito esterno della missione) e chi ha vinto ai punti (le prese e le scope accumulate). Da questo incrocio nasce uno dei quattro finali possibili, dalla vittoria totale alla disfatta. Ne parliamo per esteso nel Capitolo 9.
-
-## 2.3 La forma della partita: cinque scene
+## 1.4 La forma della partita: cinque scene
 
 La partita dura cinque scene, e ogni scena è un round. Le cinque scene non sono intercambiabili: formano una curva narrativa precisa.
 
@@ -154,23 +97,84 @@ Qualunque cosa accada in gioco, ogni scena dovrebbe rispettare tre regole di buo
 - collocarsi in un momento successivo della storia;
 - avere una posta chiara, un obiettivo intermedio concreto che, vinto, avvicina i protagonisti all'obiettivo finale e, perso, li ostacola senza precludere quell'obiettivo.
 
-Come si formula bene una posta lo vedremo nel Capitolo 5. Per ora basti sapere che la posta è il filo che tiene insieme meccanica e racconto.
+Come si formula bene una posta lo vedremo nel Capitolo 4. Per ora basti sapere che la posta è ciò per cui in ogni scena i giocatori e i personaggi si daranno battaglia: un ostacolo da superare, un vantaggio da ottenere. Oltre alla posta, ogni scena ha anche un titolo, scelto da chi la apre (vedi Capitolo 4). Ogni scena si può vedere come il capitolo di un romanzo o l'episodio di una serie TV.
 
-Oltre alla posta, ogni scena ha anche un titolo, scelto da chi la apre (vedi Capitolo 5): non il nome della sua funzione (Innesco, Frattura) ma un titolo vero e proprio, che dà a quel tratto di storia un'identità tutta sua, come il capitolo di un libro o l'episodio di una miniserie. Nello scenario demo, per esempio, le cinque scene si chiamano La cella, La statale, Il deserto, L'ultima notte, La pista.
+## 1.5 I materiali
+
+Ti serve un normale mazzo di carte francesi, qualcosa per scrivere, le schede del gioco e qualche altro foglietto (index card o post-it).
+
+Il mazzo si divide tra i giocatori nel seguente modo:
+
+- **Lato Protagonisti:** Cuori e Picche. Cuori è il protagonista empatico e relazionale; Picche è il protagonista duro e impulsivo.
+- **Lato Opposizione:** Fiori e Quadri. Quadri sono i nemici attivi, la fazione ostile; Fiori sono il caos, la sfortuna, le complicazioni.
+
+Da qui nascono i due mazzi del gioco:
+
+| Mazzo | Contenuto |
+|---|---|
+| Mazzo Protagonisti | Cuori + Picche |
+| Mazzo Opposizione | Fiori + Quadri |
+
+Prima di cominciare, prepara i mazzi così:
+
+- togli da entrambi i mazzi tutte le figure (Fante, Regina, Re): entreranno in gioco più tardi, comprandole al mercato;
+- togli entrambi i Jolly dal mazzo: uno rientrerà dopo la seconda scena dalla parte dei Protagonisti, l'altro resta fuori dalla partita;
+- restano quindi soltanto le carte numeriche, dall'Asso al 10, di ciascun seme: venti carte per lato.
+
+Venti carte bastano esattamente per cinque scene, perché ogni lato ne pesca quattro a scena. Tienilo a mente, perché è una regola con un peso strategico: quando il mazzo finisce, la partita finisce. Non si rimescolano mai gli scarti dentro il mazzo. Gli unici modi per aggiungere carte al mazzo sono le figure comprate al mercato e, una sola volta per lato, la carta della Ritirata strategica (lo vedremo nel Capitolo 4); ai Protagonisti, in più, dopo la seconda scena si aggiunge il Jolly.
+
+## 1.6 Come si gioca
+
+Durante ogni scena i giocatori si sfidano a una sorta di scopa. A turno giocano una carta da una mano di 4 carte e, dopo averla giocata, narrano l'effetto di quella mossa all'interno della storia.
+
+All'inizio della prima scena il piatto è vuoto. Al termine di qualunque scena si stabilisce chi vince la posta in base a quali carte sono rimaste nel piatto: se la somma di Cuori e Picche supera quella di Quadri e Fiori la posta va ai Protagonisti, altrimenti all'Opposizione. Le carte che non sono state prese rimangono nel piatto per la scena successiva.
+
+Le mosse possibili, aggiungere una carta al piatto, fare una presa, fare una scopa, hanno ciascuna un preciso significato narrativo. Inoltre anche il seme della carta giocata contribuisce a ispirare la narrazione che accompagna la mossa.
+
+| Mossa | Significato narrativo | Effetto meccanico |
+|---|---|---|
+| Aggiungere una carta al piatto | Metti in scena un nuovo elemento, una risorsa o un fatto che avvantaggia te o ostacola gli avversari | Aggiungi nel piatto valore per la posta della scena |
+| Fare presa | Superi un ostacolo o annulli una risorsa dell'avversario, ma con un costo | Togli una o più carte dal piatto e fai 1 punto |
+| Fare scopa | Successo pieno, svolta, ribaltamento di situazione | Togli tutte le carte dal piatto e fai 3 punti |
+
+Narrare vuol dire descrivere quello che sta succedendo: quello che si vedrebbe in un film in quell'esatto momento della scena. I giocatori possono inventare ciò che preferiscono, purché si rispetti il significato della mossa che hanno fatto con la carta e il seme della stessa.
+
+Questi concetti verranno spiegati più approfonditamente nel Capitolo 4.
+
+## 1.7 Competizione e Collaborazione
+
+È vero che dal punto di vista meccanico i giocatori sono divisi in due fronti opposti, e che il regolamento richiede di giocare le proprie carte nel modo più tattico possibile (come un accanito nonnetto che ha scommesso il prossimo giro dal bar).
+
+Tuttavia questo non è altro che un espediente che il designer utilizza affinché la narrazione emerga dalle meccaniche in modo naturale e imprevedibile, senza che i giocatori possano cercare di portarla ciascuno dove vorrebbe. Si può paragonare questo a un principio di azione e reazione, che mantiene la partita in un equilibrio instabile per tutta la sua durata: i protagonisti vogliono qualcosa, ma continuamente i loro nemici, il mondo e le loro divisioni interne li ostacoleranno. E tutto questo grazie al fatto che i giocatori si stanno sfidando a scopa.
+
+Ma non bisogna mai perdere di vista l'aspetto collaborativo del gioco: si lavora insieme per costruire una storia che risulti appassionante, divertente e possibilmente originale (ma andateci pure con la mano pesante sui cliché). Infatti, se siete bloccati nella narrazione e non sapete cosa inventarvi, chiedete pure agli altri al tavolo. Quando dovete narrare un esito o stabilire una posta, cercate di essere corretti e di prediligere quello che porta avanti la storia, rispetto a quello che vi sembra portare acqua al vostro mulino.
+
+Siate generosi anche quando ci saranno degli "sconfinamenti" nelle narrazioni. Intendo dire che chi gioca Fiori potrà narrare cose anche sui personaggi protagonisti, mostrando in scena i loro difetti e le loro debolezze. E questo vale anche per l'opposto, quando chi giocherà i Protagonisti potrà dire che un dato PNG dell'opposizione si innamora, si impietosisce, si lascia convincere o viene messo al tappeto. Non c'è uno stretto confine, ma anzi si costruisce sempre sulle idee e sugli elementi introdotti in narrazione dagli altri.
+
+## 1.8 Come finisce?
+
+L'esito della missione dei protagonisti si decide nell'ultima scena: chi vince quella ottiene o perde l'obiettivo finale. Ma il come finisce davvero la storia passa attraverso l'interpretazione di come si è svolto tutto il viaggio. Il finale si legge su due piani: la missione, cioè se l'obiettivo è stato raggiunto, e il prestigio, cioè i punti accumulati nel corso della partita con prese e scope, che dicono quanto i protagonisti sono cresciuti e si sono fatti un nome. Dall'incrocio di questi due piani nasce l'esito finale.
+
+- **Vittoria piena:** ce l'hanno fatta al di là di ogni aspettativa, e con le proprie forze.
+- **Per il rotto della cuffia:** a stento ce l'hanno fatta, ma grazie agli aiuti, al caso o a caro prezzo.
+- **Sconfitta dignitosa:** hanno fallito, ma a testa alta, e l'esperienza maturata è il loro tesoro.
+- **Fallimento totale:** hanno fallito e ne sono stati travolti.
+
+Oltre all'esito della missione, la storia racconterà anche il destino del rapporto tra i due protagonisti: se sono cresciuti come coppia, o se finita l'avventura non vorranno più rivedersi. Stabilito l'esito, i giocatori racconteranno a turno, con brevi scenette, il destino dei vari personaggi, fino all'ultima dissolvenza al nero.
 
 ---
 
-# Capitolo 3. Prima di partire: il pitch
+# Capitolo 2. Prima di partire: il pitch
 
 Prima di giocare la prima scena si costruisce insieme la fiction di base. Questa fase si chiama pitch, e non è un preambolo facoltativo: è dove nascono i materiali narrativi che diventeranno risorse meccaniche vere. Vale la pena prendersi il tempo per farla bene.
 
 Se vuoi un esempio completo e pronto all'uso, l'Appendice A contiene un intero pitch già scritto, lo scenario demo "Il sole di mezzanotte", lo stesso che gioca la partita d'esempio dell'Appendice B.
 
-## 3.1 Scegliere il tono
+## 2.1 Scegliere il tono
 
 Per prima cosa scegliete un tono di riferimento: action, poliziesco, comedy, dramedy, romance, o quello che preferite. Il tono non cambia nessuna regola, ma orienta il modo in cui formulate le scene e interpretate i risultati: lo stesso seme, in una commedia o in un poliziesco, vorrà dire cose diverse, e il significato si adatta da solo al registro che avete scelto.
 
-## 3.2 La coppia dei protagonisti
+## 2.2 La coppia dei protagonisti
 
 Poi definite i due protagonisti: chi è il personaggio Picche e chi è il personaggio Cuori. La coppia deve avere tre ingredienti:
 
@@ -180,13 +184,13 @@ Poi definite i due protagonisti: chi è il personaggio Picche e chi è il person
 
 Per esempio, nello scenario demo Picche è Frank, ex poliziotto sospeso per eccesso di forza, cinico e metodico; Cuori è Skunk, suo ex informatore, truffatore e intrallazzone dei bassifondi. Una spiata sbagliata di Skunk è costata a Frank il distintivo. Collaborano perché Skunk ha in testa la pista del cattivo e il modo di superarne la sicurezza, mentre Frank, che si è fatto terra bruciata attorno, da solo non può più muovere un passo.
 
-## 3.3 L'obiettivo finale
+## 2.3 L'obiettivo finale
 
 L'obiettivo finale deve essere chiaro, urgente e definitivo, e deve contenere o implicare una scadenza: se i protagonisti falliscono entro la fine della storia, l'occasione è persa per sempre.
 
 Un esempio, sempre dallo scenario demo: "Entro 36 ore Vargas atterrerà con un jet privato dalla Colombia su una pista segreta del New Mexico per un meeting con i boss locali, e ripartirà. Una volta decollato, nessuna estradizione lo riporterà mai davanti a un giudice. Bisogna arrivare alla pista e farlo arrestare in flagranza prima del decollo."
 
-## 3.4 L'Opposizione
+## 2.4 L'Opposizione
 
 Prima di passare alle domande, decidete contro chi e contro che cosa viaggiano i protagonisti. Sono due cose distinte, una per seme:
 
@@ -199,7 +203,7 @@ Per esempio, in uno scenario fantasy i nemici potrebbero essere due ordini in co
 
 Definire l'Opposizione prima delle domande serve a dare alle domande un riferimento concreto: chiedere quali siano i mezzi più temibili dei nemici ha senso solo se i nemici hanno già un volto.
 
-## 3.5 Le domande ai Protagonisti
+## 2.5 Le domande ai Protagonisti
 
 Ora l'Opposizione interroga i Protagonisti. Sei domande, ma non hanno tutte lo stesso peso.
 
@@ -215,7 +219,7 @@ Le altre quattro, invece, diventano spinte: risorse vere che potrete spendere in
 5. Quale dote o risorsa del personaggio Picche potrebbe essere un asso nella manica? (spinta Picche)
 6. Quale dote o risorsa del personaggio Cuori potrebbe essere un asso nella manica? (spinta Cuori)
 
-## 3.6 Le domande all'Opposizione
+## 2.6 Le domande all'Opposizione
 
 Poi sono i Protagonisti a interrogare l'Opposizione. Quattro domande, e tutte e quattro diventano spinte: due di Quadri, due di Fiori.
 
@@ -224,7 +228,7 @@ Poi sono i Protagonisti a interrogare l'Opposizione. Quattro domande, e tutte e 
 3. Quali catastrofi o eventi imprevedibili possono manifestarsi in questa ambientazione? (Fiori)
 4. Che cosa i protagonisti non hanno considerato, e potrebbe far saltare la loro alleanza? (Fiori)
 
-## 3.7 La prima difficoltà
+## 2.7 La prima difficoltà
 
 Dopo le due serie di domande, tutto il tavolo risponde insieme a un'ultima domanda:
 
@@ -234,7 +238,7 @@ Questa risposta si scrive, ma a differenza delle altre non è una risorsa spunta
 
 Nello scenario demo, per esempio, la prima difficoltà è che Skunk è in cella: i poliziotti corrotti lo hanno arrestato con un pretesto per consegnarlo agli uomini del cattivo dentro la prigione. Bisogna tirarlo fuori prima che qualcuno arrivi a lui. La Scena 1 nasce esattamente da qui.
 
-## 3.8 Come si usano le spinte in gioco
+## 2.8 Come si usano le spinte in gioco
 
 Alla fine del pitch avete otto spinte, due per seme: due Picche e due Cuori scritte dai Protagonisti, due Quadri e due Fiori scritte dall'Opposizione. (Le due risposte su "cosa si detestano" non sono spinte: restano tratti narrativi, senza effetto.)
 
@@ -252,29 +256,29 @@ Un esempio. L'Opposizione ha scritto, come spinta di Fiori: "Il fratello di Skun
 
 ---
 
-# Capitolo 4. I quattro semi
+# Capitolo 3. I quattro semi
 
 Ogni carta che giochi appartiene a un seme, e il seme dice due cose insieme: che tipo di intervento narrativo stai facendo, e da quale lato del tavolo arriva. Conoscere il significato dei semi è ciò che trasforma una giocata meccanica in un momento di film.
 
-## 4.1 Picche: il protagonista duro
+## 3.1 Picche: il protagonista duro
 
 Picche è il protagonista impulsivo, conflittuale, diretto. Quando giochi una carta di Picche, l'azione tende verso l'imposizione, la forza, l'aggressività: decisioni brusche, escalation, conflitto aperto.
 
 Per esempio: "Frank non aspetta. Sfonda la porta del retro a calci e urla ai presenti di stare a terra."
 
-## 4.2 Cuori: il protagonista empatico
+## 3.2 Cuori: il protagonista empatico
 
 Cuori è il protagonista relazionale, carismatico, dialogico. Quando giochi una carta di Cuori, l'azione tende verso la mediazione, il dialogo, il legame: intuizione emotiva, richiesta di aiuto, connessione tra le persone.
 
 Per esempio: "Skunk riconosce il ragazzo alla pompa di benzina, lavorava per suo fratello. Gli parla piano e ottiene un pieno, una scorciatoia e il suo silenzio."
 
-## 4.3 Quadri: i nemici attivi
+## 3.3 Quadri: i nemici attivi
 
 Quadri sono i nemici che agiscono con intenzione. Quando giochi una carta di Quadri, entra o si muove una fazione ostile, degli inseguitori, degli antagonisti: minacce organizzate, risorse avversarie volute.
 
 Per esempio: "Due uomini in giacca scura scendono da un SUV davanti al diner. Hanno le foto di Frank e Skunk: i sicari non hanno fretta."
 
-## 4.4 Fiori: il caos
+## 3.4 Fiori: il caos
 
 Fiori sono il caos e gli elementi destabilizzanti. Quando giochi una carta di Fiori, entra o si muove la sfortuna, un incidente, un attrito tra i protagonisti, un personaggio irritante, una complicazione imprevista: ostacoli che non sono necessariamente "nemici".
 
@@ -282,7 +286,7 @@ Per esempio: "L'auto riparte, ma dopo mezzo chilometro di statale una gomma espl
 
 ---
 
-# Capitolo 5. Come si gioca una scena
+# Capitolo 4. Come si gioca una scena
 
 Questo è il cuore del gioco. Una scena è un round, e ogni round segue sempre la stessa sequenza: si pesca, si fa l'asta per l'iniziativa, chi vince apre la scena e ne fissa la posta, poi i due lati si alternano giocando carte, facendo prese e tentando scope, finché la mano finisce. Vediamo ogni passaggio.
 
@@ -290,7 +294,7 @@ In sintesi: una scena si svolge giocando a turno le quattro carte della propria 
 
 <!-- DIAGRAMMA: flusso-scena -->
 
-## 5.1 Mano e asta per l'iniziativa
+## 4.1 Mano e asta per l'iniziativa
 
 All'inizio di ogni scena:
 
@@ -309,13 +313,13 @@ Vincere l'asta non è automaticamente un vantaggio: ogni scelta ha due facce, e 
 
 Giocare una carta alta nell'asta, e quindi puntare a vincere l'iniziativa, ha diversi pregi. Ti dà il diritto di fissare la posta e di fare il framing della scena (titolo e atmosfera). E, dato che la carta d'asta del vincitore torna in gioco come sua ultima giocata, mandi una carta alta proprio in fondo, quando è più facile che trovi qualcosa da catturare: una carta alta fa presa o scopa più spesso. In più, se la scena eredita un piatto non vuoto da quella precedente, chi ha l'iniziativa gioca per primo e può fare subito una presa su quelle carte. Il rovescio della medaglia: se il piatto è vuoto, giocare per primo significa per forza introdurre una carta, che l'avversario può catturare subito, magari con una scopa ai tuoi danni.
 
-Non avere l'iniziativa ha vantaggi speculari. Sei tu a chiudere la scena, giocando l'ultima carta (e a narrarne l'esito, vedi §5.10). E se il piatto è vuoto o ha solo carte basse, puoi aprire il tuo gioco proprio con una scopa, raccogliendo quello che l'avversario è stato costretto a calare per primo.
+Non avere l'iniziativa ha vantaggi speculari. Sei tu a chiudere la scena, giocando l'ultima carta (e a narrarne l'esito, vedi §4.10). E se il piatto è vuoto o ha solo carte basse, puoi aprire il tuo gioco proprio con una scopa, raccogliendo quello che l'avversario è stato costretto a calare per primo.
 
 Non c'è una scelta giusta in assoluto: conviene valutare la propria mano, il piatto ereditato e il momento della partita, e decidere di conseguenza la propria strategia.
 
 <!-- DIAGRAMMA: asta -->
 
-## 5.2 La posta della scena
+## 4.2 La posta della scena
 
 Vinta l'asta, chi ha l'iniziativa apre la scena, e la cosa più importante che fa è fissarne la posta. La posta è una difficoltà concreta da superare o un obiettivo intermedio da ottenere in quella scena: procurarsi qualcosa (un oggetto, un'informazione, un alleato), riuscire a entrare in un luogo, riuscire a uscirne. Non è un esito vago tipo "andare bene o andare male": è una cosa precisa, che si vince o si perde.
 
@@ -346,9 +350,9 @@ Un esempio di crescendo, niente affatto vincolante ma utile a dare l'idea di com
 
 **Fail forward.** Anche quando viene persa, una buona posta lascia ai protagonisti qualcosa per andare avanti: un po' di esperienza, una nuova opportunità, oppure una nuova risorsa da spendere lungo il viaggio verso l'obiettivo finale. Il fallimento alza il prezzo e complica le cose, ma non deve mai inchiodare i protagonisti in una situazione frustrante e senza uscita. Una scena persa fa avanzare la storia esattamente come una vinta: la spinge solo in una direzione più dura.
 
-## 5.3 L'apertura della scena: titolo e atmosfera
+## 4.3 L'apertura della scena: titolo e atmosfera
 
-Oltre alla posta, chi vince l'asta dà alla scena un titolo: la sua identità, come il capitolo di un libro o l'episodio di una miniserie (vedi anche il Capitolo 2). Poi ne imposta l'atmosfera iniziale.
+Oltre alla posta, chi vince l'asta dà alla scena un titolo: la sua identità, come il capitolo di un libro o l'episodio di una miniserie (vedi anche il Capitolo 1). Poi ne imposta l'atmosfera iniziale.
 
 L'atmosfera la suggerisce il seme della carta d'asta vincente, e può tradursi in un ambiente, in una situazione o in un'interazione. È un suggerimento più che un vincolo: uno spunto per inquadrare l'inizio della scena, non una regola da rispettare alla lettera.
 
@@ -359,7 +363,7 @@ L'atmosfera la suggerisce il seme della carta d'asta vincente, e può tradursi i
 | Quadri | Attacco del nemico, imboscata, territorio favorevole agli avversari |
 | Fiori | Evento imprevisto, luogo neutro ma instabile, caos o ambiguità immediata |
 
-## 5.4 La struttura del round
+## 4.4 La struttura del round
 
 Vinta l'asta, il round procede così:
 
@@ -370,7 +374,7 @@ Vinta l'asta, il round procede così:
 
 Il conto torna sempre: ogni giocatore gioca quattro carte. Il vincitore dell'iniziativa ne gioca tre dalla mano e cala quella d'asta come quarta e ultima; il perdente gioca tutte e quattro le carte della sua mano. A fine round non resta nessuna carta in mano a nessuno.
 
-## 5.5 Che cosa puoi fare nel tuo turno
+## 4.5 Che cosa puoi fare nel tuo turno
 
 Nel tuo turno puoi fare una di queste cose:
 
@@ -380,35 +384,39 @@ Nel tuo turno puoi fare una di queste cose:
 
 In più, chi non ha l'iniziativa e ha una sola carta in mano può arrendersi alla scena invece di giocarla (vedi 5.11).
 
-## 5.6 Introdurre, prendere, fare scopa: il significato delle tre mosse
+## 4.6 Introdurre, prendere, fare scopa: il significato delle tre mosse
 
 Le tre mosse del gioco, giocare nel piatto, fare una presa, fare una scopa, hanno ciascuna un preciso significato narrativo, e il senso cambia a seconda del lato che le compie. Capirle bene è metà del gioco.
 
-**Giocare una carta nel piatto vuol dire introdurre.** Disponi una tua risorsa in scena. Non risolvi nulla di ciò che è già nel piatto: prepari il terreno. Per i Protagonisti è un elemento, un fatto o un'azione che adesso non supera nessun ostacolo, ma che potrà tornare utile (un conoscente che compare, un'opportunità notata nell'ambiente, una relazione che nasce, un oggetto prodotto, un travestimento). Per l'Opposizione è un nuovo elemento o un'azione degli antagonisti che causerà problemi: Quadri sono nemici con intenzione, Fiori sono caos e sfortuna.
+**1. Introdurre (giocare una carta nel piatto).** Disponi una tua risorsa in scena. Non risolvi nulla di ciò che è già nel piatto: prepari il terreno. Per i Protagonisti è un elemento, un fatto o un'azione che adesso non supera nessun ostacolo, ma che potrà tornare utile (un conoscente che compare, un'opportunità notata nell'ambiente, una relazione che nasce, un oggetto prodotto, un travestimento). Per l'Opposizione è un nuovo elemento o un'azione degli antagonisti che causerà problemi: Quadri sono nemici con intenzione, Fiori sono caos e sfortuna.
 
 C'è una regola d'oro: introdurre non annulla. La narrazione con cui introduci una carta non può cancellare, distruggere o vanificare un elemento già messo in gioco dall'altro lato. Aggiungi il tuo, non togli il suo. Finché una carta avversaria è nel piatto, l'elemento che rappresenta resta in piedi nella storia. L'unico modo per neutralizzare qualcosa dell'avversario, toglierlo, mostrarne l'inutilità, ribaltarlo, è una presa o una scopa. Il fatto narrativo segue sempre il fatto meccanico, mai il contrario.
 
-### Introdurre nuovi PNG
+### Gli elementi con un nome: i Qualcuno
 
 Introdurre è anche il momento in cui entrano in scena nuovi personaggi non giocanti (PNG): il conoscente alla pompa di benzina, il secondino, la vecchia fiamma, il poliziotto corrotto, l'alleato inatteso. La maggior parte resta una comparsa di una scena sola, e va benissimo così.
 
-Ma se senti che un PNG può avere un ruolo importante anche più avanti, dagli un nome e una descrizione brevissima e sintetica di chi è, e annotalo su un post-it o su una index card da tenere in vista al tavolo. In questo modo quel personaggio resta a disposizione di tutti, pronto a rientrare in scena quando serve, e la storia ci guadagna in continuità e memoria.
+Ma alcuni meritano di restare, e non sono per forza persone. Nel lessico del gioco li chiamiamo i Qualcuno: il termine indica qualsiasi elemento rilevante della storia, non solo le persone ma anche gruppi, popoli, luoghi e oggetti. Un personaggio o un elemento diventa un Qualcuno quando ha una sua volontà e un ruolo o un destino che interessa seguire. Nel momento in cui lo decidi, gli dai un nome e una descrizione brevissima di chi è, e lo annoti su un post-it o su una index card da tenere in vista al tavolo: un Qualcuno senza nome non esiste. Così resta a disposizione di tutti, pronto a rientrare in scena quando serve, e la storia ci guadagna in continuità e memoria.
 
-Sulla stessa nota conviene segnare anche con quale carta l'hai introdotto. Quella carta resta nel piatto a rappresentare il personaggio finché qualcuno non la cattura: sapere a chi corrisponde ti permette, quando viene presa, di raccontare la presa in modo coerente (chi è stato convinto, comprato, messo a tacere o tolto di mezzo), invece di trovarti una carta anonima da giustificare.
+La volontà è il discrimine, ed è ciò che separa un Qualcuno dalla scenografia passiva: un portale inerte non è un Qualcuno, l'Unico Anello, che ha una sua volontà, lo è. Vale anche per i collettivi animati da una volontà comune: la tribù degli Udiburi, la fauna di Pandora guidata da Eywa. Catturare un Qualcuno collettivo ne neutralizza la presenza nella scena, non l'esistenza nella storia: il branco respinto in questa scena resta vivo nel mondo.
+
+Sulla stessa nota conviene segnare anche con quale carta hai introdotto il Qualcuno. Quella carta resta nel piatto a rappresentarlo finché qualcuno non la cattura: sapere a chi corrisponde ti permette, quando viene presa, di raccontare la presa in modo coerente (chi è stato convinto, comprato, messo a tacere o tolto di mezzo), invece di trovarti una carta anonima da giustificare.
 
 Per esempio: i Protagonisti introducono il 3 di Cuori, e Otto rivela di avere una conoscenza nell'hotel dove si tiene l'asta della serata (l'evento al centro della scena): Serge il Concierge, un suo vecchio compagno del club di scacchi dei tempi del Cairo, che potrebbe farli entrare da una porta sul retro. Sul post-it finisce "3 di Cuori = Serge il Concierge, amico di Otto, può aprire il retro". Più tardi l'Opposizione cattura proprio il 3 di Cuori, e il marcatore le dice subito chi sta neutralizzando: il direttore dell'hotel convoca Serge nel suo ufficio per una ramanzina e gli proibisce di dare una mano a quei due. La presa ha già la sua narrazione, coerente con quanto era stato introdotto.
 
-**Fare una presa vuol dire superare un ostacolo, con un eventuale costo.** Togli una risorsa all'avversario, prendendo le sue carte dal piatto. È un successo vero, non un risultato a metà, anche se a volte costa un compromesso o un sacrificio. La carta che togli è l'appiglio narrativo, perché rappresenta ciò che stai superando. E la presa rende: le carte prese sono punti per il mercato. Per i Protagonisti, è un ostacolo dell'Opposizione che viene superato. Per l'Opposizione, è una risorsa dei protagonisti che viene tolta o si rivela inutile, ritorcendosi contro di loro.
+Le figure (Fante, Regina, Re) sono un caso particolare di Qualcuno: il Qualcuno potente che si compra al mercato. Lì dare un nome al personaggio non è un'opzione ma un obbligo (vedi 6.3).
+
+**2. Prendere (superare un ostacolo, con un eventuale costo).** Togli una risorsa all'avversario, prendendo le sue carte dal piatto. È un successo vero, non un risultato a metà, anche se a volte costa un compromesso o un sacrificio. La carta che togli è l'appiglio narrativo, perché rappresenta ciò che stai superando. E la presa rende: le carte prese sono punti per il mercato. Per i Protagonisti, è un ostacolo dell'Opposizione che viene superato. Per l'Opposizione, è una risorsa dei protagonisti che viene tolta o si rivela inutile, ritorcendosi contro di loro.
 
 Per esempio, dal lato Protagonisti: il 6 di Fiori era la carta di credito bloccata. Fai la presa e dichiari: "Vado a impegnare il mio orologio d'oro e ottengo un bel gruzzolo di contanti." L'ostacolo è superato, a un prezzo. Dal lato Opposizione: i protagonisti avevano introdotto un secondino gentile, vecchio compagno di scuola. L'Opposizione prende quella carta: appena lui si allontana, telefona al cattivo per avvertirlo che li tiene in pugno. Il vantaggio apparente era una trappola.
 
-**Fare una scopa vuol dire successo pieno, svolta, ribaltamento.** Quando la presa lascia il piatto vuoto, togli all'avversario ogni risorsa in scena in un colpo solo. È un successo sopra ogni aspettativa, quasi un colpo di fortuna. Vale più di una presa normale, si segna a parte, ed è una risorsa importante e duratura.
+**3. Fare scopa (successo pieno, svolta, ribaltamento).** Quando la presa lascia il piatto vuoto, togli all'avversario ogni risorsa in scena in un colpo solo. È un successo sopra ogni aspettativa, quasi un colpo di fortuna. Vale più di una presa normale, si segna a parte, ed è una risorsa importante e duratura.
 
 Per esempio: scopa con un 6 di Picche, e Frank disarma i due sicari nel parcheggio in dieci secondi. La strada è libera, la situazione ribaltata.
 
 C'è un caso particolare. Una figura giocata quando il piatto è già vuoto non può catturare nulla: allora si sacrifica con un gesto eroico e vale comunque una scopa, e il suo effetto speciale scatta lo stesso. Narrativamente è l'alleato che si immola per spalancare la strada.
 
-## 5.7 Le regole di presa
+## 4.7 Le regole di presa
 
 Le prese seguono la logica della Scopa tradizionale:
 
@@ -422,16 +430,16 @@ Le prese seguono la logica della Scopa tradizionale:
 
 <!-- DIAGRAMMA: turno -->
 
-## 5.8 Segnare prese e scope: il punteggio
+## 4.8 Segnare prese e scope: il punteggio
 
 Le carte che catturi dal piatto non danno punti: finiscono subito nella pila degli scarti comuni. A dare punti sono le carte con cui catturi, che tieni da parte come marcatori.
 
-- La carta con cui fai una presa la tieni da parte in verticale. Una presa con una carta numerica vale 1 punto; una presa con una figura vale 2 punti.
-- La carta con cui fai una scopa la tieni da parte in orizzontale. Una scopa vale 4 punti.
+- La carta con cui fai una presa la tieni da parte in verticale. Ogni presa vale 1 punto, anche se fatta con una figura.
+- La carta con cui fai una scopa la tieni da parte in orizzontale. Una scopa vale 3 punti.
 
-Questi valori, 1 per la presa numerica, 2 per la presa con figura, 4 per la scopa, valgono sempre: sia quando spendi i punti al mercato, sia nel conteggio finale. I punti che non spendi conservano il loro valore.
+Questi valori, 1 per ogni presa (anche con figura) e 3 per la scopa, valgono sempre: sia quando spendi i punti al mercato, sia nel conteggio finale. I punti che non spendi conservano il loro valore.
 
-## 5.9 La fine del round
+## 4.9 La fine del round
 
 Quando uno dei due giocatori esaurisce la mano (e il vincitore dell'asta ha calato la sua carta tenuta da parte), il round finisce. A quel punto si sommano i valori delle carte rimaste nel piatto:
 
@@ -442,11 +450,11 @@ Chi ha il totale più alto vince la posta della scena.
 
 C'è un'eccezione importante. Se la scena finisce con il piatto vuoto, perché l'ultima giocata è stata una scopa, la posta è vinta da chi ha fatto la scopa, anche se i totali del piatto sarebbero zero a zero. (Vale anche per la scopa fatta con il Jolly: la posta va a chi ha ripulito il piatto, mentre i punti del Jolly, come vedremo, vanno all'avversario.)
 
-## 5.10 Narrare l'esito della scena
+## 4.10 Narrare l'esito della scena
 
 Stabilito chi ha vinto la posta, l'esito va raccontato. A narrarlo è chi ha **perso la posta**, cioè il lato che ha perso la scena: così chi ha incassato la sconfitta può raccontarla calcando sulle sue ombre e sui suoi costi. In caso di parità dei totali, invece, narra chi ha vinto l'asta (per non far raccontare due cose di fila a chi ha appena giocato l'ultima carta del round). Chi ha vinto l'asta aveva inquadrato la scena fissando la posta; a chiuderla, raccontando com'è andata, è chi quella posta l'ha persa.
 
-Il racconto si fonda su com'è andata la posta: si applica il ramo che era stato scritto all'apertura (vedi §5.2). Se hanno vinto i Protagonisti, accade quello che avevate detto sarebbe successo in caso di loro vittoria; se ha vinto l'Opposizione, l'altro ramo. La posta promessa si avvera, in un senso o nell'altro.
+Il racconto si fonda su com'è andata la posta: si applica il ramo che era stato scritto all'apertura (vedi §4.2). Se hanno vinto i Protagonisti, accade quello che avevate detto sarebbe successo in caso di loro vittoria; se ha vinto l'Opposizione, l'altro ramo. La posta promessa si avvera, in un senso o nell'altro.
 
 Ma c'è un secondo livello di lettura, che dà colore alla scena: il seme che prevale nel piatto, cioè quello con il valore totale più alto tra le carte rimaste. Dice chi, o che cosa, ha davvero deciso l'esito.
 
@@ -459,9 +467,9 @@ Ma c'è un secondo livello di lettura, che dà colore alla scena: il seme che pr
 
 Questa lettura è indipendente da chi ha vinto la scena: i protagonisti possono spuntarla per un soffio grazie al caos (Fiori alto), oppure perdere nonostante un momento di connessione genuina (Cuori alto ma insufficiente). Tienine conto quando racconti: non solo che cosa è successo alla posta, ma con quale colore, e per merito o colpa di chi.
 
-Letta scena dopo scena, questa prevalenza di seme costruisce il quadro che si tira insieme alla fine della partita, insieme al diario del rapporto tra i protagonisti (vedi Capitolo 9).
+Letta scena dopo scena, questa prevalenza di seme costruisce il quadro che si tira insieme alla fine della partita.
 
-## 5.11 Che cosa succede dopo la scena
+## 4.11 Che cosa succede dopo la scena
 
 A seconda di chi ha vinto la posta:
 
@@ -470,7 +478,7 @@ A seconda di chi ha vinto la posta:
 
 E il piatto? Il piatto resta. A fine scena le carte rimaste sul tavolo non si toccano: restano lì per la scena successiva. Questo significa che chi apre la nuova scena può già fare una presa, o perfino una scopa, con la sua prima giocata.
 
-## 5.12 Arrendersi alla scena
+## 4.12 Arrendersi alla scena
 
 C'è un'ultima possibilità, pensata per quando una carta non può più cambiare nulla. Il giocatore che non ha vinto l'iniziativa può rinunciare alla scena invece di giocare la sua ultima carta. È un'opzione ristretta: solo nelle scene da 1 a 4, solo per chi non ha l'iniziativa, e solo quando gli resta una sola carta in mano (in due giocatori, è l'ottava e ultima carta, quella che cala chi ha perso l'asta).
 
@@ -479,46 +487,46 @@ Serve quando quella carta non potrebbe cambiare l'esito: invece di sprecarla, la
 Ci sono due modi di arrendersi, e ciascuno si può usare una sola volta per lato in tutta la partita:
 
 - **Ritirata strategica:** la carta viene rimescolata nel tuo mazzo. Non vale punti, ma diventa una carta in più per la mano estesa e per i colpi di scena dell'ultima scena.
-- **Resa onorevole:** la carta viene tenuta tra le tue prese come un normale marcatore, e vale il suo punteggio (1 punto, o 2 se è una figura).
+- **Resa onorevole:** la carta viene tenuta tra le tue prese come un normale marcatore, e vale 1 punto, anche se è una figura.
 
 In entrambi i casi la posta va all'avversario senza conteggio. Se a cedere è l'Opposizione, i Protagonisti raggiungono la posta come per una scena vinta normalmente. La carta della resa non entra nel piatto: il piatto resta com'è dopo le giocate dell'avversario, e passa alla scena dopo come sempre.
 
 Se invece non ti arrendi, giochi la carta e la scena si conta normalmente. La resa non serve a cambiare il conteggio: serve a non sprecare una carta che il conteggio non lo cambierebbe comunque.
 
-## 5.13 La continuità tra le scene
+## 4.13 La continuità tra le scene
 
-Una scena finisce con un esito, e quell'esito, raccontato da chi ha giocato l'ultima carta (vedi §5.10), non è solo un sigillo: è il trampolino della scena successiva.
+Una scena finisce con un esito, e quell'esito, raccontato da chi ha giocato l'ultima carta (vedi §4.10), non è solo un sigillo: è il trampolino della scena successiva.
 
 Ogni scena, infatti, si aggancia a com'è finita la posta di quella precedente. Lo stato in cui si trovano i protagonisti è conseguenza diretta di quell'esito: se la posta è stata vinta, la nuova scena parte da una posizione di vantaggio; se è stata persa, da una situazione ostacolata o peggiorata. La regola d'oro è una sola: resta coerente con la scena precedente, ma porta avanti la storia, non inchiodarla sulla difficoltà iniziale.
 
 Prendiamo la posta della Scena 1 dello scenario demo: far evadere Skunk dalla centrale prima che venga trasferito in carcere. Se i Protagonisti la vincono, la Scena 2 si apre in vantaggio, con loro già in viaggio e la fuga avviata. Se la perdono, la scena dopo non si blocca a ripetere "tiriamo fuori Skunk dalla cella": evolve. Può aprirsi con l'auto di Frank che insegue il pullman del trasferimento, per liberarlo in transito; oppure, se ormai è dentro, nel parlatorio della prigione, o a un'udienza straordinaria per il rilascio su cauzione.
 
-In tutti i casi vale lo stesso principio: la vittoria apre nuovi problemi, la sconfitta apre nuove strade, ma nessuna delle due riporta i protagonisti al punto di partenza. È il Fail forward (vedi §5.2) applicato alla giuntura tra una scena e l'altra.
+In tutti i casi vale lo stesso principio: la vittoria apre nuovi problemi, la sconfitta apre nuove strade, ma nessuna delle due riporta i protagonisti al punto di partenza. È il Fail forward (vedi §4.2) applicato alla giuntura tra una scena e l'altra.
 
 ---
 
-# Capitolo 6. Tra una scena e l'altra: il mercato
+# Capitolo 5. Tra una scena e l'altra: il mercato
 
 Tra una scena e l'altra si apre il mercato, dove si spendono i punti accumulati per comprare le figure: Fante, Regina e Re. Le figure sono carte forti, con effetti speciali, e allo stesso tempo sono alleati o personaggi importanti della storia.
 
-## 6.1 L'ordine corretto del mercato
+## 5.1 L'ordine corretto del mercato
 
-L'ordine dei passaggi conta, perché un ordine sbagliato annullerebbe l'effetto del Fante. Seguilo così:
+L'ordine conta: prima compri, poi peschi, così le figure comprate possono capitarti già nella scena dopo. Seguilo così:
 
-1. si pesca la nuova mano di 4 carte per la scena successiva;
-2. si fanno gli acquisti;
-3. le carte acquistate si aggiungono al mazzo;
-4. il mazzo si rimescola.
+1. si fanno gli acquisti;
+2. le carte acquistate si aggiungono al mazzo (tutte le figure, Fante incluso);
+3. se hai comprato qualcosa, il tuo mazzo si rimescola;
+4. si pesca la nuova mano di 4 carte per la scena successiva.
 
-## 6.2 Come si paga
+## 5.2 Come si paga
 
-Le tue risorse sono i marcatori che hai accumulato: ogni presa con carta numerica vale 1 punto, ogni presa con figura 2 punti, ogni scopa 4 punti.
+Le tue risorse sono i marcatori che hai accumulato: ogni presa vale 1 punto (anche con figura), ogni scopa 3 punti.
 
 Quando paghi, spendi prima l'eventuale bonus, poi le prese, poi le scope. I marcatori spesi finiscono negli scarti comuni. Le figure comprate entrano nel mazzo, non in mano e non negli scarti.
 
 Una regola di tetto: ogni giocatore può comprare al massimo un Fante, una Regina e un Re in tutta la partita, indipendentemente dal seme.
 
-## 6.3 Le figure: costi, valori, effetti
+## 5.3 Le figure: costi, valori, effetti
 
 | Figura | Costo | Valore in gioco |
 |---|---|---|
@@ -530,9 +538,9 @@ I costi sono pensati perché le due strade verso un Re costino uguale: comprare 
 
 **Comprare una figura vuol dire preparare l'ingresso di un PNG.** Quando acquisti una figura stai preparando l'ingresso nella storia di un personaggio importante e potente, i cui effetti sulla vicenda saranno probabilmente di grande impatto. La sua potenza va di pari passo con il valore della carta: Fante, poi Regina, poi Re. E questa importanza vale su due piani insieme, in fiction e nelle meccaniche associate alla figura, che si innescano nel momento in cui la carta viene giocata. Per questo, appena compri una figura, devi decidere chi è questo nuovo personaggio: come si chiama, qual è il suo ruolo, che aspetto ha. Lo scrivi su una index card, dalla tua parte del tavolo, segnando anche il valore della carta a cui corrisponde. Da quel momento non è più "il Fante" o "la Regina", ma quell'alleato in carne e ossa, pronto a rientrare in scena quando giocherai la carta. Una figura senza nome non si compra.
 
-**Le figure catturano in modo più ampio.** Una figura non prende solo l'esatto pari: cattura dal piatto un gruppo di carte la cui somma è minore o uguale al suo valore (Fante 8, Regina 9, Re 10), comprese eventuali carte dei propri semi. Anche per le figure la cattura è obbligata: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 2 punti. Se invece nessuna carta del piatto è alla sua portata, la figura entra nel piatto come una giocata normale; e se il piatto è già vuoto si sacrifica con un gesto eroico, valendo comunque una scopa. In ogni caso l'effetto speciale della figura, qui sotto, scatta.
+**Le figure catturano in modo più ampio.** Una figura non prende solo l'esatto pari: cattura dal piatto un gruppo di carte la cui somma è minore o uguale al suo valore (Fante 8, Regina 9, Re 10), comprese eventuali carte dei propri semi. Anche per le figure la cattura è obbligata: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 1 punto come ogni altra. Se invece nessuna carta del piatto è alla sua portata, la figura entra nel piatto come una giocata normale; e se il piatto è già vuoto si sacrifica con un gesto eroico, valendo comunque una scopa. In ogni caso l'effetto speciale della figura, qui sotto, scatta.
 
-**Fante, l'informatore.** Effetto: guardi le prime 4 carte del tuo mazzo e decidi se e quali rimettere in fondo. Serve a controllare le pescate future, e scatta quando giochi la carta. Il Fante ha però una consegna speciale: a differenza di Regina e Re, che entrano nel mazzo e vengono rimescolate, il Fante appena comprato **entra subito in mano** per la scena successiva, e per restare a quattro carte ne mandi una in fondo al mazzo. Così l'informatore è disponibile fin dalla scena dopo l'acquisto, e non rischi di pescarlo troppo tardi o di non vederlo affatto. (Se lo compri al mercato prima dell'ultima scena, dove la mano si sceglie dopo, entra nel mazzo come le altre figure: ma lì scegli tu le quattro carte, quindi puoi tenerlo lo stesso.) Narrativamente è un alleato informatore, un contatto che procura notizie preziose. Per esempio: "Ray, l'unico vecchio collega di Frank rimasto pulito, ci dice quali contee evitare e a che ora cambiano i turni ai posti di blocco."
+**Fante, l'informatore.** Effetto: quando lo giochi, sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una carta della mano (la carta che cedi torna in cima, insieme a quella sbirciata che non hai preso; mano e mazzo restano di quattro e di quante erano). Serve a procurarti la carta giusta al momento giusto, e scatta quando giochi la carta. Come Regina e Re, il Fante entra nel mazzo all'acquisto: a fine mercato, se hai comprato, il mazzo si rimescola e poi peschi, così può capitarti già nella scena dopo. Narrativamente è un alleato informatore, un contatto che procura notizie preziose. Per esempio: "Ray, l'unico vecchio collega di Frank rimasto pulito, ci dice quali contee evitare e a che ora cambiano i turni ai posti di blocco."
 
 **Regina, la manipolatrice.** Effetto: l'avversario scarta una carta a caso dalla mano e la sostituisce con la prima carta del suo mazzo. Nell'ultima scena, se il mazzo è esaurito ma restano carte in riserva, il rimpiazzo si pesca dalla riserva; se non c'è né mazzo né riserva, l'avversario resta semplicemente con una carta in meno. Serve a disturbare, a ridurre il controllo della mano nemica. Narrativamente è seduzione, manipolazione, qualcosa che semina disordine tra gli avversari. Per esempio: "Una vecchia fiamma di Skunk attacca bottone con il capo dei sicari al bancone del diner: lui si distrae, abbassa la guardia."
 
@@ -540,22 +548,22 @@ I costi sono pensati perché le due strade verso un Re costino uguale: comprare 
 
 ---
 
-# Capitolo 7. Il Jolly
+# Capitolo 6. Il Jolly
 
 Il Jolly è lo strumento del compromesso morale. È uno solo, sta nel mazzo dei Protagonisti, e si aggiunge al termine della seconda scena. Da quel momento ogni pescata dei Protagonisti può portare in mano la tentazione di una scorciatoia.
 
-## 7.1 Come si usa
+## 6.1 Come si usa
 
 - Il Jolly non si può usare nell'asta d'inizio scena.
 - Chi lo gioca decide quale valore assume, da 1 a 10.
 - Serve solo per catturare: fa una presa, e se quella presa svuota il piatto è una scopa.
 
-## 7.2 La mossa sleale: il punto va all'avversario
+## 6.2 La mossa sleale: il punto va all'avversario
 
 Qui sta il cuore del Jolly. Dà a chi lo gioca il vantaggio sul tavolo (ripulisce o alleggerisce il piatto), ma il suo marcatore va nel campo dell'avversario:
 
 - una presa con il Jolly vale 1 punto all'avversario;
-- una scopa con il Jolly vale 4 punti all'avversario.
+- una scopa con il Jolly vale 3 punti all'avversario.
 
 Chi gioca il Jolly tiene comunque il vantaggio di scena, e se la scopa svuota il piatto a fine scena vince la posta. Ma regala i punti. Il costo è immediato e non si può aggirare.
 
@@ -563,7 +571,7 @@ Narrativamente, si racconta sempre un successo ottenuto andando contro i propri 
 
 C'è un caso limite: se un giocatore ha in mano solo il Jolly e il piatto è vuoto, il Jolly si scarta senza effetto e il piatto resta vuoto.
 
-## 7.3 Il peccato emerge: l'Opposizione spende il marcatore
+## 6.3 Il peccato emerge: l'Opposizione spende il marcatore
 
 Il marcatore che il Jolly regala all'Opposizione è una risorsa normale, spendibile come ogni altra: l'Opposizione può tenerlo per comprare una figura al mercato, conservarlo fino al conteggio finale dove vale i suoi punti, oppure usarlo come effetto. Sceglie uno solo di questi tre destini.
 
@@ -575,11 +583,11 @@ Per esempio: a fine quarta scena i totali sono vicini. Nel suo turno l'Opposizio
 
 ---
 
-# Capitolo 8. L'ultima scena
+# Capitolo 7. L'ultima scena
 
 La quinta scena, la Risoluzione, si gioca come le altre, ma con alcune regole in più che la rendono il momento decisivo della partita.
 
-## 8.1 La mano finale estesa
+## 7.1 La mano finale estesa
 
 La mano finale si sceglie dopo il mercato, così le figure appena comprate possono entrarci. Se a quel punto un giocatore ha più di 4 carte rimaste nel mazzo:
 
@@ -589,7 +597,7 @@ La mano finale si sceglie dopo il mercato, così le figure appena comprate posso
 
 La riserva alimenta i colpi di scena, ma è anche la fonte da cui si pesca quando un effetto lo richiede e il mazzo è ormai esaurito: in particolare la Regina avversaria, quando costringe a scartare, fa pescare il rimpiazzo proprio dalla riserva.
 
-## 8.2 Le figure rimaste nel piatto
+## 7.2 Le figure rimaste nel piatto
 
 Se all'inizio dell'ultima scena ci sono figure sul piatto:
 
@@ -599,7 +607,7 @@ Se all'inizio dell'ultima scena ci sono figure sul piatto:
 
 È una regola che spinge a usare le figure attivamente, invece di lasciarle esposte sul tavolo.
 
-## 8.3 I colpi di scena
+## 7.3 I colpi di scena
 
 Dopo il primo conteggio dell'ultima scena arrivano i colpi di scena. Si continua a giocare a turni alterni, usando le carte tenute in riserva. Comincia il lato che sta perdendo (in parità, i Protagonisti; se la scena si era chiusa con una scopa a piatto vuoto, comincia chi non l'ha fatta).
 
@@ -612,11 +620,11 @@ In questa fase non si fanno prese né scope: le uniche azioni sono mettere la ca
 
 I colpi di scena finiscono quando entrambe le riserve sono esaurite. Poi si fa il conteggio definitivo.
 
-Narrativamente la fase ha un ritmo preciso: dopo il primo conteggio si narra l'esito apparente; a ogni colpo di scena si narra come le cose non fossero davvero come sembravano; quando le riserve finiscono, arriva il conteggio definitivo.
+Narrativamente la fase ha un ritmo preciso. Dopo che ciascuno ha giocato le sue 4 carte si fa il primo conteggio, esattamente come in ogni altra scena: si somma il piatto, si determina l'esito apparente della scena e lo si narra con le regole di sempre (lo racconta chi ha perso la posta, vedi 5.10). A quel punto sembra tutto finito. Poi però si rivelano i colpi di scena, una carta della riserva alla volta, e a ogni carta scoperta si racconta come le cose non fossero davvero come sembravano. Solo quando le riserve sono esaurite e si fa il conteggio definitivo si capisce per davvero se gli eroi hanno compiuto o fallito la missione.
 
 Per esempio: al primo conteggio l'Opposizione sembra avere la meglio. Tocca prima ai Protagonisti, che stanno perdendo: Skunk cala dalla riserva un 7 di Cuori e con quello fa sparire un 5 di Quadri dal tavolo, "il meccanico che li ha venduti ai sicari era un uomo di suo fratello". Il 7 di Cuori resta nel piatto, il 5 di Quadri finisce negli scarti. Risponde l'Opposizione, poi di nuovo i Protagonisti, finché entrambi hanno svuotato la riserva.
 
-## 8.4 Il conteggio definitivo
+## 7.4 Il conteggio definitivo
 
 Al termine dell'ultima scena, dopo i colpi di scena, si fa il conteggio finale, che decide due cose distinte.
 
@@ -628,46 +636,57 @@ La seconda cosa che si determina è chi ha vinto ai punti complessivi. Ma di com
 
 ---
 
-# Capitolo 9. Il finale
+# Capitolo 8. Il finale
 
-## 9.1 I quattro esiti
+Dopo i colpi di scena viene il finale: il momento in cui si tirano le somme. Si guarda com'è andata la missione, quanti punti ha fatto ciascun lato e quante scene ha vinto.
 
-Il finale nasce dall'incrocio di due risultati: chi ha vinto il piatto e chi ha vinto ai punti complessivi (scope più prese). Le quattro combinazioni danno quattro finali diversi.
+## 8.1 I due piani del finale
 
-| Piatto | Punti | Esito |
+Il finale si legge su due piani, la missione e il prestigio, e dal loro incrocio nascono quattro esiti.
+
+Il primo piano è la missione: al termine dei colpi di scena, i protagonisti hanno raggiunto il loro obiettivo o hanno fallito. Il secondo piano è il prestigio: i punti accumulati e non spesi, che dicono quanto i protagonisti se la sono cavata con le proprie forze. Spendere i punti per comprare figure significa aver chiamato aiuto e dover dividere il merito; tenerli significa essersi fatti un nome. Il prestigio vale per entrambi i lati, ma cambia segno: per i protagonisti è una promessa di crescita, per l'Opposizione è una minaccia, l'idra a cui per ogni testa mozzata ne ricrescono altre.
+
+## 8.2 I quattro esiti
+
+| Missione | Punti | Esito |
 |---|---|---|
-| Vinto | Vinti | Vittoria totale: successo pieno, netto |
-| Vinto | Persi | Vittoria per il rotto della cuffia: l'obiettivo è raggiunto, ma a caro prezzo |
-| Perso | Persi | Disfatta totale: fallimento completo |
-| Perso | Vinti | Sconfitta con aspetti positivi: l'obiettivo fallisce, ma qualcosa è salvato o imparato |
+| Vinta | Vinti | Vittoria piena: ce l'avete fatta, e da soli |
+| Vinta | Persi | Per il rotto della cuffia: vinto, ma grazie agli aiuti e a caro prezzo |
+| Persa | Vinti | Sconfitta dignitosa: caduti a testa alta, con l'esperienza come tesoro |
+| Persa | Persi | Fallimento totale: travolti su ogni fronte |
 
 <!-- DIAGRAMMA: esiti -->
 
-In caso di parità ai punti, la parità va a chi ha vinto il piatto: con il piatto vinto l'esito è Vittoria totale, con il piatto perso è Disfatta totale. (E il piatto, se i valori sono pari, si assegna prima per numero di scope e poi per numero di prese.)
+In caso di parità ai punti, la parità va a chi ha vinto la missione: missione vinta dà Vittoria piena, missione persa dà Fallimento totale. (E la missione, se i totali del piatto sono pari, si decide prima per numero di scope e poi per numero di prese.)
 
-## 9.2 Leggere il piatto: la storia dietro i numeri
+## 8.3 Le domande di fine partita
 
-Il piatto non dice solo chi vince: a fine di ogni scena si legge per capire che cosa è appena successo nella storia. Una di queste letture, il seme che prevale nel piatto (chi o che cosa ha deciso la scena), l'abbiamo già vista parlando di come narrare l'esito (vedi §5.10). Qui aggiungiamo le altre due, che danno il loro frutto soprattutto alla fine del viaggio.
+Oltre a questi due piani, il finale si legge su altre due dimensioni, che non entrano nella tabella ma danno voce all'epilogo: il rapporto tra i due protagonisti, e il privilegio di chi ha condotto il viaggio vincendo più scene.
 
-**Lo stato del rapporto.** Confronta i totali di Cuori e Picche nel piatto.
+Per dare voce a tutto questo, ciascun giocatore risponde alle domande che lo riguardano.
 
-| Situazione | Lettura |
-|---|---|
-| Cuori più di Picche | In questa scena i protagonisti si sono avvicinati: dialogo, fiducia, connessione |
-| Picche più di Cuori | In questa scena i protagonisti si sono allontanati: conflitto, tensione, distanza |
-| Parità | Il rapporto è in bilico, né migliorato né peggiorato |
+- **A chi ha vinto la missione:** "I miei personaggi hanno ottenuto davvero quello che volevano?" E se non ha vinto anche ai punti, aggiunge: "Ma a che prezzo, con quale rimpianto?"
+- **A chi ha vinto il punteggio:** "In che modo i miei personaggi sono cresciuti o hanno accresciuto il loro prestigio?"
+- **A chi giocava i Protagonisti:** "Che cosa pensa ora Picche di Cuori, e viceversa? Come si è evoluto il loro rapporto?"
+- **A chi ha perso la missione ma ha vinto più scene dell'avversario,** a scelta una delle due: "Chi ha ottenuto l'obiettivo ignora qualcosa: non è tutto oro quel che luccica. Che cosa gli sfugge?" oppure "Quale riscatto o consolazione i miei personaggi possono trarre da questa storia?"
 
-Seguendo questa lettura scena per scena emerge un vero e proprio diario del rapporto tra i protagonisti, del tutto indipendente dall'esito della missione.
+## 8.4 L'epilogo
 
-**La natura dell'opposizione.** Al termine della quinta scena, confronta i totali di Fiori e Quadri nell'ultimo piatto: se dominano i Quadri, a decidere il finale sono stati i nemici; se dominano i Fiori, è stato il caos, la sfortuna o la fragilità interna della coppia; in parità, entrambi hanno inciso allo stesso modo.
+Date le risposte, si gioca l'epilogo: una sequenza di vignette, ciascuna incentrata su un Qualcuno (un protagonista, un PNG, un antagonista), ambientata giorni, settimane o anni dopo l'avventura. È il cioccolatino dopo il pasto: è facoltativo, e se non te la senti va benissimo lo stesso.
 
-Per esempio, una lettura completa: i protagonisti vincono il piatto finale ma perdono ai punti, quindi una Vittoria per il rotto della cuffia. Nelle scene 1, 3 e 4 dominavano le Picche: il rapporto è stato duro per quasi tutto il viaggio. Nella scena 5 dominano i Cuori: si sono avvicinati solo alla fine, davanti al jet. E nell'ultimo piatto dominano i Fiori: a quasi fermarli non sono stati i sicari, ma il caos e la fragilità della coppia.
+Le poche regole sono tutte di buon senso:
+
+- Si narra a turno, e non si possono raccontare due vignette di fila. Quando il lato dei protagonisti è diviso tra due giocatori, tra loro ha l'ultima parola chi ha realizzato più scope.
+- "Passo" vuol dire chiusura: quando un giocatore passa, l'altro può raccontare al massimo un'ultima vignetta, poi l'epilogo finisce.
+- Non c'è un tetto al numero di vignette, né alcun legame con i punti o le risorse spese: la misura la regola il gusto, non un costo.
+
+I sapori di una vignetta sono liberi: una chiusura dolce o amara, un colpo di scena retrospettivo (il Qualcuno dato per morto che riapre gli occhi), un gancio per un ipotetico seguito. Non sono regole, solo esempi di ciò che puoi fare. L'epilogo è infatti lo spazio libero in cui anche un destino dato per certo può essere riaperto: è l'unico momento in cui salta la regola d'oro delle scene, quella per cui introdurre non annulla.
 
 ---
 
-# Capitolo 10. Come giocare bene
+# Capitolo 9. Come giocare bene
 
-## 10.1 Due strategie nell'ultima scena
+## 9.1 Due strategie nell'ultima scena
 
 Nell'ultima scena emergono due strategie opposte, e gran parte della tensione finale nasce dalla scelta tra le due.
 
@@ -675,7 +694,7 @@ La **strategia di controllo**, prudente, punta a fare prese per rimuovere carte 
 
 La **strategia di pressione**, aggressiva, punta a giocare carte alte del proprio seme per gonfiare il proprio totale visibile nel piatto.
 
-## 10.2 Il principio che tiene insieme tutto
+## 9.2 Il principio che tiene insieme tutto
 
 Se devi ricordare una cosa sola, ricorda la differenza tra le tre mosse. È questa distinzione a far funzionare insieme meccanica e racconto.
 
@@ -687,7 +706,7 @@ Se devi ricordare una cosa sola, ricorda la differenza tra le tre mosse. È ques
 
 <!-- DIAGRAMMA: tre-gesti -->
 
-## 10.3 Il flusso completo, a colpo d'occhio
+## 9.3 Il flusso completo, a colpo d'occhio
 
 <!-- DIAGRAMMA: flusso-partita -->
 
@@ -695,13 +714,13 @@ E lo stesso flusso, passo per passo:
 
 **1. Preparazione (il pitch).** Tono; coppia dei protagonisti; obiettivo finale; Opposizione (Quadri nemici, Fiori caos); domande ai Protagonisti (poste dall'Opposizione); domande all'Opposizione (poste dai Protagonisti); prima difficoltà condivisa, che inquadra la Scena 1.
 
-**2. Per ogni scena (da 1 a 5).** Pesca di 4 carte per lato; asta (carta coperta, si rivela, chi è più alto vince l'iniziativa; in parità, a chi non l'ha avuta la scena prima, e alla scena 1 all'Opposizione); il vincitore sceglie titolo, ambiente iniziale e posta; round, in cui si alternano giocate, prese e scope (4 carte a testa); fine round, si somma il piatto e si vede chi vince la scena (se vincono i Protagonisti la posta è raggiunta, se vince l'Opposizione la situazione peggiora); il piatto resta sul tavolo per la scena successiva; pesca della nuova mano; mercato, con acquisto delle figure, poi aggiunta al mazzo e rimescolo.
+**2. Per ogni scena (da 1 a 5).** Pesca di 4 carte per lato; asta (carta coperta, si rivela, chi è più alto vince l'iniziativa; in parità, a chi non l'ha avuta la scena prima, e alla scena 1 all'Opposizione); il vincitore sceglie titolo, ambiente iniziale e posta; round, in cui si alternano giocate, prese e scope (4 carte a testa); fine round, si somma il piatto e si vede chi vince la scena (se vincono i Protagonisti la posta è raggiunta, se vince l'Opposizione la situazione peggiora); il piatto resta sul tavolo per la scena successiva; mercato (acquisto delle figure, che entrano nel mazzo; se compri, il mazzo si rimescola); poi si pesca la nuova mano.
 
 **3. Dopo la seconda scena.** Il Jolly entra nel mazzo dei Protagonisti.
 
 **4. Quinta scena.** Mercato, poi mano estesa (più di 4 carte: scelta di 4 più riserva); le figure sul piatto vengono rimosse, neutralizzate, e contano come scope avversarie; round normale; primo conteggio, l'esito apparente; colpi di scena dalla riserva, alternati; conteggio definitivo.
 
-**5. Finale.** Vittoria del piatto, che dà l'esito esterno della missione; eventuale tie-break (prima le scope, poi le prese); incrocio di piatto e punti, da cui nasce uno dei quattro esiti; dominanze di seme, per la lettura della relazione e della natura dell'opposizione.
+**5. Finale.** Vittoria del piatto, che dà l'esito esterno della missione; eventuale tie-break (prima le scope, poi le prese); incrocio di piatto e punti, da cui nasce uno dei quattro esiti; e, facoltativo, l'epilogo a vignette.
 
 ---
 
@@ -787,6 +806,8 @@ La partita si apre sulla prima difficoltà del pitch: il taccuino di Aldo Falco,
 
 ## Scena 1. Innesco
 
+> **Le carte in mano.** Protagonisti (Paola): 9♥ 5♠ 8♠ 5♥. Opposizione (Omar): 2♦ 1♦ 3♣ 10♣. Il piatto è vuoto: si parte da zero.
+
 All'asta Paola cala coperto il 9♥, Omar il 3♣: vince Paola, e l'iniziativa è dei Protagonisti. Avere l'iniziativa è un vantaggio doppio: permette di stabilire posta e framing della scena, e la carta calata all'asta (qui il 9♥) viene messa da parte come ultima giocata del round, là dove è più facile fare una presa o perfino una scopa. Per questo conviene puntare alto. Il 3♣ di Omar, invece, torna nella sua mano. Avendo vinto l'iniziativa, è Paola a definire la scena.
 
 **Paola stabilisce il titolo e la posta della scena.**
@@ -834,7 +855,7 @@ All'asta Paola cala coperto il 9♥, Omar il 3♣: vince Paola, e l'iniziativa �
 
 <div class="fiction"><span class="chi">Paola narra</span>Circondato, Otto chiede di Gustav Koenig, l'emissario della Loggia, e si arrende con il tono più mansueto che ha: "Sono vostro prigioniero. Ma vi prego, ho bisogno del bagno." Koenig esita, poi concede, e lo studioso si compra qualche minuto.</div>
 
-**Omar tiene il 10♣ sul tavolo** invece di ritirarsi. Ha ormai la certezza matematica di aver perso la scena e potrebbe fare la Ritirata strategica, ma sprecare un 10 sarebbe un peccato: lo lascia sul tavolo perché peserà nella scena successiva. In ♣, di nuovo l'attrito tra i due: la rabbia di Otto che si porterà dietro fin sul treno.
+**Omar gioca il 10♣.** Ha ormai la certezza matematica di aver perso la scena, e con un'unica carta in mano potrebbe cedere la posta in due modi: con la Ritirata strategica (rimescolare il 10 nel proprio mazzo, per ritrovarselo come riserva alla cripta) o con la Resa onorevole (tenerlo tra le prese, 1 punto). Decide di non fare né l'una né l'altra: sprecare un 10 sarebbe un peccato, e calarlo nel piatto lo lascia lì a pesare nella scena successiva. In ♣, di nuovo l'attrito tra i due: la rabbia di Otto che si porterà dietro fin sul treno.
 {: .azione }
 
 <div class="fiction"><span class="chi">Omar narra</span>La Loggia non incassa il colpo e non sgombera il campo: tiene un piede sulla porta. Quello che è successo stanotte al Cairo li seguirà fin sul treno.</div>
@@ -847,6 +868,8 @@ Fine del round: nel piatto restano l'8♠, il 9♥ e il 10♣. **Protagonisti 17
 <div class="fiction"><span class="chi">Omar narra</span>"Otto esce maldestramente da una finestrella del bagno, mentre continua a parlare con gli uomini di sorveglianza al di là della porta, per ingannarli. Una volta in strada si ritrova davanti Vera e inizia a inveire contro di lei, mentre la donna lo strattona per la giacca dicendogli di sbrigarsi, perché hanno un treno da prendere. Hanno ottenuto il taccuino, ma una grossa crepa si sta aprendo sul fronte dei due protagonisti."</div>
 
 ## Scena 2. Adattamento
+
+> **Le carte in mano.** Protagonisti (Paola): 3♥ 6♠ 7♥ 1♠. Opposizione (Omar): 6♣ 10♦ 8♦ 7♦. Nel piatto, rimaste dalla scena precedente: 8♠ 9♥ 10♣.
 
 All'asta Paola cala il 3♥, Omar l'8♦: vince Omar, e l'iniziativa è dell'Opposizione. Stavolta il piatto non è vuoto: restano l'8♠, il 9♥ e il 10♣ portati dal Cairo, e con l'iniziativa Omar potrà provare subito a prenderli. Chi non ha l'iniziativa, in compenso, gioca l'ultima carta del round e può chiudere la scena: non c'è un lato che convenga in assoluto, e qui quel rovescio peserà nel finale. Avendo vinto l'iniziativa, è Omar a definire la scena.
 
@@ -925,6 +948,8 @@ Fatti gli acquisti i mazzi si rimescolano. E scatta un evento fisso: dopo la sec
 
 ## Scena 3. Frattura
 
+> **Le carte in mano.** Protagonisti (Paola): 9♠ 4♠ 10♥ F♥ (il Fante è Kalim, appena assoldato al mercato). Opposizione (Omar): 2♣ 6♦ 5♦ 9♦. Il piatto è vuoto.
+
 All'asta Paola cala il 4♠, Omar il 5♦: vince Omar, e l'iniziativa è dell'Opposizione. Il piatto è vuoto, e aprire nel vuoto è un rischio: una carta lasciata sola può essere catturata di slancio dall'altro, magari in scopa. Avendo vinto l'iniziativa, è Omar a definire la scena.
 
 **Omar stabilisce il titolo e la posta della scena.**
@@ -996,7 +1021,70 @@ Dopo la Scena 3 Paola ha di nuovo punti da spendere: le due scope del mare di sa
 **Omar non compra: tiene i punti.** Con quello che ha messo da parte, l'Opposizione punta a una figura più potente, da calare al momento giusto nella cripta.
 {: .azione }
 
-> **A seguire:** le scene 4 e 5.
+## Scena 4. Crisi
+
+> **Le carte in mano.** Protagonisti (Paola): 3♠ 8♥ 4♥ 7♠. Opposizione (Omar): 7♣ 1♣ 3♦ 8♣. Il piatto è vuoto.
+
+All'asta Paola cala il 3♠, Omar l'asso di Fiori: vince Paola, e per la prima volta dalla notte del Cairo l'iniziativa torna ai Protagonisti. Tocca a lei definire la scena.
+
+**Paola stabilisce il titolo e la posta della scena.**
+{: .azione }
+
+<div class="fiction"><span class="titolo-scena">Nella città perduta</span><em>Posta: trovare l'accesso alla cripta. Se va bene: sono a un passo dall'obiettivo. Se va male: restano in balìa dei nemici e delle insidie della città perduta.</em></div>
+
+**Paola fa il framing iniziale.**
+{: .azione }
+
+<div class="fiction"><span class="chi">Paola narra</span>Partiti all'alba, Vera e Otto sono giunti alla grande piana dove, secondo i calcoli dello studioso, un tempo sorgeva l'antica città di Zerzura. Ma al posto di edifici e antiche vestigia ci sono solo i miraggi creati dal sole allo zenit e un vento maligno che getta sabbia nei loro occhi stanchi.</div>
+
+**Paola apre con il 7♠** nel piatto vuoto: con l'iniziativa tocca a lei muovere per prima, e una carta lasciata sola nel vuoto si espone alla cattura.
+{: .azione }
+
+<div class="fiction"><span class="chi">Paola narra</span>Vera non aspetta che il sole cali. Si arrampica sullo sperone di roccia più alto, scruta la piana accecante con la mano a visiera, poi salta giù e comincia a scavare dove l'istinto le dice che la sabbia nasconde qualcosa. Dove finisce la strada comincia lei: non c'è ostacolo che non abbia mai affrontato a spallate.</div>
+
+**Omar risponde con il 7♣, prende il 7♠ e svuota il piatto: scopa** (4 punti). Pesca la carta solitaria di Vera e la spazza via di slancio, già al primo affondo.
+{: .azione }
+
+<div class="fiction"><span class="chi">Omar narra</span>Ma la città perduta non si lascia trovare da chi la prende a spallate. La duna su cui scava le frana addosso senza preavviso, un fiume di sabbia che la inghiotte fino alla cintola e in un istante cancella ogni segno, ogni buca, ogni traccia. Quando Otto la tira fuori, che tossisce e sputa sabbia, del lavoro di un'ora non resta nulla: la piana è di nuovo liscia e vuota, come se Vera non avesse mai toccato terra.</div>
+
+**Paola gioca il 4♥** nel piatto: dopo lo schianto rimette in gioco una risorsa leggera, un legame.
+{: .azione }
+
+<div class="fiction"><span class="chi">Paola narra</span>Tocca a Otto, allora. Si inginocchia all'ombra della roccia, chiude gli occhi e recita a memoria i versi dell'enigma che ha decifrato, cercando nei suoi calcoli il punto esatto. Vera, che ancora sputa sabbia, per una volta lo lascia fare e gli si siede accanto.</div>
+
+**Omar gioca l'asso di Fiori (1♣)**: dispone un piccolo seme di caos, tenendo da parte le carte alte per il colpo grosso.
+{: .azione }
+
+<div class="fiction"><span class="chi">Omar narra</span>Il vento intanto cambia: si alza sottile e fischiante tra le pietre, e porta un odore che non è di sabbia. Un odore di vecchio, di sepolcro. La città morta si è accorta di loro, e non li vuole.</div>
+
+**Paola gioca l'8♥** nel piatto: una risorsa pesante, il legame più forte. Ma è una carta alta lasciata sola, un bersaglio ghiotto.
+{: .azione }
+
+<div class="fiction"><span class="chi">Paola narra</span>Poi Otto apre gli occhi di scatto: ha trovato. I suoi calcoli convergono su un punto preciso ai piedi della roccia, dove un avvallamento appena percettibile tradisce qualcosa scavato dall'uomo. Lo dice a Vera con una luce negli occhi che lei non gli vedeva dal Cairo, e per un istante, in mezzo a quella desolazione, tornano una squadra: lei che scava, lui che le guida la mano. Sotto le dita di Vera affiora il bordo di una lastra di pietra nera.</div>
+
+**Omar gioca l'8♣, prende l'8♥, poi spunta la spinta ♣ del pitch** «Aldo Falco è vivo: è un Vegliante. Otto lo ha capito, e tace»: la presa diventa **scopa** e svuota il piatto (l'8♥ catturato più il 4♥ e l'1♣). È la seconda scopa della scena, e la più crudele: si porta via il legame appena ricucito.
+{: .azione }
+
+<div class="fiction"><span class="chi">Omar narra</span>E proprio mentre la lastra cede, la città perduta restituisce ai due la sua verità più feroce. Dall'ombra di un masso si stacca una figura incappucciata, una delle sentinelle che vegliano su Zerzura, e quando il cappuccio scivola via Vera si trova davanti un volto che ha pianto per anni come morto: Aldo Falco. Suo padre. Vivo, e schierato con chi quella cripta la difende. Vera resta di pietra, poi si volta verso Otto cercando una smentita, e su quella faccia che legge sette lingue morte trova invece la cosa peggiore: la colpa. Otto lo sapeva. Lo aveva capito da tempo, e aveva taciuto. In un istante la fiducia ricucita nel deserto, lo sguardo complice di un attimo prima, tutto crolla e viene spazzato via. Non restano che due estranei in mezzo alla sabbia, e una porta nera ai loro piedi.</div>
+
+**Paola gioca il 3♠**, la sua ultima carta: non le resta che calarla, di nuovo esposta nel vuoto.
+{: .azione }
+
+<div class="fiction"><span class="chi">Paola narra</span>Vera non urla e non piange. Fa una cosa sola: volta le spalle a Otto e a quel padre insieme, stringe i denti e con una sbarra di ferro fa saltare da sola il bordo della lastra. Se deve scendere all'inferno per il Sole di Mezzanotte ci scenderà, ma da qui in avanti non ha più nessuno accanto di cui fidarsi.</div>
+
+**Omar chiude con il 3♦, prende il 3♠ e svuota di nuovo il piatto: terza scopa.** Cattura l'ultimo gesto di Vera e non lascia niente sul tavolo.
+{: .azione }
+
+<div class="fiction"><span class="chi">Omar narra</span>È esattamente il momento che gli altri aspettavano. Mentre Vera lotta da sola con la pietra, le sentinelle di Zerzura escono allo scoperto da ogni masso, e in lontananza, sulla piana, si alza la polvere delle automobili della Loggia richiamate dal biplano. Veglianti da una parte, Loggia dall'altra: i due si ritrovano stretti nel mezzo, soli e divisi, sopra una porta spalancata sul buio. L'ingresso lo hanno trovato, sì, ma non sono arrivati primi, e non sono più una squadra.</div>
+
+Fine del round: il piatto è di nuovo vuoto, **0 a 0**, e la scena va all'Opposizione, che con tre scope di fila non ha lasciato ai Protagonisti niente sul tavolo. Omar incassa 12 punti, le sue tre scope, abbastanza per puntare alla figura più potente al mercato; Paola non porta a casa nulla. Il diario del rapporto si legge dai Cuori e dalle Picche rimasti nel piatto: ma le scope hanno spazzato via tutto, il piatto è vuoto, e il diario segna **parità**. La frattura aperta dal segreto su Aldo è fresca e profonda, ma non è ancora detta l'ultima parola: il rapporto resta in bilico, sospeso su quella porta nera, e si deciderà là sotto.
+
+**Avendo perso la posta, per la prima e unica volta in tutta la partita l'esito lo raccontano i Protagonisti: tocca a Paola narrare una sconfitta sua.** La chiusura è una scopa e il piatto resta vuoto: nessun seme domina il diario, è parità; ma la scena l'hanno decisa il caos del deserto e i nemici, le tre scope di Omar, e soprattutto la verità che Otto teneva nascosta. Paola non ha la voce cupa di Omar: incassa il colpo e lo racconta con la rabbia e il dolore di chi l'ha subito.
+{: .azione }
+
+<div class="fiction"><span class="chi">Paola narra</span>All'ingresso di Zerzura ci sono arrivati, ma nel modo peggiore: la Loggia alle calcagna, i Veglianti tutto intorno, e fra loro due un silenzio che pesa più della sabbia. Vera non guarda Otto, non guarda suo padre. Solleva la lastra di pietra, si affaccia sul pozzo di scale che sprofonda nel buio e scende per prima, da sola, il revolver in pugno e un solo pensiero in testa: arrivare al Sole di Mezzanotte prima di tutti loro. Otto la segue, perché non sa fare altro. Quello che si erano promessi nel deserto è rimasto lassù, sepolto sotto la sabbia.</div>
+
+> **A seguire:** il mercato tra la quarta e la quinta scena e poi la Scena 5.
 
 ---
 

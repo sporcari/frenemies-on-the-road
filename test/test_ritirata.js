@@ -45,7 +45,7 @@ function passo(){
       return;
     }
   }
-  if(modA()){const f=document.getElementById("fanteOk"),rNo=document.getElementById("reNo");
+  if(modA()){const f=document.getElementById("fanteNo"),rNo=document.getElementById("reNo");
     if(f){click(f);return} if(rNo){click(rNo);return}
     const p=document.getElementById("pngOk");if(p){let a=document.getElementById("m-png-nome");if(a)a.value="X";let b=document.getElementById("m-png-desc");if(b)b.value="Y";click(p);return}
     const q=document.getElementById("pngnOk");if(q){let a=document.getElementById("m-pngn-nome");if(a)a.value="X";click(q);return}throw new Error("modale sconosciuto");}

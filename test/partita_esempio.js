@@ -45,14 +45,28 @@ const PITCH=[
  "Tempeste in anticipo, pozzi secchi, piste cancellate, un camion che perde olio",
  "Aldo Falco è vivo: è un Vegliante. Otto lo ha capito, e tace"
 ];
-const TITOLI=["L'asta del Cairo","Il treno per El Qara","Il mare di sabbia","L'accampamento","La cripta del Sole"];
+const TITOLI=["L'asta del Cairo","Il treno per El Qara","Il mare di sabbia","Nella città perduta","La cripta del Sole"];
 const POSTE=[
  "Prendere il taccuino di Aldo. Se va bene: hanno gli appunti su come raggiungere l'artefatto e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio",
  "Raggiungere El Qara in tempo. Se va bene: si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male: arrivano troppo tardi e restano senza quell'aiuto prezioso",
  "Orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se va bene: i protagonisti possono accamparsi e prepararsi alla ricerca. Se va male: si perdono nel deserto",
- "Raggiungere l'ingresso prima dell'alba. Se va bene: scendono nella cripta col favore del buio. Se va male: alla cripta li aspettano la Loggia da una parte e i Veglianti dall'altra",
+ "Trovare l'accesso alla cripta. Se va bene: sono a un passo dall'obiettivo. Se va male: restano in balia dei nemici e delle insidie della città perduta",
  "L'eclissi. Se va bene: mettono in salvo il Sole di Mezzanotte. Se va male: il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata"
 ];
+
+// --- Scena 4 (Crisi): linea di gioco SCRIPTATA a mano (scelta di Saverio), NON seed-derivata. ---
+// Per le altre scene l'ordine di gioco esce dal seed; qui forziamo la successione voluta per l'esempio
+// del manuale (vittoria totale dell'Opposizione, 3 scope), che resta riproducibile e protetta dal diff.
+// Ordine: P 7♠ | O 7♣ scopa | P 4♥ | O 1♣ | P 8♥ | O 8♣ + spinta ♣ (il segreto su Aldo) scopa | P 3♠ | O 3♦ scopa.
+const SCENA4_IDX=3;   // G().scena è 0-based: la quarta scena
+const S4_ORDINE=[
+  {v:7,s:"picche"},{v:7,s:"fiori"},
+  {v:4,s:"cuori"}, {v:1,s:"fiori"},
+  {v:8,s:"cuori"}, {v:8,s:"fiori"},
+  {v:3,s:"picche"},{v:3,s:"quadri"}
+];
+let s4i=0;            // indice della mossa corrente nella Scena 4 scriptata
+const S4_SPINTA_TXT="Aldo";   // sottostringa per scegliere la spinta del segreto alla mossa 6
 
 /* ---------- transcript ---------- */
 const T=[];
@@ -149,7 +163,18 @@ function passo(){
     log(`   ${nomeL(a)} — mano: ${mano(a)} | piatto: ${piatto()}`);
     const jollyEl=carte.find(c=>c.classList.contains("jolly"));
     const nonJolly=carte.filter(c=>!c.classList.contains("jolly"));
-    const scelta=(jollyEl && G().piatto.length>0) ? jollyEl : (nonJolly[0]||carte[0]);
+    let scelta;
+    if(G().scena===SCENA4_IDX){
+      // Scena 4 scriptata: gioca la carta prevista dalla successione (cerca in mano o nella carta d'asta).
+      const w=S4_ORDINE[s4i];
+      const m=G().lati[a];
+      const objOf=el=>{ const id=parseInt(el.dataset.id); return m.mano.find(x=>x.id===id)||(m.astaCarta&&m.astaCarta.id===id?m.astaCarta:null); };
+      scelta=carte.find(el=>{ const o=objOf(el); return o && o.val===w.v && o.seme===w.s && !o.fig && !o.jolly; });
+      if(!scelta) throw new Error(`Scena 4 scriptata: ${w.v} di ${w.s} non disponibile (${nomeL(a)}, mossa ${s4i+1})`);
+      s4i++;
+    } else {
+      scelta=(jollyEl && G().piatto.length>0) ? jollyEl : (nonJolly[0]||carte[0]);
+    }
     click(scelta);
     const box=document.getElementById("pannelloAzione");
     const jScarta=box.querySelector("#jScarta");
@@ -190,7 +215,7 @@ function passo(){
     if(sp.length && spinteUsate<3 && G().scena>=1 && spintaScena!==G().scena){
       spintaScena=G().scena;
       spinteUsate++;
-      const b=sp[0];
+      const b=(G().scena===SCENA4_IDX)?(sp.find(x=>x.textContent.includes(S4_SPINTA_TXT))||sp[0]):sp[0];
       log(`   → SPINTA DEL PITCH: viene spuntata «${b.textContent.trim()}» — la presa diventa una scopa vera: il piatto si svuota nelle prese di chi spunta.`);
       click(b); logUltima(); return "spinta";
     }

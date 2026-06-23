@@ -16,11 +16,9 @@ let compratoUnaVolta=false, spinteUsate=0, colpiFatti=0, pngCreato=false, log=[]
 function passo(i){
   // modali degli effetti figura
   if(modaleAttivo()){
-    const fm=document.getElementById("fanteManoOk");   // eccezione Fante: scegli la carta da mandare in fondo
-    if(fm){ const c=[...document.querySelectorAll("#fanteManoCarte .carta")].find(x=>!x.classList.contains("jolly"))||document.querySelector("#fanteManoCarte .carta");
-      if(c) click(c); click(fm); return "fante-mano" }
-    const f=document.getElementById("fanteOk"), rNo=document.getElementById("reNo");
-    if(f){ click(f); return "fante" }
+    const fNo=document.getElementById("fanteNo");   // nuovo Fante: sbircia 2 e lascia così (salta lo scambio)
+    if(fNo){ click(fNo); return "fante" }
+    const rNo=document.getElementById("reNo");
     if(rNo){ click(rNo); return "re-no" }
     const pngOk=document.getElementById("pngOk");      // modale acquisto figura (nome/desc)
     if(pngOk){ const ni=document.getElementById("m-png-nome"); if(ni) ni.value="Figura di prova";

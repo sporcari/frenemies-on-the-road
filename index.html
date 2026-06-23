@@ -365,7 +365,7 @@ const LETT_RAPP = {
 };
 const FIGURE = {
   F:{nome:"Fante", titolo:"L'informatore", val:8, costo:3,
-     eff:"Guarda le prime 4 carte del tuo mazzo e scegli quali mettere in fondo."},
+     eff:"Sbircia le prime 2 carte del mazzo e, se vuoi, scambiane una con una carta della mano."},
   D:{nome:"Regina", titolo:"La manipolatrice", val:9, costo:5,
      eff:"L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo."},
   R:{nome:"Re", titolo:"Il deus ex machina", val:10, costo:8,
@@ -611,7 +611,7 @@ const PLAYSET=[
       {scena:1, fase:"Innesco", titolo:"L'asta del Cairo", suggerimento_posta:"Prendere il taccuino di Aldo. Se va bene: hanno gli appunti su come raggiungere l'artefatto e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio"},
       {scena:2, fase:"Adattamento", titolo:"Il treno per El Qara", suggerimento_posta:"Raggiungere El Qara in tempo. Se va bene: si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male: arrivano troppo tardi e restano senza quell'aiuto prezioso"},
       {scena:3, fase:"Frattura", titolo:"Il mare di sabbia", suggerimento_posta:"Orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se va bene: i protagonisti possono accamparsi e prepararsi alla ricerca. Se va male: si perdono nel deserto"},
-      {scena:4, fase:"Crisi", titolo:"L'accampamento", suggerimento_posta:"Raggiungere l'ingresso prima dell'alba. Se va bene: scendono nella cripta col favore del buio. Se va male: alla cripta li aspettano la Loggia da una parte e i Veglianti dall'altra"},
+      {scena:4, fase:"Crisi", titolo:"Nella città perduta", suggerimento_posta:"Trovare l'accesso alla cripta. Se va bene: sono a un passo dall'obiettivo. Se va male: restano in balia dei nemici e delle insidie della città perduta"},
       {scena:5, fase:"Risoluzione", titolo:"La cripta del Sole", suggerimento_posta:"L'eclissi. Se va bene: mettono in salvo il Sole di Mezzanotte. Se va male: il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata"}
     ]
   }
@@ -723,7 +723,7 @@ function totaleProt(){ return totaleSeme("cuori")+totaleSeme("picche") }
 function totaleOpp(){ return totaleSeme("quadri")+totaleSeme("fiori") }
 function puntiMercato(l){
   const L=lato(l);
-  return L.bonus + L.prese.reduce((s,c)=>s+(c.fig?2:1),0) + L.scope.filter(c=>!c.esposta).length*4;   // presa 1, presa con figura 2, scopa 4
+  return L.bonus + L.prese.length + L.scope.filter(c=>!c.esposta).length*3;   // presa 1 (anche con figura), scopa 3
 }
 function figuraTipoComprata(l, f){   // il lato ha già comprato una figura di questo tipo (qualsiasi seme)?
   return (G.figureComprate||[]).some(e=>e[0]===f && semiLato(l).includes(e.slice(1)));
@@ -1323,6 +1323,10 @@ function rSetup(){
     <h2 class="ts">Frenemies on the Road</h2>
     <p class="sotto">Un gioco di viaggi senza ritorno, missioni disperate, piani improvvisati.</p>
     <div class="pannello" style="font-size:14.5px;line-height:1.65">
+      Uno <b>story-game</b> in cui i giocatori creano insieme una storia, giocando una partita a carte
+      <b>ispirata alla scopa</b> che li vede in competizione su due fronti: è il voler <b>vincere ogni scena</b> a
+      generare la tensione narrativa, e l'esito resta in bilico fino all'ultima carta. Un gioco insieme
+      collaborativo e competitivo: questa apparente contraddizione è il cuore del gioco.<br><br>
       Due protagonisti <b>incompatibili</b> sono costretti a collaborare per raggiungere un obiettivo
       prima che sia troppo tardi. Il mondo è contro di loro: <b>nemici organizzati</b> ♦ — ma anche
       <b>caos, sfortuna, incomprensioni</b> ♣.<br><br>
@@ -2191,27 +2195,43 @@ function chiudiModale(){ const c=document.getElementById("modaleCorpo"); c.style
 function effettoFigura(c, poi){
   const l=G.attore, L=lato(l), A=lato(altro(l));
   if(c.fig==="F"){
-    const top=L.mazzo.slice(0,4);
-    if(top.length===0){ poi(); return }
+    // Fante (v1.15): sbirci le prime 2 del mazzo e, se vuoi, ne scambi una con una carta della mano;
+    // la carta che cedi torna in cima al mazzo insieme alla carta sbirciata non scelta.
+    const top=L.mazzo.slice(0,2);
+    if(top.length===0 || L.mano.length===0){ poi(); return }
+    const fai=(topId,manoId)=>{
+      const ti=L.mazzo.findIndex(x=>x.id===topId), mi=L.mano.findIndex(x=>x.id===manoId);
+      if(ti>=0 && mi>=0){ const dc=L.mazzo[ti], hc=L.mano[mi]; L.mano[mi]=dc; L.mazzo[ti]=hc; }
+    };
+    if(G.modalita==="solo" && l==="O"){   // l'IA non passa dal modale: scambia se migliora la mano
+      const topAlta=top.slice().sort((a,b)=>b.val-a.val)[0];
+      const cand=L.mano.filter(x=>!x.jolly).sort((a,b)=>a.val-b.val);
+      const manoBassa=cand[0];
+      if(topAlta && manoBassa && topAlta.val>manoBassa.val) fai(topAlta.id, manoBassa.id);
+      poi(); return;
+    }
+    let topSel=null, manoSel=null;
     modale(`<h2 class="ts">Fante — L'informatore</h2>
-      <p class="sotto">Le prime ${top.length} carte del tuo mazzo. Tocca quelle da mandare in fondo.</p>
-      <div class="mazzo-carte" id="fanteCarte">${top.map(x=>cartaHTML(x)).join("")}</div>
-      <button class="azione" id="fanteOk" style="margin-top:14px">Conferma</button>`);
-    const inFondo=new Set();
-    document.querySelectorAll("#fanteCarte .carta").forEach(el=>{
-      el.addEventListener("click",()=>{
-        const id=parseInt(el.dataset.id);
-        if(inFondo.has(id)){inFondo.delete(id);el.classList.remove("sel")}
-        else{inFondo.add(id);el.classList.add("sel")}
-      });
-    });
-    document.getElementById("fanteOk").addEventListener("click",()=>{
-      const resto=L.mazzo.slice(top.length);
-      const su=top.filter(x=>!inFondo.has(x.id));
-      const giu=top.filter(x=>inFondo.has(x.id));
-      L.mazzo=[...su,...resto,...giu];
-      chiudiModale(); poi();
-    });
+      <p class="sotto">Sbirci le prime ${top.length} carte del mazzo. Se vuoi, scambiane una con una carta della mano: la carta che cedi torna in cima.</p>
+      <span class="etichetta">In cima al mazzo</span>
+      <div class="mazzo-carte" id="fanteTop">${top.map(x=>cartaHTML(x)).join("")}</div>
+      <span class="etichetta" style="margin-top:12px">La tua mano</span>
+      <div class="mazzo-carte" id="fanteMano">${L.mano.map(x=>cartaHTML(x)).join("")}</div>
+      <div style="display:flex;gap:8px;margin-top:14px">
+        <button class="azione" id="fanteSwap" disabled>Scambia</button>
+        <button class="secondaria" id="fanteNo">Lascia così</button>
+      </div>`);
+    const upd=()=>{ const b=document.getElementById("fanteSwap"); if(b) b.disabled=!(topSel&&manoSel); };
+    document.querySelectorAll("#fanteTop .carta").forEach(el=>el.addEventListener("click",()=>{
+      document.querySelectorAll("#fanteTop .carta").forEach(x=>x.classList.remove("sel"));
+      el.classList.add("sel"); topSel=parseInt(el.dataset.id); upd();
+    }));
+    document.querySelectorAll("#fanteMano .carta").forEach(el=>el.addEventListener("click",()=>{
+      document.querySelectorAll("#fanteMano .carta").forEach(x=>x.classList.remove("sel"));
+      el.classList.add("sel"); manoSel=parseInt(el.dataset.id); upd();
+    }));
+    document.getElementById("fanteNo").addEventListener("click",()=>{ chiudiModale(); poi(); });
+    document.getElementById("fanteSwap").addEventListener("click",()=>{ fai(topSel,manoSel); chiudiModale(); poi(); });
   }
   else if(c.fig==="D"){
     if(A.mano.length>0){
@@ -2309,9 +2329,9 @@ function giocaJolly(c, v, combo){
     // SCOPA col Jolly: il piatto è pulito (vantaggio di chi gioca), ma il marcatore (3 punti) va all'AVVERSARIO
     A.scope.push(c); aggiungiScopa(avv);
     G.svuotoConScopa=l;   // chi ripulisce il piatto vince la posta della scena
-    G.ultimaGiocata=`${nomeLato(l)} — SCOPA col Jolly come ${v}. Il piatto è ripulito, ma la scopa (4 punti) va a ${nomeLato(avv)}.`;
+    G.ultimaGiocata=`${nomeLato(l)} — SCOPA col Jolly come ${v}. Il piatto è ripulito, ma la scopa (3 punti) va a ${nomeLato(avv)}.`;
     vaiNarrazione(c,"scopa","",null,
-      `<b>Svolta sleale.</b> ${nomeLato(l)} ripulisce la scena con un mezzo che tradisce principi e lealtà: il vantaggio è pieno, ma il merito — e i 4 punti — finiscono a ${nomeLato(avv)}.`);
+      `<b>Svolta sleale.</b> ${nomeLato(l)} ripulisce la scena con un mezzo che tradisce principi e lealtà: il vantaggio è pieno, ma il merito — e i 3 punti — finiscono a ${nomeLato(avv)}.`);
   }else{
     // PRESA col Jolly: il marcatore (1 punto) va all'AVVERSARIO
     A.prese.push(c);
@@ -2436,16 +2456,19 @@ function rFineScena(){
 
 /* ================= MERCATO ================= */
 function avviaMercato(){
-  // ordine: 1) Jolly nei mazzi (fine 3ª scena, PRIMA della pesca)  2) pesca nuova mano  3) acquisti
-  if(G.scena===1 && !G.jollyEntrato) entraJollyNeiMazzi();   // dopo la 2ª scena
-  const preScena5 = (G.scena===3);
+  // v1.15: ordine MERCATO → (rimescolo se hai comprato) → PESCA. Qui NON si pesca: prima gli acquisti.
+  if(G.scena===1 && !G.jollyEntrato) entraJollyNeiMazzi();   // dopo la 2ª scena il Jolly entra nel mazzo dei Protagonisti
+  G.compratoMercato={P:false,O:false};
   G.mercatoLato = G.modalita==="online" ? "P" : null;
-  // prima della 5ª non si pesca qui: la scelta delle 4 carte (mano estesa) avviene DOPO il mercato,
-  // così le figure comprate entrano nel mazzo prima della scelta ed è possibile tenerle.
-  if(!preScena5){ pescaFinoA("P",4); pescaFinoA("O",4); }
   G.fase="mercato"; render();
 }
+// v1.15: rimescola il mazzo dei lati che hanno comprato una figura al mercato (chiamata prima della pescata)
+function rimescolaSeComprato(){
+  const c=G.compratoMercato||{};
+  ["P","O"].forEach(l=>{ if(c[l]) lato(l).mazzo=mischia(lato(l).mazzo); });
+}
 function avviaManoEstesa(){
+  rimescolaSeComprato();   // v1.15: il mazzo (con le figure comprate) si rimescola prima di scegliere la mano estesa
   G.estesa={P:false,O:false};
   G.fase="mano_estesa"; G.attore="P"; velo("P",render);
 }
@@ -2505,7 +2528,7 @@ function rMercato(){
     return `<div class="pannello">
       <span class="etichetta">${nomeLato(l)} ${L.semi.map(s=>SIMBOLI[s]).join("")}</span>
       <div class="punti-big" id="punti-${l}">${punti}</div>
-      <div class="contatori">prese ${L.prese.filter(c=>!c.fig).length} (×1) · prese figura ${L.prese.filter(c=>c.fig).length} (×2) · scope ${L.scope.filter(c=>!c.esposta).length} (×4)${L.bonus?` · bonus ${L.bonus}`:""}</div>
+      <div class="contatori">prese ${L.prese.length} (×1) · scope ${L.scope.filter(c=>!c.esposta).length} (×3)${L.bonus?` · bonus ${L.bonus}`:""}</div>
       <div style="margin-top:10px">
         ${Object.entries(FIGURE).map(([k,f])=>{
           const presa=figuraTipoComprata(l,k);   // una figura per tipo per lato
@@ -2523,7 +2546,7 @@ function rMercato(){
     : "Chiudi il mercato e riparti";
   SC.innerHTML=`
     <h2 class="ts">Il mercato${online?" — "+nomeLato(G.mercatoLato):""}</h2>
-    <p class="sotto">${G.scena===3?"Compra ora: la mano dell'ultima scena la sceglierai subito dopo, così le figure acquistate possono entrare nella scelta.":"La nuova mano è già stata pescata."} Pagamento automatico: prima i punti bonus, poi le prese (1 punto, 2 con una figura), infine le scope (4 punti); i marcatori spesi vanno negli scarti comuni. Le figure entrano nel mazzo, subito rimescolato. Si può comprare al massimo una figura per tipo.</p>
+    <p class="sotto">${G.scena===3?"Compra ora: la mano dell'ultima scena la sceglierai subito dopo.":"La nuova mano si pesca dopo il mercato."} Pagamento automatico: prima i punti bonus, poi le prese (1 punto ciascuna), infine le scope (3 punti); i marcatori spesi vanno negli scarti comuni. Le figure entrano nel mazzo, che si rimescola prima della pescata. Si può comprare al massimo una figura per tipo.</p>
     <div class="mercato-griglia">${pannelli}</div>
     <button class="azione" id="m-fine">${etichettaFine}</button>`;
   SC.querySelectorAll("button[data-f]").forEach(b=>b.addEventListener("click",()=>{
@@ -2560,45 +2583,12 @@ function acquistaFigura(l,f,s,nome,desc,b){
     SC.querySelectorAll(`button[data-l="${l}"]`).forEach(x=>{ x.disabled = puntiMercato(l)<FIGURE[x.dataset.f].costo; });
     inviaStato();
   };
-  // ECCEZIONE FANTE (v1.12): l'informatore entra SUBITO in mano per la scena successiva
-  // (se la mano è già stata pescata), e una carta della mano va in fondo al mazzo.
-  // Regina e Re, invece, entrano nel mazzo e vengono rimescolati (effetto sul gioco).
-  if(f==="F" && L.mano.length>0){
-    L.mano.push(fig);
-    if(G.modalita==="solo" && l==="O"){
-      // l'IA non passa dal modale: manda in fondo la carta numerica più bassa (tiene Jolly e figure)
-      const cand=L.mano.filter(c=>c.fig!=="F" && !c.jolly);
-      const giu=(cand.length?cand:L.mano.filter(c=>c.fig!=="F")).slice().sort((a,b)=>a.val-b.val)[0];
-      if(giu){ L.mano=L.mano.filter(x=>x.id!==giu.id); L.mazzo.push(giu); }
-      finalizza("entra subito in mano; una carta va in fondo al mazzo.");
-    } else {
-      fanteInMano(l, ()=>finalizza("entra subito in mano; una carta va in fondo al mazzo."));
-    }
-  } else {
-    L.mazzo.push(fig);
-    L.mazzo=mischia(L.mazzo);
-    finalizza("entra nel mazzo, rimescolato.");
-  }
-}
-// Modale dell'eccezione Fante: scegli una carta della mano da mandare in fondo al mazzo.
-function fanteInMano(l, poi){
-  const L=lato(l);
-  modale(`<h2 class="ts">Il Fante entra in mano</h2>
-    <p class="sotto">L'informatore si unisce alla mano della prossima scena. Tocca una carta da mandare in fondo al mazzo, poi conferma.</p>
-    <div class="mazzo-carte${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}" id="fanteManoCarte">${L.mano.map(x=>cartaHTML(x)).join("")}</div>
-    <button class="azione" id="fanteManoOk" style="margin-top:14px" disabled>Manda in fondo</button>`);
-  let sel=null;
-  const btn=document.getElementById("fanteManoOk");
-  document.querySelectorAll("#fanteManoCarte .carta").forEach(el=>el.addEventListener("click",()=>{
-    document.querySelectorAll("#fanteManoCarte .carta").forEach(x=>x.classList.remove("sel"));
-    el.classList.add("sel"); sel=parseInt(el.dataset.id); btn.disabled=false;
-  }));
-  btn.addEventListener("click",()=>{
-    if(sel==null) return;
-    const i=L.mano.findIndex(x=>x.id===sel);
-    if(i>=0){ const c=L.mano.splice(i,1)[0]; L.mazzo.push(c); }   // in fondo al mazzo (pescaFinoA pesca dalla testa)
-    chiudiModale(); poi();
-  });
+  // tutte le figure (Fante incluso, v1.15) entrano nel mazzo; il mazzo si rimescola a FINE mercato,
+  // prima della pescata della nuova mano, solo se hai comprato qualcosa (vedi avanzaScena / avviaManoEstesa).
+  L.mazzo.push(fig);
+  G.compratoMercato=G.compratoMercato||{P:false,O:false};
+  G.compratoMercato[l]=true;
+  finalizza("entra nel mazzo (rimescolato a fine mercato).");
 }
 function chiediPng(l,f,s,b){
   const fig=FIGURE[f];
@@ -2627,21 +2617,15 @@ function pagaCosto(l, costo){
   if(puntiMercato(l)<costo) return false;
   let resto=costo;
   const usaBonus=Math.min(L.bonus,resto); L.bonus-=usaBonus; resto-=usaBonus;
-  // prese numeriche (1), poi prese con figura (2), poi scope (4); i marcatori spesi vanno negli scarti comuni
+  // prese (1, anche con figura), poi scope (3); i marcatori spesi vanno negli scarti comuni
   while(resto>0){
-    const idx=L.prese.map((c,i)=>!c.fig?i:-1).filter(i=>i>=0);
-    if(!idx.length) break;
-    G.scartiComuni.push(L.prese.splice(idx[Math.floor(Math.random()*idx.length)],1)[0]); resto-=1;
-  }
-  while(resto>0){
-    const idx=L.prese.map((c,i)=>c.fig?i:-1).filter(i=>i>=0);
-    if(!idx.length) break;
-    G.scartiComuni.push(L.prese.splice(idx[Math.floor(Math.random()*idx.length)],1)[0]); resto-=2;
+    if(!L.prese.length) break;
+    G.scartiComuni.push(L.prese.splice(Math.floor(Math.random()*L.prese.length),1)[0]); resto-=1;
   }
   while(resto>0){
     const i=L.scope.findIndex(c=>!c.esposta);
     if(i<0) break;
-    G.scartiComuni.push(L.scope.splice(i,1)[0]); resto-=4;
+    G.scartiComuni.push(L.scope.splice(i,1)[0]); resto-=3;
   }
   return true;
 }
@@ -2659,7 +2643,7 @@ function rJollyIntro(){
       <div class="sc">uno solo, nel mazzo dei Protagonisti</div></div>
     <div class="pannello" style="font-size:14px">
       Il Jolly vale quanto dichiari (1–10) e serve <b>solo per catturare</b> (presa o scopa) — mai nell'asta.
-      È una mossa <b>sleale</b>: il vantaggio sul tavolo è di chi lo gioca, ma il <b>punto va all'avversario</b> (presa = 1, scopa = 4).
+      È una mossa <b>sleale</b>: il vantaggio sul tavolo è di chi lo gioca, ma il <b>punto va all'avversario</b> (presa = 1, scopa = 3).
       Narra sempre come ottieni il successo <b>andando contro i principi e la lealtà</b>.
       Se a piatto vuoto resta solo il Jolly, viene scartato senza effetto.
     </div>
@@ -2668,6 +2652,7 @@ function rJollyIntro(){
 }
 function avanzaScena(){
   G.scena++;
+  if(G.scena<4){ rimescolaSeComprato(); pescaFinoA("P",4); pescaFinoA("O",4); }   // v1.15: la nuova mano si pesca DOPO il mercato
   if(G.scena===4){
     // neutralizzazione delle figure rimaste nel piatto, prima dell'ultima scena
     const figure=G.piatto.filter(c=>c.fig);
@@ -2801,7 +2786,7 @@ function rFinale(){
   const vp=G.scene.filter(s=>s&&s.vincitore==="P").length;
   const vo=G.scene.filter(s=>s&&s.vincitore==="O").length;
   function scopeVal(l){ return lato(l).scope.filter(c=>!c.esposta).length; }   // conteggio scope (per il tie-break)
-  function punti(l){ return puntiMercato(l); }   // punti non spesi: bonus + prese×1 + prese figura×2 + scope×4
+  function punti(l){ return puntiMercato(l); }   // punti non spesi: bonus + prese×1 + scope×3
   // vittoria del piatto = esito esterno della missione (con tie-break: scope, poi prese)
   const rec5=G.scene[4];
   let piattoP;
@@ -2811,10 +2796,10 @@ function rFinale(){
   const pP=punti("P"), pO=punti("O");
   const puntiP = pP>pO, pari = pP===pO;
   const OUTCOME = piattoP
-    ? (puntiP||pari ? ["VITTORIA TOTALE","successo pieno, netto — la missione riesce e il viaggio li premia"]
-                    : ["PER IL ROTTO DELLA CUFFIA","l'obiettivo è raggiunto, ma pagando un prezzo"])
-    : (puntiP ? ["SCONFITTA CON ASPETTI POSITIVI","l'obiettivo fallisce, ma qualcosa è salvato o imparato"]
-              : ["DISFATTA TOTALE","fallimento completo"]);
+    ? (puntiP||pari ? ["VITTORIA PIENA","ce l'avete fatta, e da soli — la missione riesce con le proprie forze"]
+                    : ["PER IL ROTTO DELLA CUFFIA","vinto, ma grazie agli aiuti e a caro prezzo"])
+    : (puntiP ? ["SCONFITTA DIGNITOSA","caduti a testa alta, con l'esperienza come tesoro"]
+              : ["FALLIMENTO TOTALE","travolti su ogni fronte"]);
   const tf=totaleSeme("fiori"), tq=totaleSeme("quadri");
   const oppNat = tq>tf
     ? "♦ È stata soprattutto l'opposizione organizzata a ostacolarli: un nemico con un volto, un piano, una volontà."
@@ -2890,7 +2875,9 @@ const REGOLE={
     <tr><td>♥ Cuori</td><td>I protagonisti agiscono con <b>dialogo, connessione, empatia</b>: qualcuno si apre, convince, ascolta.</td></tr>
     <tr><td>♦ Quadri</td><td>I <b>nemici attivi</b>: fazioni ostili, inseguitori, minacce organizzate, risorse avversarie intenzionali. Non devono essere un'unica fazione: possono essere attori diversi, anche rivali tra loro, che per ragioni differenti vogliono la posta o ostacolano i protagonisti.</td></tr>
     <tr><td>♣ Fiori</td><td>Il <b>caos</b>: sfortuna, incidenti, attriti tra protagonisti, PNG problematici, complicazioni impreviste.</td></tr></table>
-    <div class="es">"Due uomini in giacca scura scendono da un SUV davanti al diner. Hanno le foto di Frank e Skunk." (♦) — "L'auto riparte, ma dopo mezzo chilometro una gomma esplode. Sono in mezzo al deserto." (♣)</div>`},
+    <div class="es">"Due uomini in giacca scura scendono da un SUV davanti al diner. Hanno le foto di Frank e Skunk." (♦) — "L'auto riparte, ma dopo mezzo chilometro una gomma esplode. Sono in mezzo al deserto." (♣)</div>
+    <h3>Competizione e collaborazione</h3>
+    I due lati sono avversari e giocano tattico, ma è un espediente per far emergere la storia dalle meccaniche: sotto, il gioco è <b>collaborativo</b>. Quando narri un esito o fissi una posta, scegli ciò che fa avanzare la storia più di ciò che ti avvantaggia. Sono ammessi gli <b>sconfinamenti</b>: chi gioca Fiori può mostrare difetti e debolezze dei protagonisti, e chi gioca i Protagonisti può far innamorare, impietosire o convincere un PNG dell'Opposizione. Si costruisce sempre sulle idee degli altri.`},
   asta:{titolo:"Asta e apertura",html:`
     <h3>Inizio scena: mano e asta</h3>
     <ul><li>Ogni lato pesca <b>4 carte</b> dal proprio mazzo</li>
@@ -2918,11 +2905,13 @@ const REGOLE={
     <ul><li><b>Giocare una carta nel piatto</b> = <i>Introdurre</i>: disponi una tua risorsa in scena. Non risolve nulla, predispone. Per i <b>Protagonisti</b> è un elemento/fatto/azione che potrà tornare utile (un conoscente che compare, un'opportunità notata, una relazione che nasce, un oggetto, un travestimento). Per l'<b>Opposizione</b> è un ostacolo o una minaccia con cui i protagonisti dovranno fare i conti. <b>Introdurre non annulla:</b> aggiungi un tuo elemento, non cancelli con il racconto quello dell'avversario; un elemento avversario si neutralizza solo con una presa o una scopa.</li>
     <li><b>Fare una presa</b> = <i>togliere una risorsa all'avversario</i>: un successo vero, anche se può costare un compromesso o un sacrificio. La carta che togli dal piatto è l'appiglio: i Protagonisti superano un ostacolo dell'Opposizione, l'Opposizione spazza via (o rende inutile) un vantaggio dei protagonisti. Genera risorse per il mercato.</li>
     <li><b>Fare una scopa</b> = <i>Svolta</i>: la presa svuota il piatto. Successo pieno, sopra ogni aspettativa, quasi un colpo di fortuna. Vale molto di più di una presa.</li></ul>
+    <h3>Gli elementi con un nome: i Qualcuno</h3>
+    Introdurre fa entrare in scena anche nuovi personaggi (PNG) ed elementi. Quelli che contano per il seguito li chiamiamo <b>Qualcuno</b>: qualsiasi elemento rilevante della storia (persone, gruppi, popoli, luoghi, oggetti) che ha <b>una sua volontà</b> e un ruolo o un destino da seguire. Quando lo decidi, dagli un <b>nome</b> e annotalo su una index card in vista al tavolo: <b>un Qualcuno senza nome non esiste</b>. La volontà è il discrimine (un portale inerte no, l'Unico Anello sì), e vale anche per i collettivi (una tribù, un branco); catturare un Qualcuno collettivo ne toglie la presenza nella scena, non l'esistenza nella storia. Le <b>figure</b> (Fante, Regina, Re) sono il Qualcuno potente che si compra al mercato.
     <h3>Regole di presa (come nella Scopa)</h3>
     Una carta prende <b>una carta di uguale valore</b> nel piatto, oppure <b>un gruppo di carte la cui somma</b> è uguale al suo valore. Se il piatto si svuota → scopa.<br>
     <b>La presa è obbligatoria:</b> se la carta che giochi può prendere, <b>non</b> puoi metterla nel piatto, devi catturare (puoi però giocare nel piatto un'altra carta che non prende).<br>
     Se sei costretto a prendere una carta del <b>tuo stesso lato</b>, raccontalo come un'azione maldestra in cui le due anime del lato (Cuori e Picche, oppure Fiori e Quadri) si sono ostacolate o annullate a vicenda.<br>
-    <b>Figure (cattura flessibile):</b> una figura cattura un gruppo di carte di somma <b>minore o uguale</b> al suo valore (Fante 8, Regina 9, Re 10), anche carte dei propri semi; resta obbligatoria se c'è un bersaglio alla portata. Se svuota il piatto è scopa, altrimenti è una presa che vale <b>2 punti</b>. Su piatto vuoto la figura si <b>sacrifica</b> (scopa). L'effetto speciale della figura scatta comunque.
+    <b>Figure (cattura flessibile):</b> una figura cattura un gruppo di carte di somma <b>minore o uguale</b> al suo valore (Fante 8, Regina 9, Re 10), anche carte dei propri semi; resta obbligatoria se c'è un bersaglio alla portata. Se svuota il piatto è scopa, altrimenti è una presa che vale <b>1 punto</b> come ogni altra. Su piatto vuoto la figura si <b>sacrifica</b> (scopa). L'effetto speciale della figura scatta comunque.
     <div class="es">"Presa: il 6♣ era la carta di credito bloccata. Vai a impegnare l'orologio d'oro e ti riempi le tasche di contanti: l'ostacolo è superato, a un prezzo."</div>
     <h3>Il piatto resta</h3>
     A fine scena le carte rimaste nel piatto <b>non si toccano</b>: chi apre la scena successiva può già fare presa o scopa.`},
@@ -2934,7 +2923,7 @@ const REGOLE={
     <h3>Chi narra l'esito</h3>
     Chi ha <b>vinto l'asta</b> ha inquadrato la scena (titolo e posta); a raccontare <b>com'è finita</b> è invece chi ha <b>perso la posta</b> (la scena), così da poterne calcare le ombre e i costi. In caso di <b>parità</b> dei totali narra chi ha <b>vinto l'asta</b> (per non far narrare due volte di fila chi ha appena giocato l'ultima carta del round). Vale anche per la resa (§18.1): chi cede la posta ne narra l'esito.
     <h3>Arrendersi alla scena</h3>
-    Chi <b>non ha l'iniziativa</b>, con una <b>sola carta</b> in mano e nelle <b>scene 1-4</b>, può cedere la posta invece di giocare l'ultima carta (utile quando quella carta non cambierebbe l'esito). Due modi, una volta ciascuno per lato: <b>Ritirata strategica</b> (rimescola la carta nel mazzo, più riserva per i colpi di scena) e <b>Resa onorevole</b> (tiene la carta tra le prese, 1 punto, 2 se figura). La posta va all'avversario senza conteggio; se a cedere è l'Opposizione, i Protagonisti raggiungono la posta come per una scena vinta.
+    Chi <b>non ha l'iniziativa</b>, con una <b>sola carta</b> in mano e nelle <b>scene 1-4</b>, può cedere la posta invece di giocare l'ultima carta (utile quando quella carta non cambierebbe l'esito). Due modi, una volta ciascuno per lato: <b>Ritirata strategica</b> (rimescola la carta nel mazzo, più riserva per i colpi di scena) e <b>Resa onorevole</b> (tiene la carta tra le prese, 1 punto). La posta va all'avversario senza conteggio; se a cedere è l'Opposizione, i Protagonisti raggiungono la posta come per una scena vinta.
     <h3>Lettura del piatto — chi ha deciso l'esito (27.1)</h3>
     Il seme col valore più alto nel piatto racconta <i>come</i> è andata, indipendentemente da chi ha vinto:
     ♠ forza dei protagonisti · ♥ dialogo dei protagonisti · ♦ l'opposizione organizzata · ♣ la sfortuna e il caos.
@@ -2944,31 +2933,30 @@ const REGOLE={
     Alla quinta scena, ♣ contro ♦ nell'ultimo piatto: chi li ha davvero ostacolati — un nemico con un piano, o il mondo stesso?`},
   mercato:{titolo:"Mercato",html:`
     <h3>Fase di mercato (tra le scene)</h3>
-    Ordine importante: <b>1)</b> si pesca la nuova mano di 4 carte · <b>2)</b> si effettuano gli acquisti (max <b>una figura per tipo</b>) · <b>3)</b> le figure acquistate entrano nel <b>mazzo</b> · <b>4)</b> il mazzo viene rimescolato.
+    Ordine importante (dalla 2ª scena): <b>1)</b> si effettuano gli acquisti (max <b>una figura per tipo</b>) · <b>2)</b> le figure entrano nel <b>mazzo</b> · <b>3)</b> se hai comprato, il mazzo viene <b>rimescolato</b> · <b>4)</b> si pesca la nuova mano di 4 carte.
     <h3>Economia</h3>
-    <ul><li>Ogni <b>presa</b> con una carta numerica → <b>1 punto</b> (carta tenuta in verticale)</li>
-    <li>Ogni <b>presa</b> con una <b>figura</b> → <b>2 punti</b></li>
-    <li>Ogni <b>scopa</b> → <b>4 punti</b> (carta tenuta in orizzontale)</li></ul>
-    Le carte catturate dal piatto vanno subito negli <b>scarti comuni</b>; i marcatori spesi al mercato pure. A fine partita i punti non spesi mantengono lo stesso valore (presa 1, presa con figura 2, scopa 4).`},
+    <ul><li>Ogni <b>presa</b> → <b>1 punto</b> (carta tenuta in verticale), anche se fatta con una figura</li>
+    <li>Ogni <b>scopa</b> → <b>3 punti</b> (carta tenuta in orizzontale)</li></ul>
+    Le carte catturate dal piatto vanno subito negli <b>scarti comuni</b>; i marcatori spesi al mercato pure. A fine partita i punti non spesi mantengono lo stesso valore (presa 1, scopa 3).`},
   figure:{titolo:"Le figure",html:`
     <h3>Doppia natura</h3>
     Meccanica (carte forti con effetti) e narrativa (alleati o PNG significativi). Si può comprare al massimo <b>una figura per tipo</b>.
     <h3>Comprare una figura crea un PNG</h3>
     Comprare una figura prepara l'ingresso di un PNG importante e potente (la potenza cresce Fante &lt; Regina &lt; Re), su due piani: in fiction e nelle meccaniche, che scattano quando giochi la carta. Al momento dell'acquisto decidi <b>nome, ruolo e aspetto</b> e li annoti su una index card dal tuo lato, col <b>valore</b> della carta. Da lì è un personaggio a tutti gli effetti, e il suo effetto meccanico è ciò che fa nella storia. <b>Una figura senza nome non si compra.</b>
     <table><tr><th>Figura</th><th>Costo</th><th>Valore</th><th>Effetto</th></tr>
-    <tr><td><b>Fante</b> — l'informatore</td><td>3</td><td>8</td><td>Guarda le prime 4 carte del proprio mazzo; può mettere in fondo quelle che vuole.</td></tr>
+    <tr><td><b>Fante</b> — l'informatore</td><td>3</td><td>8</td><td>Sbircia le prime 2 carte del mazzo; se vuole, ne scambia una con una carta della mano (la carta ceduta torna in cima).</td></tr>
     <tr><td><b>Regina</b> — la manipolatrice</td><td>5</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo.</td></tr>
     <tr><td><b>Re</b> — il deus ex machina</td><td>8</td><td>10</td><td>Scambia una carta della mano con una degli scarti comuni dello stesso seme.</td></tr></table>
-    <b>Cattura flessibile:</b> in gioco le figure catturano un gruppo di somma minore o uguale al loro valore (vedi Azioni e prese), e una presa con figura vale 2 punti. I costi 3/5/8 rendono pari le due strade verso un Re: un Re, oppure un Fante più una Regina.
-    <h3>Il Fante entra in mano</h3>
-    Eccezione alla consegna: Regina e Re entrano nel mazzo e vengono rimescolati (effetto sul gioco). Il <b>Fante</b> invece, appena comprato, <b>entra subito in mano</b> per la scena successiva; per restare a 4 carte, una carta della mano va <b>in fondo al mazzo</b>. Così l'informatore è subito pronto e non resta sepolto nel mazzo. Il suo effetto (guarda le prime 4 del mazzo) scatta comunque <b>quando lo giochi</b>.
+    <b>Cattura flessibile:</b> in gioco le figure catturano un gruppo di somma minore o uguale al loro valore (vedi Azioni e prese); come ogni presa, vale 1 punto. I costi 3/5/8 rendono pari le due strade verso un Re: un Re, oppure un Fante più una Regina.
+    <h3>Le figure entrano nel mazzo</h3>
+    Tutte le figure comprate (Fante, Regina, Re) <b>entrano nel mazzo</b>: a fine mercato, se hai comprato, il mazzo si rimescola e solo dopo peschi la nuova mano, così possono capitarti già nella scena seguente. L'effetto di una figura scatta <b>quando la giochi</b>.
     <div class="es">"Jess — la nostra fonte all'interno della stazione — ci dice dove si trovano le prove e quando le sentinelle cambiano turno." (Fante)</div>
     Attenzione: le figure lasciate nel piatto all'inizio dell'ultima scena vengono <b>neutralizzate</b> (vedi Quinta scena).`},
   jolly:{titolo:"Il Jolly",html:`
     <h3>Ingresso e uso</h3>
     Un solo Jolly, nel <b>mazzo dei Protagonisti</b>, entra al termine della <b>seconda scena</b>. Non può essere usato nell'asta. Chi lo gioca <b>dichiara il valore (1–10)</b> e lo usa <b>solo per catturare</b> (presa o scopa).
     <h3>Mossa sleale: il punto va all'avversario</h3>
-    Il vantaggio sul tavolo è di chi gioca il Jolly (ripulisce o alleggerisce il piatto), ma il <b>marcatore va all'avversario</b>: una presa col Jolly = <b>1 punto all'avversario</b>, una scopa = <b>4 punti all'avversario</b>.
+    Il vantaggio sul tavolo è di chi gioca il Jolly (ripulisce o alleggerisce il piatto), ma il <b>marcatore va all'avversario</b>: una presa col Jolly = <b>1 punto all'avversario</b>, una scopa = <b>3 punti all'avversario</b>.
     <h3>Vincolo narrativo</h3>
     Si narra sempre un successo ottenuto <b>andando contro i principi e la lealtà</b>.
     <div class="es">"Kai minaccia il teste con informazioni false per farlo parlare — tecnicamente illegale, sicuramente efficace."</div>
@@ -2998,14 +2986,17 @@ const REGOLE={
     <h3>Figure nel piatto (23.2)</h3>
     Le figure rimaste nel piatto all'inizio dell'ultima scena vengono rimosse: l'avversario del proprietario narra la <b>neutralizzazione</b> di quel PNG, e ognuna conta come <b>una scopa</b> per lui.
     <h3>Colpi di scena finali (24)</h3>
-    Dopo il <b>primo conteggio</b> si narra l'esito apparente. Poi si gioca a <b>turni alterni</b> con le carte della <b>riserva</b> (inizia chi sta perdendo): finché hai riserva <b>devi</b> giocare una carta, che <b>entra nel piatto</b> e può <b>eliminare</b> una carta di <b>seme avversario</b> di valore <b>pari o inferiore</b> (va negli scarti; la tua resta sul tavolo). I colpi finiscono quando <b>entrambe le riserve sono esaurite</b>: poi il conteggio definitivo.
-    <h3>Conteggio finale e outcome (25–26)</h3>
-    Il piatto finale (♥+♠ vs ♦+♣) decide l'<b>esito esterno della missione</b>; in parità: tie-break sul numero di scope non spese (alleati sacrificati inclusi) poi sulle prese. Incrociando piatto e punti complessivi (prese 1, scope 3, lo speso vale 0):
-    <table><tr><th>Piatto</th><th>Punti</th><th>Esito</th></tr>
-    <tr><td>Vinto</td><td>Vinti</td><td><b>Vittoria totale</b> — successo pieno, netto</td></tr>
-    <tr><td>Vinto</td><td>Persi</td><td><b>Per il rotto della cuffia</b> — obiettivo raggiunto pagando un prezzo</td></tr>
-    <tr><td>Perso</td><td>Vinti</td><td><b>Sconfitta con aspetti positivi</b> — qualcosa è salvato o imparato</td></tr>
-    <tr><td>Perso</td><td>Persi</td><td><b>Disfatta totale</b> — fallimento completo</td></tr></table>`}
+    Dopo che ciascuno ha giocato le 4 carte si fa il <b>primo conteggio</b>, come in ogni scena: si determina e si <b>narra l'esito apparente</b> (lo racconta chi ha perso la posta). Sembra finita, ma poi si gioca a <b>turni alterni</b> con le carte della <b>riserva</b> (inizia chi sta perdendo): finché hai riserva <b>devi</b> giocare una carta, che <b>entra nel piatto</b> e può <b>eliminare</b> una carta di <b>seme avversario</b> di valore <b>pari o inferiore</b> (va negli scarti; la tua resta sul tavolo). Si rivelano una alla volta. I colpi finiscono quando <b>entrambe le riserve sono esaurite</b>: solo allora il conteggio definitivo dice se la missione è riuscita o fallita.
+    <h3>Il finale: i due piani (25–26)</h3>
+    Il finale si legge su due piani. <b>Primo piano, la missione</b> (♥+♠ vs ♦+♣): chi vince il piatto ha raggiunto l'obiettivo o ha fallito; in parità, tie-break sulle scope non spese (alleati sacrificati inclusi) poi sulle prese. <b>Secondo piano, il prestigio</b>: i punti accumulati e non spesi (prese 1, scope 3, lo speso vale 0) dicono quanto te la sei cavata con le tue forze. Spendere punti in figure = aver chiamato aiuto e diviso il merito; tenerli = essersi fatti un nome. Vale per entrambi i lati: per i protagonisti è una promessa, per l'Opposizione una minaccia (l'idra).
+    <table><tr><th>Missione</th><th>Punti</th><th>Esito</th></tr>
+    <tr><td>Vinta</td><td>Vinti</td><td><b>Vittoria piena</b> — ce l'avete fatta, e da soli</td></tr>
+    <tr><td>Vinta</td><td>Persi</td><td><b>Per il rotto della cuffia</b> — vinto, ma grazie agli aiuti e a caro prezzo</td></tr>
+    <tr><td>Persa</td><td>Vinti</td><td><b>Sconfitta dignitosa</b> — caduti a testa alta, l'esperienza è il tesoro</td></tr>
+    <tr><td>Persa</td><td>Persi</td><td><b>Fallimento totale</b> — travolti su ogni fronte</td></tr></table>
+    Un fallimento totale dei protagonisti è una <b>vittoria piena dell'Opposizione</b>: narrala come trionfo dell'avversario, non come casella vuota.
+    <h3>Fine partita ed epilogo</h3>
+    Oltre ai due piani, danno voce all'epilogo altre due dimensioni: il <b>rapporto</b> tra i protagonisti e il <b>privilegio di chi ha vinto più scene</b>. Ciascuno risponde alle domande che lo riguardano: chi ha vinto la missione (hanno ottenuto ciò che volevano? e se non ha vinto i punti: a che prezzo, con quale rimpianto?), chi ha vinto i punti (come sono cresciuti?), chi giocava i Protagonisti (che cosa pensa ora Picche di Cuori, e viceversa?), e chi ha perso la missione ma vinto più scene (cosa ignora chi ha vinto, non è tutto oro quel che luccica? oppure quale riscatto trae?). Poi, facoltativo, l'<b>epilogo</b>: vignette, ciascuna su un Qualcuno (protagonista, PNG, antagonista), ambientate giorni o anni dopo. Si narra a turno, mai due di fila; "passo" chiude (l'altro narra un'ultima vignetta, poi finisce); nessun tetto al numero, nessun costo. È l'unico spazio in cui un destino dato per certo può essere riaperto: qui salta la regola d'oro "introdurre non annulla".`}
 };
 const AIUTO_FASE={asta:"asta",asta_rivela:"asta",apertura:"asta",turno:"azioni",narrazione:"semi",
   fine_scena:"lettura",mano_estesa:"scena5",neutralizza:"scena5",primo_conteggio:"scena5",colpi:"scena5",mercato:"mercato",
@@ -3209,27 +3200,33 @@ ASTA E APERTURA: a inizio scena ogni lato pesca 4 carte e ne gioca 1 coperta per
 ROUND: ci si alterna a partire dal vincitore dell'iniziativa, 4 giocate a testa. Nel tuo turno puoi:
 - Giocare una carta nel piatto = INTRODURRE una tua risorsa: un ostacolo, una minaccia o un imprevisto (♦ nemici con intenzione, ♣ caos e sfortuna) con cui i protagonisti dovranno fare i conti. Non risolve nulla, predispone. La tua narrazione AGGIUNGE un tuo elemento, NON annulla quello dei protagonisti: finché una loro carta è nel piatto, ciò che rappresenta resta in piedi. Un elemento avversario lo neutralizzi (lo togli, lo ribalti, ne mostri l'inutilità) solo con una PRESA o una SCOPA.
 - Fare una PRESA (vale 1 punto) = togli una risorsa ai protagonisti, o ne mostri l'inutilità (si ritorce contro di loro): un successo, anche se può avere un costo. Una carta prende una carta di pari valore nel piatto, oppure un gruppo la cui somma è pari al suo valore. La presa è OBBLIGATORIA: se la carta che giochi può prendere, devi catturare, non puoi metterla nel piatto. Se sei costretto a prendere una TUA carta (♦/♣), narra Fiori e Quadri che si intralciano o si annullano a vicenda. Con una FIGURA (Fante 8, Regina 9, Re 10) la presa vale 2 e la cattura è FLESSIBILE: prende un gruppo di somma MINORE O UGUALE al valore della figura, anche carte dei tuoi semi; se nessuna carta è alla sua portata la figura entra nel piatto; se il piatto è vuoto la figura si sacrifica con un gesto eroico e fa SCOPA.
-- Fare una SCOPA (vale 4 punti) = svolta: la presa svuota il piatto, annienti in un colpo ogni vantaggio dei protagonisti. Successo pieno, sopra ogni aspettativa. Vale molto più di una presa.
+- Fare una SCOPA (vale 3 punti) = svolta: la presa svuota il piatto, annienti in un colpo ogni vantaggio dei protagonisti. Successo pieno, sopra ogni aspettativa. Vale molto più di una presa.
 
 FINE SCENA: si sommano i valori delle carte rimaste nel piatto: ♦+♣ contano per te, ♥+♠ per i Protagonisti; la posta la vince il totale più alto. MA se la scena si chiude col piatto vuoto perché l'ultima giocata è stata una scopa, la posta la vince chi ha fatto la scopa. Il piatto NON si svuota tra le scene: chi apre la successiva può già prendere. Se vincono i Protagonisti la posta è raggiunta; se vinci tu, la loro posta fallisce e la situazione peggiora per loro. CHI NARRA L'ESITO: chi ha vinto l'asta ha inquadrato la scena (titolo e posta); a raccontare com'è finita è chi ha PERSO LA POSTA (la scena), così da poterne calcare le ombre e i costi. In parità dei totali narra chi ha vinto l'asta. Quindi narri TU l'esito quando i Protagonisti vincono la scena (è la tua sconfitta: raccontala con onestà, calcando sulle ombre e sul prezzo che pagheranno); se la scena la vinci tu, l'esito lo narrano i Protagonisti.
 
-MERCATO (tra le scene): ogni presa vale 1 punto (2 se fatta con una figura), ogni scopa 4. Con i punti compri figure (max una per tipo) che entrano nel tuo mazzo:
-- Fante (costo 3, valore 8): appena comprato entra SUBITO in mano per la scena dopo (una carta della mano va in fondo al mazzo); quando lo giochi, guardi le prime 4 carte del tuo mazzo e scegli quali mettere in fondo.
+MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Ordine: prima compri, poi (se hai comprato) il mazzo si rimescola, poi peschi la nuova mano. Con i punti compri figure (max una per tipo) che entrano nel tuo mazzo:
+- Fante (costo 3, valore 8): entra nel mazzo come le altre figure; quando lo giochi, sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una carta della mano (la carta che cedi torna in cima).
 - Regina (costo 5, valore 9): l'avversario scarta una carta a caso dalla mano e pesca dal mazzo.
 - Re (costo 8, valore 10): scambi una carta della mano con una degli scarti comuni dello stesso seme.
-Ogni figura che compri è un PNG: dalle subito un nome e un breve ruolo (chi è), e richiamalo quando giochi quella carta e quando narri (il suo effetto meccanico è ciò che quel personaggio fa nella storia).
+Ogni figura che compri è un PNG: dalle subito un nome e un breve ruolo (chi è), e richiamalo quando giochi quella carta e quando narri (il suo effetto meccanico è ciò che quel personaggio fa nella storia). Più in generale, ogni elemento rilevante che introduci (un nemico, un alleato, un luogo, un oggetto) con una sua volontà e un ruolo da seguire è un «Qualcuno»: dagli un nome se conta per il seguito, altrimenti resta una comparsa.
 
-JOLLY: un solo Jolly, solo nel mazzo dei Protagonisti, entra dopo la 2ª scena. Tu non lo possiedi mai. Chi lo gioca dichiara il valore e cattura, ma il marcatore va all'AVVERSARIO (presa 1, scopa 4 all'altro lato): se i Protagonisti lo usano, quel punto va a te. Si narra come un vantaggio ottenuto contro i propri principi.
+JOLLY: un solo Jolly, solo nel mazzo dei Protagonisti, entra dopo la 2ª scena. Tu non lo possiedi mai. Chi lo gioca dichiara il valore e cattura, ma il marcatore va all'AVVERSARIO (presa 1, scopa 3 all'altro lato): se i Protagonisti lo usano, quel punto va a te. Si narra come un vantaggio ottenuto contro i propri principi.
 
 RISORSE DEL PITCH (spinte): sono otto, due per seme (le tue sono ♦ e ♣). Dopo una presa normale puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e le carte rimaste nel piatto finiscono tra le tue prese. La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola; massimo una spinta per seme per lato; VIETATA nell'ultima scena. (I tratti "cosa i protagonisti si detestano" sono solo narrativi, non spinte.)
 
-QUINTA SCENA: la mano finale si sceglie dopo il mercato; le carte oltre le 4 vanno in RISERVA. Le figure lasciate nel piatto a inizio ultima scena vengono neutralizzate. Dopo il primo conteggio si gioca a COLPI DI SCENA: a turni alterni (inizia chi sta perdendo) cali una carta dalla riserva, che entra nel piatto e può eliminare una carta di seme avversario di valore pari o inferiore (finisce negli scarti; la tua resta). Finché hai riserva devi giocare. Poi il conteggio definitivo decide l'esito della missione.
+QUINTA SCENA: la mano finale si sceglie dopo il mercato; le carte oltre le 4 vanno in RISERVA. Le figure lasciate nel piatto a inizio ultima scena vengono neutralizzate. Dopo il primo conteggio si gioca a COLPI DI SCENA: a turni alterni (inizia chi sta perdendo) cali una carta dalla riserva, che entra nel piatto e può eliminare una carta di seme avversario di valore pari o inferiore (finisce negli scarti; la tua resta). Finché hai riserva devi giocare. Il primo conteggio (dopo le 4 carte) dà solo l'esito apparente, che si narra come in ogni scena; solo dopo i colpi di scena, rivelati una carta alla volta, il conteggio definitivo dice se la missione riesce o fallisce. Il finale si legge su due piani: la MISSIONE (chi vince il piatto) e il PRESTIGIO (i punti non spesi: figure comprate = aiuto chiamato, punti tenuti = nome che ci si è fatti; per te è la minaccia che resta, l'idra). Un fallimento totale dei protagonisti è una tua vittoria piena, da narrare come trionfo. Poi, facoltativo, l'epilogo: vignette su un Qualcuno, giorni o anni dopo, a turni e senza due di fila.
 
 RESA (solo se NON hai l'iniziativa, ti resta UNA sola carta, scene 1-4): se la tua ultima carta non può cambiare la scena (non fa presa e, anche giocandola, non ti porta sopra il totale dei Protagonisti), conviene arrenderti invece di sprecarla. Due mosse, ciascuna UNA volta per partita: RITIRATA STRATEGICA = cedi la scena e rimescoli la carta nel mazzo (più riserva per i colpi di scena finali); RESA ONOREVOLE = cedi la scena e tieni la carta tra le prese (1 punto). In entrambe perdi la posta della scena e racconti tu come arretri per riorganizzarti. NON arrenderti se la carta può prendere o se ti fa superare i Protagonisti: giocala.
 
-STRATEGIA: prendere è obbligatorio — se la carta che giochi può catturare, cattura, non puoi lasciarla nel piatto; scegli quindi CON CURA quale carta giocare. Conviene prendere le carte alte dei semi avversari (♥♠) per toglierle dal loro totale; per lasciare invece nel piatto le tue carte alte (♦♣), così pesano per te a fine scena, gioca una carta che NON cattura (e occhio a non essere costretto a prendere le tue stesse carte). Nell'asta una carta alta vince l'iniziativa ma esce dal tuo round. Per la riserva dei colpi finali servono carte ALTE dei tuoi semi.
+STRATEGIA, in ordine di priorità a ogni tuo turno:
+(1) SCOPA: se tra le opzioni c'è una scopa, falla. Vale 3 punti e svuota il piatto: è quasi sempre la mossa migliore.
+(2) Altrimenti PRENDI (la presa è comunque obbligatoria se la tua carta cattura). Quando puoi scegliere COSA catturare, prendi le carte dei semi avversari (♥♠), meglio se di valore alto, per togliere peso ai Protagonisti; evita di catturare le tue carte (♦♣): è una presa "maldestra" da narrare come un intralcio fra i nemici, e ti toglie carte che ti converrebbe lasciare nel piatto.
+(3) Se puoi solo CALARE una carta (nessuna presa possibile), scegli quella che porta la SOMMA del piatto SOPRA 10 (le opzioni ti dicono a quanto sale): così nessuna carta avversaria, che vale al massimo 10, può svuotare il piatto in un colpo solo, e non subisci scopa.
+(4) Se non puoi evitare il rischio (piatto vuoto o con sole carte basse), ragiona sulle CARTE GIÀ USCITE che ti vengono elencate: se le carte capaci di svuotare il piatto sono già state giocate, cala con tranquillità. Esempio: nel piatto c'è un 3 e cali un 4 (piatto a 7); se entrambi i 7 sono già usciti, nessuno potrà prendere 3+4 facendo scopa.
+Inoltre: lasciare le tue carte alte ♦♣ nel piatto le fa pesare per te a fine scena (seme dominante). All'asta una carta alta vince l'iniziativa ma esce dal tuo round. Per la riserva dei colpi finali tieni carte ALTE dei tuoi semi.
+QUANDO SPUNTARE UNA SPINTA (presa→scopa): vale di più sulla MOSSA CONCLUSIVA della scena, perché lì la scopa ti ASSICURA la posta (svuoti il piatto e la scena è tua). Ricorda che la scopa fa fare più punti (3) della presa: conviene spuntare a meno che la spinta non ti spazzi via TROPPE carte tue (♦♣) insieme a quelle avversarie. In pratica: fallo se le carte AVVERSARIE (♥♠) che spazzi dal piatto valgono almeno quanto le tue meno il bonus della scopa (regola pratica: il valore delle tue carte spazzate non superi di più di ~3 quello delle avversarie). EVITA del tutto se nel piatto residuo restano solo carte TUE (non sottrai nulla all'avversario e ti getti le carte negli scarti da solo). Le spinte NON valgono nell'ultima scena: spendile entro la quarta, è l'ultima occasione.
 
-NARRAZIONE: quando narri sei il mondo che rema contro i protagonisti. ♦ = nemici con un piano (sicari pazienti, poliziotti corrotti, fazioni ostili); ♣ = caos e sfortuna (tempeste, guasti, attriti, PNG molesti). Resta coerente con la storia già scritta, la missione, la posta della scena e le risposte del pitch. Asciutto e cinematografico, 1-2 frasi. Esempi di tono: "Due uomini in giacca scura scendono da un SUV davanti al diner: hanno le foto." (♦) "Una gomma esplode in mezzo al deserto e la tempesta di sabbia è già all'orizzonte." (♣)`;
+NARRAZIONE: quando narri sei il mondo che rema contro i protagonisti. ♦ = nemici con un piano (sicari pazienti, poliziotti corrotti, fazioni ostili); ♣ = caos e sfortuna (tempeste, guasti, attriti, PNG molesti). Resta coerente con la storia già scritta, la missione, la posta della scena e le risposte del pitch. Sono ammessi gli sconfinamenti: puoi mostrare difetti e debolezze dei protagonisti, e costruisci sempre sugli elementi già introdotti dall'altro lato. Asciutto e cinematografico, 1-2 frasi. Esempi di tono: "Due uomini in giacca scura scendono da un SUV davanti al diner: hanno le foto." (♦) "Una gomma esplode in mezzo al deserto e la tempesta di sabbia è già all'orizzonte." (♣)`;
 
 function setupPerIA(){
   // parte STATICA per partita (va nel blocco system cacheato: deve restare byte-identica)
@@ -3252,9 +3249,14 @@ function statoPerIA(){
   const O=lato("O"), P=lato("P");
   const figure=Object.entries(G.png||{}).map(([k,v])=>FIGURE[k[0]]?`${FIGURE[k[0]].nome} di ${k.slice(1)}${v&&v.nome?" ("+v.nome+")":""}`:"").filter(Boolean).join(", ");
   const pngN=(G.pngNarr||[]).map(p=>`${SIMBOLI[p.seme]} ${p.nome||""}`.trim()).filter(s=>s.length>2).join(", ");
+  const sommaPiatto=G.piatto.reduce((s,c)=>s+(c.val||0),0);
+  // carte già uscite (catturate o spese): scarti comuni + marcatori di prese/scope dei due lati; non torneranno in mano
+  const uscite=[...(G.scartiComuni||[]), ...O.prese, ...O.scope, ...P.prese, ...P.scope]
+    .filter(c=>c && !c.jolly).map(c=>nomeCarta(c));
   return `STATO ATTUALE. Scena ${G.scena+1}/5 (${FASI_NARR[G.scena]||""}). Titolo: ${rec.titolo||"-"}. Posta: ${rec.posta||"-"}.
-PIATTO: ${G.piatto.length?G.piatto.map(c=>nomeCarta(c)).join(", "):"vuoto"}.
+PIATTO: ${G.piatto.length?G.piatto.map(c=>nomeCarta(c)).join(", "):"vuoto"} (somma dei valori: ${sommaPiatto}).
 LA TUA MANO: ${O.mano.map(c=>nomeCarta(c)).join(", ")||"vuota"}.
+CARTE GIÀ USCITE (catturate o spese, non torneranno in gioco; servono a dedurre cosa resta agli avversari): ${uscite.length?uscite.join(", "):"nessuna"}.
 Tue prese ${O.prese.length}, tue scope ${O.scope.length} · prese avversarie ${P.prese.length}, scope avversarie ${P.scope.length}.
 Totali del piatto ora: Protagonisti ${totaleProt()}, Opposizione ${totaleOpp()}.${figure?`\nFigure comprate: ${figure}.`:""}${pngN?`\nPNG narrativi: ${pngN}.`:""}`;
 }
@@ -3423,7 +3425,7 @@ function clicca(el){ if(el) el.dispatchEvent(new Event("click",{bubbles:true})) 
 function iaScheduler(){
   if(G.modalita!=="solo"||iaBusy) return;
   if(document.getElementById("ovModale").classList.contains("attivo")){
-    if(G.attore==="O") clicca(document.getElementById("fanteOk")||document.getElementById("reNo"));
+    if(G.attore==="O") clicca(document.getElementById("reNo"));   // il Fante dell'IA si auto-risolve in effettoFigura; resta il Re
     return;
   }
   const f=G.fase;
@@ -3489,7 +3491,7 @@ async function iaTurno(){
       if(pot.length===0){
         ops.push({desc:`gioca ${nomeCarta(c)}: SACRIFICIO eroico — scopa con sé stessa`, esegui:()=>giocaCarta(c,"sacrificio",g.daAsta)});
       }else if(Math.min(...pot.map(x=>x.val))>c.val){
-        ops.push({desc:`gioca ${nomeCarta(c)} nel piatto (fuori portata)`, esegui:()=>giocaCarta(c,null,g.daAsta)});
+        ops.push({desc:`gioca ${nomeCarta(c)} nel piatto (fuori portata; il piatto salirebbe a ${G.piatto.reduce((s,x)=>s+(x.val||0),0)+c.val})`, esegui:()=>giocaCarta(c,null,g.daAsta)});
       }else{
         const def=comboFiguraDefault("O",c.val);
         const svuota=def.length===pot.length;
@@ -3502,7 +3504,7 @@ async function iaTurno(){
       desc:`con ${nomeCarta(c)} prendi ${cmb.map(x=>nomeCarta(x)).join(" + ")}${cmb.length===G.piatto.length?" — SCOPA":""}`,
       esegui:()=>giocaCarta(c,cmb,g.daAsta)}));
     // cattura obbligatoria: l'opzione "nel piatto" c'è solo se la carta non può prendere
-    if(cmbs.length===0) ops.push({desc:`gioca ${nomeCarta(c)} nel piatto (nessuna presa)`, esegui:()=>giocaCarta(c,null,g.daAsta)});
+    if(cmbs.length===0) ops.push({desc:`gioca ${nomeCarta(c)} nel piatto (nessuna presa; il piatto salirebbe a ${G.piatto.reduce((s,x)=>s+(x.val||0),0)+c.val})`, esegui:()=>giocaCarta(c,null,g.daAsta)});
   }
   const r=await chiamaClaude(`È IL TUO TURNO. ${g.daAsta?"Questa è la tua ultima giocata: la carta dell'asta.":""}\nOPZIONI:\n${ops.map((o,i)=>i+": "+o.desc).join("\n")}\nJSON: {"scelta": <numero>}`);
   let i=(r&&Number.isInteger(r.scelta)&&ops[r.scelta])?r.scelta:-1;
@@ -3567,7 +3569,7 @@ async function iaMercato(){
   const btns=[...document.querySelectorAll('button[data-l="O"][data-f]')].filter(b=>!b.disabled);
   if(btns.length){
     const op=btns.map((b,i)=>`${i}: ${FIGURE[b.dataset.f].nome} di ${b.dataset.s} ${SIMBOLI[b.dataset.s]} (costo ${FIGURE[b.dataset.f].costo})`);
-    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (una presa vale 1, una presa con una figura 2, una scopa 4). Le figure entrano nel tuo mazzo; puoi comprare al massimo una figura per tipo. Effetti: Fante (costo 3) = guarda e riordina le prime 4 carte del mazzo; Regina (costo 5) = l'avversario scarta una carta a caso; Re (costo 8) = recupera una carta dagli scarti.\nOPZIONI (puoi sceglierne più d'una o nessuna):\n${op.join("\n")}\nJSON: {"acquisti": [numeri] }`);
+    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (una presa vale 1, una scopa 3). Le figure entrano nel tuo mazzo (a fine mercato, se compri, il mazzo si rimescola e poi peschi); puoi comprare al massimo una figura per tipo. Effetti: Fante (costo 3) = sbircia le prime 2 carte del mazzo e, se vuoi, ne scambi una con una di mano; Regina (costo 5) = l'avversario scarta una carta a caso; Re (costo 8) = recupera una carta dagli scarti.\nOPZIONI (puoi sceglierne più d'una o nessuna):\n${op.join("\n")}\nJSON: {"acquisti": [numeri] }`);
     if(r&&Array.isArray(r.acquisti)) for(const i of r.acquisti){
       const b=btns[i];
       if(b&&document.contains(b)&&!b.disabled){

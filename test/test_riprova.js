@@ -69,7 +69,7 @@ async function main(){
     if(mod()){
       const ck=document.getElementById("ckOk");
       if(ck){ const k=document.getElementById("ckInput"); if(k) k.value="sk-ant-test"; click(ck); await dorme(20); continue; }   // imposta la chiave fittizia
-      if(G().attore==="P") click(document.getElementById("fanteOk")||document.getElementById("reNo"));
+      if(G().attore==="P") click(document.getElementById("fanteNo")||document.getElementById("reNo"));
       await dorme(30); continue;
     }
 

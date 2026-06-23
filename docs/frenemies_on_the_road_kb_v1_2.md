@@ -7,7 +7,9 @@
 
 ## 1. Cos'è Frenemies on the Road
 
-Frenemies on the Road è un gioco narrativo competitivo per 2, 3 o 4 giocatori che mette al centro una coppia di protagonisti incompatibili, costretti a collaborare per raggiungere un obiettivo prima che sia troppo tardi.
+Frenemies on the Road è uno story-game in cui i giocatori creano insieme una storia, giocando una partita a carte ispirata alla scopa che li vede in competizione su due fronti: Protagonisti e Opposizione. Il voler vincere ogni scena genera la tensione narrativa, creando di continuo nuove difficoltà tra i Protagonisti e la loro missione, il cui esito resta in bilico fino all'ultima carta. È un gioco insieme collaborativo e competitivo, e questa apparente contraddizione è proprio il cuore di Frenemies on the Road.
+
+È un gioco narrativo competitivo per 2, 3 o 4 giocatori che mette al centro una coppia di protagonisti incompatibili, costretti a collaborare per raggiungere un obiettivo prima che sia troppo tardi.
 
 È un gioco di:
 
@@ -80,6 +82,8 @@ L'esperienza che Frenemies on the Road cerca di creare si articola su quattro as
 Scena 1 → collaborazione forzata · Scena 2 → equilibrio fragile · Scena 3 → dubbio · Scena 4 → crollo · Scena 5 → scelta decisiva
 
 Il finale non è solo vinto/perso, ma: **come** hai vinto, **quanto** hai perso, **cosa** è cambiato.
+
+**Competizione e collaborazione *(v1.16)*.** Meccanicamente i due lati sono avversari, e ciascuno deve giocare le proprie carte nel modo più tattico possibile: è un espediente, non il fine. Serve a far emergere la narrazione dalle meccaniche in modo naturale e imprevedibile, impedendo a ciascuno di tirare la storia dove vuole; funziona come un principio di azione e reazione che tiene la partita in equilibrio instabile, perché i protagonisti vogliono qualcosa e di continuo i nemici, il mondo e le loro divisioni interne li ostacolano. Sotto la competizione, però, il gioco resta **collaborativo**: si costruisce insieme una storia appassionante, e quando si narra un esito o si fissa una posta conviene scegliere ciò che fa avanzare la storia più di ciò che porta acqua al proprio mulino. Sono incoraggiati gli **sconfinamenti** narrativi: chi gioca l'Opposizione (Fiori) può mostrare difetti e debolezze dei protagonisti, e chi gioca i Protagonisti può far innamorare, impietosire, convincere o mettere al tappeto un PNG dell'Opposizione. Non c'è un confine netto: si costruisce sempre sugli elementi introdotti dagli altri.
 
 ---
 
@@ -371,6 +375,8 @@ Ogni lato **dispone una propria risorsa** in scena. Non risolve nulla di ciò ch
 >
 > **Esempio (Protagonisti):** Giocare una carta = ti metti un cappello e degli occhiali scuri per non farti riconoscere. Non sei al sicuro, ma è un vantaggio che potrai sfruttare più avanti.
 
+**Gli elementi con un nome: i Qualcuno *(v1.16)*.** Introdurre è anche il momento in cui entrano in scena nuovi personaggi non giocanti (PNG) e nuovi elementi della storia. Si chiama **Qualcuno** qualsiasi elemento rilevante della vicenda: persone, gruppi, popoli, luoghi, oggetti. Un personaggio o un elemento diventa un Qualcuno quando ha **una sua volontà** e un ruolo o un destino che interessa seguire; nel momento in cui lo si decide gli si dà un nome e lo si annota (post-it o index card in vista al tavolo): **un Qualcuno senza nome non esiste**. La volontà è il discrimine ed esclude la scenografia passiva: un portale inerte non è un Qualcuno, l'Unico Anello, che ha volontà, lo è. Vale anche per i collettivi animati da una volontà comune (la tribù degli Udiburi, la fauna di Pandora guidata da Eywa). **Catturare un Qualcuno collettivo ne neutralizza la presenza nella scena, non l'esistenza nella storia.** Conviene segnare anche con quale carta è stato introdotto: quella carta lo rappresenta nel piatto finché non viene catturata, e sapere a chi corrisponde permette di narrarne la presa in modo coerente. Le **figure** (Fante, Regina, Re) sono un caso particolare di Qualcuno, quello potente che si compra al mercato (§21.1), dove dargli un nome è obbligatorio.
+
 ### 15.2 — Fare una presa = superare un ostacolo, con eventuale costo
 
 Togli una risorsa **all'avversario** (prendi le carte dell'altro lato dal piatto). È un **successo vero**, anche se può costare un compromesso o un sacrificio: non è un risultato "parziale". La carta tolta dal piatto è l'appiglio narrativo, perché rappresenta ciò che superi o neutralizzi. Genera inoltre risorse economiche (carte prese = punti per il mercato).
@@ -402,19 +408,19 @@ Le prese seguono la logica della Scopa tradizionale:
 
 **Cattura di una carta del proprio lato.** Se sei costretto a prendere una carta del tuo stesso lato (stesso schieramento), raccontalo come un'azione maldestra in cui le due anime del lato si sono ostacolate o annullate a vicenda: **Cuori e Picche** per i Protagonisti, **Fiori e Quadri** per l'Opposizione.
 
-**Cattura flessibile delle figure (v1.6).** Una figura (Fante, Regina, Re) cattura in modo più ampio di una carta numerica: prende dal piatto un gruppo di carte la cui somma è **minore o uguale** al suo valore (Fante 8, Regina 9, Re 10), comprese eventuali carte dei propri semi. Anche per le figure la cattura è obbligatoria: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 2 punti (vedi §17). Se invece nessuna carta del piatto è alla sua portata, la figura entra nel piatto come una giocata normale; se il piatto è vuoto si applica il sacrificio (§15.3). L'effetto speciale della figura (§21) scatta in ogni caso.
+**Cattura flessibile delle figure (v1.6).** Una figura (Fante, Regina, Re) cattura in modo più ampio di una carta numerica: prende dal piatto un gruppo di carte la cui somma è **minore o uguale** al suo valore (Fante 8, Regina 9, Re 10), comprese eventuali carte dei propri semi. Anche per le figure la cattura è obbligatoria: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 1 punto come ogni altra (vedi §17). Se invece nessuna carta del piatto è alla sua portata, la figura entra nel piatto come una giocata normale; se il piatto è vuoto si applica il sacrificio (§15.3). L'effetto speciale della figura (§21) scatta in ogni caso.
 
 ## 17. Gestione di prese e scope
 
 ### 17.1 — Prese *(v1.6)*
 
-La carta con cui fai la presa si **tiene da parte in verticale**: una presa con una carta numerica vale **1 punto**, una presa con una **figura** vale **2 punti**. Le carte catturate dal piatto vanno **subito nella pila degli scarti comune** e non danno punti.
+La carta con cui fai la presa si **tiene da parte in verticale**: ogni presa vale **1 punto**, anche se fatta con una **figura**. Le carte catturate dal piatto vanno **subito nella pila degli scarti comune** e non danno punti.
 
 ### 17.2 — Scope *(v1.6)*
 
-La carta con cui fai la scopa si **tiene da parte in orizzontale**: vale **4 punti**. Le carte catturate vanno anch'esse negli scarti comuni.
+La carta con cui fai la scopa si **tiene da parte in orizzontale**: vale **3 punti**. Le carte catturate vanno anch'esse negli scarti comuni.
 
-- Ogni presa numerica vale **1 punto**, ogni presa con figura **2 punti**, ogni scopa **4 punti**, sia in fase di acquisto sia nel conteggio finale (i punti non spesi mantengono lo stesso valore).
+- Ogni presa vale **1 punto** (anche con figura), ogni scopa **3 punti**, sia in fase di acquisto sia nel conteggio finale (i punti non spesi mantengono lo stesso valore).
 
 ## 18. Fine del round e vittoria della scena
 
@@ -427,7 +433,7 @@ Si sommano i valori delle carte presenti nel piatto:
 
 Chi ha il totale più alto vince la posta della scena.
 
-> **Scena chiusa da una scopa (v1.3):** se la scena finisce con il **piatto vuoto** perché l'ultima giocata è stata una **scopa**, la posta è vinta da **chi ha fatto la scopa**, anche se i totali del piatto sarebbero 0-0. (Vale anche per la scopa fatta col Jolly: la posta va a chi ha ripulito il piatto, mentre i 4 punti vanno all'avversario.)
+> **Scena chiusa da una scopa (v1.3):** se la scena finisce con il **piatto vuoto** perché l'ultima giocata è stata una **scopa**, la posta è vinta da **chi ha fatto la scopa**, anche se i totali del piatto sarebbero 0-0. (Vale anche per la scopa fatta col Jolly: la posta va a chi ha ripulito il piatto, mentre i 3 punti vanno all'avversario.)
 
 **Se vincono i Protagonisti:** la posta della scena è raggiunta e i protagonisti si avvicinano all'obiettivo finale.
 
@@ -444,7 +450,7 @@ Il giocatore che non ha vinto l'iniziativa può rinunciare alla scena invece di 
 Ci sono due modi di arrendersi, ciascuno usabile una sola volta per lato in tutta la partita:
 
 - **Ritirata strategica:** la carta viene rimescolata nel proprio mazzo. Non vale punti, ma diventa una carta in più per la mano estesa e per i colpi di scena della quinta scena.
-- **Resa onorevole:** la carta viene tenuta tra le proprie prese come un normale marcatore, e vale il suo punteggio (1 punto, 2 se è una figura).
+- **Resa onorevole:** la carta viene tenuta tra le proprie prese come un normale marcatore, e vale 1 punto (come ogni presa, anche se è una figura).
 
 In entrambi i casi la posta della scena va all'avversario senza conteggio. Se a cedere è l'Opposizione, i Protagonisti raggiungono la posta come per una scena vinta normalmente. La carta della resa non entra nel piatto: il piatto resta com'è dopo le giocate dell'avversario e passa alla scena successiva come sempre.
 
@@ -456,20 +462,19 @@ Se invece non ci si arrende, si gioca la carta e la scena si conta normalmente (
 
 ## 19. Fase di mercato tra le scene
 
-Ordine corretto (importante per non annullare gli effetti del Fante):
+Ordine corretto *(v1.15)* — prima si compra, poi si pesca, così le figure comprate possono capitare già nella scena seguente:
 
-1. Si pesca la nuova mano di 4 carte per la scena successiva
-2. Si effettuano gli acquisti
-3. Le carte acquistate vengono aggiunte al mazzo (**eccezione: il Fante entra subito in mano**, vedi §21)
-4. Il mazzo viene rimescolato
+1. Si effettuano gli acquisti
+2. Le carte acquistate vengono aggiunte al **mazzo** (tutte le figure, Fante incluso)
+3. **Se** hai comprato almeno una figura, il tuo mazzo viene **rimescolato**
+4. Si pesca la nuova mano di 4 carte per la scena successiva
 
 ## 20. Economia di acquisto
 
 Risorse disponibili:
 
-- Ogni **presa** con una carta numerica → **1 punto**
-- Ogni **presa** con una **figura** → **2 punti**
-- Ogni **scopa** → **4 punti**
+- Ogni **presa** → **1 punto** (anche se fatta con una figura)
+- Ogni **scopa** → **3 punti**
 
 Il pagamento spende prima il **bonus**, poi le **prese**, poi le **scope**; i marcatori spesi vanno negli **scarti comuni**. Le figure acquistate entrano nel mazzo, non in mano e non negli scarti.
 
@@ -485,21 +490,21 @@ Le figure hanno una doppia natura: meccanica (carte forti con effetti speciali) 
 | Regina | 5 punti | 9 |
 | Re | 8 punti | 10 |
 
-> **Cattura flessibile (v1.6):** in gioco una figura cattura un gruppo di carte la cui somma è minore o uguale al suo valore (vedi §16), non solo l'esatto pari, e la presa con una figura vale 2 punti (§17). I costi 3/5/8 fanno costare uguale le due strade verso un Re: comprare un Re, oppure un Fante più una Regina.
+> **Cattura flessibile (v1.6):** in gioco una figura cattura un gruppo di carte la cui somma è minore o uguale al suo valore (vedi §16), non solo l'esatto pari; come ogni presa, vale 1 punto (§17). I costi 3/5/8 fanno costare uguale le due strade verso un Re: comprare un Re, oppure un Fante più una Regina.
 
 ### 21.1 — Comprare una figura significa creare un PNG *(v1.12)*
 
 Comprare una figura significa **preparare l'ingresso di un PNG importante e potente**, i cui effetti sulla vicenda saranno probabilmente di grande impatto. La potenza del personaggio va di pari passo con il valore della carta (Fante < Regina < Re) e vale su due piani insieme: in fiction e nelle meccaniche associate alla figura, che si innescano nel momento in cui la carta viene giocata. **Nel momento in cui la si compra, alla figura si dà un nome, un ruolo e un aspetto**, e la si annota su una index card (o un post-it) tenuta in vista al tavolo, dal lato del proprietario, segnando anche il valore della carta a cui corrisponde. Da quel momento quella figura è un personaggio non giocante a tutti gli effetti, a disposizione di tutto il tavolo: rientra in scena quando la carta viene giocata, e il suo effetto meccanico è ciò che quel personaggio fa nella storia. Non si compra "un Fante", ma *quell'*alleato, con un volto e un nome.
 
-È la stessa pratica con cui si annota un PNG introdotto in scena (§14) quando lo si sente importante per il seguito, qui però resa **obbligatoria** dall'acquisto di una figura: una figura senza nome non si compra. Questo vincolo lega da subito la carta forte alla storia ed evita le figure anonime giocate solo come numeri alti.
+È la stessa pratica con cui si battezza un **Qualcuno** introdotto in scena (§15.1) quando lo si sente importante per il seguito, qui però resa **obbligatoria** dall'acquisto di una figura: una figura senza nome non si compra. Questo vincolo lega da subito la carta forte alla storia ed evita le figure anonime giocate solo come numeri alti.
 
-> **Esempio:** comprato un Fante, non resta "il Fante" ma diventa una persona, per esempio una guida del deserto che conosce piste e pozzi e fiuta in anticipo cosa aspetta oltre la prossima duna (proprio l'effetto del Fante: guardare e riordinare le prossime pescate). Vedi gli acquisti narrati nel §34.
+> **Esempio:** comprato un Fante, non resta "il Fante" ma diventa una persona, per esempio una guida del deserto che conosce piste e pozzi e fiuta in anticipo cosa aspetta oltre la prossima duna (proprio l'effetto del Fante: sbirciare le prossime carte del mazzo e, se serve, barattarne una con qualcosa che hai in mano). Vedi gli acquisti narrati nel §34.
 
 ### Fante — L'informatore
 
-**Effetto meccanico:** guarda le prime 4 carte del proprio mazzo; può decidere se e quali mettere in fondo. Come per le altre figure, l'effetto si attiva **quando la carta viene giocata**.
+**Effetto meccanico (v1.15):** quando giochi il Fante, **sbirci le prime 2 carte del tuo mazzo** e, se vuoi, ne **scambi una con una carta della tua mano**. La carta che cedi torna **in cima** al mazzo, insieme alla carta sbirciata che non hai preso; quella che prendi entra in mano (mano e mazzo restano della stessa dimensione). Lo scambio è facoltativo e al massimo uno. Come per le altre figure, l'effetto si attiva **quando la carta viene giocata**.
 
-**Consegna all'acquisto (eccezione, v1.12):** a differenza di Regina e Re, che entrano nel mazzo e vengono rimescolate, il **Fante appena comprato entra subito in mano** per la scena successiva; per restare a quattro carte, una carta della mano (a scelta) va **in fondo al mazzo**. Così l'informatore è disponibile fin dalla prima scena dopo l'acquisto e non rischia di restare sepolto nel mazzo o di uscire troppo tardi (per esempio nell'ultima scena, quando non avrebbe più pescate da preparare). Se il Fante si compra al mercato che precede l'ultima scena, dove la mano non è ancora stata scelta (mano estesa, §23.1), entra invece nel mazzo come le altre figure: lì la scelta delle quattro carte è comunque libera, quindi lo si può tenere lo stesso.
+**Consegna all'acquisto (v1.15):** il Fante, come Regina e Re, **entra nel mazzo**; a fine mercato, se hai comprato, il mazzo si rimescola e solo dopo peschi la nuova mano (§19), così può capitarti già nella scena seguente. *(Prima della v1.15 il Fante entrava direttamente in mano: regola rimossa con il nuovo ordine del mercato.)*
 
 **Funzione:** controllo del draw, preparazione delle prossime pescate.
 
@@ -548,7 +553,7 @@ C'è **un solo Jolly**, nel **mazzo dei Protagonisti**, aggiunto al termine dell
 Il Jolly dà a chi lo gioca il **vantaggio sul tavolo** (ripulisce o alleggerisce il piatto), ma il suo **marcatore va nel campo dell'avversario**:
 
 - presa col Jolly → **1 punto all'avversario**
-- scopa col Jolly → **4 punti all'avversario**
+- scopa col Jolly → **3 punti all'avversario**
 
 Chi gioca il Jolly conserva comunque il vantaggio di scena (se la scopa svuota il piatto a fine scena, vince la posta), ma regala i punti. Non c'è più né il *peccato latente* né il *counter* della v1.1–v1.2: il costo è immediato.
 
@@ -564,7 +569,7 @@ Se un giocatore ha in mano solo il Jolly e il piatto è vuoto: il Jolly viene **
 
 ### 22.6 — Il peccato emerge: il marcatore del Jolly all'Opposizione *(v1.5)*
 
-Quando i Protagonisti giocano il Jolly (§22.3), il marcatore che ne nasce entra nel campo dell'Opposizione come una sua normale presa (1 punto) o scopa (4 punti): è una risorsa spendibile a tutti gli effetti. L'Opposizione può darle uno solo di tre destini: spenderla al mercato per concorrere all'acquisto di una figura, tenerla fino al conteggio finale dove vale i suoi punti, oppure usarla come effetto.
+Quando i Protagonisti giocano il Jolly (§22.3), il marcatore che ne nasce entra nel campo dell'Opposizione come una sua normale presa (1 punto) o scopa (3 punti): è una risorsa spendibile a tutti gli effetti. L'Opposizione può darle uno solo di tre destini: spenderla al mercato per concorrere all'acquisto di una figura, tenerla fino al conteggio finale dove vale i suoi punti, oppure usarla come effetto.
 
 L'effetto si attiva nel turno dell'Opposizione, come **azione aggiuntiva** alla giocata o alla presa normale (non la sostituisce): l'Opposizione consuma il marcatore e **toglie dal piatto la carta di valore più basso tra quelle dei Protagonisti** (Cuori o Picche), che finisce negli **scarti comuni**. Si usa una sola volta, da quando il Jolly è stato giocato e in un turno di qualunque scena, **compreso il round della quinta, ma non durante i colpi di scena**. Se nel piatto non c'è nessuna carta dei Protagonisti l'effetto non è attivabile, perché manca il bersaglio.
 
@@ -612,9 +617,9 @@ Non si fanno prese o scope in questa fase: le uniche azioni sono mettere la cart
 
 **Struttura narrativa:**
 
-1. Dopo il primo conteggio → si narra l'esito apparente
-2. A ogni colpo di scena → si narra come le cose non fossero come apparivano
-3. Quando le riserve sono finite → conteggio definitivo
+1. Dopo le 4 carte a testa si fa il **primo conteggio** come in ogni scena: si determina e si **narra l'esito apparente** (lo racconta chi ha perso la posta, §18). Sembra finita.
+2. Poi i colpi di scena si rivelano **una carta alla volta**, e a ognuno si narra come le cose non fossero come apparivano.
+3. Quando le riserve sono finite → **conteggio definitivo**: solo allora si sa se la missione è riuscita o fallita.
 
 > **Esempio:** Primo conteggio: l'Opposizione sembra avere la meglio. Tocca prima ai Protagonisti, che perdono: Skunk cala dalla riserva un 7 di Cuori e con quello fa sparire un 5 di Quadri dal tavolo — "il meccanico che li ha venduti ai sicari era un uomo di Jorge". Il 7♥ resta nel piatto, il 5♦ finisce negli scarti. Risponde l'Opposizione, poi di nuovo i Protagonisti, finché entrambi hanno svuotato la riserva.
 
@@ -635,16 +640,41 @@ Al termine dell'ultima scena (dopo gli eventuali colpi di scena):
 
 ## 26. I quattro esiti
 
-Il finale si determina incrociando chi ha vinto il piatto con chi ha vinto ai punti complessivi (scope + prese).
+Il finale si legge su **due piani**, la **missione** e il **prestigio**, e dal loro incrocio nascono quattro esiti.
 
-| Piatto | Punti | Esito |
+**Primo piano, la missione.** Al termine dei colpi di scena, chi vince il piatto (Cuori + Picche contro Fiori + Quadri) ha raggiunto l'obiettivo o ha fallito: è l'esito esterno della storia.
+
+**Secondo piano, il prestigio.** I punti accumulati e **non spesi** (prese + scope) non dicono se la missione è riuscita, ma quanto un lato se l'è cavata con le proprie forze. Spendere punti per comprare figure significa aver **chiamato aiuto** e dover dividere il merito; tenerli significa **essersi fatti un nome**. Il prestigio vale per entrambi i lati, con segno opposto: per i Protagonisti è una **promessa** di crescita, per l'Opposizione una **minaccia** (l'idra: per ogni testa mozzata ne ricrescono altre).
+
+| Missione | Punti | Esito |
 |---|---|---|
-| Vinto | Vinti | **Vittoria totale** — successo pieno, netto |
-| Vinto | Persi | **Vittoria per il rotto della cuffia** — l'obiettivo è raggiunto, ma pagando un prezzo |
-| Perso | Persi | **Disfatta totale** — fallimento completo |
-| Perso | Vinti | **Sconfitta con aspetti positivi** — l'obiettivo fallisce, ma qualcosa è salvato o imparato |
+| Vinta | Vinti | **Vittoria piena** — ce l'avete fatta, e da soli |
+| Vinta | Persi | **Per il rotto della cuffia** — vinto, ma grazie agli aiuti e a caro prezzo |
+| Persa | Vinti | **Sconfitta dignitosa** — caduti a testa alta, con l'esperienza come tesoro |
+| Persa | Persi | **Fallimento totale** — travolti su ogni fronte |
 
-> **Parità ai punti:** se i punti complessivi finiscono pari, la parità va a chi ha vinto il piatto. Con il piatto vinto l'esito è quindi **Vittoria totale**, con il piatto perso è **Disfatta totale**. (Il piatto, a sua volta, se i valori sono pari si assegna prima per numero di scope e poi per numero di prese.)
+> **Parità ai punti:** se i punti finiscono pari, la parità va a chi ha vinto la missione (missione vinta → **Vittoria piena**, missione persa → **Fallimento totale**). La missione, a sua volta, se i totali del piatto sono pari si decide prima per numero di scope e poi per numero di prese.
+
+> **Lettura simmetrica:** un **Fallimento totale** dei Protagonisti è, nello stesso istante, una **Vittoria piena dell'Opposizione**: va narrata come il trionfo dell'avversario, non come una casella vuota.
+
+### 26.1 — Le domande di fine partita *(v1.16)*
+
+Oltre ai due piani, il finale si legge su **altre due dimensioni** che non entrano nella tabella ma danno voce all'epilogo: il **rapporto** tra i due protagonisti (§27.2) e il **privilegio di chi ha condotto il viaggio vincendo più scene**. Per dare voce a tutto questo, ciascun giocatore risponde alle domande che lo riguardano:
+
+- **A chi ha vinto la missione:** "I miei personaggi hanno ottenuto davvero quello che volevano?" E se non ha vinto anche ai punti, aggiunge: "Ma a che prezzo, con quale rimpianto?"
+- **A chi ha vinto il punteggio:** "In che modo i miei personaggi sono cresciuti o hanno accresciuto il loro prestigio?"
+- **A chi giocava i Protagonisti:** "Che cosa pensa ora Picche di Cuori, e viceversa? Come si è evoluto il loro rapporto?"
+- **A chi ha perso la missione ma ha vinto più scene dell'avversario,** a scelta una delle due: "Chi ha ottenuto l'obiettivo ignora qualcosa: non è tutto oro quel che luccica. Che cosa gli sfugge?" oppure "Quale riscatto o consolazione i miei personaggi possono trarre da questa storia?"
+
+### 26.2 — L'epilogo *(v1.16)*
+
+Date le risposte, si gioca l'**epilogo**: una sequenza di **vignette**, ciascuna incentrata su un **Qualcuno** (un protagonista, un PNG, un antagonista), ambientata giorni, settimane o anni dopo l'avventura. È **facoltativo** (il "cioccolatino" dopo il pasto).
+
+- Si narra **a turno**; non si possono narrare **due vignette di fila**. Quando il lato dei Protagonisti è diviso tra due giocatori, tra loro ha l'ultima parola chi ha realizzato più scope.
+- **"Passo" = chiusura:** quando un giocatore passa, l'altro può narrare al massimo **un'ultima vignetta**, poi l'epilogo finisce.
+- **Nessun tetto** al numero di vignette e **nessun legame** con punti o risorse spese: la misura la dà il gusto, non un costo.
+
+I **sapori** di una vignetta sono liberi (chiusura dolce o amara, colpo di scena retrospettivo come il Qualcuno dato per morto che riapre gli occhi, gancio per un seguito): non sono regole, solo esempi. L'epilogo è lo spazio libero in cui anche un destino dato per certo può essere **riaperto**: è l'unico momento in cui salta la regola d'oro delle scene, «introdurre non annulla» (§15.1).
 
 ## 27. Lettura del piatto a fine scena
 
@@ -910,7 +940,7 @@ Il taccuino del professor Aldo Falco, l'unico che abbia mai annotato la via per 
 
 ## 34. Partita d'esempio: cinque giorni per l'eclissi *(v1.12)*
 
-> **In riscrittura.** Questa sezione viene ricostruita in forma narrativa estesa sulla partita d'esempio canonica, riportata integralmente e verificata dal motore in `test/transcript_seed_23_43_v2.txt` (due seed: SEED=23 per le scene 1-2, SEED2=43 per le scene 3-5). Le righe qui sotto ne riassumono l'esito; la narrazione scena per scena segue.
+> **⚠️ Da rigenerare per la v1.15.** Le regole di punteggio (presa sempre 1, scopa 3), il nuovo Fante e l'ordine del mercato cambiano questa partita: la versione qui sotto (punteggi e carte) è **stale** e va ricostruita su un nuovo seed scelto col motore aggiornato (vedi registro v1.15). Le righe seguenti descrivono la vecchia partita e restano solo come riferimento storico finché non si rigenera.
 
 Una partita vera a 2 giocatori con lo scenario demo (§33): Paola gioca i Protagonisti (Vera ♠ e Otto ♥), Omar l'Opposizione (i nemici ♦, la Loggia del Basilisco e i Veglianti di Zerzura, e il caos ♣, il deserto). Punteggio: presa numerica 1, presa con figura 2, scopa 4; ciò che si spende al mercato vale 0.
 
@@ -919,6 +949,21 @@ Una partita vera a 2 giocatori con lo scenario demo (§33): Paola gioca i Protag
 ---
 
 # REGISTRO MODIFICHE
+
+## v1.16 (giugno 2026) — i Qualcuno, definizione del gioco, finale a due piani ed epilogo
+
+1. **§15.1: Terminologia «i Qualcuno».** Si dà un nome a un concetto già presente in forma sparsa (il PNG da annotare quando importante, §14/§15.1; la figura battezzata all'acquisto, §21.1) e lo si generalizza: un **Qualcuno** è qualsiasi elemento rilevante della storia (persone, gruppi, popoli, luoghi, oggetti) dotato di **una propria volontà** e di un ruolo o destino da seguire; gli si dà un nome e lo si annota (un Qualcuno senza nome non esiste). La volontà è il discrimine ed esclude la scenografia passiva; vale anche per i collettivi, e catturarne uno collettivo ne toglie la presenza nella scena, non l'esistenza nella storia. La **figura** resta un caso particolare di Qualcuno. Propagato a manuale §5.6, `REGOLE` (Azioni e prese) e `REGOLE_IA` in `index.html`; §21.1 ora rinvia al Qualcuno (§15.1).
+2. **§1: definizione del gioco riformulata.** Nuovo incipit: "uno story-game in cui i giocatori creano insieme una storia, giocando una partita a carte ispirata alla scopa che li vede in competizione su due fronti: Protagonisti e Opposizione. Il voler vincere ogni scena genera la tensione narrativa... È un gioco insieme collaborativo e competitivo, e questa apparente contraddizione è proprio il cuore di Frenemies on the Road". Allineati manuale §1.1 e intro in-app (`index.html`).
+3. **§24/§26: finale a due piani, esiti rinominati ed epilogo.** Chiarito che nell'ultima scena il **primo conteggio** (dopo le 4 carte a testa) determina e narra l'esito apparente come in ogni scena, e che solo dopo i **colpi di scena**, rivelati una carta alla volta, si conosce l'esito reale della missione (§24). Il finale è ora letto su **due piani**: la **missione** (chi vince il piatto) e il **prestigio** (i punti non spesi: figure comprate = aiuto chiamato e merito diviso, punti tenuti = nome che ci si è fatti; vale per entrambi i lati, promessa per i Protagonisti, minaccia/idra per l'Opposizione). I quattro esiti sono **rinominati**: **Vittoria piena / Per il rotto della cuffia / Sconfitta dignitosa / Fallimento totale** (anche nel motore, `conteggioDefinitivo`). Aggiunte le **domande di fine partita** (§26.1, con quattro tipi di domanda secondo chi ha vinto missione, punti, scene, e la voce dei Protagonisti) e le regole dell'**epilogo a vignette** (§26.2: facoltativo, a turni, mai due di fila, «passo» chiude con un'ultima vignetta, nessun tetto né costo, unico spazio in cui un destino può essere riaperto). Un Fallimento totale dei Protagonisti = Vittoria piena dell'Opposizione, da narrare come trionfo. Propagato a manuale cap. 8-9, `REGOLE`, `REGOLE_IA` e motore. (Epilogo: solo regole, in-app resta il campo di testo libero.)
+
+## v1.15 (giugno 2026) — revisione del punteggio, del Fante e dell'ordine del mercato
+
+1. **§17/§20: Punteggio semplificato.** Ogni **presa vale 1 punto**, anche se fatta con una **figura** (eliminato il bonus a 2 della presa-figura), e ogni **scopa vale 3 punti** (era 4). Allineati scoring e pagamento al mercato nel motore (`puntiMercato`/`pagaCosto` in `index.html`), `REGOLE`, `REGOLE_IA`, e i riferimenti §16/§18/§22. Effetto sul bilanciamento (misurato col driver `test/partita_smart.js`): produzione di punti dei due lati quasi pari, vittoria dei Protagonisti scesa verso il ~58-60% e terza figura comprata più di rado (≈2 figure a lato).
+2. **§21 (Fante): nuovo effetto.** Giocando il Fante si **sbirciano le prime 2 carte del mazzo** e, se si vuole, **se ne scambia una con una carta della mano** (la carta ceduta torna in cima, insieme alla sbirciata non scelta; mano e mazzo restano della stessa dimensione). Sostituisce il vecchio "guarda le prime 4 e riordina". Motore: riscritto `effettoFigura` (ramo F) in `index.html`, con auto-risoluzione per l'IA in solo; driver di test aggiornati al nuovo modale (`#fanteSwap`/`#fanteNo`).
+3. **§21/§19: Il Fante entra nel mazzo come le altre figure.** Rimossa l'eccezione v1.12 (Fante in mano all'acquisto): tutte le figure entrano nel mazzo. Rimossa la funzione `fanteInMano`.
+4. **§19: Nuovo ordine del mercato — prima si compra, poi si pesca.** La sequenza tra le scene è ora: acquisti → le figure entrano nel mazzo → **se hai comprato** il mazzo si rimescola → si pesca la nuova mano. Così le figure comprate possono capitare già nella scena seguente. Motore: spostate pescata e rimescolo da `avviaMercato` a dopo il mercato (`avanzaScena`/`avviaManoEstesa`, nuova `rimescolaSeComprato`).
+5. **§22: Jolly adeguato.** La scopa fatta col Jolly vale ora **3 punti** all'avversario (la presa resta 1).
+6. **Conseguenza sull'esempio:** scoring, Fante e ordine del mercato cambiano la partita; il transcript di riferimento, il §34 e l'Appendice B del manuale vanno **rigenerati** (scelta di un nuovo seed e riscrittura della fiction, in corso). `partita_esempio.js` e il vecchio transcript curato sono temporaneamente non validi.
 
 ## v1.14 (giugno 2026)
 
@@ -1012,4 +1057,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.14*
+*Frenemies on the Road — Knowledge Base v1.16*
