@@ -248,7 +248,7 @@ def diag_cinque_scene():
 
 
 def diag_flusso_scena():
-    W, H = 760, 624
+    W, H = 760, 540
     cx = 380
     parts = []
 
@@ -270,9 +270,7 @@ def diag_flusso_scena():
     parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
     yb = box(y, ["Chi ha l'iniziativa stabilisce", "la posta e il titolo della scena"])
     parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
-    yb = box(y, ["L'altro fa il framing iniziale: la situazione", "e l'atmosfera in cui si trovano i protagonisti"])
-    parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
-    yb = box(y, ["A partire da chi ha l'iniziativa, si svolgono", "4 turni, giocando una carta alla volta"])
+    yb = box(y, ["A partire da chi ha l'iniziativa, 4 turni a carta;", "la prima giocata apre la scena"])
     parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
 
     # decisione: resa onorevole all'ultimo turno
@@ -286,16 +284,16 @@ def diag_flusso_scena():
     rb = box(by, ["Si legge il piatto e si stabilisce", "chi vince la posta"], w=292, xc=rxc, size=11)
     parts.append(arrow(cx - 152, dcy, lxc + 4, by - 2, GRIGIO, 2))
     parts.append(arrow(cx + 152, dcy, rxc - 4, by - 2, GRIGIO, 2))
-    parts.append(txt(196, 418, "Sì", 11.5, SCURO, "bold"))
-    parts.append(txt(566, 418, "No", 11.5, SCURO, "bold"))
+    parts.append(txt(cx - 184, dcy + 30, "Sì", 11.5, SCURO, "bold"))
+    parts.append(txt(cx + 184, dcy + 30, "No", 11.5, SCURO, "bold"))
 
     my = lb + 22
     yb = box(my, ["Chi ha perso la posta narra", "come si conclude la scena"], fill="#fbf1d8")
     parts.append(arrow(lxc, lb, cx - 70, my - 2, GRIGIO, 2))
     parts.append(arrow(rxc, lb, cx + 70, my - 2, GRIGIO, 2))
     return figura(svg(W, H, "".join(parts)),
-                  "Una scena, passo per passo: chi vince l'asta fissa posta e titolo, "
-                  "l'altro apre la scena, si gioca e chi perde la posta ne narra l'esito.",
+                  "Una scena, passo per passo: chi vince l'asta fissa posta e titolo e apre la scena "
+                  "con la prima giocata; chi perde la posta ne narra l'esito.",
                   verticale=True)
 
 

@@ -55,7 +55,7 @@ Seme dominante ♣: a deciderla è stato il caos, l'attrito tra Vera e Otto più
 
 *Posta: raggiungere El Qara in tempo. Se va bene: si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male: arrivano troppo tardi e restano senza quell'aiuto prezioso.*
 
-**Framing di Paola** (l'asta l'ha vinta Omar, 8♦ batte 3♥, quindi è lui a fissare titolo e posta; dalla v1.18 il framing iniziale lo fa il giocatore senza iniziativa, qui Paola):
+**Apertura della scena** (l'asta l'ha vinta Omar, 8♦ batte 3♥, quindi è lui a fissare titolo e posta e ad aprire la scena con la prima giocata; dalla v1.20 il framing iniziale non è un passo a parte, ma rientra nella narrazione di quella prima carta — qui sotto è ancora reso come paragrafo separato, da fondere quando si riadatta):
 
 > "Il treno a vapore corre verso El Qara, sbuffando nel deserto che comincia. Nello scompartimento Vera e Otto siedono uno di fronte all'altra, scuri in volto, e non si rivolgono la parola: la lite del Cairo è ancora tutta lì, nell'aria. Hanno un giorno solo per arrivare a El Qara in tempo, agganciare la carovana dei mercanti di datteri e ingaggiare le guide che sole sanno leggere le dune. Se perdono quel treno di contatti, nel deserto ci entrano ciechi."
 
@@ -80,7 +80,7 @@ Mentre Alì è proteso fuori dal finestrino, Vera non lo insegue: corre nella di
 Fine scena: piatto **0 a 0**, vince i Protagonisti per chiusura (l'ultima giocata è una scopa); diario **pari**. Al mercato Paola compra un Fante (un contatto a El Qara) e l'Opposizione un Fante; dopo la seconda scena il Jolly entra nel mazzo dei Protagonisti.
 
 ### Spunti per esempi estraibili dalla Scena 2
-- **Framing del giocatore senza iniziativa** (v1.18): chi vince l'asta fissa titolo e posta (qui Omar), ma il framing iniziale lo fa l'altro (qui Paola), che può mettere in quadro anche lo stato della coppia, non solo le minacce.
+- **Il framing nella prima giocata** (v1.20): chi vince l'asta fissa titolo e posta (qui Omar) e apre la scena con la prima carta, la cui narrazione mette in quadro situazione e atmosfera (anche lo stato della coppia, non solo le minacce) oltre all'effetto della carta.
 - **Spinta del pitch che trasforma una presa in scopa** (mossa 3): l'esempio principe. Presa normale (Alì irrompe) che diventa svolta totale (la trappola che ribalta la scena).
 - **Presa di gruppo come colpo che annulla più mosse avversarie** (mossa 7): un'unica presa porta via il dialogo di Otto e l'ombrello di Vera.
 - **Scopa di chiusura = posta conquistata** (mossa 8), narrata dal perdente d'asta (Paola).

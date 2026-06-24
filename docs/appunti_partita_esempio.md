@@ -50,7 +50,7 @@ Preferenze aggiuntive di Saverio (per scegliere tra i candidati): **arco P,O,P,O
 2. **Mercato 4/5** — Omar compra il **Re ♦** (ancora da battezzare: "deus ex machina", in cripta si sacrifica per una scopa).
 3. **Scena 5 — La cripta del Sole (Risoluzione)** — scheletro più sotto. Re♦ scopa, Jolly (4 pt a Omar), colpi di scena (Pablo/Regina entra, elimina, è eliminato) → ribaltone piatto 12-0 → per il rotto della cuffia.
 
-**FORMATO (fisso) dell'Appendice B:** ogni passo = riga d'azione in chiaro (chi cala quale carta, effetto in gioco, **+ motivazione strategica**) con `{: .azione }`, poi un `<div class="fiction"><span class="chi">Paola narra</span>…</div>` (box **monocolore**, SOLO fiction, didascalia "Paola narra"/"Omar narra"; per posta+titolo `<span class="titolo-scena">`). Apertura scena (v1.18): due passi, ma di giocatori diversi: il vincitore d'asta stabilisce titolo+posta → box; poi il giocatore SENZA iniziativa (l'avversario) fa il framing iniziale → box. Esito/conteggio in testo normale FUORI dai box. **Semi a icona ♠♥♦♣.** Nei box NON usare termini di gioco (niente "posta"/"mappa"). CSS in `docs/genera_pdf_manuale.py`. Niente lineette lunghe (—).
+**FORMATO (fisso) dell'Appendice B:** ogni passo = riga d'azione in chiaro (chi cala quale carta, effetto in gioco, **+ motivazione strategica**) con `{: .azione }`, poi un `<div class="fiction"><span class="chi">Paola narra</span>…</div>` (box **monocolore**, SOLO fiction, didascalia "Paola narra"/"Omar narra"; per posta+titolo `<span class="titolo-scena">`). Apertura scena (v1.20): il vincitore d'asta stabilisce titolo+posta → box; poi apre la scena giocando la prima carta, e la narrazione di quella prima giocata include il framing (situazione + atmosfera) → box. Niente passo di framing separato. Esito/conteggio in testo normale FUORI dai box. **Semi a icona ♠♥♦♣.** Nei box NON usare termini di gioco (niente "posta"/"mappa"). CSS in `docs/genera_pdf_manuale.py`. Niente lineette lunghe (—).
 
 **Regole stabilite questa sessione:** v1.13 posta "il cosa non il come / mai indispensabile"; v1.14 **l'esito lo narra chi PERDE la posta** (parità → chi vince l'asta). "La mappa" → "il prezioso taccuino di appunti su come raggiungere l'artefatto" ovunque. Esito narrato dal seme dominante (♣=caos/attrito, ♦=nemici, ♠/♥=Protagonisti con forza/dialogo); scopa di chiusura → piatto vuoto → seme dominante e diario in parità.
 
@@ -67,7 +67,7 @@ Preferenze aggiuntive di Saverio (per scegliere tra i candidati): **arco P,O,P,O
 **Setup (dal transcript).**
 - Dopo il mercato 2/3: il Jolly è entrato nel mazzo dei Protagonisti.
 - Mani: Protagonisti `9♠ 4♠ 10♥ F♥` (F♥ = il Fante comprato, Kalim) · Opposizione `2♣ 6♦ 5♦ 9♦`.
-- Asta: Protagonisti `4♠` contro Opposizione `5♦` → iniziativa all'**Opposizione** (Omar definisce titolo e posta; il framing iniziale lo fa Paola, v1.18).
+- Asta: Protagonisti `4♠` contro Opposizione `5♦` → iniziativa all'**Opposizione** (Omar definisce titolo e posta e apre la scena con la prima giocata, che include il framing, v1.20).
 - Posta (NUOVA, adottata): Orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se si ottiene: i protagonisti possono accamparsi e prepararsi alla ricerca. Altrimenti: si perdono nel deserto. (Vecchia posta scartata: "Attraversare le dune col taccuino…")
 
 **Le giocate del round (ordine reale).**

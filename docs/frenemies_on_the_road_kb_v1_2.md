@@ -299,13 +299,13 @@ La carta usata nell'asta dal **vincitore** non viene persa: verrà rigiocata all
 
 > **Parità nell'asta (v1.1):** se le due carte hanno lo stesso valore, l'iniziativa va a chi **non** l'ha avuta nella scena precedente. Alla prima scena, in caso di parità, l'iniziativa va all'**Opposizione** — il mondo è contro di voi fin dall'inizio.
 
-## 12. Apertura della scena: titolo, ambiente, posta
+## 12. Apertura della scena: titolo, posta, prima carta
 
-Chi vince l'asta sceglie il titolo della scena e definisce la posta della scena. Poi è **l'altro giocatore**, quello senza iniziativa, a **fare il framing iniziale** *(v1.18)*: descrive la situazione e l'atmosfera in cui si trovano i protagonisti all'apertura. Così l'inquadratura della scena è condivisa, il vincitore dell'asta ne fissa la cornice (titolo e posta) e l'altro la mette in scena.
+Chi vince l'asta sceglie il titolo della scena e definisce la posta. Non c'è un passo di framing a parte *(v1.20)*: la scena si **apre con la prima carta** del round. Chi ha l'iniziativa gioca per primo e, narrando quella carta, mette in scena insieme la situazione e l'atmosfera iniziale e l'effetto della giocata (un nuovo elemento introdotto o, se il piatto eredita carte dalla scena precedente, una presa).
 
-### 12.1 — Ambiente iniziale in base al seme della carta d'asta vincente
+### 12.1 — Atmosfera iniziale in base al seme della prima carta
 
-L'atmosfera iniziale la mette in scena il giocatore senza iniziativa (§12), seguendo come suggerimento il seme della carta con cui l'avversario ha vinto l'asta:
+L'atmosfera dell'apertura la suggerisce il seme della **prima carta giocata**, secondo lo stesso significato dei semi che vale per ogni giocata:
 
 | Seme | Atmosfera iniziale |
 |---|---|
@@ -952,6 +952,10 @@ Una partita vera a 2 giocatori con lo scenario demo (§33): Paola gioca i Protag
 
 # REGISTRO MODIFICHE
 
+## v1.20 (giugno 2026) — il framing entra nella prima giocata (supera la v1.18)
+
+1. **§12: niente passo di framing a parte; la scena si apre con la prima carta.** Chi vince l'asta dichiara titolo e posta, poi gioca per primo: la **prima carta del round apre la scena**, e la sua narrazione mette in quadro insieme la situazione/atmosfera iniziale e l'effetto della giocata. Si supera la v1.18 (framing affidato al giocatore senza iniziativa, come beat separato): ogni narrazione torna così agganciata a una carta, e vale la simmetria «chi vince l'asta apre la scena, chi perde la posta la chiude». §12.1: l'atmosfera è ora suggerita dal seme della **prima carta giocata** (non più della carta d'asta), come caso particolare del significato dei semi. Propagato a manuale (§3.1, §3.3, §8.3), `REGOLE` e `REGOLE_IA` in `index.html`, diagramma di flusso della scena e actual play dell'Appendice B (il framing rientra nella narrazione della prima giocata). Resta una regola sociale al tavolo, nessun effetto sul motore.
+
 ## v1.19 (giugno 2026) — terminologia: «missione» al posto di «obiettivo finale»
 
 1. **Un solo termine per lo scopo della partita.** Il traguardo che i protagonisti devono raggiungere si chiama ora sempre **missione** (non più «obiettivo finale»), allineandosi a come il concetto era già chiamato nel motore (`G.missione`) e nel finale (il piano «missione» degli esiti). «Missione» maiuscola nei titoli ed etichette (§9.3 «La Missione», elenco del pitch), minuscola nella prosa. Restano invariati «obiettivo intermedio» / «obiettivo concreto» per la posta di scena (sono cose diverse). Adattati i verbi dove serviva (raggiungere l'obiettivo → compiere la missione) e sciolta la circolarità nel finale («la missione, cioè se i protagonisti l'hanno compiuta»). Solo terminologia, nessun effetto sul motore. Propagato a KB (§1, §9.3, §12.2, §13, §24, §26, §29, esempi), manuale del giocatore e `REGOLE`/`REGOLE_IA`/etichette UI in `index.html`. Le voci storiche di questo registro restano com'erano.
@@ -1071,4 +1075,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.19*
+*Frenemies on the Road — Knowledge Base v1.20*

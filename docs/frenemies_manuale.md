@@ -294,7 +294,7 @@ Un esempio. L'Opposizione ha scritto, come spinta di Fiori: "Aldo Falco è vivo:
 
 Questo è il cuore del gioco. Una scena è un round, e ogni round segue sempre la stessa sequenza: si pesca, si fa l'asta per l'iniziativa, chi vince apre la scena e ne fissa la posta, poi i due lati si alternano giocando carte, facendo prese e tentando scope, finché la mano finisce. Vediamo ogni passaggio.
 
-In sintesi: una scena si svolge giocando a turno le quattro carte della propria mano, e ogni carta giocata ha un effetto narrativo suggerito dal suo seme e dal tipo di giocata (aggiunta al piatto, presa o scopa). La scena termina quando viene calata l'ultima carta, e il suo esito, cioè la posta, si decide in base a quali carte sono rimaste nel piatto: se la somma di Cuori e Picche supera quella di Quadri e Fiori la posta va ai Protagonisti, altrimenti all'Opposizione. La narrazione dell'esito spetta sempre a chi ha giocato l'ultima carta, cioè il giocatore che non aveva determinato la posta, e questo a prescindere da chi vince la scena: l'ha aperta chi ha vinto l'asta, e la chiude l'altro, raccontando come è andata a finire.
+In sintesi: una scena si svolge giocando a turno le quattro carte della propria mano, e ogni carta giocata ha un effetto narrativo suggerito dal suo seme e dal tipo di giocata (aggiunta al piatto, presa o scopa). La scena termina quando viene calata l'ultima carta, e il suo esito, cioè la posta, si decide in base a quali carte sono rimaste nel piatto: se la somma di Cuori e Picche supera quella di Quadri e Fiori la posta va ai Protagonisti, altrimenti all'Opposizione. La narrazione dell'esito spetta al lato che ha perso la posta, cioè che ha perso la scena (in caso di parità nel piatto, a chi ha vinto l'asta). Così chi ha vinto l'asta apre la scena e chi ha perso la posta la chiude, raccontando come è andata a finire.
 
 <!-- DIAGRAMMA: flusso-scena -->
 
@@ -315,9 +315,9 @@ In caso di parità, se le due carte hanno lo stesso valore, l'iniziativa va a ch
 
 Vincere l'asta non è automaticamente un vantaggio: ogni scelta ha due facce, e vale la pena pesarle.
 
-Giocare una carta alta nell'asta, e quindi puntare a vincere l'iniziativa, ha diversi pregi. Ti dà il diritto di fissare il titolo e la posta della scena (il framing iniziale, invece, tocca all'altro). E, dato che la carta d'asta del vincitore torna in gioco come sua ultima giocata, mandi una carta alta proprio in fondo, quando è più facile che trovi qualcosa da catturare: una carta alta fa presa o scopa più spesso. In più, se la scena eredita un piatto non vuoto da quella precedente, chi ha l'iniziativa gioca per primo e può fare subito una presa su quelle carte. Il rovescio della medaglia: se il piatto è vuoto, giocare per primo significa per forza introdurre una carta, che l'avversario può catturare subito, magari con una scopa ai tuoi danni.
+Giocare una carta alta nell'asta, e quindi puntare a vincere l'iniziativa, ha diversi pregi. Ti dà il diritto di fissare il titolo e la posta della scena, e di aprirla giocando per primo. E, dato che la carta d'asta del vincitore torna in gioco come sua ultima giocata, mandi una carta alta proprio in fondo, quando è più facile che trovi qualcosa da catturare: una carta alta fa presa o scopa più spesso. In più, se la scena eredita un piatto non vuoto da quella precedente, chi ha l'iniziativa gioca per primo e può fare subito una presa su quelle carte. Il rovescio della medaglia: se il piatto è vuoto, giocare per primo significa per forza introdurre una carta, che l'avversario può catturare subito, magari con una scopa ai tuoi danni.
 
-Non avere l'iniziativa ha vantaggi speculari. Sei tu a chiudere la scena, giocando l'ultima carta (e a narrarne l'esito, vedi §3.10). E se il piatto è vuoto o ha solo carte basse, puoi aprire il tuo gioco proprio con una scopa, raccogliendo quello che l'avversario è stato costretto a calare per primo.
+Non avere l'iniziativa ha vantaggi speculari. Sei tu a chiudere la scena, giocando l'ultima carta del round. E se il piatto è vuoto o ha solo carte basse, puoi aprire il tuo gioco proprio con una scopa, raccogliendo quello che l'avversario è stato costretto a calare per primo.
 
 Non c'è una scelta giusta in assoluto: conviene valutare la propria mano, il piatto ereditato e il momento della partita, e decidere di conseguenza la propria strategia.
 
@@ -356,9 +356,9 @@ Un esempio di crescendo, niente affatto vincolante ma utile a dare l'idea di com
 
 Oltre alla posta, chi vince l'asta dà alla scena un titolo: la sua identità, come il capitolo di un libro o l'episodio di una miniserie (vedi anche il Capitolo 1).
 
-A quel punto è l'altro giocatore, quello senza iniziativa, a fare il framing iniziale: descrive la situazione e l'atmosfera in cui si trovano i protagonisti all'apertura della scena. Così l'inquadratura è condivisa: chi ha vinto l'asta ne fissa la cornice (titolo e posta), l'altro la mette in scena.
+Non c'è un passo di apertura a parte: la scena si apre con la prima carta del round. Chi ha l'iniziativa gioca per primo e, narrando quella carta, mette in scena insieme la situazione e l'atmosfera iniziale e l'effetto della giocata. Per esempio: "Siamo in un vicolo buio; Vera e Otto avanzano nell'ombra e incontrano un uomo elegante: è Hatim, che apre loro la porta sul retro" (un Cuori che introduce un alleato).
 
-L'atmosfera la suggerisce il seme della carta d'asta vincente, e può tradursi in un ambiente, in una situazione o in un'interazione. È un suggerimento più che un vincolo: uno spunto per inquadrare l'inizio della scena, non una regola da rispettare alla lettera.
+L'atmosfera la suggerisce il seme di quella prima carta, e può tradursi in un ambiente, in una situazione o in un'interazione. È un suggerimento più che un vincolo: uno spunto per inquadrare l'inizio della scena, non una regola da rispettare alla lettera.
 
 | Seme | Atmosfera suggerita |
 |---|---|
@@ -497,7 +497,7 @@ Se invece non ti arrendi, giochi la carta e la scena si conta normalmente. La re
 
 ## 3.13 La continuità tra le scene
 
-Una scena finisce con un esito, e quell'esito, raccontato da chi ha giocato l'ultima carta (vedi §3.10), non è solo un sigillo: è il trampolino della scena successiva.
+Una scena finisce con un esito, e quell'esito, raccontato da chi ha perso la posta (vedi §3.10), non è solo un sigillo: è il trampolino della scena successiva.
 
 Ogni scena, infatti, si aggancia a com'è finita la posta di quella precedente. Lo stato in cui si trovano i protagonisti è conseguenza diretta di quell'esito: se la posta è stata vinta, la nuova scena parte da una posizione di vantaggio; se è stata persa, da una situazione ostacolata o peggiorata. La regola d'oro è una sola: resta coerente con la scena precedente, ma porta avanti la storia, non inchiodarla sulla difficoltà iniziale.
 
@@ -714,7 +714,7 @@ Il flusso della partita, che hai visto a colpo d'occhio nel diagramma del Capito
 
 **1. Preparazione (il pitch).** Tono; coppia dei protagonisti; missione; Opposizione (Quadri nemici, Fiori caos); domande ai Protagonisti (poste dall'Opposizione); domande all'Opposizione (poste dai Protagonisti); prima difficoltà condivisa, che inquadra la Scena 1.
 
-**2. Per ogni scena (da 1 a 5).** Pesca di 4 carte per lato; asta (carta coperta, si rivela, chi è più alto vince l'iniziativa; in parità, a chi non l'ha avuta la scena prima, e alla scena 1 all'Opposizione); il vincitore sceglie titolo e posta, mentre l'altro fa il framing iniziale (ambiente e atmosfera, sul seme della carta d'asta vincente); round, in cui si alternano giocate, prese e scope (4 carte a testa); fine round, si somma il piatto e si vede chi vince la scena (se vincono i Protagonisti la posta è raggiunta, se vince l'Opposizione la situazione peggiora); il piatto resta sul tavolo per la scena successiva; mercato (acquisto delle figure, che entrano nel mazzo; se compri, il mazzo si rimescola); poi si pesca la nuova mano.
+**2. Per ogni scena (da 1 a 5).** Pesca di 4 carte per lato; asta (carta coperta, si rivela, chi è più alto vince l'iniziativa; in parità, a chi non l'ha avuta la scena prima, e alla scena 1 all'Opposizione); il vincitore sceglie titolo e posta e apre la scena giocando per primo (la sua prima carta mette in quadro anche l'atmosfera, sul seme di quella carta); round, in cui si alternano giocate, prese e scope (4 carte a testa); fine round, si somma il piatto e si vede chi vince la scena (se vincono i Protagonisti la posta è raggiunta, se vince l'Opposizione la situazione peggiora); il piatto resta sul tavolo per la scena successiva; mercato (acquisto delle figure, che entrano nel mazzo; se compri, il mazzo si rimescola); poi si pesca la nuova mano.
 
 **3. Dopo la seconda scena.** Il Jolly entra nel mazzo dei Protagonisti.
 
@@ -808,22 +808,17 @@ La partita si apre sulla prima difficoltà del pitch: il taccuino di Aldo Falco,
 
 > **Le carte in mano.** Protagonisti (Paola): 9♥ 5♠ 8♠ 5♥. Opposizione (Omar): 2♦ 1♦ 3♣ 10♣. Il piatto è vuoto: si parte da zero.
 
-All'asta Paola cala coperto il 9♥, Omar il 3♣: vince Paola, e l'iniziativa è dei Protagonisti. Avere l'iniziativa è un vantaggio doppio: permette di stabilire titolo e posta della scena, e la carta calata all'asta (qui il 9♥) viene messa da parte come ultima giocata del round, là dove è più facile fare una presa o perfino una scopa. Per questo conviene puntare alto. Il 3♣ di Omar, invece, torna nella sua mano. Avendo vinto l'iniziativa, è Paola a fissare titolo e posta; il framing iniziale toccherà a Omar.
+All'asta Paola cala coperto il 9♥, Omar il 3♣: vince Paola, e l'iniziativa è dei Protagonisti. Avere l'iniziativa è un vantaggio doppio: permette di stabilire titolo e posta della scena, e la carta calata all'asta (qui il 9♥) viene messa da parte come ultima giocata del round, là dove è più facile fare una presa o perfino una scopa. Per questo conviene puntare alto. Il 3♣ di Omar, invece, torna nella sua mano. Avendo vinto l'iniziativa, è Paola a fissare titolo e posta e ad aprire la scena con la prima giocata.
 
 **Paola stabilisce il titolo e la posta della scena.**
 {: .azione }
 
 <div class="fiction"><span class="titolo-scena">L'asta del Cairo</span><em>Posta: prendere il taccuino di Aldo. Se va bene, hanno gli appunti su come raggiungere l'artefatto e un giorno di vantaggio. Se va male, il taccuino finisce nelle mani della Loggia e quel giorno di vantaggio se lo tengono loro.</em></div>
 
-**Omar fa il framing iniziale.**
+**Paola apre la scena e gioca il 5♥** nel piatto: la prima giocata apre la scena e introduce una risorsa. Aggiungere una carta significa mettere in scena qualcosa che potrà tornare utile più avanti, e in ♥, il seme dei legami, la risorsa naturale è un alleato. Paola crea il PNG annotandolo su una index card: «Hatim, vecchio amico di Otto, concierge dell'hotel», il contatto che farà entrare la coppia.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>In una sala privata del Cairo si batte all'asta il prezioso taccuino di appunti di Aldo Falco, l'unico che dica come arrivare a Zerzura; lui è sparito nel deserto cercandola. Sotto i lampadari la Loggia del Basilisco prende posto con le sue valigette, mentre i lotti minori passano di mano e il banditore scalda la sala. Vera e Otto, da qualche parte là fuori, non hanno nemmeno l'invito.</div>
-
-**Paola gioca il 5♥** nel piatto: introduce una risorsa. Aggiungere una carta significa mettere in scena qualcosa che potrà tornare utile più avanti, e in ♥, il seme dei legami, la risorsa naturale è un alleato. Paola crea il PNG annotandolo su una index card: «Hatim, vecchio amico di Otto, concierge dell'hotel», il contatto che farà entrare la coppia.
-{: .azione }
-
-<div class="fiction"><span class="chi">Paola narra</span>Vera e Otto non hanno l'invito, ma Otto ha un vecchio amico: Hatim, conosciuto anni prima al circolo scacchistico, dopo le giornate al Museo Egizio. Oggi Hatim il Concierge ha le chiavi delle porte che non risultano su nessuna pianta, e avvertito per tempo con un telegramma in codice lascia una porta sul retro senza sorveglianza: i due scivolano nel salone alle spalle della Loggia.</div>
+<div class="fiction"><span class="chi">Paola narra</span>In una sala privata del Cairo si batte all'asta il prezioso taccuino di Aldo Falco, l'unico che dica come arrivare a Zerzura, sparito nel deserto cercandola: sotto i lampadari la Loggia del Basilisco prende posto con le sue valigette, e Vera e Otto non hanno nemmeno l'invito. Ma Otto ha un vecchio amico: Hatim, conosciuto anni prima al circolo scacchistico, dopo le giornate al Museo Egizio. Oggi Hatim il Concierge ha le chiavi delle porte che non risultano su nessuna pianta, e avvertito per tempo con un telegramma in codice lascia una porta sul retro senza sorveglianza: i due scivolano nel salone alle spalle della Loggia.</div>
 
 **Omar gioca l'1♦** nel piatto: dispone una minaccia. In ♦, il seme dei nemici attivi, una carta dell'Opposizione è un nuovo elemento ostile messo in scena, qualcosa che potrà creare problemi: qui l'assistente del banditore che si lascia comprare.
 {: .azione }
@@ -878,15 +873,10 @@ All'asta Paola cala il 3♥, Omar l'8♦: vince Omar, e l'iniziativa è dell'Opp
 
 <div class="fiction"><span class="titolo-scena">Il treno per El Qara</span><em>Posta: raggiungere El Qara in tempo. Se va bene, si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male, arrivano troppo tardi e restano senza quell'aiuto prezioso.</em></div>
 
-**Paola fa il framing iniziale.**
+**Omar apre la scena e gioca il 7♦** nel piatto: la prima giocata apre la scena e dispone una minaccia che è anche un nuovo PNG. In ♦ il nemico attivo prende corpo in un personaggio, da annotare su una index card: Alì, il guerriero dei Veglianti che si avvicina al treno.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Il treno a vapore corre verso El Qara, sbuffando nel deserto che comincia. Nello scompartimento Vera e Otto siedono uno di fronte all'altra, scuri in volto, e non si rivolgono la parola: la lite del Cairo è ancora tutta lì. Hanno un giorno solo per arrivare in tempo, agganciare la carovana dei mercanti di datteri e ingaggiare le guide che sole sanno leggere le dune.</div>
-
-**Omar gioca il 7♦** nel piatto: dispone una minaccia che è anche un nuovo PNG. In ♦ il nemico attivo prende corpo in un personaggio, da annotare su una index card: Alì, il guerriero dei Veglianti che si avvicina al treno.
-{: .azione }
-
-<div class="fiction"><span class="chi">Omar narra</span>Vera fissa il finestrino per non guardare Otto, e così vede per prima un puntino nero avvicinarsi alla coda del convoglio: un guerriero tuareg dalle vesti scure, il turbante che gli copre anche il volto, solo gli occhi feroci e un piccolo tatuaggio in mezzo alla fronte, un occhio, il marchio dei Veglianti di Zerzura. È Alì, e sta per saltare sul treno in corsa.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Il treno a vapore corre verso El Qara, sbuffando nel deserto che comincia. Nello scompartimento Vera e Otto siedono uno di fronte all'altra, scuri in volto e senza rivolgersi la parola: la lite del Cairo è ancora tutta lì. Vera fissa il finestrino per non guardare Otto, e così vede per prima un puntino nero avvicinarsi alla coda del convoglio: un guerriero tuareg dalle vesti scure, il turbante che gli copre anche il volto, solo gli occhi feroci e un piccolo tatuaggio in mezzo alla fronte, un occhio, il marchio dei Veglianti di Zerzura. È Alì, e sta per saltare sul treno in corsa.</div>
 
 **Paola gioca il 3♥** nel piatto: dispone una risorsa. In ♥ la risorsa è di nuovo un legame, qui il dialogo: Otto riconosce l'ordine e si offre di parlamentare.
 {: .azione }
@@ -957,15 +947,10 @@ All'asta Paola cala il 4♠, Omar il 5♦: vince Omar, e l'iniziativa è dell'Op
 
 <div class="fiction"><span class="titolo-scena">Il mare di sabbia</span><em>Posta: orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se va bene: i protagonisti si accampano e si preparano alla ricerca. Se va male: si perdono nel deserto.</em></div>
 
-**Paola fa il framing iniziale.**
+**Omar apre la scena e gioca il 6♦** nel piatto: la prima giocata apre la scena; nel piatto vuoto non c'è nulla da catturare, così dispone una minaccia.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Oltre El Qara finisce ogni strada e comincia il mare di sabbia: dune fino all'orizzonte, identiche in ogni direzione, e un sole che cancella le ombre e i punti di riferimento. Da qualche parte là dentro c'è l'oasi più vicina a Zerzura; sbagliare rotta significa girare in tondo finché l'acqua finisce. Vera e Otto partono coi cammelli di Kalim, ancora senza essersi davvero riappacificati.</div>
-
-**Omar gioca il 6♦** nel piatto: nel piatto vuoto non c'è nulla da catturare, così dispone una minaccia.
-{: .azione }
-
-<div class="fiction"><span class="chi">Omar narra</span>I Veglianti non lasciano che il deserto aiuti gli intrusi: hanno abbattuto i tumuli di pietra che segnano la pista e cancellato le tracce delle carovane. Dove dovrebbe esserci una via, ora c'è solo sabbia vergine.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Oltre El Qara finisce ogni strada e comincia il mare di sabbia: dune fino all'orizzonte, identiche in ogni direzione, e un sole che cancella le ombre e i punti di riferimento. Vera e Otto partono coi cammelli di Kalim, ancora senza essersi davvero riappacificati. E i Veglianti non lasciano che il deserto aiuti gli intrusi: hanno abbattuto i tumuli di pietra che segnano la pista e cancellato le tracce delle carovane. Dove dovrebbe esserci una via, ora c'è solo sabbia vergine.</div>
 
 **Paola cala subito Kalim, il Fante ♥ (valore 8):** cattura il 6♦ e svuota il piatto, una **scopa** (4 punti). Schiera l'informatore appena ha un bersaglio da prendere. Poi ne sfrutta l'effetto: guarda le prime quattro carte del mazzo, 3♠, 8♥, 4♥ e 7♠. Sono già una buona mano per la scena seguente (l'8♥ alto le tornerà utile all'asta, e ha Picche e Cuori per agire), così le lascia tutte dove sono e non ne manda nessuna in fondo.
 {: .azione }
@@ -1032,15 +1017,10 @@ All'asta Paola cala il 3♠, Omar l'asso di Fiori: vince Paola, e per la prima v
 
 <div class="fiction"><span class="titolo-scena">Nella città perduta</span><em>Posta: trovare l'accesso alla cripta. Se va bene: sono a un passo dall'obiettivo. Se va male: restano in balìa dei nemici e delle insidie della città perduta.</em></div>
 
-**Omar fa il framing iniziale.**
+**Paola apre la scena con il 7♠** nel piatto vuoto: la prima giocata apre la scena; con l'iniziativa tocca a lei muovere per prima, e una carta lasciata sola nel vuoto si espone alla cattura.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>Partiti all'alba, Vera e Otto sono giunti alla grande piana dove, secondo i calcoli dello studioso, un tempo sorgeva l'antica città di Zerzura. Ma al posto di edifici e antiche vestigia ci sono solo i miraggi creati dal sole allo zenit e un vento maligno che getta sabbia nei loro occhi stanchi.</div>
-
-**Paola apre con il 7♠** nel piatto vuoto: con l'iniziativa tocca a lei muovere per prima, e una carta lasciata sola nel vuoto si espone alla cattura.
-{: .azione }
-
-<div class="fiction"><span class="chi">Paola narra</span>Vera non aspetta che il sole cali. Si arrampica sullo sperone di roccia più alto, scruta la piana accecante con la mano a visiera, poi salta giù e comincia a scavare dove l'istinto le dice che la sabbia nasconde qualcosa. Dove finisce la strada comincia lei: non c'è ostacolo che non abbia mai affrontato a spallate.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Partiti all'alba, Vera e Otto sono giunti alla grande piana dove, secondo i calcoli di Otto, un tempo sorgeva l'antica città di Zerzura: ma al posto di edifici e vestigia ci sono solo i miraggi del sole allo zenit e un vento maligno che getta sabbia negli occhi stanchi. Vera non aspetta che il sole cali. Si arrampica sullo sperone di roccia più alto, scruta la piana accecante con la mano a visiera, poi salta giù e comincia a scavare dove l'istinto le dice che la sabbia nasconde qualcosa. Dove finisce la strada comincia lei: non c'è ostacolo che non abbia mai affrontato a spallate.</div>
 
 **Omar risponde con il 7♣, prende il 7♠ e svuota il piatto: scopa** (4 punti). Pesca la carta solitaria di Vera e la spazza via di slancio, già al primo affondo.
 {: .azione }
