@@ -295,7 +295,7 @@ All'inizio di ogni scena:
 3. Le due carte vengono rivelate insieme
 4. Chi ha la carta più alta vince l'iniziativa e giocherà per primo
 
-La carta usata nell'asta dal **vincitore** non viene persa: verrà rigiocata alla fine del round, come sua ultima giocata. La carta d'asta del **perdente** torna nella sua mano *(v1.1)*.
+La carta usata nell'asta dal **vincitore** non viene persa: resta **scoperta sul tavolo** e verrà rigiocata alla fine del round, come sua ultima giocata, così l'avversario sa fin dall'inizio con quale carta chiuderà *(v1.21)*. La carta d'asta del **perdente** torna nella sua mano *(v1.1)*.
 
 > **Parità nell'asta (v1.1):** se le due carte hanno lo stesso valore, l'iniziativa va a chi **non** l'ha avuta nella scena precedente. Alla prima scena, in caso di parità, l'iniziativa va all'**Opposizione** — il mondo è contro di voi fin dall'inizio.
 
@@ -343,7 +343,7 @@ L'apertura di una scena si aggancia sempre a **com'è finita la posta della scen
 
 Dopo l'asta:
 
-1. Il vincitore mette da parte la carta usata per l'asta
+1. Il vincitore mette da parte, scoperta sul tavolo, la carta usata per l'asta
 2. Gioca una nuova carta nel piatto, aprendo effettivamente la scena
 3. I giocatori si alternano fino a quando uno dei due esaurisce la mano
 4. Il vincitore dell'asta sarà il primo a restare senza carte: in quel momento gioca la carta tenuta da parte come ultima giocata meccanica del round
@@ -952,6 +952,10 @@ Una partita vera a 2 giocatori con lo scenario demo (§33): Paola gioca i Protag
 
 # REGISTRO MODIFICHE
 
+## v1.21 (giugno 2026) — la carta d'asta del vincitore resta scoperta
+
+1. **§11/§13: la carta d'asta del vincitore si tiene scoperta sul tavolo.** Reso esplicito che la carta con cui si vince l'iniziativa, già rivelata nell'asta, resta **a faccia in su** in attesa di essere rigiocata come ultima carta del round. Conseguenza strategica (annotata nella nota «l'iniziativa conviene sempre?» del manuale): l'avversario sa fin dall'inizio con quale carta il vincitore chiuderà, e può pianificare di conseguenza, un contrappeso al vantaggio dell'iniziativa. Solo chiarimento, nessun effetto sul motore. Allineati manuale §3.1 e `REGOLE`/`REGOLE_IA` in `index.html`.
+
 ## v1.20 (giugno 2026) — il framing entra nella prima giocata (supera la v1.18)
 
 1. **§12: niente passo di framing a parte; la scena si apre con la prima carta.** Chi vince l'asta dichiara titolo e posta, poi gioca per primo: la **prima carta del round apre la scena**, e la sua narrazione mette in quadro insieme la situazione/atmosfera iniziale e l'effetto della giocata. Si supera la v1.18 (framing affidato al giocatore senza iniziativa, come beat separato): ogni narrazione torna così agganciata a una carta, e vale la simmetria «chi vince l'asta apre la scena, chi perde la posta la chiude». §12.1: l'atmosfera è ora suggerita dal seme della **prima carta giocata** (non più della carta d'asta), come caso particolare del significato dei semi. Propagato a manuale (§3.1, §3.3, §8.3), `REGOLE` e `REGOLE_IA` in `index.html`, diagramma di flusso della scena e actual play dell'Appendice B (il framing rientra nella narrazione della prima giocata). Resta una regola sociale al tavolo, nessun effetto sul motore.
@@ -1075,4 +1079,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.20*
+*Frenemies on the Road — Knowledge Base v1.21*
