@@ -1799,8 +1799,8 @@ function opzioniFigura(c, daAsta){
   const pot=()=>G.piatto.filter(x=>!x.jolly);
   const p0=pot();
   if(p0.length===0){
-    box.innerHTML=`<div class="banner" style="margin-top:0">Piatto vuoto. ${nome} si sacrifica: un gesto eroico che vale una <b>scopa</b>.</div>
-      <div class="opzioni"><button id="figSacrificio">Sacrificio — SCOPA con ${nome}</button></div>${effBanner}`;
+    box.innerHTML=`<div class="banner" style="margin-top:0">Piatto vuoto: ${nome} non ha nulla da catturare, quindi si sacrifica e va tra le tue <b>prese</b> (1 punto), come una resa.</div>
+      <div class="opzioni"><button id="figSacrificio">Sacrificio — 1 punto con ${nome}</button></div>${effBanner}`;
     document.getElementById("figSacrificio").addEventListener("click",()=>giocaCarta(c,"sacrificio",daAsta));
     return;
   }
@@ -1839,7 +1839,7 @@ function rimuoviDaMano(l, c, daAsta){
 function giocaCarta(c, combo, daAsta){
   const l=G.attore, L=lato(l);
   // una figura non resta mai nel piatto: se non le viene passata una cattura, si sacrifica
-  // (scopa se il piatto è vuoto, altrimenti presa a vuoto: le carte fuori portata restano)
+  // come marcatore da 1 punto (come una resa); le carte fuori portata restano nel piatto
   if(c.fig && !combo){
     const pot=G.piatto.filter(x=>!x.jolly);
     const haBersaglio = pot.length>0 && Math.min(...pot.map(x=>x.val))<=c.val;
@@ -1848,17 +1848,17 @@ function giocaCarta(c, combo, daAsta){
   }
   // cattura obbligatoria: se la carta può prendere, non può essere messa nel piatto
   if(!combo && !c.jolly && combosPresa(c.val).length>0) return;
-  const sacrificio = (combo==="sacrificio");            // figura su piatto vuoto: si sacrifica, scopa con sé stessa
-  const sacrificioPresa = (combo==="sacrificio_presa"); // figura senza bersaglio (piatto non vuoto): presa a vuoto
+  const sacrificioVuoto = (combo==="sacrificio");        // figura su piatto vuoto: si sacrifica (1 punto)
+  const sacrificioPresa = (combo==="sacrificio_presa");  // figura senza bersaglio, piatto non vuoto: si sacrifica (1 punto)
+  const sacrificio = sacrificioVuoto || sacrificioPresa;
   rimuoviDaMano(l,c,daAsta);
   let msg = `${nomeLato(l)} — ${nomeCarta(c)}: `;
   let tipo="piatto", dettagli="";
   if(sacrificio){
-    L.scope.push(c); aggiungiScopa(l); tipo="scopa";
-    msg+=`SCOPA! ${FIGURE[c.fig].nome} si sacrifica con un gesto eroico — un successo pieno dal nulla.`;
-  }else if(sacrificioPresa){
     L.prese.push(c); tipo="presa";
-    msg+=`presa: ${FIGURE[c.fig].nome} si sacrifica senza nulla da catturare — vale 1 punto, le carte fuori portata restano sul tavolo.`;
+    msg+= sacrificioVuoto
+      ? `${FIGURE[c.fig].nome} trova il piatto vuoto e non ha nulla da catturare: si sacrifica e va tra le prese, vale 1 punto.`
+      : `${FIGURE[c.fig].nome} si sacrifica senza nulla da catturare — vale 1 punto, le carte fuori portata restano sul tavolo.`;
   }else if(combo){
     dettagli = combo.map(x=>(x.fig?FIGURE[x.fig].nome.charAt(0):x.val)+SIMBOLI[x.seme]).join(" + ");
     G.piatto = G.piatto.filter(x=>!combo.some(y=>y.id===x.id));
@@ -1884,7 +1884,7 @@ function giocaCarta(c, combo, daAsta){
   // effetto figura dopo la narrazione, prima del cambio turno
   const dopo = c.fig ? ()=>effettoFigura(c, ()=>prossimoTurno()) : null;
   vaiNarrazione(c, tipo, dettagli, dopo, undefined, undefined, stessoLato);
-  if(tipo==="presa" && !c.jolly && !sacrificioPresa){ G.narr.boostCard=c.id; render(); }
+  if(tipo==="presa" && !c.jolly && !sacrificio){ G.narr.boostCard=c.id; render(); }
 }
 
 /* ================= NARRAZIONE ================= */
@@ -2888,7 +2888,7 @@ const REGOLE={
     Una carta prende <b>una carta di uguale valore</b> nel piatto, oppure <b>un gruppo di carte la cui somma</b> è uguale al suo valore. Se il piatto si svuota → scopa.<br>
     <b>La presa è obbligatoria:</b> se la carta che giochi può prendere, <b>non</b> puoi metterla nel piatto, devi catturare (puoi però giocare nel piatto un'altra carta che non prende).<br>
     Se sei costretto a prendere una carta del <b>tuo stesso lato</b>, raccontalo come un'azione maldestra in cui le due anime del lato (Cuori e Picche, oppure Fiori e Quadri) si sono ostacolate o annullate a vicenda.<br>
-    <b>Figure (cattura flessibile):</b> una figura cattura un gruppo di carte di somma <b>minore o uguale</b> al suo valore (Fante 8, Regina 9, Re 10), anche carte dei propri semi; resta obbligatoria se c'è un bersaglio alla portata. Se svuota il piatto è scopa, altrimenti è una presa che vale <b>1 punto</b> come ogni altra. Una figura <b>non resta mai nel piatto</b>: se non ha nulla da catturare si <b>sacrifica</b> tra le tue prese (è una <b>scopa</b> se il piatto era vuoto, altrimenti una <b>presa</b> da 1 punto e le carte fuori portata restano sul tavolo). L'effetto speciale della figura scatta comunque.
+    <b>Figure (cattura flessibile):</b> una figura cattura un gruppo di carte di somma <b>minore o uguale</b> al suo valore (Fante 8, Regina 9, Re 10), anche carte dei propri semi; resta obbligatoria se c'è un bersaglio alla portata. Se svuota il piatto è scopa, altrimenti è una presa che vale <b>1 punto</b> come ogni altra. Una figura <b>non resta mai nel piatto</b>: se non ha nulla da catturare si <b>sacrifica</b> e va tra le tue prese come marcatore da <b>1 punto</b> (come una resa onorevole), lasciando sul tavolo le eventuali carte fuori portata. Una scopa è sempre e solo una presa che svuota il piatto, quindi una figura che non cattura nulla non può farne una. L'effetto speciale della figura scatta comunque.
     <div class="es">"Presa: il 6♣ era la carta di credito bloccata. Vai a impegnare l'orologio d'oro e ti riempi le tasche di contanti: l'ostacolo è superato, a un prezzo."</div>
     <h3>Il piatto resta</h3>
     A fine scena le carte rimaste nel piatto <b>non si toccano</b>: chi apre la scena successiva può già fare presa o scopa.`},
@@ -3176,7 +3176,7 @@ ASTA E APERTURA: a inizio scena ogni lato pesca 4 carte e ne gioca 1 coperta per
 
 ROUND: ci si alterna a partire dal vincitore dell'iniziativa, 4 giocate a testa. Nel tuo turno puoi:
 - Giocare una carta nel piatto = INTRODURRE una tua risorsa: un ostacolo, una minaccia o un imprevisto (♦ nemici con intenzione, ♣ caos e sfortuna) con cui i protagonisti dovranno fare i conti. Non risolve nulla, predispone. La tua narrazione AGGIUNGE un tuo elemento, NON annulla quello dei protagonisti: finché una loro carta è nel piatto, ciò che rappresenta resta in piedi. Un elemento avversario lo neutralizzi (lo togli, lo ribalti, ne mostri l'inutilità) solo con una PRESA o una SCOPA.
-- Fare una PRESA (vale 1 punto) = togli una risorsa ai protagonisti, o ne mostri l'inutilità (si ritorce contro di loro): un successo, anche se può avere un costo. Una carta prende una carta di pari valore nel piatto, oppure un gruppo la cui somma è pari al suo valore. La presa è OBBLIGATORIA: se la carta che giochi può prendere, devi catturare, non puoi metterla nel piatto. Se sei costretto a prendere una TUA carta (♦/♣), narra Fiori e Quadri che si intralciano o si annullano a vicenda. Con una FIGURA (Fante 8, Regina 9, Re 10) la presa vale 1 come ogni altra e la cattura è FLESSIBILE: prende un gruppo di somma MINORE O UGUALE al valore della figura, anche carte dei tuoi semi. Una figura NON resta mai nel piatto: se non ha nulla da catturare si SACRIFICA tra le tue prese (SCOPA se il piatto era vuoto, altrimenti PRESA da 1 punto e le carte fuori portata restano sul tavolo).
+- Fare una PRESA (vale 1 punto) = togli una risorsa ai protagonisti, o ne mostri l'inutilità (si ritorce contro di loro): un successo, anche se può avere un costo. Una carta prende una carta di pari valore nel piatto, oppure un gruppo la cui somma è pari al suo valore. La presa è OBBLIGATORIA: se la carta che giochi può prendere, devi catturare, non puoi metterla nel piatto. Se sei costretto a prendere una TUA carta (♦/♣), narra Fiori e Quadri che si intralciano o si annullano a vicenda. Con una FIGURA (Fante 8, Regina 9, Re 10) la presa vale 1 come ogni altra e la cattura è FLESSIBILE: prende un gruppo di somma MINORE O UGUALE al valore della figura, anche carte dei tuoi semi. Una figura NON resta mai nel piatto: se non ha nulla da catturare si SACRIFICA tra le tue prese come marcatore da 1 punto (come una resa), lasciando sul tavolo le carte fuori portata. Una SCOPA è sempre e solo una presa che svuota il piatto: una figura che non cattura nulla NON fa scopa.
 - Fare una SCOPA (vale 3 punti) = svolta: la presa svuota il piatto, annienti in un colpo ogni vantaggio dei protagonisti. Successo pieno, sopra ogni aspettativa. Vale molto più di una presa.
 
 FINE SCENA: si sommano i valori delle carte rimaste nel piatto: ♦+♣ contano per te, ♥+♠ per i Protagonisti; la posta la vince il totale più alto. MA se la scena si chiude col piatto vuoto perché l'ultima giocata è stata una scopa, la posta la vince chi ha fatto la scopa. In caso di parità dei totali la posta la vince chi ha giocato l'ultima carta del round, cioè chi non ha l'iniziativa. Il piatto NON si svuota tra le scene: chi apre la successiva può già prendere. Se vincono i Protagonisti la posta è raggiunta; se vinci tu, la loro posta fallisce e la situazione peggiora per loro. CHI NARRA L'ESITO: chi ha vinto l'asta ha inquadrato la scena (titolo e posta); a raccontare com'è finita è chi ha PERSO LA POSTA (la scena), così da poterne calcare le ombre e i costi. In parità dei totali narra chi ha vinto l'asta. Quindi narri TU l'esito quando i Protagonisti vincono la scena (è la tua sconfitta: raccontala con onestà, calcando sulle ombre e sul prezzo che pagheranno); se la scena la vinci tu, l'esito lo narrano i Protagonisti.

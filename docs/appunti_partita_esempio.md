@@ -11,7 +11,88 @@ carte). La dettatura di Saverio va ancorata a quelle carte.
 
 ---
 
-## ⚠️ RIPRENDERE DA QUI (giugno 2026) — REGOLE v1.15: l'esempio va RIGENERATO da zero
+## ⚠️⚠️ RIPRENDERE DA QUI (agg. 25 giu 2026, sera) — REGOLA v1.26 FATTA, manca seed S3-5 + euristica
+
+**1. REGOLA v1.26 COMPLETATA e propagata (commit non ancora fatto).** Il **sacrificio di una figura vale sempre 1 punto** (come una resa), **mai scopa**, anche sul piatto vuoto. Una scopa è sempre e solo una presa che svuota il piatto. Propagato a: motore `index.html` (ramo `sacrificio` in `giocaCarta` → prese/1pt, niente `aggiungiScopa`; testi/bottoni `opzioniFigura`; `REGOLE`/`REGOLE_IA`), KB §15.3/§16 + registro v1.26 + footer, manuale §3/§6/glossario + footer, diario decisioni #44, driver `test/partita_smart.js` (figura sul piatto vuoto non vale più 1000). **Test core verdi** (partita 2g/4g, adatta, solo, riprova). Voci storiche del registro (v1.6 #3, v1.23 #1) lasciate com'erano.
+
+**2. ESEMPIO — stato nel manuale.** **S1, S2 e mercato 2/3 SCRITTI** (`docs/frenemies_manuale.md`) sul **seed 34**, validi anche sotto v1.26 (non hanno sacrifici di figura → invariati). Contengono molta fiction nuova dettata da Saverio: Grand Hotel + caveau, **Hatim** (concierge), tempesta di sabbia, **formula arcaica di Otto** (planting S5), **Faruq** (alleato sul treno, uomo del Cairo), **rapimento** dei Veglianti (resa = cattura), mercato con **Kalim = Fante = cugino di Faruq, guida del Sahara** (box «Paola annuncia»). **S3, S4, S5 nel manuale sono ANCORA IL VECCHIO ESEMPIO (seed 23/43/5)** → da sostituire. Anche l'intro Appendice B (riga ~873 «scopa 4» → 3) e la nota (~875) restano da sistemare.
+
+**3. SEED PER S3-S5 — approccio deciso (idea di Saverio).** Si **tiene il seed 34 per S1-S2** (preserva tutto il lavoro) e si **rigenera il SOLO mazzo residuo per S3-S5 con un SEED2** (vecchia tecnica multi-seed; `partita_smart.js` già la supporta: reseed a fine S2). Aggiunta opzione **`FIXSEED=N`** al batch di `partita_smart.js`: tiene fisso il seed principale (S1-S2) e fa variare SEED2/SEED3 (S3-S5). Comando ricerca: `MERCATO=canonico FIGJOLLY=1 FIXSEED=34 BATCH=250 node --max-old-space-size=8192 test/partita_smart.js`. Le righe escono come `SEED=34/<seed2>`.
+
+**4. PROSSIMO PASSO (chat dedicata): affinare l'euristica del driver.** Sotto v1.26 l'IA del driver **spreca le figure**: le scarica come sacrificio da 1pt invece di incassarle quando hanno un bersaglio (es. in 34/1 la Regina poteva fare presa al ① ma il driver gioca prima il Fante e la incastra al ⑤ col piatto vuoto). Il `2♠` d'asta è obbligato all'ultima giocata, quindi non è lì il problema: è l'**ordine** delle figure. **TODO:** in `partita_smart.js`, far preferire all'IA di **incassare una figura che ha un bersaglio adesso** piuttosto che rischiare di sprecarla dopo (evita lo stranding). Poi **ri-cercare** (FIXSEED=34) un seed con: cuffia + arco POPOP + effetto Fante visibile + **Regina che fa qualcosa di significativo** (presa vera, o meglio l'ingresso di **Pablo nei colpi di scena** in S5 — la ricerca FIGJOLLY attuale lo escludeva come malus, va rilassata). Candidato attuale (euristica vecchia): **34/1** (cuffia, POPOP, Fante scambio, 1 resa, comeback 0-9→22-9) ma Regina sprecata in S4.
+
+**5. CONTINUITÀ PNG aggiornata:** Faruq (Cairo, interprete/guardia/amico di Otto, sul treno S2, non rapito, raggiunge El Qara) ≠ **Kalim** (Fante ♥, **cugino di Faruq**, guida del Sahara; abbandonato il vecchio «fratello del macchinista»). Regina ♥ = **Pablo Gutiérrez** (pilota del biplano, defeziona per Vera). Re ♦ Opposizione ancora da battezzare.
+
+---
+
+## ⚠️ RIPRENDERE DA QUI (agg. 25 giu 2026) — SCRIVERE LA FICTION dal nuovo seed-vetrina
+
+**Stato.** Il seed-vetrina è stato scelto e **validato sulle regole correnti (fino a v1.25)**. Rosa ristretta a 3, tutti col MERCATO CANONICO (Protagonisti comprano Fante+Regina, Opposizione il Re), tutte e 3 le figure + il Jolly giocati, e arco con **S4 vinta da O, S5 da P**:
+
+| Seed | Arco | Pregi | Esito |
+|---|---|---|---|
+| **34** (consigliato) | **P,O,P,O,P** (alternato) | rimonta drammatica 0‑17 → 22‑17, **1 sola resa**, Fante/Kalim con effetto visibile in S3 (come il vecchio testo), Jolly sleale (presa) | per il rotto della cuffia |
+| 245 | P,O,O,O,P | **tutte e 3 le figure fanno SCOPA in scena** (Fante S3, Regina S4, Re S5) + Jolly scopa‑sleale; ma 2 rese | Vittoria Piena |
+| 96 | P,P,P,O,P | **massimo riciclo della Scena 3** (chiude 0‑0 con la spinta ♠ del ciondolo, come il vecchio); ma Jolly solo scartato | Vittoria Piena |
+
+Transcript (fonte di verità delle carte): `transcript_smart_seed_34.txt` / `_245.txt` / `_96.txt` nella radice. Rigenerabili con `MERCATO=canonico SEED=N TRANSCRIPT=1 node test/partita_smart.js`.
+
+**Nota validazione (25/6):** rigenerati dopo i cambi v1.16‑v1.25; i tre giochi sono identici a prima salvo l'etichetta d'esito rinominata dal motore **"Vittoria Totale" → "Vittoria Piena"**. I cambi meccanici (v1.22 tie‑break, v1.23 figura che si sacrifica, v1.25 marcatore Jolly solo narrativo) non alterano queste tre partite. Il driver `partita_smart.js` è stato allineato a v1.23 (`figMetti` → `figSacrPresa`); conta solo se si rilancia la ricerca a 300 seed.
+
+**METODO per scrivere la fiction (come si è sempre lavorato).**
+1. La **fonte di verità** sono le carte del transcript del seed scelto: la fiction le **ancora**, non le contraddice mai (chi cala cosa, prese, scope, vincitori di scena, esiti, semi).
+2. **Saverio detta** la narrazione mossa per mossa (motivazioni strategiche incluse). L'assistente **registra verbatim** in questo file e poi trasforma nel formato Appendice B. Non si inventa fiction libera: si ancora la dettatura alle carte.
+3. **Formato Appendice B** (vedi blocco "FORMATO" più sotto e diario decisioni): riga d'azione `{: .azione }` con motivazione strategica + box `<div class="fiction"><span class="chi">… narra</span>…</div>`. Semi a icona ♠♥♦♣. Nei box NIENTE termini di gioco (posta, mappa…). Niente lineette lunghe.
+4. **Regole correnti da rispettare nella fiction:** apertura scena = chi vince l'asta fissa titolo+posta, poi **il framing entra nella PRIMA giocata** (v1.20, supera il vecchio passo di framing separato della v1.18); l'**esito lo narra chi PERDE la posta** (v1.14; parità → chi gioca l'ultima carta, v1.22); terminologia **"missione"** (non "obiettivo finale") e **"Crescita"** nel finale (v1.19/v1.24).
+5. **Continuità nomi:** Vera Falco (♠) / Otto Lenzi (♥); Loggia del Basilisco + Veglianti (♦); il deserto/caos (♣). PNG già battezzati: Hatim, **Kalim** (Fante ♥, guida del deserto), **Pablo Gutiérrez** (Regina ♥, pilota del biplano abbattuto da Vera, defeziona per amore). **Re ♦ ancora da battezzare** (figura dell'Opposizione, mercato 4/5).
+6. **Riciclo:** la fiction già scritta nel manuale (Appendice B, Scene 1‑3 del VECCHIO esempio) è riusabile **a pezzetti** — l'immaginario legato alla scena (asta, treno+Alì, deserto/biplano/otre/pozzo, ciondolo) torna nella sua scena in ogni seed; i pezzi legati a una carta (Kalim/Fante, spinta ♠ del padre, Pablo/Regina) si ri‑ancorano dove la carta capita.
+
+**Dopo la fiction (lavoro tecnico, anche dopo):** rifare `test/partita_esempio.js` sul seed scelto e rigenerare il transcript di riferimento (regole v1.25), riscrivere KB §34 e Appendice B del manuale, rigenerare i PDF (`genera_pdf_manuale.py`, `genera_pdf.py`) e il `.docx` (`genera_docx_appendiceB.py`). Resta anche lo sweep esempi inline Frank/Skunk nella KB e nei blocchi `REGOLE`/`REGOLE_IA` di `index.html`.
+
+---
+
+## ✍️ DETTATURA SCENA 1 (seed 34) — SCRITTA NEL MANUALE ✅
+
+**STATO:** Scena 1 completa e scritta in `docs/frenemies_manuale.md` (sezione "## Scena 1. Innesco"), forma actual play, al posto della vecchia (seed 23). Narrativa approvata da Saverio. Risolte le due aperture: "tieni il taccuino" (non "diario"); esito = solo azione/inseguimento (la lettura ♥ resta nel testo di servizio fuori box).
+
+**APERTI a valle (NON ancora sistemati):**
+- `frenemies_manuale.md` riga ~873 (intro Appendice B): «una scopa 4» è STALE → regole v1.15 scopa=3 (presa 1, presa con figura 2, scopa 3). Da correggere.
+- riga ~875 nota: «le prime due scene in forma definitiva» ora incoerente (S1 è seed 34 nuova, S2 è ancora la vecchia seed 23). Da riscrivere quando faremo S2.
+- Scene 2-5 + mercati + pitch in breve: ancora vecchio esempio (seed 23/43/5), da rifare sul seed 34.
+
+
+
+**SEED SCELTO: 34** (confermato da Saverio). Si scrive fiction NUOVA, non si ricicla il vecchio testo (Saverio: "è più semplice inventare qualcosa di nuovo"). Ci si ancora alle carte del transcript `transcript_smart_seed_34.txt`.
+
+**Fatti meccanici S1 (transcript, fonte di verità).** Asta `1♠`/`1♣` parità → iniziativa Opposizione: **apre Omar**, fissa titolo+posta. Posta: prendere il taccuino di Aldo. Giocate: ① Omar `2♦` apre · ② Paola `2♥` SCOPA (prende il 2♦) · ③ Omar `3♣` · ④ Paola `5♥` · ⑤ Omar `7♣` · ⑥ Paola `1♠` · ⑦ Omar `1♣` (d'asta) presa dell'1♠ · ⑧ Paola `6♥` chiude. Fine: piatto `3♣ 5♥ 7♣ 6♥` → Prot 11 – Opp 10, vincono Protagonisti. Dominante ♥ (batte ♣ 10) → diario su. Esito narrato da Omar (perde la posta).
+
+**① Omar `2♦` (apre, ♦):** CONFERMATO da Saverio — apertura con la corruzione. Framing nella prima giocata (v1.20), voce Omar. [Precisazione Saverio: nel ① dire cosa FA l'assistente, così si capisce perché la Loggia lo corrompe.] L'assistente del banditore è l'uomo che tiene le chiavi dello stanzino e porta in sala i lotti uno alla volta: la Loggia lo compra così che, quando toccherà al taccuino, lo gestisca a loro favore. (Aggancio diretto al ②: è lo stesso assistente che Otto poi distrae.) [Saverio: l'asta si svolge nel salone di un Grand Hotel del Cairo; mette all'incanto vari reperti archeologici raccolti/sottratti negli scavi degli ultimi anni, e tra i lotti c'è il taccuino di Aldo. Dà sostanza al "catalogo" su cui Otto disserta al ②.]
+
+BOX ① FINALE (testo dettato da Saverio, verbatim): «Nel salone delle feste di un Grand Hotel del Cairo si batte all'asta una collezione di reperti archeologici raccolti negli scavi degli ultimi anni, e tra quei lotti c'è il prezioso taccuino di Aldo Falco. La Loggia non lascia nulla al caso: un uomo in doppio petto si avvicina all'assistente del banditore, quello che dal magazzino porterà in sala i lotti durante la serata. Gli fa scivolare in tasca una busta gonfia di banconote.» [Termine fissato: CAVEAU (Saverio: "forse il caveau?" → adottato; meglio di magazzino per reperti di valore in un Grand Hotel, e un caveau chiuso/sorvegliato rende sensato sia il valore dell'assistente con le chiavi sia il varco aperto distraendolo). Box asciutto: tolti Zerzura/"non hanno l'invito"/lampadari/scopo della corruzione. Al ② "stanzino/magazzino" → "caveau".]
+
+**Dettatura iniziale ② (poi ridistribuita):** Saverio aveva dettato per il `2♥`: «Otto che nota la cosa e si unisce alla conversazione, facendo una lunga e noiosa dissertazione sull'antico egizio, e sui pezzi in catalogo, dando modo a Vera di avvicinarsi allo stanzino…». Poi (vedi sotto) ha voluto **far tornare Hatim**, e abbiamo distribuito le due idee ♥ su due carte: Hatim al ②, la dissertazione di Otto al ④.
+
+**② Paola `2♥` SCOPA (♥ = l'accesso di Hatim):** Saverio: «far tornare in pista Hatim che fa entrare i nostri da una porta sul retro e li accompagna direttamente al caveau». Hatim = concierge del Grand Hotel, vecchio amico di Otto (circolo scacchistico). La scopa cattura il `2♦` = scavalcano ingresso sorvegliato + messinscena della Loggia; Vera arriva al caveau (NON prende ancora il taccuino).
+
+**③ Omar `3♣` (♣ caos AMBIENTALE):** dettatura Saverio: «dai grandi tendaggi rossi ai lati delle finestre spalancate si sta riversando sul pavimento di marmo un'orda di scorpioni del deserto», nessuno l'ha ancora notato. Il deserto si insinua nel Cairo (foreshadowing). Il `3♣` non viene mai catturato → resta nel piatto fino al finale (conto ♣=10). CONFERMATO.
+
+**④ Paola `5♥` (♥ = la copertura di Otto):** la dissertazione erudita (spostata qui dal ②). L'assistente torna ogni tanto al caveau a prelevare il lotto successivo; Otto lo trattiene in sala con la parlantina (egizio antico, pezzi in catalogo, datazioni, geroglifici), così Vera lavora indisturbata nel caveau. CONFERMATO (Saverio: «in pratica lo trattiene»).
+
+**⑤ Omar `7♣` (♣ caos):** dettatura Saverio: «con il 7 di fiori Otto ha una crisi delle sue con gli scorpioni, dato che è pieno di fobie». Gli scorpioni del ③ ripagano: Otto, pieno di fobie, va in crisi; la sua copertura (④) salta. Voce Omar.
+
+NB GEOGRAFIA: al ④ corretto «nel caveau» → «al caveau» (Vera lavora ALLA porta, non è ancora dentro). Sequenza: ② Hatim la porta alla porta del caveau → ④ Otto la copre → ⑥ Vera scassina ed entra.
+
+**⑥ Paola `1♠` (♠ = azione fisica di Vera):** dettatura Saverio: «Il cosiddetto caveau è uno stanzino con una porta blindata e scaffali alle pareti. Per fortuna la serratura è un modello vecchio e Vera riesce ad avere la meglio su di essa». Vera forza la vecchia serratura ed entra nel caveau (tra gli scaffali coi lotti). NON prende ancora il taccuino: il `1♠` verrà catturato al ⑦; il taccuino si conquista all'⑧ (chiusura ♥, diario su).
+
+**⑦ Omar `1♣` (♣ = sfortuna, NON la Loggia; presa dell'1♠):** [Correzione Saverio: è asso di FIORI → caos/sfortuna, non ♦. Koenig NON entra in S1, niente ♦ a cui agganciarlo.] dettatura Saverio: «Vera entra, ma la porta si richiude alle sue spalle e si blocca, dall'interno non ci sono serrature». Vera resta CHIUSA DENTRO il caveau (la porta blindata si apre solo dall'esterno). La sfortuna ♣ annulla lo scasso riuscito (il `1♠`). Prepara l'⑧. Voce Omar.
+
+**⑧ Paola `6♥` (♥, chiude → dominante ♥, diario su):** dettatura Saverio (verbatim): «Otto è corso fuori dall'Hotel, blaterando di una qualche maledizione o una piaga d'egitto, che si è manifestata con l'invasione di scorpioni. Mentre sta riprendendo fiato nel vicolo, sente la voce di Vera che lo chiama da una finestrella con pesanti inferiate di ferro, l'unica apertura dello stanzino nel quale è rimasta intrappolata. "Otto sono rimasta bloccata qui... tieni il diario"». → Vera intrappolata affida il taccuino a Otto attraverso le inferriate = gesto di fiducia, il legame regge (diario su); i Protagonisti conquistano la posta (taccuino loro). [DA DECIDERE: "tieni il diario" — possibile clash col termine di gioco "diario del rapporto". Proposto "tieni il taccuino" per coerenza con il resto del testo. Anche da chiarire: Vera resta dentro? La liberazione (Hatim/Otto) si può mettere nell'esito.]
+
+**ESITO S1 (Omar narra — perde la posta, v1.14):** dettatura Saverio (verbatim): «Otto si allontana dall'Hotel e dai dannati scorpioni, quando l'assistente del banditore apre la porta Vera scatta fuori travolgendolo. Gli uomini della Loggia hanno capito perfettamente cos'è successo quando la vedono uscire così di corsa e la riconoscono e iniziano ad inseguirla per le vie del Cairo». → Vera si libera (l'assistente torna e apre, lei lo travolge); la Loggia la riconosce e la insegue (ombre + ponte verso il treno di S2). NB: dominante ♥ (diario su) = la scena l'ha decisa il legame (Hatim + copertura di Otto + fiducia all'inferriata); ma l'esito dettato è action/inseguimento. DA CHIARIRE: vuoi un tocco di ♥ nella voce di Omar (ammettere che è stato il gioco di squadra a fregarli) o la lettura del dominante resta solo nel testo di servizio fuori box?
+
+---
+
+## (STORICO) RIPRENDERE DA QUI (giugno 2026) — REGOLE v1.15: l'esempio va RIGENERATO da zero
 
 Le regole sono cambiate (v1.15, vedi memoria `regole-v115-overhaul` e registro KB v1.15): **scopa=3, presa=1 sempre, Fante nel mazzo con nuovo effetto (sbircia 2/scambia 1), ordine mercato→mescola(se hai comprato)→pesca**. Tutto il vecchio esempio sotto (3 seed 23/43/5, Scena 4 scriptata, scopa=4) è **NON PIÙ VALIDO**: `test/partita_esempio.js` e `test/transcript_seed_23_43_5_v2.txt` vanno rifatti. Motore/REGOLE/KB/manuale/test sono già allineati e verdi; resta da **scegliere un nuovo seed-vetrina, rigenerare il transcript, e riscrivere §34 + Appendice B** (la fiction la detta Saverio).
 
@@ -61,6 +142,49 @@ Preferenze aggiuntive di Saverio (per scegliere tra i candidati): **arco P,O,P,O
 **Git:** ramo `manuale-actual-play-appendice-b`, ultimo commit di checkpoint + commit di fine sessione. PDF del manuale e PDF KB esclusi dai commit (policy / KB PDF stale, da rigenerare a milestone).
 
 ---
+
+## ✍️ DETTATURA SCENA 2 (seed 34) — SCRITTA NEL MANUALE ✅
+
+**STATO:** Scena 2 completa e scritta in `docs/frenemies_manuale.md` ("## Scena 2. Adattamento"), forma actual play, al posto della vecchia (seed 23). Esito approvato (rapimento, dominante ♦). Confermato: avvertimento di Alì spostato ad Aldo in S4. RITOCCHI: ⑤ con callback scorpioni+tempesta e Otto che si rannicchia "in attesa di morte imminente"; RESA/ESITO RISTRUTTURATI (Saverio): il box "Alì tira il freno…/rapimento" è la **narrazione dell'ESITO** (Paola, perde la posta); la **resa** (⑧, `4♠`=♠=Vera) ha un box suo, dettatura Saverio (verbatim): «Vera impietosita dallo stato di Otto e non volendo causare spargimenti di sangue alza le mani e le mette dietro alla testa, suggerendo al compagno di fare lo stesso. -Ci arrendiamo, ma non fate male a questi uomini... siete noi che volete-». Quindi nel manuale: ⑧ resa (gesto di Vera) → Fine del round (1-12, ♦) → esito (rapimento). [♠ del `4♠` = la resa è un gesto di Vera, non di Otto.]
+
+**MERCATO 2/3 SCRITTO NEL MANUALE ✅** ("## Mercato, tra la seconda e la terza scena"). CONVENZIONE MERCATO (Saverio): il mercato NON narra una scena. Struttura = (1) punti; (2) box **«[Giocatore] annuncia»** che PRESENTA il PNG (chi è + breve descrizione da index card, niente trama); (3) **azione al tavolo** con la meccanica d'acquisto (costo, figura nel mazzo, rimescola+ripesca; pagare = rimettere negli scarti una carta‑scopa/presa del valore giusto). Stessa struttura per i mercati 3/4 (Regina) e 4/5 (Re). Punteggio v1.15 corretto: **Paola 8** (S1 scopa 3; S2 scopa 3 + presa 1 + resa onorevole 1) → compra Fante (3) → **restano 5**; **Omar 2** (una presa a scena), non compra (mira al Re). Fante entra nel MAZZO (v1.15), rimescola+ripesca → in S3 in mano.
+
+**CONTINUITÀ PNG AGGIORNATA (importante per la memoria):**
+- **Faruq** = guida/interprete/guardia del corpo, amico di famiglia di Otto, uomo del CAIRO; sul treno in S2, intralcia Alì, NON rapito, raggiunge El Qara.
+- **Kalim** = **Fante ♥**, **cugino di Faruq**, guida esperta del SAHARA (NON più "fratello del macchinista"). Faruq lo manda a cercarli; entra in gioco in S3 (scopa, "si sacrifica con un gesto eroico").
+- Abbandonati: il macchinista/fratello come fonte di Kalim.
+
+**PENDENTI (intro Appendice B):** riga ~873 "scopa 4" → 3 (e "presa con figura 2" → la presa con figura vale 1, non 2, in v1.15: verificare e correggere). Nota "le prime due scene in forma definitiva" ora copre S1+S2+mercato nuovi; il resto (S3-5, pitch in breve) è ancora vecchio.
+
+
+
+**Fatti meccanici (transcript).** Asta Paola `1♥` vs Omar `2♣` → iniziativa Opposizione, apre Omar; `2♣` messo da parte d'asta, `1♥` torna in mano a Paola. Piatto in entrata da S1: `3♣ 5♥ 7♣ 6♥`. Mani: Paola `9♥ 4♠ 8♥ 1♥` · Omar `10♦ 8♣ 5♣` (+`2♣`). Posta: Raggiungere El Qara in tempo. Giocate: ① Omar `5♣` presa (cattura `5♥`) · ② Paola `9♥` presa di 2 (`3♣`+`6♥`) + SPINTA ♥ → SCOPA (spazza `7♣`) · ③ Omar `10♦` · ④ Paola `1♥` · ⑤ Omar `8♣` · ⑥ Paola `8♥` presa (`8♣`) · ⑦ Omar `2♣` (d'asta) · ⑧ Paola `4♠` RESA ONOREVOLE. Fine: piatto 1 a 12 → vince OPPOSIZIONE, dominante ♦ (diario su). Mercato: Protagonisti comprano il Fante ♥. **Esito narrato da PAOLA** (Protagonisti perdono la posta, v1.14: prima sconfitta che narrano loro).
+
+**① Omar `5♣` (apre, ♣ = attrito; presa del `5♥`):** dettatura Saverio (verbatim): «apre Omar con una presa di fiori. Quindi direi che descrive Otto e Vera in uno scomparto del treno a vapore che stanno litigando animatamente su come sono andate le cose la sera prima. Otto non voleva rubare il taccuino e Vera insiste che non l'hanno rubato perché quell'oggetto gli apparteneva.» → framing nel treno a vapore + litigio del mattino dopo (♣ attrito); la presa del `5♥` = la lite si mangia un pezzo della complicità ritrovata al Cairo. Voce Omar.
+
+REVISIONE Saverio (① troppo fiacco): aggiungere una **tempesta di sabbia** che costringe il macchinista a rallentare e fermare il treno ad aspettare che passi. [Accortezza assistente: la tempesta = il `5♣` GIOCATO da Omar (♣ = caos del deserto, coerente col pitch), NON il `5♥`; il `5♥` catturato resta la complicità che la sosta forzata si rimangia. Più dinamico + semi puliti.] CONFERMATO (Saverio è passato al ②).
+
+**② Paola `9♥` presa di 2 (`3♣`+`6♥`) + SPINTA ♥ → SCOPA (spazza `7♣`):** spinta del pitch di Otto «La caccia l'ha riaperta la sua traduzione: se finisce male, è colpa sua» (senso di colpa/responsabilità). Struttura: presa = Otto chiude i finestrini e si mette a studiare il taccuino (pagine, disegni, mappe, congetture); spinta→scopa = SVOLTA, dettatura Saverio (verbatim): «viene colto da un'illuminazione e ripete una formula in una lingua arcaica letta sul taccuino ed ecco che la tempesta si placa e il treno può ripartire». Chiude il cerchio col ① (la tempesta che aveva fermato il treno si calma) + planting per S5 (le decifrazioni di Otto hanno potere reale). Voce Paola.
+
+**③ Omar `10♦` (♦ = nemici, carta pesante):** Saverio: «ricicliamo l'arrivo di Alì». Riciclo dal vecchio testo SOLO l'arrivo di Alì (il framing del treno è già al ①; il treno ha appena ripreso a correre dopo la tempesta del ②). Alì = guerriero dei Veglianti (tuareg, turbante, occhio tatuato in fronte) che salta sul treno in corsa. PNG su index card. Voce Omar.
+
+**④ Paola `1♥` (♥ = legame, gesto piccolo; asso debole, resta nel piatto):** [Saverio "uffa ancora cuori"; risolto con un gesto, non un discorso.] dettatura Saverio (verbatim): «Otto è ancora stupito per quello che è riuscito a fare, come se si fosse appena svegliato da un sogno, richiude il taccuino con le mani tremanti e lo consegna a Vera. Tienilo tu.» → Otto scosso dalla formula (planting S5: potere reale) affida il taccuino a Vera. SPECCHIO del ⑧ di S1 (lì Vera→Otto, qui Otto→Vera). Prepara il furto di Alì (ora il taccuino ce l'ha Vera). Aggiunta Saverio: «Vera annuisce e lo nasconde nel suo tascapane» (il TASCAPANE è dove Alì poi andrà a strappare il taccuino). Voce Paola.
+
+**⑤ Omar `8♣` (♣ = caos interno, il panico di Otto):** dettatura Saverio (verbatim): «8 di fiori potrebbe essere Otto che va fuori di testa, si rende conto che stanno avendo a che fare con forze troppo grandi, sovrannaturali. E i passi di Alì che sta raggiungendo lo scompartimento lo terrorizzano.» → Otto crolla proprio dopo il suo colpo di genio (la formula); capisce che è sovrannaturale + i passi di Alì lo terrorizzano. Voce Omar. [⑥ `8♥` di Vera cattura questo `8♣` = lei assorbe/gestisce il panico di lui.]
+
+**⑥ Paola `8♥` presa dell'`8♣` (♥ = alleato):** dettatura Saverio (verbatim): «8 di cuori, Faruq la guida, interprete e guardia del corpo, amico di famiglia di Otto stava appisolato nello scompartimento accanto. Quando sente il baccano fatto da Alì, esce nel corridoio e lo afferra per il mantello guerriero trattenendolo per un po'. "Signor Otto, signorina Vera scappate ci penso io..."». AGGIUNTA Saverio: «Otto torna in sé, non può permettere che Faruq rischi la vita per lui». → NUOVO PNG **Faruq** (guida/interprete/guardia del corpo, amico di famiglia di Otto); il `8♥` cattura l'`8♣` = il legame spezza il panico di Otto. Voce Paola.
+
+**⚠️ DA DECIDERE — Faruq vs Kalim:** Faruq è "guida", ma il Fante ♥ comprato al mercato dopo S2 finora era **Kalim** "guida del deserto". Due guide si pestano i piedi. (a) Faruq = il futuro Fante (se sopravvive); (b) Faruq alleato di una scena sola (resta a trattenere Alì) e il Fante resta Kalim. L'aggiunta "Otto non può permettere che rischi la vita" lascia aperto: forse tornano per lui. Saverio non ha ancora scelto.
+
+**⑦ Omar `2♣` (carta d'asta, ♣ = caos):** Alì si libera di Faruq e la situazione precipita: rende inevitabile la resa. [Correzione Saverio: «Alì non è mai stato realmente bloccato da Faruq ma solo intralciato» → niente corpo a corpo vinto; Alì se lo scrolla di dosso senza rallentare. Ammorbidito anche il ⑥ ("trattiene per un po'", non "con tutta la stazza").] Voce Omar.
+
+**⑧ Paola `4♠` RESA ONOREVOLE (cede la scena) — RAPIMENTO:** [Saverio ha CAMBIATO idea: non consegnano il taccuino, vengono RAPITI.] dettatura Saverio (verbatim): «E se invece anziché consegnare il diario Alì li incappucciasse e li rapisse? Li fa scendere dal treno dove altri suoi complici li caricano sui loro cammelli». + «Sì diciamo che Alì è venuto per rapirli, non per il taccuino». → Alì è venuto per LORO, non per il taccuino: li rapisce. **Il taccuino resta nascosto nel tascapane di Vera** (Alì non lo cerca). Il rapimento = perdita della posta (non arrivano a El Qara).
+
+REGIA FINALE ⑧ (dettatura Saverio, verbatim): «non dire che non è venuto per il taccuino, è superfluo. Alì tira il freno di emergenza. Nessuno ha il coraggio di opporsi a quel mezzo gigante intabarrato di nero, dal cui fianco pende un'enorme scimitarra. Salgono i suoi complici, altri Veglianti mascherati che in pochi istanti immobilizzano Otto e Vera e li fissano di traverso sulle selle dei loro cammelli.» → NON dire in prosa "non per il taccuino" (resta solo logica interna). Alì descritto: mezzo gigante intabarrato di nero + enorme scimitarra (coerente col ③). Voce Paola. Coda su Faruq (approvata da Saverio): vede sparire i due oltre le dune + «forse sarà lui, di tutti loro, l'unico ad arrivare davvero a El Qara» (Faruq prosegue, raggiunge El Qara, e da lì tornerà a salvarli come Fante).
+
+L'avvertimento «Voi non potrete mai capire, tornate a casa vostra finché siete in tempo» → SPOSTATO: proposto per ALDO FALCO in S4 (il padre Vegliante davanti alla cripta). Da confermare.
+
+**ESITO S2 (Paola narra — perde la posta, dominante ♦):** non arrivano mai a El Qara; portati nel deserto sui cammelli dei Veglianti; saltano carovana + guide indigene. Tinta ♦ = i nemici (Veglianti) hanno deciso. Imposta la S3 (fuga nel deserto). RISOLTO Faruq (Saverio): «Faruq non lo rapiscono ma può tornare utile per venirli a salvare più avanti come Fante». → Faruq resta sul treno (vivo, solo intralciato al ⑦), NON rapito; torna in S3 come **Fante** a salvarli e fare da guida. Combacia col motore (S3 Fante = SCOPA, chiosa "si sacrifica con un gesto eroico" → Faruq li libera e si sacrifica). **Faruq = Fante CONFERMATO, Kalim ABBANDONATO** (aggiornare la memoria/continuità: il Fante ♥ non è più Kalim ma Faruq, guida/interprete/guardia del corpo, amico di famiglia di Otto).
 
 ## Scena 3 — Il mare di sabbia (Frattura)
 

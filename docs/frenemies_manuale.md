@@ -503,7 +503,7 @@ Fare scopa accade quando la presa lascia il piatto vuoto: togli all'avversario o
 Scopa con un 6 di Picche, e Vera mette al tappeto in pochi secondi i due uomini della Loggia che bloccavano il vicolo. La strada è libera, la situazione ribaltata.
 {: .esempio }
 
-C'è un caso particolare. Una figura giocata quando il piatto è già vuoto non può catturare nulla: allora si sacrifica con un gesto eroico e vale comunque una scopa, e il suo effetto speciale scatta lo stesso. Narrativamente è l'alleato che si immola per spalancare la strada.
+C'è un caso particolare. Una figura giocata quando non ha nulla da catturare (il piatto è vuoto, oppure restano solo carte fuori dalla sua portata) non resta sul tavolo: si sacrifica e va tra le tue prese come marcatore da 1 punto, come una resa, lasciando dove sono le eventuali carte fuori portata. Una scopa è sempre e solo una presa che svuota il piatto, quindi una figura che non cattura nulla non può farne una. Il suo effetto speciale scatta lo stesso. Narrativamente è l'alleato che si immola, o che risulta meno incisivo del previsto.
 
 ## 3.10 Darsi una spinta
 
@@ -627,7 +627,7 @@ Una regola di tetto: ogni giocatore può comprare al massimo un Fante, una Regin
 
 **Le figure catturano in modo più ampio.** Una figura non prende solo l'esatto pari: cattura dal piatto un gruppo di carte la cui somma è minore o uguale al suo valore (Fante 8, Regina 9, Re 10). Anche per le figure la cattura è obbligata: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 1 punto come ogni altra. 
 
-Le figure però non possono essere usate per ottenere una maggioranza a fine scena, infatti non possono essere aggiunte al piatto, ma unicamente per far prese e scope. Per questo, hanno un potere di presa "elastico". Quando giochi una figura che non ha nulla da catturare, la figura non resta sul tavolo: si sacrifica e finisce direttamente tra le tue prese. Se il piatto era già vuoto il sacrificio vale una scopa (il gesto eroico che spalanca la strada); se invece restano sul tavolo soltanto carte fuori dalla sua portata, è una presa a vuoto da 1 punto e quelle carte restano dove sono. In entrambi i casi narri come il PNG corrispondente si immola, o risulta meno incisivo del previsto per qualche scherzo del fato.
+Le figure però non possono essere usate per ottenere una maggioranza a fine scena, infatti non possono essere aggiunte al piatto, ma unicamente per far prese e scope. Per questo, hanno un potere di presa "elastico". Quando giochi una figura che non ha nulla da catturare, la figura non resta sul tavolo: si sacrifica e finisce direttamente tra le tue prese come marcatore da 1 punto, come una resa, e le eventuali carte fuori dalla sua portata restano dove sono. Una scopa è sempre e solo una presa che svuota il piatto, quindi una figura che non cattura nulla non può farne una, nemmeno quando il piatto è vuoto. In ogni caso narri come il PNG corrispondente si immola, o risulta meno incisivo del previsto per qualche scherzo del fato.
 
 Paola ha solo il fante in mano, nel piatto c'è un 10 di quadri che non può prendere. Narra quindi che Kalim(fante di picche) decide di fermarsi per causare una frana nello stretto canyon e rallentare gli inseguitori.
 {: .esempio }
@@ -890,135 +890,136 @@ La partita si apre sulla prima difficoltà del pitch: il taccuino di Aldo Falco,
 
 ## Scena 1. Innesco
 
-> **Le carte in mano.** Protagonisti (Paola): 9♥ 5♠ 8♠ 5♥. Opposizione (Omar): 2♦ 1♦ 3♣ 10♣. Il piatto è vuoto: si parte da zero.
+> **Le carte in mano.** Protagonisti (Paola): 5♥ 6♥ 2♥ 1♠. Opposizione (Omar): 7♣ 3♣ 2♦, più l'1♣ calato all'asta. Il piatto è vuoto: si parte da zero.
 
-All'asta Paola cala coperto il 9♥, Omar il 3♣: vince Paola, e l'iniziativa è dei Protagonisti. Avere l'iniziativa è un vantaggio doppio: permette di stabilire titolo e posta della scena, e la carta calata all'asta (qui il 9♥) viene messa da parte come ultima giocata del round, là dove è più facile fare una presa o perfino una scopa. Per questo conviene puntare alto. Il 3♣ di Omar, invece, torna nella sua mano. Avendo vinto l'iniziativa, è Paola a fissare titolo e posta e ad aprire la scena con la prima giocata.
+All'asta Paola cala coperto l'1♠, Omar l'1♣: stesso valore, e a parità l'iniziativa va all'Opposizione. Vince Omar. Avere l'iniziativa è un vantaggio doppio: permette di stabilire titolo e posta della scena, e la carta calata all'asta (qui l'1♣) viene messa da parte come ultima giocata del round, là dove è più facile fare una presa o perfino una scopa. L'1♠ di Paola, invece, torna nella sua mano. Avendo vinto l'iniziativa, è Omar a fissare titolo e posta e ad aprire la scena con la prima giocata.
 
-**Paola stabilisce il titolo e la posta della scena.**
+**Omar stabilisce il titolo e la posta della scena.**
 {: .azione }
 
 <div class="fiction"><span class="titolo-scena">L'asta del Cairo</span><em>Posta: prendere il taccuino di Aldo. Se va bene, hanno gli appunti su come raggiungere l'artefatto e un giorno di vantaggio. Se va male, il taccuino finisce nelle mani della Loggia e quel giorno di vantaggio se lo tengono loro.</em></div>
 
-**Paola apre la scena e gioca il 5♥** nel piatto: la prima giocata apre la scena e introduce una risorsa. Aggiungere una carta significa mettere in scena qualcosa che potrà tornare utile più avanti, e in ♥, il seme dei legami, la risorsa naturale è un alleato. Paola crea il PNG annotandolo su una index card: «Hatim, vecchio amico di Otto, concierge dell'hotel», il contatto che farà entrare la coppia.
+**Omar apre la scena e gioca il 2♦** nel piatto: la prima giocata apre la scena e dispone una minaccia. In ♦, il seme dei nemici attivi, è la Loggia che muove per prima e si compra un uomo dentro. Omar lo annota su una index card: «l'assistente del banditore, l'uomo che dal caveau porta in sala i lotti».
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>In una sala privata del Cairo si batte all'asta il prezioso taccuino di Aldo Falco, l'unico che dica come arrivare a Zerzura, sparito nel deserto cercandola: sotto i lampadari la Loggia del Basilisco prende posto con le sue valigette, e Vera e Otto non hanno nemmeno l'invito. Ma Otto ha un vecchio amico: Hatim, conosciuto anni prima al circolo scacchistico, dopo le giornate al Museo Egizio. Oggi Hatim il Concierge ha le chiavi delle porte che non risultano su nessuna pianta, e avvertito per tempo con un telegramma in codice lascia una porta sul retro senza sorveglianza: i due scivolano nel salone alle spalle della Loggia.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Nel salone delle feste di un Grand Hotel del Cairo si batte all'asta una collezione di reperti archeologici raccolti negli scavi degli ultimi anni, e tra quei lotti c'è il prezioso taccuino di Aldo Falco. La Loggia non lascia nulla al caso: un uomo in doppio petto si avvicina all'assistente del banditore, quello che dal caveau porterà in sala i lotti durante la serata, e gli fa scivolare in tasca una busta gonfia di banconote.</div>
 
-**Omar gioca l'1♦** nel piatto: dispone una minaccia. In ♦, il seme dei nemici attivi, una carta dell'Opposizione è un nuovo elemento ostile messo in scena, qualcosa che potrà creare problemi: qui l'assistente del banditore che si lascia comprare.
+**Paola gioca il 2♥ e cattura il 2♦: SCOPA,** e svuota il piatto. Un successo pieno via ♥, il seme dei legami: qui a scavalcare in un colpo solo la messinscena della Loggia è un vecchio amico di Otto. È una svolta precoce, ma non conquista ancora il taccuino: porta soltanto Vera al caveau. Paola crea il PNG annotandolo su una index card: «Hatim, concierge del Grand Hotel, vecchio amico di Otto».
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>La Loggia non vuole lasciar nulla al caso. Un uomo in doppio petto allunga una busta piena di denaro all'assistente del banditore. Da quel momento la voce che annuncia i lotti non è più neutrale.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Ma Otto ha un vecchio amico tra quelle mura: Hatim, conosciuto anni prima al circolo scacchistico, oggi concierge del Grand Hotel. Avvertito per tempo con un biglietto, Hatim apre ai due una porta di servizio sul retro e li guida per i corridoi del personale fino al caveau, scavalcando in un colpo solo l'ingresso sorvegliato e tutta la messinscena che la Loggia ha comprato in sala.</div>
 
-**Paola gioca il 5♠ e cattura il proprio 5♥:** una presa maldestra (cattura una carta del proprio lato). Paola lo fa con cognizione: ha già un 8 in mano e nel piatto c'è solo un 1 avversario, quindi il punto vale la candela. È pur sempre un successo, ma maldestro, perché abbassa la presenza dei propri semi nel piatto. Ed è proprio il catturare la propria risorsa (Hatim) a suggerire la fiction: Vera prende il taccuino di slancio, ma così si brucia l'alleato.
+**Omar gioca il 3♣** nel piatto: dispone il caos. In ♣, qui, non è l'attrito tra i due ma il deserto stesso che comincia a insinuarsi nella scena, una carta che resta sul tavolo e tornerà a farsi sentire.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Vera non ha la pazienza per un'asta. Il taccuino è suo di diritto, sono gli appunti di suo padre: sgattaiola nello stanzino dei lotti, forza la serratura e se lo prende sotto gli occhi inorriditi di Otto e Hatim. Ce l'ha in mano, ma Hatim, che li aveva fatti entrare sulla parola, non ci sta a passare per complice di un furto: si tira indietro e va perfino ad avvertire due camerieri. L'appoggio costruito da Otto è bruciato in un istante.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Per ora non ci ha fatto caso nessuno, ma dai grandi tendaggi rossi ai lati delle finestre spalancate si sta riversando sul pavimento di marmo un'orda di scorpioni del deserto.</div>
 
-**Omar gioca il 2♦** nel piatto: un'altra minaccia. È il polverone della presa maldestra di Vera (Hatim che avverte i camerieri) a dare l'aggancio narrativo: due sgherri della Loggia, messi in allarme, accorrono verso lo stanzino.
+**Paola gioca il 5♥** nel piatto: dispone una risorsa. Di nuovo ♥, il seme dei legami: Otto si gioca la sua arma migliore, la parola, per coprire Vera.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>Due sgherri della Loggia si staccano dalla parete e puntano verso lo stanzino, le mani già dentro le giacche, avanzando minacciosi verso Vera.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Resta l'assistente, che ogni pochi minuti torna al caveau a prelevare il lotto successivo: se ci trova Vera, è finita. Allora tocca a Otto. Lo intercetta in sala con l'aria del collezionista entusiasta e gli attacca una dissertazione interminabile sull'egizio antico e sui pezzi in catalogo, datazioni, geroglifici, postille a margine, inchiodandolo lì quel tanto che basta perché Vera, al caveau, possa lavorare indisturbata.</div>
 
-**Paola gioca l'8♠** nel piatto: dispone una risorsa. È la carta alta che Paola si teneva, la stessa che poco fa rendeva sensata la presa rischiosa; in ♠, il seme dell'azione fisica, diventa la fuga atletica di Vera verso l'alto.
+**Omar gioca il 7♣** nel piatto: altro caos. Gli scorpioni piazzati poco fa trovano il bersaglio più fragile, e in ♣ il deserto lavora di nuovo per l'Opposizione.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Vera non scappa verso la porta ma verso l'alto: agilità felina, appigli dove non sembra essercene, e in tre movimenti da professionista del parkour è sulla balconata, sopra le teste della Loggia, pronta a puntare una delle grandi finestre aperte sulla notte del Cairo.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Ma Otto ha le fobie catalogate in ordine alfabetico, e gli scorpioni vengono molto prima della lettera S nei suoi incubi. Se li sente arrivare tra i piedi proprio mentre tiene la sua conferenza: la voce gli si strozza, fa un balzo indietro rovesciando una sedia, e la dissertazione si spegne in un grido. La copertura che teneva l'assistente lontano dal caveau crolla in un istante.</div>
 
-**Omar gioca il 3♣ e cattura insieme l'1 e il 2♦:** una presa di gruppo. Come quella di Vera è "maldestra" (cattura due carte del proprio lato, abbassando i ♦ nel piatto), ma resta un successo dell'Opposizione. E trattandosi di ♣, il seme del caos e dell'attrito di coppia, la fiction nasce dalla frattura tra i due: il crollo di Otto, che offre alla Loggia il bersaglio migliore.
+**Paola gioca l'1♠** nel piatto: un'azione fisica. In ♠, il seme del gesto, entra in gioco l'abilità di Vera.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>Il caos, stavolta, lavora per la Loggia, e a scatenarlo è Otto: vederla forzare la serratura, rubare e scappare via come una ladra lo fa crollare. Inveisce contro di lei a voce troppo alta, "Non era così che avevamo stabilito!", poi viene preso da un capogiro che lo piega in due: un attacco di panico in piena sala d'aste. E quel crollo offre alla Loggia il bersaglio migliore: i suoi uomini smettono di rincorrere Vera e si stringono attorno allo studioso, le cui competenze valgono probabilmente più del taccuino stesso.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Il caveau, a dispetto del nome altisonante, è poco più di uno stanzino: una porta blindata e, dietro, scaffali carichi di reperti incartati. Per fortuna la serratura è un modello di parecchi anni fa, e le mani di Vera ne hanno aperte di peggio. Pochi scatti, un'ultima forzatura, e la porta cede: è dentro, tra gli scaffali, dove l'aspettano i lotti della serata.</div>
 
-**Paola cala il 9♥,** la carta messa da parte all'asta: un grosso apporto di Otto, una risorsa pesante. È la sua ultima giocata del round (ecco perché all'asta conveniva calare la carta più alta), e in ♥ si fa parola e tempo guadagnato: la resa di Otto, e la richiesta del bagno per prendere qualche minuto. Nel parlamentare Otto chiama in causa l'emissario della Loggia, e Paola crea il PNG annotandolo su una index card: «Gustav Koenig, azzimato e distinto luogotenente della Loggia».
+**Omar cala l'1♣, la carta d'asta, e cattura l'1♠: presa.** Non è la Loggia a fermare Vera, ma la sfortuna pura: in ♣ il caso le si rivolta contro proprio quando era riuscita a entrare.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Circondato, Otto chiede di Gustav Koenig, l'emissario della Loggia, e si arrende con il tono più mansueto che ha: "Sono vostro prigioniero. Ma vi prego, ho bisogno del bagno." Koenig esita, poi concede, e lo studioso si compra qualche minuto.</div>
+<div class="fiction"><span class="chi">Omar narra</span>E qui la sorte presenta il conto. Una porta blindata è fatta per chiudere, non per aprirsi da dentro: basta uno spostamento d'aria dalle finestre spalancate, o il pavimento sghembo del vecchio hotel, e il battente gira sui cardini e si richiude di scatto alle spalle di Vera. Lo scatto secco della serratura, poi il silenzio. Lei si volta: sul lato interno non c'è una maniglia, non una toppa, niente. È chiusa dentro, sola, tra gli scaffali e i lotti della serata, e nessuno dei due lo sa ancora.</div>
 
-**Omar gioca il 10♣.** Ha ormai la certezza matematica di aver perso la scena, e con un'unica carta in mano potrebbe cedere la posta in due modi: con la Ritirata strategica (rimescolare il 10 nel proprio mazzo, per ritrovarselo come riserva alla cripta) o con la Resa onorevole (tenerlo tra le prese, 1 punto). Decide di non fare né l'una né l'altra: sprecare un 10 sarebbe un peccato, e calarlo nel piatto lo lascia lì a pesare nella scena successiva. In ♣, di nuovo l'attrito tra i due: la rabbia di Otto che si porterà dietro fin sul treno.
+**Paola gioca il 6♥,** ultima carta del round: resta nel piatto e chiude la scena. È la carta che fa pendere il dominante su ♥, e in fiction è un gesto di fiducia, il legame che regge proprio mentre tutto va storto.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>La Loggia non incassa il colpo e non sgombera il campo: tiene un piede sulla porta. Quello che è successo stanotte al Cairo li seguirà fin sul treno.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Otto, intanto, è schizzato fuori dall'hotel, e mentre corre blatera di una maledizione, di una piaga d'Egitto manifestatasi in quell'invasione di scorpioni. Sta riprendendo fiato in un vicolo sul retro quando gli arriva la voce di Vera: lo chiama da una finestrella con pesanti inferriate di ferro, l'unica apertura di quello stanzino blindato in cui è rimasta intrappolata. «Otto, sono rimasta bloccata qui dentro... tieni, prendi il taccuino.» E glielo passa tra le sbarre, gli appunti di suo padre, ormai al sicuro nelle mani di lui.</div>
 
-Fine del round: nel piatto restano l'8♠, il 9♥ e il 10♣. **Protagonisti 17, Opposizione 10:** la scena è dei Protagonisti, il taccuino è in mano a Vera e Otto. Seme dominante ♣: a deciderla è stato il caos, l'attrito tra i due più della Loggia. Eppure nel piatto il 9♥ batte l'8♠: pur litigando, in questa prima notte si sono avvicinati, e il diario del rapporto segna una salita.
+Fine del round: nel piatto restano il 3♣, il 5♥, il 7♣ e il 6♥. **Protagonisti 11, Opposizione 10:** la scena è dei Protagonisti, il taccuino è in mano loro. Seme dominante ♥, che batte di un soffio il caos ♣: a deciderla è stato il legame tra i due, l'amicizia di Hatim e la parlantina di Otto, più della Loggia. E il diario del rapporto segna una salita.
 
-**Avendo perso la scena, l'esito lo racconta Omar.** Nel piatto domina ♣, il caos: a decidere la scena è stato l'attrito tra Vera e Otto più della Loggia, e chi narra l'esito lo tinge del seme che ha deciso. Così, pur raccontando una vittoria dei Protagonisti, Omar la rende una crepa che si allarga tra i due.
+**Avendo perso la posta, l'esito lo racconta Omar.** Nel piatto domina ♥, il legame: a vincere la scena è stato il gioco di squadra di Vera e Otto, e chi narra l'esito deve farci i conti. A Omar resta da calcare le ombre, e ne ha una grossa: la Loggia, ormai, sa chi cercare.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>"Otto esce maldestramente da una finestrella del bagno, mentre continua a parlare con gli uomini di sorveglianza al di là della porta, per ingannarli. Una volta in strada si ritrova davanti Vera e inizia a inveire contro di lei, mentre la donna lo strattona per la giacca dicendogli di sbrigarsi, perché hanno un treno da prendere. Hanno ottenuto il taccuino, ma una grossa crepa si sta aprendo sul fronte dei due protagonisti."</div>
+<div class="fiction"><span class="chi">Omar narra</span>Otto si allontana dall'hotel e da quei dannati scorpioni. Quando finalmente l'assistente del banditore apre la porta del caveau, Vera scatta fuori come una molla e lo travolge. Agli uomini della Loggia basta vederla uscire di corsa così per capire perfettamente cos'è successo: la riconoscono, e si lanciano al suo inseguimento per le vie del Cairo.</div>
 
 ## Scena 2. Adattamento
 
-> **Le carte in mano.** Protagonisti (Paola): 3♥ 6♠ 7♥ 1♠. Opposizione (Omar): 6♣ 10♦ 8♦ 7♦. Nel piatto, rimaste dalla scena precedente: 8♠ 9♥ 10♣.
+> **Le carte in mano.** Protagonisti (Paola): 9♥ 4♠ 8♥ 1♥. Opposizione (Omar): 10♦ 8♣ 5♣, più il 2♣ calato all'asta. Nel piatto, rimaste dalla scena precedente: 3♣ 5♥ 7♣ 6♥.
 
-All'asta Paola cala il 3♥, Omar l'8♦: vince Omar, e l'iniziativa è dell'Opposizione. Stavolta il piatto non è vuoto: restano l'8♠, il 9♥ e il 10♣ portati dal Cairo, e con l'iniziativa Omar potrà provare subito a prenderli. Chi non ha l'iniziativa, in compenso, gioca l'ultima carta del round e può chiudere la scena: non c'è un lato che convenga in assoluto, e qui quel rovescio peserà nel finale. Avendo vinto l'iniziativa, è Omar a definire la scena.
+All'asta Paola cala l'1♥, Omar il 2♣: vince Omar, e per la seconda volta di fila l'iniziativa è dell'Opposizione. Stavolta il piatto non è vuoto: restano le quattro carte portate dal Cairo, e con l'iniziativa Omar potrà provare subito a prenderle. La sua carta d'asta, il 2♣, va da parte come ultima giocata del round; l'1♥ di Paola, invece, torna nella sua mano. Avendo vinto l'iniziativa, è Omar a definire la scena.
 
 **Omar stabilisce il titolo e la posta della scena.**
 {: .azione }
 
 <div class="fiction"><span class="titolo-scena">Il treno per El Qara</span><em>Posta: raggiungere El Qara in tempo. Se va bene, si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male, arrivano troppo tardi e restano senza quell'aiuto prezioso.</em></div>
 
-**Omar apre la scena e gioca il 7♦** nel piatto: la prima giocata apre la scena e dispone una minaccia che è anche un nuovo PNG. In ♦ il nemico attivo prende corpo in un personaggio, da annotare su una index card: Alì, il guerriero dei Veglianti che si avvicina al treno.
+**Omar apre la scena e gioca il 5♣ e cattura il 5♥: presa.** La prima giocata apre la scena, e in ♣, il seme del caos del deserto, Omar manda una tempesta di sabbia che inchioda il treno in piena pista. È quella sosta forzata a far presa: i due, bloccati a bordo, ricominciano a litigare, e l'astio porta via dal piatto un ♥, la complicità che si erano ritrovati al Cairo.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>Il treno a vapore corre verso El Qara, sbuffando nel deserto che comincia. Nello scompartimento Vera e Otto siedono uno di fronte all'altra, scuri in volto e senza rivolgersi la parola: la lite del Cairo è ancora tutta lì. Vera fissa il finestrino per non guardare Otto, e così vede per prima un puntino nero avvicinarsi alla coda del convoglio: un guerriero tuareg dalle vesti scure, il turbante che gli copre anche il volto, solo gli occhi feroci e un piccolo tatuaggio in mezzo alla fronte, un occhio, il marchio dei Veglianti di Zerzura. È Alì, e sta per saltare sul treno in corsa.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Il treno a vapore corre verso El Qara, sbuffando nel deserto che comincia. Poi, all'orizzonte, una parete giallastra si alza dalle dune e avanza veloce: una tempesta di sabbia. Il macchinista rallenta e ferma il convoglio in piena pista, non c'è altro da fare che aspettare che passi. E nello scompartimento, bloccati e nervosi, Vera e Otto ricominciano a litigare su com'è andata la notte prima: Otto non voleva rubare quel taccuino, lo ripete pallido di rabbia; Vera ribatte che non hanno rubato un bel niente, perché quel taccuino era di suo padre, e dunque suo di diritto. Il rancore si mangia in un istante quel poco di complicità che avevano ritrovato.</div>
 
-**Paola gioca il 3♥** nel piatto: dispone una risorsa. In ♥ la risorsa è di nuovo un legame, qui il dialogo: Otto riconosce l'ordine e si offre di parlamentare.
+**Paola gioca il 9♥ e cattura insieme il 3♣ e il 6♥: una presa di 2 carte. Poi spunta la spinta del pitch di ♥, e la presa diventa SCOPA,** che spazza via anche il 7♣ e svuota il piatto. La spinta del pitch è la risorsa scritta in preparazione, qui il peso che Otto si porta dentro: è stata la sua traduzione a riaprire la caccia, e se finisce male la colpa è sua. È quel peso a spingerlo oltre la semplice lettura, fino all'illuminazione, e una presa normale diventa un successo pieno: la svolta della scena.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>A Otto basta un'occhiata: quell'ordine lo conosce a menadito, e andrà a parlargli lui, per spiegare che le loro intenzioni sono nobili e puramente accademiche, niente che contraddica la fede che custodisce. Una via d'uscita di parole, non di pugni.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Otto chiude i finestrini contro la sabbia e prende una decisione: se sono bloccati, tanto vale rendersi utili. Tira fuori il taccuino di Aldo e si mette a studiarlo per davvero, mostra a Vera le pagine più fitte, i disegni, le mappe, azzarda le prime congetture. Poi, all'improvviso, qualcosa si incastra: lo coglie un'illuminazione, e a mezza voce ripete una formula in una lingua arcaica letta tra quelle righe. Fuori, come obbedisse a quelle parole, la tempesta si placa, la sabbia ricade, e il macchinista può rimettere in moto il treno. Vera lo guarda, e per un momento del rancore di prima non resta più nulla.</div>
 
-**Omar gioca il 10♦ e cattura il 10♣, poi spunta la spinta di ♦ del pitch:** la presa diventa una scopa vera e svuota il piatto (l'8♠, il 9♥, il 7♦ e il 3♥ finiscono nelle prese di Omar). La spinta del pitch è la risorsa scritta in preparazione che porta in scena le trappole dei Veglianti: una presa normale si trasforma in successo pieno. E un colpo così totale, una scopa, chiede una fiction altrettanto grossa: il binario morto che ribalta la situazione.
+> **Spinta del pitch (scopa vera):** una presa normale, portando in scena la risposta del pitch, diventa una scopa che ripulisce il piatto. Il 9♥ va tra le scope di Paola (3 punti). La spinta di ♥ è ora usata.
+
+**Omar gioca il 10♦** nel piatto: dispone una minaccia, e che minaccia. In ♦, il seme dei nemici attivi, un 10 è una carta pesante, e prende corpo nel PNG più temibile della partita. Omar lo annota su una index card: «Alì, il guerriero dei Veglianti di Zerzura».
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>Poi una mossa formidabile degli antagonisti. Alì raggiunge la locomotiva e ci salta sopra, stordisce con un pugno il macchinista, poi si lancia di corsa lungo i corridoi verso lo scompartimento di Vera e Otto. E non è solo: più avanti un secondo Vegliante aziona uno scambio, il treno devia su un binario morto che finisce nel nulla, e con quella deviazione salta tutto, la posizione di Vera e il piano di Otto.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Ma il deserto ha occhi. Mentre il treno riprende velocità, Vera scorge per prima un puntino nero che insegue la coda del convoglio: un guerriero tuareg dalle vesti scure, il turbante che gli copre anche il volto, solo gli occhi feroci e, in mezzo alla fronte, un piccolo tatuaggio, un occhio, il marchio dei Veglianti di Zerzura. È Alì, e con un balzo da fermo è già aggrappato all'ultimo vagone del treno in corsa.</div>
 
-> **Spinta del pitch (scopa vera):** una presa normale, portando in scena la risposta del pitch, diventa una scopa che ripulisce il piatto. Il 10♦ va tra le scope di Omar (4 punti). La spinta di ♦ è ora usata.
-
-**Paola gioca il 7♥** nel piatto: un'altra risorsa di dialogo, stavolta usata come copertura. Le parole di Otto inchiodano Alì sulla soglia quel tanto che basta perché Vera, alle sue spalle, apra il finestrino.
+**Paola gioca l'1♥** nel piatto: dispone una risorsa, la più piccola che ha. In ♥, il seme dei legami, è un gesto silenzioso più che una mossa, e una carta così debole resterà nel piatto fino alla fine, l'unico segno dei Protagonisti in una scena che sta per sfuggire loro di mano.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Quando Alì spalanca la porta, enorme e mascherato, Otto non indietreggia: gli si rivolge in arabo fluente, cita dottrina e precetti, lo travolge con un fiume di parole. Non per convincerlo, ma per inchiodarlo sulla soglia quel tanto che basta perché Vera, alle sue spalle, apra il finestrino.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Otto è ancora stordito da quello che gli è appena riuscito, come se si fosse svegliato da un sogno e non riuscisse a spiegarselo. Con le mani che gli tremano richiude il taccuino di Aldo e lo porge a Vera. «Tienilo tu.» Vera annuisce e lo fa sparire nel suo tascapane.</div>
 
-**Omar gioca il 6♣** nel piatto: dispone il caos. In ♣ l'elemento caotico qui è ambientale, non l'attrito di coppia: la curva troppo stretta, lo scossone, il treno che sta per deragliare.
+**Omar gioca l'8♣** nel piatto: dispone il caos. In ♣, l'attrito che lavora dall'interno: non la lite tra i due, ma il panico di Otto, che proprio dopo il suo colpo di genio crolla e diventa un peso.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>Il binario morto non è fatto per quella velocità. Il treno impegna una curva troppo stretta, uno scossone violento attraversa il vagone: Otto finisce lungo disteso, Vera perde l'equilibrio aggrappata al finestrino. E capisce con orrore cosa sta per succedere. Stanno per deragliare.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Ma la mente di Otto non regge il suo stesso successo. Se bastano poche parole lette a piegare una tempesta, allora niente di tutto questo è una coincidenza: gli scorpioni piovuti nel salone del Cairo, la sabbia alzatasi dal nulla, e adesso la formula che funziona davvero. Stanno sfidando forze antiche, troppo grandi, qualcosa che la ragione non sa spiegare, e il pensiero lo paralizza. E intanto, dal fondo del corridoio, arrivano i passi di Alì che raggiunge lo scompartimento, lenti e inesorabili: a Otto basta sentirli per perdere del tutto la testa. Si sente impotente, si stringe la testa tra le mani e si rannicchia sul sedile, in attesa di una morte ormai imminente.</div>
 
-**Paola gioca l'1♠** nel piatto: dispone un'azione improvvisata. In ♠, il seme del gesto fisico, è l'idea fulminea di Vera: l'ombrello di Otto aperto di scatto in faccia al guerriero.
+**Paola gioca l'8♥ e cattura l'8♣: presa.** In ♥, il seme dei legami, la risposta al panico di Otto arriva da un alleato insperato, e la presa si porta via il caos appena scatenato. Paola crea il PNG su una index card: «Faruq, guida, interprete e guardia del corpo, amico di famiglia di Otto».
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>La valigia di Otto è caduta e si è aperta. Vera ci infila una mano e ne tira fuori la cosa più sua di lui: l'immancabile ombrello. Lo punta verso il guerriero e lo apre di scatto, a un palmo dal viso. Alì, lanciato in avanti, si trova quella cupola di stoffa nera sugli occhi e per un istante resta confuso, spiazzato.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Ma c'è qualcuno che né Alì né i due avevano messo in conto. Nello scompartimento accanto sonnecchiava Faruq: guida, interprete e guardia del corpo, un vecchio amico di famiglia di Otto. Il baccano lo sveglia di soprassalto; esce nel corridoio e, prima che il guerriero arrivi alla loro porta, gli si aggrappa al mantello e lo trattiene per un po'. «Signor Otto, signorina Vera, scappate, ci penso io...» Ed è proprio sentire quelle parole a riportare Otto in sé: non può restarsene impietrito mentre un amico rischia la vita per lui. Il panico si spezza di colpo.</div>
 
-**Omar cala l'8♦, la carta d'asta, e cattura insieme il 7♥ e l'1♠:** un'altra presa di gruppo, un successo che porta via due risorse dei protagonisti in un colpo solo. Sono proprio le carte catturate a ispirare la fiction: Alì spazza via insieme il dialogo di Otto (il 7♥) e l'ombrello di Vera (l'1♠).
+**Omar cala il 2♣, la sua carta d'asta, nel piatto: l'ultimo tassello del caos.** In ♣ è la mossa che vanifica ogni resistenza: Faruq lo aveva soltanto intralciato, e Alì se lo scrolla di dosso senza nemmeno rallentare.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>È ancora Alì, inarrestabile, a piazzare il colpo: butta via l'ombrello e con un manrovescio mette a tacere Otto, poi affonda la mano nel borsello di cuoio di Vera e ne strappa il taccuino, pronto a lanciarsi sul cavallo che ha affiancato il vagone.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Faruq, per quanto coraggioso, non lo ha mai davvero fermato: lo ha soltanto intralciato per qualche istante. Con una spinta Alì se lo scrolla di dosso e prosegue lungo il corridoio quasi senza rallentare. In un attimo è sopra Vera e Otto, e tra il guerriero e i due non resta più niente.</div>
 
-**Paola gioca il 6♠:** è l'ultima carta del round e fa una scopa che svuota il piatto, chiudendo la scena. Ecco il vantaggio nascosto del non avere l'iniziativa: poter chiudere. E una scopa, successo pieno e insperato, si fa il salvataggio all'ultimo secondo di Vera ai freni del treno. La posta è conquistata.
+**Paola gioca il 4♠: resa onorevole.** L'ultima carta è ininfluente e non cambia più nulla, e Paola sceglie di cederla con onore. Ed è un ♠, il seme di Vera: così la resa prende il suo volto, ed è lei, che non molla mai, a decidere per una volta di non battersi.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Mentre Alì è proteso fuori dal finestrino, Vera non lo insegue: corre nella direzione opposta, fino alla locomotiva. Trova il macchinista svenuto e il binario morto che precipita verso di loro. Afferra la leva dei freni e la tira con tutto il peso: il treno stride, sbanda, si ferma a pochi metri dalla fine dei binari. Nessun morto, nessun ferito. Il macchinista, per sdebitarsi, offre l'aiuto del fratello Kalim: due cammelli e una guida fidata fino all'oasi.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Vera, impietosita dallo stato di Otto e decisa a non causare spargimenti di sangue, alza le mani e se le porta dietro la nuca, facendo cenno al compagno di fare lo stesso. «Ci arrendiamo, ma non fate del male a questi uomini... è noi che volete.»</div>
 
-Fine del round: piatto vuoto, **0 a 0,** e la scena va ai Protagonisti, che l'hanno chiusa con una scopa. La carovana e le guide del deserto sono loro; il diario del rapporto resta in bilico, pari.
+Fine del round: nel piatto restano il 10♦, l'1♥ e il 2♣. **Protagonisti 1, Opposizione 12:** la scena è nettamente dell'Opposizione, e domina ♦: a deciderla sono stati i Veglianti.
 
-**Avendo perso la scena, l'esito lo racconta Omar.** Per quasi tutta la scena aveva dominato l'Opposizione (Alì, ♦), ma la scopa finale dei Protagonisti ha svuotato il piatto: a fine scena non resta nessun seme, è parità, e la chiusura netta cancella la lettura del dominante. Così Omar non può attribuire la sconfitta al caso o a un colpo del nemico: deve ammettere un successo netto dei Protagonisti, e gli resta solo da calcarne il prezzo.
+**Avendo perso la posta, l'esito lo racconta Paola:** per la prima volta sono i Protagonisti a narrare una loro sconfitta.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>"Sì, il treno si ferma in tempo, e i passeggeri portano quasi in trionfo la coraggiosa donna europea: Vera e Otto scendono a El Qara con la carovana e le guide che cercavano. Ma non si montino la testa. Alì il taccuino di Aldo Falco se l'è portato via, e quelle pagine valgono più di tutte le guide del deserto: dentro ci sono gli appunti per arrivare all'artefatto e i segreti per superarne le antiche insidie. Si godano pure la carovana: senza il taccuino, a Zerzura forse non ci arrivano nemmeno, e di sicuro non ci entrano."</div>
+<div class="fiction"><span class="chi">Paola narra</span>Alì tira il freno d'emergenza. Il treno stride e si inchioda in piena pista, e nessuno, tra i passeggeri, ha il coraggio di opporsi a quel mezzo gigante intabarrato di nero, dal cui fianco pende un'enorme scimitarra. Salgono i suoi complici, altri Veglianti mascherati, che in pochi istanti immobilizzano Otto e Vera e li fissano di traverso sulle selle dei loro cammelli. Faruq, ancora a terra nel corridoio, fa in tempo solo a vederli sparire oltre le dune. Forse sarà lui, di tutti loro, l'unico ad arrivare a El Qara entro sera.</div>
 
 ## Mercato, tra la seconda e la terza scena
 
-Tra una scena e l'altra si spendono i punti accumulati per comprare le figure (Fante, Regina, Re). I punti sono i marcatori: 1 per presa, 2 per presa con figura, 4 per scopa. Dopo due scene Paola ne ha 5 (1 dalla presa di Scena 1, 4 dalla scopa che ha chiuso la Scena 2), Omar 6 (1 dalla presa di Scena 1, più 4 di scopa e 1 di presa in Scena 2).
+Adesso scatta un evento fisso: dopo la seconda scena il Jolly entra nel mazzo dei Protagonisti, pronto a comparire in una delle mani successive.
 
-**Paola compra il Fante ♥ (costa 3 punti, le restano 2).** Il Fante è l'unica figura che entra subito in mano per la scena dopo, invece di finire nel mazzo da rimescolare: così Paola potrà schierarlo già in Scena 3, e per restare a quattro carte rimette un 1♥ in fondo al mazzo. Comprare una figura significa preparare l'ingresso di un PNG: Paola lo crea e lo annota su una index card, «Kalim, guida del deserto, fratello del macchinista salvato sul treno (Fante ♥, valore 8)».
+Tra una scena e l'altra si spendono i punti accumulati per comprare le figure (Fante, Regina, Re). I punti sono i marcatori delle prese e delle scope: 1 per presa, 3 per scopa. Dopo due scene Paola ne ha 8 (3 dalla scopa del Cairo; sul treno 3 di scopa, 1 di presa e 1 di resa onorevole), Omar appena 2 (una presa per scena).
+
+<div class="fiction"><span class="chi">Paola annuncia</span>Faruq, arrivato a El Qara, sa esattamente a chi rivolgersi: suo cugino Kalim, esperta guida del deserto. E sulla index card scrive chi è: Kalim è un uomo sui cinquant'anni, dal fisico asciutto, temprato dal sole e dal vento del deserto, con gli occhi saggi di chi il mare di sabbia lo conosce come il palmo della sua mano. Sa dove i pozzi danno ancora acqua e dove le dune nascondono le piste sepolte.</div>
+
+**Paola compra il Fante ♥ (costa 3 punti, le restano 5).** Comprare una figura significa preparare l'ingresso di un PNG potente, che entra in scena quando se ne gioca la carta. Il Fante, come la Regina e il Re, va nel mazzo: avendo comprato, a fine mercato Paola rimescola e solo dopo ripesca la nuova mano, così potrà ritrovarselo già nella scena seguente, come anche il Jolly. Per pagarlo prende una delle due carte che le marcavano una scopa e la rimette nella pila degli scarti: quei tre punti sono spesi.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>La cosa più ovvia è dare al Fante il volto di Kalim, la guida che il macchinista salvato sul treno ha promesso loro: è suo fratello, e si sente in debito con Vera. Kalim è un uomo sui cinquant'anni, dal fisico asciutto, temprato dal sole e dal vento del deserto, ma con un sorriso allegro e gli occhi saggi di chi il mare di sabbia lo conosce come il palmo della sua mano. Sa dove i pozzi danno ancora acqua e dove le dune nascondono le piste sepolte: con lui e i suoi cammelli, la traversata smette di essere un salto nel buio.</div>
-
-**Omar non compra: tiene i punti.** Con 6 punti potrebbe permettersi un Fante, ma preferisce risparmiare per una figura più potente, da calare al momento giusto più avanti.
+**Omar non compra: tiene i punti.** Con due soli punti non arriverebbe nemmeno a un Fante, e comunque preferisce risparmiare per una figura ben più potente, da calare al momento giusto più avanti.
 {: .azione }
 
-Fatti gli acquisti i mazzi si rimescolano. E scatta un evento fisso: dopo la seconda scena il Jolly entra nel mazzo dei Protagonisti, pronto a comparire in una delle mani successive.
 
 ## Scena 3. Frattura
 
@@ -1279,6 +1280,13 @@ Ogni missione ha la stessa struttura: un obiettivo concreto, più una scadenza i
 
 # Appendice F. Glossario
 
+Woody: Va bene, basta! Siamo tutti molto colpiti dal nuovo giocattolo di Andy.
+Buzz: Giocattolo?
+Woody: G-I-O... giocattolo!
+Buzz: Scusa, ma credo che la parola che stai cercando sia: «Space Ranger».
+Woody: La parola che sto cercando non la posso dire, perché ci sono dei giocattoli minorenni! (Toy Story)
+{: .citazione }
+
 I termini di gioco in ordine alfabetico, con il loro significato in breve. Per le regole per esteso, i rimandi sono ai capitoli.
 
 **Apertura della scena.** Il primo momento della scena. Chi vince l'asta dichiara titolo e posta, poi gioca la prima carta: non c'è un passo di ambientazione a parte, è la narrazione di quella prima giocata a mettere in scena dove sono i protagonisti, con quale atmosfera, e che cosa accade.
@@ -1372,7 +1380,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Round.** Il ciclo di gioco di una scena, dall'asta all'ultima carta giocata. Round e scena coincidono.
 
-**Sacrificio.** Quando una figura non ha nulla da catturare non resta nel piatto: si sacrifica e va tra le prese di chi la gioca. Vale una scopa se il piatto era vuoto, altrimenti una presa da un punto. L'effetto della figura scatta comunque.
+**Sacrificio.** Quando una figura non ha nulla da catturare non resta nel piatto: si sacrifica e va tra le prese di chi la gioca come marcatore da un punto, come una resa (mai una scopa: la scopa è sempre e solo una presa che svuota il piatto). L'effetto della figura scatta comunque.
 
 **Scarti comuni.** La pila dove finiscono le carte catturate e i punti spesi al mercato. Non danno punti, ma sono il bacino da cui pesca il Re.
 
@@ -1390,6 +1398,104 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Vignetta.** La singola scena dell'epilogo, incentrata su un Qualcuno, ambientata giorni o anni dopo. Chiusura dolce o amara, colpo di scena retrospettivo o gancio per un seguito: a piacere.
 
+# Appendice G. Le schede da fotocopiare
+
+Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciascun momento della preparazione: le **schede dei protagonisti** (una per ogni eroe della coppia), il **foglio del pitch** (il quadro condiviso da riempire insieme) e le **schede dei Qualcuno** (le carte da ritagliare per annotare persone, gruppi, luoghi e oggetti con un nome e una volontà). Sono lo stesso materiale che il gioco digitale raccoglie nel suo wizard di setup, qui in forma cartacea per chi gioca al tavolo.
+
+<div class="sg-foglio">
+<div class="sg-titolo"><span class="sg-seme p">&#9824;</span> Scheda del protagonista &middot; Picche</div>
+<div class="sg-occh">Il protagonista duro e diretto. Una scheda per ciascuno dei due eroi: una differenza evidente, un conflitto, un motivo per restare insieme nonostante tutto.</div>
+<div class="sg-cols">
+<div class="sg-col">
+<span class="sg-lab">Nome</span><div class="sg-box">&nbsp;</div>
+<span class="sg-lab">Interpretato da</span><div class="sg-box">&nbsp;</div>
+</div>
+<div class="sg-col">
+<span class="sg-lab">Chi &egrave;</span>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div></div>
+</div>
+</div>
+<span class="sg-lab">Cosa detesta dell'altro <i>(spunto narrativo, senza effetto sul gioco)</i></span>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
+<span class="sg-lab">Le sue due spinte <span class="sg-seme p">&#9824;</span> <i>&mdash; portarne una in narrazione trasforma una presa in scopa (una per seme, per lato)</i></span>
+<div class="sg-box">
+<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme p">&#9824;</span> Perch&eacute; per lui/lei &egrave; importante la missione?</div><div class="scrivi"></div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
+<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme p">&#9824;</span> Quale dote o risorsa potrebbe essere un asso nella manica?</div><div class="scrivi"></div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
+</div>
+</div>
+
+<div class="sg-foglio sg-break">
+<div class="sg-titolo"><span class="sg-seme c">&#9829;</span> Scheda del protagonista &middot; Cuori</div>
+<div class="sg-occh">Il protagonista empatico e relazionale. Una scheda per ciascuno dei due eroi: una differenza evidente, un conflitto, un motivo per restare insieme nonostante tutto.</div>
+<div class="sg-cols">
+<div class="sg-col">
+<span class="sg-lab">Nome</span><div class="sg-box">&nbsp;</div>
+<span class="sg-lab">Interpretato da</span><div class="sg-box">&nbsp;</div>
+</div>
+<div class="sg-col">
+<span class="sg-lab">Chi &egrave;</span>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div></div>
+</div>
+</div>
+<span class="sg-lab">Cosa detesta dell'altro <i>(spunto narrativo, senza effetto sul gioco)</i></span>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
+<span class="sg-lab">Le sue due spinte <span class="sg-seme c">&#9829;</span> <i>&mdash; portarne una in narrazione trasforma una presa in scopa (una per seme, per lato)</i></span>
+<div class="sg-box">
+<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme c">&#9829;</span> Perch&eacute; per lui/lei &egrave; importante la missione?</div><div class="scrivi"></div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
+<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme c">&#9829;</span> Quale dote o risorsa potrebbe essere un asso nella manica?</div><div class="scrivi"></div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
+</div>
+</div>
+
+<div class="sg-foglio sg-break">
+<div class="sg-titolo">Il pitch &middot; foglio del tavolo</div>
+<div class="sg-occh">Il viaggio in cinque scene. Da compilare insieme prima di partire.</div>
+<div class="sg-cols">
+<div class="sg-col"><span class="sg-lab">I protagonisti</span><div class="sg-box">&nbsp; &amp; &nbsp;</div></div>
+<div class="sg-col"><span class="sg-lab">Tono</span><div class="sg-box" style="font-size:9pt;color:#6b7280">Action &middot; Poliziesco &middot; Comedy &middot; Dramedy &middot; Romance &middot; libero</div></div>
+</div>
+<span class="sg-lab">La premessa <i>(dove siete, chi siete, cosa &egrave; appena successo &mdash; da leggere al tavolo)</i></span>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
+<span class="sg-lab">La missione <i>(un obiettivo concreto + una scadenza improrogabile: &laquo;&hellip;PRIMA che&hellip;&raquo;)</i></span>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div></div>
+<span class="sg-lab">La prima difficolt&agrave; <i>(cosa impedisce di compiere subito la missione: &egrave; il materiale della Scena 1; ultima parola all'Opposizione)</i></span>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div></div>
+<hr class="sg-strada">
+<div class="sg-sez">L'Opposizione</div>
+<div class="sg-hint">Il mondo &egrave; sempre contro di voi, ma non sempre per gli stessi motivi.</div>
+<div class="sg-cols">
+<div class="sg-col">
+<span class="sg-lab"><span class="sg-seme q">&#9830;</span> I nemici &mdash; chi li ostacola con intenzione</span>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
+</div>
+<div class="sg-col">
+<span class="sg-lab"><span class="sg-seme f">&#9827;</span> Il caos &mdash; sfortuna, imprevisti, attriti</span>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
+</div>
+</div>
+<span class="sg-lab">Le spinte dell'Opposizione <i>&mdash; una in narrazione trasforma una presa in scopa (una per seme, per lato; mai nell'ultima scena)</i></span>
+<div class="sg-box">
+<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme q">&#9830;</span> Quali sono i mezzi, metodi o armi pi&ugrave; temibili della fazione nemica?</div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
+<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme q">&#9830;</span> Perch&eacute; deve assolutamente impedire ai protagonisti di ottenere ci&ograve; che vogliono?</div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
+<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme f">&#9827;</span> Quali catastrofi o eventi imprevedibili possono manifestarsi nell'ambientazione?</div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
+<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme f">&#9827;</span> Cosa i protagonisti non hanno considerato e potrebbe far saltare la loro alleanza?</div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
+</div>
+<div class="sg-nota"><b>Le altre quattro spinte</b> (<span class="sg-seme p">&#9824;</span><span class="sg-seme c">&#9829;</span>, due per protagonista) stanno sulle schede dei giocatori: in tutto otto spinte, due per seme.</div>
+</div>
+
+<div class="sg-foglio sg-break">
+<div class="sg-titolo">I Qualcuno &middot; carte da ritagliare</div>
+<div class="sg-occh">Persone, gruppi, popoli, luoghi o oggetti con una loro volont&agrave; e un destino da seguire. Un Qualcuno senza nome non esiste.</div>
+<div class="sg-nota"><b>Come si usa.</b> Annota qui chi entra in scena con un ruolo da seguire, e con quale carta &egrave; stato introdotto: quella carta lo rappresenta nel piatto finch&eacute; non viene catturata. Le figure comprate al mercato (Fante &middot; Regina &middot; Re) sono Qualcuno, e dare loro un nome &egrave; obbligatorio.</div>
+<div class="sg-griglia">
+<div class="sg-qcard"><div class="sg-qtop"><span class="sg-qn">Qualcuno</span><span style="font-size:8.4pt;color:#6b7280"><span class="sg-cb"></span>catturato</span></div><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div><span class="sg-lab">Cosa vuole (la sua volont&agrave;)</span><div class="sg-scrivi"></div><div class="sg-scrivi"></div><div class="sg-tipi"><span class="sg-lab" style="display:inline;margin:0">Carta che lo rappresenta</span> <span style="border-bottom:1px solid #d9d3c4;display:inline-block;width:64px">&nbsp;</span><br><span class="sg-cb"></span>PNG &nbsp; <span class="sg-cb"></span>Figura &nbsp; <span class="sg-cb"></span>Gruppo/popolo &nbsp; <span class="sg-cb"></span>Luogo/oggetto</div></div>
+<div class="sg-qcard"><div class="sg-qtop"><span class="sg-qn">Qualcuno</span><span style="font-size:8.4pt;color:#6b7280"><span class="sg-cb"></span>catturato</span></div><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div><span class="sg-lab">Cosa vuole (la sua volont&agrave;)</span><div class="sg-scrivi"></div><div class="sg-scrivi"></div><div class="sg-tipi"><span class="sg-lab" style="display:inline;margin:0">Carta che lo rappresenta</span> <span style="border-bottom:1px solid #d9d3c4;display:inline-block;width:64px">&nbsp;</span><br><span class="sg-cb"></span>PNG &nbsp; <span class="sg-cb"></span>Figura &nbsp; <span class="sg-cb"></span>Gruppo/popolo &nbsp; <span class="sg-cb"></span>Luogo/oggetto</div></div>
+<div class="sg-qcard"><div class="sg-qtop"><span class="sg-qn">Qualcuno</span><span style="font-size:8.4pt;color:#6b7280"><span class="sg-cb"></span>catturato</span></div><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div><span class="sg-lab">Cosa vuole (la sua volont&agrave;)</span><div class="sg-scrivi"></div><div class="sg-scrivi"></div><div class="sg-tipi"><span class="sg-lab" style="display:inline;margin:0">Carta che lo rappresenta</span> <span style="border-bottom:1px solid #d9d3c4;display:inline-block;width:64px">&nbsp;</span><br><span class="sg-cb"></span>PNG &nbsp; <span class="sg-cb"></span>Figura &nbsp; <span class="sg-cb"></span>Gruppo/popolo &nbsp; <span class="sg-cb"></span>Luogo/oggetto</div></div>
+<div class="sg-qcard"><div class="sg-qtop"><span class="sg-qn">Qualcuno</span><span style="font-size:8.4pt;color:#6b7280"><span class="sg-cb"></span>catturato</span></div><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div><span class="sg-lab">Cosa vuole (la sua volont&agrave;)</span><div class="sg-scrivi"></div><div class="sg-scrivi"></div><div class="sg-tipi"><span class="sg-lab" style="display:inline;margin:0">Carta che lo rappresenta</span> <span style="border-bottom:1px solid #d9d3c4;display:inline-block;width:64px">&nbsp;</span><br><span class="sg-cb"></span>PNG &nbsp; <span class="sg-cb"></span>Figura &nbsp; <span class="sg-cb"></span>Gruppo/popolo &nbsp; <span class="sg-cb"></span>Luogo/oggetto</div></div>
+<div class="sg-qcard"><div class="sg-qtop"><span class="sg-qn">Qualcuno</span><span style="font-size:8.4pt;color:#6b7280"><span class="sg-cb"></span>catturato</span></div><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div><span class="sg-lab">Cosa vuole (la sua volont&agrave;)</span><div class="sg-scrivi"></div><div class="sg-scrivi"></div><div class="sg-tipi"><span class="sg-lab" style="display:inline;margin:0">Carta che lo rappresenta</span> <span style="border-bottom:1px solid #d9d3c4;display:inline-block;width:64px">&nbsp;</span><br><span class="sg-cb"></span>PNG &nbsp; <span class="sg-cb"></span>Figura &nbsp; <span class="sg-cb"></span>Gruppo/popolo &nbsp; <span class="sg-cb"></span>Luogo/oggetto</div></div>
+<div class="sg-qcard"><div class="sg-qtop"><span class="sg-qn">Qualcuno</span><span style="font-size:8.4pt;color:#6b7280"><span class="sg-cb"></span>catturato</span></div><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div><span class="sg-lab">Cosa vuole (la sua volont&agrave;)</span><div class="sg-scrivi"></div><div class="sg-scrivi"></div><div class="sg-tipi"><span class="sg-lab" style="display:inline;margin:0">Carta che lo rappresenta</span> <span style="border-bottom:1px solid #d9d3c4;display:inline-block;width:64px">&nbsp;</span><br><span class="sg-cb"></span>PNG &nbsp; <span class="sg-cb"></span>Figura &nbsp; <span class="sg-cb"></span>Gruppo/popolo &nbsp; <span class="sg-cb"></span>Luogo/oggetto</div></div>
+</div>
+</div>
+
 ---
 
-*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.24, che resta la fonte di verità del regolamento.*
+*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.26, che resta la fonte di verità del regolamento.*

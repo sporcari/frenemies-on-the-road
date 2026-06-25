@@ -396,7 +396,7 @@ Quando la presa lascia il piatto vuoto: togli all'avversario **ogni** risorsa in
 
 > **Esempio:** Scopa con un 6 di Picche → Frank disarma i due sicari nel parcheggio nel giro di dieci secondi. La strada è libera, la situazione è ribaltata.
 
-> **Sacrificio di una figura (v1.6, esteso v1.23):** una figura non resta **mai** nel piatto. Se non ha nulla da catturare si **sacrifica** e va tra le prese di chi la gioca: è una **scopa** se il piatto era vuoto (il gesto eroico che spalanca la strada), altrimenti una **presa** da 1 punto, e le carte fuori portata restano sul tavolo. In entrambi i casi l'effetto speciale della figura scatta lo stesso. Narrativamente è l'alleato che si immola.
+> **Sacrificio di una figura (v1.6, esteso v1.23, corretto v1.26):** una figura non resta **mai** nel piatto. Se non ha nulla da catturare si **sacrifica** e va tra le prese di chi la gioca come **marcatore da 1 punto** (come una resa onorevole), lasciando sul tavolo le eventuali carte fuori portata. Una **scopa** è sempre e solo una **presa che lascia il piatto vuoto** (§17): una figura che non cattura nulla non può farne una, nemmeno quando il piatto è vuoto. L'effetto speciale della figura scatta comunque. Narrativamente è l'alleato che si immola, o che risulta meno incisivo del previsto.
 
 ## 16. Regole di presa
 
@@ -410,7 +410,7 @@ Le prese seguono la logica della Scopa tradizionale:
 
 **Cattura di una carta del proprio lato.** Se sei costretto a prendere una carta del tuo stesso lato (stesso schieramento), raccontalo come un'azione maldestra in cui le due anime del lato si sono ostacolate o annullate a vicenda: **Cuori e Picche** per i Protagonisti, **Fiori e Quadri** per l'Opposizione.
 
-**Cattura flessibile delle figure (v1.6).** Una figura (Fante, Regina, Re) cattura in modo più ampio di una carta numerica: prende dal piatto un gruppo di carte la cui somma è **minore o uguale** al suo valore (Fante 8, Regina 9, Re 10), comprese eventuali carte dei propri semi. Anche per le figure la cattura è obbligatoria: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 1 punto come ogni altra (vedi §17). Se invece nessuna carta del piatto è alla sua portata, la figura **non resta sul tavolo** ma si **sacrifica** (§15.3): va tra le prese di chi la gioca, come **scopa** se il piatto era vuoto, o come **presa** da 1 punto se restano carte fuori portata (che rimangono nel piatto). L'effetto speciale della figura (§21) scatta in ogni caso.
+**Cattura flessibile delle figure (v1.6).** Una figura (Fante, Regina, Re) cattura in modo più ampio di una carta numerica: prende dal piatto un gruppo di carte la cui somma è **minore o uguale** al suo valore (Fante 8, Regina 9, Re 10), comprese eventuali carte dei propri semi. Anche per le figure la cattura è obbligatoria: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 1 punto come ogni altra (vedi §17). Se invece nessuna carta del piatto è alla sua portata, oppure il piatto è vuoto, la figura **non resta sul tavolo** ma si **sacrifica** (§15.3): va tra le prese di chi la gioca come **presa da 1 punto** (come una resa), lasciando nel piatto le eventuali carte fuori portata. Una figura che non cattura non fa mai scopa. L'effetto speciale della figura (§21) scatta in ogni caso.
 
 ## 17. Gestione di prese e scope
 
@@ -941,6 +941,11 @@ Una partita vera a 2 giocatori con lo scenario demo (§33): Paola gioca i Protag
 
 # REGISTRO MODIFICHE
 
+## v1.26 (giugno 2026) — il sacrificio della figura vale 1 punto, mai scopa
+
+1. **§15.3/§16: il sacrificio di una figura non è più una scopa.** Corretto un caso incoerente introdotto in v1.6 ed esteso in v1.23: una figura giocata sul **piatto vuoto** (o con sole carte fuori portata) si sacrificava e valeva una **scopa** («gesto eroico»). Ora il sacrificio vale **sempre 1 punto**, come una **resa onorevole**: la figura va tra le prese di chi la gioca come marcatore da 1 punto, lasciando sul tavolo le eventuali carte fuori portata. Motivazione (dal designer): una **scopa è sempre e solo una presa che svuota il piatto**; una figura che non cattura nulla non può farne una, nemmeno sul piatto vuoto. Spariva così anche l'incentivo a "buttare" una figura nel piatto vuoto per farmare 3 punti garantiti. L'effetto speciale della figura scatta comunque.
+2. **Propagazione.** `index.html`: ramo `sacrificio` in `giocaCarta` (ora prese, 1 punto, mai `aggiungiScopa`/`scope`), testi e bottoni in `opzioniFigura` («Sacrificio — 1 punto»), `REGOLE` e `REGOLE_IA`. KB §15.3 e §16. Manuale §3, §6 e glossario. Driver di test (`partita_smart.js`, `partita_esempio.js`) e rigenerazione del transcript/seed dell'esempio. Le voci storiche del registro (v1.6 punto 3, v1.23 punto 1) restano come record di quanto fu deciso allora.
+
 ## v1.25 (giugno 2026) — il Jolly semplificato: il peccato che emerge è solo narrativo
 
 1. **§22.6: il «peccato emerge» diventa una licenza puramente narrativa.** Rimosso il **terzo uso** meccanico del marcatore del Jolly (la v1.5, che lo spendeva come azione aggiuntiva per togliere dal piatto la carta più bassa dei Protagonisti). Ora il marcatore del Jolly è una **risorsa normale** dell'Opposizione: vale i suoi punti al conteggio finale (presa 1, scopa 3) o si spende al mercato, niente più effetto sul tavolo. Il peccato resta, ma solo in chiave narrativa: **finché l'Opposizione possiede il marcatore del Jolly**, in una sua qualsiasi presa o scopa può far emergere nella narrazione il compromesso commesso dai Protagonisti, per creare divisione tra loro e drammatizzare. Non cambia punti né carte. Motivazione (dal designer): semplificare il Jolly, togliendo un'eccezione meccanica poco usata e tenendone solo la carica drammatica. Precisato anche il **vincolo narrativo** (§22.4): a macchiarsi del peccato è **uno solo dei due protagonisti, all'insaputa dell'altro** (una ricaduta nei vecchi vizi), ed è questo che l'Opposizione fa riaffiorare.
@@ -1089,4 +1094,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.25*
+*Frenemies on the Road — Knowledge Base v1.26*

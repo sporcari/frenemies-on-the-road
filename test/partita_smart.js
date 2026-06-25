@@ -18,6 +18,9 @@ const SEED=parseInt(process.env.SEED||"1");
 const SEED2=parseInt(process.env.SEED2||String(SEED));
 const SEED3=parseInt(process.env.SEED3||String(SEED2));
 const BATCH=parseInt(process.env.BATCH||"0");
+// FIXSEED=N: nel batch tiene FISSO il seed principale a N (scene 1-2 invariate) e fa variare il SOLO
+// SEED2/SEED3 sul mazzo residuo (scene 3-5). Serve a cercare un finale migliore preservando S1-S2.
+const FIXSEED=parseInt(process.env.FIXSEED||"0");
 // MERCATO=canonico: replica gli acquisti della partita d'esempio (P Fante, P Regina, O Re) invece della
 // politica "figura più potente". Serve a confrontare gioco ottimale e curato a PARITÀ di pescate (stesso mazzo).
 const MERCATO_CANONICO=(process.env.MERCATO||"")==="canonico";
@@ -140,9 +143,12 @@ function runGame(seed, seed2, seed3, wantTranscript){
       }
       if(c.fig){
         const pot=piatto.filter(x=>!x.jolly);
-        if(pot.length===0){ consider(1000, ()=>{ click(el); click(document.getElementById("figSacrificio")); }); continue; }
+        // v1.26: una figura che non cattura nulla si sacrifica come marcatore da 1 punto (mai scopa),
+        // sia col piatto vuoto sia con sole carte fuori portata. Sprecarla così è quasi sempre peggio
+        // che calare un numero: punteggio basso (fallback), proporzionale al valore buttato via.
+        if(pot.length===0){ consider(15-0.5*FIGVAL[c.fig], ()=>{ click(el); click(document.getElementById("figSacrificio")); }); continue; }
         if(Math.min(...pot.map(x=>cardVal(x)))>FIGVAL[c.fig]){
-          consider(35-0.5*FIGVAL[c.fig], ()=>{ click(el); click(document.getElementById("figMetti")); }); continue;
+          consider(15-0.5*FIGVAL[c.fig], ()=>{ click(el); click(document.getElementById("figSacrPresa")); }); continue;
         }
         for(let v=1; v<=FIGVAL[c.fig]; v++){
           cp(v).forEach((cmb,i)=>{
@@ -412,7 +418,7 @@ function runGame(seed, seed2, seed3, wantTranscript){
 if(BATCH>0){
   const rows=[];
   for(let s=1;s<=BATCH;s++){
-    let r; try{ r=runGame(s,s,s,false); }catch(e){ continue; }
+    let r; try{ r=runGame(FIXSEED>0?FIXSEED:s, s, s, false); }catch(e){ continue; }
     const c1=(r.nP===3&&r.nO===2)||(r.nP===2&&r.nO===3);          // poste bilanciate 3/2
     const c2=/ROTTO DELLA CUFFIA/.test(r.outcome) && r.finalP>r.finalO; // Prot vincono di misura
     const c3=r.flipDopoColpi;                                     // sotto al primo conteggio, sopra dopo i colpi
