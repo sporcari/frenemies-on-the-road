@@ -1749,7 +1749,6 @@ function rTurno(){
       <div class="tot-lato o">♦+♣ Opposizione <b>${totaleOpp()}</b></div>
     </div>
     <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto — una presa qui sarebbe scopa</span>'}</div>
-    ${(peccatoEmergeDisponibile() && G.modalita!=="solo")?`<div class="opzioni" style="margin:8px 0"><button id="btnPeccato" class="azione">🃏 Spendi il marcatore del Jolly: fai emergere il peccato (azione extra)</button></div>`:""}
     ${(ritirataDisponibile() && !(G.modalita==="solo" && G.attore==="O"))?`<div class="opzioni" style="margin:8px 0">${ritirataVarianti(G.attore).includes("mazzo")?`<button id="btnRitirata" class="azione">🏳️ Ritirata strategica</button>`:""}${ritirataVarianti(G.attore).includes("prese")?`<button id="btnResa" class="azione">🎖️ Resa onorevole (1 punto)</button>`:""}</div>`:""}
     <div class="mano-area lato-${l.toLowerCase()}${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}">
       <div class="mano-titolo">
@@ -1767,7 +1766,6 @@ function rTurno(){
       mostraOpzioni(c, g.daAsta);
     });
   });
-  const bPecc=document.getElementById("btnPeccato"); if(bPecc) bPecc.addEventListener("click",()=>eseguiJollyEffetto());
   const bRit=document.getElementById("btnRitirata"); if(bRit) bRit.addEventListener("click",()=>chiediRitirata("mazzo"));
   const bResa=document.getElementById("btnResa"); if(bResa) bResa.addEventListener("click",()=>chiediRitirata("prese"));
 }
@@ -1929,6 +1927,9 @@ function suggerimento(c, tipo, dettagli, latoNarr, stessoLato){
     testo += prot
       ? `<br><br><b>Azione maldestra.</b> Hai preso una carta del tuo stesso lato: raccontalo come un pasticcio in cui Cuori e Picche, le due anime dei protagonisti, si sono ostacolati o annullati a vicenda.`
       : `<br><br><b>Azione maldestra.</b> Hai preso una carta del tuo stesso lato: raccontalo come un pasticcio in cui Fiori e Quadri, il caos e i nemici organizzati, si sono intralciati o annullati a vicenda.`;
+  }
+  if(!prot && (tipo==="presa"||tipo==="scopa") && jollyMarkerO()){
+    testo += `<br><br><b>Il peccato emerge (facoltativo).</b> Possiedi il marcatore del Jolly: in questa giocata puoi far affiorare nella narrazione il compromesso sleale che uno dei protagonisti ha commesso all'insaputa dell'altro — l'inganno, il torbido patto — per incrinare la loro alleanza e rendere il momento più drammatico. Solo narrazione: non cambia punti né carte.`;
   }
   let extra="";
   if(c && c.fig){
@@ -2110,7 +2111,6 @@ function mossaInfo(tipo){
   if(tipo==="presa")    return {ic:"✋", txt:"Presa"};
   if(tipo==="apertura") return {ic:"🎬", txt:"Apertura"};
   if(tipo==="esito")    return {ic:"🏁", txt:"Esito"};
-  if(tipo==="peccato")  return {ic:"🃏", txt:"Il peccato emerge"};
   return {ic:"➕", txt:"Novità"};   // giocata nel piatto
 }
 // Stato del log a tab. È UI pura, FUORI da G (come veloIA/iaBusy): G si replica
@@ -2304,29 +2304,38 @@ function effettoFigura(c, poi){
 }
 
 /* ================= JOLLY ================= */
+function scartaJolly(c, motivo){
+  // il Jolly esce di mano senza catturare: piatto vuoto (niente bersaglio) o scelta di resistere alla tentazione
+  const l=G.attore;
+  rimuoviDaMano(l,c,false);
+  G.scartiComuni.push(c);
+  G.svuotoConScopa=null;
+  if(motivo==="vuoto"){
+    G.ultimaGiocata=`${nomeLato(l)} scarta il Jolly: niente da catturare nel piatto vuoto.`;
+    vaiNarrazione(c,"piatto","",null,
+      `<b>Occasione mancata.</b> Il piano scorretto non trova appigli: il Jolly viene scartato e il tavolo resta com'era.`);
+  }else{
+    G.ultimaGiocata=`${nomeLato(l)} resiste alla tentazione e scarta il Jolly senza usarlo.`;
+    vaiNarrazione(c,"piatto","",null,
+      `<b>Tentazione respinta.</b> ${nomeLato(l)} rinuncia alla scorciatoia sleale: il Jolly viene scartato senza effetto, principi e lealtà restano intatti.`);
+  }
+}
 function opzioniJolly(c){
   const box=document.getElementById("pannelloAzione");
   if(G.piatto.length===0){
     box.innerHTML=`<div class="banner">Piatto vuoto: il Jolly non ha niente da catturare. Verrà semplicemente scartato, il piatto resta vuoto.</div>
       <div class="opzioni"><button id="jScarta">Scarta il Jolly</button></div>`;
-    document.getElementById("jScarta").addEventListener("click",()=>{
-      const l=G.attore;
-      rimuoviDaMano(l,c,false);
-      G.scartiComuni.push(c);
-      G.svuotoConScopa=null;
-      G.ultimaGiocata=`${nomeLato(l)} scarta il Jolly: niente da catturare nel piatto vuoto.`;
-      vaiNarrazione(c,"piatto","",null,
-        `<b>Occasione mancata.</b> Il piano scorretto non trova appigli: il Jolly viene scartato e il tavolo resta com'era.`);
-    });
+    document.getElementById("jScarta").addEventListener("click",()=>scartaJolly(c,"vuoto"));
     return;
   }
-  let html=`<div class="banner">Dichiara il valore del Jolly (1–10). Mossa <b>sleale</b>: il vantaggio sul tavolo è tuo, ma il <b>punto andrà all'avversario</b>. Narra come ottieni il successo <b>contro i principi e la lealtà</b>.</div><div class="opzioni">`;
+  let html=`<div class="banner">Dichiara il valore del Jolly (1–10). Mossa <b>sleale</b>: il vantaggio sul tavolo è tuo, ma il <b>punto andrà all'avversario</b>. Narra come ottieni il successo <b>contro i principi e la lealtà</b>. Oppure <b>resisti alla tentazione</b> e scartalo senza usarlo.</div><div class="opzioni">`;
   for(let v=1;v<=10;v++){
     const ha=combosPresa(v).length>0;
     html+=`<button data-v="${v}" ${ha?"":"disabled style='opacity:.3'"}>${v}</button>`;
   }
-  html+=`</div><div id="jollyCombos"></div>`;
+  html+=`</div><div class="opzioni" style="margin-top:8px"><button id="jResisti" class="secondaria">🛡️ Resisti alla tentazione: scarta il Jolly</button></div><div id="jollyCombos"></div>`;
   box.innerHTML=html;
+  document.getElementById("jResisti").addEventListener("click",()=>scartaJolly(c,"resisti"));
   box.querySelectorAll("button[data-v]").forEach(b=>b.addEventListener("click",()=>{
     const v=parseInt(b.dataset.v);
     const combos=combosPresa(v);
@@ -2361,32 +2370,10 @@ function giocaJolly(c, v, combo){
 }
 
 function jollyMarkerO(){
-  // §22.6: il marcatore del Jolly nel campo dell'Opposizione è la carta Jolly stessa, finita in O.scope o O.prese
+  // §22.6: marcatore del Jolly nel campo dell'Opposizione (la carta Jolly stessa, in O.scope o O.prese).
+  // Finché l'Opposizione lo possiede ha la LICENZA NARRATIVA di far emergere il peccato in una sua presa o scopa.
   const O=lato("O");
   return O.scope.find(c=>c.jolly) || O.prese.find(c=>c.jolly) || null;
-}
-function peccatoEmergeDisponibile(){
-  // terzo uso del Jolly: l'Opposizione lo spende come azione extra del proprio turno, se c'è un bersaglio nel piatto
-  return G.fase==="turno" && G.attore==="O" && !!jollyMarkerO()
-    && G.piatto.some(c=>semiLato("P").includes(c.seme));
-}
-function eseguiJollyEffetto(testoNarr){
-  if(!peccatoEmergeDisponibile()) return;
-  const O=lato("O"), marker=jollyMarkerO();
-  // consuma il marcatore del Jolly come marcatore speso → scarti comuni
-  O.scope=O.scope.filter(c=>c.id!==marker.id);
-  O.prese=O.prese.filter(c=>c.id!==marker.id);
-  G.scartiComuni.push(marker);
-  // toglie dal piatto la carta di valore più basso dei Protagonisti (♥/♠)
-  const bersagli=G.piatto.filter(c=>semiLato("P").includes(c.seme));
-  let low=bersagli[0]; for(const c of bersagli) if(c.val<low.val) low=c;
-  G.piatto=G.piatto.filter(c=>c.id!==low.id);
-  G.scartiComuni.push(low);
-  G.svuotoConScopa=null;   // non è una scopa
-  const et=(low.fig?FIGURE[low.fig].nome.charAt(0):low.val)+SIMBOLI[low.seme];
-  G.ultimaGiocata=`${nomeLato("O")} fa emergere il peccato: spende il marcatore del Jolly e toglie dal piatto ${et} dei Protagonisti.`;
-  aggiungiStoria("O", testoNarr||`Il peccato emerge: uno dei due scopre cosa ha fatto l'altro, e ${et} dei Protagonisti sparisce dal tavolo.`, {tipo:"peccato", carta:et, seme:low.seme});
-  render();
 }
 
 /* ================= FINE SCENA ================= */
@@ -2946,12 +2933,14 @@ const REGOLE={
     <h3>Ingresso e uso</h3>
     Un solo Jolly, nel <b>mazzo dei Protagonisti</b>, entra al termine della <b>seconda scena</b>. Non può essere usato nell'asta. Chi lo gioca <b>dichiara il valore (1–10)</b> e lo usa <b>solo per catturare</b> (presa o scopa).
     <h3>Mossa sleale: il punto va all'avversario</h3>
-    Il vantaggio sul tavolo è di chi gioca il Jolly (ripulisce o alleggerisce il piatto), ma il <b>marcatore va all'avversario</b>: una presa col Jolly = <b>1 punto all'avversario</b>, una scopa = <b>3 punti all'avversario</b>.
+    Il vantaggio sul tavolo è di chi gioca il Jolly (ripulisce o alleggerisce il piatto), ma il <b>marcatore va all'avversario</b>: una presa col Jolly = <b>1 punto all'avversario</b>, una scopa = <b>3 punti all'avversario</b>. Il marcatore è una risorsa normale dell'Opposizione: vale i suoi punti al conteggio finale e si può spendere al mercato.
     <h3>Vincolo narrativo</h3>
-    Si narra sempre un successo ottenuto <b>andando contro i principi e la lealtà</b>.
+    Si narra sempre un successo ottenuto <b>andando contro i principi e la lealtà</b>. A macchiarsi del peccato è <b>uno solo dei due protagonisti</b>, e <b>all'insaputa dell'altro</b>: una ricaduta nei vecchi vizi.
     <div class="es">"Kai minaccia il teste con informazioni false per farlo parlare — tecnicamente illegale, sicuramente efficace."</div>
-    <h3>Piatto vuoto</h3>
-    Se a piatto vuoto resta solo il Jolly, viene <b>scartato</b> senza effetto e il piatto resta vuoto.`},
+    <h3>Resistere alla tentazione</h3>
+    Usare il Jolly non è obbligatorio: invece di giocarlo puoi <b>scartarlo senza effetto</b>, rinunciando al vantaggio sleale. (Anche a piatto vuoto, dove non c'è nulla da catturare, il Jolly viene scartato senza effetto e il piatto resta com'era.)
+    <h3>Il peccato emerge (narrativo)</h3>
+    Finché l'Opposizione <b>possiede il marcatore del Jolly</b>, in una sua qualsiasi presa o scopa può far <b>emergere nella narrazione il peccato</b> che uno dei protagonisti ha commesso col Jolly all'insaputa dell'altro — l'inganno, il torbido compromesso — per creare divisione tra loro e rendere il momento più drammatico. È <b>solo narrazione</b>: non cambia punti né carte.`},
   pitch:{titolo:"Risorse del pitch",html:`
     <h3>Spinte e tratti (9.5–9.6)</h3>
     I due <b>"cosa si detestano"</b> sono <b>tratti dei protagonisti</b>: solo narrativi, senza effetto in gioco. Le <b>spinte</b> sono <b>otto, due per seme</b>: motivazione e asso di ciascun protagonista (♠ e ♥) più, dall'Opposizione, mezzi e movente (♦) e catastrofi e crepe (♣). Le risposte delle spinte <b>diventano risorse di gioco</b>.
@@ -3198,7 +3187,7 @@ MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Ordine: prima com
 - Re (costo 8, valore 10): scambi una carta della mano con una degli scarti comuni dello stesso seme.
 Ogni figura che compri è un PNG: dalle subito un nome e un breve ruolo (chi è), e richiamalo quando giochi quella carta e quando narri (il suo effetto meccanico è ciò che quel personaggio fa nella storia). Più in generale, ogni elemento rilevante che introduci (un nemico, un alleato, un luogo, un oggetto) con una sua volontà e un ruolo da seguire è un «Qualcuno»: dagli un nome se conta per il seguito, altrimenti resta una comparsa.
 
-JOLLY: un solo Jolly, solo nel mazzo dei Protagonisti, entra dopo la 2ª scena. Tu non lo possiedi mai. Chi lo gioca dichiara il valore e cattura, ma il marcatore va all'AVVERSARIO (presa 1, scopa 3 all'altro lato): se i Protagonisti lo usano, quel punto va a te. Si narra come un vantaggio ottenuto contro i propri principi.
+JOLLY: un solo Jolly, solo nel mazzo dei Protagonisti, entra dopo la 2ª scena. Tu non lo giochi mai (sta nel loro mazzo). Chi lo gioca dichiara il valore e cattura, ma il marcatore va all'AVVERSARIO (presa 1, scopa 3 all'altro lato): se i Protagonisti lo usano, quel marcatore (1 o 3 punti) entra nel TUO campo come risorsa normale — vale al conteggio finale e lo puoi spendere al mercato. I Protagonisti possono anche resistere alla tentazione e scartarlo senza usarlo. A macchiarsi del peccato è UNO SOLO dei due protagonisti, all'insaputa dell'altro. IL PECCATO EMERGE (narrativo): finché possiedi il marcatore del Jolly, in una tua qualsiasi presa o scopa puoi far emergere nella narrazione quel peccato (l'inganno, il torbido compromesso che uno dei due ha commesso di nascosto), per creare divisione tra loro e drammatizzare. È solo narrazione, non cambia punti né carte.
 
 RISORSE DEL PITCH (spinte): sono otto, due per seme (le tue sono ♦ e ♣). Dopo una presa normale puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e le carte rimaste nel piatto finiscono tra le tue prese. La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola; massimo una spinta per seme per lato; VIETATA nell'ultima scena. (I tratti "cosa i protagonisti si detestano" sono solo narrativi, non spinte.)
 
@@ -3327,7 +3316,10 @@ function regSemeTxt(seme){
     : "";
 }
 function istruzNarrBase(){
-  return `Hai appena agito: "${G.ultimaGiocata||""}". ${regSemeTxt(G.narr&&G.narr.seme)} Narra la mossa in 1-2 frasi, in italiano, dal punto di vista dell'Opposizione, coerente con la storia finora.`;
+  const peccato = (G.narr && (G.narr.tipo==="presa"||G.narr.tipo==="scopa") && jollyMarkerO())
+    ? ` Possiedi il marcatore del Jolly: in questa presa o scopa PUOI far emergere il peccato dei Protagonisti (l'inganno, il torbido compromesso che uno dei due ha commesso col Jolly all'insaputa dell'altro) per creare divisione tra loro e rendere il momento più drammatico. È solo narrazione, non cambia punti né carte; usalo quando dà più tensione alla storia.`
+    : "";
+  return `Hai appena agito: "${G.ultimaGiocata||""}". ${regSemeTxt(G.narr&&G.narr.seme)} Narra la mossa in 1-2 frasi, in italiano, dal punto di vista dell'Opposizione, coerente con la storia finora.${peccato}`;
 }
 function istruzApertura(){
   return `Hai vinto l'iniziativa: APRI LA SCENA. Scegli un titolo evocativo (2-4 parole) e dichiara la posta (cosa succede se va male per i Protagonisti), coerenti con la missione e con la fase narrativa.`;
@@ -3452,13 +3444,6 @@ async function iaApertura(){
 
 async function iaTurno(){
   iaBusy=true;
-  // §22.6: come azione aggiuntiva, l'Opposizione può spendere il marcatore del Jolly per far emergere il peccato
-  if(peccatoEmergeDisponibile()){
-    const low=G.piatto.filter(c=>semiLato("P").includes(c.seme)).reduce((a,c)=>c.val<a.val?c:a);
-    const et=(low.fig?FIGURE[low.fig].nome.charAt(0):low.val)+SIMBOLI[low.seme];
-    const r=await chiamaClaude(`Hai il marcatore del Jolly che i Protagonisti ti hanno lasciato. Come AZIONE AGGIUNTIVA del tuo turno puoi spenderlo per far EMERGERE IL PECCATO: togli dal piatto la carta di valore più basso dei Protagonisti, ora ${et}, e racconti che uno dei due scopre cosa ha fatto l'altro. Consuma il marcatore, che non varrà più punti. Conviene se ti aiuta a ribaltare la posta della scena o se è il momento giusto nella storia.\nJSON: {"usa": true/false, "narrazione":"..."}`);
-    if(r&&r.usa===true){ iaBusy=false; eseguiJollyEffetto((r&&r.narrazione)||null); return; }
-  }
   // ritirata strategica / resa onorevole: con una sola carta e senza iniziativa, l'Opposizione può cedere la scena
   if(ritirataDisponibile()){
     const vs=ritirataVarianti("O");

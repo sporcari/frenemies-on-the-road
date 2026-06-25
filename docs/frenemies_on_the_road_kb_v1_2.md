@@ -563,23 +563,21 @@ Chi gioca il Jolly conserva comunque il vantaggio di scena (se la scopa svuota i
 
 ### 22.4 — Vincolo narrativo
 
-Si narra sempre un successo ottenuto **andando contro i principi e la lealtà**.
+Si narra sempre un successo ottenuto **andando contro i principi e la lealtà**. A macchiarsi del peccato è **uno solo dei due protagonisti**, e **all'insaputa dell'altro**: è una ricaduta nei vecchi vizi, un passo indietro nel suo percorso di crescita.
 
 > **Esempio:** Frank usa il Jolly come 9 per fare presa. Narra: "Frank agita un fascicolo falso sotto il naso del sergente dell'archivio: o collabora, o il suo nome ci finisce dentro." Il vantaggio è suo, ma quel punto, contabilmente, va all'Opposizione.
 
-### 22.5 — Caso limite: Jolly su piatto vuoto *(v1.3)*
+### 22.5 — Scarto del Jolly: resistere alla tentazione *(v1.25)*
 
-Se un giocatore ha in mano solo il Jolly e il piatto è vuoto: il Jolly viene **scartato** senza effetto e il piatto resta vuoto.
+Usare il Jolly non è obbligatorio. Chi lo ha in mano può **scartarlo senza effetto**, rinunciando al vantaggio sleale: è la scelta di **resistere alla tentazione**. Lo stesso vale, per forza, quando il piatto è vuoto e il Jolly non ha nulla da catturare *(v1.3)*: viene scartato senza effetto e il piatto resta com'era.
 
-### 22.6 — Il peccato emerge: il marcatore del Jolly all'Opposizione *(v1.5)*
+### 22.6 — Il peccato emerge: la licenza narrativa dell'Opposizione *(v1.25)*
 
-Quando i Protagonisti giocano il Jolly (§22.3), il marcatore che ne nasce entra nel campo dell'Opposizione come una sua normale presa (1 punto) o scopa (3 punti): è una risorsa spendibile a tutti gli effetti. L'Opposizione può darle uno solo di tre destini: spenderla al mercato per concorrere all'acquisto di una figura, tenerla fino al conteggio finale dove vale i suoi punti, oppure usarla come effetto.
+Quando i Protagonisti giocano il Jolly (§22.3), il marcatore che ne nasce entra nel campo dell'Opposizione come una sua normale presa (1 punto) o scopa (3 punti): è una risorsa a tutti gli effetti, che l'Opposizione può **tenere fino al conteggio finale**, dove vale i suoi punti, oppure **spendere al mercato** per concorrere all'acquisto di una figura.
 
-L'effetto si attiva nel turno dell'Opposizione, come **azione aggiuntiva** alla giocata o alla presa normale (non la sostituisce): l'Opposizione consuma il marcatore e **toglie dal piatto la carta di valore più basso tra quelle dei Protagonisti** (Cuori o Picche), che finisce negli **scarti comuni**. Si usa una sola volta, da quando il Jolly è stato giocato e in un turno di qualunque scena, **compreso il round della quinta, ma non durante i colpi di scena**. Se nel piatto non c'è nessuna carta dei Protagonisti l'effetto non è attivabile, perché manca il bersaglio.
+Il peccato compiuto resta, ma solo in **chiave narrativa**. Finché l'Opposizione **possiede il marcatore del Jolly**, in una sua qualsiasi presa o scopa può far **emergere nella narrazione il peccato** che uno dei protagonisti ha commesso col Jolly all'insaputa dell'altro: l'inganno, il torbido compromesso. È **solo narrazione** e non cambia punti né carte: serve a **creare divisione tra i protagonisti** e a rendere il momento ancora più drammatico.
 
-Narrativamente è il momento in cui il compromesso torna a galla: uno dei due protagonisti scopre cosa ha fatto l'altro, e fra loro si apre un conflitto. Il vantaggio sleale preso in una scena si paga più avanti, sia sul tavolo (una carta dei Protagonisti in meno nel piatto può ribaltare la posta di quella scena) sia nel rapporto.
-
-> **Esempio:** a fine scena 4 i totali sono vicini. Nel suo turno l'Opposizione cala la sua carta e in più spende il marcatore del Jolly, togliendo dal piatto il 2♥ dei Protagonisti, il più basso. Narra che davanti a Skunk emerge una vecchia spiata di Frank: la posta della scena si ribalta e in macchina cala il gelo.
+> **Esempio:** a fine scena 4 l'Opposizione fa una presa e, avendo ancora in campo il marcatore del Jolly, ne approfitta per far affiorare il vecchio compromesso: davanti a Otto emerge cosa ha fatto Vera con il Jolly. La presa vale comunque solo il suo punto, ma fra i due cala il gelo.
 
 ---
 
@@ -943,6 +941,12 @@ Una partita vera a 2 giocatori con lo scenario demo (§33): Paola gioca i Protag
 
 # REGISTRO MODIFICHE
 
+## v1.25 (giugno 2026) — il Jolly semplificato: il peccato che emerge è solo narrativo
+
+1. **§22.6: il «peccato emerge» diventa una licenza puramente narrativa.** Rimosso il **terzo uso** meccanico del marcatore del Jolly (la v1.5, che lo spendeva come azione aggiuntiva per togliere dal piatto la carta più bassa dei Protagonisti). Ora il marcatore del Jolly è una **risorsa normale** dell'Opposizione: vale i suoi punti al conteggio finale (presa 1, scopa 3) o si spende al mercato, niente più effetto sul tavolo. Il peccato resta, ma solo in chiave narrativa: **finché l'Opposizione possiede il marcatore del Jolly**, in una sua qualsiasi presa o scopa può far emergere nella narrazione il compromesso commesso dai Protagonisti, per creare divisione tra loro e drammatizzare. Non cambia punti né carte. Motivazione (dal designer): semplificare il Jolly, togliendo un'eccezione meccanica poco usata e tenendone solo la carica drammatica. Precisato anche il **vincolo narrativo** (§22.4): a macchiarsi del peccato è **uno solo dei due protagonisti, all'insaputa dell'altro** (una ricaduta nei vecchi vizi), ed è questo che l'Opposizione fa riaffiorare.
+2. **§22.5: scarto volontario del Jolly («resistere alla tentazione»).** Usare il Jolly non è più solo un obbligo o un caso limite: chi lo ha in mano può **scartarlo senza effetto** anche con carte da catturare, rinunciando al vantaggio sleale. Il caso del piatto vuoto (v1.3) resta come istanza forzata dello stesso scarto.
+3. **Propagazione.** `index.html`: rimossi `peccatoEmergeDisponibile`/`eseguiJollyEffetto`, il pulsante `#btnPeccato` in `rTurno`, la chiamata IA in `iaTurno` e la voce `tipo:"peccato"` di `mossaInfo`; `jollyMarkerO()` resta come predicato della licenza narrativa. Aggiunto lo scarto volontario in `opzioniJolly` (helper `scartaJolly`) e la licenza narrativa in `suggerimento` (lato O) e `istruzNarrBase` (prompt IA). Aggiornati `REGOLE` e `REGOLE_IA`. Manuale: §5.2 (scarto/resistere) e §5.3 (peccato narrativo) riscritti, glossario «Marcatore del Jolly» aggiornato. Rimosso `test/test_peccato.js` (collaudava il meccanismo soppresso). L'esempio canonico (§34/Appendice B, transcript seed 23/43/5) non usa l'effetto rimosso e i punti del Jolly non cambiano: il transcript resta invariato.
+
 ## v1.24 (giugno 2026) — il secondo piano del finale si chiama «Crescita», non «prestigio»
 
 1. **§26: rinominato il secondo piano del finale in «Crescita».** Il piano dei punti **non spesi** non si chiama più «prestigio» (termine ora declassato a una delle interpretazioni possibili) ma **Crescita**, allineandosi al manuale del giocatore che già lo chiamava così. Aggiunta la **definizione**: i punti non spesi misurano quanto i personaggi di un lato sono cresciuti lungo il viaggio (pochi punti = crescita modesta); che cosa sia questa crescita ha un margine di interpretazione del giocatore (maturazione, evoluzione interiore, reputazione e prestigio); e il **seme** delle carte con cui si sono fatti i punti dà un indizio di che cosa sia cresciuto di più, confrontando i **due semi del proprio lato** (Cuori vs Picche per i Protagonisti, Quadri vs Fiori per l'Opposizione). Aggiornata di conseguenza la domanda di fine partita §26.1 («sono cresciuti o hanno accresciuto il loro prestigio?» → «sono cresciuti?»). Propagato a manuale: definizione sintetica in §1.9 (panoramica «Come finisce?»), definizione estesa con la lettura per seme nella nuova sezione **§7.2 «Crescita»** (con relativo slittamento §7.2→§7.3 esiti, §7.3→§7.4 domande, §7.4→§7.5 epilogo), e domanda di fine partita §7.4; più `REGOLE` e `REGOLE_IA` in `index.html`. Il motore non usa la parola: nessun effetto sul codice.
@@ -1085,4 +1089,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.24*
+*Frenemies on the Road — Knowledge Base v1.25*

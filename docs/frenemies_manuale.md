@@ -37,6 +37,10 @@
 
 # Capitolo 1. Benvenuto a bordo: una panoramica generale
 
+
+«Se fallisci tu ci penso io. Se fallisco io ci pensi tu.» «E se falliamo tutti e due?» «Saranno cazzi amari!» (Die Hard - Duri a morire)
+{: .citazione } 
+
 ## 1.1 Che cos'è Frenemies on the Road
 
 Frenemies on the Road è uno story-game in cui i giocatori creano insieme una storia, giocando una partita a carte ispirata alla scopa che li vede in competizione su due fronti: Protagonisti e Opposizione. Il voler vincere ogni scena genera la tensione narrativa, creando di continuo nuove difficoltà tra i Protagonisti e la loro missione, il cui esito resta in bilico fino all'ultima carta. È un gioco insieme collaborativo e competitivo, e questa apparente contraddizione è proprio il cuore di Frenemies on the Road.
@@ -45,7 +49,7 @@ Si gioca in due, oppure in tre o in quattro: la partita resta sempre un lato con
 
 ## 1.2 La fiction di riferimento
 
-Il gioco vive nello stesso territorio di certi film: coppie mal assortite, gettate insieme dentro una pressione che cresce a ogni chilometro.
+Il gioco vive nello stesso territorio di certi film: coppie mal assortite, gettate insieme dentro una pressione che cresce a ogni chilometro. Una categoria trasversale che può rientrare sia nella definizione di road-movie che il buddy-movie.
 
 | Film | Tema dominante |
 |---|---|
@@ -188,6 +192,10 @@ In breve, fase per fase:
 
 # Capitolo 2. Prima di partire: il pitch
 
+«Sono 106 miglia a Chicago. Abbiamo il serbatoio pieno, mezzo pacchetto di sigarette, è buio, e indossiamo tutti e due gli occhiali da sole.»
+«Vai!» (The Blues Brothers)
+{: .citazione }
+
 Prima di giocare la prima scena si pongono le basi della storia che si andrà a creare: i Protagonisti, la loro missione, l'Opposizione.
 
 Se vuoi un esempio completo e pronto all'uso, in appendice troverai diversi playset con dei pitch pronti per l'uso.
@@ -199,9 +207,6 @@ Per prima cosa scegliete un genere di riferimento della giocata: action, polizie
 N.B. Ovviamente se la narrazione di un giocatore viene ritenuta per qualche motivo eccessiva o sgradevole o fuori dal tono e dal genere, gli altri possono farlo presente.
 
 ## 2.2 La Missione
-
-Siamo in missione per conto di Dio. (Elwood Blues - The Blues Brothers)
-{: .citazione }
 
 Ovvero il traguardo che i protagonisti devono raggiungere insieme, la cui definizione deve essere chiara, urgente e definitiva. Deve implicare una scadenza o un'occasione irripetibile: se i protagonisti falliscono entro la fine della storia, l'occasione è persa per sempre.
 
@@ -219,9 +224,6 @@ Se siete a corto di idee pensate al 90% dei blockbuster di Hollywood e vedrete c
 Parlate al tavolo e fate un rapido brainstorming, ma non bloccatevi alla ricerca della missione perfetta. Pensate semplice e ricordate che quello che conta è il viaggio.
 
 ## 2.3 La coppia dei protagonisti
-
- Tu hai due sole emozioni: il silenzio e la rabbia.(Jonathan Mardukas - Midnight Run)
-{: .citazione }
 
 Come abbiamo già detto è necessario stabilire chi siano i due protagonisti: chi è il personaggio Picche e chi è il personaggio Cuori. La coppia deve avere tre ingredienti:
 
@@ -241,11 +243,7 @@ Inoltre rispondete alle seguenti domande
 2. Cosa il Cuori detesta di Picche?
 
 
-
 ## 2.4 L'Opposizione
-
-Lo trasformerò in una pulce, una piccola pulce innocua, e poi metterò quella pulce in una scatola, e poi metterò quella scatola dentro un'altra scatola, e poi la spedirò a me stesso, e quando arriverà... la romperò con un martello! Oppure, per risparmiare sulle spese di spedizione, lo avvelenerò con questo! (Yzma - Le follie dell'imperatore)
-{: .citazione }
 
 Prima di passare alle domande, decidete contro chi e contro che cosa viaggiano i protagonisti. Sono due cose distinte, una per seme:
 
@@ -263,11 +261,9 @@ Fate un brainstorming e siate precisi soprattutto nello stabilire i nemici (Quad
 
 ## 2.5 Le spinte dei Protagonisti
 
-Ci sono 246 stuzzica-denti per terra. (Raymond - Rain Man)
-{: .citazione }
-
 Le risposte alle seguenti domande diventano che potrete spendere meccanicamente in gioco per dare una Spinta alla vostra azione permettendovi di trasformare una normale Presa in una Scopa, purché le inseriate e le mostriate nella vostra narrazione. Nel resto del manuale queste risorse verranno chiamate Spinte.
 Due appartengono al personaggio Picche, due al personaggio Cuori.
+Per ogni seme una spinta riguarda la motivazione per Protagonista che deve assolutamente compiere la missione, mentre l'altra riguarda le sue doti o capacità che possono risultare determinanti.
 
 3. Perché per il personaggio Picche è importante la missione? (spinta Picche)
 4. Perché per il personaggio Cuori è importante la missione? (spinta Cuori)
@@ -276,10 +272,12 @@ Due appartengono al personaggio Picche, due al personaggio Cuori.
 
 ## 2.6 Le spinte dell'Opposizione
 
-Perché non gli spari adesso? Voglio dire, vado a prendere una pistola. Gli spareremo insieme. Sarà divertente. Bang! Morto. Fatto (Scott Male -Austin Powers)
-{: .citazione }
-
 Poi sono i Protagonisti a interrogare l'Opposizione. Quattro domande, e tutte e quattro diventano saranno risorse spendibili come Spinta: due di Quadri, due di Fiori.
+Qui le domande servono a stabilire per quanto riguarda Quadri quali sono le risorse dei Nemici e le motivazioni che li spingono contro i Protagonisti.
+
+Riguardo ai fiori invece si inizia a pensare a quali potrebbero essere le catastrofi e i contrattempi: Tempeste, Epidemie, Scioperi dei trasporti, Uragani, Ambiente ostile, Un veicolo che continua a rompersi. Non considerate questa risposta come un limite, ma come un modo per iniziare a fare brainstorming. Se durante la partita vi viene in mente qualsiasi altra cosa che rientra nella categoria Caos/Sfortuna potete usarlo.
+
+L'ultima domanda è la più atipica, infatti negli elementi a disposizione di Fiori, c'è anche il più grande conflitto irrisolto tra i protagonisti e stabilirlo ora mette sul tavolo la proverbiale pistola di Checkov, pronta a sparare al momento giusto e a tramutarsi in una scopa, nel momento più drammatico.
 
 1. Quali sono i mezzi, i metodi o le armi più temibili della fazione nemica? (Quadri)
 2. Perché l'Opposizione deve assolutamente impedire ai protagonisti di ottenere ciò che vogliono? (Quadri)
@@ -287,9 +285,6 @@ Poi sono i Protagonisti a interrogare l'Opposizione. Quattro domande, e tutte e 
 4. Che cosa i protagonisti non hanno considerato, e potrebbe far saltare la loro alleanza? (Fiori)
 
 ## 2.7 La prima difficoltà
-
-1,21 gigowatt?! 1,21 gigowatt?!!! Bontà divina! (Doc - Ritorno al futuro)
-{: .citazione }
 
 Dopo le due serie di domande, tutto il tavolo risponde insieme a un'ultima domanda:
 
@@ -301,6 +296,12 @@ Nello scenario demo la prima difficoltà è che il taccuino di Aldo Falco, l'uni
 {: .esempio }
 
 # Capitolo 3. Come si gioca una scena
+
+«Ma perché?»
+«Mamma mia, ma perché, è na regola, è a regola d'o gioco, che dice proprio così non si può piglia'.»
+«Mario, andiamo dai.»
+«Mamma mia, ma nemmeno a scopa...» (Non ci resta che piangere)
+{: .citazione }
 
 Questo è il cuore del gioco. Una scena è un round, e ogni round segue sempre la stessa sequenza: si pesca, si fa l'asta per l'iniziativa, chi vince apre la scena e ne fissa la posta, poi i due lati si alternano giocando carte, facendo prese e tentando scope, finché la mano finisce. Vediamo ogni passaggio.
 
@@ -326,9 +327,6 @@ Vinta l'asta per l'iniziativa, una scena si gioca così:
 <!-- DIAGRAMMA: flusso-scena -->
 
 ## 3.2 I rudimenti della scopa
-
-Mamma mia... ma neanche 'a scopa capisce! (Non ci resta che piangere)
-{: .citazione }
 
 Frenemies si gioca su una versione essenziale della scopa, e bastano poche regole per partire. A turno ogni lato cala una carta su un'area di gioco comune, che qui chiamiamo il piatto. Se la carta che giochi può catturare delle carte già nel piatto, le prendi e le metti da parte come tue: è una presa. Si cattura per valore: una carta prende una carta di pari valore (un 7 prende un 7), oppure un gruppo di carte la cui somma fa il suo valore (un 7 prende un 4 e un 3 insieme). Se non c'è niente da catturare, la carta viene aggiunta al piatto. E se una presa svuota del tutto il piatto, è una scopa: il colpo grosso.
 
@@ -509,9 +507,6 @@ C'è un caso particolare. Una figura giocata quando il piatto è già vuoto non 
 
 ## 3.10 Darsi una spinta
 
-Verso l'infinito ed oltre! (Buzz Lightyear - Toy Story)
-{: .citazione }
-
 Vi ricordate le domande che erano state fatte ai Protagonisti e all'Opposizione durante il pitch?
 
 Ecco a che cosa servono. Dopo una presa normale, il giocatore può spuntare una Spinta corrispondente al seme della carta che ha appena giocato: in quel momento la presa diventa una scopa a tutti gli effetti. La carta di presa viene marcata come scopa e vale 3 punti.
@@ -598,6 +593,9 @@ In tutti i casi vale lo stesso principio: la vittoria apre nuovi problemi, la sc
 
 # Capitolo 4. Tra una scena e l'altra: il mercato
 
+«A me interessa quanto ci possono fruttare le nostre pancette di maiale.» (Una poltrona per due)
+{: .citazione }
+
 Tra una scena e l'altra si apre il mercato, dove si spendono i punti accumulati per comprare le figure: Fante, Regina e Re. Le figure sono carte forti, con effetti speciali, e allo stesso tempo sono alleati o personaggi importanti della storia.
 
 ## 4.1 L'ordine corretto del mercato
@@ -653,49 +651,59 @@ Paola ha solo il fante in mano, nel piatto c'è un 10 di quadri che non può pre
 
 # Capitolo 5. Il Jolly
 
-Il Jolly è lo strumento del compromesso morale. È uno solo, sta nel mazzo dei Protagonisti, e si aggiunge al termine della seconda scena. Da quel momento ogni pescata dei Protagonisti può portare in mano la tentazione di una scorciatoia.
+«Sei tu che hai mentito per primo!»
+«No, sei tu che hai mentito per primo!»
+«Sì, sì, ho mentito io per primo, ma tu non sapevi che mentivo riguardo alla mia paura di volare; e al fiume, quando mi hai mentito, per quel che ne sapevi tu, stavi mentendo tu per primo!»
+«Ma non si può discutere, non so neanche di che cavolo parla.» (Prima di mezzanotte)
+{: .citazione }
 
-## 5.1 Come si usa
+Il Jolly è lo strumento del compromesso morale. Rappresenta il trope della tentazione che colpisce uno dei protagonisti nell'indulgere in comportamenti sbagliati che fanno parte del suo passato.
+Infatti, tipicamente in questo genere di storie si vede che uno dei due protagonisti, grazie alla collaborazione ha una sorta di evoluzione rispetto ai difetti che aveva all'inizio. Usare il Jolly per risolvere un problema in un certo senso riporta il personaggio al punto di partenza, sul suo percorso di evoluzione, facendolo regredire e portandolo a mostrare il suo lato peggiore.
+
+Il Jolly è uno solo, sta nel mazzo dei Protagonisti e si aggiunge al termine della seconda scena. Da quel momento ogni pescata dei Protagonisti può portare in mano la tentazione di questa drammatica scorciatoia.
+
+## 5.1 Come si usa meccanicamente
 
 - Il Jolly non si può usare nell'asta d'inizio scena.
 - Chi lo gioca decide quale valore assume, da 1 a 10.
 - Serve solo per catturare: fa una presa, e se quella presa svuota il piatto è una scopa.
+- Oppure i protagonisti possono resistere alla tentazione, semplicemente scartandolo.
 
-## 5.2 La mossa sleale: il punto va all'avversario
+## 5.2 I demoni del passato
 
-Qui sta il cuore del Jolly. Dà a chi lo gioca il vantaggio sul tavolo (ripulisce o alleggerisce il piatto), ma il suo marcatore va nel campo dell'avversario:
+Se il Jolly viene usato per fare una presa o una scopa ottiene un vantaggio immediato per la scena, ma il suo marcatore dei punti va nel campo dell'avversario:
 
 - una presa con il Jolly vale 1 punto all'avversario;
 - una scopa con il Jolly vale 3 punti all'avversario.
 
-Chi gioca il Jolly tiene comunque il vantaggio di scena, e se la scopa svuota il piatto a fine scena vince la posta. Ma regala i punti. Il costo è immediato e non si può aggirare.
-
-Narrativamente, si racconta sempre un successo ottenuto andando contro i propri principi e la propria lealtà.
+Narrativamente, si racconta sempre un successo ottenuto andando contro i propri principi, come la propria lealtà verso l'altro protagonista sia venuta meno o come sia tornato ai suoi vecchi vizi.
+E' importante ricordare che solo uno dei due Protagonisti si macchia del peccato e all'insaputa dell'altro.
 
 Il giocatore usa il Jolly come 9 per fare scopa e racconta: "Vera infrange la promessa di restare sobria e lontana dai guai: sfida Ulrich e i suoi sgherri a una gara di cicchetti e quando sono tutti ubriachi riesce a rubare la chiave del magazzino." E' evidente che questa cosa avrà conseguenze a partire dalla sbornia da smaltire il giorno dopo e che sarà difficile nascondere.
 {: .esempio }
 
-Il vantaggio è suo, ma quel punto, sul tabellino, va all'Opposizione. 
+Il vantaggio è suo, ma quel punto, sul tabellino, va all'Opposizione. Il marcatore finito nel campo dell'Opposizione è una risorsa come le altre: vale i suoi punti al conteggio finale e si può spendere al mercato per comprare una figura.
 
-C'è un caso limite: se un giocatore ha in mano solo il Jolly e il piatto è vuoto, il Jolly si scarta senza effetto e il piatto resta vuoto.
+## 5.3 Resistere alla tentazione
 
-## 5.3 Il peccato emerge: l'Opposizione spende il marcatore
+Usare il Jolly, però, non è obbligatorio. Chi lo ha in mano può anche resistere alla tentazione e scartarlo senza effetto, rinunciando al vantaggio immorale: nessuno paga niente, e i principi restano intatti. Lo stesso vale, per forza, nel caso limite del piatto vuoto, dove non c'è nulla da catturare: il Jolly si scarta senza effetto e il piatto resta com'era.
 
-Il marcatore che il Jolly regala all'Opposizione è una risorsa normale, spendibile come ogni altra: l'Opposizione può tenerlo per comprare una figura al mercato, conservarlo fino al conteggio finale dove vale i suoi punti, oppure usarlo come effetto. Sceglie uno solo di questi tre destini.
+Il giocatore che scarta il Jolly deve narrare come il personaggio sia stato tentato di cadere nel peccato, ma come poi alla fine abbia resistito.
+Anche questo crea un momento narrativamente interessante, che stabilisce in modo fattuale l'evoluzione del personaggio.
 
-L'effetto funziona così. Nel proprio turno, come azione aggiuntiva alla giocata o alla presa normale (non in sostituzione), l'Opposizione consuma il Jolly e toglie dal piatto la carta di valore più basso tra quelle dei Protagonisti, Cuori o Picche, che finisce negli scarti comuni. Si usa una sola volta, da quando il Jolly è stato giocato, in un turno di qualunque scena, compreso il round della quinta, ma non durante i colpi di scena. Se nel piatto non c'è nessuna carta dei Protagonisti, l'effetto non è attivabile, perché manca il bersaglio.
+## 5.4 Il peccato emerge
 
-È il momento in cui il peccato torna a galla: uno dei due protagonisti scopre cosa ha fatto l'altro, e fra loro si apre un conflitto. Il vantaggio sleale preso in una scena si paga più avanti, sia sul tavolo (una carta dei Protagonisti in meno nel piatto può ribaltare la posta), sia nel rapporto.
+Il peccato compiuto diventa un'arma narrativa nelle mani dell'Opposizione. Finché l'Opposizione possiede il marcatore del Jolly, in una sua qualsiasi presa o scopa può far emergere nella narrazione quel peccato: l'inganno, la scorciatoia sleale, il torbido patto che uno dei protagonisti ha compiuto all'insaputa dell'altro. È solo narrazione, non cambia punti né carte; serve a creare divisione tra i due protagonisti e a rendere il momento ancora più drammatico.
 
-A fine quarta scena i totali sono vicini. Nel suo turno l'Opposizione cala la sua carta e in più spende il marcatore del Jolly, togliendo dal piatto il 2 di Cuori dei Protagonisti, il più basso. 
-L'indomani, quando Otto bussa alla camera di Vera per chiamarla, la trova ancora addormentata e incapace di reggersi in piedi. 
-{: .esempio }
 
 ---
 
 # Capitolo 6. L'ultima scena
 
-La quinta scena, la Risoluzione, si gioca come le altre, ma con alcune regole in più che la rendono il momento decisivo della partita.
+Ora Skynet lo teniamo per le palle (Terminator 2 - Il giorno del giudizio)
+{: .citazione }
+
+La quinta scena, la Risoluzione, si gioca come le altre, ma con alcune regole in più che la rendono il momento più intenso e imprevedibile della partita.
 
 ## 6.1 La selezione della mano finale e delle riserve
 
@@ -741,6 +749,11 @@ La seconda cosa che si determina è chi ha vinto ai punti complessivi. Ma di com
 ---
 
 # Capitolo 7. Il finale
+
+«Chi pensava di morire combattendo fianco a fianco a un Elfo?»
+«E invece fianco a fianco ad un amico?»
+«Sì. Questo potrei farlo.» (Il Signore degli Anelli: il ritorno del Re)
+{: .citazione }
 
 Dopo i colpi di scena viene il finale: il momento in cui si tirano le somme. Si guarda com'è andata la missione, quanti punti ha fatto ciascun lato e quante scene ha vinto.
 
@@ -1314,8 +1327,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Mano finale estesa.** Nella quinta scena, se hai più di quattro carte nel mazzo, le prendi tutte, scegli le quattro con cui giochi la scena e tieni le altre come riserva.
 
-**Marcatore del Jolly (il peccato).** Il punto regalato all'avversario col Jolly entra nel campo dell'Opposizione come risorsa. Oltre a valere come punto, può essere speso una volta per togliere dal piatto la carta più bassa dei Protagonisti: il compromesso che torna a galla.
-
+**Marcatore del Jolly (il peccato).** Il punto regalato all'avversario col Jolly entra nel campo dell'Opposizione come risorsa normale (vale al conteggio, spendibile al mercato). Finché l'Opposizione lo possiede, in una sua presa o scopa può far emergere nella narrazione il compromesso commesso dai Protagonisti: il peccato che torna a galla. Solo narrazione, nessun effetto su punti o carte.
 **Mercato.** La fase tra una scena e l'altra: prima si comprano le figure (che entrano nel mazzo), poi, se hai comprato, si rimescola, infine si pesca la nuova mano. Si paga con i punti delle prese e delle scope.
 
 **Missione.** Lo scopo della partita: l'obiettivo dei protagonisti, chiaro e con una scadenza. Se falliscono entro la fine della storia, l'occasione è persa per sempre.
