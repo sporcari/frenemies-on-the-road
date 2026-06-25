@@ -38,6 +38,10 @@ th, td { border: 1px solid #cfcabb; padding: 5px 8px; text-align: left; vertical
 th { background: #f5e6c8; font-family: 'Oswald', 'Arial Narrow', sans-serif; }
 hr { border: none; border-top: 1px solid #ddd; margin: 16px 0; }
 ul, ol { margin: 6px 0 6px 20px; }
+/* Salti pagina: evitano che paragrafi, elenchi e tabelle si spezzino su due pagine */
+p { orphans: 3; widows: 3; page-break-inside: avoid; break-inside: avoid; }
+h2, h3, h4 { page-break-after: avoid; break-after: avoid-page; }
+ul, ol, li, blockquote, table, tr { page-break-inside: avoid; break-inside: avoid; }
 """
 
 

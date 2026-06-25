@@ -66,6 +66,16 @@ code {{ background: {SABBIA}; padding: 1px 4px; border-radius: 3px; font-size: 9
 pre {{ background: {SABBIA}; padding: 8px 10px; border-radius: 6px; }}
 blockquote {{ border-left: 3px solid {ORO_CHIARO}; margin: 8px 0; padding: 4px 12px;
         color: #555; font-style: italic; }}
+/* Citazioni "simpatiche" sotto i titoli: epigrafi in corsivo, distinte dal testo */
+p.citazione {{ font-style: italic; color: #8a7a48; margin: 4px 0 18px;
+        padding-left: 34px; position: relative; }}
+p.citazione::before {{ content: "\\201C"; position: absolute; left: 2px; top: 16px;
+        font-family: Georgia, 'Times New Roman', serif; font-size: 34pt;
+        line-height: 0; color: {ORO_CHIARO}; font-style: normal; }}
+/* Esempi: riquadro con fondino, distinto dal testo */
+.esempio {{ background: {SABBIA}; border: 1px solid {BORDO}; border-radius: 6px;
+        padding: 7px 13px; margin: 10px 0; font-size: 9.9pt;
+        page-break-inside: avoid; break-inside: avoid; }}
 table {{ border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 9.7pt; }}
 th, td {{ border: 1px solid {BORDO}; padding: 5px 8px; text-align: left; vertical-align: top; }}
 th {{ background: {CREMA}; font-family: 'Oswald','Arial Narrow',sans-serif; }}
@@ -83,8 +93,9 @@ p.azione strong {{ font-family: 'Oswald','Arial Narrow',sans-serif; color: {SCUR
 .fiction .titolo-scena {{ display: block; margin-bottom: 4px; font-family: 'Oswald','Arial Narrow',sans-serif;
         font-size: 13pt; font-weight: bold; color: {ORO}; }}
 /* Salti pagina intelligenti */
+.salto-pagina {{ page-break-before: always; break-before: page; }}
 h2, h3, h4 {{ page-break-after: avoid; break-after: avoid-page; }}
-p {{ orphans: 3; widows: 3; }}
+p {{ orphans: 3; widows: 3; page-break-inside: avoid; break-inside: avoid; }}
 ul, ol {{ page-break-inside: avoid; break-inside: avoid; }}
 li {{ page-break-inside: avoid; break-inside: avoid; }}
 blockquote {{ page-break-inside: avoid; break-inside: avoid; }}
@@ -191,7 +202,16 @@ def svg(vb_w, vb_h, body):
             f'font-family="{FONT}">{body}</svg>')
 
 
-def figura(inner, didascalia, compatta=False, verticale=False):
+def figura(inner, didascalia, compatta=False, verticale=False, larghezza_mm=None):
+    # Diagramma inline a larghezza fissa (mm), centrato: scorre col testo, niente pagina dedicata.
+    if larghezza_mm:
+        m = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', inner)
+        if m:
+            vw, vh = float(m.group(1)), float(m.group(2))
+            inner = inner.replace(
+                "<svg ", f'<svg style="width:{larghezza_mm}mm;height:{vh*larghezza_mm/vw:.1f}mm;display:block;margin:0 auto" ', 1)
+        return (f'<figure class="diagramma">{inner}'
+                f'<figcaption>{_esc(didascalia)}</figcaption></figure>')
     # I diagrammi piccoli e larghi (compatta=True) scorrono inline col testo.
     if compatta:
         return (f'<figure class="diagramma">{inner}'
@@ -434,7 +454,7 @@ def diag_flusso_partita():
     return figura(svg(W, H, "".join(parts)),
                   "La partita nel suo insieme: il pitch, le quattro scene col mercato, "
                   "l'ultima scena coi colpi di scena, il finale e l'epilogo a vignette.",
-                  verticale=True)
+                  larghezza_mm=135)
 
 
 def diag_asta():
@@ -547,8 +567,6 @@ def diag_turno():
 DIAGRAMMI = {
     "cinque-scene": diag_cinque_scene,
     "flusso-scena": diag_flusso_scena,
-    "tre-gesti": diag_tre_gesti,
-    "esiti": diag_esiti,
     "flusso-partita": diag_flusso_partita,
 }
 

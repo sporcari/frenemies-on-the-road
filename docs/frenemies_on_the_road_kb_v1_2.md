@@ -396,7 +396,7 @@ Quando la presa lascia il piatto vuoto: togli all'avversario **ogni** risorsa in
 
 > **Esempio:** Scopa con un 6 di Picche → Frank disarma i due sicari nel parcheggio nel giro di dieci secondi. La strada è libera, la situazione è ribaltata.
 
-> **Sacrificio di una figura (v1.6):** una figura giocata quando il piatto è già vuoto non può catturare nulla, così si sacrifica con un gesto eroico e vale comunque una **scopa** (il suo effetto speciale scatta lo stesso). Narrativamente è l'alleato che si immola per spalancare la strada.
+> **Sacrificio di una figura (v1.6, esteso v1.23):** una figura non resta **mai** nel piatto. Se non ha nulla da catturare si **sacrifica** e va tra le prese di chi la gioca: è una **scopa** se il piatto era vuoto (il gesto eroico che spalanca la strada), altrimenti una **presa** da 1 punto, e le carte fuori portata restano sul tavolo. In entrambi i casi l'effetto speciale della figura scatta lo stesso. Narrativamente è l'alleato che si immola.
 
 ## 16. Regole di presa
 
@@ -410,7 +410,7 @@ Le prese seguono la logica della Scopa tradizionale:
 
 **Cattura di una carta del proprio lato.** Se sei costretto a prendere una carta del tuo stesso lato (stesso schieramento), raccontalo come un'azione maldestra in cui le due anime del lato si sono ostacolate o annullate a vicenda: **Cuori e Picche** per i Protagonisti, **Fiori e Quadri** per l'Opposizione.
 
-**Cattura flessibile delle figure (v1.6).** Una figura (Fante, Regina, Re) cattura in modo più ampio di una carta numerica: prende dal piatto un gruppo di carte la cui somma è **minore o uguale** al suo valore (Fante 8, Regina 9, Re 10), comprese eventuali carte dei propri semi. Anche per le figure la cattura è obbligatoria: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 1 punto come ogni altra (vedi §17). Se invece nessuna carta del piatto è alla sua portata, la figura entra nel piatto come una giocata normale; se il piatto è vuoto si applica il sacrificio (§15.3). L'effetto speciale della figura (§21) scatta in ogni caso.
+**Cattura flessibile delle figure (v1.6).** Una figura (Fante, Regina, Re) cattura in modo più ampio di una carta numerica: prende dal piatto un gruppo di carte la cui somma è **minore o uguale** al suo valore (Fante 8, Regina 9, Re 10), comprese eventuali carte dei propri semi. Anche per le figure la cattura è obbligatoria: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 1 punto come ogni altra (vedi §17). Se invece nessuna carta del piatto è alla sua portata, la figura **non resta sul tavolo** ma si **sacrifica** (§15.3): va tra le prese di chi la gioca, come **scopa** se il piatto era vuoto, o come **presa** da 1 punto se restano carte fuori portata (che rimangono nel piatto). L'effetto speciale della figura (§21) scatta in ogni caso.
 
 ## 17. Gestione di prese e scope
 
@@ -436,6 +436,8 @@ Si sommano i valori delle carte presenti nel piatto:
 Chi ha il totale più alto vince la posta della scena.
 
 > **Scena chiusa da una scopa (v1.3):** se la scena finisce con il **piatto vuoto** perché l'ultima giocata è stata una **scopa**, la posta è vinta da **chi ha fatto la scopa**, anche se i totali del piatto sarebbero 0-0. (Vale anche per la scopa fatta col Jolly: la posta va a chi ha ripulito il piatto, mentre i 3 punti vanno all'avversario.)
+
+> **Parità dei totali (v1.22):** se i totali del piatto sono pari, con carte ancora sul tavolo, la posta è vinta da chi ha giocato l'**ultima carta** del round, cioè il lato che **non** aveva l'iniziativa. (La scopa a piatto vuoto qui sopra ne è il caso particolare: chi fa la scopa finale è proprio chi gioca l'ultima carta.) Coerente con la regola su chi narra l'esito: in parità la posta la perde il vincitore dell'asta, che quindi la racconta.
 
 **Se vincono i Protagonisti:** la posta della scena è raggiunta e i protagonisti si avvicinano alla missione.
 
@@ -595,16 +597,6 @@ Se un giocatore ha **più di 4 carte** rimanenti nel mazzo (la mano finale si sc
 
 La riserva alimenta i colpi di scena (§24), ma è anche la fonte da cui si pesca quando un effetto lo richiede e il mazzo è ormai esaurito: in particolare la Regina avversaria (§21) rimpiazza dalla riserva la carta che costringe a scartare.
 
-### 23.2 — Figure nel piatto
-
-Se all'inizio dell'ultima scena ci sono figure sul piatto:
-
-- Vengono rimosse e messe da parte coperte, dal lato del proprietario
-- L'avversario narra la neutralizzazione di quel PNG
-- Ogni alleato così sacrificato conta come **una scopa per l'avversario**
-
-Questa regola incentiva a usare attivamente le figure e a non lasciarle esposte.
-
 ## 24. Colpi di scena finali
 
 Dopo il primo conteggio dell'ultima scena si giocano i **colpi di scena**: si continua a giocare a **turni alterni** usando le carte tenute in **riserva**. Inizia il lato che sta **perdendo** (in parità, i Protagonisti; se la scena si era chiusa con una scopa a piatto vuoto, parte chi *non* l'ha fatta).
@@ -633,7 +625,7 @@ Al termine dell'ultima scena (dopo gli eventuali colpi di scena):
 
 **Tie-break (in caso di parità):**
 
-1. Si contano le scope (alleati sacrificati nell'ultima scena contano come scopa per l'avversario)
+1. Si contano le scope
 2. In ulteriore parità: si contano le prese
 
 ---
@@ -642,11 +634,11 @@ Al termine dell'ultima scena (dopo gli eventuali colpi di scena):
 
 ## 26. I quattro esiti
 
-Il finale si legge su **due piani**, la **missione** e il **prestigio**, e dal loro incrocio nascono quattro esiti.
+Il finale si legge su **due piani**, la **missione** e la **Crescita**, e dal loro incrocio nascono quattro esiti.
 
 **Primo piano, la missione.** Al termine dei colpi di scena, chi vince il piatto (Cuori + Picche contro Fiori + Quadri) ha compiuto la missione o ha fallito: è l'esito esterno della storia.
 
-**Secondo piano, il prestigio.** I punti accumulati e **non spesi** (prese + scope) non dicono se la missione è riuscita, ma quanto un lato se l'è cavata con le proprie forze. Spendere punti per comprare figure significa aver **chiamato aiuto** e dover dividere il merito; tenerli significa **essersi fatti un nome**. Il prestigio vale per entrambi i lati, con segno opposto: per i Protagonisti è una **promessa** di crescita, per l'Opposizione una **minaccia** (l'idra: per ogni testa mozzata ne ricrescono altre).
+**Secondo piano, la Crescita.** I punti accumulati e **non spesi** (prese + scope) non dicono se la missione è riuscita, ma quanto i personaggi di un lato sono **cresciuti** lungo il viaggio: pochi punti rimasti raccontano una crescita modesta, molti un cammino che ha lasciato il segno. Che cosa sia di preciso questa crescita lo decide il giocatore (la maturazione di un personaggio, una sua evoluzione interiore, oppure la reputazione e il **prestigio** che si è guadagnato), e il **seme** delle carte con cui si sono fatti i punti dà già un indizio di che cosa sia cresciuto di più: confrontando i **due semi del proprio lato**, una predominanza di Cuori indica una crescita di legame ed empatia, una di Picche una crescita di forza e affermazione (per l'Opposizione, lo stesso fra i nemici di Quadri e il caos di Fiori). Spendere punti per comprare figure significa aver **chiamato aiuto** e dover dividere il merito; tenerli significa **essersi fatti un nome**. La Crescita vale per entrambi i lati, con segno opposto: per i Protagonisti è una **promessa**, per l'Opposizione una **minaccia** (l'idra: per ogni testa mozzata ne ricrescono altre).
 
 | Missione | Punti | Esito |
 |---|---|---|
@@ -664,7 +656,7 @@ Il finale si legge su **due piani**, la **missione** e il **prestigio**, e dal l
 Oltre ai due piani, il finale si legge su **altre due dimensioni** che non entrano nella tabella ma danno voce all'epilogo: il **rapporto** tra i due protagonisti (§27.2) e il **privilegio di chi ha condotto il viaggio vincendo più scene**. Per dare voce a tutto questo, ciascun giocatore risponde alle domande che lo riguardano:
 
 - **A chi ha vinto la missione:** "I miei personaggi hanno ottenuto davvero quello che volevano?" E se non ha vinto anche ai punti, aggiunge: "Ma a che prezzo, con quale rimpianto?"
-- **A chi ha vinto il punteggio:** "In che modo i miei personaggi sono cresciuti o hanno accresciuto il loro prestigio?"
+- **A chi ha vinto il punteggio:** "In che modo i miei personaggi sono cresciuti?"
 - **A chi giocava i Protagonisti:** "Che cosa pensa ora Picche di Cuori, e viceversa? Come si è evoluto il loro rapporto?"
 - **A chi ha perso la missione ma ha vinto più scene dell'avversario,** a scelta una delle due: "Chi ha compiuto la missione ignora qualcosa: non è tutto oro quel che luccica. Che cosa gli sfugge?" oppure "Quale riscatto o consolazione i miei personaggi possono trarre da questa storia?"
 
@@ -759,7 +751,6 @@ Nell'ultima scena emergono due strategie principali che si oppongono:
 
 4. QUINTA SCENA
    ├── Mercato, poi mano estesa (più di 4 carte) → scelta di 4 + riserva
-   ├── Figure sul piatto → rimosse, neutralizzate, contano come scope avversarie
    ├── Round normale
    ├── Primo conteggio → esito apparente
    ├── Colpi di scena dalla riserva (alternati)
@@ -893,7 +884,7 @@ Tutti gli esempi di questo regolamento, e la partita d'esempio in appendice, usa
 - **Differenza evidente:** l'azione contro lo studio, l'istinto contro il metodo.
 - **Conflitto interno:** è stata la traduzione di Otto a riaprire la caccia che ha già inghiottito il padre di Vera. E Vera cerca l'artefatto per ritrovare il padre, Otto per rimediare a quello che ha scatenato.
 
-**Obiettivo finale:** prendere il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto, nella cripta di Zerzura, la città perduta sepolta dalle sabbie. La cripta si apre solo con l'eclissi, tra cinque giorni. Bisogna arrivarci prima che ci arrivi la Loggia del Basilisco: se l'artefatto finisce nei suoi caveau, nessuno lo rivedrà mai.
+**La Missione:** prendere il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto, nella cripta di Zerzura, la città perduta sepolta dalle sabbie. La cripta si apre solo con l'eclissi, tra cinque giorni. Bisogna arrivarci prima che ci arrivi la Loggia del Basilisco: se l'artefatto finisce nei suoi caveau, nessuno lo rivedrà mai.
 
 **Perché restano incollati**
 
@@ -951,6 +942,21 @@ Una partita vera a 2 giocatori con lo scenario demo (§33): Paola gioca i Protag
 ---
 
 # REGISTRO MODIFICHE
+
+## v1.24 (giugno 2026) — il secondo piano del finale si chiama «Crescita», non «prestigio»
+
+1. **§26: rinominato il secondo piano del finale in «Crescita».** Il piano dei punti **non spesi** non si chiama più «prestigio» (termine ora declassato a una delle interpretazioni possibili) ma **Crescita**, allineandosi al manuale del giocatore che già lo chiamava così. Aggiunta la **definizione**: i punti non spesi misurano quanto i personaggi di un lato sono cresciuti lungo il viaggio (pochi punti = crescita modesta); che cosa sia questa crescita ha un margine di interpretazione del giocatore (maturazione, evoluzione interiore, reputazione e prestigio); e il **seme** delle carte con cui si sono fatti i punti dà un indizio di che cosa sia cresciuto di più, confrontando i **due semi del proprio lato** (Cuori vs Picche per i Protagonisti, Quadri vs Fiori per l'Opposizione). Aggiornata di conseguenza la domanda di fine partita §26.1 («sono cresciuti o hanno accresciuto il loro prestigio?» → «sono cresciuti?»). Propagato a manuale: definizione sintetica in §1.9 (panoramica «Come finisce?»), definizione estesa con la lettura per seme nella nuova sezione **§7.2 «Crescita»** (con relativo slittamento §7.2→§7.3 esiti, §7.3→§7.4 domande, §7.4→§7.5 epilogo), e domanda di fine partita §7.4; più `REGOLE` e `REGOLE_IA` in `index.html`. Il motore non usa la parola: nessun effetto sul codice.
+2. **Bonifica:** corretto nello scenario demo §33 un residuo «Obiettivo finale:» → «La Missione:» (allineamento alla v1.19) e, nel manuale §5.3, un refuso «spende il del Jolly» → «spende il marcatore del Jolly».
+
+## v1.23 (giugno 2026) — una figura non resta mai nel piatto: si sacrifica
+
+1. **§15.3/§16: la figura senza bersaglio si sacrifica invece di entrare nel piatto.** Prima una figura che non aveva nulla da catturare (piatto con sole carte di valore superiore al suo) *entrava nel piatto* e ci restava; ora **non resta mai sul tavolo**: si **sacrifica** e va tra le prese di chi la gioca. È una **scopa** se il piatto era vuoto (gesto eroico, caso già previsto dalla v1.6), altrimenti una **presa** da 1 punto, lasciando nel piatto le carte fuori portata. Così le figure sono puri strumenti di cattura e non possono essere usate come "muri" lasciati sul tavolo. Propagato a manuale (§3 cattura figure, §6) e a `index.html` (`giocaCarta`/`opzioniFigura`/generatore mosse IA con il nuovo esito `sacrificio_presa`, `REGOLE`, `REGOLE_IA`).
+2. **§23.2 rimossa (di conseguenza).** La regola "figure rimaste nel piatto a inizio quinta scena → rimosse e contate come scopa per l'avversario" perde ogni caso d'uso: una figura non può più restare nel piatto. Tolta dalla KB (§23.2 e diagramma §29), dal manuale (§6.2, numerazione richiusa) e dal motore (fase `neutralizza`, funzione `rNeutralizza`, routing e stato `neutralizzati` eliminati). Tolto anche il riferimento agli "alleati sacrificati" nel tie-break del piatto finale (§25). Resta intatto il sacrificio a piatto vuoto = scopa (§15.3).
+3. **Bonifica `REGOLE_IA`:** corretto un residuo "la presa con figura vale 2" → **1** come ogni altra presa (allineato a §17 e alla v1.15).
+
+## v1.22 (giugno 2026) — la posta in parità va a chi gioca l'ultima carta
+
+1. **§13: parità dei totali → vince chi gioca l'ultima carta (chi non ha l'iniziativa).** Reso esplicito l'esito quando i totali del piatto sono pari con carte ancora sul tavolo: la posta va al lato che ha calato l'ultima carta del round, cioè chi non aveva l'iniziativa (prima il caso non era specificato; nel motore la parità dava una posta «sospesa», senza vincitore). La scopa a piatto vuoto (§13, v1.3) è il caso particolare coerente. Coerente anche con §18/§13 «chi narra l'esito»: in parità la posta la perde il vincitore dell'asta, che la racconta. NB: resta distinto il **tie-break del piatto finale** (la missione, §24): in parità si decide per scope e poi prese, non per ultima carta. Propagato a manuale §3.12, `REGOLE` e `REGOLE_IA` in `index.html`, e al motore (`chiudiScena`: la parità ora assegna la posta a `altro(rec.iniziativa)`).
 
 ## v1.21 (giugno 2026) — la carta d'asta del vincitore resta scoperta
 
@@ -1079,4 +1085,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.21*
+*Frenemies on the Road — Knowledge Base v1.24*
