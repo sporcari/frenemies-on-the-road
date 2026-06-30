@@ -98,11 +98,13 @@ function runGame(seed, seed2, seed3, wantTranscript){
   let fanteSbircia=false, fanteScambio=false; // l'effetto v1.15 del Fante si è VISTO (modale) / ha fatto uno scambio
   let jollyTipo="";                           // come è stato usato il Jolly: "scopa"/"presa" sleale, o "scarto"
   let reginaColpo=false, reColpo=false;        // figura calata DURANTE i colpi di scena (entrata scenica in cripta)
+  let reginaPresa=false, reginaSacr=false;     // la Regina (Pablo) fa una PRESA VERA in scena vs si sacrifica da 1 pt
+  let fanteSacr=false;                          // il Fante (Kalim) si sacrifica da 1 pt invece di catturare
   const COSTO={F:3,D:5,R:8};
   const astaScelte={P:null,O:null};
   const logUltima=()=>{ const u=G().ultimaGiocata; if(u && u!==ultimaLoggata){ log("   → "+u); ultimaLoggata=u;
-    if(/Fante di/.test(u)) figGiocate.add("F");
-    if(/Regina di/.test(u)) figGiocate.add("D");
+    if(/Fante di/.test(u)){ figGiocate.add("F"); if(/sacrifica/.test(u)) fanteSacr=true; }
+    if(/Regina di/.test(u)){ figGiocate.add("D"); if(/sacrifica/.test(u)) reginaSacr=true; else reginaPresa=true; }
     if(/Re di/.test(u)) figGiocate.add("R");
     if(/SCOPA col Jolly/.test(u)) jollyTipo="scopa";
     else if(/presa col Jolly/.test(u)) jollyTipo="presa";
@@ -146,14 +148,27 @@ function runGame(seed, seed2, seed3, wantTranscript){
         // v1.26: una figura che non cattura nulla si sacrifica come marcatore da 1 punto (mai scopa),
         // sia col piatto vuoto sia con sole carte fuori portata. Sprecarla così è quasi sempre peggio
         // che calare un numero: punteggio basso (fallback), proporzionale al valore buttato via.
-        if(pot.length===0){ consider(15-0.5*FIGVAL[c.fig], ()=>{ click(el); click(document.getElementById("figSacrificio")); }); continue; }
+        // v1.27: il Re cattura gruppi di somma fino a 10, è la carta che prende DI PIÙ: va trattenuto per la
+        // presa maggiore. Non sacrificarlo (resta in mano, magari fa scena dopo) e non sprecarlo in una presa
+        // piccola: penalizza forte sia il sacrificio sia le catture che lasciano molto margine sotto 10.
+        const isRe=c.fig==="R";
+        if(pot.length===0){ consider((isRe?-50:15)-0.5*FIGVAL[c.fig], ()=>{ click(el); click(document.getElementById("figSacrificio")); }); continue; }
         if(Math.min(...pot.map(x=>cardVal(x)))>FIGVAL[c.fig]){
-          consider(15-0.5*FIGVAL[c.fig], ()=>{ click(el); click(document.getElementById("figSacrPresa")); }); continue;
+          consider((isRe?-50:15)-0.5*FIGVAL[c.fig], ()=>{ click(el); click(document.getElementById("figSacrPresa")); }); continue;
         }
         for(let v=1; v<=FIGVAL[c.fig]; v++){
           cp(v).forEach((cmb,i)=>{
             const scopa=cmb.length===piatto.length;
-            const score=scopa?(1000+oppVal(cmb)-0.1*FIGVAL[c.fig]):(100+2*oppVal(cmb)-3*ownVal(cmb));
+            // anti-stranding: una figura che ha un BERSAGLIO ADESSO va incassata, non rimandata. Un numero
+            // si può buttare sul piatto senza danno più tardi; una figura rischia il sacrificio da 1 pt se
+            // il bersaglio sparisce. Bonus = FIGVAL: così una presa con figura batte la stessa presa fatta
+            // con un numero, e tra due figure si cala prima la PIÙ ALTA (la più dolorosa da sprecare).
+            // Per il Re (v1.27): trattienilo per la presa più grande (somma fino a 10). Una cattura che
+            // sfrutta poco del suo raggio (margine 10 - somma catturata) è uno spreco: penalizza il margine,
+            // così una presa piccola NON viene preferita a tenere il Re per dopo (salvo che chiuda con scopa).
+            const catSum=cmb.reduce((s,x)=>s+cardVal(x),0);
+            const reMargine=(isRe&&!scopa)?(10-catSum)*4:0;
+            const score=(scopa?(1000+oppVal(cmb)-0.1*FIGVAL[c.fig]):(100+2*oppVal(cmb)-3*ownVal(cmb)+FIGVAL[c.fig]))-reMargine;
             consider(score, ()=>{ click(el);
               const bv=[...box().querySelectorAll("button[data-v]")].find(b=>parseInt(b.dataset.v)===v); click(bv);
               const fc=[...box().querySelectorAll("#figCombos button[data-c]")]; click(fc[i]||fc[0]); });
@@ -194,8 +209,20 @@ function runGame(seed, seed2, seed3, wantTranscript){
         } else { click(document.getElementById("fanteNo")); log("   → effetto FANTE: sbircia il mazzo e lascia così."); }
         return "fante";
       }
-      const rNo=document.getElementById("reNo");
-      if(rNo){ log("   → effetto RE: nessuno scambio con gli scarti."); click(rNo); return "re-no"; }
+      const reOk=document.getElementById("reOk");
+      if(reOk){   // v1.27: il Re recupera la carta del suo seme di VALORE PIÙ ALTO dagli scarti comuni (massimizza)
+        const g=G();
+        // il modale mostra solo gli scarti del seme del Re: scelgo quello di valore più alto tra i visibili
+        const cards=[...document.querySelectorAll("#reScarti .carta")]
+          .map(el=>({el, c:(g.scartiComuni||[]).find(x=>x.id===parseInt(el.dataset.id))}))
+          .filter(o=>o.c);
+        if(cards.length){
+          const top=cards.slice().sort((a,b)=>b.c.val-a.c.val)[0];
+          click(top.el); click(reOk);
+          log(`   → effetto RE: recupera ${cstr(top.c)} dagli scarti (${g.scena>=4?"nella riserva":"rimescolata nel mazzo"}).`);
+        } else { click(document.getElementById("reNo")); log("   → effetto RE: nessuna carta del seme negli scarti."); }
+        return "re";
+      }
       const pngOk=document.getElementById("pngOk");
       if(pngOk){ const n=document.getElementById("m-png-nome"); if(n) n.value="PNG di prova";
         const d=document.getElementById("m-png-desc"); if(d) d.value="descrizione di prova"; click(pngOk); return "png-figura"; }
@@ -360,10 +387,35 @@ function runGame(seed, seed2, seed3, wantTranscript){
     if(f==="colpi"){
       const carte=[...document.querySelectorAll("#riservaCarte .carta")];
       if(carte.length){
-        click(carte[0]);
-        // colpisci il bersaglio avversario di valore più alto, se c'è
-        const bs=[...document.querySelectorAll("button[data-bersaglio]")];
-        if(bs.length){ colpiFatti++; click(bs[bs.length-1]); }
+        // Regola v1.28: alternanza stretta, si gioca MENO carte, quindi la scelta conta.
+        // 1) Bersagli eliminabili = carte avversarie nel piatto di val ≤ a quello di almeno una carta di riserva.
+        // 2) Se c'è un bersaglio eliminabile: bersaglio = avversaria di val PIÙ ALTO eliminabile;
+        //    carta di riserva = la più BASSA che riesce a eliminarlo (val ≥ val bersaglio), così conservi le alte.
+        // 3) Se nessun bersaglio eliminabile: gioca la riserva di val PIÙ ALTO (massimizza il piatto), senza eliminare.
+        // Le carte di #riservaCarte hanno data-id; i bottoni colpo hanno data-bersaglio (vuoto = "Metti senza eliminare").
+        const g=G();
+        const lat=g.attore;
+        const riserva=g.lati[lat].riserva;
+        const semiAvv=g.lati[lat==="P"?"O":"P"].semi;
+        const avversarie=g.piatto.filter(c=>semiAvv.includes(c.seme));
+        const maxRiserva=Math.max(...riserva.map(c=>c.val));
+        // bersagli eliminabili: avversaria con val ≤ a una carta di riserva
+        const elim=avversarie.filter(c=>c.val<=maxRiserva).sort((a,b)=>a.val-b.val);
+        const cartaEl=id=>carte.find(c=>c.dataset.id==String(id));
+        if(elim.length){
+          const bers=elim[elim.length-1];                 // bersaglio di val più alto eliminabile
+          // riserva di val più basso che lo elimina (val ≥ val bersaglio)
+          const ris=riserva.filter(c=>c.val>=bers.val).sort((a,b)=>a.val-b.val)[0];
+          click(cartaEl(ris.id));
+          const btn=document.querySelector(`button[data-bersaglio="${bers.id}"]`);
+          colpiFatti++; click(btn);
+        }else{
+          // nessun bersaglio: gioca la carta di valore più alto, senza eliminare
+          const ris=[...riserva].sort((a,b)=>b.val-a.val)[0];
+          click(cartaEl(ris.id));
+          const no=document.querySelector('button[data-bersaglio=""]');
+          if(no) click(no);
+        }
       }
       logUltima();
       const u=G().ultimaGiocata||"";
@@ -401,7 +453,7 @@ function runGame(seed, seed2, seed3, wantTranscript){
       const arco=poste.map(x=>x==="P"?"P":x==="O"?"O":x==="parita"?"=":"-").join("");
       const __r={riass, T, fnT, ok:true, seed:sd, outcome, arco, figset:[...figset], resaCount,
         figP:[...figP].sort().join(""), figO:[...figO].sort().join(""), figGiocate:[...figGiocate].sort().join(""), jollyGiocati,
-        fanteSbircia, fanteScambio, jollyTipo, reginaColpo, reColpo,
+        fanteSbircia, fanteScambio, jollyTipo, reginaColpo, reColpo, reginaPresa, reginaSacr, fanteSacr,
         poste, sceneOK45: poste[3]==="O" && poste[4]==="P",
         nP, nO, primoP, primoO, finalP, finalO,
         flipDopoColpi: primoP<=primoO && finalP>finalO,   // sotto al primo conteggio, sopra dopo i colpi
@@ -417,7 +469,10 @@ function runGame(seed, seed2, seed3, wantTranscript){
 
 if(BATCH>0){
   const rows=[];
-  for(let s=1;s<=BATCH;s++){
+  // BATCHSTART=N: parte la ricerca dal seed N (default 1). Serve a scandire il residuo oltre i primi 300
+  // senza superare il tetto memoria di JSDOM (BATCH ~300 alla volta): es. BATCHSTART=301 BATCH=600.
+  const START=parseInt(process.env.BATCHSTART||"1");
+  for(let s=START;s<=BATCH;s++){
     let r; try{ r=runGame(FIXSEED>0?FIXSEED:s, s, s, false); }catch(e){ continue; }
     const c1=(r.nP===3&&r.nO===2)||(r.nP===2&&r.nO===3);          // poste bilanciate 3/2
     const c2=/ROTTO DELLA CUFFIA/.test(r.outcome) && r.finalP>r.finalO; // Prot vincono di misura
@@ -465,19 +520,24 @@ if(BATCH>0){
   if(process.env.FIGJOLLY){
     // Selezione alternativa (richiesta giu 2026): mercato canonico (P: Fante+Regina, O: Re),
     // tutte e 3 le figure E il jolly GIOCATI, unico vincolo su esiti: scena 4 = O, scena 5 = P.
-    const fmt2=r=>`SEED=${r.seed} arco=${r.arco} | Fante:${r.fanteScambio?"SCAMBIO":r.fanteSbircia?"sbircia":"NO-effetto"} Jolly:${r.jollyTipo||"-"} Regina-colpo:${r.reginaColpo?"SI":"no"} | primo ${r.primoP}-${r.primoO}→${r.finalP}-${r.finalO} rese=${r.resaCount} | "${r.outcome}"`;
+    const regS=r=>r.reginaSacr?"SACR-1pt":r.reginaPresa?"PRESA":r.reginaColpo?"colpo":"-";
+    const fmt2=r=>`SEED=${r.seed} arco=${r.arco} | Fante:${r.fanteSacr?"SACR-1pt":r.fanteScambio?"SCAMBIO":r.fanteSbircia?"sbircia":"NO-effetto"} Regina:${regS(r)} Jolly:${r.jollyTipo||"-"} | primo ${r.primoP}-${r.primoO}→${r.finalP}-${r.finalO} rese=${r.resaCount} | "${r.outcome}"`;
     const base=r=>r.figP==="DF" && r.figO==="R" && ["F","D","R"].every(x=>r.figGiocate.includes(x)) && r.jollyGiocati>0 && r.sceneOK45;
     const ok=rows.filter(base);
     console.log(``);
     console.log(`=== FIGJOLLY: ${ok.length} seed con P:Fante+Regina, O:Re, tutte le figure + jolly GIOCATI, S4=O S5=P ===`);
-    // ranking per "vetrina ideale": effetto Fante visibile + Jolly scopa-sleale; le figure si giocano in
-    // scena (mai in riserva), quindi una figura nei colpi è un MALUS, non un pregio.
-    const punteggio=r=>(r.fanteScambio?4:r.fanteSbircia?2:0)+(r.jollyTipo==="scopa"?3:r.jollyTipo==="presa"?1:0)+(/ROTTO DELLA CUFFIA/.test(r.outcome)?1:0)-((r.reginaColpo||r.reColpo)?5:0);
+    // ranking per "vetrina ideale": la Regina (Pablo) deve fare qualcosa di SIGNIFICATIVO (presa vera, o
+    // ingresso nei colpi di scena in cripta) e NON un sacrificio da 1 pt — questo è il criterio nuovo,
+    // più importante; poi effetto Fante visibile, Jolly sleale e finale "per il rotto della cuffia".
+    const punteggio=r=>(r.reginaPresa?4:r.reginaColpo?3:0)-(r.reginaSacr?4:0)-(r.fanteSacr?3:0)
+        +(r.fanteScambio?3:r.fanteSbircia?1:0)+(r.jollyTipo==="scopa"?2:r.jollyTipo==="presa"?1:0)
+        +(/ROTTO DELLA CUFFIA/.test(r.outcome)?2:0);
     ok.sort((a,b)=>punteggio(b)-punteggio(a));
     ok.forEach(r=>console.log(`[${punteggio(r)}] `+fmt2(r)));
-    const ideali=ok.filter(r=>r.fanteScambio && r.jollyTipo==="scopa" && !r.reginaColpo && !r.reColpo);
+    // IDEALI: nessuna figura sprecata (né Regina né Fante), effetto Fante visibile, finale "per il rotto della cuffia".
+    const ideali=ok.filter(r=>(r.reginaPresa||r.reginaColpo) && !r.reginaSacr && !r.fanteSacr && (r.fanteScambio||r.fanteSbircia) && /ROTTO DELLA CUFFIA/.test(r.outcome));
     console.log(``);
-    console.log(`=== IDEALI (effetto Fante visibile + Jolly scopa-sleale, nessuna figura in riserva): ${ideali.length} ===`);
+    console.log(`=== IDEALI (nessuna figura sprecata + effetto Fante visibile + cuffia): ${ideali.length} ===`);
     ideali.forEach(r=>console.log(fmt2(r)));
   }
 }else{

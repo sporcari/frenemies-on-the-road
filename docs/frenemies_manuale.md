@@ -118,7 +118,7 @@ Prima di cominciare, prepara i mazzi così:
 - togli entrambi i Jolly dal mazzo: uno rientrerà dopo la seconda scena dalla parte dei Protagonisti, l'altro resta fuori dalla partita;
 - restano quindi soltanto le carte numeriche, dall'Asso al 10, di ciascun seme: venti carte per lato.
 
-Venti carte bastano esattamente per cinque scene, perché ogni lato ne pesca quattro a scena. Tienilo a mente, perché è una regola con un peso strategico: quando il mazzo finisce, la partita finisce. Non si rimescolano mai gli scarti dentro il mazzo. Gli unici modi per aggiungere carte al mazzo sono le figure comprate al mercato e, una sola volta per lato, la carta della Ritirata strategica (lo vedremo nel Capitolo 3); ai Protagonisti, in più, dopo la seconda scena si aggiunge il Jolly.
+Venti carte bastano esattamente per cinque scene, perché ogni lato ne pesca quattro a scena. Tienilo a mente, perché è una regola con un peso strategico: quando il mazzo finisce, la partita finisce. Non si rimescolano mai gli scarti dentro il mazzo. Gli unici modi per aggiungere carte al mazzo sono le figure comprate al mercato, una sola volta per lato la carta della Ritirata strategica (lo vedremo nel Capitolo 3) e la carta che il Re recupera dagli scarti nelle scene 1-4 (nell'ultima scena finisce invece nella riserva); ai Protagonisti, in più, dopo la seconda scena si aggiunge il Jolly.
 
 ## 1.6 Che cosa significano i semi
 
@@ -642,7 +642,7 @@ Paola ha solo il fante in mano, nel piatto c'è un 10 di quadri che non può pre
 "Una vecchia conoscenza di Otto trattiene in chiacchiere il luogotenente della Loggia durante un ricevimento: lui si distrae, abbassa la guardia."
 {: .esempio }
 
-**Re, il deus ex machina.** Effetto: scambi una carta dalla mano con una carta degli scarti comuni dello stesso seme. Serve al recupero mirato, a ottimizzare la mano. Narrativamente è un alleato fortissimo, un personaggio influente, un intervento quasi provvidenziale.
+**Re, il deus ex machina.** Effetto: recuperi dalla pila degli scarti comuni una carta del suo stesso seme, senza togliere nulla dalla mano. Nelle scene 1-4 la carta recuperata si rimescola nel tuo mazzo; nell'ultima scena entra direttamente nella tua riserva, pronta per i colpi di scena. Se negli scarti non c'è alcuna carta di quel seme, l'effetto non fa nulla. Serve a recuperare una risorsa mirata all'ultimo momento. Narrativamente è un alleato fortissimo, un personaggio influente, un intervento quasi provvidenziale.
 
 "Un vecchio compagno di scavi di Aldo, che tutti credevano scomparso nel deserto, ricompare nel momento peggiore con una carovana armata e le mappe giuste."
 {: .esempio }
@@ -658,7 +658,7 @@ Paola ha solo il fante in mano, nel piatto c'è un 10 di quadri che non può pre
 {: .citazione }
 
 Il Jolly è lo strumento del compromesso morale. Rappresenta il trope della tentazione che colpisce uno dei protagonisti nell'indulgere in comportamenti sbagliati che fanno parte del suo passato.
-Infatti, tipicamente in questo genere di storie si vede che uno dei due protagonisti, grazie alla collaborazione ha una sorta di evoluzione rispetto ai difetti che aveva all'inizio. Usare il Jolly per risolvere un problema in un certo senso riporta il personaggio al punto di partenza, sul suo percorso di evoluzione, facendolo regredire e portandolo a mostrare il suo lato peggiore.
+Infatti, tipicamente in questo genere di storie si vede che uno dei due protagonisti, grazie alla comunione di intenti, le diversità di vedute e di metodi possono ridursi. Usare il Jolly per risolvere un problema in un certo senso riporta il personaggio al punto di partenza, sul suo percorso di evoluzione, portandolo a mostrare il suo lato peggiore, mostrando che quelle differenze ci sono ancora.
 
 Il Jolly è uno solo, sta nel mazzo dei Protagonisti e si aggiunge al termine della seconda scena. Da quel momento ogni pescata dei Protagonisti può portare in mano la tentazione di questa drammatica scorciatoia.
 
@@ -676,8 +676,8 @@ Se il Jolly viene usato per fare una presa o una scopa ottiene un vantaggio imme
 - una presa con il Jolly vale 1 punto all'avversario;
 - una scopa con il Jolly vale 3 punti all'avversario.
 
-Narrativamente, si racconta sempre un successo ottenuto andando contro i propri principi, come la propria lealtà verso l'altro protagonista sia venuta meno o come sia tornato ai suoi vecchi vizi.
-E' importante ricordare che solo uno dei due Protagonisti si macchia del peccato e all'insaputa dell'altro.
+Narrativamente, si racconta sempre un successo ottenuto andando contro i propri principi, come la propria lealtà verso l'altro protagonista sia venuta meno o come sia tornato a vecchi vizi o abbia agito in modo avventato senza considerare la sensibilità dell'altro personaggio.
+E' importante ricordare che solo uno dei due Protagonisti si macchia del peccato, mentre l'altro lo giudicherà. Il Jolly è il seme di una discordia destinato a sbocciare più avanti.
 
 Il giocatore usa il Jolly come 9 per fare scopa e racconta: "Vera infrange la promessa di restare sobria e lontana dai guai: sfida Ulrich e i suoi sgherri a una gara di cicchetti e quando sono tutti ubriachi riesce a rubare la chiave del magazzino." E' evidente che questa cosa avrà conseguenze a partire dalla sbornia da smaltire il giorno dopo e che sarà difficile nascondere.
 {: .esempio }
@@ -693,7 +693,7 @@ Anche questo crea un momento narrativamente interessante, che stabilisce in modo
 
 ## 5.4 Il peccato emerge
 
-Il peccato compiuto diventa un'arma narrativa nelle mani dell'Opposizione. Finché l'Opposizione possiede il marcatore del Jolly, in una sua qualsiasi presa o scopa può far emergere nella narrazione quel peccato: l'inganno, la scorciatoia sleale, il torbido patto che uno dei protagonisti ha compiuto all'insaputa dell'altro. È solo narrazione, non cambia punti né carte; serve a creare divisione tra i due protagonisti e a rendere il momento ancora più drammatico.
+Il peccato compiuto diventa un'arma narrativa nelle mani dell'Opposizione. Finché l'Opposizione possiede il marcatore del Jolly, in una sua qualsiasi presa o scopa può far riaffiorare nella narrazione quel peccato: l'inganno, la scorciatoia sleale, il torbido patto di cui uno dei protagonisti si è macchiato. È solo narrazione, non cambia punti né carte; serve a far sbocciare la discordia tra i due protagonisti e a rendere il momento ancora più drammatico.
 
 
 ---
@@ -718,20 +718,21 @@ La Riserva alimenta i colpi di scena.
 ## 6.2 I colpi di scena
 
 Dopo aver determinato l'esito della scena e averlo narrato come in tutte le precedenti inizia la fase dei colpi di scena.
-Ciascun giocatore recupera dalla Riserva tutte le carte, quindi si continua a giocare a turni alterni. 
+Ciascun giocatore recupera dalla Riserva tutte le carte, quindi si continua a giocare a turni strettamente alterni. 
 
 Comincia il lato che aveva perso la posta.
 
 Le regole di questa fase sono diverse dal resto del gioco:
 
-- **Gioco obbligatorio:** finché hai carte in riserva, nel tuo turno devi giocarne una. La carta entra nel piatto e aggiunge il suo valore al tuo totale.
+- **Gioco obbligatorio:** nel tuo turno, finché hai carte in riserva, devi giocarne una. La carta entra nel piatto e aggiunge il suo valore al tuo totale.
 - **Eliminazione:** la carta che giochi può eliminare dal piatto una carta di seme avversario di valore pari o inferiore al suo. La carta eliminata va negli scarti del suo proprietario (non è una presa, non vale punti). La tua carta resta nel piatto. Puoi colpire solo carte dei semi avversari, mai dei tuoi.
+- **Alternanza stretta:** i colpi si alternano sempre, e nessun lato gioca due colpi consecutivi. Dopo il tuo colpo tocca all'avversario; se lui non ha più riserva, la fase finisce subito e tu non giochi un secondo colpo di fila. Chi comincia gioca quindi al massimo una carta in più dell'altro, e la riserva eventualmente in eccesso resta inutilizzata.
 
 In questa fase non si fanno prese né scope: le uniche azioni sono mettere la carta nel piatto ed, eventualmente, eliminarne una avversaria di valore pari o inferiore. Le figure giocate adesso contano solo per il loro valore, senza effetto speciale.
 
 Come al solito dopo aver giocato una carta si deve narrare il colpo di scena corrispondete al seme e al valore della carta stessa.
 
-I colpi di scena finiscono quando entrambe le riserve sono esaurite. Poi si fa il conteggio definitivo.
+I colpi di scena finiscono quando, dopo un colpo, tocca a un lato che non ha più riserva. Poi si fa il conteggio definitivo.
 
 Al primo conteggio l'Opposizione sembra avere la meglio. Tocca prima ai Protagonisti, che stanno perdendo: Otto cala dalla riserva un 7 di Cuori e con quello fa sparire un 5 di Quadri dal tavolo, "Mi spiace Hector, ma il manufatto tieni tra le mani, non è altro che una volgare replica messa qui per ingannare gli sciocchi come te". Il 7 di Cuori resta nel piatto, il 5 di Quadri finisce negli scarti.
 {: .esempio }
@@ -742,7 +743,7 @@ Al termine dell'ultima scena, dopo i colpi di scena, si fa il conteggio finale, 
 
 La prima è la **vittoria del piatto**: Cuori più Picche contro Fiori più Quadri. Chi ha il totale più alto vince il piatto finale, e conquista l'esito esterno della missione.
 
-In caso di parità nel piatto, si applica un tie-break: prima si contano le scope, e in ulteriore parità si contano le prese.
+In caso di pareggio nel piatto, a decidere è la Crescita, cioè i punti non spesi al mercato: il lato che ne ha di più la spende tutta (i suoi punti vanno a zero) per aggiudicarsi il piatto, e quindi la missione; se la Crescita è pari, anche zero a zero, il piatto va comunque ai protagonisti. Quando sono i protagonisti a vincere il pareggio, in un modo o nell'altro, l'esito è sempre Per il rotto della cuffia: vincono la missione di strettissima misura.
 
 La seconda cosa che si determina è chi ha vinto ai punti complessivi. Ma di come piatto e punti si combinano nel finale parla il prossimo capitolo.
 
@@ -870,9 +871,9 @@ Il taccuino del professor Aldo Falco, l'unico che abbia mai annotato la via per 
 
 # Appendice B. Partita d'esempio: cinque giorni per l'eclissi
 
-Una partita vera a due giocatori, giocata con lo scenario demo "Il sole di mezzanotte" (Vera di ♠ e Otto di ♥; la Loggia del Basilisco e i Veglianti di ♦, il deserto di ♣): ogni carta, ogni presa e ogni conteggio sono reali e verificati. Paola gioca i Protagonisti, Omar gioca l'Opposizione. La partita è raccontata passo per passo: in testa a ogni passo, in chiaro, trovi cosa succede in gioco (chi cala quale carta, con che effetto, e perché conviene quella scelta); subito sotto, nel riquadro, la stessa cosa vista come fiction, con la didascalia di chi la sta narrando (Paola o Omar). I semi sono indicati con la loro icona: ♠ Picche, ♥ Cuori, ♦ Quadri, ♣ Fiori. Vale il punteggio standard: una presa numerica vale 1 punto, una presa con figura 2, una scopa 4.
+Una partita vera a due giocatori, giocata con lo scenario demo "Il sole di mezzanotte" (Vera di ♠ e Otto di ♥; la Loggia del Basilisco e i Veglianti di ♦, il deserto di ♣): ogni carta, ogni presa e ogni conteggio sono reali e verificati. Paola gioca i Protagonisti, Omar gioca l'Opposizione. La partita è raccontata passo per passo: in testa a ogni passo, in chiaro, trovi cosa succede in gioco (chi cala quale carta, con che effetto, e perché conviene quella scelta); subito sotto, nel riquadro, la stessa cosa vista come fiction, con la didascalia di chi la sta narrando (Paola o Omar). I semi sono indicati con la loro icona: ♠ Picche, ♥ Cuori, ♦ Quadri, ♣ Fiori. Vale il punteggio standard: una presa vale 1 punto, anche se fatta con una figura, e una scopa 3.
 
-> **Nota:** questa appendice è in fase di completamento. Qui sotto trovi le prime due scene in forma definitiva; il mercato che le separa dalla terza e le scene 3, 4 e 5 (dove entrano in gioco tutte e tre le figure, il Jolly e i colpi di scena, fino a una Vittoria per il rotto della cuffia) seguono a breve.
+La partita è seguita per intero: le cinque scene con i mercati che le separano, dall'asta del Cairo fino al ribaltone nella cripta, dove entrano in gioco le tre figure, il Jolly e i colpi di scena.
 
 ## Il pitch in breve
 
@@ -1014,7 +1015,7 @@ Tra una scena e l'altra si spendono i punti accumulati per comprare le figure (F
 
 <div class="fiction"><span class="chi">Paola annuncia</span>Faruq, arrivato a El Qara, sa esattamente a chi rivolgersi: suo cugino Kalim, esperta guida del deserto. E sulla index card scrive chi è: Kalim è un uomo sui cinquant'anni, dal fisico asciutto, temprato dal sole e dal vento del deserto, con gli occhi saggi di chi il mare di sabbia lo conosce come il palmo della sua mano. Sa dove i pozzi danno ancora acqua e dove le dune nascondono le piste sepolte.</div>
 
-**Paola compra il Fante ♥ (costa 3 punti, le restano 5).** Comprare una figura significa preparare l'ingresso di un PNG potente, che entra in scena quando se ne gioca la carta. Il Fante, come la Regina e il Re, va nel mazzo: avendo comprato, a fine mercato Paola rimescola e solo dopo ripesca la nuova mano, così potrà ritrovarselo già nella scena seguente, come anche il Jolly. Per pagarlo prende una delle due carte che le marcavano una scopa e la rimette nella pila degli scarti: quei tre punti sono spesi.
+**Paola compra il Fante ♥ (costa 3 punti, le restano 3).** Comprare una figura significa preparare l'ingresso di un PNG potente, che entra in scena quando se ne gioca la carta. Il Fante, come la Regina e il Re, va nel mazzo: avendo comprato, a fine mercato Paola rimescola e solo dopo ripesca la nuova mano, così potrà ritrovarselo già nella scena seguente, come anche il Jolly. Il pagamento attinge prima ai marcatori più piccoli: le sue due prese coprono 2 punti, ma per il terzo deve intaccare una delle due scope, e una scopa vale 3 e non dà resto. Spezzarla per quell'unico punto ne spreca due: il Fante da 3 le costa di fatto 5, e le resta una sola scopa, 3 punti. Lezione del mercato: conviene pagare con i marcatori che fanno la cifra giusta, perché una scopa rotta a metà sono punti buttati.
 {: .azione }
 
 **Omar non compra: tiene i punti.** Con due soli punti non arriverebbe nemmeno a un Fante, e comunque preferisce risparmiare per una figura ben più potente, da calare al momento giusto più avanti.
@@ -1023,133 +1024,254 @@ Tra una scena e l'altra si spendono i punti accumulati per comprare le figure (F
 
 ## Scena 3. Frattura
 
-> **Le carte in mano.** Protagonisti (Paola): 9♠ 4♠ 10♥ F♥ (il Fante è Kalim, appena assoldato al mercato). Opposizione (Omar): 2♣ 6♦ 5♦ 9♦. Il piatto è vuoto.
+> **Le carte in mano.** Protagonisti (Paola): Jolly, F♥ (il Fante è Kalim, assoldato al mercato), 7♠, 3♠. Opposizione (Omar): 6♦ 9♣ 7♦, più il 4♣ calato all'asta. Nel piatto, rimaste dalla scena precedente: 10♦ 1♥ 2♣.
 
-All'asta Paola cala il 4♠, Omar il 5♦: vince Omar, e l'iniziativa è dell'Opposizione. Il piatto è vuoto, e aprire nel vuoto è un rischio: una carta lasciata sola può essere catturata di slancio dall'altro, magari in scopa. Avendo vinto l'iniziativa, è Omar a definire la scena.
+All'asta Paola cala il 3♠, Omar il 4♣: il 4 batte il 3, vince Omar, e per la terza volta di fila l'iniziativa è dell'Opposizione. Il piatto non è vuoto: restano tre carte portate dal treno, fra cui il 10♦ con cui Omar aveva messo in campo Alì. La sua carta d'asta, il 4♣, va da parte come ultima giocata del round; il 3♠ di Paola torna nella sua mano. Avendo vinto l'iniziativa, è Omar a definire la scena.
 
-**Omar stabilisce il titolo e la posta della scena.**
+**Omar stabilisce il titolo e la posta della scena.** Non si tiene la posta suggerita dal canovaccio, orientarsi nel deserto: la situazione al tavolo è cambiata, Vera e Otto sono finiti prigionieri, e Omar adatta la posta a quello che è davvero successo. Le poste del canovaccio sono spunti, non un copione: meglio sceglierne una che parli della scena nata in gioco.
 {: .azione }
 
-<div class="fiction"><span class="titolo-scena">Il mare di sabbia</span><em>Posta: orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se va bene: i protagonisti si accampano e si preparano alla ricerca. Se va male: si perdono nel deserto.</em></div>
+<div class="fiction"><span class="titolo-scena">Fuga</span><em>Posta: fuggire dai Veglianti. Se va bene, Vera e Otto riprendono il viaggio verso la città perduta, liberi. Se va male, restano in balìa dei Veglianti.</em></div>
 
-**Omar apre la scena e gioca il 6♦** nel piatto: la prima giocata apre la scena; nel piatto vuoto non c'è nulla da catturare, così dispone una minaccia.
+**Omar apre la scena e gioca il 6♦** nel piatto: non c'è nulla da catturare, così introduce subito l'ostacolo che la posta chiede, la sentinella che sorveglia i prigionieri. Annota su una index card: «6♦ = la guardia all'imbocco della grotta».
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>Oltre El Qara finisce ogni strada e comincia il mare di sabbia: dune fino all'orizzonte, identiche in ogni direzione, e un sole che cancella le ombre e i punti di riferimento. Vera e Otto partono coi cammelli di Kalim, ancora senza essersi davvero riappacificati. E i Veglianti non lasciano che il deserto aiuti gli intrusi: hanno abbattuto i tumuli di pietra che segnano la pista e cancellato le tracce delle carovane. Dove dovrebbe esserci una via, ora c'è solo sabbia vergine.</div>
+<div class="fiction"><span class="chi">Omar narra</span>A volo d'uccello, l'accampamento dei Veglianti si annida in una piega rocciosa del deserto: un dedalo di canyon stretti e di grotte che il vento ha scavato nell'arenaria. Dentro una di queste, legati e imbavagliati a un palo, schiena contro schiena, ci sono Vera e Otto. All'imbocco della grotta veglia una sentinella dall'aria truce, la mano sull'elsa, lo sguardo che non perde di vista i due prigionieri.</div>
 
-**Paola cala subito Kalim, il Fante ♥ (valore 8):** cattura il 6♦ e svuota il piatto, una **scopa** (4 punti). Schiera l'informatore appena ha un bersaglio da prendere. Poi ne sfrutta l'effetto: guarda le prime quattro carte del mazzo, 3♠, 8♥, 4♥ e 7♠. Sono già una buona mano per la scena seguente (l'8♥ alto le tornerà utile all'asta, e ha Picche e Cuori per agire), così le lascia tutte dove sono e non ne manda nessuna in fondo.
+**Paola gioca il Fante ♥, Kalim, e cattura insieme il 2♣ e il 6♦: presa di due carte** (il Fante vale 8, e 2 più 6 fa 8). Toglie di mezzo la guardia e l'ultima scia di caos portata dal treno; il 10♦, troppo alto per il Fante, resta sul tavolo, e con lui Alì. Poi sfrutta l'effetto del Fante: sbircia le prime due carte del mazzo e scambia il 3♠ che ha in mano con il 10♥ che vi trova, lascia andare una carta debole e si tiene una carta alta per più avanti.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Ma il deserto Kalim lo legge dove gli altri vedono solo sabbia: la forma delle creste, il volo degli uccelli all'alba, le stelle di notte. Le piste cancellate non lo fermano, ne conosce di più antiche. Sceglie la rotta con sicurezza e intanto manda avanti lo sguardo, sa già quali dune li aspettano oltre l'orizzonte.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Kalim il deserto lo legge come gli altri leggono un libro. Dal punto in cui i Veglianti hanno caricato i prigionieri sui cammelli restringe a poche le zone dove un accampamento può nascondersi, e poco dopo ritrova le tracce del convoglio: solchi di zoccoli che il vento non ha ancora cancellato. Le segue con Faruq fino a notte, e arrivano in vista dei canyon in tempo per studiare la situazione, quante sentinelle, quali grotte sorvegliate, dietro quale di esse tengono Vera e Otto. Poi sceglie la sua mossa. La grotta si apre nella parete del canyon, un cinque metri sotto il ciglio del dirupo, e la sentinella monta la guardia proprio davanti all'imbocco, sotto lo strapiombo. Kalim si porta in silenzio sull'orlo, lascia cadere un sasso pesante che coglie la guardia in pieno sulla testa, e quella si accascia senza un grido. Poi si cala giù con agilità, la trascina dentro al riparo, le sfila le vesti scure e il turbante e se li infila. Il suo piano è tirarli fuori di lì restando camuffato da sentinella.</div>
 
-**Omar gioca il 9♦** nel piatto: un'altra minaccia, più grossa.
+**Omar gioca il 7♦** nel piatto: non c'è nulla da catturare, e aggiunge un'altra minaccia accanto a quella che resta. Annota: «7♦ = la dozzina di guerrieri che pattuglia il canyon».
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>Un ronzio cresce nel cielo: un biplano della Loggia del Basilisco sorvola il deserto in perlustrazione, basso sulle dune. Cerca tracce, carovane, qualunque cosa si muova sulla sabbia, e da lassù può segnalare a terra dove andare a colpo sicuro.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Ma una sentinella sola non è tutto l'accampamento. Per i canyon si aggira almeno una dozzina di guerrieri: girano tra le rocce, si passano la voce di posto in posto, controllano ogni varco di quel labirinto scavato dal vento. Al centro dell'accampamento hanno acceso un fuoco, e su quello gira lento un capretto che arrostisce, mentre gli uomini vanno e vengono dalla brace. Anche ammesso di slegare i due europei, farli uscire vivi da quel dedalo, con tutti quegli occhi addosso, è un'altra faccenda.</div>
 
-**Paola gioca il 10♥** nel piatto: dispone una risorsa pesante, un legame.
+**Paola gioca il 10♥ e cattura il 10♦: presa.** Controlla la index card del 10♦ e ci ritrova Alì, il guerriero che li aveva catturati sul treno: il marcatore le dice subito chi sta togliendo di mezzo. In ♥, il seme dei legami, usa la carta alta appena guadagnata da Kalim per neutralizzare la minaccia più pesante dell'Opposizione, e lo fa con l'astuzia invece che con la forza.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>La notte, attorno al fuoco, per la prima volta Otto e Vera parlano senza litigare. Lui le racconta di Aldo, delle estati ai cantieri di scavo del padre di lei; poi, abbassando la voce, le rivela una cosa che non aveva ancora detto: prima che Alì glielo strappasse, il taccuino lo aveva studiato a fondo, e aveva già decifrato gran parte dell'enigma che serve per oltrepassare le porte della città proibita. Quella conoscenza ormai ce l'ha in testa, taccuino o non taccuino. Per qualche ora la frattura del Cairo sembra ricucirsi, e torna tra loro qualcosa che somiglia alla fiducia.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Al riparo della grotta Kalim taglia le corde, toglie i bavagli e in un sussurro spiega ai due chi è e come stanno le cose: è la guida mandata da Faruq, fuori ci sono dodici guerrieri, e l'unico modo di uscirne è non dare nell'occhio. Poi mette in atto il piano. Ancora vestito da sentinella, accompagna Otto fuori dalla grotta e lo conduce diritto da Alì. L'accademico recita la sua parte alla perfezione: in un arabo fluente e lamentoso spiega di avere un bisogno urgente, e si mette a protestare per le condizioni in cui li tengono, una vergogna per gente d'onore. Alì, infastidito, annuisce e ordina alla sua guardia di scortare il prigioniero alle latrine e di non perderlo di vista un istante, convinto di star dando un ordine a uno dei suoi.</div>
 
-**Omar gioca il 2♣** nel piatto: dispone il caos. In Fiori il caos non è solo il deserto, può nascere dall'attrito tra i due protagonisti, e Omar lo gioca proprio così.
+**Omar gioca il 9♣** nel piatto: dispone il caos, e stavolta non è un nemico ma l'attrito che lavora dentro la coppia. Annota: «9♣ = la lite tra Vera e Otto che rischia di tradirli».
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>Il guaio peggiore, stavolta, se lo sono procurato da soli: un otre si è svuotato lungo il cammino perché Otto non ne aveva stretto bene il tappo, e l'acqua è colata via nella sabbia per ore senza che nessuno se ne accorgesse. Quando lo scoprono, Vera gli si scaglia contro furibonda. La fiducia della notte prima si incrina di colpo.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Kalim guida Otto e Vera fino allo slargo dove sono legati i cammelli. Ma proprio lì Otto si impunta. È digiuno da chissà quanto, e quel profumo di capretto arrosto che arriva dal fuoco gli ha aperto una voragine nello stomaco: non se ne va a pancia vuota, dice, non dopo tutto questo. Vera lo aggredisce a mezza voce, gli sibila che non è il momento dei capricci da bambino, che ogni istante perso lì in mezzo è un rischio. E mentre bisticciano, le loro voci salgono di tono più di quanto dovrebbero, tra quelle rocce che rimandano ogni suono.</div>
 
-**Paola gioca il 4♠** nel piatto: dispone un'azione.
+**Paola gioca il 7♠ e cattura il 7♦: presa. Poi spunta la spinta ♠ del pitch** «Nessuno guida, scala o spara come Vera: dove finisce la strada, comincia lei»: la presa diventa **scopa** e svuota il piatto, portandosi via anche il 9♣ e l'1♥. La presa toglie di mezzo la dozzina di guardie; la spinta, l'audacia di Vera, trasforma la fuga in un successo pieno. Il 7♠ va tra le scope di Paola (3 punti), e la spinta di ♠ è ora usata.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Vera non si perde d'animo: scava dove Kalim indica un avvallamento tra le dune e trova un pozzo sepolto, l'acqua bassa e salmastra, ma acqua. Riempiono gli otri rimasti.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Vera ne ha abbastanza. Gela Otto con uno sguardo di fuoco che gli muore in gola ogni protesta, poi non perde un altro istante: con un balzo è in groppa a un cammello, mentre Kalim se ne carica sul suo un Otto recalcitrante che ancora si volta verso il fuoco. Spronano le bestie e partono di gran carriera tra le rocce, in un galoppo sgraziato e tonante. Il drappello che presidia l'uscita del canyon è raccolto intorno alla brace a strapparsi brani di capretto, e quando alza la testa è già tardi: dove gli altri vedono solo pareti e vicoli ciechi, Vera ha già scelto la sua via e la sta percorrendo a tutta velocità. Passando come una folata strappa di mano a una guardia il cosciotto che stava addentando e lo lancia a Otto: «E adesso smettila di frignare.» Le grida partono quando i tre sono ormai lanciati oltre il varco.</div>
 
-**Omar gioca il 5♦** nel piatto: ancora una minaccia, che resta sul tavolo a pesare.
+**Omar gioca il 4♣** nel piatto appena svuotato: non c'è nulla da catturare, e introduce l'ostacolo che chiude la trappola. Annota: «4♣ = il vicolo cieco, la parete franata che sbarra la fuga».
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>All'alba del giorno dopo la colonna di fumo del bivacco li tradisce: il biplano della Loggia, tornato in perlustrazione, li avvista e scende in picchiata. Partono le raffiche di mitragliatrice, schizzi di sabbia tutt'intorno, e Vera, Otto e Kalim coi cammelli devono buttarsi al riparo dietro una duna.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Ma nel buio Kalim, per la fretta, sbaglia cunicolo. I tre si lanciano in una gola sempre più stretta e si ritrovano in un cul de sac: davanti, una parete scoscesa e in parte franata chiude il passaggio, un caos di massi e ghiaia che nessun cammello potrà mai risalire. Alle spalle, l'unico imbocco da cui sono entrati, e da lì arriva già l'eco dei Veglianti che montano in sella. Tornare indietro è fuori discussione, e davanti non c'è strada.</div>
 
-**Paola gioca il 9♠, prende il 9♦, poi spunta la spinta ♠ del pitch** «Suo padre è sparito cercando Zerzura: trovarla vuol dire realizzare il suo sogno e dare un senso al suo sacrificio»: la presa diventa **scopa** e svuota il piatto (il 9♦ catturato più 10♥, 2♣, 4♠ e 5♦). È la seconda scopa della scena, e la chiude.
+**Paola gioca il Jolly e dichiara che vale 4: cattura il 4♣, ed è una SCOPA** che svuota il piatto. Ma il Jolly è la mossa sleale: i suoi 3 punti vanno a Omar, e il marcatore del peccato passa all'Opposizione, pronto a tornare a galla quando meno serve ai Protagonisti. Vera compra la salvezza a un prezzo che le macchia le mani.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Vera non si ferma nemmeno sotto il fuoco del biplano. Si strappa dal collo il ciondolo che porta sempre, quello con la foto di suo padre e di sua madre, e lo gira verso il sole: il riflesso abbagliante acceca il pilota e lo costringe a una virata brusca. Nello stesso istante Vera estrae il revolver e fa fuoco sul velivolo, centrandone il serbatoio. È la figlia di Aldo Falco, e in un certo senso è proprio suo padre, lì nel ciondolo, ad aprirle la strada. L'occasione è perfetta: di nuovo in sella ai cammelli, oltre l'ultima duna, e di colpo, in basso, ecco le palme e il luccichio dell'acqua. L'oasi. Ce l'hanno fatta.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Una corda cade dall'alto della parete: è Faruq, che dall'orlo del canyon ha seguito ogni loro mossa. Kalim spinge su per primo Otto, puntellandolo, ma l'accademico è impacciato e lento, e intanto da dietro arrivano le voci degli inseguitori e le loro torce cominciano a chiazzare di luce le pareti della gola. Vera capisce che qualcuno deve far guadagnare tempo agli altri, e decide in un istante. Dal tascapane tira fuori un candelotto di dinamite che ha sottratto all'accampamento, ne accende la miccia con un fiammifero e lo scaglia verso l'imbocco del cunicolo. L'esplosione stacca mezza parete: una frana di massi rovina addosso agli inseguitori, il boato rimbomba per tutto il canyon, e una nube di polvere cala su quello che resta. Quando Otto si volta dall'alto della corda, fissa Vera come se non la riconoscesse, incredulo che sia arrivata a tanto. I quattro si lasciano il canyon alle spalle, salvi, ma con le mani sporche di sangue.</div>
 
-Fine del round: piatto vuoto, **0 a 0**, e la scena va ai Protagonisti, che con due scope (Kalim e il 9♠) hanno dominato il tavolo. Hanno raggiunto l'oasi e possono accamparsi; Paola incassa 8 punti, le sue due scope. Il diario del rapporto si legge dai Cuori e dalle Picche rimasti nel piatto: qui il piatto è vuoto, e il diario segna **parità**. E narrativamente torna: nella scena i due si sono avvicinati (la notte al fuoco) ma hanno anche litigato di brutto (l'acqua persa per la disattenzione di Otto), e le due cose si fanno da contrappeso.
+Fine del round: il piatto è vuoto, **0 a 0**. A parità conta chi ha calato l'ultima carta, ed è stata Paola, con il Jolly: la posta va ai Protagonisti, e Vera e Otto sono liberi. In scena Paola ha incassato cinque punti, due prese e una scopa, mentre i tre punti dell'ultima scopa, quella del Jolly, sono finiti a Omar. Il diario del rapporto si legge dai Cuori e dalle Picche rimasti nel piatto: qui non resta niente, e il diario segna **parità**. La scopa finale ha spazzato via tutto, così nessun seme colora l'esito; e il colpo che il legame ha incassato stanotte non è inciso nel diario, ma nel marcatore del peccato del Jolly, che ora è in mano a Omar.
 
-**Avendo perso la scena, l'esito lo racconta Omar.** Anche qui la chiusura è una scopa e il piatto resta vuoto: nessun seme domina, è parità, una vittoria netta dei Protagonisti. Omar la racconta come tale, calcandone le ombre; ma lo stato della coppia non lo decide il seme dominante, lo dà il diario (Cuori contro Picche), che qui resta in equilibrio.
+**Avendo perso la posta, l'esito lo racconta Omar.** A piatto pari tocca comunque a lui, che aveva vinto l'iniziativa, e ne approfitta per calcarne le ombre.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>"All'oasi piantano le tende e tirano il fiato: il deserto l'hanno passato, e ora possono mettersi a cercare l'ingresso di Zerzura prima dell'eclissi, sperando che gli indizi memorizzati da Otto bastino. Ma il biplano è rientrato alla base, e racconterà alla Loggia di averli localizzati; e chissà quante informazioni vitali sono rimaste nel taccuino di Aldo, ormai in mano ai Veglianti..."</div>
+<div class="fiction"><span class="chi">Omar narra</span>Quando la polvere si posa, Alì è ancora in piedi. Contuso, il mantello bianco di calcina, ma vivo, come una manciata di altri scampati alla frana. Si rialza a fatica e libera i compagni rimasti sotto i sassi, e intanto non stacca gli occhi da laggiù, dove Vera, Otto e i loro soccorritori si fanno sempre più piccoli nella notte, in groppa alle cavalcature di Faruq e Kalim. Non grida, non spreca un colpo. Sputa la sabbia dai denti e mormora soltanto, con la calma di chi ha dalla sua tutto il deserto: «Non andranno lontano.» E aveva ragione a non avere fretta: Vera e Otto viaggiano tutta la notte aggrappati ai loro salvatori, muti, ancora scossi da tutto quello che è successo, e solo alle prime luci dell'alba, all'orizzonte, vedono finalmente le palme di un'oasi. Ma il deserto è grande, e ha occhi ovunque.</div>
 
 ## Mercato, tra la terza e la quarta scena
 
-Dopo la Scena 3 Paola ha di nuovo punti da spendere: le due scope del mare di sabbia (8 punti) sommate ai 2 che le restavano fanno 10.
+Dopo la Scena 3 Paola ha di nuovo punti da spendere: i tre che le restavano dopo aver assoldato Kalim, più i cinque guadagnati nella fuga (due prese e una scopa), fanno otto. Omar, dal canto suo, è salito a cinque: i due di prima e i tre che la scorciatoia sleale di Paola gli ha regalato.
 
-**Paola compra la Regina di Cuori (costa 5 punti, le restano 5).** A differenza del Fante, la Regina entra nel mazzo e si rimescola, non in mano: comparirà più avanti. Il suo effetto, quando verrà giocata, è da manipolatrice: costringe l'avversario a scartare una carta a caso. Come per ogni figura, Paola crea il PNG su una index card: «Pablo Gutiérrez, aviatore della Loggia folgorato da Vera, prima o poi pronto a tradirla (Regina ♥, valore 9)».
+<div class="fiction"><span class="chi">Paola annuncia</span>All'oasi, ad aspettarli, c'è Fatima, la figlia di Kalim: una ragazza giovane, dai grandi occhi castani e svegli, dottoranda in egittologia al Museo del Cairo. Il suo professore si è venduto alla Loggia e l'ha esclusa dalla spedizione; così lei ha seguito il padre nel deserto, decisa ad aiutare Vera e Otto e a salvare l'artefatto da chi potrebbe volerlo usare per fini oscuri.</div>
+
+**Paola compra la Regina ♥ (costa 5 punti, le restano 3).** Come ogni figura, la Regina entra nel mazzo e si rimescola, e a fine mercato Paola ripesca: stavolta la fortuna gliela mette già in mano per la scena seguente. Il suo effetto, quando la giocherà, è da manipolatrice: l'avversario è costretto a scartare a caso una carta dalla mano e a rimpiazzarla con la prima del mazzo, perdendo il filo dei propri piani. Stavolta i conti tornano esatti: le sue due prese da 1 e una delle due scope da 3 fanno i cinque punti senza sprechi, e le resta l'altra scopa, 3 punti. Crea il PNG su una index card: «Fatima, figlia di Kalim, giovane egittologa del Museo del Cairo (Regina ♥, valore 9)».
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Il pilota che Vera ha costretto a virare e a rientrare all'accampamento della Loggia si chiama Pablo Gutiérrez: ardito aviatore e affascinante avventuriero, mercenario al soldo dei suoi padroni. Lei non l'ha buttato giù, ma da quando l'ha respinto con un pezzo di vetro e un revolver lui non riesce più a togliersela dalla testa, folgorato dalla sua bellezza e dalla sua risolutezza. Non passa subito dalla loro parte, ma è solo questione di tempo: prima o poi Pablo tradirà la Loggia, e quel giorno sarà dalla parte di Vera.</div>
-
-**Omar non compra: tiene i punti.** Con quello che ha messo da parte, l'Opposizione punta a una figura più potente, da calare al momento giusto nella cripta.
+**Omar non compra: tiene i punti.** Cinque non bastano per il Re, la figura potente che ha in mente di calare nella cripta; meglio risparmiare ancora.
 {: .azione }
 
 ## Scena 4. Crisi
 
-> **Le carte in mano.** Protagonisti (Paola): 3♠ 8♥ 4♥ 7♠. Opposizione (Omar): 7♣ 1♣ 3♦ 8♣. Il piatto è vuoto.
+> **Le carte in mano.** Protagonisti (Paola): D♥ (la Regina è Fatima) 5♠ 10♠, più il 3♥ calato all'asta. Opposizione (Omar): 10♣ 9♦ 8♦ 1♦. Il piatto è vuoto.
 
-All'asta Paola cala il 3♠, Omar l'asso di Fiori: vince Paola, e per la prima volta dalla notte del Cairo l'iniziativa torna ai Protagonisti. Tocca a lei definire la scena.
+All'asta Paola cala il 3♥, Omar l'asso di Quadri (1♦): il 3 batte l'1, vince Paola, e per la prima volta dalla notte del Cairo l'iniziativa torna ai Protagonisti. Il suo 3♥ va da parte come ultima giocata del round; l'1♦ di Omar torna nella sua mano. Tocca a lei definire la scena.
 
-**Paola stabilisce il titolo e la posta della scena.**
+**Paola stabilisce il titolo e la posta della scena.** Anche qui adatta la posta del canovaccio alla situazione: i Protagonisti sanno di aver perso un giorno per il rapimento, quindi non basta trovare l'accesso, bisogna trovarlo prima della Loggia.
 {: .azione }
 
-<div class="fiction"><span class="titolo-scena">Nella città perduta</span><em>Posta: trovare l'accesso alla cripta. Se va bene: sono a un passo dall'obiettivo. Se va male: restano in balìa dei nemici e delle insidie della città perduta.</em></div>
+<div class="fiction"><span class="titolo-scena">Nella città perduta</span><em>Posta: trovare l'accesso alla cripta prima della Loggia. Se va bene, entrano per primi, a un passo dalla missione. Se va male, la Loggia li precede e restano in balìa dei nemici e delle insidie della città perduta.</em></div>
 
-**Paola apre la scena con il 7♠** nel piatto vuoto: la prima giocata apre la scena; con l'iniziativa tocca a lei muovere per prima, e una carta lasciata sola nel vuoto si espone alla cattura.
+**Paola apre la scena e gioca il 5♠** nel piatto vuoto: la prima giocata apre la scena e ne fissa la cornice. Avendo l'iniziativa tocca a lei muovere per prima, e il 5♠, un'azione di Vera, resta sul tavolo come il loro vantaggio sul posto.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Partiti all'alba, Vera e Otto sono giunti alla grande piana dove, secondo i calcoli di Otto, un tempo sorgeva l'antica città di Zerzura: ma al posto di edifici e vestigia ci sono solo i miraggi del sole allo zenit e un vento maligno che getta sabbia negli occhi stanchi. Vera non aspetta che il sole cali. Si arrampica sullo sperone di roccia più alto, scruta la piana accecante con la mano a visiera, poi salta giù e comincia a scavare dove l'istinto le dice che la sabbia nasconde qualcosa. Dove finisce la strada comincia lei: non c'è ostacolo che non abbia mai affrontato a spallate.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Il giorno dopo Vera e Otto se lo prendono per tirare il fiato e, con l'aiuto di Fatima, si chinano sul taccuino di Aldo: confrontano gli appunti, le mappe e i versi dell'enigma, finché gli indizi sulla posizione della città perduta non si incastrano. Quando a sera ripartono dall'oasi, sanno con esattezza dove andare. Vera guida risoluta nel mare di dune fino a un enorme conglomerato di arenaria a forma di scafo di nave rovesciata, che spunta dalla sabbia in mezzo al nulla. È quello il punto: Zerzura è lì sotto.</div>
 
-**Omar risponde con il 7♣, prende il 7♠ e svuota il piatto: scopa** (4 punti). Pesca la carta solitaria di Vera e la spazza via di slancio, già al primo affondo.
+**Omar gioca l'8♦** nel piatto: introduce una minaccia, e di peso. In ♦, il seme dei nemici, mette in campo la Loggia già sul posto. Annota: «8♦ = la spedizione della Loggia, camion e uomini armati, già all'arrivo».
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>Ma la città perduta non si lascia trovare da chi la prende a spallate. La duna su cui scava le frana addosso senza preavviso, un fiume di sabbia che la inghiotte fino alla cintola e in un istante cancella ogni segno, ogni buca, ogni traccia. Quando Otto la tira fuori, che tossisce e sputa sabbia, del lavoro di un'ora non resta nulla: la piana è di nuovo liscia e vuota, come se Vera non avesse mai toccato terra.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Ma quando arrivano in vista dello scafo di pietra, il cuore si gela. Ai piedi del conglomerato è già accampato un convoglio di camion carichi di attrezzatura pesante da scavo, generatori, riflettori, e uomini armati che vanno e vengono indaffarati. La Loggia è arrivata prima. Il giorno perso tra le mani dei Veglianti è costato caro: i rivali hanno piantato il campo proprio sul punto giusto, e sembrano sapere esattamente dove cercare.</div>
 
-**Paola gioca il 4♥** nel piatto: dopo lo schianto rimette in gioco una risorsa leggera, un legame.
+**Paola gioca la Regina ♥, Fatima, e cattura l'8♦: presa.** Entra in scena la sua figura, e con lei la sua arma migliore: conosce dall'interno la spedizione della Loggia. Poi scatta l'effetto della Regina, la manipolatrice: Omar deve scartare a caso una carta dalla mano, il 10♣, e rimpiazzarla con la prima del mazzo, il 6♣. La trovata di Fatima fa perdere il filo ai rivali, che sprecano uomini e mezzi nel posto sbagliato.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Tocca a Otto, allora. Si inginocchia all'ombra della roccia, chiude gli occhi e recita a memoria i versi dell'enigma che ha decifrato, cercando nei suoi calcoli il punto esatto. Vera, che ancora sputa sabbia, per una volta lo lascia fare e gli si siede accanto.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Dalla cresta della duna Fatima studia il campo col binocolo, e a un tratto si irrigidisce: laggiù, accanto a un pezzo grosso della Loggia, c'è il suo professore. Stringe i denti, poi decide di testa sua. Scende verso il campo con passo deciso e una faccia tosta da far invidia, punta dritta al capannello di manovali e mercenari e sventola il tesserino dell'università: «Sono l'assistente del professor Mansour.» Nessuno fiata. «Ha dato ordine di cominciare gli scavi lì e di spostare tutto il materiale in quella zona», e indica la poppa del grande scafo di pietra. Gli uomini si mettono in moto, caricano picconi e generatori e si trascinano dalla parte sbagliata della roccia, mentre Vera e Otto sanno bene che l'ingresso è dal lato opposto.</div>
 
-**Omar gioca l'asso di Fiori (1♣)**: dispone un piccolo seme di caos, tenendo da parte le carte alte per il colpo grosso.
+**Omar gioca il 6♣** nel piatto: dispone il caos del deserto. In ♣ non serve un nemico, basta la natura, e Omar manda il vento a rimescolare tutto proprio mentre i Protagonisti si portano sul lato giusto. Annota: «6♣ = il vento che cancella il riferimento dell'ingresso».
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>Il vento intanto cambia: si alza sottile e fischiante tra le pietre, e porta un odore che non è di sabbia. Un odore di vecchio, di sepolcro. La città morta si è accorta di loro, e non li vuole.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Ma proprio mentre Vera, Otto e gli altri scivolano verso il lato buono della roccia, lontano dagli uomini della Loggia, il deserto cambia umore. Si alza un vento fortissimo, teso e fischiante, che solleva la sabbia in cortine accecanti e confonde ogni cosa. Otto aveva ricavato dal taccuino un riferimento preciso, un segno che doveva indicare il punto esatto dove aprire l'accesso; ma adesso, con la sabbia che morde gli occhi e le ombre che ballano, quel segno non si trova più, e la grande parete di arenaria sembra di colpo tutta uguale.</div>
 
-**Paola gioca l'8♥** nel piatto: una risorsa pesante, il legame più forte. Ma è una carta alta lasciata sola, un bersaglio ghiotto.
+**Paola gioca il 10♠** nel piatto: una risorsa pesante, l'irruenza di Vera che per una volta dà i suoi frutti. Non c'è nulla da catturare, e il 10♠ resta sul tavolo a rappresentare la loro scoperta.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Poi Otto apre gli occhi di scatto: ha trovato. I suoi calcoli convergono su un punto preciso ai piedi della roccia, dove un avvallamento appena percettibile tradisce qualcosa scavato dall'uomo. Lo dice a Vera con una luce negli occhi che lei non gli vedeva dal Cairo, e per un istante, in mezzo a quella desolazione, tornano una squadra: lei che scava, lui che le guida la mano. Sotto le dita di Vera affiora il bordo di una lastra di pietra nera.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Vera ha uno scatto di nervi: non possono essere arrivati così vicini per poi farsi fermare da un po' di vento, dalla sabbia e dal buio. Pesta il piede a terra con rabbia, e sotto la suola sente qualcosa che non torna: un rimbombo, un vuoto. Si butta a gattoni e comincia a scavare con le mani come una furia, scaraventando via sabbia a manciate, finché le dita non incontrano la pietra: una grande lastra squadrata, troppo regolare per essere opera del caso. L'accesso che cercavano è lì sotto. L'hanno trovato.</div>
 
-**Omar gioca l'8♣, prende l'8♥, poi spunta la spinta ♣ del pitch** «Aldo Falco è vivo: è un Vegliante. Otto lo ha capito, e tace»: la presa diventa **scopa** e svuota il piatto (l'8♥ catturato più il 4♥ e l'1♣). È la seconda scopa della scena, e la più crudele: si porta via il legame appena ricucito.
+**Omar gioca l'1♦** nel piatto: la più piccola delle minacce, ma quella che fa crollare il piano. Annota: «1♦ = il giovane portatore che li scopre e corre ad avvertire il professore».
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>E proprio mentre la lastra cede, la città perduta restituisce ai due la sua verità più feroce. Dall'ombra di un masso si stacca una figura incappucciata, una delle sentinelle che vegliano su Zerzura, e quando il cappuccio scivola via Vera si trova davanti un volto che ha pianto per anni come morto: Aldo Falco. Suo padre. Vivo, e schierato con chi quella cripta la difende. Vera resta di pietra, poi si volta verso Otto cercando una smentita, e su quella faccia che legge sette lingue morte trova invece la cosa peggiore: la colpa. Otto lo sapeva. Lo aveva capito da tempo, e aveva taciuto. In un istante la fiducia ricucita nel deserto, lo sguardo complice di un attimo prima, tutto crolla e viene spazzato via. Non restano che due estranei in mezzo alla sabbia, e una porta nera ai loro piedi.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Ma la trovata di Fatima ha una crepa. Uno dei portatori della Loggia, poco più che un ragazzo, va in giro a cercarla per farsi spiegare meglio gli ordini. Gira intorno al grande scafo di pietra e, proprio dalla parte opposta a quella che lei aveva indicato, trova il gruppetto chino e festante davanti a una lastra squadrata. Capisce al volo di essere stato preso in giro. Non dice una parola: si volta e corre più forte che può verso il campo, diritto dal professor Mansour, per avvertirlo che gli intrusi hanno trovato l'ingresso.</div>
 
-**Paola gioca il 3♠**, la sua ultima carta: non le resta che calarla, di nuovo esposta nel vuoto.
+**Paola gioca il 3♥**, la sua carta d'asta che torna come ultima giocata obbligata: un piccolo gesto in ♥, il seme dei legami. Non cattura nulla e resta sul tavolo, fragile, in mezzo alle carte della Loggia.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>Vera non urla e non piange. Fa una cosa sola: volta le spalle a Otto e a quel padre insieme, stringe i denti e con una sbarra di ferro fa saltare da sola il bordo della lastra. Se deve scendere all'inferno per il Sole di Mezzanotte ci scenderà, ma da qui in avanti non ha più nessuno accanto di cui fidarsi.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Vera si accorge troppo tardi che il ragazzo li ha visti e sta già scappando. D'istinto la mano corre al revolver, lo estrae e lo punta sulla schiena in fuga del portatore: un colpo solo, e nessuno saprebbe dove sono. Ma il dito si blocca sul grilletto. Alza gli occhi, incrocia quelli di Otto che la guarda in silenzio, e qualcosa in lei cede. Abbassa l'arma e la rinfodera, lasciando correre il ragazzo. «Sbrighiamoci, abbiamo ancora poco tempo.»</div>
 
-**Omar chiude con il 3♦, prende il 3♠ e svuota di nuovo il piatto: terza scopa.** Cattura l'ultimo gesto di Vera e non lascia niente sul tavolo.
+**Omar gioca il 9♦ e cattura insieme 5♠, 1♦ e 3♥: presa di tre carte** (5 più 1 più 3 fa 9). Poi spunta la spinta ♦ del pitch «La Loggia ha sicari in ogni porto; i Veglianti hanno costruito le trappole»: la presa diventa **scopa** e svuota il piatto, portandosi via anche il 6♣ e il 10♠. È la mossa che chiude la scena e la assegna all'Opposizione: il vantaggio di Vera, la lastra trovata, perfino il suo gesto di clemenza, tutto finisce in mano alla Loggia. Il 9♦ va tra le scope di Omar, e la spinta di ♦ è usata.
 {: .azione }
 
-<div class="fiction"><span class="chi">Omar narra</span>È esattamente il momento che gli altri aspettavano. Mentre Vera lotta da sola con la pietra, le sentinelle di Zerzura escono allo scoperto da ogni masso, e in lontananza, sulla piana, si alza la polvere delle automobili della Loggia richiamate dal biplano. Veglianti da una parte, Loggia dall'altra: i due si ritrovano stretti nel mezzo, soli e divisi, sopra una porta spalancata sul buio. L'ingresso lo hanno trovato, sì, ma non sono arrivati primi, e non sono più una squadra.</div>
+<div class="fiction"><span class="chi">Omar narra</span>Proprio mentre, a fatica, riescono a scostare la lastra quel tanto che basta perché qualcuno possa infilarcisi sotto, una voce li gela alle spalle. «Bene, bene...» È Koenig, luogotenente della Loggia, affiancato dal professor Mansour e da una dozzina di mercenari con i mitra spianati. «La famigerata Vera Falco e l'esimio professor Lenzi, suppongo. Avete fatto un lavoro all'altezza della vostra reputazione. Grazie.» Poi, con un cenno svogliato, ordina ai suoi uomini di arrestarli. Il giorno perso tra i Veglianti la Loggia se l'è ripreso tutto: gli intrusi hanno trovato e aperto la porta di Zerzura, e l'hanno fatto per i loro nemici.</div>
 
-Fine del round: il piatto è di nuovo vuoto, **0 a 0**, e la scena va all'Opposizione, che con tre scope di fila non ha lasciato ai Protagonisti niente sul tavolo. Omar incassa 12 punti, le sue tre scope, abbastanza per puntare alla figura più potente al mercato; Paola non porta a casa nulla. Il diario del rapporto si legge dai Cuori e dalle Picche rimasti nel piatto: ma le scope hanno spazzato via tutto, il piatto è vuoto, e il diario segna **parità**. La frattura aperta dal segreto su Aldo è fresca e profonda, ma non è ancora detta l'ultima parola: il rapporto resta in bilico, sospeso su quella porta nera, e si deciderà là sotto.
+Fine del round: il piatto è vuoto, **0 a 0**, e a parità la posta va a chi ha calato l'ultima carta, Omar. È la prima scena che i Protagonisti perdono. Omar incassa la scopa, tre punti che sommati ai cinque di prima fanno otto: quanto basta, al mercato, per la figura più potente. Paola porta a casa solo il punto della presa di Fatima. Il diario del rapporto si legge dai Cuori e dalle Picche rimasti nel piatto, ma la scopa di Omar ha spazzato via tutto, perfino il 3♥ del gesto di Vera: niente resta inciso, e il diario segna **parità**. La mano che si è fermata sul grilletto c'è stata, ma non lascia segno sul tavolo, e nessun seme colora l'esito.
 
-**Avendo perso la posta, per la prima e unica volta in tutta la partita l'esito lo raccontano i Protagonisti: tocca a Paola narrare una sconfitta sua.** La chiusura è una scopa e il piatto resta vuoto: nessun seme domina il diario, è parità; ma la scena l'hanno decisa il caos del deserto e i nemici, le tre scope di Omar, e soprattutto la verità che Otto teneva nascosta. Paola non ha la voce cupa di Omar: incassa il colpo e lo racconta con la rabbia e il dolore di chi l'ha subito.
+**Avendo perso la posta, per la prima e unica volta in tutta la partita l'esito lo raccontano i Protagonisti: tocca a Paola narrare una sconfitta sua.** Non ha la voce cupa di Omar: incassa il colpo e lo racconta con la rabbia e il dolore di chi l'ha subito.
 {: .azione }
 
-<div class="fiction"><span class="chi">Paola narra</span>All'ingresso di Zerzura ci sono arrivati, ma nel modo peggiore: la Loggia alle calcagna, i Veglianti tutto intorno, e fra loro due un silenzio che pesa più della sabbia. Vera non guarda Otto, non guarda suo padre. Solleva la lastra di pietra, si affaccia sul pozzo di scale che sprofonda nel buio e scende per prima, da sola, il revolver in pugno e un solo pensiero in testa: arrivare al Sole di Mezzanotte prima di tutti loro. Otto la segue, perché non sa fare altro. Quello che si erano promessi nel deserto è rimasto lassù, sepolto sotto la sabbia.</div>
+<div class="fiction"><span class="chi">Paola narra</span>Koenig fa scostare del tutto la lastra e ordina di calare lì l'attrezzatura. Poi squadra i prigionieri e decide: «Falco, Lenzi e la giovane assistente verranno con noi: chissà che non si rivelino utili, là sotto.» Faruq e Kalim, che non gli servono, li fa legare in una tenda e lasciare in superficie, sotto la guardia di pochi uomini. Cala nel pozzo una scala di corda, e a uno a uno Vera, Otto e Fatima scendono nel buio, prigionieri e carcerieri insieme, dentro la città sepolta da migliaia di anni. Sono arrivati a Zerzura come sognavano, ma incatenati ai loro nemici, e cosa li aspetti là in fondo non lo sa nessuno.</div>
 
-> **A seguire:** il mercato tra la quarta e la quinta scena e poi la Scena 5.
+## Mercato, tra la quarta e la quinta scena
+
+Dopo la quarta scena tocca finalmente a Omar avere i punti per la sua figura. Gli otto che ha messo da parte (uno a testa nelle prime due scene, i tre del Jolly nella fuga, i tre della scopa nella città perduta) bastano esatti per la carta più potente del gioco. Paola, con i quattro che le restano, non compra: li tiene.
+
+<div class="fiction"><span class="chi">Omar annuncia</span>Anche Omar, finalmente, schiera la sua figura, e non una qualunque. Sulla index card scrive chi cala: Lord Alistair Blackwood, Gran Maestro della Loggia del Basilisco. Un barone scozzese oltre la cinquantina, ma ancora possente ed energico, e soprattutto un occultista dalla brama insaziabile: gli artefatti non li vuole per i musei né per vanità di collezionista, ma per i poteri e i doni sovrannaturali che è convinto di poterne strappare. È l'uomo che la Loggia aspettava, e che adesso scende a Zerzura per reclamare il Sole di Mezzanotte di persona.</div>
+
+**Omar compra il Re ♦ (costa 8 punti, gli restano 0).** Ha aspettato tre mercati per questo, e ora spende tutto in un colpo per la carta più potente del gioco. Come ogni figura il Re entra nel mazzo e si rimescola, pronto a entrare in scena nella cripta. Il suo effetto, quando verrà giocato, è da deus ex machina: recupera dalla pila degli scarti comuni una carta del proprio seme e la rimette in gioco; nell'ultima scena, a mazzo già distribuito, la aggiunge direttamente alla riserva, un colpo di scena in più da spendere nella cripta.
+{: .azione }
+
+**Paola non compra: tiene i quattro punti.** Ha già speso per Kalim e Fatima, e quei punti, se non spesi, peseranno alla fine. Poi, prima dell'ultima scena, scatta una regola speciale: per la cripta ciascun lato pesca una mano più ampia, ne sceglie quattro carte e mette le altre da parte in una riserva. Quelle carte di scorta non andranno sprecate: sono le munizioni dei colpi di scena, con cui la partita si decide davvero dopo il primo conteggio.
+{: .azione }
+
+## Scena 5. Risoluzione
+
+> **Le carte in mano.** È l'ultima scena: ogni lato ha pescato una mano più ampia, ne ha tenute quattro e ha messo le altre in riserva per i colpi di scena. Protagonisti (Paola): 6♠ 4♥ 2♠ 3♠, e in riserva 7♥, 8♠, 9♠. Opposizione (Omar): 5♦ 4♦ R♦ (il Re è Lord Blackwood), più il 3♦ calato all'asta; in riserva, per ora, nessuna carta. Il piatto è vuoto.
+
+All'asta Paola cala il 2♠, Omar il 3♦: il 3 batte il 2, vince Omar, e l'iniziativa torna all'Opposizione per l'ultima, decisiva scena. Il suo 3♦ va da parte come ultima giocata; il 2♠ di Paola torna nella sua mano. Tocca a Omar definire la scena. E va ricordato: nell'ultima scena non si possono più usare le spinte del pitch.
+
+**Omar stabilisce il titolo e la posta della scena.**
+{: .azione }
+
+<div class="fiction"><span class="titolo-scena">La cripta del Sole</span><em>Posta: l'eclissi. Se va bene, mettono in salvo il Sole di Mezzanotte. Se va male, il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata.</em></div>
+
+**Omar apre la scena e gioca il 5♦** nel piatto vuoto: la prima giocata apre la scena e ne fissa la cornice. In ♦, il seme dei nemici, è il vantaggio della Loggia: i prigionieri in pugno, le armi puntate. Annota: «5♦ = la Loggia che controlla la discesa, le armi alla schiena».
+{: .azione }
+
+<div class="fiction"><span class="chi">Omar narra</span>La comitiva scende nei cunicoli che un tempo erano le strade di Zerzura, le lanterne che strappano al buio brandelli di una città morta da millenni. Le pareti degli edifici sepolti sono fitte di iscrizioni e geroglifici, e in cima ai colonnati statue dai volti spaventosi vegliano sugli intrusi. Davanti, le mani legate e le canne dei fucili puntate contro la schiena, camminano Vera, Otto e Fatima: la Loggia li tiene in pugno e detta il passo.</div>
+
+**Paola gioca il 6♠** nel piatto: introduce un'azione di Vera, un inganno. In ♠, prigioniera ma non doma, Vera prova a giocare d'astuzia. Annota: «6♠ = Vera che finge di indicare la via per sviare i nemici verso una trappola».
+{: .azione }
+
+<div class="fiction"><span class="chi">Paola narra</span>Mentre li spingono nel buio, l'occhio di Vera cade su un fregio scolpito in una parete, e lo riconosce: quel motivo era disegnato su una pagina del taccuino di suo padre, quello che ha studiato all'oasi e che ora Koenig si è infilato in tasca. Ricorda bene cosa Aldo annotava di fianco a quel segno: di lì non si arriva alla cripta, di lì si finisce in una delle trappole della città. Allora Vera cambia tono, si fa quasi docile, e indica proprio quel corridoio: «La cripta è da quella parte. Se volete arrivarci prima dell'eclissi, è l'unica via.» Spera che la Loggia abbocchi e ci si infili dritta dentro.</div>
+
+**Omar gioca il Re ♦, Lord Blackwood, e cattura il 6♠: presa.** Il Gran Maestro entra in scena di persona e smonta subito l'inganno di Vera, leggendo lui stesso il taccuino. Poi scatta l'effetto del Re: Blackwood recupera dalla pila degli scarti comuni una carta del proprio seme, un 10♦, e la mette nella riserva, un asso che si terrà per i colpi di scena.
+{: .azione }
+
+<div class="fiction"><span class="chi">Omar narra</span>Dalle retrovie si fa avanti un uomo alto, in tenuta paramilitare, calvo, con folte basette bianche. I mercenari si scostano reverenti per lasciarlo passare, e perfino Koenig e Mansour abbassano lo sguardo deferenti. L'uomo sfoglia con calma il taccuino del padre di Vera. «Bel tentativo. Ma tuo padre è stato molto dettagliato, nel suo notevole taccuino. E per tua sfortuna io sono abile quanto voi a leggere questa lingua, e a decifrarne codici ed enigmi.» Solo adesso Otto lo riconosce: è il barone Lord Alistair Blackwood, Gran Maestro della Loggia del Basilisco in persona. «Se proverai ancora a ingannarmi, Zerzura sarà la vostra tomba», avverte i prigionieri. Poi, indicando la via giusta: «Per di qua.»</div>
+
+**Paola gioca il 4♥** nel piatto: una risorsa leggera, un legame. In ♥ è Otto che tiene unito il gruppo. Annota: «4♥ = Otto che, insolitamente calmo, rassicura Vera e Fatima».
+{: .azione }
+
+<div class="fiction"><span class="chi">Paola narra</span>Mentre li sospingono lungo il corridoio, Otto si avvicina a Vera e Fatima e bisbiglia, con una padronanza di sé che non gli si era mai vista: «Mantenete la calma. Non credo che Blackwood abbia ancora capito il vero potere delle formule scritte nel taccuino. Niente colpi di testa: non vale la pena di farsi sparare nella schiena, adesso.» È strano vederlo così, lui che si paralizzava davanti a uno scorpione; ma qui, in mezzo ai geroglifici e agli enigmi, Otto è nel suo elemento, e per una volta è lui a fare scudo agli altri due.</div>
+
+**Omar gioca il 4♦ e cattura il 4♥: presa.** La calma che Otto aveva infuso si rivela mal riposta: la presa si porta via la sua rassicurazione, perché Blackwood conosce eccome il potere delle formule.
+{: .azione }
+
+<div class="fiction"><span class="chi">Omar narra</span>E invece. Giunti davanti a un misterioso edificio a tronco di cono, Lord Blackwood appoggia i palmi sul portale dalle grandi ante di bronzo istoriate e comincia a salmodiare in quella lingua sconosciuta. Dallo spiraglio tra le ante filtra una luce accecante, e poi i battenti della cripta si aprono lentamente. Otto sbianca: si era illuso che il Gran Maestro ignorasse il potere delle formule, e invece Blackwood la lingua magica la conosce benissimo. Quello su cui contava per restare un passo avanti svanisce in un istante.</div>
+
+**Paola gioca il 2♠** nel piatto: una piccola azione di Vera, la più minuta, ma destinata a restare sul tavolo fino in fondo. Annota: «2♠ = Vera che approfitta della meraviglia generale per liberarsi i polsi».
+{: .azione }
+
+<div class="fiction"><span class="chi">Paola narra</span>Mentre i battenti si spalancano e tutti, mercenari compresi, restano a bocca aperta davanti al prodigio di Blackwood, Vera non guarda la luce. Tiene gli occhi bassi e lavora in silenzio sui legacci che le stringono i polsi, sfregandoli contro uno spigolo di pietra, allentando nodo dopo nodo. Quando l'ultimo giro di corda cede non lo dà a vedere: tiene le mani dietro la schiena come se fosse ancora legata. Ora però è libera, e aspetta solo il momento giusto.</div>
+
+**Omar gioca il 3♦, la sua carta d'asta, nel piatto:** l'ultima mossa del round, il trionfo della Loggia. Annota: «3♦ = Blackwood che afferra il Sole di Mezzanotte».
+{: .azione }
+
+<div class="fiction"><span class="chi">Omar narra</span>Oltre la soglia la cripta si apre in una sala circolare, e al centro, su un altare di pietra nera, c'è il Sole di Mezzanotte: è lui a emettere quella luce accecante, una sfera che pulsa come se racchiudesse un piccolo astro. Blackwood non si trattiene più: scatta in avanti, raggiunge l'altare e lo afferra a due mani, sollevandolo sopra la testa con un urlo di gioia. Anni di caccia, e finalmente il Gran Maestro stringe il suo premio.</div>
+
+**Paola gioca il 3♠ e cattura il 3♦: presa.** L'ultima carta del round: Vera, ormai libera, irrompe e mette Blackwood sotto tiro, spezzando il suo trionfo. Ma è una mossa sola, e nel piatto resta la stretta della Loggia.
+{: .azione }
+
+<div class="fiction"><span class="chi">Paola narra</span>Ed è il momento di Vera. Le mani ormai libere, scatta come una molla, strappa il revolver dalla fondina del mercenario più vicino e si pianta sulla soglia della sala, l'arma puntata dritta su Blackwood. «Posa il Sole sull'altare.» L'omone non si scompone: annuisce con un sorrisetto strafottente. «E cosa pensi di fare, da sola contro tutti?» Con la coda dell'occhio Vera vede Otto e Fatima costretti in ginocchio, le canne dei fucili premute contro la nuca. La sfera è a un passo, ma lei è una sola, e ogni mossa sbagliata costa due vite.</div>
+
+Si fa il primo conteggio. Nel piatto restano il 5♦ e il 2♠: Opposizione 5, Protagonisti 2. L'esito apparente è una sconfitta, e come in ogni scena lo narra chi ha perso la posta, Paola.
+
+<div class="fiction"><span class="chi">Paola narra</span>Vera ha l'arma puntata, ma Blackwood non ha tutti i torti: da sola, con Otto e Fatima in ginocchio sotto i fucili, non può davvero farne niente. Lentamente abbassa il revolver. I mercenari richiudono il Sole di Mezzanotte in uno scrigno di piombo, perché neppure la sua luce possa filtrare, e si rimettono in marcia verso l'alto. Quando riemergono dal sottosuolo il sole è ormai alto nel cielo, l'eclissi è passata da un pezzo, e la Loggia porta via il suo trofeo. Sembra finita: il Sole di Mezzanotte esce da Zerzura nelle mani sbagliate.</div>
+
+Ma il primo conteggio è solo l'esito apparente. Ora si rivelano i **colpi di scena**, una carta della riserva alla volta, a turni strettamente alterni, e a ognuno la verità si scopre diversa da come sembrava. Comincia chi perde, i Protagonisti.
+
+**Primo colpo. Paola cala dalla riserva il 7♥ ed elimina il 5♦:** la presa di ferro della Loggia svanisce. Il 7♥ resta nel piatto, il 5♦ va negli scarti.
+{: .azione }
+
+<div class="fiction"><span class="chi">Paola narra</span>Ma le cose non erano come sembravano. I mercenari caricano sul cassone di un camion la cassa col Sole di Mezzanotte e, accanto, i tre prigionieri, Vera, Otto e Fatima, pronti a filare via nel deserto. L'inquadratura però si sposta sulla cabina, sugli autisti: e sono due facce conosciute, Faruq e Kalim. Si erano sciolti dai legacci nella tenda e, mentre tutti erano sottoterra, avevano preso il posto degli uomini al volante. A un cenno sbattono giù dal mezzo i due mercenari incaricati di scortare prigionieri e tesoro, ingranano la marcia e partono: ora il camion, con l'artefatto e i tre a bordo, è nelle loro mani.</div>
+
+**Secondo colpo. Omar cala dalla riserva il 10♦, la carta che il Re aveva recuperato, ed elimina il 7♥:** la fuga di Faruq e Kalim si infrange. Il 10♦ resta nel piatto, il 7♥ va negli scarti.
+{: .azione }
+
+<div class="fiction"><span class="chi">Omar narra</span>Ma il deserto non aveva dimenticato. Il camion ha percorso appena poche centinaia di metri quando si trova circondato: una ventina di Veglianti in groppa ai cammelli sbucano dalle dune, e il loro capo, Alì, spara una raffica che fora le gomme e inchioda il mezzo nella sabbia. «Fermi, sacrileghi! Il Sole di Mezzanotte non può lasciare Zerzura!»</div>
+
+**Terzo colpo. Paola cala dalla riserva il 9♠:** nel piatto non c'è nulla da eliminare alla sua portata, così la carta entra e basta. È l'ultima giocata possibile, perché Omar non ha più riserva e nessuno può giocare due colpi di fila. Il piatto resta 2♠ 10♦ 9♠.
+{: .azione }
+
+<div class="fiction"><span class="chi">Paola narra</span>Vera scende dal cassone con le mani alzate. Alì le punta il mitra contro, il dito sul grilletto. Ma una mano gli abbassa la canna: «Non farlo. È mia figlia.» L'uomo si toglie il velo, e Vera resta senza fiato: è Aldo, suo padre, quello che ha pianto per anni come morto, vivo e schierato con i custodi di Zerzura. Lascia cadere il revolver e gli corre incontro: il Sole lo aveva inseguito per onorare il sacrificio del padre, per dare un senso al suo sogno, e adesso quel padre è lì, in carne e ossa, a stringerla. Ed è Aldo a rivelarle la verità che i Veglianti custodiscono: il Sole di Mezzanotte non va portato via, va riportato nella cripta prima che l'eclissi finisca. Quell'artefatto tiene sigillato un demone nella sua dimensione; strapparlo da Zerzura aprirebbe la porta al suo ritorno, e scatenerebbe forze malefiche sul mondo. Salvarlo non significava prenderlo, ma lasciarlo dov'è. Anche Otto raggiunge il vecchio amico, e per un istante, in mezzo alla sabbia, sembra che i conti di una vita possano riaprirsi. Ma su quel volto di Otto, che legge sette lingue morte, Vera ha già letto la verità peggiore: lui lo sapeva, che suo padre era vivo, e aveva taciuto.</div>
+
+Esaurite le riserve, si fa il conteggio definitivo. Nel piatto restano 2♠, 10♦ e 9♠: **Protagonisti 11, Opposizione 10.** I Protagonisti vincono il piatto, e con esso la missione: il Sole di Mezzanotte non lascerà Zerzura. E poiché Paola conserva ancora cinque punti non spesi, la sua Crescita, contro i due di Omar, è una **Vittoria piena.** Il diario del rapporto segna su, su, pari, pari, **giù**: nell'ultima scena i due si sono allontanati, perché a decidere è stata la forza di Vera, e perché il segreto taciuto da Otto pesa più di prima.
+
+**Avendo perso la posta, l'esito lo racconta Omar.**
+{: .azione }
+
+<div class="fiction"><span class="chi">Omar narra</span>All'esito, però, per la Loggia non c'è gloria. Gli altri Veglianti caricano i mercenari rimasti e, dopo un breve, feroce scontro tra le dune, li mettono in fuga: gli uomini di Blackwood si sbandano e scappano nel deserto. Persino il Gran Maestro deve piegarsi. Raggiunge il suo biplano nascosto oltre le rocce, decolla mentre la sabbia gli morde il volto, e dall'alto lancia ai nemici una sola promessa, urlata sopra il rombo del motore: tornerà, e quel giorno gliela farà pagare. Il Sole di Mezzanotte ridiscende nel buio della cripta, il sigillo regge, il demone resta dov'è. Per stavolta.</div>
+
+## Come si chiude la partita
+
+La quinta scena ha due conteggi, e così l'intera partita si legge su due piani.
+
+Il primo è la **missione**: chi ha vinto il piatto finale. I Protagonisti, 11 a 10, quindi il Sole di Mezzanotte resta sigillato a Zerzura, dove deve stare.
+
+Il secondo è la **Crescita**: i punti che ciascun lato non ha speso al mercato. Paola ne conserva cinque, Omar due: anche qui avanti i Protagonisti. Vincere entrambi i piani è una **Vittoria piena**.
+
+Restano le domande di fine partita. Paola ha vinto la missione, la Crescita e più scene, e risponde così.
+
+**Hanno ottenuto ciò che volevano?** Sì, e più di quanto sperassero: volevano vederci chiaro nei misteri ancestrali del Sole di Mezzanotte e seguire le orme di Aldo Falco. Hanno avuto entrambe le cose, e hanno scoperto che quelle orme non portavano a una tomba, ma a un padre vivo.
+
+**Come sono cresciuti?** Hanno dimostrato il loro valore, e adesso sanno, come già lo sanno i loro nemici, che la magia e i poteri sovrannaturali esistono davvero. Da Zerzura non si torna gli stessi di prima.
+
+**Come si è evoluto il rapporto?** Vera ha imparato a rispettare Otto, e Otto lei. Il viaggio ha rafforzato il loro legame, nonostante i segreti che si sono portati dietro e l'avventatezza con cui Vera ha più volte messo tutti a rischio. Il diario aveva segnato l'ultima scena in discesa, per il silenzio di Otto sul padre di lei; ma a conti fatti non sono più i due che si punzecchiavano al Cairo.
+
+## Epilogo
+
+Date le risposte, Paola e Omar si concedono il cioccolatino: una manciata di vignette, a turno, ciascuna su un personaggio, ambientate giorni o anni dopo.
+
+<div class="fiction"><span class="chi">Paola narra</span>Qualche mese dopo, al Museo del Cairo, Fatima discute la tesi di dottorato. In prima fila, commossi, ci sono suo padre Kalim e lo zio Faruq, impacciati nei vestiti buoni e fieri come non mai. Il suo relatore non è più il professor Mansour, ma Otto Lenzi, che intanto si è guadagnato la cattedra. Quando la proclamano dottoressa, è lui il primo ad alzarsi ad applaudire.</div>
+
+<div class="fiction"><span class="chi">Omar narra</span>Nella cripta, alla luce delle torce, Alì rimette il Sole di Mezzanotte sul suo altare di pietra nera: la sfera riprende a pulsare piano, e il sigillo si richiude. Poi i Veglianti, in silenzio, fanno scivolare di nuovo al suo posto la grande lastra. Sopra di loro, entro l'alba, il deserto cancellerà ogni traccia, e Zerzura tornerà a non esistere su nessuna mappa. I custodi riprendono la veglia, come hanno fatto per secoli e come faranno finché il demone resterà di là.</div>
+
+<div class="fiction"><span class="chi">Paola narra</span>Al Cairo, nel circolo scacchistico del Grand Hotel, Hatim toglie la teiera dal fuoco, riempie due tazze fumanti e porta il vassoio fino a una sala piena di tavoli da gioco. A uno di quei tavoli lo aspetta il suo vecchio amico Otto. I due si siedono uno di fronte all'altro, muovono i primi pezzi, e riprendono la loro partita lì dove l'avevano lasciata, come se in mezzo non ci fossero stati né il deserto né i demoni.</div>
+
+<div class="fiction"><span class="chi">Omar narra</span>Molto più a nord, tra le nevi dell'Himalaya, una piccozza colpisce qualcosa che non è ghiaccio. Koenig si fa largo tra gli sherpa eccitati, si china a guardare, e un sorriso freddo gli taglia la faccia. Poi solleva la radio da campo, preme il pulsante e parla a qualcuno, dall'altra parte del mondo: «L'abbiamo trovato.» La Loggia del Basilisco non si è fermata. Ha solo cambiato montagna.</div>
+
+<div class="fiction"><span class="chi">Paola narra</span>Da qualche parte sopra una giungla tropicale, un idrovolante giallo taglia il cielo umido. Ai comandi c'è Vera; davanti a lei, una vecchia mappa spiegata sulle ginocchia, suo padre Aldo segue una rotta che solo lui sa leggere. «Eccolo» dice, indicando un punto tra le fronde. «Atterra su quel laghetto, il tempio dovrebbe essere poco distante.» Vera spinge la cloche in avanti e l'idrovolante scende verso l'acqua. Il vecchio taccuino non mentiva: dove finisce la strada, comincia lei. E stavolta non è più sola.</div>
+
+<div class="fiction"><span class="chi">Omar narra</span>In Scozia, nel castello del barone, il consiglio della Loggia del Basilisco è riunito. I confratelli indossano tuniche scure, e dall'alto del suo scranno Lord Blackwood presiede la seduta. Dietro di loro incombe l'enorme statua di una creatura mostruosa; sul pavimento è tracciato un grande pentacolo con un occhio al centro. Una litania comincia a salire, ritmata, e riempie il salone del castello, mentre l'inquadratura si allontana sempre più in alto, finché del rito non restano che un sussurro e un punto di luce nel buio.</div>
 
 ---
 
@@ -1297,11 +1419,11 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Carta d'asta.** La carta giocata coperta nell'asta. Quella del vincitore resta scoperta sul tavolo e si rigioca come sua ultima carta del round; quella del perdente torna nella sua mano.
 
-**Colpi di scena.** La coda della quinta scena: dopo il primo conteggio si gioca a turni alterni calando le carte tenute in riserva. Ogni carta entra nel piatto, somma il suo valore al proprio totale e può eliminare una carta di seme avversario di valore pari o inferiore. Si prosegue finché entrambe le riserve sono esaurite.
+**Colpi di scena.** La coda della quinta scena: dopo il primo conteggio si gioca a turni strettamente alterni calando le carte tenute in riserva. Ogni carta entra nel piatto, somma il suo valore al proprio totale e può eliminare una carta di seme avversario di valore pari o inferiore. Nessun lato gioca due colpi di fila: la fase finisce appena, dopo un colpo, tocca a un lato senza riserva.
 
 **Concedere la scena (arrendersi).** Nelle scene 1-4, chi non ha l'iniziativa e ha una sola carta in mano può rinunciare a giocarla e cedere la posta. In due modi, una volta ciascuno per lato: la ritirata strategica (la carta torna nel proprio mazzo e farà numero per la quinta scena) e la resa onorevole (la carta si tiene tra le prese e vale un punto).
 
-**Conteggio definitivo.** Il conteggio finale della partita, fatto quando le riserve dei colpi di scena sono esaurite: si sommano Cuori e Picche contro Quadri e Fiori. Chi ha il totale più alto vince il piatto e quindi la missione. In parità decidono prima le scope, poi le prese.
+**Conteggio definitivo.** Il conteggio finale della partita, fatto quando i colpi di scena sono finiti (la fase si chiude appena, dopo un colpo, tocca a un lato senza riserva): si sommano Cuori e Picche contro Quadri e Fiori. Chi ha il totale più alto vince il piatto e quindi la missione. In pareggio decide la Crescita (i punti non spesi): chi ne ha di più la spende tutta per aggiudicarsi il piatto, a parità di Crescita vince il lato dei protagonisti, e quando il pareggio lo vincono loro l'esito è sempre Per il rotto della cuffia.
 
 **Continuità.** Il principio per cui ogni scena riparte dall'esito di quella precedente: la situazione dei protagonisti è la conseguenza di come è andata la posta. Anche il piatto resta sul tavolo tra una scena e l'altra.
 
@@ -1372,7 +1494,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Quattro esiti.** Le quattro chiusure possibili, dall'incrocio tra missione e punti: Vittoria piena (missione e punti), Per il rotto della cuffia (missione sì, punti no), Sconfitta dignitosa (missione no, punti sì), Fallimento totale (né l'una né gli altri).
 
-**Re (♦ deus ex machina).** Figura: costo 8 punti, vale 10. Effetto: scambia una carta della tua mano con una degli scarti comuni dello stesso seme.
+**Re (♦ deus ex machina).** Figura: costo 8 punti, vale 10. Effetto: recupera dagli scarti comuni una carta del suo stesso seme (la mano resta), che nelle scene 1-4 si rimescola nel tuo mazzo e nell'ultima scena entra nella riserva.
 
 **Regina (♥ manipolatrice).** Figura: costo 5 punti, vale 9. Effetto: l'avversario scarta a caso una carta dalla mano e la sostituisce con la prima del suo mazzo.
 

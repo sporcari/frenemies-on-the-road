@@ -130,5 +130,5 @@
    Piatto finale: 9♣ 5♣ 3♠ 6♥ 5♠ 10♠
    Valori nel piatto: Protagonisti (♥+♠) 24 contro Opposizione (♦+♣) 14.
    Punti (presa 1, scopa 3): Protagonisti 10, Opposizione 4.
-   Esito: VITTORIA TOTALE
+   Esito: VITTORIA PIENA
    Diario del rapporto per scena: giu, giu, pari, pari, giu

@@ -125,6 +125,48 @@ figure.diagramma figcaption {{ font-size: 9.5pt; color: #888; margin-top: 8px; f
 .cover .occhiello {{ font-size: 11pt; color: #666; margin-top: 26px; font-style: italic;
         max-width: 120mm; margin-left: auto; margin-right: auto; }}
 .cover .righello {{ width: 70mm; height: 3px; background: {ORO_CHIARO}; margin: 22px auto; border: none; }}
+/* Appendice G: schede da fotocopiare e compilare a penna */
+.sg-break {{ page-break-before: always; break-before: page; }}
+.sg-titolo {{ font-family: 'Oswald','Arial Narrow',sans-serif; font-size: 18pt; color: {ORO};
+        letter-spacing: 1px; text-transform: uppercase; margin: 4px 0 1px; }}
+.sg-occh {{ font-style: italic; color: #8a7a48; font-size: 10pt; margin: 0 0 10px; }}
+.sg-sez {{ font-family: 'Oswald','Arial Narrow',sans-serif; font-size: 13pt; color: {SCURO};
+        letter-spacing: .5px; text-transform: uppercase; margin: 10px 0 1px;
+        border-bottom: 1px solid {BORDO}; padding-bottom: 2px; }}
+.sg-lab {{ display: block; font-family: 'Oswald','Arial Narrow',sans-serif; font-size: 8.6pt;
+        letter-spacing: 1px; text-transform: uppercase; color: {GRIGIO}; margin: 7px 0 2px; }}
+.sg-lab i {{ text-transform: none; letter-spacing: 0; font-weight: normal; color: #9a937f; }}
+.sg-hint {{ color: {GRIGIO}; font-style: italic; font-size: 9pt; margin: 0 0 3px; }}
+.sg-box {{ border: 1px solid {BORDO}; border-radius: 6px; background: #fff; padding: 6px 11px; margin-bottom: 6px; }}
+.sg-righe .r {{ border-bottom: 1px solid #d9d3c4; height: 19px; }}
+.sg-righe .r:last-child {{ border-bottom: none; }}
+.sg-cb {{ display: inline-block; width: 11px; height: 11px; border: 1.3px solid {SCURO};
+        border-radius: 2px; vertical-align: -1px; margin-right: 4px; }}
+.sg-cols {{ display: flex; gap: 14px; }}
+.sg-col {{ flex: 1; }}
+.sg-blocco {{ page-break-inside: avoid; break-inside: avoid; margin-bottom: 6px; }}
+.sg-spinta {{ display: flex; gap: 10px; align-items: flex-start; padding: 4px 0; border-bottom: 1px dotted {BORDO}; }}
+.sg-spinta:last-child {{ border-bottom: none; }}
+.sg-spinta .q {{ flex: 1; }}
+.sg-spinta .dom {{ font-weight: bold; font-size: 9.8pt; }}
+.sg-spinta .scrivi {{ border-bottom: 1px solid #d9d3c4; height: 18px; margin-top: 4px; }}
+.sg-usata {{ flex: 0 0 auto; font-size: 7.6pt; letter-spacing: .5px; text-transform: uppercase;
+        color: {GRIGIO}; text-align: center; white-space: nowrap; }}
+.sg-griglia {{ display: flex; flex-wrap: wrap; gap: 9px; }}
+.sg-qcard {{ width: 48%; box-sizing: border-box; border: 1px solid {BORDO}; border-radius: 8px;
+        background: #fff; padding: 8px 10px; page-break-inside: avoid; break-inside: avoid; }}
+.sg-qtop {{ display: flex; justify-content: space-between; align-items: center;
+        border-bottom: 1px solid {BORDO}; padding-bottom: 4px; margin-bottom: 5px; }}
+.sg-qn {{ font-family: 'Oswald','Arial Narrow',sans-serif; font-size: 10.5pt; letter-spacing: 1px;
+        text-transform: uppercase; color: {GRIGIO}; }}
+.sg-scrivi {{ border-bottom: 1px solid #d9d3c4; height: 18px; margin-top: 2px; }}
+.sg-tipi {{ font-size: 8.4pt; color: {GRIGIO}; margin-top: 6px; line-height: 1.85; }}
+.sg-nota {{ border-left: 3px solid {ORO_CHIARO}; background: #fbf7ee; border-radius: 0 6px 6px 0;
+        padding: 6px 11px; font-size: 9.2pt; margin: 9px 0; }}
+.sg-nota b {{ font-family: 'Oswald','Arial Narrow',sans-serif; }}
+.sg-seme.c {{ color: {ROSSO}; }} .sg-seme.p {{ color: {SCURO}; }}
+.sg-seme.q {{ color: {BLU}; }} .sg-seme.f {{ color: {VERDE}; }}
+.sg-strada {{ border: none; border-top: 2px dashed {ORO_CHIARO}; opacity: .55; margin: 10px 0; }}
 """
 
 

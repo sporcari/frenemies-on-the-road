@@ -158,7 +158,7 @@ Stato iniziale:
 
 Le figure entrano nei mazzi tramite acquisto nel mercato tra le scene. Il Jolly (uno solo, nel mazzo dei Protagonisti) entra dopo la seconda scena.
 
-> **Nota (v1.1):** 20 carte bastano esattamente per le cinque scene (4 pescate a scena). Quando il mazzo finisce, la partita finisce: non esiste alcun rimescolo degli scarti nel mazzo. Gli unici ingressi di carte nel mazzo sono le figure acquistate al mercato e la carta che la Ritirata strategica rimescola nel proprio mazzo (§18.1); il Jolly, inoltre, entra una sola volta dopo la seconda scena nel mazzo dei Protagonisti.
+> **Nota (v1.1):** 20 carte bastano esattamente per le cinque scene (4 pescate a scena). Quando il mazzo finisce, la partita finisce: non esiste alcun rimescolo degli scarti nel mazzo. Gli unici ingressi di carte nel mazzo sono le figure acquistate al mercato, la carta che la Ritirata strategica rimescola nel proprio mazzo (§18.1) e, dalla v1.27, la carta che il **Re** recupera dagli scarti comuni e rimescola nel proprio mazzo (§21, solo nelle scene 1-4; nell'ultima scena la carta recuperata dal Re entra invece nella riserva); il Jolly, inoltre, entra una sola volta dopo la seconda scena nel mazzo dei Protagonisti.
 
 ## 9. Preparazione narrativa: il pitch
 
@@ -502,7 +502,7 @@ Comprare una figura significa **preparare l'ingresso di un PNG importante e pote
 
 È la stessa pratica con cui si battezza un **Qualcuno** introdotto in scena (§15.1) quando lo si sente importante per il seguito, qui però resa **obbligatoria** dall'acquisto di una figura: una figura senza nome non si compra. Questo vincolo lega da subito la carta forte alla storia ed evita le figure anonime giocate solo come numeri alti.
 
-> **Esempio:** comprato un Fante, non resta "il Fante" ma diventa una persona, per esempio una guida del deserto che conosce piste e pozzi e fiuta in anticipo cosa aspetta oltre la prossima duna (proprio l'effetto del Fante: sbirciare le prossime carte del mazzo e, se serve, barattarne una con qualcosa che hai in mano). Vedi gli acquisti narrati nel §34.
+> **Esempio:** comprato un Fante, non resta "il Fante" ma diventa una persona, per esempio una guida del deserto che conosce piste e pozzi e fiuta in anticipo cosa aspetta oltre la prossima duna (proprio l'effetto del Fante: sbirciare le prossime carte del mazzo e, se serve, barattarne una con qualcosa che hai in mano). Vedi gli acquisti narrati nell'Appendice B del manuale (§34).
 
 ### Fante — L'informatore
 
@@ -528,9 +528,9 @@ Comprare una figura significa **preparare l'ingresso di un PNG importante e pote
 
 ### Re — Il deus ex machina
 
-**Effetto meccanico:** scambia una carta dalla mano con una carta degli **scarti comuni** dello stesso seme.
+**Effetto meccanico (v1.27):** **recupera** dalla pila degli **scarti comuni** una carta del **suo stesso seme** (quello del Re giocato). La carta non sostituisce nulla, la **mano resta invariata**: nelle scene 1-4 la carta recuperata si **rimescola nel mazzo** di chi gioca il Re, nell'ultima scena entra direttamente nella sua **riserva** (alimenta i colpi di scena). Chi gioca il Re sceglie quale carta del suo seme recuperare; se negli scarti non c'è alcuna carta di quel seme, l'effetto non fa nulla. L'effetto scatta comunque, anche quando il Re si sacrifica.
 
-**Funzione:** recupero mirato, ottimizzazione della mano.
+**Funzione:** recupero mirato, una carta in più nel mazzo o nella riserva.
 
 **Narrativamente:** alleato molto forte, PNG influente, intervento quasi da deus ex machina.
 
@@ -563,7 +563,7 @@ Chi gioca il Jolly conserva comunque il vantaggio di scena (se la scopa svuota i
 
 ### 22.4 — Vincolo narrativo
 
-Si narra sempre un successo ottenuto **andando contro i principi e la lealtà**. A macchiarsi del peccato è **uno solo dei due protagonisti**, e **all'insaputa dell'altro**: è una ricaduta nei vecchi vizi, un passo indietro nel suo percorso di crescita.
+Si narra sempre un successo ottenuto **andando contro i principi e la lealtà**. A macchiarsi del peccato è **uno solo dei due protagonisti**: una ricaduta nei vecchi vizi, oppure un gesto avventato che non tiene conto dell'altro. L'altro **può non saperne nulla, oppure assistervi e giudicarlo**. Il Jolly è il seme di una discordia destinata a sbocciare più avanti.
 
 > **Esempio:** Frank usa il Jolly come 9 per fare presa. Narra: "Frank agita un fascicolo falso sotto il naso del sergente dell'archivio: o collabora, o il suo nome ci finisce dentro." Il vantaggio è suo, ma quel punto, contabilmente, va all'Opposizione.
 
@@ -575,7 +575,7 @@ Usare il Jolly non è obbligatorio. Chi lo ha in mano può **scartarlo senza eff
 
 Quando i Protagonisti giocano il Jolly (§22.3), il marcatore che ne nasce entra nel campo dell'Opposizione come una sua normale presa (1 punto) o scopa (3 punti): è una risorsa a tutti gli effetti, che l'Opposizione può **tenere fino al conteggio finale**, dove vale i suoi punti, oppure **spendere al mercato** per concorrere all'acquisto di una figura.
 
-Il peccato compiuto resta, ma solo in **chiave narrativa**. Finché l'Opposizione **possiede il marcatore del Jolly**, in una sua qualsiasi presa o scopa può far **emergere nella narrazione il peccato** che uno dei protagonisti ha commesso col Jolly all'insaputa dell'altro: l'inganno, il torbido compromesso. È **solo narrazione** e non cambia punti né carte: serve a **creare divisione tra i protagonisti** e a rendere il momento ancora più drammatico.
+Il peccato compiuto resta, ma solo in **chiave narrativa**. Finché l'Opposizione **possiede il marcatore del Jolly**, in una sua qualsiasi presa o scopa può far **riaffiorare nella narrazione il peccato** che uno dei protagonisti ha commesso col Jolly: l'inganno, il torbido compromesso. È **solo narrazione** e non cambia punti né carte: serve a **far sbocciare la discordia tra i protagonisti** e a rendere il momento ancora più drammatico.
 
 > **Esempio:** a fine scena 4 l'Opposizione fa una presa e, avendo ancora in campo il marcatore del Jolly, ne approfitta per far affiorare il vecchio compromesso: davanti a Otto emerge cosa ha fatto Vera con il Jolly. La presa vale comunque solo il suo punto, ma fra i due cala il gelo.
 
@@ -597,15 +597,15 @@ La riserva alimenta i colpi di scena (§24), ma è anche la fonte da cui si pesc
 
 ## 24. Colpi di scena finali
 
-Dopo il primo conteggio dell'ultima scena si giocano i **colpi di scena**: si continua a giocare a **turni alterni** usando le carte tenute in **riserva**. Inizia il lato che sta **perdendo** (in parità, i Protagonisti; se la scena si era chiusa con una scopa a piatto vuoto, parte chi *non* l'ha fatta).
+Dopo il primo conteggio dell'ultima scena si giocano i **colpi di scena**: si continua a giocare a **turni strettamente alterni** usando le carte tenute in **riserva**. Inizia il lato che sta **perdendo** (in parità, i Protagonisti; se la scena si era chiusa con una scopa a piatto vuoto, parte chi *non* l'ha fatta).
 
-**Gioco obbligatorio (v1.3):** finché hai carte in riserva, nel tuo turno **devi** giocarne una. La carta entra nel **piatto** e aggiunge il suo valore al tuo totale.
+**Gioco obbligatorio (v1.3):** nel tuo turno, finché hai carte in riserva, **devi** giocarne una. La carta entra nel **piatto** e aggiunge il suo valore al tuo totale.
 
 **Eliminazione (v1.3):** la carta che giochi può **eliminare** dal piatto **una** carta di **seme avversario** di valore **pari o inferiore** al valore della carta giocata. La carta eliminata va negli **scarti** del suo proprietario (non è una presa). La tua carta **resta** nel piatto. Si possono colpire solo carte dei semi avversari, mai dei propri. *(Sostituisce la regola v1.1, in cui si sostituiva una carta avversaria di valore maggiore o uguale: ora la tua carta ne abbatte una più debole e resta sul tavolo.)*
 
 Non si fanno prese o scope in questa fase: le uniche azioni sono mettere la carta nel piatto ed eventualmente eliminarne una avversaria di valore ≤. Le figure giocate ora contano solo per il loro **valore**, senza effetto speciale.
 
-**Fine:** i colpi di scena finiscono quando **entrambe le riserve sono esaurite**; poi si fa il **conteggio definitivo**.
+**Alternanza stretta e fine (v1.28):** i colpi si **alternano strettamente** e **nessun lato gioca due colpi consecutivi**. Dopo il colpo di un lato tocca all'altro; se l'altro **non ha più riserva**, la fase **finisce subito** (conteggio definitivo) e **non** si torna indietro a far giocare di nuovo il primo lato. Conseguenza: il lato che inizia (chi perde il primo conteggio) gioca **al massimo una carta in più** dell'avversario, e l'eventuale riserva in eccesso **resta inutilizzata**. *(Prima, v1.3, la fase finiva solo quando entrambe le riserve erano esaurite e il lato con più carte le giocava tutte di fila: con l'alternanza stretta non è più così.)*
 
 **Struttura narrativa:**
 
@@ -613,7 +613,7 @@ Non si fanno prese o scope in questa fase: le uniche azioni sono mettere la cart
 2. Poi i colpi di scena si rivelano **una carta alla volta**, e a ognuno si narra come le cose non fossero come apparivano.
 3. Quando le riserve sono finite → **conteggio definitivo**: solo allora si sa se la missione è riuscita o fallita.
 
-> **Esempio:** Primo conteggio: l'Opposizione sembra avere la meglio. Tocca prima ai Protagonisti, che perdono: Skunk cala dalla riserva un 7 di Cuori e con quello fa sparire un 5 di Quadri dal tavolo — "il meccanico che li ha venduti ai sicari era un uomo di Jorge". Il 7♥ resta nel piatto, il 5♦ finisce negli scarti. Risponde l'Opposizione, poi di nuovo i Protagonisti, finché entrambi hanno svuotato la riserva.
+> **Esempio:** Primo conteggio: l'Opposizione sembra avere la meglio. Tocca prima ai Protagonisti, che perdono: Skunk cala dalla riserva un 7 di Cuori e con quello fa sparire un 5 di Quadri dal tavolo — "il meccanico che li ha venduti ai sicari era un uomo di Jorge". Il 7♥ resta nel piatto, il 5♦ finisce negli scarti. Risponde l'Opposizione, poi di nuovo i Protagonisti, a turni strettamente alterni: appena tocca a un lato rimasto senza riserva, la fase si chiude.
 
 ## 25. Conteggio finale
 
@@ -621,10 +621,11 @@ Al termine dell'ultima scena (dopo gli eventuali colpi di scena):
 
 **Vittoria del piatto:** Cuori + Picche vs Fiori + Quadri. Chi ha il totale più alto vince il piatto finale → conquista l'esito esterno della missione.
 
-**Tie-break (in caso di parità):**
+**Tie-break (in caso di pareggio) *(v1.29)*:** se il piatto finale è pari (totale Protagonisti = totale Opposizione), a decidere è la **Crescita** (i punti non spesi al mercato).
 
-1. Si contano le scope
-2. In ulteriore parità: si contano le prese
+1. Il lato con **più Crescita** può **spenderla tutta** (i suoi punti vanno a 0) per aggiudicarsi il piatto, e quindi la missione, nonostante il pareggio.
+2. Se la Crescita è **pari** (anche 0-0), il piatto va comunque ai **Protagonisti**.
+3. Quando il pareggio lo vincono i **Protagonisti** (sia spendendo la Crescita, sia per parità di punti), l'esito è sempre **«Per il rotto della cuffia»**: vincono la missione di strettissima misura.
 
 ---
 
@@ -645,7 +646,7 @@ Il finale si legge su **due piani**, la **missione** e la **Crescita**, e dal lo
 | Persa | Vinti | **Sconfitta dignitosa** — caduti a testa alta, con l'esperienza come tesoro |
 | Persa | Persi | **Fallimento totale** — travolti su ogni fronte |
 
-> **Parità ai punti:** se i punti finiscono pari, la parità va a chi ha vinto la missione (missione vinta → **Vittoria piena**, missione persa → **Fallimento totale**). La missione, a sua volta, se i totali del piatto sono pari si decide prima per numero di scope e poi per numero di prese.
+> **Parità ai punti:** se i punti finiscono pari (e il piatto **non** è in pareggio), la parità va a chi ha vinto la missione (missione vinta → **Vittoria piena**, missione persa → **Fallimento totale**). Se invece è il **piatto** a essere in pareggio, la missione si decide sulla **Crescita** (§25): chi ne ha di più la spende per aggiudicarsi il piatto, a parità vince il lato dei Protagonisti, e quando a spuntarla sono i Protagonisti l'esito è sempre **Per il rotto della cuffia**.
 
 > **Lettura simmetrica:** un **Fallimento totale** dei Protagonisti è, nello stesso istante, una **Vittoria piena dell'Opposizione**: va narrata come il trionfo dell'avversario, non come una casella vuota.
 
@@ -929,17 +930,31 @@ Il taccuino del professor Aldo Falco, l'unico che abbia mai annotato la via per 
 
 ---
 
-## 34. Partita d'esempio: cinque giorni per l'eclissi *(v1.12)*
+## 34. Partita d'esempio
 
-> **⚠️ Da rigenerare per la v1.15.** Le regole di punteggio (presa sempre 1, scopa 3), il nuovo Fante e l'ordine del mercato cambiano questa partita: la versione qui sotto (punteggi e carte) è **stale** e va ricostruita su un nuovo seed scelto col motore aggiornato (vedi registro v1.15). Le righe seguenti descrivono la vecchia partita e restano solo come riferimento storico finché non si rigenera.
+La partita d'esempio completa, narrata scena per scena sullo scenario demo (§33), è l'**Appendice B del manuale del giocatore** ("Il sole di mezzanotte"): cinque scene, i quattro mercati, il finale e l'epilogo. È una partita vera a 2 giocatori (Paola gioca i Protagonisti, Omar l'Opposizione), generata e verificata dal motore (seed 34/367) e poi narrata.
 
-Una partita vera a 2 giocatori con lo scenario demo (§33): Paola gioca i Protagonisti (Vera ♠ e Otto ♥), Omar l'Opposizione (i nemici ♦, la Loggia del Basilisco e i Veglianti di Zerzura, e il caos ♣, il deserto). Punteggio: presa numerica 1, presa con figura 2, scopa 4; ciò che si spende al mercato vale 0.
-
-**Esito:** i Protagonisti vincono la posta di tutte e cinque le scene, eppure perdono ai punti. In gioco compaiono **tutte e tre le figure**: il **Fante di Cuori** comprato da Paola, che le entra subito in mano (§21) e fa scopa nelle dune; la **Regina di Cuori**, che Paola schiera nei colpi di scena finali (dove elimina una carta e viene a sua volta eliminata); e il **Re di Quadri** di Omar, che nella cripta si sacrifica per una scopa. In più il **Jolly** (un punto regalato all'Opposizione), due spinte del pitch (♥ e ♠) e quattro colpi di scena. Al conteggio definitivo i Protagonisti **stravincono il piatto 12-0 ma perdono ai punti 2-8**: è una **Vittoria per il rotto della cuffia** (§26): le scope che avevano fatto le hanno spese per le figure, e il Jolly ha regalato il punto, perché dominare il tavolo non basta. Diario del rapporto: **su, pari, pari, su, giù**.
+In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, giù**), vetrina di tutte e tre le figure (Fante e Regina di Paola, Re di Omar), del Jolly, di tre spinte del pitch e dei colpi di scena finali. Il primo conteggio dà l'Opposizione in vantaggio, ma i colpi di scena ribaltano il piatto: esito **Vittoria piena** (piatto 11-10; i Protagonisti vincono anche la Crescita).
 
 ---
 
 # REGISTRO MODIFICHE
+
+## v1.29 (giugno 2026) — tie-break del conteggio definitivo: decide la Crescita
+
+1. **§25: nuovo tie-break del piatto finale.** Quando il piatto finale è in **pareggio** (totale Protagonisti = totale Opposizione), non si decide più «prima le scope, poi le prese» (regola precedente) ma sulla **Crescita** (i punti non spesi al mercato): il lato che ne ha di più la **spende tutta** (i suoi punti vanno a 0) per aggiudicarsi il piatto e quindi la missione; se la Crescita è **pari** (anche 0-0) il piatto va comunque ai **Protagonisti**. Quando il pareggio lo vincono i Protagonisti (per spesa o per parità), l'esito è sempre **«Per il rotto della cuffia»**: vincono di strettissima misura. Motivazione (dal designer, Saverio): in un pareggio è la riserva di crescita non spesa a fare da ago della bilancia, e chi se la gioca tutta paga la vittoria con la propria crescita.
+2. **Propagazione.** `index.html`: `conteggioDefinitivo`/`rFinale` (rimosso il tie-break scope→prese, ora confronto della Crescita con azzeramento del lato che la spende ed esito forzato «Per il rotto della cuffia»), `REGOLE` e `REGOLE_IA` (descrizione del finale). KB §25 (tie-break) e §26 (nota «Parità ai punti»). Manuale §6.3 (conteggio definitivo) e glossario «Conteggio definitivo». Diario decisioni #49. **L'esempio canonico non cambia** (seed 34/367, 11-10: la v1.29 non scatta, niente pareggio del piatto). Collaudo verde.
+
+## v1.28 (giugno 2026) — colpi di scena a turni strettamente alterni, niente colpi consecutivi
+
+1. **§24: alternanza stretta nei colpi di scena.** I colpi di scena finali si **alternano strettamente** e **nessun lato gioca due colpi consecutivi**. Dopo il colpo di un lato tocca all'altro; se l'altro non ha più riserva la fase **finisce subito** (conteggio definitivo), senza tornare a far giocare di nuovo il primo lato. Prima (v1.3) la fase finiva solo quando entrambe le riserve erano esaurite, e il lato con più carte le giocava tutte di fila; ora chi inizia gioca al massimo una carta in più dell'avversario e la riserva in eccesso resta inutilizzata. Motivazione (dal designer, Saverio): niente colpi consecutivi, lo scambio finale resta un vero botta e risposta a turni e non un monologo di chi ha più carte da parte.
+2. **Propagazione.** `index.html`: `prossimoColpo` (rimosso il ramo che faceva proseguire lo stesso lato), banner del primo conteggio, `REGOLE` e `REGOLE_IA`. KB §24 (testo e nota sull'esempio). Manuale cap. 8 (colpi di scena). Driver di test `test/partita_smart.js`: nuova euristica dei colpi (bersaglio = avversaria di valore più alto eliminabile, giocata con la carta di riserva più bassa che la elimina; se nessun bersaglio, si gioca la carta di riserva più alta senza eliminare). Rigenerato l'esempio canonico `transcript_smart_seed_34_367.txt`: la scena 5 ora chiude con Paola 7♥ elimina 5♦, Omar 10♦ elimina 7♥, Paola 9♠ (l'8♠ resta inutilizzato), piatto 2♠ 10♦ 9♠, 11-10, Vittoria piena.
+
+## v1.27 (giugno 2026) — il Re recupera una carta del suo seme dagli scarti
+
+1. **§21: nuovo effetto del Re.** L'effetto del Re non è più uno **scambio** (carta della mano ⇄ scarto dello stesso seme), ma un **recupero**: il Re ripesca dalla pila degli **scarti comuni** una carta del **suo stesso seme** (quello del Re giocato, non più entrambi i semi del lato), **senza** togliere nulla dalla mano. Nelle **scene 1-4** la carta recuperata si **rimescola nel mazzo** di chi gioca il Re; nell'**ultima scena** entra nella sua **riserva**, dove alimenta i colpi di scena. Chi gioca il Re sceglie quale carta del suo seme recuperare (l'IA prende quella di valore più alto); se non ci sono carte di quel seme negli scarti, l'effetto non fa nulla. L'effetto scatta comunque, anche se il Re si sacrifica. Motivazione (dal designer, Saverio): rendere il Re un vero "deus ex machina" che aggiunge una risorsa (carta nel mazzo o nella riserva finale) invece di limitarsi a riordinare la mano.
+2. **§16: nuova eccezione al "non si rimescolano gli scarti nel mazzo".** Il recupero del Re (scene 1-4) si aggiunge alle eccezioni già esistenti (figure comprate al mercato, Ritirata strategica, ingresso del Jolly).
+3. **Propagazione.** `index.html`: ramo `c.fig==="R"` di `effettoFigura` (nuova logica recupero+rimescolo/riserva e modale «Recupera»), descrizione `FIGURE.R.eff`, stringhe `G.ultimaGiocata`, tabella figure in `REGOLE`, `REGOLE_IA` (effetto del Re e descrizione al mercato per l'IA). KB §21 e §16. Manuale §3, descrizione del Re e glossario. Driver di test (`partita_smart.js`): auto-risoluzione del Re (recupera il seme del Re di valore più alto) ed euristica che **trattiene il Re per la presa più grande** (somma fino a 10), evitando sacrifici e prese piccole. L'esempio canonico (seed 34/367) è stato **rigenerato**: le scene 1-4 restano identiche, la scena 5 cambia perché ora il Re di Quadri recupera un ♦ alto nella riserva di Omar.
 
 ## v1.26 (giugno 2026) — il sacrificio della figura vale 1 punto, mai scopa
 
@@ -1094,4 +1109,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.26*
+*Frenemies on the Road — Knowledge Base v1.29*
