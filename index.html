@@ -3432,7 +3432,7 @@ function iaScheduler(){
   else if(f==="mercato") iaMercato();
   else if(f==="mano_estesa"&&G.attore==="O") iaManoEstesa();
   else if(f==="colpi"&&G.attore==="O") iaColpi();
-  else if(f==="fine_scena"&&G.scene[G.scena]&&altro(G.scene[G.scena].iniziativa)==="O"&&!G.scene[G.scena].perRitirata) iaEsitoScena();
+  else if(f==="fine_scena"&&G.scene[G.scena]&&!G.scene[G.scena].perRitirata&&latoCheAgisce()==="O") iaEsitoScena();
 }
 
 async function iaAsta(){

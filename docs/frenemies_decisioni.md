@@ -3,6 +3,8 @@
 
 Questo documento registra le decisioni prese durante lo sviluppo del gioco digitale: chiarimenti di regole confluiti nella Knowledge Base (da v1.1 a v1.6), interpretazioni implementative dove il regolamento taceva, scelte tecniche e roadmap. È la fonte da consultare prima di modificare il codice o le regole.
 
+- **Bugfix vs Claude: deadlock su "Claude sta generando" a fine scena** (giugno 2026): segnalazione di Saverio (due partite dal sito bloccate dopo la narrazione dell'ultima carta della scena). Con la regola v1.29 (l'esito di fine scena lo narra chi ha **perso la posta** = `altro(vincitore)`, in parità chi ha vinto l'asta) la decisione "tocca a Claude narrare l'esito" è centralizzata in `latoCheAgisce()`, ed era già allineata in `claudeStaGiocando()` (overlay) e in `rFineScena()` (slot esito di Claude + pulsante disabilitato). Ma `iaScheduler()` lanciava `iaEsitoScena()` ancora sulla **vecchia** condizione `altro(rec.iniziativa)==="O"` (chi ha giocato l'ultima carta del round). Le due divergono quando i Protagonisti **vincono** la scena ma l'Opposizione **aveva l'iniziativa** (o in parità con iniziativa all'Opposizione): l'overlay si mostrava e il "Vai al mercato" restava disabilitato in attesa di Claude, ma la generazione non partiva mai → schermata "Claude sta generando" all'infinito. Corretta la condizione di `iaScheduler` in `!perRitirata && latoCheAgisce()==="O"`, così tutte e tre le rappresentazioni leggono l'unica fonte di verità. Solo `index.html` (modalità solo); nessun effetto su KB/REGOLE (la regola v1.29 era già propagata). Collaudo invariato (test solo/riprova verdi); l'errore del transcript seed 23 preesiste ed è il WIP di migrazione a seed 34/367.
+
 ---
 
 ## 1. Decisioni di regolamento (confluite nella KB, da v1.1 a v1.6)
