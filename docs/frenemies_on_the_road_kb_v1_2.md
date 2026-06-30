@@ -236,9 +236,9 @@ Le spinte sono **otto, due per seme** (♠ e ♥ dai Protagonisti, ♦ e ♣ dal
 
 Dopo una presa normale, il giocatore può spuntare la risposta corrispondente al seme della carta con cui ha preso: la presa diventa una scopa a tutti gli effetti. La carta di presa va nel mazzetto delle scope e le carte rimaste nel piatto finiscono negli scarti comuni, esattamente come per una scopa normale.
 
-Tre condizioni. La risposta spuntata deve entrare esplicitamente nella narrazione, come scena presente, rivelazione o flashback. Ogni risposta si usa una sola volta, e vale comunque il limite di **una spinta per seme per lato** in tutta la partita. La spinta **non si può usare nell'ultima scena**: nella Risoluzione il piatto si svuota solo con una scopa vera.
+Quattro condizioni. La risposta spuntata deve entrare esplicitamente nella narrazione, come scena presente, rivelazione o flashback. Ogni risposta si usa una sola volta in tutta la partita: ogni lato ne ha quattro, due per ciascuno dei suoi due semi, e **tutte sono spendibili** (averne due per seme dà varietà di scelta, non potenza). **Una sola spinta per presa**: una presa diventa scopa con una spinta, e bruciarne una seconda sulla stessa giocata non aggiunge nulla. La spinta **non si può usare nell'ultima scena**: nella Risoluzione il piatto si svuota solo con una scopa vera.
 
-> **Nota (v1.2):** questa regola sostituisce la "finta scopa" della v1.1, che promuoveva la carta di presa tra le scope senza toccare il piatto. Dalla v1.2 la scopa della spinta è una scopa vera, e il legame col seme della carta di presa assorbe il limite per seme: è la carta giusta, nel momento giusto, a sbloccare la rivelazione.
+> **Nota (v1.2):** questa regola sostituisce la "finta scopa" della v1.1, che promuoveva la carta di presa tra le scope senza toccare il piatto. Dalla v1.2 la scopa della spinta è una scopa vera, ancorata al seme della carta di presa: è la carta giusta, nel momento giusto, a sbloccare la rivelazione.
 
 > **Esempio:** L'Opposizione ha scritto come risposta Fiori: "Jorge è stato ucciso al posto di Skunk, perché la spia era lui. E Frank non lo sa." A scena 3 il giocatore Fiori-Quadri prende con una carta di Fiori e spunta questa risposta con un flashback: l'ultima telefonata di Jorge, l'addio di chi sa che non arriverà a domani. La rivelazione spacca la coppia, la presa diventa una scopa e il piatto si svuota nelle sue prese.
 
@@ -940,6 +940,11 @@ In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, 
 
 # REGISTRO MODIFICHE
 
+## v1.30 (giugno 2026) — le otto spinte sono tutte spendibili (due per seme), una per presa
+
+1. **§9.8: tolto il limite «una spinta per seme per lato».** Le spinte scritte nel pitch sono otto (due per seme per lato): ora **tutte e otto sono spendibili**, ciascuna una volta sola. Prima il regolamento (e il motore) consentivano di spuntare **una sola spinta per seme** in tutta la partita, lasciando di fatto inerti le due seconde spinte di ciascun lato (di otto scritte, solo quattro giocabili al tavolo). Le due dello stesso seme non sono alternative ma due cariche distinte: averne due dà **varietà di scelta** (la motivazione in una scena, l'asso nella manica in un'altra), non potenza accumulabile. Aggiunta la condizione **«una sola spinta per presa»**: una presa diventa scopa con una spinta sola, bruciarne una seconda sulla stessa giocata non aggiunge nulla (già garantito di fatto perché la presa, diventata scopa, non è più spuntabile). Motivazione (dal designer, Saverio): «una per seme» era nato per dare scelta scrivendone due, ma il limite per seme la annullava. Le altre tre condizioni (entrare in narrazione; vietata nell'ultima scena) restano.
+2. **Propagazione.** `index.html` motore: rimosso il tracciamento per-seme `G.spinte[l][seme]` (assegnazione in `eseguiSpinta` e i due filtri in `spinteResidue`/`spinteDisponibili`); il vincolo «una volta sola» resta sul flag per-spinta `pitch[i].usata`, la regola «una per presa» è garantita dall'azzeramento di `G.narr.boostCard` dopo la conversione; tolto lo stato ora inutilizzato `spinte:{P:{},O:{}}` dall'inizializzazione di `G`. `REGOLE`, `REGOLE_IA` e le due pagine «spinte» del wizard aggiornate da «una per seme per lato» a «due per seme, ciascuna una volta sola, una per presa». KB §9.8 (condizioni, ora quattro) e nota v1.2. Manuale §3.10, glossario «Spinte» e Appendice G (schede protagonisti e foglio del pitch). Diario decisioni. **Collaudo:** suite verde; il transcript canonico dell'esempio non cambia (le scene 1-4 spuntano spinte di semi diversi, nessuna scena usa due spinte dello stesso seme).
+
 ## v1.29 (giugno 2026) — tie-break del conteggio definitivo: decide la Crescita
 
 1. **§25: nuovo tie-break del piatto finale.** Quando il piatto finale è in **pareggio** (totale Protagonisti = totale Opposizione), non si decide più «prima le scope, poi le prese» (regola precedente) ma sulla **Crescita** (i punti non spesi al mercato): il lato che ne ha di più la **spende tutta** (i suoi punti vanno a 0) per aggiudicarsi il piatto e quindi la missione; se la Crescita è **pari** (anche 0-0) il piatto va comunque ai **Protagonisti**. Quando il pareggio lo vincono i Protagonisti (per spesa o per parità), l'esito è sempre **«Per il rotto della cuffia»**: vincono di strettissima misura. Motivazione (dal designer, Saverio): in un pareggio è la riserva di crescita non spesa a fare da ago della bilancia, e chi se la gioca tutta paga la vittoria con la propria crescita.
@@ -1109,4 +1114,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.29*
+*Frenemies on the Road — Knowledge Base v1.30*

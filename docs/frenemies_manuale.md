@@ -511,10 +511,11 @@ Vi ricordate le domande che erano state fatte ai Protagonisti e all'Opposizione 
 
 Ecco a che cosa servono. Dopo una presa normale, il giocatore può spuntare una Spinta corrispondente al seme della carta che ha appena giocato: in quel momento la presa diventa una scopa a tutti gli effetti. La carta di presa viene marcata come scopa e vale 3 punti.
 
-Tre condizioni regolano questo potere:
+Quattro condizioni regolano questo potere:
 
 - la spinta usata deve entrare davvero nella narrazione, come scena presente, rivelazione o flashback;
-- ogni spinta si usa una sola volta, e vale comunque il limite di una spinta per seme, per lato, in tutta la partita;
+- ogni spinta si usa una sola volta in tutta la partita; ogni lato ne ha quattro, due per seme, e tutte sono spendibili. Averne due per seme non è un raddoppio di potenza ma di scelta: puoi spendere in una scena la motivazione che lega quel personaggio alla missione, e tenere per più avanti la dote che gli fa da asso nella manica;
+- una sola spinta per presa: una presa diventa scopa con una spinta, e bruciarne una seconda sulla stessa giocata non aggiunge nulla;
 - una spinta non si può usare nell'ultima scena: nella Risoluzione il piatto si svuota solo con una scopa vera.
 
 L'idea è che sia la carta giusta, nel momento giusto, a sbloccare la rivelazione: il legame con il seme non è un dettaglio, è il senso della regola.
@@ -780,7 +781,7 @@ Che cosa sia di preciso questa crescita lo decide il giocatore: può essere la m
 | Persa | Persi | Fallimento totale: travolti su ogni fronte |
 
 
-In caso di parità ai punti, la parità va a chi ha vinto la missione: missione vinta dà Vittoria piena, missione persa dà Fallimento totale. (E la missione, se i totali del piatto sono pari, si decide prima per numero di scope e poi per numero di prese.)
+In caso di parità ai punti, la parità va a chi ha vinto la missione: missione vinta dà Vittoria piena, missione persa dà Fallimento totale.
 
 ## 7.4 Le domande di fine partita
 
@@ -1512,7 +1513,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Semi.** I quattro semi del mazzo, due per lato: Cuori e Picche ai Protagonisti, Quadri e Fiori all'Opposizione. Ciascuno ha un significato narrativo che si adatta al tono scelto.
 
-**Spinte (darsi una spinta).** Le risorse spuntabili definite nel pitch, due per seme. Dopo una presa normale, chi prende può spuntare la risposta del seme della carta di presa e trasformare la presa in una scopa vera. Una sola spinta per seme per lato, mai nell'ultima scena.
+**Spinte (darsi una spinta).** Le risorse spuntabili definite nel pitch, due per seme per ciascun lato (quattro a testa). Dopo una presa normale, chi prende può spuntare la risposta del seme della carta di presa e trasformare la presa in una scopa vera. Ognuna si usa una sola volta, una sola per presa, mai nell'ultima scena.
 
 **Titolo della scena.** Il nome che chi vince l'asta dà alla scena, insieme alla posta, aprendola.
 
@@ -1539,7 +1540,7 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 </div>
 <span class="sg-lab">Cosa detesta dell'altro <i>(spunto narrativo, senza effetto sul gioco)</i></span>
 <div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
-<span class="sg-lab">Le sue due spinte <span class="sg-seme p">&#9824;</span> <i>&mdash; portarne una in narrazione trasforma una presa in scopa (una per seme, per lato)</i></span>
+<span class="sg-lab">Le sue due spinte <span class="sg-seme p">&#9824;</span> <i>&mdash; portarne una in narrazione trasforma una presa in scopa (entrambe spendibili, una sola per presa)</i></span>
 <div class="sg-box">
 <div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme p">&#9824;</span> Perch&eacute; per lui/lei &egrave; importante la missione?</div><div class="scrivi"></div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
 <div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme p">&#9824;</span> Quale dote o risorsa potrebbe essere un asso nella manica?</div><div class="scrivi"></div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
@@ -1561,7 +1562,7 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 </div>
 <span class="sg-lab">Cosa detesta dell'altro <i>(spunto narrativo, senza effetto sul gioco)</i></span>
 <div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
-<span class="sg-lab">Le sue due spinte <span class="sg-seme c">&#9829;</span> <i>&mdash; portarne una in narrazione trasforma una presa in scopa (una per seme, per lato)</i></span>
+<span class="sg-lab">Le sue due spinte <span class="sg-seme c">&#9829;</span> <i>&mdash; portarne una in narrazione trasforma una presa in scopa (entrambe spendibili, una sola per presa)</i></span>
 <div class="sg-box">
 <div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme c">&#9829;</span> Perch&eacute; per lui/lei &egrave; importante la missione?</div><div class="scrivi"></div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
 <div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme c">&#9829;</span> Quale dote o risorsa potrebbe essere un asso nella manica?</div><div class="scrivi"></div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
@@ -1595,7 +1596,7 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 <div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
 </div>
 </div>
-<span class="sg-lab">Le spinte dell'Opposizione <i>&mdash; una in narrazione trasforma una presa in scopa (una per seme, per lato; mai nell'ultima scena)</i></span>
+<span class="sg-lab">Le spinte dell'Opposizione <i>&mdash; una in narrazione trasforma una presa in scopa (tutte spendibili, una sola per presa; mai nell'ultima scena)</i></span>
 <div class="sg-box">
 <div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme q">&#9830;</span> Quali sono i mezzi, metodi o armi pi&ugrave; temibili della fazione nemica?</div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
 <div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme q">&#9830;</span> Perch&eacute; deve assolutamente impedire ai protagonisti di ottenere ci&ograve; che vogliono?</div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
@@ -1621,4 +1622,4 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 
 ---
 
-*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.26, che resta la fonte di verità del regolamento.*
+*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.30, che resta la fonte di verità del regolamento.*

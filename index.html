@@ -643,8 +643,7 @@ function nuovaPartita(){
     svuotoConScopa:null,   // lato che ha svuotato il piatto con una scopa (per assegnare la scena a piatto vuoto)
     scartiComuni:[],       // pila degli scarti comune: ci finiscono le carte catturate dal piatto e i marcatori spesi
     pers:{A:{nome:"",desc:""}, B:{nome:"",desc:""}},
-    pitch:PITCH_TEMPLATE.map(p=>({seme:p.seme, risposta:"", usata:false})),
-    spinte:{P:{},O:{}},
+    pitch:PITCH_TEMPLATE.map(p=>({seme:p.seme, risposta:"", usata:false})),   // usata: vincolo per singola spinta (due per seme, entrambe spendibili)
     ritirata:{P:{mazzo:false,prese:false},O:{mazzo:false,prese:false}},   // ritirata strategica: ciascuna variante una volta per lato
     ritirataScena:null,
     colpi:null,
@@ -1444,7 +1443,7 @@ function rSetup(){
       <input type="text" id="w-pitch-${i}" value="${x.risposta.replace(/"/g,'&quot;')}" placeholder="${PITCH_TEMPLATE[i].ph||""}">`).join("");
     corpo=`
     <h2 class="ts">Le spinte dei Protagonisti</h2>
-    <p class="sotto">Quattro spinte, due per protagonista (♠ e ♥): la motivazione e l'asso nella manica. <b>Portando in narrazione una di queste potrai trasformare una presa in una scopa</b> (una sola per seme per lato).</p>
+    <p class="sotto">Quattro spinte, due per protagonista (♠ e ♥): la motivazione e l'asso nella manica. <b>Portando in narrazione una di queste potrai trasformare una presa in una scopa</b> (due per seme, ciascuna una volta sola, una per presa).</p>
     <div class="pannello">
       <span class="etichetta">♠♥ Le spinte dei Protagonisti</span>
       ${domandeHtml(2,6)}
@@ -1461,7 +1460,7 @@ function rSetup(){
     const claudeOpp = G.modalita==="solo" && G.oppGenerata;   // le spinte dell'Opposizione le ha già scritte Claude
     corpo=`
     <h2 class="ts">Le spinte dell'Opposizione</h2>
-    <p class="sotto">Quattro spinte, due per seme (♦ e ♣): mezzi e movente dei nemici, catastrofi e crepe. <b>Portando in narrazione una di queste potrai trasformare una presa in una scopa</b> (una sola per seme per lato).</p>
+    <p class="sotto">Quattro spinte, due per seme (♦ e ♣): mezzi e movente dei nemici, catastrofi e crepe. <b>Portando in narrazione una di queste potrai trasformare una presa in una scopa</b> (due per seme, ciascuna una volta sola, una per presa).</p>
     <div class="pannello">
       <span class="etichetta">♦♣ Le spinte dell'Opposizione${claudeOpp?" — definite da Claude":""}</span>
       ${claudeOpp?domandeRO(6,10):domandeHtml(6,10)}
@@ -1956,23 +1955,24 @@ function suggerimento(c, tipo, dettagli, latoNarr, stessoLato){
 function semiLato(l){ return lato(l).semi }
 function spinteResidue(l){
   // spinte del pitch ancora spendibili dal lato nel corso della partita
-  // (risposta scritta, seme del lato, non ancora usata, seme non già bruciato; vietate nell'ultima scena)
+  // (risposta scritta, seme del lato, non ancora usata; vietate nell'ultima scena)
+  // ogni spinta si usa una volta sola: due per seme, entrambe spendibili (il vincolo è per spinta, non per seme)
   if(G.scena>=4) return [];
   return G.pitch.map((p,i)=>({p,i}))
-    .filter(({p,i})=>PITCH_TEMPLATE[i].spinta!==false && p.risposta && semiLato(l).includes(p.seme) && !p.usata && !G.spinte[l][p.seme]);
+    .filter(({p,i})=>PITCH_TEMPLATE[i].spinta!==false && p.risposta && semiLato(l).includes(p.seme) && !p.usata);
 }
 function spinteDisponibili(l){
   if(G.scena>=4 || !G.narr || !G.narr.boostCard) return [];
   const c=lato(l).prese.find(x=>x.id===G.narr.boostCard);
   if(!c) return [];
   return G.pitch.map((p,i)=>({p,i}))
-    .filter(({p,i})=>PITCH_TEMPLATE[i].spinta!==false && p.seme===c.seme && semiLato(l).includes(p.seme) && p.risposta && !p.usata && !G.spinte[l][p.seme]);
+    .filter(({p,i})=>PITCH_TEMPLATE[i].spinta!==false && p.seme===c.seme && semiLato(l).includes(p.seme) && p.risposta && !p.usata);
 }
 function eseguiSpinta(idxPitch){
   const l=G.narrLato||G.attore, L=lato(l), p=G.pitch[idxPitch];
   const c=L.prese.find(x=>x.id===G.narr.boostCard);
   if(!c) return;
-  p.usata=true; G.spinte[l][p.seme]=true;
+  p.usata=true;   // una spinta per presa: boostCard si azzera sotto, quindi niente seconda spinta sulla stessa presa
   L.prese=L.prese.filter(x=>x.id!==c.id);
   L.scope.push(c);
   aggiungiScopa(l);
@@ -2965,7 +2965,8 @@ const REGOLE={
     <h3>Uso meccanico (9.8)</h3>
     Dopo una presa normale si può <b>spuntare la risposta corrispondente al seme della carta di presa</b>: la presa diventa una <b>scopa vera</b> e le carte rimaste nel piatto finiscono tra le prese di chi spunta. Condizioni:
     <ul><li>la risposta deve entrare esplicitamente nella narrazione (scena, rivelazione o flashback)</li>
-    <li>ogni risposta si usa una volta sola; massimo <b>una spinta per seme per lato</b></li>
+    <li>ogni risposta si usa una volta sola; sono <b>due per seme, entrambe spendibili</b> (varietà di scelta, non potenza)</li>
+    <li><b>una sola spinta per presa</b>: una presa diventa scopa con una spinta, bruciarne una seconda sulla stessa giocata non aggiunge nulla</li>
     <li><b>non si può usare nell'ultima scena</b>: nella Risoluzione il piatto si svuota solo con una scopa vera</li></ul>
     <div class="es">"Jorge è stato ucciso al posto di Skunk: la spia era lui, e Frank non lo sa." A scena 3 il giocatore Fiori-Quadri prende con una carta di Fiori e la spunta con un flashback, l'ultima telefonata di Jorge, l'addio di chi sa che non arriverà a domani: la presa diventa una scopa e il piatto si svuota nelle sue prese.</div>`},
   tavoli:{titolo:"3–4 giocatori",html:`
@@ -3205,7 +3206,7 @@ Ogni figura che compri è un PNG: dalle subito un nome e un breve ruolo (chi è)
 
 JOLLY: un solo Jolly, solo nel mazzo dei Protagonisti, entra dopo la 2ª scena. Tu non lo giochi mai (sta nel loro mazzo). Chi lo gioca dichiara il valore e cattura, ma il marcatore va all'AVVERSARIO (presa 1, scopa 3 all'altro lato): se i Protagonisti lo usano, quel marcatore (1 o 3 punti) entra nel TUO campo come risorsa normale — vale al conteggio finale e lo puoi spendere al mercato. I Protagonisti possono anche resistere alla tentazione e scartarlo senza usarlo. A macchiarsi del peccato è UNO SOLO dei due protagonisti (l'altro può non saperlo, oppure assistervi e giudicarlo): è il seme di una discordia destinata a sbocciare. IL PECCATO EMERGE (narrativo): finché possiedi il marcatore del Jolly, in una tua qualsiasi presa o scopa puoi far riaffiorare nella narrazione quel peccato (l'inganno, il torbido compromesso che uno dei due ha commesso col Jolly), per far sbocciare la discordia tra loro e drammatizzare. È solo narrazione, non cambia punti né carte.
 
-RISORSE DEL PITCH (spinte): sono otto, due per seme (le tue sono ♦ e ♣). Dopo una presa normale puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e le carte rimaste nel piatto finiscono tra le tue prese. La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola; massimo una spinta per seme per lato; VIETATA nell'ultima scena. (I tratti "cosa i protagonisti si detestano" sono solo narrativi, non spinte.)
+RISORSE DEL PITCH (spinte): sono otto, due per seme (le tue sono ♦ e ♣). Dopo una presa normale puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e le carte rimaste nel piatto finiscono tra le tue prese. La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola (due per seme, entrambe usabili); una sola spinta per presa; VIETATA nell'ultima scena. (I tratti "cosa i protagonisti si detestano" sono solo narrativi, non spinte.)
 
 QUINTA SCENA: la mano finale si sceglie dopo il mercato; le carte oltre le 4 vanno in RISERVA. Dopo il primo conteggio si gioca a COLPI DI SCENA: a turni STRETTAMENTE ALTERNI (inizia chi sta perdendo) cali una carta dalla riserva, che entra nel piatto e può eliminare una carta di seme avversario di valore pari o inferiore (finisce negli scarti; la tua resta). Nel tuo turno, finché hai riserva devi giocare. NESSUNO gioca due colpi di fila: se dopo un colpo tocca a chi non ha più riserva, la fase FINISCE subito (l'eventuale riserva in eccesso dell'altro resta inutilizzata). Il primo conteggio (dopo le 4 carte) dà solo l'esito apparente, che si narra come in ogni scena; solo dopo i colpi di scena, rivelati una carta alla volta, il conteggio definitivo dice se la missione riesce o fallisce. Il finale si legge su due piani: la MISSIONE (chi vince il piatto; in pareggio decide la Crescita, il lato con più punti non spesi li spende tutti per aggiudicarsi il piatto, a parità vince il lato dei Protagonisti) e la CRESCITA (i punti non spesi: figure comprate = aiuto chiamato, punti tenuti = nome che ci si è fatti; per te è la minaccia che resta, l'idra). Un fallimento totale dei protagonisti è una tua vittoria piena, da narrare come trionfo. Poi, facoltativo, l'epilogo: vignette su un Qualcuno, giorni o anni dopo, a turni e senza due di fila.
 
