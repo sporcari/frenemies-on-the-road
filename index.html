@@ -633,7 +633,7 @@ function nuovaPartita(){
   return {
     fase:"modalita", passo:0, passoSub:0,   // passoSub: residuo (le spinte ora sono su pagine separate); mantenuto per compatibilità dei salvataggi
     modalita:"locale", hostLato:"P",
-    nomi:{P:"", O:""}, premessa:"", missione:"", primaDiff:"", tono:"",
+    nomi:{P:"", O:""}, premessa:"", missione:"", primaDiff:"", tono:"", genere:"",
     nGiocatori:2,
     giocatori:{picche:"",cuori:"",quadri:"",fiori:""},
     modo3:"maggioranza",
@@ -1177,6 +1177,7 @@ function salvaCampi(){
   const pm=g("w-premessa"); if(pm!==null) G.premessa=pm;
   const v=g("w-missione"); if(v!==null) G.missione=v;
   const pd=g("w-primadiff"); if(pd!==null) G.primaDiff=pd;
+  const ge=g("w-genere"); if(ge!==null) G.genere=ge;
   const np=g("w-nomeP"); if(np!==null) G.nomi.P=np;
   const no=g("w-nomeO"); if(no!==null) G.nomi.O=no;
   ["picche","cuori","quadri","fiori"].forEach(sm=>{
@@ -1200,6 +1201,7 @@ function caricaPlaysetObj(ps){
   if(!ps || typeof ps!=="object"){ alert("Playset non valido."); return; }
   const pers = ps.pers || {A:ps.persA, B:ps.persB};
   if(ps.tono!=null) G.tono=ps.tono;
+  if(ps.genere!=null) G.genere=ps.genere;
   if(ps.premessa!=null) G.premessa=ps.premessa;
   if(ps.missione!=null) G.missione=ps.missione;
   if(ps.primaDiff!=null) G.primaDiff=ps.primaDiff;
@@ -1292,6 +1294,7 @@ function esportaPlaysetFile(){
     playset:nA+" & "+nB,
     nGiocatori:G.nGiocatori,
     tono:G.tono||"",
+    genere:G.genere||"",
     premessa:G.premessa||"",
     missione:G.missione||"",
     primaDiff:G.primaDiff||"",
@@ -1396,7 +1399,11 @@ function rSetup(){
       ${TONI.map(t=>`<button data-tono="${t}" style="${G.tono===t?"background:var(--mezzeria);color:#1a1206;border-color:var(--mezzeria)":""}">${t}</button>`).join("")}
       <button data-tono="" class="neutra" style="${G.tono===""?"border-color:var(--mezzeria)":""}">Libero</button>
     </div>
-    ${G.tono==="Romance"?`<div class="lettura">Nel tono Romance le domande del pitch cambiano valenza: "cosa detesta dell'altro" può nascondere attrazione, e la dominanza di ♥ nel finale non indica solo riconciliazione — indica che il legame ha prevalso sulla durezza.</div>`:""}`;
+    ${G.tono==="Romance"?`<div class="lettura">Nel tono Romance le domande del pitch cambiano valenza: "cosa detesta dell'altro" può nascondere attrazione, e la dominanza di ♥ nel finale non indica solo riconciliazione — indica che il legame ha prevalso sulla durezza.</div>`:""}
+    <div class="pannello" style="margin-top:12px">
+      <span class="etichetta">Genere <i style="font-weight:normal;color:var(--grigio)">(facoltativo)</i></span>
+      <input type="text" id="w-genere" value="${G.genere||""}" placeholder="Es. avventura, noir, fantascienza, commedia…">
+    </div>`;
 
   else if(p===3) corpo=`
     <h2 class="ts">La missione</h2>
@@ -1516,7 +1523,7 @@ function rSetup(){
   else corpo=`
     <h2 class="ts">Il pitch</h2>
     <div class="cartellone"><div class="grande">${G.pers.A.nome||"P1"} & ${G.pers.B.nome||"P2"}</div>
-      <div class="sc">${G.tono||"tono libero"} · cinque scene</div></div>
+      <div class="sc">${G.tono||"tono libero"}${G.genere&&G.genere.trim()?" · "+G.genere.trim():""} · cinque scene</div></div>
     ${G.premessa?`<div class="pannello"><span class="etichetta">Premessa</span><div style="font-size:13.5px;line-height:1.6">${G.premessa}</div></div>`:""}
     ${G.missione?`<div class="pannello"><span class="etichetta">Missione</span><div style="font-size:14.5px">${G.missione}</div></div>`:""}
     ${G.primaDiff?`<div class="pannello"><span class="etichetta">Prima difficoltà — Scena 1</span><div style="font-size:13.5px">${G.primaDiff}</div></div>`:""}
@@ -1545,7 +1552,7 @@ function rSetup(){
     }));
   }
   if(p===2) SC.querySelectorAll("button[data-tono]").forEach(b=>b.addEventListener("click",()=>{
-    G.tono=b.dataset.tono; render();
+    salvaCampi(); G.tono=b.dataset.tono; render();
   }));
   if(p===0) document.getElementById("w-playset").addEventListener("click", chiediPlayset);
   if(p===3) document.getElementById("w-ispMiss").addEventListener("click",()=>{
@@ -3005,7 +3012,7 @@ function apriDiario(){
   const dp=document.getElementById("diarioPitch");
   dp.innerHTML = (G.pers.A.nome||G.pers.B.nome||G.missione) ? `
     <div class="banner" style="margin-bottom:10px">
-      <b>${G.pers.A.nome||"P1"} ♠ & ${G.pers.B.nome||"P2"} ♥</b>${G.tono?` · ${G.tono}`:""}
+      <b>${G.pers.A.nome||"P1"} ♠ & ${G.pers.B.nome||"P2"} ♥</b>${G.tono?` · ${G.tono}`:""}${G.genere&&G.genere.trim()?` · ${G.genere.trim()}`:""}
       ${G.missione?`<br>${G.missione}`:""}
     </div>` : "";
   const svg=document.getElementById("strada");
@@ -3099,7 +3106,7 @@ function apriSchede(tab){
       const corpo=(G.premessa?`<div class="pannello"><span class="etichetta">La premessa</span><div style="font-size:13.5px;line-height:1.6">${G.premessa}</div></div>`:"")
         +(G.missione?`<div class="pannello"><span class="etichetta">La missione — la posta</span><div style="font-size:14.5px">${G.missione}</div></div>`:"")
         +(G.primaDiff?`<div class="pannello"><span class="etichetta">Prima difficoltà — Scena 1</span><div style="font-size:13.5px">${G.primaDiff}</div></div>`:"");
-      return cartello(`${nA} & ${nB}`,`${G.tono||"tono libero"} · cinque scene`)+(corpo||vuoto);
+      return cartello(`${nA} & ${nB}`,`${G.tono||"tono libero"}${G.genere&&G.genere.trim()?" · "+G.genere.trim():""} · cinque scene`)+(corpo||vuoto);
     }},
     P:{label:"PNG", html:()=>{
       const figs=G.figureComprate||[], narr=G.pngNarr||[];
@@ -3222,7 +3229,7 @@ function setupPerIA(){
   const spinte=G.pitch.map((p,i)=>({p,i})).filter(({i})=>PITCH_TEMPLATE[i].spinta!==false)
     .map(({p})=>(p.risposta&&p.risposta.trim())?`${SIMBOLI[p.seme]} ${p.risposta.trim()}`:"").filter(Boolean).join("\n");
   return `LA PARTITA. Missione dei Protagonisti: ${G.missione||"-"}.
-Tono: ${G.tono||"-"}.${G.premessa?`\nPremessa: ${G.premessa}`:""}
+Tono: ${G.tono||"-"}.${G.genere&&G.genere.trim()?` Genere: ${G.genere.trim()}.`:""}${G.premessa?`\nPremessa: ${G.premessa}`:""}
 Protagonisti: ${P.A.nome||"P1"} ♠ ${(P.A.desc||"").trim()}${detA?` (detesta dell'altro: ${detA})`:""} | ${P.B.nome||"P2"} ♥ ${(P.B.desc||"").trim()}${detB?` (detesta dell'altro: ${detB})`:""}.
 Opposizione: nemici ♦ ${normalizzaLista(G.nemici).join("; ")||"-"} | caos ♣ ${normalizzaLista(G.caos).join("; ")||"-"}.
 La prima difficoltà (inquadra la scena 1): ${G.primaDiff||"-"}.
