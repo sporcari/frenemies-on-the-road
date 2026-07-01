@@ -1,6 +1,6 @@
 # Benchmark di bilanciamento — ultimo run
 
-**Data:** 2026-07-01T14:54:50.554Z · **Commit:** d9bf5d2 (working tree sporco) · **KB:** v1.33
+**Data:** 2026-07-01T15:09:15.476Z · **Commit:** 178aa27 (working tree sporco) · **KB:** v1.33
 **Campione:** 250 partite (seed 1-250) · **Scoring:** presa 1, scopa 3 (v1.32)
 **Policy mercato:** greedy: 1 figura per mercato per lato, la piu costosa acquistabile non ancora posseduta (Re>Regina>Fante)
 
