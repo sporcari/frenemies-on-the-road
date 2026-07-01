@@ -234,9 +234,9 @@ La risposta si scrive ma, a differenza delle altre, non è una risorsa spuntabil
 
 Le spinte sono **otto, due per seme** (♠ e ♥ dai Protagonisti, ♦ e ♣ dall'Opposizione). I due "cosa si detestano" (§9.5) **non** sono spinte: sono tratti narrativi dei protagonisti, senza effetto.
 
-Dopo una presa normale, il giocatore può spuntare la risposta corrispondente al seme della carta con cui ha preso: la presa diventa una scopa a tutti gli effetti. La carta di presa va nel mazzetto delle scope e le carte rimaste nel piatto finiscono negli scarti comuni, esattamente come per una scopa normale.
+Dopo una presa fatta con una **carta numerica**, il giocatore può spuntare la risposta corrispondente al seme della carta con cui ha preso: la presa diventa una scopa a tutti gli effetti. La carta di presa va nel mazzetto delle scope e le carte rimaste nel piatto finiscono negli scarti comuni, esattamente come per una scopa normale.
 
-Quattro condizioni. La risposta spuntata deve entrare esplicitamente nella narrazione, come scena presente, rivelazione o flashback. Ogni risposta si usa una sola volta in tutta la partita: ogni lato ne ha quattro, due per ciascuno dei suoi due semi, e **tutte sono spendibili** (averne due per seme dà varietà di scelta, non potenza). **Una sola spinta per presa**: una presa diventa scopa con una spinta, e bruciarne una seconda sulla stessa giocata non aggiunge nulla. La spinta **non si può usare nell'ultima scena**: nella Risoluzione il piatto si svuota solo con una scopa.
+Cinque condizioni. La risposta spuntata deve entrare esplicitamente nella narrazione, come scena presente, rivelazione o flashback. Ogni risposta si usa una sola volta in tutta la partita: ogni lato ne ha quattro, due per ciascuno dei suoi due semi, e **tutte sono spendibili** (averne due per seme dà varietà di scelta, non potenza). **Una sola spinta per presa**: una presa diventa scopa con una spinta, e bruciarne una seconda sulla stessa giocata non aggiunge nulla. **Mai su una presa di figura (v1.36):** la spinta si può usare solo su una presa fatta con una carta numerica; una presa fatta con una figura (Fante, Regina, Re) non è promuovibile a scopa (la figura è già di suo una carta forte). La spinta **non si può usare nell'ultima scena**: nella Risoluzione il piatto si svuota solo con una scopa.
 
 > **Nota (v1.2):** questa regola sostituisce la "finta scopa" della v1.1, che promuoveva la carta di presa tra le scope senza toccare il piatto. Dalla v1.2 la scopa della spinta è ancorata al seme della carta di presa: è la carta giusta, nel momento giusto, a sbloccare la rivelazione.
 
@@ -570,7 +570,7 @@ Il costo della scorciatoia non è in punti: appena i Protagonisti usano il Jolly
 
 ### 22.4 — L'uso dell'Opposizione: il peccato emerge (scene 2-4) *(v1.33)*
 
-Ricevuto il Jolly, l'Opposizione lo spende in modo **speculare ma diverso**: come **spinta extra**. Dopo una propria presa, l'Opposizione **butta il Jolly** e trasforma quella presa in una **scopa** (svuota il piatto e vince la posta). Anche questo uso **non dà punti**. Nel giocarlo, l'Opposizione **mette in scena il peccato**: il compromesso di cui uno dei protagonisti si è macchiato riaffiora e travolge la scena.
+Ricevuto il Jolly, l'Opposizione lo spende in modo **speculare ma diverso**: come **spinta extra**. Dopo una propria presa fatta con una **carta numerica**, l'Opposizione **butta il Jolly** e trasforma quella presa in una **scopa** (svuota il piatto e vince la posta). Anche questo uso **non dà punti**. Nel giocarlo, l'Opposizione **mette in scena il peccato**: il compromesso di cui uno dei protagonisti si è macchiato riaffiora e travolge la scena. Come la spinta del pitch, anche la spinta-Jolly **non si può usare su una presa di figura** *(v1.36)*.
 
 Vincoli:
 
@@ -948,6 +948,11 @@ In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, 
 
 # REGISTRO MODIFICHE
 
+## v1.36 (luglio 2026) — niente spinta su una presa di figura
+
+1. **§9.8/§22: la spinta non promuove a scopa una presa di figura.** La spinta del pitch (e, in modo speculare, la spinta-Jolly dell'Opposizione) trasforma in scopa una presa fatta con una **carta numerica**; una presa fatta con una **figura** (Fante, Regina, Re) **non è promuovibile a scopa**. Motivo: la figura è già una carta forte (cattura elastica fino a 8/9/10), spesso su un gruppo di carte; permetterle anche la scopa via spinta la renderebbe sproporzionata.
+2. **Propagazione (stesso commit).** Motore `index.html`: in `giocaCarta` la presa imposta `G.narr.boostCard` solo se non è né Jolly né **figura** (`!c.fig`), così nessuna spinta — pitch o Jolly, entrambe agganciate a `boostCard` — la può usare. `REGOLE`, `REGOLE_IA`; KB (§9.8, §22, registro, footer v1.36); manuale (§3.10 spinta, glossario, footer). Diario. I driver di test usano già le spinte in modo difensivo (controllano la presenza dei pulsanti), nessuna modifica necessaria. **Bilanciamento:** cambio che tocca il gioco (prima una presa di figura poteva essere spinta a scopa) → benchmark ri-misurato, storico aggiornato.
+
 ## v1.35 (luglio 2026) — una sola figura per mercato per lato
 
 1. **§19/§20: una figura per mercato.** In ogni singolo mercato ciascun lato può comprare **una sola figura** (oltre al vincolo, invariato, di una sola per tipo in tutta la partita). Comprato l'acquisto, il mercato è chiuso agli altri acquisti per quel lato. Motivo: dalla v1.34 le figure entrano in mano ed entrano in scena la scena dopo, quindi comprarne più d'una nello stesso mercato affollerebbe la scena successiva di PNG (fino a una mano di sole figure); il tetto le distribuisce lungo la partita, una per scena.
@@ -1158,4 +1163,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.35*
+*Frenemies on the Road — Knowledge Base v1.36*

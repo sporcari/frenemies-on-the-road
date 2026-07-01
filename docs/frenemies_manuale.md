@@ -350,7 +350,7 @@ Rispetto alla scopa che forse conosci, qui cambiano alcune cose:
 
 - **I punti.** Nella scopa tradizionale le prese non valgono nulla e a contare sono solo le scope; qui ogni presa vale 1 punto e ogni scopa 3 (come si segnano i punti lo vedi poco sotto). E, soprattutto, prese e scope non sono solo punti: significano qualcosa nella storia, come vedremo con le tre mosse.
 - **Figure e Jolly "elastici".** Le carte numeriche catturano per valore esatto; le figure e il Jolly no. Una figura (Fante, Regina, Re) cattura un gruppo di carte la cui somma è minore o uguale al suo valore (Fante 8, Regina 9, Re 10), e il Jolly vale il numero che dichiari quando lo giochi: sono carte flessibili, che allargano le possibilità di presa. Le figure si comprano al mercato (Capitolo 4), il Jolly ha il suo capitolo (Capitolo 5).
-- **Prese con spinta.** Dopo una presa normale puoi spendere una spinta, per trasformarla in una scopa e svuotare il piatto
+- **Prese con spinta.** Dopo una presa fatta con una carta numerica puoi spendere una spinta, per trasformarla in una scopa e svuotare il piatto (non vale sulle prese di figura)
 - **Minigioco di maggioranze** A differenza di una partita a scopa, un round di Frenemies non si vince facendo più punti, ma ottenendo la maggioranza sommando i valori delle proprie carte nel piatto con quelle dell'avversario. Questo cambia di molto l'approccio tattico alla partita, rendendo a volte più conveniente aggiungere una carta alta al piatto, piuttosto che usarla per fare una presa.
 
 ### Segnare i punti
@@ -514,13 +514,14 @@ Narrativamente si può raccontare che l'alleato che si immola, o fa qualcosa che
 
 Vi ricordate le domande che erano state fatte ai Protagonisti e all'Opposizione durante il pitch?
 
-Ecco a che cosa servono. Dopo una presa normale, il giocatore può spuntare una Spinta corrispondente al seme della carta che ha appena giocato: in quel momento la presa diventa una scopa a tutti gli effetti. La carta di presa viene marcata come scopa e vale 3 punti.
+Ecco a che cosa servono. Dopo una presa fatta con una carta numerica, il giocatore può spuntare una Spinta corrispondente al seme della carta che ha appena giocato: in quel momento la presa diventa una scopa a tutti gli effetti. La carta di presa viene marcata come scopa e vale 3 punti.
 
-Quattro condizioni regolano questo potere:
+Cinque condizioni regolano questo potere:
 
 - la spinta usata deve entrare davvero nella narrazione, come scena presente, rivelazione o flashback;
 - ogni spinta si usa una sola volta in tutta la partita; ogni lato ne ha quattro, due per seme, e tutte sono spendibili. Averne due per seme non è un raddoppio di potenza ma di scelta: puoi spendere in una scena la motivazione che lega quel personaggio alla missione, e tenere per più avanti la dote che gli fa da asso nella manica;
 - una sola spinta per presa: una presa diventa scopa con una spinta, e bruciarne una seconda sulla stessa giocata non aggiunge nulla;
+- mai su una presa di figura: la spinta vale solo su una presa fatta con una carta numerica; una presa fatta con una figura (Fante, Regina, Re) non diventa scopa, perché la figura è già di suo una carta forte;
 - una spinta non si può usare nell'ultima scena: nella Risoluzione il piatto si svuota solo con una scopa.
 
 L'idea è che sia la carta giusta, nel momento giusto, a sbloccare la rivelazione: il legame con il seme non è un dettaglio, è il senso della regola.
@@ -698,7 +699,7 @@ Usare il Jolly non è obbligatorio. Chi lo detiene può non usarlo affatto: **ch
 
 ## 5.4 Il peccato emerge: la spinta dell'Opposizione (scene 2-4)
 
-Ricevuto il Jolly, l'Opposizione lo usa in modo speculare ma diverso: come **spinta extra**. Dopo una propria presa, l'Opposizione butta il Jolly e trasforma quella presa in una **scopa** (svuota il piatto e vince la posta) — anche per lei senza segnare punti. E nel giocarlo **mette in scena il peccato**: il compromesso di cui uno dei protagonisti si è macchiato riaffiora e travolge la scena, incrinando l'alleanza tra i due.
+Ricevuto il Jolly, l'Opposizione lo usa in modo speculare ma diverso: come **spinta extra**. Dopo una propria presa fatta con una carta numerica, l'Opposizione butta il Jolly e trasforma quella presa in una **scopa** (svuota il piatto e vince la posta) — anche per lei senza segnare punti. Come la spinta del pitch, nemmeno la spinta-Jolly vale su una presa di figura. E nel giocarlo **mette in scena il peccato**: il compromesso di cui uno dei protagonisti si è macchiato riaffiora e travolge la scena, incrinando l'alleanza tra i due.
 
 L'Opposizione può farlo **solo nelle scene 2, 3 o 4**, e **mai nella stessa scena** in cui i Protagonisti hanno usato il Jolly: il peccato riemerge *dopo*, in una scena successiva. Una volta giocato, il Jolly è speso.
 
@@ -1523,7 +1524,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Semi.** I quattro semi del mazzo, due per lato: Cuori e Picche ai Protagonisti, Quadri e Fiori all'Opposizione. Ciascuno ha un significato narrativo che si adatta al tono scelto.
 
-**Spinte (darsi una spinta).** Le risorse spuntabili definite nel pitch, due per seme per ciascun lato (quattro a testa). Dopo una presa normale, chi prende può spuntare la risposta del seme della carta di presa e trasformare la presa in una scopa. Ognuna si usa una sola volta, una sola per presa, mai nell'ultima scena.
+**Spinte (darsi una spinta).** Le risorse spuntabili definite nel pitch, due per seme per ciascun lato (quattro a testa). Dopo una presa fatta con una carta numerica, chi prende può spuntare la risposta del seme della carta di presa e trasformare la presa in una scopa. Ognuna si usa una sola volta, una sola per presa, mai su una presa di figura, mai nell'ultima scena.
 
 **Titolo della scena.** Il nome che chi vince l'asta dà alla scena, insieme alla posta, aprendola.
 
@@ -1632,4 +1633,4 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 
 ---
 
-*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.35, che resta la fonte di verità del regolamento.*
+*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.36, che resta la fonte di verità del regolamento.*
