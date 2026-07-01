@@ -2566,7 +2566,7 @@ function rMercato(){
     : "Chiudi il mercato e riparti";
   SC.innerHTML=`
     <h2 class="ts">Il mercato${online?" — "+nomeLato(G.mercatoLato):""}</h2>
-    <p class="sotto">${G.scena===3?"Compra ora: la mano dell'ultima scena la sceglierai subito dopo.":"La nuova mano si pesca dopo il mercato."} Pagamento automatico: prima i punti bonus, poi le prese (1 punto ciascuna), infine le scope (3 punti); i marcatori spesi vanno negli scarti comuni. Le figure entrano nel mazzo, che si rimescola prima della pescata. Si può comprare al massimo una figura per tipo.</p>
+    <p class="sotto">${G.scena===3?"Compra ora: la mano dell'ultima scena la sceglierai subito dopo.":"La nuova mano si pesca dopo il mercato."} Pagamento automatico: i punti sono una valuta (i marcatori sono solo il modo di segnarli), quindi paghi il costo e tieni sempre il resto; i marcatori spesi vanno negli scarti comuni. Le figure entrano nel mazzo, che si rimescola prima della pescata. Si può comprare al massimo una figura per tipo.</p>
     <div class="mercato-griglia">${pannelli}</div>
     <button class="azione" id="m-fine">${etichettaFine}</button>`;
   SC.querySelectorAll("button[data-f]").forEach(b=>b.addEventListener("click",()=>{
@@ -2635,18 +2635,37 @@ function chiediPng(l,f,s,b){
 function pagaCosto(l, costo){
   const L=lato(l);
   if(puntiMercato(l)<costo) return false;
-  let resto=costo;
-  const usaBonus=Math.min(L.bonus,resto); L.bonus-=usaBonus; resto-=usaBonus;
-  // prese (1, anche con figura), poi scope (3); i marcatori spesi vanno negli scarti comuni
-  while(resto>0){
-    if(!L.prese.length) break;
-    G.scartiComuni.push(L.prese.splice(Math.floor(Math.random()*L.prese.length),1)[0]); resto-=1;
+  // I punti sono una VALUTA LINEARE: si paga il costo e si tiene sempre il resto. I marcatori
+  // (bonus, prese da 1, scope da 3) sono solo il modo fisico di segnare i punti, per economia di
+  // materiale. Quindi: si copre il costo spendendo marcatori (con meno spreco possibile,
+  // così da alterare il meno possibile i semi che restano) e l'eventuale ECCEDENZA di una scopa
+  // spezzata torna come punti bonus (valuta senza seme). Il totale che resta è sempre punti-costo.
+  const uno = L.bonus + L.prese.length;                       // marcatori da 1 disponibili
+  const treDisp = L.scope.filter(c=>!c.esposta).length;       // marcatori da 3 disponibili
+  let scelta=null;   // {scope, uni, spesa}
+  for(let s=0; s<=treDisp; s++){
+    const manca = costo - 3*s;
+    let uni, spesa;
+    if(manca<=0){ uni=0; spesa=3*s; }            // le scope da sole coprono il costo (con eccedenza da restituire)
+    else if(manca<=uno){ uni=manca; spesa=costo; }  // pagamento esatto
+    else continue;                                  // servono più scope
+    // minimizza la spesa (quindi il resto da restituire, quindi i semi persi in bonus);
+    // a parità di spesa preferisci usare più scope, così restano più marcatori da 1
+    if(!scelta || spesa<scelta.spesa || (spesa===scelta.spesa && s>scelta.scope)) scelta={scope:s, uni, spesa};
   }
-  while(resto>0){
+  if(!scelta) return false;   // garantito da puntiMercato>=costo, ma per sicurezza
+  // applica: prima i marcatori da 1 (bonus poi prese), poi le scope; gli spesi vanno negli scarti comuni
+  let uni=scelta.uni;
+  const usaBonus=Math.min(L.bonus, uni); L.bonus-=usaBonus; uni-=usaBonus;
+  while(uni>0 && L.prese.length){
+    G.scartiComuni.push(L.prese.splice(Math.floor(Math.random()*L.prese.length),1)[0]); uni-=1;
+  }
+  for(let k=0; k<scelta.scope; k++){
     const i=L.scope.findIndex(c=>!c.esposta);
     if(i<0) break;
-    G.scartiComuni.push(L.scope.splice(i,1)[0]); resto-=3;
+    G.scartiComuni.push(L.scope.splice(i,1)[0]);
   }
+  L.bonus += (scelta.spesa - costo);   // il resto della scopa spezzata torna come punti (valuta lineare)
   return true;
 }
 function entraJollyNeiMazzi(){

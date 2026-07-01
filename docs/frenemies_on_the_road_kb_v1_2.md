@@ -480,7 +480,7 @@ Risorse disponibili:
 - Ogni **presa** → **1 punto** (anche se fatta con una figura)
 - Ogni **scopa** → **3 punti**
 
-Il pagamento spende prima il **bonus**, poi le **prese**, poi le **scope**; i marcatori spesi vanno negli **scarti comuni**. Le figure acquistate entrano nel mazzo, non in mano e non negli scarti.
+I punti sono una **valuta lineare**: i marcatori (prese da 1, scope da 3) sono solo il modo pratico di segnarli, si potrebbero tenere anche con gettoni o su un foglio. Al mercato quindi si **paga il costo e si tiene sempre il resto**: due scope (6 punti) per una Regina (5) lasciano **1 punto**, esattamente come sei prese ne lascerebbero uno. In pratica il motore copre il costo spendendo i marcatori (con meno spreco possibile, per conservare i semi di quelli che restano) e l'eventuale **eccedenza di una scopa spezzata torna come punti** (bonus, senza seme). I marcatori spesi vanno negli **scarti comuni**. Le figure acquistate entrano nel mazzo, non in mano e non negli scarti.
 
 > **Una figura per tipo (v1.3):** ogni giocatore può comprare al massimo **un Fante, una Regina, un Re** in tutta la partita (a prescindere dal seme).
 
@@ -940,6 +940,11 @@ In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, 
 
 # REGISTRO MODIFICHE
 
+## v1.31 (luglio 2026) — i punti sono una valuta lineare: al mercato si tiene sempre il resto
+
+1. **§20: i punti sono una valuta, il mercato dà sempre il resto.** Chiarimento del designer (Saverio): i punti sono una **valuta lineare**; i marcatori (prese 1, scope 3) sono solo il modo pratico di segnarli (si potrebbero usare gettoni o un foglio). Quindi al mercato si **paga il costo e si tiene sempre il resto**, anche quando si spezza una scopa: 2 scope (6) per una Regina (5) lasciano **1**; 1 presa + 1 scopa (4) per un Fante (3) lasciano **1**. Prima il motore spendeva rigidamente **bonus → prese → scope** e la scopa spezzata **non dava resto**, così si sovrappagava (il Fante da 3 con 4 punti lasciava 0). **Sparisce del tutto il concetto di «scopa che non dà resto».** Motivazione: il sovrappagamento era un artefatto dell'ordine di spesa, non una scelta di design.
+2. **Propagazione.** `index.html`: `pagaCosto` riscritta (copre il costo con meno spreco possibile e l'eccedenza di una scopa spezzata torna come punti `bonus`, valuta senza seme; il totale che resta è sempre `punti − costo`); testo del pannello mercato («i punti sono una valuta … tieni sempre il resto»). KB §20. Diario decisioni #54. **Rovescia la premessa di #51/Appendice B** (che aveva riscritto i numeri sul vecchio sovrappagamento): l'esempio canonico (seed 34/367) va **rigenerato** — cambiano i marcatori spesi, quindi gli scarti comuni, l'effetto Fante/Re e, a cascata, l'intero finale (il transcript era comunque già fuori sync a HEAD, rigenerazione già prevista nel piano di finalizzazione). Collaudo core verde (`test_partita` NG2/NG4, `test_adatta`, `test_solo`, `test_riprova`).
+
 ## v1.30 (giugno 2026) — le otto spinte sono tutte spendibili (due per seme), una per presa
 
 1. **§9.8: tolto il limite «una spinta per seme per lato».** Le spinte scritte nel pitch sono otto (due per seme per lato): ora **tutte e otto sono spendibili**, ciascuna una volta sola. Prima il regolamento (e il motore) consentivano di spuntare **una sola spinta per seme** in tutta la partita, lasciando di fatto inerti le due seconde spinte di ciascun lato (di otto scritte, solo quattro giocabili al tavolo). Le due dello stesso seme non sono alternative ma due cariche distinte: averne due dà **varietà di scelta** (la motivazione in una scena, l'asso nella manica in un'altra), non potenza accumulabile. Aggiunta la condizione **«una sola spinta per presa»**: una presa diventa scopa con una spinta sola, bruciarne una seconda sulla stessa giocata non aggiunge nulla (già garantito di fatto perché la presa, diventata scopa, non è più spuntabile). Motivazione (dal designer, Saverio): «una per seme» era nato per dare scelta scrivendone due, ma il limite per seme la annullava. Le altre tre condizioni (entrare in narrazione; vietata nell'ultima scena) restano.
@@ -1114,4 +1119,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.30*
+*Frenemies on the Road — Knowledge Base v1.31*
