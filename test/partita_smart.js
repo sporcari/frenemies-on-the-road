@@ -86,6 +86,8 @@ function runGame(seed, seed2, seed3, wantTranscript){
   const log=s=>T.push(s);
   let spinteUsate=0, colpiFatti=0, acquisti=0, jollyGiocati=0, reseedFatto=false, reseed3Fatto=false;
   let spintaScena=-1, ultimaLoggata="", pageError=null, resaCount=0, primoP=0, primoO=0;
+  const grossP=[], grossO=[];   // punti lordi cumulativi a fine di ogni scena (indice = scena 0..4)
+  const figCumP=[], figCumO=[];   // figure comprate cumulative dopo ogni mercato (1 voce per mercato, 4 mercati)
   let spentP=0, spentO=0, buysP=0, buysO=0;   // punti spesi e numero di figure comprate per lato
   const figset=new Set();
   const figP=new Set(), figO=new Set();       // figure COMPRATE per lato
@@ -325,6 +327,10 @@ function runGame(seed, seed2, seed3, wantTranscript){
 
     if(f==="fine_scena"){
       const g=G(), rec=g.scene[g.scena];
+      // punti LORDI (guadagnati) cumulativi a fine scena: netto residuo + già speso al mercato.
+      // Il mercato di questa transizione non è ancora avvenuto, quindi cattura esattamente
+      // i punti fatti fino a questa scena inclusa (colpi di scena della S5 non danno punti).
+      grossP[g.scena]=g.lati.P.punti+spentP; grossO[g.scena]=g.lati.O.punti+spentO;
       log(`   FINE SCENA ${g.scena+1}: piatto ${rec.totP} a ${rec.totO} → vince ${rec.vincitore==="parita"?"NESSUNO (parità)":nomeL(rec.vincitore)}. Seme dominante: ${SYM[rec.dominante]||rec.dominante||"—"} (diario: ${rec.rapporto}).`);
       if(g.scena===1 && seed2!==seed && !reseedFatto){ window.__reseed(seed2); reseedFatto=true; }
       if(g.scena===2 && seed3!==seed2 && !reseed3Fatto){ window.__reseed(seed3); reseed3Fatto=true; }
@@ -352,21 +358,32 @@ function runGame(seed, seed2, seed3, wantTranscript){
 
     if(f==="mercato"){
       const NOMI_FIG={F:"il FANTE",D:"la REGINA",R:"il RE"};
-      const btns=[...document.querySelectorAll("button[data-f]")].filter(x=>!x.disabled);
-      let pick;
+      const ord={R:3,D:2,F:1};
+      const buy=pick=>{
+        if(!pick) return;
+        figset.add(pick.dataset.f);
+        if(pick.dataset.l==="P"){ figP.add(pick.dataset.f); spentP+=COSTO[pick.dataset.f]; buysP++; }
+        else { figO.add(pick.dataset.f); spentO+=COSTO[pick.dataset.f]; buysO++; }
+        log(`   MERCATO: ${nomeL(pick.dataset.l)} compra ${NOMI_FIG[pick.dataset.f]} di ${pick.dataset.s} ${SYM[pick.dataset.s]}.`);
+        click(pick); acquisti++;
+      };
       if(MERCATO_CANONICO){
-        // stesso CALENDARIO di acquisti della partita d'esempio, vincolato alla scena appena finita,
-        // così il mazzo (e quindi le pescate) resta identico: dopo S1 niente, dopo S2 P Fante, dopo S3 P Regina, dopo S4 O Re.
+        // CALENDARIO fisso della vecchia partita d'esempio: dopo S2 P Fante, dopo S3 P Regina, dopo S4 O Re.
         const sc=G().scena;
         const want = sc===1?{l:"P",f:"F"} : sc===2?{l:"P",f:"D"} : sc===3?{l:"O",f:"R"} : null;
-        pick = want ? btns.find(x=>x.dataset.l===want.l && x.dataset.f===want.f) : null;
+        const btns=[...document.querySelectorAll("button[data-f]")].filter(x=>!x.disabled);
+        buy(want ? btns.find(x=>x.dataset.l===want.l && x.dataset.f===want.f) : null);
       }else{
-        // il Fante prima (entra subito in mano e fa scout: è utile presto), poi la figura più potente
-        const ord={R:3,D:2,F:1};
-        pick = btns.find(x=>x.dataset.f==="F")
-            || btns.sort((x,y)=>ord[y.dataset.f]-ord[x.dataset.f])[0];
+        // POLICY GREEDY (benchmark v1.32): ogni lato compra UNA SOLA figura per mercato, la PIÙ COSTOSA
+        // che può permettersi tra quelle non ancora possedute (Re, se no Regina, se no Fante). Se non
+        // può permettersene nessuna, passa (comprerà al mercato successivo). Es.: 8 punti col Re già
+        // preso → compra la Regina, il Fante al mercato dopo.
+        for(const l of ["P","O"]){
+          const btns=[...document.querySelectorAll(`button[data-f][data-l="${l}"]`)].filter(x=>!x.disabled);
+          if(btns.length) buy(btns.sort((x,y)=>ord[y.dataset.f]-ord[x.dataset.f])[0]);
+        }
       }
-      if(pick){ figset.add(pick.dataset.f); if(pick.dataset.l==="P"){ figP.add(pick.dataset.f); spentP+=COSTO[pick.dataset.f]; buysP++; } else { figO.add(pick.dataset.f); spentO+=COSTO[pick.dataset.f]; buysO++; } log(`   MERCATO: ${nomeL(pick.dataset.l)} compra ${NOMI_FIG[pick.dataset.f]} di ${pick.dataset.s} ${SYM[pick.dataset.s]}.`); click(pick); acquisti++; return "compra"; }
+      figCumP.push(buysP); figCumO.push(buysO);   // figure cumulative comprate dopo questo mercato
       click(document.getElementById("m-fine")); return f;
     }
 
@@ -442,6 +459,10 @@ function runGame(seed, seed2, seed3, wantTranscript){
       const vinte=g.scene.map(s=>s?s.vincitore:"-").join(",");
       const sd=`${seed}${seed2!==seed?"/"+seed2:""}${seed3!==seed2?"/"+seed3:""}`;
       const finalP=ps("P"), finalO=ps("O");
+      // robustezza: l'ultima scena deve avere il lordo cumulativo pari al totale finale
+      // (i colpi di scena non danno punti); se il fine_scena della S5 non l'ha registrato, lo fissiamo qui.
+      if(grossP[4]==null) grossP[4]=pv("P")+spentP;
+      if(grossO[4]==null) grossO[4]=pv("O")+spentO;
       const riass=`SEED=${sd} scene=${vinte} scopeP=${scopeCount("P")} scopeO=${scopeCount("O")} puntiP=${pv("P")} puntiO=${pv("O")} jolly=${jollyGiocati} spinte=${spinteUsate} colpi=${colpiFatti} acq=${acquisti} rese=${resaCount} figure=${[...figset].sort().join("")} outcome="${outcome}"`;
       const fnT=`transcript_smart_seed_${seed}${seed2!==seed?"_"+seed2:""}${seed3!==seed2?"_"+seed3:""}.txt`;
       const poste=g.scene.map(s=>s?s.vincitore:"-");
@@ -454,6 +475,7 @@ function runGame(seed, seed2, seed3, wantTranscript){
         nP, nO, primoP, primoO, finalP, finalO,
         flipDopoColpi: primoP<=primoO && finalP>finalO,   // sotto al primo conteggio, sopra dopo i colpi
         scopeP:scopeCount("P"), scopeO:scopeCount("O"), puntiP:pv("P"), puntiO:pv("O"),
+        grossP:[...grossP], grossO:[...grossO], figCumP:[...figCumP], figCumO:[...figCumO],
         spentP, spentO, buysP, buysO, lordoP:pv("P")+spentP, lordoO:pv("O")+spentO};
       try{ dom.window.close(); }catch(e){}   // libera il JSDOM (cruciale nei batch)
       return __r;
@@ -463,7 +485,10 @@ function runGame(seed, seed2, seed3, wantTranscript){
   throw new Error("BLOCCATO in fase "+fase());
 }
 
-if(BATCH>0){
+if(require.main!==module){
+  // importato come modulo (es. da test/benchmark.js): esporta runGame, niente auto-run
+  module.exports={runGame};
+}else if(BATCH>0){
   const rows=[];
   // BATCHSTART=N: parte la ricerca dal seed N (default 1). Serve a scandire il residuo oltre i primi 300
   // senza superare il tetto memoria di JSDOM (BATCH ~300 alla volta): es. BATCHSTART=301 BATCH=600.
@@ -496,6 +521,24 @@ if(BATCH>0){
   ESITI.forEach(e=>{ const n=rows.filter(r=>r.outcome===e).length; console.log(`     ${e}: ${n} (${(100*n/N).toFixed(1)}%)`); });
   const altri=rows.filter(r=>!ESITI.includes(r.outcome));
   if(altri.length) console.log(`     (altri esiti non classificati: ${altri.length})`);
+  console.log("");
+  // ---- STATISTICHE RICHIESTE (lug 2026): punti per scena, vittorie, rapporto scene ----
+  console.log(`  PUNTI GUADAGNATI (lordi) per scena — media su ${N} partite:`);
+  for(let sc=0; sc<5; sc++){
+    const dP=avg(r=>(r.grossP[sc]||0)-(sc>0?(r.grossP[sc-1]||0):0));
+    const dO=avg(r=>(r.grossO[sc]||0)-(sc>0?(r.grossO[sc-1]||0):0));
+    console.log(`     Scena ${sc+1}: Prot ${dP.toFixed(2)} · Opp ${dO.toFixed(2)}`);
+  }
+  console.log(`     TOTALE partita:  Prot ${avg(r=>r.grossP[4]||0).toFixed(2)} · Opp ${avg(r=>r.grossO[4]||0).toFixed(2)}`);
+  const pWin=r=>r.outcome==="VITTORIA PIENA"||r.outcome==="PER IL ROTTO DELLA CUFFIA";
+  const oWin=r=>r.outcome==="SCONFITTA DIGNITOSA"||r.outcome==="FALLIMENTO TOTALE";
+  console.log(`  VITTORIE della partita (missione): Protagonisti ${pct(pWin).toFixed(1)}% · Opposizione ${pct(oWin).toFixed(1)}%`);
+  const combos={};
+  rows.forEach(r=>{ const k=`${r.nP}-${r.nO}`; combos[k]=(combos[k]||0)+1; });
+  console.log(`  RAPPORTO scene vinte per partita (poste P-O, su 5):`);
+  Object.keys(combos).sort((a,b)=>Number(b.split("-")[0])-Number(a.split("-")[0])).forEach(k=>console.log(`     ${k}: ${combos[k]} (${(100*combos[k]/N).toFixed(1)}%)`));
+  const pariAvg=avg(r=>Math.max(0,5-r.nP-r.nO));
+  if(pariAvg>0.005) console.log(`     (scene senza vincitore netto P/O, in media: ${pariAvg.toFixed(2)}/partita)`);
   console.log("");
   rows.sort((a,b)=>b._c.n-a._c.n);
   const fmt=r=>`SEED=${r.seed} arco=${r.arco} [${r._c.c1?"3/2":"---"} ${r._c.c2?"cuffia":"------"} ${r._c.c3?"ribalt":"------"} ${r._c.c4?"FDR":"---"} ${r._c.c5?"resa":"----"}] | primo ${r.primoP}-${r.primoO} → finale ${r.finalP}-${r.finalO} | scope ${r.scopeP}-${r.scopeO} | fig=${[...r.figset].sort().join("")} rese=${r.resaCount} | "${r.outcome}"`;

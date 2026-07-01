@@ -22,6 +22,8 @@ npm i jsdom (una volta sola), poi dalla radice del repo:
 - node test/test_partita.js  e  NG=4 node test/test_partita.js
 - node test/test_adatta.js  e  node test/test_solo.js
 - node test/test_riprova.js (meccanismo "Rigenera" vs Claude; seed fisso)
+- node test/test_ritirata.js (resa: ritirata strategica e resa onorevole; una
+  singola esecuzione copre entrambe le varianti)
 - (SOSPESO) La partita d'esempio del §34/Appendice B e il suo transcript di
   riferimento sono OBSOLETI dalla v1.32 (i punti sono diventati valuta numerica a
   gettoni) e in attesa di un nuovo seed-vetrina. I vecchi transcript sono stati
@@ -29,6 +31,20 @@ npm i jsdom (una volta sola), poi dalla radice del repo:
   test/partita_esempio.js e test/partita_smart.js restano come strumenti (girano
   sul modello numerico), ma partita_esempio.js è ancora scriptato sul vecchio
   seed 23 e va rifatto quando si sceglie il nuovo seed-vetrina.
+
+## Benchmark di bilanciamento (dopo un cambio di regole che tocca il gioco)
+Per misurare l'effetto sul bilanciamento, lancia `node test/benchmark.js` (o la
+skill /simula): gira un set FISSO di partite (default 250, seed 1-250) con policy
+di mercato greedy fissa e scoring corrente, ed è DETERMINISTICO (stessi seed =>
+stesse partite), così ogni differenza tra due run riflette il cambio di regole.
+Persistenza, DA COMMITTARE insieme al cambio di regole:
+- test/simulazioni/storico.jsonl - un record JSON per run (metadati + metriche);
+- test/simulazioni/ultimo.md - report leggibile + Δ rispetto al run precedente.
+Metriche: A esito (vittorie P/O, esiti, ribaltoni) · B punti (lordi per scena +
+totale, netti/spesi; B.2 figure per scena) · C scene (rapporto vinte, % per scena)
+· D meccaniche (figure/scope/rese/jolly). La policy greedy vive in
+test/partita_smart.js (fase mercato): se la cambi, i run vecchi non sono più
+confrontabili. Confronta solo run con lo stesso N.
 
 ## Protocollo per le modifiche alle REGOLE
 Le regole sono duplicate in più punti: una modifica che tocca le regole va
