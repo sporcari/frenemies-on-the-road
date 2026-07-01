@@ -2418,32 +2418,22 @@ function giocaJolly(c, v, combo){
       : `<b>Il peccato emerge.</b> ${nomeLato(l)} impugna la stessa arma sleale: riaffiora il compromesso commesso da uno dei protagonisti. Nessuno segna punti.`);
   }
 }
-// v1.37: l'Opposizione (IA) usa il Jolly come CATTURA di una carta, come P. Gioco ottimale: solo alla CHIUSURA
-// e solo se ribalta una scena che altrimenti perderebbe. Restituisce {buryId, targetId} o null.
+// v1.37: l'Opposizione (IA) usa il Jolly come CATTURA di una carta, come P — ma in modo AGGRESSIVO. O è
+// l'ultimo detentore (non arma nessuno) e seppellire cresce la sua riserva, quindi lo usa APPENA può,
+// catturando la carta AVVERSARIA (♥/♠) di valore più alto (scopa se svuota il piatto). Due eccezioni:
+// non lo usa se nel piatto ci sono solo carte proprie, e non lo spreca se può già fare una SCOPA normale.
+// Restituisce {buryId, targetId} o null.
 function iaJollyPickO(){
   if(!jollyUsabile("O")) return null;
-  const piatto=G.piatto, ME=lato("O"), OPP=lato("P");
-  if(!(ME.mano.length===1 && OPP.mano.length===0 && !ME.astaCarta && !OPP.astaCarta)) return null;   // solo la mossa conclusiva
+  const piatto=G.piatto, ME=lato("O");
   const own=ME.semi, cval=x=>x.fig?FIGURE[x.fig].val:(x.jolly?0:x.val);
-  const wins=rem=>{ if(!rem.length) return true;   // scopa
-    const mT=rem.filter(x=>own.includes(x.seme)).reduce((s,x)=>s+cval(x),0);
-    const oT=rem.filter(x=>!own.includes(x.seme)).reduce((s,x)=>s+cval(x),0);
-    return mT>oT; };
-  // la carta normale vince già? allora non sprecare il Jolly
-  const c=ME.mano[0]; let normalWins=false;
-  if(c.fig){ const pot=piatto.filter(x=>!x.jolly);
-    if(pot.length && Math.min(...pot.map(cval))<=FIGURE[c.fig].val){ const def=comboFiguraDefault("O",c.val); if(wins(piatto.filter(x=>!def.some(y=>y.id===x.id)))) normalWins=true; }
-    else if(wins(piatto.slice())) normalWins=true;
-  } else { const combos=combosPresa(c.val);
-    if(combos.length){ combos.forEach(cmb=>{ if(wins(piatto.filter(x=>!cmb.some(y=>y.id===x.id)))) normalWins=true; }); }
-    else if(wins([...piatto,c])) normalWins=true;
-  }
-  if(normalWins) return null;
-  // il Jolly cattura UNA sola carta: scopa se ne resta una sola, altrimenti la carta la cui rimozione fa vincere
-  let target=null;
-  if(piatto.length===1) target=piatto[0];
-  else { const cand=[...piatto].sort((x,y)=>cval(y)-cval(x)); for(const x of cand){ if(wins(piatto.filter(y=>y.id!==x.id))){ target=x; break; } } }
-  if(!target) return null;
+  const enemy=piatto.filter(x=>!x.jolly && !own.includes(x.seme));
+  if(!enemy.length) return null;                        // solo carte proprie / piatto vuoto: non conviene
+  // non sprecare il Jolly se O può già fare una SCOPA normale (spazza tutto il piatto e vince la posta)
+  const sum=piatto.reduce((s,x)=>s+(x.val||0),0);
+  const scopaNorm=carteGiocabili("O").carte.some(c=> c.jolly?false : (c.fig? sum<=FIGURE[c.fig].val : combosPresa(c.val).some(cmb=>cmb.length===piatto.length)));
+  if(scopaNorm) return null;
+  const target=enemy.sort((x,y)=>cval(y)-cval(x))[0];   // la carta avversaria di valore più alto
   const bury=ME.mano.filter(x=>!x.jolly).sort((x,y)=>cval(x)-cval(y))[0];
   if(!bury) return null;
   return {buryId:bury.id, targetId:target.id};

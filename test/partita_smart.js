@@ -115,14 +115,26 @@ function runGame(seed, seed2, seed3, wantTranscript){
   // la giocata normale dell'ultima carta NON vincerebbe. Restituisce {v,ci,scopa,buryId} o null. Serve
   // anche a NON arrendersi quando il Jolly può vincere.
   function jollyPick(a){
-    // v1.33: gioco OTTIMALE = usare il Jolly SOLO se fa vincere una scena che altrimenti si perderebbe.
-    // Lo si valuta alla mossa di CHIUSURA (dove l'esito della posta è certo): se la carta normale NON vince
-    // ma il Jolly (scopa, o presa che lascia avanti) sì, si gioca. Se la scena è già vinta, si tiene.
+    // v1.37: politica ASIMMETRICA (diversa per lato).
+    //  - P: il Jolly, usandolo, ARMA O (gli passa). Quindi conservativo: solo alla CHIUSURA e solo se ribalta
+    //    una scena che altrimenti si perderebbe. Il resto della funzione (sotto) è la logica di P.
+    //  - O: è l'ultimo detentore (non arma nessuno) e seppellire cresce la riserva. Quindi USA il Jolly appena
+    //    può, catturando la carta AVVERSARIA di valore più alto (scopa se svuota il piatto). Non lo usa se nel
+    //    piatto ci sono solo carte proprie. Lo scoring (scopa normale 1000 > Jolly 900) evita di sprecarlo
+    //    quando O può già fare una scopa normale.
     if(!document.getElementById("btnUsaJolly")) return null;
     const g=G(), piatto=g.piatto, ME=g.lati[a], OPP=g.lati[a==="P"?"O":"P"];
+    const ownA=ME.semi, cval=x=>x.jolly?(x.val||0):(x.fig?FIGVAL[x.fig]:x.val);
+    const buryLow=()=>ME.mano.filter(x=>!x.jolly).slice().sort((x,y)=>cval(x)-cval(y))[0];
+    if(a==="O"){
+      const enemy=piatto.filter(x=>!x.jolly && !ownA.includes(x.seme));
+      if(!enemy.length) return null;                    // solo carte proprie o piatto vuoto: non conviene
+      const target=enemy.sort((x,y)=>cval(y)-cval(x))[0];
+      const bury=buryLow(); if(!bury) return null;
+      return {cardId:target.id, scopa: piatto.length===1, buryId:bury.id};
+    }
     const closing = ME.mano.length===1 && OPP.mano.length===0 && !ME.astaCarta && !OPP.astaCarta;
     if(!closing) return null;
-    const ownA=ME.semi, cval=x=>x.jolly?(x.val||0):(x.fig?FIGVAL[x.fig]:x.val);
     const meWins=(rem,scopaMe)=>{ if(!rem.length) return scopaMe;
       const mT=rem.filter(x=>ownA.includes(x.seme)).reduce((s,x)=>s+cval(x),0);
       const oT=rem.filter(x=>!ownA.includes(x.seme)).reduce((s,x)=>s+cval(x),0);
