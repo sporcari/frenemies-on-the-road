@@ -3538,9 +3538,18 @@ async function iaNarrazione(){
   iaBusy=true;
   const spinte=spinteDisponibili("O");
   const haBoost=G.narr&&G.narr.boostCard&&spinte.length>0;
+  const haJolly=jollySpintaDisponibile("O");   // v1.33: il Jolly ricevuto da P, spendibile come spinta (il peccato emerge)
   if(iaNarrTesto===null){
-    const r=await chiamaClaude(istruzNarrBase()+`${haBoost?`\nPuoi anche SPUNTARE la risorsa del pitch corrispondente al seme della carta con cui hai preso, per trasformare questa presa in SCOPA vera: il piatto viene spazzato via (le carte rimaste finiscono negli scarti comuni). Risorse disponibili:\n${spinte.map(({p,i},k)=>k+": "+SIMBOLI[p.seme]+" "+p.risposta).join("\n")}\nUsala solo se la risorsa entra davvero nella narrazione: è una svolta, non un bonus.`:""}\nJSON: {"narrazione":"...", "spinta": ${haBoost?"<numero> oppure null":"null"}}`);
+    const r=await chiamaClaude(istruzNarrBase()
+      +`${haBoost?`\nPuoi anche SPUNTARE la risorsa del pitch corrispondente al seme della carta con cui hai preso, per trasformare questa presa in SCOPA vera: il piatto viene spazzato via (le carte rimaste finiscono negli scarti comuni). Risorse disponibili:\n${spinte.map(({p,i},k)=>k+": "+SIMBOLI[p.seme]+" "+p.risposta).join("\n")}\nUsala solo se la risorsa entra davvero nella narrazione: è una svolta, non un bonus.`:""}`
+      +`${haJolly?`\nPuoi anche BUTTARE IL JOLLY (te l'hanno passato i Protagonisti usandolo) per trasformare questa presa in SCOPA e FAR EMERGERE IL PECCATO: nel narrarlo, fai riaffiorare il compromesso sleale di cui uno dei protagonisti si è macchiato, che incrina la loro alleanza. Non dà punti a nessuno. Usalo solo se ti assicura la scena e se il peccato entra davvero nella narrazione: imposta "jollySpinta": true.`:""}`
+      +`\nJSON: {"narrazione":"...", "spinta": ${haBoost?"<numero> oppure null":"null"}${haJolly?`, "jollySpinta": true oppure false`:""}}`);
     iaNarrTesto=(r&&r.narrazione)||"L'Opposizione stringe il cerchio, senza fretta.";
+    if(haJolly&&r&&r.jollySpinta===true){
+      iaBusy=false;
+      spintaJolly();   // il peccato emerge: presa→scopa col Jolly (deciso da Claude); il re-render richiama l'iniezione
+      return;
+    }
     if(haBoost&&r&&Number.isInteger(r.spinta)&&spinte[r.spinta]){
       iaBusy=false;
       eseguiSpinta(spinte[r.spinta].i);   // spinta decisa da Claude, eseguita direttamente; il re-render richiama l'iniezione
