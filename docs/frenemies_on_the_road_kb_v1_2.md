@@ -236,9 +236,9 @@ Le spinte sono **otto, due per seme** (♠ e ♥ dai Protagonisti, ♦ e ♣ dal
 
 Dopo una presa normale, il giocatore può spuntare la risposta corrispondente al seme della carta con cui ha preso: la presa diventa una scopa a tutti gli effetti. La carta di presa va nel mazzetto delle scope e le carte rimaste nel piatto finiscono negli scarti comuni, esattamente come per una scopa normale.
 
-Quattro condizioni. La risposta spuntata deve entrare esplicitamente nella narrazione, come scena presente, rivelazione o flashback. Ogni risposta si usa una sola volta in tutta la partita: ogni lato ne ha quattro, due per ciascuno dei suoi due semi, e **tutte sono spendibili** (averne due per seme dà varietà di scelta, non potenza). **Una sola spinta per presa**: una presa diventa scopa con una spinta, e bruciarne una seconda sulla stessa giocata non aggiunge nulla. La spinta **non si può usare nell'ultima scena**: nella Risoluzione il piatto si svuota solo con una scopa vera.
+Quattro condizioni. La risposta spuntata deve entrare esplicitamente nella narrazione, come scena presente, rivelazione o flashback. Ogni risposta si usa una sola volta in tutta la partita: ogni lato ne ha quattro, due per ciascuno dei suoi due semi, e **tutte sono spendibili** (averne due per seme dà varietà di scelta, non potenza). **Una sola spinta per presa**: una presa diventa scopa con una spinta, e bruciarne una seconda sulla stessa giocata non aggiunge nulla. La spinta **non si può usare nell'ultima scena**: nella Risoluzione il piatto si svuota solo con una scopa.
 
-> **Nota (v1.2):** questa regola sostituisce la "finta scopa" della v1.1, che promuoveva la carta di presa tra le scope senza toccare il piatto. Dalla v1.2 la scopa della spinta è una scopa vera, ancorata al seme della carta di presa: è la carta giusta, nel momento giusto, a sbloccare la rivelazione.
+> **Nota (v1.2):** questa regola sostituisce la "finta scopa" della v1.1, che promuoveva la carta di presa tra le scope senza toccare il piatto. Dalla v1.2 la scopa della spinta è ancorata al seme della carta di presa: è la carta giusta, nel momento giusto, a sbloccare la rivelazione.
 
 > **Esempio:** L'Opposizione ha scritto come risposta Fiori: "Jorge è stato ucciso al posto di Skunk, perché la spia era lui. E Frank non lo sa." A scena 3 il giocatore Fiori-Quadri prende con una carta di Fiori e spunta questa risposta con un flashback: l'ultima telefonata di Jorge, l'addio di chi sa che non arriverà a domani. La rivelazione spacca la coppia, la presa diventa una scopa e il piatto si svuota nelle sue prese.
 
@@ -1103,7 +1103,7 @@ In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, 
 3. **§34** — Aggiunta la partita d'esempio "Trentasei ore": una partita reale a 2 giocatori, generata e verificata dal motore di gioco, narrata scena per scena sullo scenario demo.
 4. **§20** — Copia unica delle figure: ogni figura di ciascun seme può essere acquistata una sola volta in tutta la partita.
 5. **§9.4** — L'Opposizione si definisce **prima** delle domande del pitch (nuova sezione), così le domande hanno un riferimento concreto. Le domande passano a §9.5 e §9.6; stesso ordine nel wizard del gioco digitale.
-6. **§9.8** — Riscritto l'uso delle risposte del pitch: si spunta la risposta corrispondente al seme della carta di presa e la presa diventa una scopa vera, che svuota il piatto nelle prese di chi spunta. Non si può usare nell'ultima scena. Sostituisce la "finta scopa" della v1.1.
+6. **§9.8** — Riscritto l'uso delle risposte del pitch: si spunta la risposta corrispondente al seme della carta di presa e la presa diventa una scopa, che svuota il piatto nelle prese di chi spunta. Non si può usare nell'ultima scena. Sostituisce la "finta scopa" della v1.1.
 
 ## v1.1
 

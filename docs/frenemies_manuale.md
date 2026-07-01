@@ -516,7 +516,7 @@ Quattro condizioni regolano questo potere:
 - la spinta usata deve entrare davvero nella narrazione, come scena presente, rivelazione o flashback;
 - ogni spinta si usa una sola volta in tutta la partita; ogni lato ne ha quattro, due per seme, e tutte sono spendibili. Averne due per seme non è un raddoppio di potenza ma di scelta: puoi spendere in una scena la motivazione che lega quel personaggio alla missione, e tenere per più avanti la dote che gli fa da asso nella manica;
 - una sola spinta per presa: una presa diventa scopa con una spinta, e bruciarne una seconda sulla stessa giocata non aggiunge nulla;
-- una spinta non si può usare nell'ultima scena: nella Risoluzione il piatto si svuota solo con una scopa vera.
+- una spinta non si può usare nell'ultima scena: nella Risoluzione il piatto si svuota solo con una scopa.
 
 L'idea è che sia la carta giusta, nel momento giusto, a sbloccare la rivelazione: il legame con il seme non è un dettaglio, è il senso della regola.
 
@@ -969,7 +969,7 @@ All'asta Paola cala l'1♥, Omar il 2♣: vince Omar, e per la seconda volta di 
 
 <div class="fiction"><span class="chi">Paola narra</span>Otto chiude i finestrini contro la sabbia e prende una decisione: se sono bloccati, tanto vale rendersi utili. Tira fuori il taccuino di Aldo e si mette a studiarlo per davvero, mostra a Vera le pagine più fitte, i disegni, le mappe, azzarda le prime congetture. Poi, all'improvviso, qualcosa si incastra: lo coglie un'illuminazione, e a mezza voce ripete una formula in una lingua arcaica letta tra quelle righe. Fuori, come obbedisse a quelle parole, la tempesta si placa, la sabbia ricade, e il macchinista può rimettere in moto il treno. Vera lo guarda, e per un momento del rancore di prima non resta più nulla.</div>
 
-> **Spinta del pitch (scopa vera):** una presa normale, portando in scena la risposta del pitch, diventa una scopa che ripulisce il piatto. Il 9♥ va tra le scope di Paola (3 punti). La spinta di ♥ è ora usata.
+> **Spinta del pitch:** una presa normale, portando in scena la risposta del pitch, diventa una scopa che ripulisce il piatto. Il 9♥ va tra le scope di Paola (3 punti). La spinta di ♥ è ora usata.
 
 **Omar gioca il 10♦** nel piatto: dispone una minaccia, e che minaccia. In ♦, il seme dei nemici attivi, un 10 è una carta pesante, e prende corpo nel PNG più temibile della partita. Omar lo annota su una index card: «Alì, il guerriero dei Veglianti di Zerzura».
 {: .azione }
@@ -1513,7 +1513,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Semi.** I quattro semi del mazzo, due per lato: Cuori e Picche ai Protagonisti, Quadri e Fiori all'Opposizione. Ciascuno ha un significato narrativo che si adatta al tono scelto.
 
-**Spinte (darsi una spinta).** Le risorse spuntabili definite nel pitch, due per seme per ciascun lato (quattro a testa). Dopo una presa normale, chi prende può spuntare la risposta del seme della carta di presa e trasformare la presa in una scopa vera. Ognuna si usa una sola volta, una sola per presa, mai nell'ultima scena.
+**Spinte (darsi una spinta).** Le risorse spuntabili definite nel pitch, due per seme per ciascun lato (quattro a testa). Dopo una presa normale, chi prende può spuntare la risposta del seme della carta di presa e trasformare la presa in una scopa. Ognuna si usa una sola volta, una sola per presa, mai nell'ultima scena.
 
 **Titolo della scena.** Il nome che chi vince l'asta dà alla scena, insieme alla posta, aprendola.
 

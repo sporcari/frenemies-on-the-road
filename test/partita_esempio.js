@@ -216,7 +216,7 @@ function passo(){
       spintaScena=G().scena;
       spinteUsate++;
       const b=(G().scena===SCENA4_IDX)?(sp.find(x=>x.textContent.includes(S4_SPINTA_TXT))||sp[0]):sp[0];
-      log(`   → SPINTA DEL PITCH: viene spuntata «${b.textContent.trim()}» — la presa diventa una scopa vera: il piatto si svuota nelle prese di chi spunta.`);
+      log(`   → SPINTA DEL PITCH: viene spuntata «${b.textContent.trim()}» — la presa diventa una scopa: il piatto si svuota nelle prese di chi spunta.`);
       click(b); logUltima(); return "spinta";
     }
     click(document.getElementById("narrOk")); return f;

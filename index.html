@@ -1978,7 +1978,7 @@ function eseguiSpinta(idxPitch){
   aggiungiScopa(l);
   const residue=G.piatto.length;
   if(residue){ G.scartiComuni.push(...G.piatto); G.piatto=[]; }   // carte raccolte → scarti comuni
-  G.svuotoConScopa = l;   // la spinta è una scopa vera: piatto svuotato da l
+  G.svuotoConScopa = l;   // la spinta è una scopa: piatto svuotato da l
   G.narr.boostCard=null;
   G.narr.tipo="scopa";
   G.narr.sugg=`<b>RISORSA DEL PITCH — la presa diventa SCOPA${residue?" e svuota il piatto":""}.</b> Porta in narrazione, come scena, rivelazione o flashback: <i>«${p.risposta}»</i>. Il momento cambia peso: da presa a svolta.`;
@@ -2982,11 +2982,11 @@ const REGOLE={
     <h3>La prima difficoltà (9.7)</h3>
     Dopo le domande, tutti rispondono insieme: <b>che cosa vi impedisce di compiere subito la missione?</b> La risposta non è spuntabile: si decide insieme ma <b>l'ultima parola spetta all'Opposizione</b>, e inquadra la <b>Scena 1</b>.
     <h3>Uso meccanico (9.8)</h3>
-    Dopo una presa normale si può <b>spuntare la risposta corrispondente al seme della carta di presa</b>: la presa diventa una <b>scopa vera</b> e le carte rimaste nel piatto finiscono tra le prese di chi spunta. Condizioni:
+    Dopo una presa normale si può <b>spuntare la risposta corrispondente al seme della carta di presa</b>: la presa diventa una <b>scopa</b> e le carte rimaste nel piatto finiscono tra le prese di chi spunta. Condizioni:
     <ul><li>la risposta deve entrare esplicitamente nella narrazione (scena, rivelazione o flashback)</li>
     <li>ogni risposta si usa una volta sola; sono <b>due per seme, entrambe spendibili</b> (varietà di scelta, non potenza)</li>
     <li><b>una sola spinta per presa</b>: una presa diventa scopa con una spinta, bruciarne una seconda sulla stessa giocata non aggiunge nulla</li>
-    <li><b>non si può usare nell'ultima scena</b>: nella Risoluzione il piatto si svuota solo con una scopa vera</li></ul>
+    <li><b>non si può usare nell'ultima scena</b>: nella Risoluzione il piatto si svuota solo con una scopa</li></ul>
     <div class="es">"Jorge è stato ucciso al posto di Skunk: la spia era lui, e Frank non lo sa." A scena 3 il giocatore Fiori-Quadri prende con una carta di Fiori e la spunta con un flashback, l'ultima telefonata di Jorge, l'addio di chi sa che non arriverà a domani: la presa diventa una scopa e il piatto si svuota nelle sue prese.</div>`},
   tavoli:{titolo:"3–4 giocatori",html:`
     <h3>Strutture (7.2–7.3)</h3>
