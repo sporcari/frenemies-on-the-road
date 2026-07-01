@@ -665,6 +665,7 @@ function nuovaPartita(){
     astaPicks:{P:null,O:null},
     ultimaGiocata:"",
     figureComprate:[],
+    figMercato:{P:false,O:false},   // v1.35: una sola figura per mercato per lato (resettato a ogni mercato)
     png:{},                // metadati PNG-figura acquistati: chiave "<fig><seme>" -> {nome, desc}
     pngNarr:[],            // PNG narrativi creati in narrazione: {seme, nome, desc, scena}
     storia:[],             // log narrativo (solo vs Claude): {scena, lato, testo} in ordine; fonte per storiaTestoIA
@@ -2540,6 +2541,7 @@ function rFineScena(){
 function avviaMercato(){
   // v1.34: ordine MERCATO → PESCA (niente rimescolo). Qui NON si pesca: prima gli acquisti.
   // La figura comprata entra in mano (vedi acquistaFigura); la pescata a fine mercato completa a 4.
+  G.figMercato={P:false,O:false};   // v1.35: azzera il "già comprato" del mercato (una figura per mercato per lato)
   G.mercatoLato = G.modalita==="online" ? "P" : null;
   G.fase="mercato"; render();
 }
@@ -2605,6 +2607,7 @@ function rMercato(){
   function pannelloLato(l){
     const L=lato(l);
     const punti=puntiMercato(l);
+    const bloccato=!!(G.figMercato||{})[l];   // v1.35: ha già comprato una figura in QUESTO mercato
     return `<div class="pannello">
       <span class="etichetta">${nomeLato(l)} ${L.semi.map(s=>SIMBOLI[s]).join("")}</span>
       <div class="punti-big" id="punti-${l}">${punti}</div>
@@ -2614,9 +2617,10 @@ function rMercato(){
           const presa=figuraTipoComprata(l,k);   // una figura per tipo per lato
           return `<div class="fig-riga">
             <div class="desc"><b>${f.nome} — ${f.costo} punti</b><small>${f.eff}</small></div>
-            <div class="compra">${presa?`<span class="fig-esaurita" title="già acquistata">✓</span>`:L.semi.map(s=>`<button data-l="${l}" data-f="${k}" data-s="${s}" ${punti<f.costo?"disabled":""}>${SIMBOLI[s]}</button>`).join("")}</div>
+            <div class="compra">${presa?`<span class="fig-esaurita" title="già acquistata">✓</span>`:L.semi.map(s=>`<button data-l="${l}" data-f="${k}" data-s="${s}" ${(bloccato||punti<f.costo)?"disabled":""}>${SIMBOLI[s]}</button>`).join("")}</div>
           </div>`;}).join("")}
       </div>
+      ${bloccato?`<div class="contatori" style="margin-top:8px">Hai comprato una figura in questo mercato: una sola per mercato.</div>`:""}
       <div class="banner" id="esito-${l}" style="display:none;margin-top:10px"></div>
     </div>`;
   }
@@ -2626,11 +2630,12 @@ function rMercato(){
     : "Chiudi il mercato e riparti";
   SC.innerHTML=`
     <h2 class="ts">Il mercato${online?" — "+nomeLato(G.mercatoLato):""}</h2>
-    <p class="sotto">${G.scena===3?"Compra ora: la mano dell'ultima scena la sceglierai subito dopo.":"La nuova mano si pesca dopo il mercato."} Pagamento automatico: i punti sono una valuta (i marcatori sono solo il modo di segnarli), quindi paghi il costo e tieni sempre il resto; i marcatori spesi vanno negli scarti comuni. Le figure comprate entrano subito in mano ed entrano in scena la prossima scena (occupano uno slot: peschi le carte base che mancano per arrivare a 4). Si può comprare al massimo una figura per tipo.</p>
+    <p class="sotto">${G.scena===3?"Compra ora: la mano dell'ultima scena la sceglierai subito dopo.":"La nuova mano si pesca dopo il mercato."} Pagamento automatico: i punti sono una valuta (i marcatori sono solo il modo di segnarli), quindi paghi il costo e tieni sempre il resto; i marcatori spesi vanno negli scarti comuni. Le figure comprate entrano subito in mano ed entrano in scena la prossima scena (occupano uno slot: peschi le carte base che mancano per arrivare a 4). Si può comprare al massimo <b>una figura per mercato</b> per lato (e una sola per tipo in tutta la partita).</p>
     <div class="mercato-griglia">${pannelli}</div>
     <button class="azione" id="m-fine">${etichettaFine}</button>`;
   SC.querySelectorAll("button[data-f]").forEach(b=>b.addEventListener("click",()=>{
     const l=b.dataset.l, f=b.dataset.f, s=b.dataset.s;
+    if((G.figMercato||{})[l]) return;     // v1.35: una sola figura per mercato per lato
     if(figuraTipoComprata(l,f)) return;   // una figura per tipo per lato
     if(puntiMercato(l)<FIGURE[f].costo) return;
     chiediPng(l,f,s,b);
@@ -2644,8 +2649,11 @@ function rMercato(){
 }
 function acquistaFigura(l,f,s,nome,desc,b){
   const L=lato(l);
+  if((G.figMercato||{})[l]) return;     // v1.35: una sola figura per mercato per lato
   if(figuraTipoComprata(l,f)) return;   // una figura per tipo per lato
   if(!pagaCosto(l, FIGURE[f].costo)) return;
+  G.figMercato=G.figMercato||{P:false,O:false};
+  G.figMercato[l]=true;                 // v1.35: mercato chiuso agli acquisti per questo lato
   G.figureComprate=G.figureComprate||[];
   G.figureComprate.push(f+s);
   G.png=G.png||{};
@@ -2659,7 +2667,8 @@ function acquistaFigura(l,f,s,nome,desc,b){
     if(es){ es.style.display="block";
       es.innerHTML=(es.innerHTML?es.innerHTML+"<br>":"")+etichetta+" — "+coda; }
     const pel=document.getElementById("punti-"+l); if(pel) pel.textContent=puntiMercato(l);
-    SC.querySelectorAll(`button[data-l="${l}"]`).forEach(x=>{ x.disabled = puntiMercato(l)<FIGURE[x.dataset.f].costo; });
+    // v1.35: comprata una figura, il mercato è chiuso per questo lato: disabilita tutti i suoi bottoni
+    SC.querySelectorAll(`button[data-l="${l}"]`).forEach(x=>{ x.disabled = true; });
     inviaStato();
   };
   // v1.34: la figura comprata entra DIRETTAMENTE in mano (non nel mazzo): entra in scena
@@ -2957,14 +2966,14 @@ const REGOLE={
     Alla quinta scena, ♣ contro ♦ nell'ultimo piatto: chi li ha davvero ostacolati — un nemico con un piano, o il mondo stesso?`},
   mercato:{titolo:"Mercato",html:`
     <h3>Fase di mercato (tra le scene)</h3>
-    Ordine importante (dalla 2ª scena): <b>1)</b> si effettuano gli acquisti (max <b>una figura per tipo</b>) · <b>2)</b> ogni figura comprata entra <b>subito in mano</b> · <b>3)</b> si <b>pesca fino a 4</b> carte (la figura occupa già uno slot, quindi peschi solo le carte base che mancano). Niente rimescolo: la figura entra in scena <b>la scena successiva</b>.
+    Ordine importante (dalla 2ª scena): <b>1)</b> si effettuano gli acquisti (max <b>una figura per mercato</b> per lato, e una sola per tipo in tutta la partita) · <b>2)</b> la figura comprata entra <b>subito in mano</b> · <b>3)</b> si <b>pesca fino a 4</b> carte (la figura occupa già uno slot, quindi peschi solo le carte base che mancano). Niente rimescolo: la figura entra in scena <b>la scena successiva</b>.
     <h3>Economia</h3>
     <ul><li>Ogni <b>presa</b> → <b>1 punto</b>, anche se fatta con una figura</li>
     <li>Ogni <b>scopa</b> → <b>3 punti</b></li></ul>
     I punti si <b>segnano a parte</b> (gettoni o un foglio): le carte non si tengono più come marcatori. Tutte le carte giocate — quella di presa/scopa e quelle catturate — vanno <b>subito negli scarti comuni</b>. Al mercato si <b>paga il costo e si tiene sempre il resto</b>, senza spostare carte. A fine partita i punti non spesi mantengono lo stesso valore (presa 1, scopa 3).`},
   figure:{titolo:"Le figure",html:`
     <h3>Doppia natura</h3>
-    Meccanica (carte forti con effetti) e narrativa (alleati o PNG significativi). Si può comprare al massimo <b>una figura per tipo</b>.
+    Meccanica (carte forti con effetti) e narrativa (alleati o PNG significativi). Si può comprare al massimo <b>una figura per mercato</b> per lato, e una sola <b>per tipo</b> in tutta la partita.
     <h3>Comprare una figura crea un PNG</h3>
     Comprare una figura prepara l'ingresso di un PNG importante e potente (la potenza cresce Fante &lt; Regina &lt; Re), su due piani: in fiction e nelle meccaniche, che scattano quando giochi la carta. Al momento dell'acquisto decidi <b>nome, ruolo e aspetto</b> e li annoti su una index card dal tuo lato, col <b>valore</b> della carta. Da lì è un personaggio a tutti gli effetti, e il suo effetto meccanico è ciò che fa nella storia. <b>Una figura senza nome non si compra.</b>
     <table><tr><th>Figura</th><th>Costo</th><th>Valore</th><th>Effetto</th></tr>
@@ -3229,7 +3238,7 @@ ROUND: ci si alterna a partire dal vincitore dell'iniziativa, 4 giocate a testa.
 
 FINE SCENA: si sommano i valori delle carte rimaste nel piatto: ♦+♣ contano per te, ♥+♠ per i Protagonisti; la posta la vince il totale più alto. MA se la scena si chiude col piatto vuoto perché l'ultima giocata è stata una scopa, la posta la vince chi ha fatto la scopa. In caso di parità dei totali la posta la vince chi ha giocato l'ultima carta del round, cioè chi non ha l'iniziativa. Il piatto NON si svuota tra le scene: chi apre la successiva può già prendere. Se vincono i Protagonisti la posta è raggiunta; se vinci tu, la loro posta fallisce e la situazione peggiora per loro. CHI NARRA L'ESITO: chi ha vinto l'asta ha inquadrato la scena (titolo e posta); a raccontare com'è finita è chi ha PERSO LA POSTA (la scena), così da poterne calcare le ombre e i costi. In parità dei totali narra chi ha vinto l'asta. Quindi narri TU l'esito quando i Protagonisti vincono la scena (è la tua sconfitta: raccontala con onestà, calcando sulle ombre e sul prezzo che pagheranno); se la scena la vinci tu, l'esito lo narrano i Protagonisti.
 
-MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Ordine: prima compri, poi peschi fino a 4 (niente rimescolo). Con i punti compri figure (max una per tipo) che entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno):
+MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Ordine: prima compri, poi peschi fino a 4 (niente rimescolo). Con i punti compri figure (al massimo UNA per mercato, e una sola per tipo in tutta la partita) che entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno):
 - Fante (costo 3, valore 8): entra in mano; quando lo giochi, sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una carta della mano (la carta che cedi torna in cima).
 - Regina (costo 5, valore 9): l'avversario scarta una carta a caso dalla mano e pesca dal mazzo.
 - Re (costo 8, valore 10): recuperi dagli scarti comuni una carta del suo stesso seme (la mano resta), nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.
@@ -3596,9 +3605,11 @@ async function iaMercato(){
   const btns=[...document.querySelectorAll('button[data-l="O"][data-f]')].filter(b=>!b.disabled);
   if(btns.length){
     const op=btns.map((b,i)=>`${i}: ${FIGURE[b.dataset.f].nome} di ${b.dataset.s} ${SIMBOLI[b.dataset.s]} (costo ${FIGURE[b.dataset.f].costo})`);
-    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (una presa vale 1, una scopa 3). Le figure che compri entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno, niente rimescolo); puoi comprare al massimo una figura per tipo. Effetti: Fante (costo 3) = sbircia le prime 2 carte del mazzo e, se vuoi, ne scambi una con una di mano; Regina (costo 5) = l'avversario scarta una carta a caso; Re (costo 8) = recupera dagli scarti comuni una carta del suo stesso seme (la mano resta), nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.\nOPZIONI (puoi sceglierne più d'una o nessuna):\n${op.join("\n")}\nJSON: {"acquisti": [numeri] }`);
-    if(r&&Array.isArray(r.acquisti)) for(const i of r.acquisti){
-      const b=btns[i];
+    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (una presa vale 1, una scopa 3). Le figure che compri entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno, niente rimescolo); puoi comprare al massimo UNA figura per mercato (e una sola per tipo in tutta la partita). Effetti: Fante (costo 3) = sbircia le prime 2 carte del mazzo e, se vuoi, ne scambi una con una di mano; Regina (costo 5) = l'avversario scarta una carta a caso; Re (costo 8) = recupera dagli scarti comuni una carta del suo stesso seme (la mano resta), nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.\nOPZIONI (scegline UNA o nessuna):\n${op.join("\n")}\nJSON: {"acquisto": <numero oppure null> }`);
+    // v1.35: una sola figura per mercato. Accetta il nuovo formato "acquisto"; per retrocompatibilità legge anche il primo di "acquisti".
+    const scelta = r ? (Number.isInteger(r.acquisto) ? r.acquisto : (Array.isArray(r.acquisti)&&Number.isInteger(r.acquisti[0]) ? r.acquisti[0] : null)) : null;
+    if(scelta!==null){
+      const b=btns[scelta];
       if(b&&document.contains(b)&&!b.disabled){
         const f=b.dataset.f, s=b.dataset.s;
         acquistaFigura("O", f, s, FIGURE[f].titolo, "", b);   // PNG-figura dell'IA: nome di default, niente modale

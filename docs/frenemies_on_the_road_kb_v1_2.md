@@ -471,8 +471,8 @@ Se invece non ci si arrende, si gioca la carta e la scena si conta normalmente (
 
 Ordine corretto *(v1.34)* — prima si compra, poi si pesca; la figura comprata **entra direttamente in mano** ed entrerà in scena nella scena immediatamente successiva:
 
-1. Si effettuano gli acquisti
-2. Ogni figura comprata (Fante, Regina o Re) **entra subito nella mano** (non nel mazzo)
+1. Si effettua l'acquisto: al massimo **una figura per mercato** per lato *(v1.35)*
+2. La figura comprata (Fante, Regina o Re) **entra subito nella mano** (non nel mazzo)
 3. Si **pesca fino a 4 carte** per la scena successiva: la figura occupa già uno slot, quindi si pescano solo le carte base che mancano per arrivare a 4
 
 Non c'è più alcun rimescolo del mazzo al mercato. **Costo autoregolato:** poiché la figura occupa uno slot mano, in quella scena peschi una carta base in meno (3 base + la figura), e la carta base che non peschi resta nel mazzo (neutro). *(Fino alla v1.15 la figura entrava nel mazzo, che poi si rimescolava, e diventava una pescata futura e casuale.)*
@@ -489,6 +489,8 @@ I punti sono una **valuta** vera e propria, da segnare con **gettoni o su un fog
 > **Nota (v1.32).** Poiché spendere punti non muove più carte, gli scarti comuni — il bacino da cui pesca il **Re** (§21) — si alimentano solo dalle carte già giocate (prese, scope, catture, figure sacrificate), a prescindere dagli acquisti al mercato.
 
 > **Una figura per tipo (v1.3):** ogni giocatore può comprare al massimo **un Fante, una Regina, un Re** in tutta la partita (a prescindere dal seme).
+
+> **Una figura per mercato (v1.35):** in ogni singolo mercato ciascun lato può comprare **una sola figura**. Comprato l'acquisto, il mercato è chiuso agli altri acquisti per quel lato fino al mercato successivo. Motivo: dalla v1.34 le figure entrano in mano ed entrano in scena la scena dopo; comprarne più d'una nello stesso mercato affollerebbe la scena successiva di PNG (fino a una mano di sole figure). Il tetto distribuisce le figure lungo la partita, una per scena.
 
 ## 21. Le Figure: costi, valori ed effetti
 
@@ -946,6 +948,11 @@ In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, 
 
 # REGISTRO MODIFICHE
 
+## v1.35 (luglio 2026) — una sola figura per mercato per lato
+
+1. **§19/§20: una figura per mercato.** In ogni singolo mercato ciascun lato può comprare **una sola figura** (oltre al vincolo, invariato, di una sola per tipo in tutta la partita). Comprato l'acquisto, il mercato è chiuso agli altri acquisti per quel lato. Motivo: dalla v1.34 le figure entrano in mano ed entrano in scena la scena dopo, quindi comprarne più d'una nello stesso mercato affollerebbe la scena successiva di PNG (fino a una mano di sole figure); il tetto le distribuisce lungo la partita, una per scena.
+2. **Propagazione (stesso commit).** Motore `index.html`: nuovo flag per-mercato `G.figMercato` (azzerato in `avviaMercato`, alzato in `acquistaFigura`, controllato nel click del mercato e nel render dei pulsanti), `iaMercato` compra al massimo una figura (nuovo formato JSON `{"acquisto": n|null}`). `REGOLE`, `REGOLE_IA`, testo del mercato in-app. KB (§19, §20, registro, footer v1.35). Manuale (§4.1/§4.2, glossario, footer). Diario. **Bilanciamento:** la policy greedy del benchmark comprava già una sola figura per mercato, quindi il benchmark è **invariato** (Δ ≈ 0): il tetto formalizza come regola ciò che il gioco ottimale già faceva. **Collaudo:** suite core verde.
+
 ## v1.34 (luglio 2026) — le figure comprate entrano in mano, non nel mazzo
 
 1. **§19/§21.1: la figura comprata entra direttamente in mano.** Fino alla v1.15 la figura acquistata al mercato entrava nel **mazzo**, che poi si **rimescolava**, ed era quindi una pescata futura e casuale (poteva non uscire mai). Ora entra **direttamente nella mano** e va **in scena nella scena immediatamente successiva** all'acquisto. Nuovo ordine del mercato: acquisti → figura in mano → **pesca fino a 4** (niente più rimescolo).
@@ -1151,4 +1158,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.34*
+*Frenemies on the Road — Knowledge Base v1.35*

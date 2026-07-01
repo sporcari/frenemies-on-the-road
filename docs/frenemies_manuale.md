@@ -608,9 +608,11 @@ Tra una scena e l'altra si apre il mercato, dove si spendono i punti accumulati 
 
 L'ordine conta: prima compri, poi peschi, e la figura comprata entra in scena già nella scena successiva. Seguilo così:
 
-1. si fanno gli acquisti;
-2. ogni figura comprata (Fante, Regina o Re) entra subito nella tua mano;
+1. fai l'acquisto: al massimo una figura per mercato;
+2. la figura comprata (Fante, Regina o Re) entra subito nella tua mano;
 3. si pesca fino a 4 carte: la figura occupa già uno slot, quindi peschi solo le carte base che mancano per arrivare a 4.
+
+Puoi comprare una sola figura per mercato: comprata quella, il mercato è chiuso ai tuoi acquisti fino alla volta successiva. Il motivo è che la figura entra in scena la scena dopo, quindi comprarne più d'una in un colpo affollerebbe quella scena di personaggi (fino a una mano di sole figure); così invece le figure si distribuiscono lungo il viaggio, una per scena.
 
 Non c'è alcun rimescolo. Poiché la figura occupa un posto in mano, in quella scena peschi una carta base in meno (tre carte base più la figura), e la carta base che non peschi resta nel mazzo, che così non si gonfia. È un costo che si autoregola: la potenza della figura si paga anche con una carta base in meno in quella mano.
 
@@ -620,7 +622,7 @@ La valuta con cui paghi le figure sono i punti che hai fatto giocando: ogni pres
 
 La figura acquistata entra in mano, dopodiché si aggiorna il punteggio togliendo i punti spesi.
 
-Ogni giocatore può comprare al massimo un Fante, una Regina e un Re in tutta la partita, ovviamente solo dei propri semi.
+Ogni giocatore può comprare al massimo un Fante, una Regina e un Re in tutta la partita, ovviamente solo dei propri semi; e non più di una figura per singolo mercato.
 
 Il seme della figura come al solito suggerisce la natura del personaggio.
 
@@ -1467,7 +1469,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Il peccato del Jolly.** Usare il Jolly è il peccato: un successo sleale. Quando i Protagonisti lo giocano, passa all'Opposizione; questa, spendendolo come spinta (trasforma una propria presa in scopa), fa emergere nella narrazione il compromesso commesso dai Protagonisti — il peccato che torna a galla e incrina l'alleanza. Nessun uso del Jolly dà punti.
 
-**Mercato.** La fase tra una scena e l'altra: prima si comprano le figure (che entrano subito in mano, in scena la scena successiva), poi si pesca fino a quattro carte (niente rimescolo: la figura occupa già uno slot). Si paga con i punti delle prese e delle scope.
+**Mercato.** La fase tra una scena e l'altra: prima si compra (al massimo una figura per mercato, che entra subito in mano, in scena la scena successiva), poi si pesca fino a quattro carte (niente rimescolo: la figura occupa già uno slot). Si paga con i punti delle prese e delle scope.
 
 **Missione.** Lo scopo della partita: l'obiettivo dei protagonisti, chiaro e con una scadenza. Se falliscono entro la fine della storia, l'occasione è persa per sempre.
 
@@ -1630,4 +1632,4 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 
 ---
 
-*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.34, che resta la fonte di verità del regolamento.*
+*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.35, che resta la fonte di verità del regolamento.*
