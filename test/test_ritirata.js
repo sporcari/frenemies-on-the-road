@@ -66,8 +66,9 @@ function passo(){
   if(f==="mano_estesa"){let b=document.getElementById("estOk");if(b.disabled)[...document.querySelectorAll("#estCarte .carta")].slice(0,4).forEach(c=>click(c));click(b);return;}
   if(f==="mercato"){click(document.getElementById("m-fine"));return;}
   if(f==="jolly_intro"){click(document.getElementById("j-ok"));return}
+  if(f==="pareggio_finale"){const sp=document.getElementById("pf-spendi");click(sp&&!sp.disabled?sp:document.getElementById("pf-cedi"));return}
   if(f==="primo_conteggio"){click(document.getElementById("pc-avanti"));return}
-  if(f==="colpi"){const c=[...document.querySelectorAll("#riservaCarte .carta")];if(c.length){click(c[0]);let b=document.querySelector("button[data-bersaglio]");if(b)click(b);}return;}
+  if(f==="colpi"){const g=G(),top=g.colpi.top,gio=g.lati[g.attore].riserva.filter(c=>c.val>=top).sort((a,b)=>a.val-b.val);if(gio.length){const el=document.querySelector(`#riservaCarte .carta[data-id="${gio[0].id}"]`);if(el)click(el);}return;}
   if(f==="neutralizza"){click(document.getElementById("n-ok"));return}
   if(f==="finale")return "FINALE";
   throw new Error("fase sconosciuta: "+f);

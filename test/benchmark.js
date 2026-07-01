@@ -63,8 +63,8 @@ const metrics={
   esito:{
     vittP_pct:pct(pWin), vittO_pct:pct(oWin),
     esiti:Object.fromEntries(ESITI.map(e=>[e,pct(r=>r.outcome===e)])),
-    ribaltoni:{ proP_pct:pct(r=>r.primoP<=r.primoO && r.finalP>r.finalO),
-                proO_pct:pct(r=>r.primoP>=r.primoO && r.finalO>r.finalP) },
+    ribaltoni:{ proP_pct:pct(r=>r.missione==="P" && r.difApparente==="O"),   // v1.38: lo sfidante P ribalta il duello
+                proO_pct:pct(r=>r.missione==="O" && r.difApparente==="P") },
   },
   puntiLordiPerScena:{ P:perScenaPunti("grossP"), O:perScenaPunti("grossO") },
   puntiTotali:{ lordoP:avg(r=>r.grossP[4]||0), lordoO:avg(r=>r.grossO[4]||0),

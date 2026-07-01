@@ -196,14 +196,19 @@ async function main(){
       await dorme(40); continue;
     }
     if(f==="jolly_intro"){ click(document.getElementById("j-ok")); await dorme(20); continue }
+    if(f==="pareggio_finale"){
+      const sp=document.getElementById("pf-spendi");
+      if(sp) click(sp && !sp.disabled ? sp : document.getElementById("pf-cedi"));
+      await dorme(20); continue;
+    }
     if(f==="primo_conteggio"){ click(document.getElementById("pc-avanti")); await dorme(20); continue }
     if(f==="colpi"){
       if(!attoreO){
-        const carte=[...document.querySelectorAll("#riservaCarte .carta")];
-        if(carte.length){
-          click(carte[0]);
-          const b=document.querySelector("button[data-bersaglio]");
-          if(b) click(b);
+        const g=G(), top=g.colpi.top;
+        const giocabili=g.lati[g.attore].riserva.filter(c=>c.val>=top).sort((a,b)=>a.val-b.val);
+        if(giocabili.length){
+          const el=document.querySelector(`#riservaCarte .carta[data-id="${giocabili[0].id}"]`);
+          if(el) click(el);
         }
       }
       await dorme(50); continue;

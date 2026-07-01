@@ -110,14 +110,19 @@ function passo(i){
     click(document.getElementById("m-fine")); return f;
   }
   if(f==="jolly_intro"){ click(document.getElementById("j-ok")); return f }
+  if(f==="pareggio_finale"){
+    // facoltà del pareggio: spendi la Crescita se puoi, altrimenti cedi
+    const sp=document.getElementById("pf-spendi");
+    click(sp && !sp.disabled ? sp : document.getElementById("pf-cedi"));
+    return f; }
   if(f==="primo_conteggio"){ click(document.getElementById("pc-avanti")); return f }
   if(f==="colpi"){
-    // colpo obbligatorio: gioca una carta di riserva, poi clicca il primo bottone (bersaglio o "metti senza eliminare")
-    const carte=[...document.querySelectorAll("#riservaCarte .carta")];
-    if(carte.length){
-      click(carte[0]);
-      const b=document.querySelector("button[data-bersaglio]");
-      if(b){ colpiFatti++; log.push("COLPO DI SCENA fatto"); click(b); }
+    // duello a rilancio: prende la testa la carta di riserva più bassa che è ≥ al valore in cima
+    const g=G(), lat=g.attore, top=g.colpi.top;
+    const giocabili=g.lati[lat].riserva.filter(c=>c.val>=top).sort((a,b)=>a.val-b.val);
+    if(giocabili.length){
+      const el=document.querySelector(`#riservaCarte .carta[data-id="${giocabili[0].id}"]`);
+      if(el){ colpiFatti++; log.push("COLPO DI SCENA fatto"); click(el); }
     }
     return "colpo"; }
   if(f==="neutralizza"){ click(document.getElementById("n-ok")); return f }

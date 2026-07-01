@@ -369,7 +369,7 @@ const FIGURE = {
   D:{nome:"Regina", titolo:"La manipolatrice", val:9, costo:5,
      eff:"L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo."},
   R:{nome:"Re", titolo:"Il deus ex machina", val:10, costo:8,
-     eff:"Recupera dagli scarti comuni una carta del suo stesso seme: nelle scene 1-4 si rimescola nel tuo mazzo, nell'ultima entra nella riserva."}
+     eff:"Recupera dagli scarti comuni una carta numerica del suo stesso seme: nelle scene 1-4 si rimescola nel tuo mazzo, nell'ultima entra nella riserva."}
 };
 
 /* ---------------- materiali di ispirazione (knowledge base) ---------------- */
@@ -645,13 +645,15 @@ function nuovaPartita(){
     prevControllo:{P:null,O:null},
     scopeGiocatore:{picche:0,cuori:0,quadri:0,fiori:0},
     svuotoConScopa:null,   // lato che ha svuotato il piatto con una scopa (per assegnare la scena a piatto vuoto)
-    scartiComuni:[],       // pila degli scarti comune: ci finiscono TUTTE le carte giocate (prese, scope, catture, figure sacrificate); è il bacino da cui pesca il Re
+    scartiComuni:[],       // pila degli scarti comune: ci finiscono le carte NUMERICHE giocate (prese, scope, catture); è il bacino da cui pesca il Re
+    fuoriGioco:[],         // v1.38: le figure usate escono dal gioco (non negli scarti, quindi il Re non le ripesca)
     jollyPassatoScena:null, // v1.33: scena (indice) in cui P ha giocato il Jolly; O può usarlo solo in una scena successiva (mai due usi nella stessa scena)
     pers:{A:{nome:"",desc:""}, B:{nome:"",desc:""}},
     pitch:PITCH_TEMPLATE.map(p=>({seme:p.seme, risposta:"", usata:false})),   // usata: vincolo per singola spinta (due per seme, entrambe spendibili)
     ritirata:{P:{mazzo:false,prese:false},O:{mazzo:false,prese:false}},   // ritirata strategica: ciascuna variante una volta per lato
     ritirataScena:null,
     colpi:null,
+    pareggioFinale:null,   // v1.38: facoltà di spendere la Crescita per vincere un pareggio nell'ultima scena
     nemici:[], caos:[],
     oppGenerata:false, oppTentata:false,   // solo vs Claude: l'Opposizione (nemici/caos/pitch ♦♣) la compila Claude
     rivela:null, narrLato:null, mercatoLato:null,
@@ -726,6 +728,9 @@ function valore(c, dichiarato){ return c.jolly ? dichiarato : c.val }
 function totaleSeme(s){ return G.piatto.filter(c=>c.seme===s).reduce((t,c)=>t+c.val,0) }
 function totaleProt(){ return totaleSeme("cuori")+totaleSeme("picche") }
 function totaleOpp(){ return totaleSeme("quadri")+totaleSeme("fiori") }
+// v1.38: le figure una volta usate ESCONO DAL GIOCO (non negli scarti comuni, quindi il Re non le
+// ripesca mai). Le carte numeriche vanno negli scarti comuni come sempre (bacino del Re).
+function scarta(c){ if(c && c.fig){ (G.fuoriGioco=G.fuoriGioco||[]).push(c); } else { G.scartiComuni.push(c); } }
 function puntiMercato(l){
   return lato(l).punti;   // valuta numerica: presa 1 (anche con figura), scopa 3; i punti non spesi sono la Crescita
 }
@@ -789,7 +794,7 @@ function eseguiRitirata(l, variante, testo){
     L.mazzo.splice(Math.floor(Math.random()*(L.mazzo.length+1)),0,card);
     G.ritirata[l].mazzo=true;
   }else{
-    L.punti += 1; G.scartiComuni.push(card);   // resa onorevole: 1 punto, la carta va negli scarti comuni
+    L.punti += 1; scarta(card);   // resa onorevole: 1 punto (figura → fuori gioco, numero → scarti comuni)
     G.ritirata[l].prese=true;
   }
   G.ritirataScena={lato:l, variante, testo:(testo||"")};
@@ -911,6 +916,7 @@ function latoCheAgisce(){
     if(rec.vincitore==="P"||rec.vincitore==="O") return altro(rec.vincitore);
     return rec.iniziativa || G.hostLato;
   }
+  if(f==="pareggio_finale") return (G.pareggioFinale && G.pareggioFinale.eligibile) || G.hostLato;
   if(f==="finale"||f==="primo_conteggio") return G.hostLato;
   if(f==="narrazione") return G.narrLato || G.attore;
   if(f==="mercato") return G.mercatoLato || G.hostLato;
@@ -1004,7 +1010,7 @@ if(MAIN_EL){
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=>adattaViewport());
 }
 
-const FASI_CONDIVISE=new Set(["fine_scena","asta_rivela","finale","mercato","primo_conteggio"]);
+const FASI_CONDIVISE=new Set(["fine_scena","asta_rivela","finale","mercato","primo_conteggio","pareggio_finale"]);
 function claudeStaGiocando(){
   // Visibilità dell'overlay "Claude sta generando": rispecchia, da G, le condizioni
   // di dispatch di iaScheduler (azione di turno dell'Opposizione in modalità vs Claude),
@@ -1045,6 +1051,7 @@ function render(){
   else if(f==="turno") rTurno();
   else if(f==="narrazione") rNarrazione();
   else if(f==="fine_scena") rFineScena();
+  else if(f==="pareggio_finale") rPareggioFinale();
   else if(f==="primo_conteggio") rPrimoConteggio();
   else if(f==="colpi") rColpi();
   else if(f==="mano_estesa") rManoEstesa();
@@ -1867,7 +1874,7 @@ function giocaCarta(c, combo, daAsta){
   let msg = `${nomeLato(l)} — ${nomeCarta(c)}: `;
   let tipo="piatto", dettagli="";
   if(sacrificio){
-    L.punti += 1; G.scartiComuni.push(c); tipo="presa";   // sacrificio: 1 punto, la carta va negli scarti
+    L.punti += 1; scarta(c); tipo="presa";   // sacrificio: 1 punto (figura → fuori gioco, numero → scarti)
     msg+= sacrificioVuoto
       ? `${FIGURE[c.fig].nome} trova il piatto vuoto e non ha nulla da catturare: si sacrifica, vale 1 punto (la carta va negli scarti).`
       : `${FIGURE[c.fig].nome} si sacrifica senza nulla da catturare — vale 1 punto, le carte fuori portata restano sul tavolo.`;
@@ -1876,12 +1883,12 @@ function giocaCarta(c, combo, daAsta){
     G.piatto = G.piatto.filter(x=>!combo.some(y=>y.id===x.id));
     G.scartiComuni.push(...combo);   // le carte catturate vanno subito negli scarti comuni
     if(G.piatto.length===0){
-      L.punti += 3; G.scartiComuni.push(c);  // scopa: 3 punti, la carta va negli scarti comuni
+      L.punti += 3; scarta(c);  // scopa: 3 punti (figura → fuori gioco, numero → scarti comuni)
       aggiungiScopa(l);
       tipo="scopa";
       msg+=`SCOPA! Il piatto è ripulito — un successo pieno, una svolta.`;
     }else{
-      L.punti += 1; G.scartiComuni.push(c);  // presa: 1 punto, la carta va negli scarti comuni
+      L.punti += 1; scarta(c);  // presa: 1 punto (figura → fuori gioco, numero → scarti comuni)
       tipo="presa";
       msg+=`presa di ${combo.length} cart${combo.length>1?"e":"a"} — un successo, magari con un costo.`;
     }
@@ -2266,7 +2273,7 @@ function effettoFigura(c, poi){
     if(A.mano.length>0){
       const i=Math.floor(Math.random()*A.mano.length);
       const scartata=A.mano.splice(i,1)[0];
-      G.scartiComuni.push(scartata);
+      scarta(scartata);   // se è una figura, esce dal gioco (non recuperabile dal Re)
       // sostituzione: la prima carta del mazzo; se il mazzo è vuoto ma c'è una riserva (ultima scena), si pesca dalla riserva
       let pescata=null, fonte="";
       if(A.mazzo.length>0){ pescata=A.mazzo.shift(); fonte="dal mazzo"; }
@@ -2281,7 +2288,7 @@ function effettoFigura(c, poi){
   else if(c.fig==="R"){
     // v1.27: il Re RECUPERA una carta dagli scarti comuni dello STESSO SEME del Re giocato (non scambio, la mano resta).
     // Scene 1-4: la carta recuperata si rimescola nel mazzo del lato. Scena 5: si aggiunge alla riserva (colpi di scena).
-    const scartiUtili=G.scartiComuni.filter(x=>x.seme===c.seme);
+    const scartiUtili=G.scartiComuni.filter(x=>x.seme===c.seme && !x.fig);   // v1.38: solo carte numeriche (le figure sono fuori gioco)
     if(scartiUtili.length===0){ poi(); return }
     const inRiserva=G.scena>=4;   // scena 5 (indice 4): alimenta i colpi di scena
     const recupera=(scartoId)=>{
@@ -2337,13 +2344,17 @@ function avviaUsaJolly(){
   const box=document.getElementById("pannelloAzione");
   const intro = prot
     ? `Mossa <b>sleale</b>: nessuno segna punti, ma il Jolly passerà all'Opposizione, che potrà usarlo (e far emergere il peccato).`
-    : `Impugni la stessa arma sleale e <b>fai emergere il peccato</b>: nessuno segna punti.`;
-  box.innerHTML=`<div class="banner">${intro} Scegli una carta della mano da <b>seppellire in fondo al mazzo</b>: al suo posto afferri il Jolly. Oppure <b>resisti alla tentazione</b>.</div>
+    : `Impugni la stessa arma sleale e <b>fai emergere il peccato</b>: nessuno segna punti, ma per te c'è un prezzo.`;
+  // v1.39: P SEPPELLISCE la carta ceduta in fondo al mazzo (torna in gioco); O la SCARTA (il suo mazzo cala di 1).
+  const cede = prot ? "seppellire in fondo al mazzo" : "scartare (il tuo mazzo cala di 1)";
+  box.innerHTML=`<div class="banner">${intro} Scegli una carta della mano da <b>${cede}</b>: al suo posto afferri il Jolly. Oppure <b>resisti alla tentazione</b>.</div>
     <div class="mazzo-carte" id="jollyBury">${ordina(L.mano).map(c=>cartaHTML(c)).join("")}</div>
     <div class="opzioni" style="margin-top:8px"><button id="jollyAnnulla" class="secondaria">🛡️ Resisti alla tentazione</button></div>`;
   box.querySelectorAll("#jollyBury .carta").forEach(el=>el.addEventListener("click",()=>{
     const x=L.mano.find(c=>c.id==el.dataset.id); if(!x) return;
-    rimuoviDaMano(l,x,false); L.mazzo.push(x);      // la carta ceduta va in fondo al proprio mazzo (torna in gioco)
+    rimuoviDaMano(l,x,false);
+    if(prot) L.mazzo.push(x);   // P: la carta ceduta torna in fondo al mazzo (torna in gioco)
+    else scarta(x);             // O (v1.39): la carta ceduta va negli scarti — il mazzo di O cala di 1
     const j=L.jolly; L.jolly=null; L.mano.push(j);  // il Jolly entra in mano al posto della carta ceduta
     opzioniJolly(j);   // da qui il flusso è quello di sempre: valore 1–10 → cattura (giocaJolly)
   }));
@@ -2380,7 +2391,8 @@ function opzioniJolly(c){
   }
   // v1.37: valore elastico ma cattura UNA sola carta. Il Jolly assume il valore della carta scelta e la prende.
   // Scopa solo se quella era l'unica carta nel piatto. Nessun punto a nessuno; poi il Jolly passa (o è speso).
-  let html=`<div class="banner">Hai seppellito una carta in fondo al mazzo e afferrato il Jolly. Il Jolly ha valore elastico ma cattura <b>una sola carta</b>: scegli quale carta del piatto prendere. Nessuno segna punti. Narra come ottieni il successo <b>contro i principi e la lealtà</b>.</div>`;
+  const cedeTxt = G.attore==="P" ? "seppellito in fondo al mazzo una carta" : "scartato una carta (il tuo mazzo cala di 1)";
+  let html=`<div class="banner">Hai ${cedeTxt} e afferrato il Jolly. Il Jolly ha valore elastico ma cattura <b>una sola carta</b>: scegli quale carta del piatto prendere. Nessuno segna punti. Narra come ottieni il successo <b>contro i principi e la lealtà</b>.</div>`;
   html+=`<div class="opzioni">`+G.piatto.map((x,i)=>
     `<button data-i="${i}">Prendi ${(x.fig?FIGURE[x.fig].nome.charAt(0):x.val)+SIMBOLI[x.seme]}${G.piatto.length===1?" — SCOPA!":""}</button>`).join("")+`</div>`;
   box.innerHTML=html;
@@ -2441,7 +2453,7 @@ function iaJollyPickO(){
 function eseguiJollyIA(jp){
   const L=lato("O");
   const x=L.mano.find(c=>c.id===jp.buryId); if(!x){ render(); return; }
-  rimuoviDaMano("O",x,false); L.mazzo.push(x);         // seppellisce in fondo al mazzo
+  rimuoviDaMano("O",x,false); scarta(x);               // v1.39: O SCARTA la carta ceduta (il mazzo cala di 1)
   const j=L.jolly; L.jolly=null; L.mano.push(j);        // afferra il Jolly
   const t=G.piatto.find(c=>c.id===jp.targetId) || G.piatto[0];
   giocaJolly(j, t.val, [t]);                            // cattura la carta scelta (0 punti; il Jolly è speso)
@@ -2451,12 +2463,16 @@ function eseguiJollyIA(jp){
 function fineScena(){
   if(G.scena===4){
     const tP=totaleProt(), tO=totaleOpp();
-    // scopa a piatto vuoto: l'esito apparente va a chi l'ha fatta; parte nei colpi chi sta perdendo
     const scopaWin = (G.piatto.length===0 && G.svuotoConScopa) ? G.svuotoConScopa : null;
-    const attore = scopaWin ? altro(scopaWin) : (tP<tO?"P":tP>tO?"O":"P");
-    G.colpi={attore, apparente:{tP,tO,scopa:scopaWin}};
-    G.ultimaGiocata="";
-    G.fase="primo_conteggio"; render(); return;
+    // v1.38: difensore = vincitore del primo conteggio. Scopa → chi l'ha fatta; altrimenti i totali.
+    if(scopaWin || tP!==tO){ avviaColpi(scopaWin ? scopaWin : (tP>tO?"P":"O"), {tP,tO,scopa:scopaWin}, null); return; }
+    // pareggio nel piatto: ha la facoltà di spendere tutta la Crescita (→0) per vincere il primo conteggio
+    // chi ha PIÙ Crescita; a pari Crescita chi ha l'INIZIATIVA. Può rinunciare, cedendo la scena all'altro.
+    const cP=puntiMercato("P"), cO=puntiMercato("O");
+    const eligibile = cP>cO?"P":cO>cP?"O":G.scene[4].iniziativa;
+    G.pareggioFinale={tP,tO,eligibile};
+    if(G.modalita==="solo" && eligibile==="O"){ risolviPareggio(puntiMercato("O")>0); return; }   // IA: spende se ha Crescita
+    G.fase="pareggio_finale"; render(); return;
   }
   chiudiScena();
   G.ultimaGiocata="";
@@ -2711,96 +2727,106 @@ function avanzaScena(){
   iniziaScena();
 }
 
-/* ================= COLPI DI SCENA FINALI ================= */
-function colpiPossibili(l){ return lato(l).riserva.length>0; }   // colpi obbligatori finché c'è riserva
-function bersagliColpo(l, r){
-  const semiAvv=lato(altro(l)).semi;
-  return G.piatto.filter(c=>semiAvv.includes(c.seme) && c.val<=r.val);   // avversarie di valore ≤ alla carta giocata
+/* ================= COLPI DI SCENA FINALI (v1.38) ================= */
+// Duello a rilancio: si prende la testa calando una carta di valore ≥ a quella in cima
+// (pareggiare ribalta: nemmeno un 10 è sicuro). Variante da provare: strettamente > (COLPO_RIBALTA).
+const COLPO_RIBALTA = (val, top) => val >= top;
+function avviaColpi(difensore, apparente, crescitaSpesa){
+  // difensore = vincitore del primo conteggio; sfidante = l'altro, che apre. Muro = scene vinte dal difensore.
+  if(crescitaSpesa) lato(crescitaSpesa).punti = 0;   // ha bruciato tutta la Crescita per vincere il pareggio
+  const sfidante = altro(difensore);
+  const muro = G.scene.slice(0,4).filter(s=>s&&s.vincitore===difensore).length + 1;
+  G.colpi={ sfidante, difensore, detentore:difensore, muro, top:muro, pila:[],
+            attore:sfidante, apparente, crescitaSpesa:crescitaSpesa||null };
+  G.ultimaGiocata=""; G.fase="primo_conteggio"; render();
 }
+function risolviPareggio(spende){
+  const pf=G.pareggioFinale, el=pf.eligibile;
+  const difensore = spende ? el : altro(el);   // se rinuncia, cede la scena all'altro
+  G.pareggioFinale=null;
+  avviaColpi(difensore, {tP:pf.tP, tO:pf.tO, scopa:null}, spende?el:null);
+}
+function rPareggioFinale(){
+  const pf=G.pareggioFinale, el=pf.eligibile, cr=puntiMercato(el);
+  SC.innerHTML=`
+    <h2 class="ts">Pareggio nell'ultima scena</h2>
+    <div class="cartellone"><div class="grande">EQUILIBRIO</div>
+      <div class="sc">♥+♠ ${pf.tP} contro ♦+♣ ${pf.tO} — il piatto è pari</div></div>
+    <div class="pannello">
+      <span class="etichetta">${nomeLato(el)} — hai la facoltà (${cr>0?`più Crescita o l'iniziativa`:`l'iniziativa`})</span>
+      <div class="lettura">Puoi <b>spendere tutta la tua Crescita (${cr})</b> per aggiudicarti l'ultima scena e difendere nei colpi di scena, oppure <b>cedere la scena a ${nomeLato(altro(el))}</b> tenendoti la Crescita.</div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:14px">
+      <button class="azione" id="pf-spendi" style="flex:1"${cr>0?"":" disabled"}>Spendi ${cr} Crescita e vinci</button>
+      <button class="secondaria" id="pf-cedi" style="flex:1">Cedi a ${nomeLato(altro(el))}</button>
+    </div>`;
+  document.getElementById("pf-spendi").addEventListener("click",()=>risolviPareggio(true));
+  document.getElementById("pf-cedi").addEventListener("click",()=>risolviPareggio(false));
+}
+function puoColpo(l){ return lato(l).riserva.some(c=>COLPO_RIBALTA(c.val, G.colpi.top)); }   // ha una carta che prende la testa?
 function rPrimoConteggio(){
-  const a=G.colpi.apparente;
+  const a=G.colpi.apparente, C=G.colpi;
   const vinc = a.scopa ? a.scopa : (a.tP>a.tO?"P":a.tO>a.tP?"O":"parita");
-  const ciSonoColpi = colpiPossibili("P")||colpiPossibili("O");
+  const puoAprire = puoColpo(C.sfidante);   // lo sfidante ha una carta ≥ muro?
   SC.innerHTML=`
     <h2 class="ts">Primo conteggio — l'esito apparente</h2>
     <div class="cartellone"><div class="grande">${vinc==="parita"?"EQUILIBRIO":nomeLato(vinc)}</div>
       <div class="sc">${a.scopa?"scopa a piatto vuoto":`♥+♠ ${a.tP} contro ♦+♣ ${a.tO}`} — ma le cose potrebbero non essere come appaiono</div></div>
     <div class="pannello">
       <span class="etichetta">Ora narra</span>
-      <div class="lettura">Raccontate insieme <b>come sembra finire</b>${a.scopa?` — ${nomeLato(a.scopa)} ha ripulito il tavolo con una scopa`:""}. Poi le riserve potranno ribaltare il quadro.</div>
+      <div class="lettura">Raccontate insieme <b>come sembra finire</b>${a.scopa?` — ${nomeLato(a.scopa)} ha ripulito il tavolo con una scopa`:""}. Poi i colpi di scena potranno ribaltare il quadro.</div>
     </div>
-    <div class="banner">Riserve: ${nomeLato("P")} ${lato("P").riserva.length} carte · ${nomeLato("O")} ${lato("O").riserva.length} carte. Nei colpi di scena si gioca a turni strettamente alterni, una carta per volta: entra nel piatto e può eliminare una carta avversaria di valore pari o inferiore. Nessuno gioca due colpi di fila: quando tocca a chi non ha più riserva, la fase finisce.</div>
-    <button class="azione" id="pc-avanti">${ciSonoColpi?"Via ai colpi di scena":"Nessuna riserva — conteggio definitivo"}</button>`;
+    <div class="banner">Il piatto si svuota. <b>${nomeLato(C.difensore)}</b> difende: ha vinto <b>${C.muro}</b> scene, e il duello parte da quel muro. <b>${nomeLato(C.sfidante)}</b> sfida e apre calando dalla riserva una carta di valore <b>≥ ${C.muro}</b>. Poi a turni alterni si prende la testa con una carta <b>≥</b> a quella in cima; chi non può più rispondere perde. Vince la missione l'ultimo che cala. Riserve: ${nomeLato("P")} ${lato("P").riserva.length} · ${nomeLato("O")} ${lato("O").riserva.length}.</div>
+    <button class="azione" id="pc-avanti">${puoAprire?"Via ai colpi di scena":"Nessun colpo possibile — conteggio definitivo"}</button>`;
   document.getElementById("pc-avanti").addEventListener("click",()=>{
-    if(!ciSonoColpi){ conteggioDefinitivo(); return }
-    if(!colpiPossibili(G.colpi.attore)) G.colpi.attore=altro(G.colpi.attore);   // parte chi ha riserva
-    G.attore=G.colpi.attore;
+    if(!puoAprire){ conteggioDefinitivo(); return }   // lo sfidante non supera il muro: vince il difensore
+    G.colpi.attore=G.colpi.sfidante; G.attore=G.colpi.attore;
     G.fase="colpi"; velo(G.attore,render);
   });
 }
 function rColpi(){
-  const l=G.attore, L=lato(l);
-  if(!L.riserva.length){ prossimoColpo(l); return }   // sicurezza: niente riserva, passa oltre
+  const l=G.attore, L=lato(l), C=G.colpi;
+  if(!puoColpo(l)){ conteggioDefinitivo(); return }   // sicurezza: è il suo turno ma non può rispondere → vince il detentore
+  const top=C.top;
   SC.innerHTML=`
     <h2 class="ts">Colpo di scena — ${nomeLato(l)}</h2>
-    <div class="tavolo-top">
-      <div class="tot-lato p">♥+♠ <b>${totaleProt()}</b></div>
-      <div class="tot-lato o">♦+♣ <b>${totaleOpp()}</b></div>
-    </div>
-    <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto</span>'}</div>
+    <div class="cartellone"><div class="grande">${top}</div>
+      <div class="sc">valore in testa — in vantaggio ${nomeLato(C.detentore)}</div></div>
+    ${C.pila.length?`<div id="piatto">${C.pila.map(c=>cartaHTML(c,"mini")).join("")}</div>`:""}
     <div class="pannello${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}">
-      <span class="etichetta">La tua riserva — gioca una carta: entra nel piatto e può eliminare una avversaria di valore ≤</span>
+      <span class="etichetta">La tua riserva — cala una carta di valore ≥ ${top} per prendere la testa</span>
       <div class="mazzo-carte" id="riservaCarte">${ordina(L.riserva).map(c=>cartaHTML(c)).join("")}</div>
-      <div id="colpoAzione"></div>
     </div>`;
   SC.querySelectorAll("#riservaCarte .carta").forEach(el=>{
-    el.addEventListener("click",()=>{
-      SC.querySelectorAll("#riservaCarte .carta").forEach(x=>x.classList.remove("sel"));
-      el.classList.add("sel");
-      const r=L.riserva.find(x=>x.id==el.dataset.id);
-      const bersagli=bersagliColpo(l, r);
-      const box=document.getElementById("colpoAzione");
-      let html=`<span class="etichetta" style="margin-top:10px">${nomeCarta(r)} entra nel piatto. ${bersagli.length?"Elimina una carta avversaria (valore ≤):":"Nessuna carta avversaria di valore ≤ da eliminare."}</span><div class="opzioni">`;
-      bersagli.forEach(c=>{ html+=`<button data-bersaglio="${c.id}">Elimina ${c.fig?FIGURE[c.fig].nome.charAt(0):c.val}${SIMBOLI[c.seme]}</button>`; });
-      html+=`<button class="neutra" data-bersaglio="">Metti senza eliminare</button></div>`;
-      box.innerHTML=html;
-      box.querySelectorAll("button[data-bersaglio]").forEach(b=>b.addEventListener("click",()=>{
-        const bers = b.dataset.bersaglio ? G.piatto.find(x=>x.id==b.dataset.bersaglio) : null;
-        eseguiColpo(l, r, bers);
-      }));
-    });
+    const r=L.riserva.find(x=>x.id==el.dataset.id);
+    if(!COLPO_RIBALTA(r.val, top)){ el.style.opacity=.35; return }   // sotto la testa: non prende, non giocabile
+    el.addEventListener("click",()=>eseguiColpo(l, r));
   });
 }
 function prossimoColpo(l){
-  // alternanza stretta: tocca sempre all'altro. Se l'altro non ha riserva la fase
-  // finisce (niente colpi consecutivi): nessuno gioca due colpi di fila.
+  // tocca all'altro; se non può rispondere (nessuna carta ≥ alla testa) la fase finisce: vince il detentore.
   const o=altro(l);
-  if(colpiPossibili(o)){ G.colpi.attore=o; G.attore=o; G.fase="colpi"; velo(o,render); }
+  if(puoColpo(o)){ G.colpi.attore=o; G.attore=o; G.fase="colpi"; velo(o,render); }
   else conteggioDefinitivo();
 }
-function eseguiColpo(l, riservaCard, bersaglio){
-  const L=lato(l);
+function eseguiColpo(l, riservaCard){
+  const L=lato(l), C=G.colpi;
   L.riserva=L.riserva.filter(x=>x.id!==riservaCard.id);
-  G.piatto.push(riservaCard);
-  G.svuotoConScopa=null;
-  let sugg;
-  if(bersaglio){
-    G.piatto=G.piatto.filter(x=>x.id!==bersaglio.id);
-    G.scartiComuni.push(bersaglio);
-    G.ultimaGiocata=`COLPO DI SCENA! ${nomeLato(l)} mette in gioco ${nomeCarta(riservaCard)} ed elimina ${nomeCarta(bersaglio)}.`;
-    sugg=`<b>COLPO DI SCENA.</b> ${nomeCarta(riservaCard)} entra in scena e spazza via ${nomeCarta(bersaglio)}: narra come le cose non fossero come apparivano — un volto che cade, una verità che riemerge.`;
-  }else{
-    G.ultimaGiocata=`COLPO DI SCENA! ${nomeLato(l)} mette in gioco ${nomeCarta(riservaCard)}.`;
-    sugg=`<b>COLPO DI SCENA.</b> ${nomeCarta(riservaCard)} entra in scena: una carta tenuta da parte che ora pesa nel conto finale.`;
-  }
+  C.pila.push(riservaCard);
+  C.top=riservaCard.val;
+  C.detentore=l;
+  G.ultimaGiocata=`COLPO DI SCENA! ${nomeLato(l)} cala ${nomeCarta(riservaCard)} (valore ${riservaCard.val}) e prende la testa.`;
+  const sugg=`<b>COLPO DI SCENA.</b> ${nomeCarta(riservaCard)} entra in scena e porta la testa a ${riservaCard.val}: narra come le cose non fossero come apparivano — un volto che cade, una verità che riemerge.`;
   vaiNarrazione(riservaCard,"presa","",()=>prossimoColpo(l), sugg, l);
 }
 function conteggioDefinitivo(){
+  const detentore=G.colpi.detentore, difensore=G.colpi.difensore;
   chiudiScena();
+  G.scene[4].vincitore = difensore;   // esito APPARENTE dell'ultima scena = difensore (primo conteggio)
+  G.scene[4].missione  = detentore;   // esito REALE della missione = vincitore del duello
   G.colpi=null;
-  // vs Claude: l'esito lo narra chi ha perso la posta della scena finale (in parità chi ha vinto l'asta); se è l'Opposizione, lo scrive Claude (schermata fine_scena → "Vai al finale")
-  const _rec=G.scene[G.scena];
-  const _narr=(_rec.vincitore==="P"||_rec.vincitore==="O")?altro(_rec.vincitore):_rec.iniziativa;
+  // vs Claude: l'esito lo narra chi ha perso il primo conteggio; se è l'Opposizione, lo scrive Claude
+  const _narr=altro(difensore);
   premioJollyNonUsato();
   if(G.modalita==="solo" && _narr==="O"){ G.fase="fine_scena"; render(); return; }
   G.fase="finale"; render();
@@ -2809,21 +2835,18 @@ function conteggioDefinitivo(){
 function rFinale(){
   const vp=G.scene.filter(s=>s&&s.vincitore==="P").length;
   const vo=G.scene.filter(s=>s&&s.vincitore==="O").length;
-  function punti(l){ return puntiMercato(l); }   // punti non spesi = L.punti (la Crescita)
-  // vittoria del piatto = esito esterno della missione; in pareggio decide la Crescita (v1.29)
+  function punti(l){ return puntiMercato(l); }   // punti non spesi = L.punti (la Crescita); già a 0 per chi l'ha spesa nel pareggio
   const rec5=G.scene[4];
-  let pP=punti("P"), pO=punti("O");
-  let piattoP, rottoCuffia=false;
-  if(rec5.totP!==rec5.totO){ piattoP = rec5.totP>rec5.totO; }
-  else if(pP>pO){ piattoP=true; pP=0; rottoCuffia=true; }   // pareggio: i Protagonisti spendono tutta la Crescita per aggiudicarsi il piatto
-  else if(pO>pP){ piattoP=false; pO=0; }                    // l'Opposizione spende tutta la Crescita per aggiudicarsi il piatto
-  else { piattoP=true; rottoCuffia=true; }                  // Crescita pari (anche 0-0): il piatto va ai Protagonisti
+  const pP=punti("P"), pO=punti("O");
+  // v1.38: la MISSIONE la decide il DUELLO dei colpi di scena (rec5.missione), non i totali del piatto.
+  // La Crescita (pP/pO) è l'asse narrativo. Ribaltone = lo sfidante ha rovesciato l'esito apparente.
+  const missioneP = rec5.missione === "P";
+  const ribaltone = rec5.missione !== rec5.vincitore;
   const puntiP = pP>pO, pari = pP===pO;
-  const OUTCOME = rottoCuffia
-    ? ["PER IL ROTTO DELLA CUFFIA","la missione riesce di strettissima misura, vincendo il pareggio all'ultimo"]
-    : piattoP
-    ? (puntiP||pari ? ["VITTORIA PIENA","ce l'avete fatta, e da soli — la missione riesce con le proprie forze"]
-                    : ["PER IL ROTTO DELLA CUFFIA","vinto, ma grazie agli aiuti e a caro prezzo"])
+  const OUTCOME = missioneP
+    ? (ribaltone ? ["PER IL ROTTO DELLA CUFFIA","la missione riesce ribaltando l'esito apparente all'ultima carta"]
+       : (puntiP||pari ? ["VITTORIA PIENA","ce l'avete fatta, e da soli — la missione riesce con le proprie forze"]
+                       : ["PER IL ROTTO DELLA CUFFIA","vinto, ma grazie agli aiuti e a caro prezzo"]))
     : (puntiP ? ["SCONFITTA DIGNITOSA","caduti a testa alta, con l'esperienza come tesoro"]
               : ["FALLIMENTO TOTALE","travolti su ogni fronte"]);
   const tf=totaleSeme("fiori"), tq=totaleSeme("quadri");
@@ -2846,9 +2869,9 @@ function rFinale(){
       <div class="sc">${OUTCOME[1]}</div>
     </div>
     <div class="riga2">
-      <div class="pannello" style="text-align:center"><span class="etichetta">Piatto finale — la missione</span>
-        <div class="punti-big">${rec5.totP} — ${rec5.totO}</div>
-        <div class="contatori">♥+♠ / ♦+♣ · ${piattoP?"missione riuscita":"missione fallita"}</div></div>
+      <div class="pannello" style="text-align:center"><span class="etichetta">La missione — dopo i colpi di scena</span>
+        <div class="punti-big">${nomeLato(rec5.missione)}</div>
+        <div class="contatori">primo conteggio ♥+♠ ${rec5.totP} / ♦+♣ ${rec5.totO}${ribaltone?" · ribaltato nei colpi di scena":""} · ${missioneP?"missione riuscita":"missione fallita"}</div></div>
       <div class="pannello" style="text-align:center"><span class="etichetta">Punti — scope + prese</span>
         <div class="punti-big">${pP} — ${pO}</div>
         <div class="contatori">prese ×1, scope ×3 · scene vinte ${vp}/${vo}</div></div>
@@ -2973,7 +2996,8 @@ const REGOLE={
     <table><tr><th>Figura</th><th>Costo</th><th>Valore</th><th>Effetto</th></tr>
     <tr><td><b>Fante</b> — l'informatore</td><td>3</td><td>8</td><td>Sbircia le prime 2 carte del mazzo; se vuole, ne scambia una con una carta della mano (la carta ceduta torna in cima).</td></tr>
     <tr><td><b>Regina</b> — la manipolatrice</td><td>5</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo.</td></tr>
-    <tr><td><b>Re</b> — il deus ex machina</td><td>8</td><td>10</td><td>Recupera dagli scarti comuni una carta del suo stesso seme (la mano resta): nelle scene 1-4 si rimescola nel tuo mazzo, nell'ultima entra nella riserva dei colpi di scena.</td></tr></table>
+    <tr><td><b>Re</b> — il deus ex machina</td><td>8</td><td>10</td><td>Recupera dagli scarti comuni una carta <b>numerica</b> del suo stesso seme (la mano resta): nelle scene 1-4 si rimescola nel tuo mazzo, nell'ultima entra nella riserva dei colpi di scena.</td></tr></table>
+    <p class="sotto">Una figura, una volta giocata (cattura, scopa o sacrificio), <b>esce dal gioco</b>: non va negli scarti comuni e non è più recuperabile (nemmeno dal Re). In <b>riserva</b> per i colpi di scena vanno quindi solo carte numeriche.</p>
     <b>Cattura flessibile:</b> in gioco le figure catturano un gruppo di somma minore o uguale al loro valore (vedi Azioni e prese); come ogni presa, vale 1 punto. I costi 3/5/8 rendono pari le due strade verso un Re: un Re, oppure un Fante più una Regina.
     <h3>Le figure entrano in mano</h3>
     Tutte le figure comprate (Fante, Regina, Re) <b>entrano subito in mano</b> ed entrano in scena <b>la scena successiva</b> all'acquisto. Occupano uno slot mano, quindi in quella scena peschi una carta base in meno (niente rimescolo). L'effetto di una figura scatta <b>quando la giochi</b>. L'avversario sa che l'hai comprata (è un PNG con un nome): la tensione è parte del gioco.
@@ -2985,7 +3009,7 @@ const REGOLE={
     Nel tuo turno il Jolly ha <b>valore elastico</b> ma cattura <b>una sola carta</b>: scegli quale carta del piatto prendere (se era l'unica rimasta, è scopa). È il <b>peccato</b>: un successo ottenuto andando contro i principi e la lealtà. Poi il Jolly <b>passa all'Opposizione</b>: il costo non è in punti, è che consegni al nemico la stessa arma.
     <div class="es">"Vera infrange la promessa di restare pulita e sfrutta un vecchio contatto del contrabbando — Otto ancora non lo sa."</div>
     <h3>L'uso dell'Opposizione: la stessa cattura, il peccato emerge (scene 2-4)</h3>
-    Ricevuto il Jolly, l'Opposizione lo usa <b>allo stesso modo</b> (meccanica simmetrica): nel suo turno seppellisce una carta, afferra il Jolly e <b>cattura una sola carta</b> del piatto (0 punti), e nel farlo <b>mette in scena il peccato</b> dei Protagonisti. Mai due usi nella stessa scena: l'Opposizione lo gioca solo in una scena <b>successiva</b> a quella in cui i Protagonisti l'hanno usato.
+    Ricevuto il Jolly, l'Opposizione lo usa per catturare come i Protagonisti, ma con un'<b>asimmetria</b>: mentre i Protagonisti <b>seppelliscono</b> la carta ceduta (la riavranno), l'Opposizione la <b>scarta</b> — il suo mazzo cala di 1, una carta in meno verso la riserva dei colpi di scena. Nel suo turno scarta una carta, afferra il Jolly e <b>cattura una sola carta</b> del piatto (0 punti), e nel farlo <b>mette in scena il peccato</b> dei Protagonisti. Mai due usi nella stessa scena: l'Opposizione lo gioca solo in una scena <b>successiva</b> a quella in cui i Protagonisti l'hanno usato.
     <div class="es">"Davanti a Otto emerge cosa ha fatto Vera con quel contatto: la scena volge all'Opposizione, e fra i due cala il gelo."</div>
     <h3>Vincolo narrativo</h3>
     A macchiarsi del peccato è <b>uno solo dei due protagonisti</b>: una ricaduta nei vecchi vizi o un gesto avventato; l'altro <b>può non saperne nulla, oppure assistervi e giudicarlo</b>. Quando l'Opposizione gioca il Jolly, quel compromesso torna a galla e incrina l'alleanza.
@@ -3015,9 +3039,10 @@ const REGOLE={
     <h3>Mano finale estesa (23.1)</h3>
     La mano finale si sceglie <b>dopo il mercato</b>. Una figura comprata all'ultimo mercato è già in mano e resta <b>sempre giocabile</b> (mai in riserva): occupa uno dei 4 posti. Delle carte del mazzo se ne scelgono quante ne servono per completare la mano a <b>4</b>: le prendi tutte, scegli quelle che giochi, le altre vanno da parte come <b>riserva</b>.
     <h3>Colpi di scena finali (24)</h3>
-    Dopo che ciascuno ha giocato le 4 carte si fa il <b>primo conteggio</b>, come in ogni scena: si determina e si <b>narra l'esito apparente</b> (lo racconta chi ha perso la posta). Sembra finita, ma poi si gioca a <b>turni strettamente alterni</b> con le carte della <b>riserva</b> (inizia chi sta perdendo): nel tuo turno, finché hai riserva <b>devi</b> giocare una carta, che <b>entra nel piatto</b> e può <b>eliminare</b> una carta di <b>seme avversario</b> di valore <b>pari o inferiore</b> (va negli scarti; la tua resta sul tavolo). Si rivelano una alla volta. <b>Nessuno gioca due colpi di fila</b>: quando dopo un colpo tocca all'altro lato e questo non ha più riserva, la fase <b>finisce subito</b> (non si torna indietro). Chi inizia gioca quindi al massimo una carta in più dell'avversario, e l'eventuale riserva in eccesso resta inutilizzata. Solo allora il conteggio definitivo dice se la missione è riuscita o fallita.
+    Dopo che ciascuno ha giocato le 4 carte si fa il <b>primo conteggio</b>, come in ogni scena: si determina e si <b>narra l'esito apparente</b> (lo racconta chi ha perso). Poi il <b>piatto si svuota</b> e si gioca il <b>duello a rilancio</b> con le carte della <b>riserva</b> (solo numeriche). Chi ha vinto il primo conteggio <b>difende</b> dietro un <b>muro pari al numero di scene che ha vinto</b> (1-5); l'altro <b>sfida</b> e <b>apre</b> calando dalla riserva una carta di valore <b>≥ al muro</b>, narrando il colpo di scena. Poi, a <b>turni alterni</b>, ognuno prende la testa calando una carta di valore <b>≥ a quella in cima</b> (<b>pareggiare ribalta</b>: nemmeno un 10 è al sicuro, glielo pareggia l'altro 10). Chi non può più superare, o rinuncia, perde: <b>vince la missione l'ultimo che riesce a calare</b>. Se lo sfidante non ha nemmeno una carta ≥ al muro, la missione resta al difensore. Niente prese, scope o eliminazioni: contano solo i valori.
+    <div class="es">Difensore con muro 3 (ha vinto 3 scene). Lo sfidante apre con un 6 (≥3), risposta 8, lo sfidante rilancia 9, il difensore pareggia con un 9 e ribalta; se lo sfidante non ha nulla ≥9, vince il difensore. Tieni in riserva una carta media (per aprire) e una alta (per vincere).</div>
     <h3>Il finale: i due piani (25–26)</h3>
-    Il finale si legge su due piani. <b>Primo piano, la missione</b> (♥+♠ vs ♦+♣): chi vince il piatto ha compiuto la missione o ha fallito; in pareggio decide la <b>Crescita</b> (i punti non spesi): chi ne ha di più la spende tutta (i suoi punti vanno a 0) per aggiudicarsi il piatto, a parità di Crescita vince il lato dei Protagonisti, e quando il pareggio lo vincono i Protagonisti l'esito è sempre <b>«Per il rotto della cuffia»</b>. <b>Secondo piano, la Crescita</b>: i punti accumulati e non spesi (prese 1, scope 3, lo speso vale 0) dicono quanto i tuoi personaggi sono cresciuti lungo il viaggio. Che cosa sia lo decidi tu (maturazione, evoluzione interiore, reputazione e prestigio); e il seme delle carte con cui hai fatto i punti dà un indizio di che cosa sia cresciuto di più, tra i tuoi due semi: più Cuori = crescita di legame ed empatia, più Picche = di forza e affermazione (per l'Opposizione, Quadri vs Fiori). Spendere punti in figure = aver chiamato aiuto e diviso il merito; tenerli = essersi fatti un nome. Vale per entrambi i lati: per i protagonisti è una promessa, per l'Opposizione una minaccia (l'idra).
+    Il finale si legge su due piani. <b>Primo piano, la missione</b>: la decide il <b>duello dei colpi di scena</b> (l'ultimo che cala), non il piatto — il primo conteggio dà solo l'esito apparente e chi difende. Se il primo conteggio è <b>pari</b>, prima del duello chi ha più <b>Crescita</b> (a pari Crescita, chi ha l'iniziativa) può <b>azzerarla</b> per vincere il conteggio e difendere, oppure rinunciare cedendo la scena all'altro; se nessuno esercita, il pareggio va all'Opposizione. Un finale può <b>ribaltare</b> l'apparenza: chi sembrava perdere la scena può vincere la missione dalla riserva. <b>Secondo piano, la Crescita</b>: i punti accumulati e non spesi (prese 1, scope 3, lo speso vale 0) dicono quanto i tuoi personaggi sono cresciuti lungo il viaggio. Che cosa sia lo decidi tu (maturazione, evoluzione interiore, reputazione e prestigio); e il seme delle carte con cui hai fatto i punti dà un indizio di che cosa sia cresciuto di più, tra i tuoi due semi: più Cuori = crescita di legame ed empatia, più Picche = di forza e affermazione (per l'Opposizione, Quadri vs Fiori). Spendere punti in figure = aver chiamato aiuto e diviso il merito; tenerli = essersi fatti un nome. Vale per entrambi i lati: per i protagonisti è una promessa, per l'Opposizione una minaccia (l'idra).
     <table><tr><th>Missione</th><th>Punti</th><th>Esito</th></tr>
     <tr><td>Vinta</td><td>Vinti</td><td><b>Vittoria piena</b> — ce l'avete fatta, e da soli</td></tr>
     <tr><td>Vinta</td><td>Persi</td><td><b>Per il rotto della cuffia</b> — vinto, ma grazie agli aiuti e a caro prezzo</td></tr>
@@ -3236,14 +3261,14 @@ FINE SCENA: si sommano i valori delle carte rimaste nel piatto: ♦+♣ contano 
 MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Ordine: prima compri, poi peschi fino a 4 (niente rimescolo). Con i punti compri figure (al massimo UNA per mercato, e una sola per tipo in tutta la partita) che entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno):
 - Fante (costo 3, valore 8): entra in mano; quando lo giochi, sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una carta della mano (la carta che cedi torna in cima).
 - Regina (costo 5, valore 9): l'avversario scarta una carta a caso dalla mano e pesca dal mazzo.
-- Re (costo 8, valore 10): recuperi dagli scarti comuni una carta del suo stesso seme (la mano resta), nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.
+- Re (costo 8, valore 10): recuperi dagli scarti comuni una carta NUMERICA del suo stesso seme (la mano resta), nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena (dove pesa: alimenta il duello finale). Una figura, una volta giocata, ESCE DAL GIOCO (non negli scarti), quindi il Re trova solo numeri.
 Ogni figura che compri è un PNG: dalle subito un nome e un breve ruolo (chi è), e richiamalo quando giochi quella carta e quando narri (il suo effetto meccanico è ciò che quel personaggio fa nella storia). Più in generale, ogni elemento rilevante che introduci (un nemico, un alleato, un luogo, un oggetto) con una sua volontà e un ruolo da seguire è un «Qualcuno»: dagli un nome se conta per il seguito, altrimenti resta una comparsa.
 
-JOLLY: un solo Jolly, RISORSA dei PROTAGONISTI (non è nel mazzo: ce l'hanno davanti dall'inizio). Usarlo NON dà punti a nessuno. I Protagonisti lo usano nelle scene 1-3: seppelliscono una carta della mano in fondo al loro mazzo, afferrano il Jolly e catturano UNA SOLA carta del piatto (valore elastico; se era l'unica rimasta è scopa) — è il PECCATO, un successo sleale contro i propri principi. Appena lo usano, il Jolly PASSA A TE (Opposizione): il loro costo non è in punti, è che consegnano a te la stessa arma. Da quel momento TU puoi usarlo, ALLO STESSO MODO (meccanica simmetrica): nelle scene 2-4, nel tuo turno seppellisci una carta in fondo al mazzo, afferri il Jolly e catturi UNA SOLA carta del piatto (anche questo non dà punti) — e nel narrarlo FAI EMERGERE IL PECCATO: il compromesso di cui uno dei protagonisti si è macchiato riaffiora e incrina la loro alleanza. Conviene soprattutto per togliere dal tavolo la carta avversaria che ti fa perdere la posta, o per una scopa quando nel piatto è rimasta una sola carta. Vincoli: solo in una scena SUCCESSIVA a quella in cui i Protagonisti l'hanno usato (mai due usi nella stessa scena); una volta giocato è speso. A macchiarsi del peccato è UNO SOLO dei due protagonisti (l'altro può non saperlo, o assistervi e giudicarlo): è il seme di una discordia che sboccia. Se nessuno lo usa, chi lo tiene a fine partita incassa 2 punti Crescita (contano solo nell'esito finale, non spendibili al mercato).
+JOLLY: un solo Jolly, RISORSA dei PROTAGONISTI (non è nel mazzo: ce l'hanno davanti dall'inizio). Usarlo NON dà punti a nessuno. I Protagonisti lo usano nelle scene 1-3: seppelliscono una carta della mano in fondo al loro mazzo, afferrano il Jolly e catturano UNA SOLA carta del piatto (valore elastico; se era l'unica rimasta è scopa) — è il PECCATO, un successo sleale contro i propri principi. Appena lo usano, il Jolly PASSA A TE (Opposizione): il loro costo non è in punti, è che consegnano a te la stessa arma. Da quel momento TU puoi usarlo, ma con un'ASIMMETRIA (v1.39): mentre loro SEPPELLISCONO la carta (la riavranno), tu la SCARTI — il tuo mazzo cala di 1, una carta in meno verso la riserva dei colpi di scena: è il tuo costo. Nelle scene 2-4, nel tuo turno scarti una carta, afferri il Jolly e catturi UNA SOLA carta del piatto (anche questo non dà punti) — e nel narrarlo FAI EMERGERE IL PECCATO: il compromesso di cui uno dei protagonisti si è macchiato riaffiora e incrina la loro alleanza. Conviene soprattutto per togliere dal tavolo la carta avversaria che ti fa perdere la posta, o per una scopa quando nel piatto è rimasta una sola carta. Vincoli: solo in una scena SUCCESSIVA a quella in cui i Protagonisti l'hanno usato (mai due usi nella stessa scena); una volta giocato è speso. A macchiarsi del peccato è UNO SOLO dei due protagonisti (l'altro può non saperlo, o assistervi e giudicarlo): è il seme di una discordia che sboccia. Se nessuno lo usa, chi lo tiene a fine partita incassa 2 punti Crescita (contano solo nell'esito finale, non spendibili al mercato).
 
 RISORSE DEL PITCH (spinte): sono otto, due per seme (le tue sono ♦ e ♣). Dopo una presa fatta con una CARTA NUMERICA puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e il piatto viene spazzato via (le carte rimaste finiscono negli scarti comuni). La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola (due per seme, entrambe usabili); una sola spinta per presa; MAI su una presa di FIGURA (una presa fatta con Fante/Regina/Re non è promuovibile a scopa); VIETATA nell'ultima scena. (I tratti "cosa i protagonisti si detestano" sono solo narrativi, non spinte.)
 
-QUINTA SCENA: la mano finale si sceglie dopo il mercato; le carte oltre le 4 vanno in RISERVA. Dopo il primo conteggio si gioca a COLPI DI SCENA: a turni STRETTAMENTE ALTERNI (inizia chi sta perdendo) cali una carta dalla riserva, che entra nel piatto e può eliminare una carta di seme avversario di valore pari o inferiore (finisce negli scarti; la tua resta). Nel tuo turno, finché hai riserva devi giocare. NESSUNO gioca due colpi di fila: se dopo un colpo tocca a chi non ha più riserva, la fase FINISCE subito (l'eventuale riserva in eccesso dell'altro resta inutilizzata). Il primo conteggio (dopo le 4 carte) dà solo l'esito apparente, che si narra come in ogni scena; solo dopo i colpi di scena, rivelati una carta alla volta, il conteggio definitivo dice se la missione riesce o fallisce. Il finale si legge su due piani: la MISSIONE (chi vince il piatto; in pareggio decide la Crescita, il lato con più punti non spesi li spende tutti per aggiudicarsi il piatto, a parità vince il lato dei Protagonisti) e la CRESCITA (i punti non spesi: figure comprate = aiuto chiamato, punti tenuti = nome che ci si è fatti; per te è la minaccia che resta, l'idra). Un fallimento totale dei protagonisti è una tua vittoria piena, da narrare come trionfo. Poi, facoltativo, l'epilogo: vignette su un Qualcuno, giorni o anni dopo, a turni e senza due di fila.
+QUINTA SCENA: la mano finale si sceglie dopo il mercato; in RISERVA vanno solo carte NUMERICHE (le figure restano in mano). Scelta: tieni le carte alte in mano per vincere il primo conteggio, oppure in riserva per vincere il duello finale — bastano una media (per aprire) e una alta (per vincere). Dopo il primo conteggio si gioca il DUELLO A RILANCIO: il piatto si svuota, chi ha vinto il conteggio DIFENDE dietro un MURO pari alle scene che ha vinto (1-5), l'altro SFIDA e apre calando dalla riserva una carta di valore >= al muro; poi a turni alterni si prende la testa con una carta >= a quella in cima (PAREGGIARE RIBALTA: nemmeno un 10 e' sicuro). Chi non puo' piu' superare (o rinuncia) perde: vince la missione l'ultimo che cala. Se lo sfidante non ha nulla >= al muro, vince il difensore. Il primo conteggio da' solo l'esito apparente; la MISSIONE la decide il duello. Se il primo conteggio e' pari, prima del duello chi ha piu' Crescita (a pari, chi ha l'iniziativa) puo' azzerarla per vincere il conteggio e difendere, oppure cedere; se nessuno esercita, vince l'Opposizione. Il finale si legge su due piani: la MISSIONE (chi vince il duello) e la CRESCITA (i punti non spesi: figure comprate = aiuto chiamato, punti tenuti = nome che ci si e' fatti; per te e' la minaccia che resta, l'idra). Un fallimento totale dei protagonisti e' una tua vittoria piena, da narrare come trionfo. Poi, facoltativo, l'epilogo: vignette su un Qualcuno, giorni o anni dopo, a turni e senza due di fila.
 
 RESA (solo se NON hai l'iniziativa, ti resta UNA sola carta, scene 1-4): se la tua ultima carta non può cambiare la scena (non fa presa e, anche giocandola, non ti porta sopra il totale dei Protagonisti), conviene arrenderti invece di sprecarla. Due mosse, ciascuna UNA volta per partita: RITIRATA STRATEGICA = cedi la scena e rimescoli la carta nel mazzo (più riserva per i colpi di scena finali); RESA ONOREVOLE = cedi la scena, vale 1 punto (la carta va negli scarti). In entrambe perdi la posta della scena e racconti tu come arretri per riorganizzarti. NON arrenderti se la carta può prendere o se ti fa superare i Protagonisti: giocala.
 
@@ -3252,7 +3277,7 @@ STRATEGIA, in ordine di priorità a ogni tuo turno:
 (2) Altrimenti PRENDI (la presa è comunque obbligatoria se la tua carta cattura). Quando puoi scegliere COSA catturare, prendi le carte dei semi avversari (♥♠), meglio se di valore alto, per togliere peso ai Protagonisti; evita di catturare le tue carte (♦♣): è una presa "maldestra" da narrare come un intralcio fra i nemici, e ti toglie carte che ti converrebbe lasciare nel piatto.
 (3) Se puoi solo CALARE una carta (nessuna presa possibile), scegli quella che porta la SOMMA del piatto SOPRA 10 (le opzioni ti dicono a quanto sale): così nessuna carta avversaria, che vale al massimo 10, può svuotare il piatto in un colpo solo, e non subisci scopa.
 (4) Se non puoi evitare il rischio (piatto vuoto o con sole carte basse), ragiona sulle CARTE GIÀ USCITE che ti vengono elencate: se le carte capaci di svuotare il piatto sono già state giocate, cala con tranquillità. Esempio: nel piatto c'è un 3 e cali un 4 (piatto a 7); se entrambi i 7 sono già usciti, nessuno potrà prendere 3+4 facendo scopa.
-Inoltre: lasciare le tue carte alte ♦♣ nel piatto le fa pesare per te a fine scena (seme dominante). All'asta una carta alta vince l'iniziativa ma esce dal tuo round. Per la riserva dei colpi finali tieni carte ALTE dei tuoi semi.
+Inoltre: lasciare le tue carte alte ♦♣ nel piatto le fa pesare per te a fine scena (seme dominante). All'asta una carta alta vince l'iniziativa ma esce dal tuo round. Per la riserva dei colpi finali bastano una carta MEDIA (per aprire, >= al muro) e una ALTA (per vincere il rilancio); le altre alte tienile in mano per vincere il primo conteggio.
 QUANDO SPUNTARE UNA SPINTA (presa→scopa): vale di più sulla MOSSA CONCLUSIVA della scena, perché lì la scopa ti ASSICURA la posta (svuoti il piatto e la scena è tua). Ricorda che la scopa fa fare più punti (3) della presa: conviene spuntare a meno che la spinta non ti spazzi via TROPPE carte tue (♦♣) insieme a quelle avversarie. In pratica: fallo se le carte AVVERSARIE (♥♠) che spazzi dal piatto valgono almeno quanto le tue meno il bonus della scopa (regola pratica: il valore delle tue carte spazzate non superi di più di ~3 quello delle avversarie). EVITA del tutto se nel piatto residuo restano solo carte TUE (non sottrai nulla all'avversario e ti getti le carte negli scarti da solo). Le spinte NON valgono nell'ultima scena: spendile entro la quarta, è l'ultima occasione.
 
 NARRAZIONE: quando narri sei il mondo che rema contro i protagonisti. ♦ = nemici con un piano (sicari pazienti, poliziotti corrotti, fazioni ostili); ♣ = caos e sfortuna (tempeste, guasti, attriti, PNG molesti). Resta coerente con la storia già scritta, la missione, la posta della scena e le risposte del pitch. Sono ammessi gli sconfinamenti: puoi mostrare difetti e debolezze dei protagonisti, e costruisci sempre sugli elementi già introdotti dall'altro lato. Asciutto e cinematografico, 1-2 frasi. Esempi di tono: "Due uomini in giacca scura scendono da un SUV davanti al diner: hanno le foto." (♦) "Una gomma esplode in mezzo al deserto e la tempesta di sabbia è già all'orizzonte." (♣)`;
@@ -3287,7 +3312,7 @@ PIATTO: ${G.piatto.length?G.piatto.map(c=>nomeCarta(c)).join(", "):"vuoto"} (som
 LA TUA MANO: ${O.mano.map(c=>nomeCarta(c)).join(", ")||"vuota"}.
 CARTE GIÀ USCITE (catturate o spese, non torneranno in gioco; servono a dedurre cosa resta agli avversari): ${uscite.length?uscite.join(", "):"nessuna"}.
 I tuoi punti ${O.punti}, punti avversari ${P.punti} (presa 1, scopa 3).
-Totali del piatto ora: Protagonisti ${totaleProt()}, Opposizione ${totaleOpp()}.${figure?`\nFigure comprate: ${figure}.`:""}${pngN?`\nPNG narrativi: ${pngN}.`:""}${lato("O").jolly?`\nHAI IL JOLLY (te l'hanno passato i Protagonisti usandolo): nelle scene 2-4, DOPO una tua presa, puoi spenderlo come SPINTA per trasformarla in SCOPA e FAR EMERGERE IL PECCATO dei protagonisti (non dà punti a nessuno), ma solo in una scena successiva a quella in cui l'hanno usato. Se non lo usi, a fine partita vale 2 punti Crescita.`:""}`;
+Totali del piatto ora: Protagonisti ${totaleProt()}, Opposizione ${totaleOpp()}.${figure?`\nFigure comprate: ${figure}.`:""}${pngN?`\nPNG narrativi: ${pngN}.`:""}${lato("O").jolly?`\nHAI IL JOLLY (te l'hanno passato i Protagonisti usandolo): nelle scene 2-4, nel tuo turno, puoi SCARTARE una carta della mano (il tuo mazzo cala di 1 — è il tuo costo) e afferrare il Jolly per CATTURARE UNA SOLA carta del piatto (valore elastico; se era l'unica rimasta è scopa; non dà punti a nessuno), FACENDO EMERGERE IL PECCATO dei protagonisti — solo in una scena successiva a quella in cui l'hanno usato. Conviene per togliere la carta che ti fa perdere la posta. Se non lo usi, a fine partita vale 2 punti Crescita.`:""}`;
 }
 
 async function chiamaClaude(istruzioni, feedback){
@@ -3596,7 +3621,7 @@ async function iaMercato(){
   const btns=[...document.querySelectorAll('button[data-l="O"][data-f]')].filter(b=>!b.disabled);
   if(btns.length){
     const op=btns.map((b,i)=>`${i}: ${FIGURE[b.dataset.f].nome} di ${b.dataset.s} ${SIMBOLI[b.dataset.s]} (costo ${FIGURE[b.dataset.f].costo})`);
-    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (una presa vale 1, una scopa 3). Le figure che compri entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno, niente rimescolo); puoi comprare al massimo UNA figura per mercato (e una sola per tipo in tutta la partita). Effetti: Fante (costo 3) = sbircia le prime 2 carte del mazzo e, se vuoi, ne scambi una con una di mano; Regina (costo 5) = l'avversario scarta una carta a caso; Re (costo 8) = recupera dagli scarti comuni una carta del suo stesso seme (la mano resta), nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.\nOPZIONI (scegline UNA o nessuna):\n${op.join("\n")}\nJSON: {"acquisto": <numero oppure null> }`);
+    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (una presa vale 1, una scopa 3). Le figure che compri entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno, niente rimescolo); puoi comprare al massimo UNA figura per mercato (e una sola per tipo in tutta la partita). Effetti: Fante (costo 3) = sbircia le prime 2 carte del mazzo e, se vuoi, ne scambi una con una di mano; Regina (costo 5) = l'avversario scarta una carta a caso; Re (costo 8) = recupera dagli scarti comuni una carta NUMERICA del suo stesso seme (la mano resta), nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.\nOPZIONI (scegline UNA o nessuna):\n${op.join("\n")}\nJSON: {"acquisto": <numero oppure null> }`);
     // v1.35: una sola figura per mercato. Accetta il nuovo formato "acquisto"; per retrocompatibilità legge anche il primo di "acquisti".
     const scelta = r ? (Number.isInteger(r.acquisto) ? r.acquisto : (Array.isArray(r.acquisti)&&Number.isInteger(r.acquisti[0]) ? r.acquisti[0] : null)) : null;
     if(scelta!==null){
@@ -3622,7 +3647,7 @@ async function iaManoEstesa(){
   const slot=Math.max(0, 4-lato("O").mano.length);
   const inMano=lato("O").mano.map(c=>nomeCarta(c)).join(", ");
   const op=carte.map((el,i)=>{const c=lato("O").mazzo.find(x=>x.id==el.dataset.id);return `${i}: ${c?nomeCarta(c):"?"}`});
-  const r=await chiamaClaude(`MANO FINALE: prendi tutte le carte rimaste, ne tieni ${slot} per l'ultima scena${inMano?` (in mano hai già ${inMano}, che gioca comunque)`:""}; le altre vanno in riserva per i colpi di scena (lì ogni carta entra nel piatto e può eliminare una carta avversaria di valore pari o inferiore: per la riserva servono quindi carte ALTE dei tuoi semi).\nCARTE:\n${op.join("\n")}\nJSON: {"tieni": [${slot} numeri]}`);
+  const r=await chiamaClaude(`MANO FINALE: prendi tutte le carte rimaste, ne tieni ${slot} per l'ultima scena${inMano?` (in mano hai già ${inMano}, che gioca comunque)`:""}; le altre vanno in RISERVA per i colpi di scena. Nei colpi si duella a rilancio: si prende la testa calando una carta di valore ≥ a quella in cima (pareggiare ribalta), e vince l'ultima che riesce a superare. Per la riserva servono quindi le carte NUMERICHE più ALTE (contano solo i valori). Bilancia: carte alte in mano per vincere il primo conteggio, o in riserva per vincere il duello.\nCARTE:\n${op.join("\n")}\nJSON: {"tieni": [${slot} numeri]}`);
   let sel=(r&&Array.isArray(r.tieni)&&r.tieni.length===slot&&r.tieni.every(i=>carte[i]))?r.tieni:carte.map((_,i)=>i).slice(0,slot);
   iaBusy=false;
   sel.forEach(i=>clicca(carte[i]));
@@ -3630,18 +3655,12 @@ async function iaManoEstesa(){
 }
 
 function iaColpi(){
-  // colpo obbligatorio: gioca la carta di riserva e il bersaglio che tolgono più valore all'avversario
+  // rilancio: prende la testa con la carta più BASSA che è ≥ al valore in cima (conserva le alte per i rilanci)
   iaBusy=true;
-  const R=[...lato("O").riserva];
-  if(!R.length){ iaBusy=false; prossimoColpo("O"); return; }
-  let best=null;
-  for(const r of R){
-    const t=bersagliColpo("O", r).sort((a,b)=>b.val-a.val)[0]||null;
-    const gain=(t?t.val:0)+r.val;   // valore tolto all'avversario + valore aggiunto a sé
-    if(!best||gain>best.gain) best={r,t,gain};
-  }
+  const giocabili=[...lato("O").riserva].filter(c=>COLPO_RIBALTA(c.val, G.colpi.top)).sort((a,b)=>a.val-b.val);
+  if(!giocabili.length){ iaBusy=false; conteggioDefinitivo(); return; }   // non può rispondere → vince il detentore
   iaBusy=false;
-  eseguiColpo("O", best.r, best.t);   // la narrazione la gestisce iaNarrazione subito dopo
+  eseguiColpo("O", giocabili[0]);   // la narrazione la gestisce iaNarrazione subito dopo
 }
 
 /* ================= AVVIO ================= */

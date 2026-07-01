@@ -115,22 +115,19 @@ function runGame(seed, seed2, seed3, wantTranscript){
   // la giocata normale dell'ultima carta NON vincerebbe. Restituisce {v,ci,scopa,buryId} o null. Serve
   // anche a NON arrendersi quando il Jolly può vincere.
   function jollyPick(a){
-    // v1.37: politica ASIMMETRICA (diversa per lato).
-    //  - P: il Jolly, usandolo, ARMA O (gli passa). Quindi conservativo: solo alla CHIUSURA e solo se ribalta
-    //    una scena che altrimenti si perderebbe. Il resto della funzione (sotto) è la logica di P.
-    //  - O: è l'ultimo detentore (non arma nessuno) e seppellire cresce la riserva. Quindi USA il Jolly appena
-    //    può, catturando la carta AVVERSARIA di valore più alto (scopa se svuota il piatto). Non lo usa se nel
-    //    piatto ci sono solo carte proprie. Lo scoring (scopa normale 1000 > Jolly 900) evita di sprecarlo
-    //    quando O può già fare una scopa normale.
+    // v1.39: politica UNIFICATA (uguale per P e O). Il Jolly si usa solo alla CHIUSURA e solo se RIBALTA una
+    // scena che altrimenti si perderebbe (o pareggerebbe) — cioè "quando conviene per vincere la posta".
+    //  - P: usandolo ARMA O (gli passa il Jolly), quindi è già di per sé selettivo.
+    //  - O (v1.39): afferrare il Jolly gli costa una carta SCARTATA (mazzo/riserva -1), quindi lo usa con la
+    //    stessa disciplina di P — solo per aggiudicarsi una posta, non "appena può".
     if(!document.getElementById("btnUsaJolly")) return null;
     const g=G(), piatto=g.piatto, ME=g.lati[a], OPP=g.lati[a==="P"?"O":"P"];
     const ownA=ME.semi, cval=x=>x.jolly?(x.val||0):(x.fig?FIGVAL[x.fig]:x.val);
-    const buryLow=()=>ME.mano.filter(x=>!x.jolly).slice().sort((x,y)=>cval(x)-cval(y))[0];
-    if(a==="O"){
+    if(a==="O"){   // O: usa il Jolly per vincere la posta (cattura la carta avversaria più alta); ora gli COSTA una carta (scarto)
       const enemy=piatto.filter(x=>!x.jolly && !ownA.includes(x.seme));
-      if(!enemy.length) return null;                    // solo carte proprie o piatto vuoto: non conviene
+      if(!enemy.length) return null;
       const target=enemy.sort((x,y)=>cval(y)-cval(x))[0];
-      const bury=buryLow(); if(!bury) return null;
+      const bury=ME.mano.filter(x=>!x.jolly).slice().sort((x,y)=>cval(x)-cval(y))[0]; if(!bury) return null;
       return {cardId:target.id, scopa: piatto.length===1, buryId:bury.id};
     }
     const closing = ME.mano.length===1 && OPP.mano.length===0 && !ME.astaCarta && !OPP.astaCarta;
@@ -401,8 +398,22 @@ function runGame(seed, seed2, seed3, wantTranscript){
         // solo il mazzo (numeriche). Restano da scegliere slot = 4 - carte già in mano; prendo le più BASSE
         // (in mano riempiono i posti), le più ALTE vanno in riserva (nei colpi pesano di più).
         const slot=Math.max(0, 4-L.mano.length);
-        const altre=[...document.querySelectorAll("#estCarte .carta")].sort((a,b)=>valOf(a)-valOf(b));
-        altre.slice(0,slot).forEach(c=>click(c));
+        // POLICY BILANCIATA (v1.38): in riserva una carta MEDIA (per aprire, ≥ muro) e una ALTA (per
+        // vincere il rilancio); le altre carte alte restano in MANO per vincere il primo conteggio.
+        const cards=[...document.querySelectorAll("#estCarte .carta")];
+        const R=cards.length-slot;   // quante finiscono in riserva (forzato dal numero di carte)
+        if(R<=0){ cards.forEach(c=>click(c)); }   // niente riserva: tutto in mano
+        else{
+          const desc=[...cards].sort((a,b)=>valOf(b)-valOf(a));
+          const ris=new Set([desc[0]]);                         // 1 ALTA (per vincere)
+          if(R>=2){                                             // 1 MEDIA (~valore 6, per superare il muro)
+            let med=desc[1], best=1e9;
+            desc.slice(1).forEach(c=>{const d=Math.abs(valOf(c)-6); if(d<best){best=d;med=c;}});
+            ris.add(med);
+          }
+          for(const c of desc){ if(ris.size>=R) break; ris.add(c); }   // slot riserva extra: le successive più alte
+          cards.filter(c=>!ris.has(c)).forEach(c=>click(c));    // la MANO = ciò che NON va in riserva
+        }
       }
       const g=G(); log(`   MANO ESTESA (scena 5): ${nomeL(g.attore)} tiene 4 carte, il resto in riserva.`);
       click(document.getElementById("estOk")); return f;
@@ -413,11 +424,20 @@ function runGame(seed, seed2, seed3, wantTranscript){
       const ord={R:3,D:2,F:1};
       const buy=pick=>{
         if(!pick) return;
-        figset.add(pick.dataset.f);
-        if(pick.dataset.l==="P"){ figP.add(pick.dataset.f); spentP+=COSTO[pick.dataset.f]; buysP++; }
-        else { figO.add(pick.dataset.f); spentO+=COSTO[pick.dataset.f]; buysO++; }
-        log(`   MERCATO: ${nomeL(pick.dataset.l)} compra ${NOMI_FIG[pick.dataset.f]} di ${pick.dataset.s} ${SYM[pick.dataset.s]}.`);
-        click(pick); acquisti++;
+        const l=pick.dataset.l, before=!!(G().figMercato&&G().figMercato[l]);
+        click(pick);                                   // apre il modale PNG se l'acquisto è valido
+        if(modaleAttivo()){                            // finalizza SUBITO (prima del prossimo buy e della chiusura)
+          const n=document.getElementById("m-png-nome"); if(n) n.value="PNG di prova";
+          const d=document.getElementById("m-png-desc"); if(d) d.value="descrizione di prova";
+          const ok=document.getElementById("pngOk"); if(ok) click(ok);
+        }
+        if(!!(G().figMercato&&G().figMercato[l]) && !before){   // acquisto realmente finalizzato dal motore
+          figset.add(pick.dataset.f);
+          if(l==="P"){ figP.add(pick.dataset.f); spentP+=COSTO[pick.dataset.f]; buysP++; }
+          else { figO.add(pick.dataset.f); spentO+=COSTO[pick.dataset.f]; buysO++; }
+          acquisti++;
+          log(`   MERCATO: ${nomeL(l)} compra ${NOMI_FIG[pick.dataset.f]} di ${pick.dataset.s} ${SYM[pick.dataset.s]}.`);
+        }
       };
       if(MERCATO_CANONICO){
         // CALENDARIO fisso della vecchia partita d'esempio: dopo S2 P Fante, dopo S3 P Regina, dopo S4 O Re.
@@ -426,13 +446,13 @@ function runGame(seed, seed2, seed3, wantTranscript){
         const btns=[...document.querySelectorAll("button[data-f]")].filter(x=>!x.disabled);
         buy(want ? btns.find(x=>x.dataset.l===want.l && x.dataset.f===want.f) : null);
       }else{
-        // POLICY GREEDY (benchmark v1.32): ogni lato compra UNA SOLA figura per mercato, la PIÙ COSTOSA
-        // che può permettersi tra quelle non ancora possedute (Re, se no Regina, se no Fante). Se non
-        // può permettersene nessuna, passa (comprerà al mercato successivo). Es.: 8 punti col Re già
-        // preso → compra la Regina, il Fante al mercato dopo.
+        // POLICY (benchmark v1.38): compra SEMPRE la prima figura disponibile, cioè la più ECONOMICA non
+        // ancora posseduta che il lato può permettersi (Fante, se no Regina, se no Re). Spende prima
+        // possibile e massimizza il numero di figure comprate. L'eventuale sbilanciamento si corregge
+        // sui COSTI delle figure (costante FIGURE in index.html), non su questa policy.
         for(const l of ["P","O"]){
           const btns=[...document.querySelectorAll(`button[data-f][data-l="${l}"]`)].filter(x=>!x.disabled);
-          if(btns.length) buy(btns.sort((x,y)=>ord[y.dataset.f]-ord[x.dataset.f])[0]);
+          if(btns.length) buy(btns.sort((x,y)=>ord[x.dataset.f]-ord[y.dataset.f])[0]);
         }
       }
       figCumP.push(buysP); figCumO.push(buysO);   // figure cumulative comprate dopo questo mercato
@@ -440,50 +460,35 @@ function runGame(seed, seed2, seed3, wantTranscript){
     }
 
 
+    if(f==="pareggio_finale"){
+      // facoltà del pareggio (v1.38): chi ha diritto spende la Crescita per vincere il primo conteggio, se ne ha.
+      const g=G(), el=g.pareggioFinale.eligibile, cr=g.lati[el].punti;
+      const sp=document.getElementById("pf-spendi");
+      log(``); log(`   PAREGGIO nel piatto: ${nomeL(el)} ha la facoltà (Crescita ${cr}) → ${sp&&!sp.disabled?"spende e vince":"cede"}.`);
+      click(sp && !sp.disabled ? sp : document.getElementById("pf-cedi"));
+      return f;
+    }
+
     if(f==="primo_conteggio"){
       const g=G();
       primoP=g.piatto.filter(c=>g.lati.P.semi.includes(c.seme)).reduce((s,c)=>s+(c.jolly?0:cardVal(c)),0);
       primoO=g.piatto.filter(c=>g.lati.O.semi.includes(c.seme)).reduce((s,c)=>s+(c.jolly?0:cardVal(c)),0);
-      log(``); log(`-- PRIMO CONTEGGIO (esito apparente) --`); log(`   Piatto finale: ${piattoStr()} (Prot ${primoP} · Opp ${primoO})`); click(document.getElementById("pc-avanti")); return f;
+      const C=g.colpi;
+      log(``); log(`-- PRIMO CONTEGGIO (esito apparente) --`); log(`   Piatto finale: ${piattoStr()} (Prot ${primoP} · Opp ${primoO})`);
+      log(`   Difende ${nomeL(C.difensore)} (muro ${C.muro} = scene vinte); sfida ${nomeL(C.sfidante)}. Duello a rilancio (≥).`);
+      click(document.getElementById("pc-avanti")); return f;
     }
 
     if(f==="colpi"){
-      const carte=[...document.querySelectorAll("#riservaCarte .carta")];
-      if(carte.length){
-        // Regola v1.28: alternanza stretta, si gioca MENO carte, quindi la scelta conta.
-        // 1) Bersagli eliminabili = carte avversarie nel piatto di val ≤ a quello di almeno una carta di riserva.
-        // 2) Se c'è un bersaglio eliminabile: bersaglio = avversaria di val PIÙ ALTO eliminabile;
-        //    carta di riserva = la più BASSA che riesce a eliminarlo (val ≥ val bersaglio), così conservi le alte.
-        // 3) Se nessun bersaglio eliminabile: gioca la riserva di val PIÙ ALTO (massimizza il piatto), senza eliminare.
-        // Le carte di #riservaCarte hanno data-id; i bottoni colpo hanno data-bersaglio (vuoto = "Metti senza eliminare").
-        const g=G();
-        const lat=g.attore;
-        const riserva=g.lati[lat].riserva;
-        const semiAvv=g.lati[lat==="P"?"O":"P"].semi;
-        const avversarie=g.piatto.filter(c=>semiAvv.includes(c.seme));
-        const maxRiserva=Math.max(...riserva.map(c=>c.val));
-        // bersagli eliminabili: avversaria con val ≤ a una carta di riserva
-        const elim=avversarie.filter(c=>c.val<=maxRiserva).sort((a,b)=>a.val-b.val);
-        const cartaEl=id=>carte.find(c=>c.dataset.id==String(id));
-        if(elim.length){
-          const bers=elim[elim.length-1];                 // bersaglio di val più alto eliminabile
-          // riserva di val più basso che lo elimina (val ≥ val bersaglio)
-          const ris=riserva.filter(c=>c.val>=bers.val).sort((a,b)=>a.val-b.val)[0];
-          click(cartaEl(ris.id));
-          const btn=document.querySelector(`button[data-bersaglio="${bers.id}"]`);
-          colpiFatti++; click(btn);
-        }else{
-          // nessun bersaglio: gioca la carta di valore più alto, senza eliminare
-          const ris=[...riserva].sort((a,b)=>b.val-a.val)[0];
-          click(cartaEl(ris.id));
-          const no=document.querySelector('button[data-bersaglio=""]');
-          if(no) click(no);
-        }
+      // duello a rilancio (v1.38): prende la testa la carta di riserva più BASSA che è ≥ al valore in cima
+      // (pareggiare ribalta; si conservano le alte per i rilanci). Niente semi, niente eliminazione.
+      const g=G(), lat=g.attore, top=g.colpi.top;
+      const giocabili=g.lati[lat].riserva.filter(c=>c.val>=top).sort((a,b)=>a.val-b.val);
+      if(giocabili.length){
+        const el=document.querySelector(`#riservaCarte .carta[data-id="${giocabili[0].id}"]`);
+        if(el){ colpiFatti++; click(el); }
       }
       logUltima();
-      const u=G().ultimaGiocata||"";
-      if(/Regina di/.test(u)) reginaColpo=true;
-      if(/Re di/.test(u)) reColpo=true;
       return "colpo";
     }
 
@@ -524,7 +529,9 @@ function runGame(seed, seed2, seed3, wantTranscript){
         fanteSbircia, fanteScambio, jollyTipo, reginaColpo, reColpo, reginaPresa, reginaSacr, fanteSacr,
         poste, sceneOK45: poste[3]==="O" && poste[4]==="P",
         nP, nO, primoP, primoO, finalP, finalO,
-        flipDopoColpi: primoP<=primoO && finalP>finalO,   // sotto al primo conteggio, sopra dopo i colpi
+        missione: g.scene[4]?g.scene[4].missione:null,               // v1.38: vincitore del duello dei colpi
+        difApparente: g.scene[4]?g.scene[4].vincitore:null,          // vincitore del primo conteggio (difensore)
+        flipDopoColpi: !!(g.scene[4] && g.scene[4].missione && g.scene[4].vincitore && g.scene[4].missione!==g.scene[4].vincitore),   // lo sfidante ha ribaltato l'esito apparente
         scopeP:scopeCount("P"), scopeO:scopeCount("O"), puntiP:pv("P"), puntiO:pv("O"),
         grossP:[...grossP], grossO:[...grossO], figCumP:[...figCumP], figCumO:[...figCumO],
         spentP, spentO, buysP, buysO, lordoP:pv("P")+spentP, lordoO:pv("O")+spentO};

@@ -1,29 +1,29 @@
 # Benchmark di bilanciamento — ultimo run
 
-**Data:** 2026-07-01T17:32:48.770Z · **Commit:** ab20172 (working tree sporco) · **KB:** v1.37
+**Data:** 2026-07-01T21:03:41.698Z · **Commit:** 6ad74cc (working tree sporco) · **KB:** v1.39
 **Campione:** 250 partite (seed 1-250) · **Scoring:** presa 1, scopa 3 (v1.32)
 **Policy mercato:** greedy: 1 figura per mercato per lato, la piu costosa acquistabile non ancora posseduta (Re>Regina>Fante)
 
-> Confronto (Δ) rispetto al run precedente: commit 12f107b, KB v1.36, 2026-07-01T16:41:52.973Z (stesso N=250).
+> Confronto (Δ) rispetto al run precedente: commit 6ad74cc, KB v1.38, 2026-07-01T20:34:47.031Z (stesso N=250).
 
 ## A) Esito della partita
 
-- **Vittorie della missione:** Protagonisti **50.00%** (-7.2) · Opposizione **50.00%** (+7.2)
-- **Esiti:** VITTORIA PIENA 36.00% (-2) · PER IL ROTTO DELLA CUFFIA 14.00% (-5.2) · SCONFITTA DIGNITOSA 29.20% (+2.4) · FALLIMENTO TOTALE 20.80% (+4.8)
-- **Ribaltoni dopo i colpi di scena:** pro-Protagonisti 16.00% (-2.8) · pro-Opposizione 18.00% (+4)
+- **Vittorie della missione:** Protagonisti **52.40%** (+4.4) · Opposizione **47.60%** (-4.4)
+- **Esiti:** VITTORIA PIENA 17.60% (-0.4) · PER IL ROTTO DELLA CUFFIA 34.80% (+4.8) · SCONFITTA DIGNITOSA 19.20% (-3.6) · FALLIMENTO TOTALE 28.40% (-0.8)
+- **Ribaltoni dopo i colpi di scena:** pro-Protagonisti 25.60% (+6) · pro-Opposizione 26.00% (-5.6)
 
 ## B.1) Punti guadagnati (lordi) per scena
 
 | Scena | Protagonisti | Opposizione |
 |---|---|---|
-| 1 | 2.35 (+0.01) | 2.19 (+0) |
-| 2 | 3.15 (-0.07) | 3.38 (+0.02) |
-| 3 | 3.62 (-0.17) | 3.70 (+0.26) |
-| 4 | 4.30 (-0.1) | 3.74 (+0.28) |
-| 5 | 4.87 (+0.06) | 2.27 (-0.25) |
-| **Totale** | **18.29** (-0.28) | **15.28** (+0.3) |
+| 1 | 2.35 (+0) | 2.19 (+0) |
+| 2 | 2.78 (-0.02) | 2.86 (+0) |
+| 3 | 2.56 (+0.02) | 3.23 (+0) |
+| 4 | 2.74 (+0) | 3.04 (-0.02) |
+| 5 | 3.37 (-0.02) | 2.28 (-0.14) |
+| **Totale** | **13.80** (-0.01) | **13.60** (-0.16) |
 
-A fine partita — **netti** (Crescita): P 7.31 · O 5.54 · **spesi** al mercato: P 10.98 · O 9.74
+A fine partita — **netti** (Crescita): P 6.42 · O 5.37 · **spesi** al mercato: P 7.38 · O 8.24
 
 ## B.2) Figure possedute (cumulative) a fine scena
 
@@ -32,10 +32,10 @@ A fine partita — **netti** (Crescita): P 7.31 · O 5.54 · **spesi** al mercat
 | Scena | Protagonisti | Opposizione |
 |---|---|---|
 | 1 | 0.46 (+0) | 0.44 (+0) |
-| 2 | 0.99 (-0.02) | 1.00 (-0.01) |
-| 3 | 1.65 (-0.04) | 1.62 (+0.04) |
-| 4 | 2.33 (-0.04) | 2.06 (+0.05) |
-| 5 | 2.33 (-0.04) | 2.06 (+0.05) |
+| 2 | 0.95 (+0) | 0.94 (+0) |
+| 3 | 1.38 (+0) | 1.52 (+0.01) |
+| 4 | 1.78 (+0) | 1.92 (-0.01) |
+| 5 | 1.78 (+0) | 1.92 (-0.01) |
 
 ## C) Scene
 
@@ -44,26 +44,26 @@ A fine partita — **netti** (Crescita): P 7.31 · O 5.54 · **spesi** al mercat
 | Scena | Protagonisti | Opposizione |
 |---|---|---|
 | 1 | 72.00% | 28.00% |
-| 2 | 54.00% | 46.00% |
-| 3 | 47.20% | 52.80% |
-| 4 | 38.80% | 61.20% |
-| 5 | 50.40% | 49.60% |
+| 2 | 61.60% | 38.40% |
+| 3 | 53.20% | 46.80% |
+| 4 | 58.80% | 41.20% |
+| 5 | 52.80% | 47.20% |
 
-Poste medie vinte: P **2.62** · O **2.38**
+Poste medie vinte: P **2.98** · O **2.02**
 
 **Rapporto scene vinte per partita (P-O su 5):**
 
-- 5-0: 2.80% (-2.8)
-- 4-1: 18.80% (+0)
-- 3-2: 33.20% (+0.4)
-- 2-3: 30.80% (+2.4)
-- 1-4: 12.00% (+0)
-- 0-5: 2.40% (+0)
+- 5-0: 10.40% (+0.4)
+- 4-1: 22.40% (-3.6)
+- 3-2: 32.40% (+0)
+- 2-3: 26.00% (+2.8)
+- 1-4: 7.60% (+0.4)
+- 0-5: 1.20% (+0)
 
 ## D) Meccaniche
 
-- **Figure comprate/partita:** P 2.33 · O 2.06
-  - distribuzione P (0/1/2/3): 3.60% / 13.20% / 43.20% / 26.80%
-  - distribuzione O (0/1/2/3): 4.00% / 13.20% / 56.00% / 26.80%
-- **Scope/partita:** P 3.12 · O 3.57
-- **Rese/partita:** 0.90 · **Jolly usati/partita:** 0.43 (cattura P 0.22 · cattura O 0.22)
+- **Figure comprate/partita:** P 1.78 · O 1.92
+  - distribuzione P (0/1/2/3): 3.20% / 28.40% / 55.20% / 13.20%
+  - distribuzione O (0/1/2/3): 2.00% / 22.80% / 56.00% / 19.20%
+- **Scope/partita:** P 2.89 · O 3.12
+- **Rese/partita:** 0.92 · **Jolly usati/partita:** 0.75 (cattura P 0.38 · cattura O 0.37)

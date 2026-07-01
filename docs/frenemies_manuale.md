@@ -119,7 +119,7 @@ Prima di cominciare, prepara i mazzi così:
 - togli entrambi i Jolly dal mazzo: uno lo tieni da parte come risorsa dei Protagonisti (fuori dal mazzo, disponibile dall'inizio — vedi Capitolo 5), l'altro resta fuori dalla partita;
 - restano quindi soltanto le carte numeriche, dall'Asso al 10, di ciascun seme: venti carte per lato.
 
-Venti carte bastano esattamente per cinque scene, perché ogni lato ne pesca quattro a scena. Tienilo a mente, perché è una regola con un peso strategico: quando il mazzo finisce, la partita finisce. Non si rimescolano mai gli scarti dentro il mazzo. Le figure comprate al mercato non entrano nel mazzo: vanno direttamente in mano (Capitolo 4), e la carta base che occuperebbero resta nel mazzo. Gli unici modi per aggiungere carte al mazzo sono quindi una sola volta per lato la carta della Ritirata strategica (lo vedremo nel Capitolo 3) e la carta che il Re recupera dagli scarti nelle scene 1-4 (nell'ultima scena finisce invece nella riserva). Il Jolly (Capitolo 5) non entra mai nel mazzo, è una risorsa a parte dei Protagonisti; l'unica carta che muove verso il mazzo è quella che un lato cede per afferrarlo, che torna in fondo al proprio mazzo.
+Venti carte bastano esattamente per cinque scene, perché ogni lato ne pesca quattro a scena. Tienilo a mente, perché è una regola con un peso strategico: quando il mazzo finisce, la partita finisce. Non si rimescolano mai gli scarti dentro il mazzo. Le figure comprate al mercato non entrano nel mazzo: vanno direttamente in mano (Capitolo 4), e la carta base che occuperebbero resta nel mazzo. Gli unici modi per aggiungere carte al mazzo sono quindi una sola volta per lato la carta della Ritirata strategica (lo vedremo nel Capitolo 3) e la carta numerica che il Re recupera dagli scarti nelle scene 1-4 (nell'ultima scena finisce invece nella riserva). Il Jolly (Capitolo 5) non entra mai nel mazzo, è una risorsa a parte dei Protagonisti; l'unica carta che muove verso il mazzo è quella che un lato cede per afferrarlo, che torna in fondo al proprio mazzo.
 
 ## 1.6 Che cosa significano i semi
 
@@ -654,7 +654,9 @@ Paola ha solo il fante in mano, nel piatto c'è un 10 di quadri che non può pre
 "Una vecchia conoscenza di Otto trattiene in chiacchiere il luogotenente della Loggia durante un ricevimento: lui si distrae, abbassa la guardia."
 {: .esempio }
 
-**Re, il deus ex machina.** Effetto: recuperi dalla pila degli scarti comuni una carta del suo stesso seme, senza togliere nulla dalla mano. Nelle scene 1-4 la carta recuperata si rimescola nel tuo mazzo; nell'ultima scena entra direttamente nella tua riserva, pronta per i colpi di scena. Se negli scarti non c'è alcuna carta di quel seme, l'effetto non fa nulla. Serve a recuperare una risorsa mirata all'ultimo momento. Narrativamente è un alleato fortissimo, un personaggio influente, un intervento quasi provvidenziale.
+**Re, il deus ex machina.** Effetto: recuperi dalla pila degli scarti comuni una carta **numerica** del suo stesso seme, senza togliere nulla dalla mano. Nelle scene 1-4 la carta recuperata si rimescola nel tuo mazzo; nell'ultima scena entra direttamente nella tua riserva, pronta per i colpi di scena — ed è lì che pesa, perché una carta alta in Riserva è decisiva nel duello finale. Se negli scarti non c'è alcuna carta numerica di quel seme, l'effetto non fa nulla. Serve a recuperare una risorsa mirata all'ultimo momento. Narrativamente è un alleato fortissimo, un personaggio influente, un intervento quasi provvidenziale.
+
+> Le figure, una volta giocate (che catturino, facciano scopa o si sacrifichino), **escono dal gioco**: non finiscono negli scarti comuni come le carte numeriche e non sono più recuperabili, nemmeno dal Re. Per questo il Re trova negli scarti solo numeri, e in Riserva vanno solo carte numeriche.
 
 "Un vecchio compagno di scavi di Aldo, che tutti credevano scomparso nel deserto, ricompare nel momento peggiore con una carovana armata e le mappe giuste."
 {: .esempio }
@@ -699,11 +701,11 @@ Usare il Jolly non è obbligatorio. Chi lo detiene può non usarlo affatto: **ch
 
 ## 5.4 Il peccato emerge: la stessa cattura dell'Opposizione (scene 2-4)
 
-Ricevuto il Jolly, l'Opposizione lo usa **allo stesso modo dei Protagonisti** (la meccanica è simmetrica): nel proprio turno seppellisce una carta in fondo al mazzo, afferra il Jolly e **cattura una sola carta** del piatto (valore elastico; se era l'unica rimasta è scopa) — anche per lei senza segnare punti. E nel giocarlo **mette in scena il peccato**: impugnare la stessa arma sleale fa riaffiorare il compromesso di cui uno dei protagonisti si è macchiato, incrinando l'alleanza tra i due.
+Ricevuto il Jolly, l'Opposizione lo usa per catturare come i Protagonisti, ma con un'**asimmetria**: mentre i Protagonisti *seppelliscono* la carta che cedono (e quindi la riavranno, in scena o in riserva), l'Opposizione la **scarta**. Afferrare il Jolly ha così per lei un **costo**: il suo mazzo cala di una carta, cioè una in meno verso la riserva dei colpi di scena. Nel proprio turno scarta una carta, afferra il Jolly e **cattura una sola carta** del piatto (valore elastico; se era l'unica rimasta è scopa) — senza segnare punti. E nel giocarlo **mette in scena il peccato**: impugnare la stessa arma sleale fa riaffiorare il compromesso di cui uno dei protagonisti si è macchiato, incrinando l'alleanza tra i due. Il perché dell'asimmetria: i Protagonisti, usando il Jolly, pagano già armando l'Opposizione (le passano la carta); l'Opposizione, che è l'ultima a detenerlo e non arma nessuno, paga invece con la carta scartata.
 
 L'Opposizione può farlo **solo nelle scene 2, 3 o 4**, e **mai nella stessa scena** in cui i Protagonisti hanno usato il Jolly: il peccato riemerge *dopo*, in una scena successiva. Una volta giocato, il Jolly è speso.
 
-Due scene dopo, l'Opposizione seppellisce una carta, afferra il Jolly e cattura la carta dei Protagonisti che pesava di più nel piatto: quel che resta ora la mette avanti nella posta. Nel narrarlo fa affiorare cosa aveva fatto Vera con quel contatto: davanti a Otto cala il gelo.
+Due scene dopo, l'Opposizione scarta una carta (il suo mazzo cala di 1), afferra il Jolly e cattura la carta dei Protagonisti che pesava di più nel piatto: quel che resta ora la mette avanti nella posta. Nel narrarlo fa affiorare cosa aveva fatto Vera con quel contatto: davanti a Otto cala il gelo.
 {: .esempio }
 
 
@@ -724,39 +726,34 @@ La mano finale si sceglie dopo il mercato. Una figura comprata all'ultimo mercat
 - sceglie le carte che completano la mano a 4 (le figure già in mano sono comunque dentro);
 - tiene le altre da parte come Riserva.
 
+In Riserva vanno **solo carte numeriche**: le figure restano in mano e si giocano in scena (del resto una figura, una volta usata, esce dal gioco). La scelta è **strategica**: tenere le carte alte in mano per vincere il primo conteggio ed essere il difensore, oppure metterle in Riserva per vincere il duello dei colpi di scena. Bastano poche carte ben scelte — una media per superare il muro e aprire, una alta per vincere il rilancio.
+
 La Riserva alimenta i colpi di scena.
 
-## 6.2 I colpi di scena
+## 6.2 I colpi di scena — il duello a rilancio
 
-Dopo aver determinato l'esito della scena e averlo narrato come in tutte le precedenti inizia la fase dei colpi di scena.
-Ciascun giocatore recupera dalla Riserva tutte le carte, quindi si continua a giocare a turni strettamente alterni. 
+Dopo aver determinato l'esito apparente della scena e averlo narrato come in tutte le precedenti, il **piatto si svuota** e comincia la fase dei colpi di scena: un duello a rilancio con le carte della Riserva.
 
-Comincia il lato che aveva perso la posta.
+Chi ha vinto il primo conteggio è il **difensore**; l'altro è lo **sfidante**, che apre. Il difensore parte protetto da un **muro** pari al **numero di scene che ha vinto** (da 1 a 5): la vittoria dell'ultima scena vale 1, quindi ogni scena vinta è uno strato in più da scavalcare. È la forza che ti sei costruito nella storia a difenderti.
 
-Le regole di questa fase sono diverse dal resto del gioco:
+Le regole del duello:
 
-- **Gioco obbligatorio:** nel tuo turno, finché hai carte in riserva, devi giocarne una. La carta entra nel piatto e aggiunge il suo valore al tuo totale.
-- **Eliminazione:** la carta che giochi può eliminare dal piatto una carta di seme avversario di valore pari o inferiore al suo. La carta eliminata va negli scarti del suo proprietario (non è una presa, non vale punti). La tua carta resta nel piatto. Puoi colpire solo carte dei semi avversari, mai dei tuoi.
-- **Alternanza stretta:** i colpi si alternano sempre, e nessun lato gioca due colpi consecutivi. Dopo il tuo colpo tocca all'avversario; se lui non ha più riserva, la fase finisce subito e tu non giochi un secondo colpo di fila. Chi comincia gioca quindi al massimo una carta in più dell'altro, e la riserva eventualmente in eccesso resta inutilizzata.
+- **Apertura:** lo sfidante cala dalla Riserva una carta di valore **maggiore o uguale al muro** e narra il colpo di scena. Se non ha nemmeno una carta all'altezza del muro, non apre e la missione resta al difensore.
+- **Rilancio:** a turni alterni, ognuno prende la testa calando una carta di valore **maggiore o uguale** a quella in cima. **Pareggiare ribalta**: nemmeno un 10 è al sicuro, glielo pareggia l'altro 10.
+- **Fine:** chi non può più superare (nessuna carta all'altezza in Riserva), o rinuncia, perde. **Vince la missione l'ultimo che è riuscito a calare.**
 
-In questa fase non si fanno prese né scope: le uniche azioni sono mettere la carta nel piatto ed, eventualmente, eliminarne una avversaria di valore pari o inferiore. Le figure giocate adesso contano solo per il loro valore, senza effetto speciale.
+In questa fase non si fanno prese, scope o eliminazioni: contano solo i valori che si rincorrono. Le figure non partecipano (in Riserva ci sono solo numeri). Dopo ogni carta calata si narra il colpo di scena, una verità che rilancia sopra la precedente — come le cose non fossero come sembravano.
 
-Come al solito dopo aver giocato una carta si deve narrare il colpo di scena corrispondete al seme e al valore della carta stessa.
-
-I colpi di scena finiscono quando, dopo un colpo, tocca a un lato che non ha più riserva. Poi si fa il conteggio definitivo.
-
-Al primo conteggio l'Opposizione sembra avere la meglio. Tocca prima ai Protagonisti, che stanno perdendo: Otto cala dalla riserva un 7 di Cuori e con quello fa sparire un 5 di Quadri dal tavolo, "Mi spiace Hector, ma il manufatto tieni tra le mani, non è altro che una volgare replica messa qui per ingannare gli sciocchi come te". Il 7 di Cuori resta nel piatto, il 5 di Quadri finisce negli scarti.
+Al primo conteggio i Protagonisti difendono con un muro di 3 (hanno vinto 3 scene). Apre l'Opposizione con un 6 di Quadri (6 è ≥ 3): "il funzionario che credevano neutralizzato è ancora al suo posto". Rispondono i Protagonisti con un 8 di Picche; l'Opposizione cala un 8 di Fiori e **pareggia, ribaltando**. I Protagonisti non hanno nulla di valore 8 o più e si fermano: vince chi ha calato per ultimo, l'Opposizione. Nemmeno l'8 dei Protagonisti era al sicuro.
 {: .esempio }
 
 ## 6.3 Il conteggio definitivo
 
-Al termine dell'ultima scena, dopo i colpi di scena, si fa il conteggio finale, che decide due cose distinte.
+La missione la decide il **duello dei colpi di scena**: chi cala per ultimo la vince. Il primo conteggio dei semi (Cuori più Picche contro Fiori più Quadri) serve solo a stabilire l'**esito apparente** e chi difende; l'esito **reale** può ribaltarlo — chi sembrava perdere la scena può vincere la missione dalla Riserva.
 
-La prima è la **vittoria del piatto**: Cuori più Picche contro Fiori più Quadri. Chi ha il totale più alto vince il piatto finale, e conquista l'esito esterno della missione.
+**Se il primo conteggio è pari**, prima del duello si decide chi difende con una facoltà legata alla Crescita: il lato con **più Crescita** (a pari Crescita, il lato con l'**iniziativa**) può **azzerare tutta la propria Crescita** per aggiudicarsi il primo conteggio e difendere, oppure **rinunciare**, cedendo così la vittoria della scena all'altro (che difende senza spendere nulla). Se chi ha diritto non ha Crescita da spendere, di fatto cede; se nessuno esercita, il pareggio va all'Opposizione. In ogni caso, deciso il difensore, il duello si gioca comunque.
 
-In caso di pareggio nel piatto, a decidere è la Crescita, cioè i punti non spesi al mercato: il lato che ne ha di più la spende tutta (i suoi punti vanno a zero) per aggiudicarsi il piatto, e quindi la missione; se la Crescita è pari, anche zero a zero, il piatto va comunque ai protagonisti. Quando sono i protagonisti a vincere il pareggio, in un modo o nell'altro, l'esito è sempre Per il rotto della cuffia: vincono la missione di strettissima misura.
-
-La seconda cosa che si determina è chi ha vinto ai punti complessivi. Ma di come piatto e punti si combinano nel finale parla il prossimo capitolo.
+L'altra cosa che si guarda è chi ha vinto ai punti complessivi (la Crescita). Di come Missione e Crescita si combinano nel finale parla il prossimo capitolo.
 
 ---
 
@@ -1228,6 +1225,8 @@ Si fa il primo conteggio. Nel piatto restano il 5♦ e il 2♠: Opposizione 5, P
 
 <div class="fiction"><span class="chi">Paola narra</span>Vera ha l'arma puntata, ma Blackwood non ha tutti i torti: da sola, con Otto e Fatima in ginocchio sotto i fucili, non può davvero farne niente. Lentamente abbassa il revolver. I mercenari richiudono il Sole di Mezzanotte in uno scrigno di piombo, perché neppure la sua luce possa filtrare, e si rimettono in marcia verso l'alto. Quando riemergono dal sottosuolo il sole è ormai alto nel cielo, l'eclissi è passata da un pezzo, e la Loggia porta via il suo trofeo. Sembra finita: il Sole di Mezzanotte esce da Zerzura nelle mani sbagliate.</div>
 
+> **Nota (v1.38).** Questa partita d'esempio fu giocata con la vecchia meccanica dei colpi di scena (calo obbligatorio della riserva ed eliminazione di una carta avversaria). Dalla v1.38 i colpi sono un **duello a rilancio** (vedi §6.2): la narrazione qui sotto resta valida, ma le mosse meccaniche vanno rilette con la regola nuova. L'esempio sarà rifatto con un nuovo seed-vetrina.
+
 Ma il primo conteggio è solo l'esito apparente. Ora si rivelano i **colpi di scena**, una carta della riserva alla volta, a turni strettamente alterni, e a ognuno la verità si scopre diversa da come sembrava. Comincia chi perde, i Protagonisti.
 
 **Primo colpo. Paola cala dalla riserva il 7♥ ed elimina il 5♦:** la presa di ferro della Loggia svanisce. Il 7♥ resta nel piatto, il 5♦ va negli scarti.
@@ -1430,11 +1429,11 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Carta d'asta.** La carta giocata coperta nell'asta. Quella del vincitore resta scoperta sul tavolo e si rigioca come sua ultima carta del round; quella del perdente torna nella sua mano.
 
-**Colpi di scena.** La coda della quinta scena: dopo il primo conteggio si gioca a turni strettamente alterni calando le carte tenute in riserva. Ogni carta entra nel piatto, somma il suo valore al proprio totale e può eliminare una carta di seme avversario di valore pari o inferiore. Nessun lato gioca due colpi di fila: la fase finisce appena, dopo un colpo, tocca a un lato senza riserva.
+**Colpi di scena.** La coda della quinta scena: dopo il primo conteggio il piatto si svuota e si gioca un duello a rilancio con le carte tenute in riserva. Chi ha vinto il conteggio difende dietro un muro pari alle scene che ha vinto; l'altro apre calando una carta di valore ≥ al muro, poi a turni alterni si prende la testa con una carta ≥ a quella in cima (pareggiare ribalta). Vince la missione l'ultimo che riesce a calare.
 
 **Concedere la scena (arrendersi).** Nelle scene 1-4, chi non ha l'iniziativa e ha una sola carta in mano può rinunciare a giocarla e cedere la posta. In due modi, una volta ciascuno per lato: la ritirata strategica (la carta torna nel proprio mazzo e farà numero per la quinta scena) e la resa onorevole (vale un punto e la carta finisce negli scarti comuni).
 
-**Conteggio definitivo.** Il conteggio finale della partita, fatto quando i colpi di scena sono finiti (la fase si chiude appena, dopo un colpo, tocca a un lato senza riserva): si sommano Cuori e Picche contro Quadri e Fiori. Chi ha il totale più alto vince il piatto e quindi la missione. In pareggio decide la Crescita (i punti non spesi): chi ne ha di più la spende tutta per aggiudicarsi il piatto, a parità di Crescita vince il lato dei protagonisti, e quando il pareggio lo vincono loro l'esito è sempre Per il rotto della cuffia.
+**Conteggio definitivo.** L'esito della missione, deciso dal duello dei colpi di scena: la vince chi cala per ultimo. Il primo conteggio dei semi (Cuori e Picche contro Quadri e Fiori) dà solo l'esito apparente e stabilisce chi difende. Se il primo conteggio è pari, chi ha più Crescita (a pari, chi ha l'iniziativa) può azzerarla per vincere il conteggio e difendere, oppure cedere all'altro; se nessuno esercita, vince l'Opposizione.
 
 **Continuità.** Il principio per cui ogni scena riparte dall'esito di quella precedente: la situazione dei protagonisti è la conseguenza di come è andata la posta. Anche il piatto resta sul tavolo tra una scena e l'altra.
 
@@ -1460,7 +1459,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Introdurre.** Giocare una carta nel piatto senza catturare nulla: si mette in campo un proprio elemento (un vantaggio futuro per i Protagonisti, un ostacolo per l'Opposizione). Introdurre non annulla: non può cancellare un elemento avversario già in gioco.
 
-**Jolly.** L'unica carta jolly: una risorsa dei Protagonisti, fuori dal mazzo, disponibile dall'inizio. Non si usa nell'asta e usarlo non dà punti a nessuno. Ha valore elastico ma cattura una sola carta. I Protagonisti lo giocano nelle scene 1-3 come cattura sleale (seppellendo una carta della mano); poi passa all'Opposizione, che nelle scene 2-4 lo usa allo stesso modo, catturando una carta (Capitolo 5).
+**Jolly.** L'unica carta jolly: una risorsa dei Protagonisti, fuori dal mazzo, disponibile dall'inizio. Non si usa nell'asta e usarlo non dà punti a nessuno. Ha valore elastico ma cattura una sola carta. I Protagonisti lo giocano nelle scene 1-3 come cattura sleale (seppellendo una carta della mano, che così torna in gioco); poi passa all'Opposizione, che nelle scene 2-4 lo usa per catturare una carta, ma scartando la carta ceduta (il suo mazzo cala di 1: è il suo costo) (Capitolo 5).
 
 **Maggioranza di seme.** In tre e quattro giocatori, chi controlla la mano di un lato per la scena è chi ha più carte del proprio seme, valutato a inizio scena.
 
@@ -1633,4 +1632,4 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 
 ---
 
-*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.37, che resta la fonte di verità del regolamento.*
+*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.39, che resta la fonte di verità del regolamento.*

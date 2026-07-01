@@ -398,7 +398,7 @@ Quando la presa lascia il piatto vuoto: togli all'avversario **ogni** risorsa in
 
 > **Esempio:** Scopa con un 6 di Picche → Frank disarma i due sicari nel parcheggio nel giro di dieci secondi. La strada è libera, la situazione è ribaltata.
 
-> **Sacrificio di una figura (v1.6, esteso v1.23, corretto v1.26, punteggio a gettoni v1.32):** una figura non resta **mai** nel piatto. Se non ha nulla da catturare si **sacrifica**: vale **1 punto** (come una resa onorevole) e la sua carta finisce negli **scarti comuni**, lasciando sul tavolo le eventuali carte fuori portata. Una **scopa** è sempre e solo una **presa che lascia il piatto vuoto** (§17): una figura che non cattura nulla non può farne una, nemmeno quando il piatto è vuoto. L'effetto speciale della figura scatta comunque. Narrativamente è l'alleato che si immola, o che risulta meno incisivo del previsto.
+> **Sacrificio di una figura (v1.6, esteso v1.23, corretto v1.26, punteggio a gettoni v1.32, fuori gioco v1.38):** una figura non resta **mai** nel piatto. Se non ha nulla da catturare si **sacrifica**: vale **1 punto** (come una resa onorevole) e la sua carta **esce dal gioco** (§16, non va negli scarti comuni), lasciando sul tavolo le eventuali carte fuori portata. Una **scopa** è sempre e solo una **presa che lascia il piatto vuoto** (§17): una figura che non cattura nulla non può farne una, nemmeno quando il piatto è vuoto. L'effetto speciale della figura scatta comunque. Narrativamente è l'alleato che si immola, o che risulta meno incisivo del previsto.
 
 ## 16. Regole di presa
 
@@ -412,7 +412,9 @@ Le prese seguono la logica della Scopa tradizionale:
 
 **Cattura di una carta del proprio lato.** Se sei costretto a prendere una carta del tuo stesso lato (stesso schieramento), raccontalo come un'azione maldestra in cui le due anime del lato si sono ostacolate o annullate a vicenda: **Cuori e Picche** per i Protagonisti, **Fiori e Quadri** per l'Opposizione.
 
-**Cattura flessibile delle figure (v1.6).** Una figura (Fante, Regina, Re) cattura in modo più ampio di una carta numerica: prende dal piatto un gruppo di carte la cui somma è **minore o uguale** al suo valore (Fante 8, Regina 9, Re 10), comprese eventuali carte dei propri semi. Anche per le figure la cattura è obbligatoria: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 1 punto come ogni altra (vedi §17). Se invece nessuna carta del piatto è alla sua portata, oppure il piatto è vuoto, la figura **non resta sul tavolo** ma si **sacrifica** (§15.3): va tra le prese di chi la gioca come **presa da 1 punto** (come una resa), lasciando nel piatto le eventuali carte fuori portata. Una figura che non cattura non fa mai scopa. L'effetto speciale della figura (§21) scatta in ogni caso.
+**Cattura flessibile delle figure (v1.6).** Una figura (Fante, Regina, Re) cattura in modo più ampio di una carta numerica: prende dal piatto un gruppo di carte la cui somma è **minore o uguale** al suo valore (Fante 8, Regina 9, Re 10), comprese eventuali carte dei propri semi. Anche per le figure la cattura è obbligatoria: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 1 punto come ogni altra (vedi §17). Se invece nessuna carta del piatto è alla sua portata, oppure il piatto è vuoto, la figura **non resta sul tavolo** ma si **sacrifica** (§15.3): vale **1 punto** (come una resa), lasciando nel piatto le eventuali carte fuori portata. Una figura che non cattura non fa mai scopa. L'effetto speciale della figura (§21) scatta in ogni caso.
+
+**Le figure escono dal gioco quando usate *(v1.38)*.** Una figura giocata — che catturi, faccia scopa o si sacrifichi — non finisce negli **scarti comuni** come le carte numeriche, ma **esce dal gioco**: messa da parte, non più recuperabile da nulla (in particolare il Re, §21, non la ripesca mai). Le carte **numeriche** catturate vanno invece negli scarti comuni come sempre. Conseguenza: negli scarti comuni non ci sono mai figure, e in **riserva** (§23) vanno solo numeri.
 
 ## 17. Gestione di prese e scope
 
@@ -536,7 +538,7 @@ Comprare una figura significa **preparare l'ingresso di un PNG importante e pote
 
 ### Re — Il deus ex machina
 
-**Effetto meccanico (v1.27):** **recupera** dalla pila degli **scarti comuni** una carta del **suo stesso seme** (quello del Re giocato). La carta non sostituisce nulla, la **mano resta invariata**: nelle scene 1-4 la carta recuperata si **rimescola nel mazzo** di chi gioca il Re, nell'ultima scena entra direttamente nella sua **riserva** (alimenta i colpi di scena). Chi gioca il Re sceglie quale carta del suo seme recuperare; se negli scarti non c'è alcuna carta di quel seme, l'effetto non fa nulla. L'effetto scatta comunque, anche quando il Re si sacrifica.
+**Effetto meccanico (v1.27, v1.38):** **recupera** dalla pila degli **scarti comuni** una carta **numerica** del **suo stesso seme** (quello del Re giocato). La carta non sostituisce nulla, la **mano resta invariata**: nelle scene 1-4 la carta recuperata si **rimescola nel mazzo** di chi gioca il Re, nell'ultima scena entra direttamente nella sua **riserva** (alimenta i colpi di scena). Chi gioca il Re sceglie quale carta del suo seme recuperare; se negli scarti non c'è alcuna carta numerica di quel seme, l'effetto non fa nulla. L'effetto scatta comunque, anche quando il Re si sacrifica. *(Dalla v1.38 il Re recupera solo carte numeriche: le figure escono dal gioco quando usate — §16 — quindi non sono mai negli scarti. Nell'ultima scena questo recupero è forte: mette una carta alta in riserva, decisiva nel duello dei colpi di scena.)*
 
 **Funzione:** recupero mirato, una carta in più nel mazzo o nella riserva.
 
@@ -568,9 +570,9 @@ I Protagonisti possono usarlo **solo nelle scene 1-3**. È il **peccato**: un su
 
 Il costo della scorciatoia non è in punti: appena i Protagonisti usano il Jolly, la carta **passa all'Opposizione**. In pratica si **consegna al nemico la stessa arma sporca**, che lui userà a modo suo (§22.4) — e nel farlo il peccato dei Protagonisti verrà alla luce.
 
-### 22.4 — L'uso dell'Opposizione: la stessa cattura, il peccato emerge (scene 2-4) *(v1.37)*
+### 22.4 — L'uso dell'Opposizione: la cattura costa una carta, il peccato emerge (scene 2-4) *(v1.37, v1.39)*
 
-Ricevuto il Jolly, l'Opposizione lo usa **allo stesso modo dei Protagonisti** (meccanica simmetrica): nel proprio turno seppellisce una carta della mano in fondo al mazzo, afferra il Jolly e **cattura una sola carta** del piatto (valore elastico; se era l'unica rimasta è scopa). Anche questo uso **non dà punti**. Nel giocarlo, l'Opposizione **mette in scena il peccato**: impugnare la stessa arma sleale fa riaffiorare il compromesso di cui uno dei protagonisti si è macchiato, e incrina l'alleanza. *(Fino alla v1.36 l'Opposizione usava invece il Jolly come "spinta extra" — presa→scopa; dalla v1.37 la meccanica è la stessa dei Protagonisti.)*
+Ricevuto il Jolly, l'Opposizione lo usa per catturare, come i Protagonisti, ma con un'**asimmetria** *(v1.39)*: mentre il Protagonista **seppellisce** in fondo al mazzo la carta che cede (e quindi la riavrà, in scena o in riserva), l'Opposizione la **scarta**. Per O afferrare il Jolly ha quindi un **costo**: il suo mazzo **cala di una carta** (una in meno verso la riserva dei colpi di scena). Nel proprio turno O scarta una carta della mano, afferra il Jolly e **cattura una sola carta** del piatto (valore elastico; se era l'unica rimasta è scopa). Anche questo uso **non dà punti**. Nel giocarlo, l'Opposizione **mette in scena il peccato**: impugnare la stessa arma sleale fa riaffiorare il compromesso di cui uno dei protagonisti si è macchiato, e incrina l'alleanza. *(Fino alla v1.36 l'Opposizione usava il Jolly come "spinta extra"; dalla v1.37 cattura come i Protagonisti; dalla v1.39 la carta ceduta la scarta, non la seppellisce — è il prezzo del peccato per chi non deve armare nessuno.)*
 
 Vincoli:
 
@@ -604,39 +606,45 @@ La mano finale si sceglie **dopo il mercato**. Una figura comprata all'ultimo me
 - Si scelgono le carte che completano la mano a **4** (le figure comprate sono già dentro)
 - Le altre vengono tenute da parte come **riserva**
 
-La riserva alimenta i colpi di scena (§24), ma è anche la fonte da cui si pesca quando un effetto lo richiede e il mazzo è ormai esaurito: in particolare la Regina avversaria (§21) rimpiazza dalla riserva la carta che costringe a scartare.
+**In riserva vanno solo carte numeriche *(v1.38)*:** le figure non possono essere messe in riserva (restano in mano e si giocano in scena). Del resto una figura, una volta usata, esce dal gioco (§16): non finisce mai né negli scarti né in riserva.
 
-## 24. Colpi di scena finali
+**La riserva è la scelta strategica dell'ultima scena *(v1.38)*:** giocare le carte alte nella scena (per vincere il primo conteggio ed essere il difensore, §24) oppure tenerle in riserva (per vincere il duello dei colpi di scena). Bastano poche carte ben scelte: una **media** per superare il muro e aprire, una **alta** per vincere il rilancio.
 
-Dopo il primo conteggio dell'ultima scena si giocano i **colpi di scena**: si continua a giocare a **turni strettamente alterni** usando le carte tenute in **riserva**. Inizia il lato che sta **perdendo** (in parità, i Protagonisti; se la scena si era chiusa con una scopa a piatto vuoto, parte chi *non* l'ha fatta).
+La riserva alimenta i colpi di scena (§24), ed è anche la fonte da cui si pesca quando un effetto lo richiede e il mazzo è ormai esaurito: in particolare la Regina avversaria (§21) rimpiazza dalla riserva la carta che costringe a scartare.
 
-**Gioco obbligatorio (v1.3):** nel tuo turno, finché hai carte in riserva, **devi** giocarne una. La carta entra nel **piatto** e aggiunge il suo valore al tuo totale.
+## 24. Colpi di scena finali — il duello a rilancio *(v1.38)*
 
-**Eliminazione (v1.3):** la carta che giochi può **eliminare** dal piatto **una** carta di **seme avversario** di valore **pari o inferiore** al valore della carta giocata. La carta eliminata va negli **scarti** del suo proprietario (non è una presa). La tua carta **resta** nel piatto. Si possono colpire solo carte dei semi avversari, mai dei propri. *(Sostituisce la regola v1.1, in cui si sostituiva una carta avversaria di valore maggiore o uguale: ora la tua carta ne abbatte una più debole e resta sul tavolo.)*
+Dopo il **primo conteggio** dell'ultima scena (i totali dei semi, come in ogni scena) si determina e si **narra l'esito apparente**. Poi il **piatto si svuota** e si gioca il duello dei colpi di scena con le carte tenute in **riserva** (solo numeriche, §23).
 
-Non si fanno prese o scope in questa fase: le uniche azioni sono mettere la carta nel piatto ed eventualmente eliminarne una avversaria di valore ≤. Le figure giocate ora contano solo per il loro **valore**, senza effetto speciale.
+**Difensore e sfidante.** Chi ha vinto il primo conteggio è il **difensore**; l'altro è lo **sfidante**, che apre. Il difensore parte protetto da un **muro** pari al **numero di scene che ha vinto** (1-5): la vittoria dell'ultima scena vale 1, quindi ogni scena vinta è uno strato in più da scavalcare. Tematicamente: la forza che ti sei costruito nella vicenda è ciò che il nemico deve superare per ribaltarti.
 
-**Alternanza stretta e fine (v1.28):** i colpi si **alternano strettamente** e **nessun lato gioca due colpi consecutivi**. Dopo il colpo di un lato tocca all'altro; se l'altro **non ha più riserva**, la fase **finisce subito** (conteggio definitivo) e **non** si torna indietro a far giocare di nuovo il primo lato. Conseguenza: il lato che inizia (chi perde il primo conteggio) gioca **al massimo una carta in più** dell'avversario, e l'eventuale riserva in eccesso **resta inutilizzata**. *(Prima, v1.3, la fase finiva solo quando entrambe le riserve erano esaurite e il lato con più carte le giocava tutte di fila: con l'alternanza stretta non è più così.)*
+**Il rilancio (≥).** Lo sfidante **apre** calando dalla riserva una carta di valore **≥ al muro**, e narra il colpo di scena. Poi, a **turni alterni**, ognuno prende la testa calando una carta di valore **maggiore o uguale** a quella in cima (**pareggiare ribalta**: nemmeno un 10 è sicuro, glielo pareggia l'altro 10). Chi **non può** (nessuna carta ≥ in riserva) o **rinuncia**, perde: vince la missione **l'ultimo che è riuscito a calare**. Se lo sfidante non ha nemmeno una carta ≥ al muro, non apre e la missione resta al difensore.
+
+In questa fase non si fanno prese, scope, eliminazioni: contano **solo i valori** che si rincorrono. Le figure non partecipano (non possono stare in riserva).
 
 **Struttura narrativa:**
 
-1. Dopo le 4 carte a testa si fa il **primo conteggio** come in ogni scena: si determina e si **narra l'esito apparente** (lo racconta chi ha perso la posta, §18). Sembra finita.
-2. Poi i colpi di scena si rivelano **una carta alla volta**, e a ognuno si narra come le cose non fossero come apparivano.
-3. Quando le riserve sono finite → **conteggio definitivo**: solo allora si sa se la missione è riuscita o fallita.
+1. Primo conteggio → si **narra l'esito apparente** (lo racconta chi ha perso, §18). Sembra finita.
+2. I colpi di scena si rivelano **una carta alla volta**, e a ognuno si narra come le cose non fossero come apparivano — una verità che rilancia sopra la precedente.
+3. Quando nessuno può più superare → **conteggio definitivo**: solo allora si sa se la missione è riuscita o fallita.
 
-> **Esempio:** Primo conteggio: l'Opposizione sembra avere la meglio. Tocca prima ai Protagonisti, che perdono: Skunk cala dalla riserva un 7 di Cuori e con quello fa sparire un 5 di Quadri dal tavolo — "il meccanico che li ha venduti ai sicari era un uomo di Jorge". Il 7♥ resta nel piatto, il 5♦ finisce negli scarti. Risponde l'Opposizione, poi di nuovo i Protagonisti, a turni strettamente alterni: appena tocca a un lato rimasto senza riserva, la fase si chiude.
+> **Esempio:** Primo conteggio: i Protagonisti sembrano avere la meglio, difendono con un muro di 3 (hanno vinto 3 scene). Apre l'Opposizione: cala dalla riserva un 6 di Quadri (6 ≥ 3) — "il funzionario corrotto non era stato neutralizzato". Rispondono i Protagonisti con un 8 di Picche. L'Opposizione cala un 8 di Fiori: **pareggia e ribalta**. I Protagonisti non hanno nulla ≥ 8 e si fermano: vince l'Opposizione, che ha calato per ultimo. Nemmeno l'8 dei Protagonisti era al sicuro.
 
 ## 25. Conteggio finale
 
-Al termine dell'ultima scena (dopo gli eventuali colpi di scena):
+Al termine dell'ultima scena:
 
-**Vittoria del piatto:** Cuori + Picche vs Fiori + Quadri. Chi ha il totale più alto vince il piatto finale → conquista l'esito esterno della missione.
+**La missione la decide il duello *(v1.38)*.** Il primo conteggio dei semi (Cuori + Picche vs Fiori + Quadri) determina solo l'**esito apparente** e chi difende; l'esito **reale** della missione è chi vince il **duello dei colpi di scena** (§24) — l'ultimo che riesce a calare. Un finale può quindi **ribaltare** l'apparenza: chi sembrava perdere la scena può vincere la missione dalla riserva.
 
-**Tie-break (in caso di pareggio) *(v1.29)*:** se il piatto finale è pari (totale Protagonisti = totale Opposizione), a decidere è la **Crescita** (i punti non spesi al mercato).
+**Pareggio nel primo conteggio — la facoltà della Crescita *(v1.38)*.** Se i totali dei semi sono **pari**, prima del duello si decide chi difende con la **facoltà di spendere la Crescita**: un lato può **azzerare tutta la propria Crescita** (i punti non spesi vanno a 0) per **aggiudicarsi il primo conteggio** e difendere. Ha la facoltà, nell'ordine:
 
-1. Il lato con **più Crescita** può **spenderla tutta** (i suoi punti vanno a 0) per aggiudicarsi il piatto, e quindi la missione, nonostante il pareggio.
-2. Se la Crescita è **pari** (anche 0-0), il piatto va comunque ai **Protagonisti**.
-3. Quando il pareggio lo vincono i **Protagonisti** (sia spendendo la Crescita, sia per parità di punti), l'esito è sempre **«Per il rotto della cuffia»**: vincono la missione di strettissima misura.
+1. il lato con **più Crescita**; a **pari Crescita**, il lato con l'**iniziativa** dell'ultima scena;
+2. chi ha la facoltà può **esercitarla** (spende, vince e difende) **oppure rinunciare**, e così **cede la vittoria dell'ultima scena all'altro** (che difende senza spendere nulla);
+3. se chi ha diritto non ha Crescita da spendere, di fatto cede all'altro; se nessuno esercita, il pareggio va all'**Opposizione** (il mondo è contro i protagonisti).
+
+In ogni caso, deciso il difensore, il **duello dei colpi di scena si gioca comunque** e stabilisce l'esito reale.
+
+**La Crescita come asse narrativo.** I punti non spesi restano il secondo piano di lettura del finale (aiuto chiamato / nome che ci si è fatti, §26), oltre a fornire — solo in caso di pareggio — la facoltà qui sopra. *(Fino alla v1.37 la Crescita era il tie-break di un piatto finale pari; dalla v1.38 il piatto non decide più la missione, la decide il duello, e la Crescita fa da spareggio solo sul ruolo di difensore.)*
 
 ---
 
@@ -948,6 +956,19 @@ In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, 
 
 # REGISTRO MODIFICHE
 
+## v1.39 (luglio 2026) — il Jolly dell'Opposizione: la carta ceduta si scarta (asimmetria)
+
+1. **§22.4: per l'Opposizione afferrare il Jolly costa una carta.** Mentre i Protagonisti **seppelliscono** in fondo al mazzo la carta che cedono per afferrare il Jolly (la riavranno, in scena o in riserva), l'Opposizione la **scarta**: il suo mazzo cala di 1, cioè una carta in meno verso la riserva dei colpi di scena. Motivazione (Saverio): P che usa il Jolly ha già un costo (arma O passandogli la carta), mentre O è l'ultimo detentore e non arma nessuno; senza questo, per O il Jolly era tutto vantaggio. Lo scarto dà a O un prezzo, coerente col tema del peccato.
+2. **Propagazione (stesso commit).** Motore `index.html`: `avviaUsaJolly` (ramo O → `scarta(x)` invece di `L.mazzo.push(x)`) e `eseguiJollyIA` (idem). `REGOLE_IA`, KB §22.4 + registro + footer, manuale §5. Driver `test/partita_smart.js`: politica del Jolly di O invariata nello spirito (lo usa per vincere la posta, catturando la carta avversaria più alta), ora con il costo dello scarto. **Bilanciamento:** missione **P 52,4 / O 47,6** (dal 48/52 della v1.38): il costo sposta il leggero vantaggio da O a P, scelta di design (l'edge va ai Protagonisti). **Collaudo:** suite core verde.
+
+## v1.38 (luglio 2026) — i colpi di scena diventano un duello a rilancio; le figure escono dal gioco
+
+1. **§24: colpi di scena = duello a rilancio.** Finito il primo conteggio, il piatto si svuota. Chi ha vinto il conteggio **difende** dietro un **muro = numero di scene vinte**; l'altro **sfida** e apre calando dalla riserva una carta di valore **≥ muro**. A turni alterni si prende la testa con una carta **≥** a quella in cima (**pareggiare ribalta**); vince la missione l'ultimo che riesce a calare. Spariscono l'eliminazione e il vincolo di seme della vecchia fase (v1.3/v1.28): contano solo i valori. Motivazione: rendere l'ultima scena drammatica e non ininfluente, con una scelta vera (mano vs riserva) e ribaltoni possibili.
+2. **§25: la missione la decide il duello**, non più il piatto. Il primo conteggio dà solo l'esito apparente e chi difende. **Rimosso il tie-break Crescita del piatto (v1.29)**; al suo posto, in caso di **pareggio nel primo conteggio**, una **facoltà**: chi ha più Crescita (a pari, chi ha l'iniziativa) può **azzerarla per vincere il conteggio e difendere**, oppure rinunciare cedendo la scena all'altro; se nessuno esercita, il pareggio va all'Opposizione. La Crescita resta l'asse narrativo del finale.
+3. **§23: in riserva solo carte numeriche.** Le figure non si mettono in riserva (restano in mano). La scelta della mano finale (alte in mano per il conteggio, o in riserva per il duello) diventa strategica.
+4. **§16/§21: le figure escono dal gioco quando usate.** Una figura giocata (cattura, scopa o sacrificio) non va negli scarti comuni ma **fuori dal gioco**, non più recuperabile. Di conseguenza il **Re** recupera dagli scarti solo carte **numeriche** del suo seme (nell'ultima scena un recupero forte: alimenta la riserva del duello).
+5. **Propagazione (stesso commit).** Motore `index.html`: nuova fase colpi (`avviaColpi`/`rColpi`/`eseguiColpo`/`prossimoColpo`, comparatore `COLPO_RIBALTA`), schermata `pareggio_finale` con la facoltà (`rPareggioFinale`/`risolviPareggio`), `conteggioDefinitivo` che fissa `missione`, `rFinale` con esito dal duello, helper `scarta()` (figure→`fuoriGioco`), guardia sul Re, `iaColpi` a rilancio. `REGOLE`, `REGOLE_IA`, prompt della mano finale. Driver `test/partita_smart.js` (mano finale bilanciata, colpi a rilancio, gestione pareggio, metrica ribaltone) e i driver di collaudo (`test_partita`/`test_solo`/`test_riprova`/`test_ritirata`). Manuale. **Fix del benchmark:** corretto un bug del driver del mercato (il modale d'acquisto di P veniva sovrascritto da quello di O → acquisti non finalizzati e contatori gonfiati); ora coerenza driver↔motore a 0 mismatch su 250. **Policy di mercato:** compra la figura più economica disponibile (massimizza le figure). **Bilanciamento (nuova baseline):** missione **P 48 / O 52**, ribaltoni **~51%** (simmetrici per-sfida), riserva ~1,5-2 carte. Le metriche non sono confrontabili con i run ≤ v1.37 (cambiano regola dei colpi, policy di mercato e correzione del driver). **Collaudo:** suite core verde.
+
 ## v1.37 (luglio 2026) — il Jolly meno potente e simmetrico: cattura di una sola carta, per entrambi i lati
 
 1. **§22.2/§22.4: cattura di UNA sola carta, meccanica simmetrica.** Il Jolly ha ancora **valore elastico** ma ora cattura **una sola carta** del piatto (scopa solo se era l'unica rimasta), non più un gruppo. E l'**Opposizione** lo usa **allo stesso modo dei Protagonisti** (cattura di una carta nel proprio turno), non più come "spinta extra" (presa→scopa): la **spinta-Jolly è rimossa**.
@@ -1170,4 +1191,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.37*
+*Frenemies on the Road — Knowledge Base v1.39*
