@@ -559,8 +559,8 @@ C'è **un solo Jolly**, e **non sta nel mazzo**: è una **risorsa dei Protagonis
 Nel proprio turno, invece di giocare normalmente, un Protagonista può **seppellire una carta della mano in fondo al proprio mazzo** e afferrare il Jolly al suo posto. Il Jolly:
 
 - non si usa mai nell'asta d'inizio scena;
-- vale il numero che il giocatore dichiara (da 1 a 10) e serve **solo per catturare** (presa; se svuota il piatto è scopa);
-- **non dà punti a nessuno**: è una mossa puramente tattica (vince la posta, ripulisce o alleggerisce il piatto), non segna Crescita.
+- ha **valore elastico** ma cattura **una sola carta** *(v1.37)*: scegli quale carta del piatto prendere (se era l'unica rimasta, è scopa; altrimenti è una presa);
+- **non dà punti a nessuno**: è una mossa puramente tattica (toglie dal tavolo una carta scomoda, o vince la posta con una scopa), non segna Crescita.
 
 I Protagonisti possono usarlo **solo nelle scene 1-3**. È il **peccato**: un successo ottenuto andando contro i principi e la lealtà.
 
@@ -568,9 +568,9 @@ I Protagonisti possono usarlo **solo nelle scene 1-3**. È il **peccato**: un su
 
 Il costo della scorciatoia non è in punti: appena i Protagonisti usano il Jolly, la carta **passa all'Opposizione**. In pratica si **consegna al nemico la stessa arma sporca**, che lui userà a modo suo (§22.4) — e nel farlo il peccato dei Protagonisti verrà alla luce.
 
-### 22.4 — L'uso dell'Opposizione: il peccato emerge (scene 2-4) *(v1.33)*
+### 22.4 — L'uso dell'Opposizione: la stessa cattura, il peccato emerge (scene 2-4) *(v1.37)*
 
-Ricevuto il Jolly, l'Opposizione lo spende in modo **speculare ma diverso**: come **spinta extra**. Dopo una propria presa fatta con una **carta numerica**, l'Opposizione **butta il Jolly** e trasforma quella presa in una **scopa** (svuota il piatto e vince la posta). Anche questo uso **non dà punti**. Nel giocarlo, l'Opposizione **mette in scena il peccato**: il compromesso di cui uno dei protagonisti si è macchiato riaffiora e travolge la scena. Come la spinta del pitch, anche la spinta-Jolly **non si può usare su una presa di figura** *(v1.36)*.
+Ricevuto il Jolly, l'Opposizione lo usa **allo stesso modo dei Protagonisti** (meccanica simmetrica): nel proprio turno seppellisce una carta della mano in fondo al mazzo, afferra il Jolly e **cattura una sola carta** del piatto (valore elastico; se era l'unica rimasta è scopa). Anche questo uso **non dà punti**. Nel giocarlo, l'Opposizione **mette in scena il peccato**: impugnare la stessa arma sleale fa riaffiorare il compromesso di cui uno dei protagonisti si è macchiato, e incrina l'alleanza. *(Fino alla v1.36 l'Opposizione usava invece il Jolly come "spinta extra" — presa→scopa; dalla v1.37 la meccanica è la stessa dei Protagonisti.)*
 
 Vincoli:
 
@@ -588,7 +588,7 @@ A macchiarsi del peccato è **uno solo dei due protagonisti**: una ricaduta nei 
 
 > **Esempio (i Protagonisti usano il Jolly).** Nel piatto resta un 4♣ e Vera non ha di meglio in mano. Seppellisce un 3♠ in fondo al proprio mazzo, afferra il Jolly, lo dichiara **4** e cattura il 4♣: **SCOPA**, il piatto è pulito e la posta è dei Protagonisti. Nessuno segna punti, ma il Jolly passa a Omar. Narra: "Vera infrange la promessa di restare pulita e sfrutta un vecchio contatto del contrabbando — Otto ancora non lo sa."
 >
-> **Esempio (l'Opposizione fa emergere il peccato).** Due scene dopo, l'Opposizione fa una presa con una carta di Quadri e **butta il Jolly** per trasformarla in scopa: il piatto si svuota, la scena è sua. Nel narrarlo fa affiorare cosa aveva fatto Vera con quel contatto: davanti a Otto cala il gelo. Nessuno segna punti, ma fra i due si apre una crepa.
+> **Esempio (l'Opposizione fa emergere il peccato).** Due scene dopo, l'Opposizione seppellisce una carta in fondo al proprio mazzo, afferra il Jolly e **cattura** la carta dei Protagonisti che pesava di più nel piatto (una sola carta): quel che resta sul tavolo ora la mette avanti nella posta. Nel narrarlo fa affiorare cosa aveva fatto Vera con quel contatto: davanti a Otto cala il gelo. Nessuno segna punti, ma fra i due si apre una crepa.
 
 ---
 
@@ -948,6 +948,13 @@ In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, 
 
 # REGISTRO MODIFICHE
 
+## v1.37 (luglio 2026) — il Jolly meno potente e simmetrico: cattura di una sola carta, per entrambi i lati
+
+1. **§22.2/§22.4: cattura di UNA sola carta, meccanica simmetrica.** Il Jolly ha ancora **valore elastico** ma ora cattura **una sola carta** del piatto (scopa solo se era l'unica rimasta), non più un gruppo. E l'**Opposizione** lo usa **allo stesso modo dei Protagonisti** (cattura di una carta nel proprio turno), non più come "spinta extra" (presa→scopa): la **spinta-Jolly è rimossa**.
+2. **Cosa NON cambia.** Jolly unico, passa da P a O; finestre P scene 1-3 → O scene 2-4 (O solo in una scena successiva a P, mai due usi nella stessa scena); si afferra seppellendo una carta in fondo al mazzo; 0 punti; +2 Crescita se non usato; escluso dall'asta; il tema del peccato che emerge.
+3. **Motivazione (dal designer, Saverio).** Rendere il Jolly **meno potente** (la cattura di gruppo poteva spazzare più carte / fare scopa facilmente) e **più simmetrico** (stessa meccanica per i due lati). Nota di design: seppellire una carta **non è un costo** ma un piccolo vantaggio (la carta rientra in mazzo/riserva), quindi il Jolly a cattura singola resta appetibile — utile in particolare nella situazione da resa, dove invece di arrenderti seppellisci la carta bassa, afferri il Jolly e provi a ribaltare la scena catturando la carta avversaria decisiva.
+4. **Propagazione (stesso commit).** Motore `index.html`: `jollyUsabile` esteso a O (finestre + solo dopo il passaggio), `opzioniJolly` a cattura singola, **rimossi** `jollySpintaDisponibile`/`spintaJolly`/il bottone in narrazione/il ramo in `iaNarrazione`; l'IA di O usa il Jolly come cattura (`iaJollyPickO`/`eseguiJollyIA` in `iaTurno`). `REGOLE`, `REGOLE_IA`. Manuale (§5.4, glossario, footer). Driver `test/partita_smart.js` (`jollyPick` a cattura singola per entrambi i lati; rimosso il ramo spinta-Jolly) e `benchmark.js` (etichetta metrica). **Bilanciamento:** missione P **55.6%** (da 57.2% della v1.36): il Jolly più debole ridimensiona P. Uso in gioco ottimale ancora raro (P 0.22, O 0.02): la simmetria è di *meccanica*; nell'uso l'asimmetria resta perché O riceve il Jolly solo se P pecca. **Collaudo:** suite core verde.
+
 ## v1.36 (luglio 2026) — niente spinta su una presa di figura
 
 1. **§9.8/§22: la spinta non promuove a scopa una presa di figura.** La spinta del pitch (e, in modo speculare, la spinta-Jolly dell'Opposizione) trasforma in scopa una presa fatta con una **carta numerica**; una presa fatta con una **figura** (Fante, Regina, Re) **non è promuovibile a scopa**. Motivo: la figura è già una carta forte (cattura elastica fino a 8/9/10), spesso su un gruppo di carte; permetterle anche la scopa via spinta la renderebbe sproporzionata.
@@ -1163,4 +1170,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.36*
+*Frenemies on the Road — Knowledge Base v1.37*

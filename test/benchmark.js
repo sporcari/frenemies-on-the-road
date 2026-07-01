@@ -141,7 +141,7 @@ md+=`- **Figure comprate/partita:** P ${fixed(metrics.meccaniche.figureComprateP
 md+=`  - distribuzione P (0/1/2/3): ${metrics.meccaniche.distrFigureP.map(fixed).join("% / ")}%\n`;
 md+=`  - distribuzione O (0/1/2/3): ${metrics.meccaniche.distrFigureO.map(fixed).join("% / ")}%\n`;
 md+=`- **Scope/partita:** P ${fixed(metrics.meccaniche.scopeP)} · O ${fixed(metrics.meccaniche.scopeO)}\n`;
-md+=`- **Rese/partita:** ${fixed(metrics.meccaniche.resePerPartita)} · **Jolly usati/partita:** ${fixed(metrics.meccaniche.jollyGiocati)} (cattura P ${fixed(metrics.meccaniche.jollyP)} · spinta O ${fixed(metrics.meccaniche.jollyO)})\n`;
+md+=`- **Rese/partita:** ${fixed(metrics.meccaniche.resePerPartita)} · **Jolly usati/partita:** ${fixed(metrics.meccaniche.jollyGiocati)} (cattura P ${fixed(metrics.meccaniche.jollyP)} · cattura O ${fixed(metrics.meccaniche.jollyO)})\n`;
 
 fs.writeFileSync(path.join(dir,"ultimo.md"), md);
 

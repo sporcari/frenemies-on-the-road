@@ -349,7 +349,7 @@ Qualche consiglio per cominciare a giocare bene:
 Rispetto alla scopa che forse conosci, qui cambiano alcune cose:
 
 - **I punti.** Nella scopa tradizionale le prese non valgono nulla e a contare sono solo le scope; qui ogni presa vale 1 punto e ogni scopa 3 (come si segnano i punti lo vedi poco sotto). E, soprattutto, prese e scope non sono solo punti: significano qualcosa nella storia, come vedremo con le tre mosse.
-- **Figure e Jolly "elastici".** Le carte numeriche catturano per valore esatto; le figure e il Jolly no. Una figura (Fante, Regina, Re) cattura un gruppo di carte la cui somma è minore o uguale al suo valore (Fante 8, Regina 9, Re 10), e il Jolly vale il numero che dichiari quando lo giochi: sono carte flessibili, che allargano le possibilità di presa. Le figure si comprano al mercato (Capitolo 4), il Jolly ha il suo capitolo (Capitolo 5).
+- **Figure e Jolly "elastici".** Le carte numeriche catturano per valore esatto; le figure e il Jolly no. Una figura (Fante, Regina, Re) cattura un gruppo di carte la cui somma è minore o uguale al suo valore (Fante 8, Regina 9, Re 10); il Jolly ha valore elastico ma cattura una sola carta (quella che scegli). Le figure si comprano al mercato (Capitolo 4), il Jolly ha il suo capitolo (Capitolo 5).
 - **Prese con spinta.** Dopo una presa fatta con una carta numerica puoi spendere una spinta, per trasformarla in una scopa e svuotare il piatto (non vale sulle prese di figura)
 - **Minigioco di maggioranze** A differenza di una partita a scopa, un round di Frenemies non si vince facendo più punti, ma ottenendo la maggioranza sommando i valori delle proprie carte nel piatto con quelle dell'avversario. Questo cambia di molto l'approccio tattico alla partita, rendendo a volte più conveniente aggiungere una carta alta al piatto, piuttosto che usarla per fare una presa.
 
@@ -679,7 +679,7 @@ Il Jolly è uno solo ed è una risorsa dei Protagonisti: non sta nel mazzo, sta 
 Nel proprio turno, invece di giocare una carta della mano, un Protagonista può afferrare il Jolly. Per farlo:
 
 - **seppellisce una carta della mano in fondo al proprio mazzo** e prende il Jolly al suo posto;
-- **dichiara quale valore assume, da 1 a 10**, e lo usa solo per catturare: fa una presa, e se quella presa svuota il piatto è una scopa;
+- il Jolly ha **valore elastico ma cattura una sola carta**: si sceglie quale carta del piatto prendere (se era l'unica rimasta, è una scopa);
 - non si usa mai nell'asta d'inizio scena, e i Protagonisti possono giocarlo **solo nelle scene 1, 2 o 3**.
 
 Usare il Jolly **non fa segnare punti a nessuno**: è una mossa puramente tattica, che vince la posta della scena o ripulisce il piatto. Il suo prezzo è un altro (§5.2).
@@ -697,13 +697,13 @@ Nel piatto resta un 4♣ e Vera non ha di meglio in mano. Seppellisce un 3♠ in
 
 Usare il Jolly non è obbligatorio. Chi lo detiene può non usarlo affatto: **chi arriva a fine partita col Jolly ancora in mano incassa 2 punti Crescita**. Sono punti che pesano solo nel conteggio finale (i mercati sono ormai chiusi: non si possono spendere per comprare figure) e premiano chi ha resistito alla scorciatoia. Vale per entrambi i lati: se i Protagonisti resistono, i due punti sono loro; se peccano e l'Opposizione riceve il Jolly ma a sua volta non lo spende, i due punti vanno all'Opposizione.
 
-## 5.4 Il peccato emerge: la spinta dell'Opposizione (scene 2-4)
+## 5.4 Il peccato emerge: la stessa cattura dell'Opposizione (scene 2-4)
 
-Ricevuto il Jolly, l'Opposizione lo usa in modo speculare ma diverso: come **spinta extra**. Dopo una propria presa fatta con una carta numerica, l'Opposizione butta il Jolly e trasforma quella presa in una **scopa** (svuota il piatto e vince la posta) — anche per lei senza segnare punti. Come la spinta del pitch, nemmeno la spinta-Jolly vale su una presa di figura. E nel giocarlo **mette in scena il peccato**: il compromesso di cui uno dei protagonisti si è macchiato riaffiora e travolge la scena, incrinando l'alleanza tra i due.
+Ricevuto il Jolly, l'Opposizione lo usa **allo stesso modo dei Protagonisti** (la meccanica è simmetrica): nel proprio turno seppellisce una carta in fondo al mazzo, afferra il Jolly e **cattura una sola carta** del piatto (valore elastico; se era l'unica rimasta è scopa) — anche per lei senza segnare punti. E nel giocarlo **mette in scena il peccato**: impugnare la stessa arma sleale fa riaffiorare il compromesso di cui uno dei protagonisti si è macchiato, incrinando l'alleanza tra i due.
 
 L'Opposizione può farlo **solo nelle scene 2, 3 o 4**, e **mai nella stessa scena** in cui i Protagonisti hanno usato il Jolly: il peccato riemerge *dopo*, in una scena successiva. Una volta giocato, il Jolly è speso.
 
-Due scene dopo, l'Opposizione fa una presa con una carta di Quadri e butta il Jolly per trasformarla in scopa: il piatto si svuota, la scena è sua. Nel narrarlo fa affiorare cosa aveva fatto Vera con quel contatto: davanti a Otto cala il gelo.
+Due scene dopo, l'Opposizione seppellisce una carta, afferra il Jolly e cattura la carta dei Protagonisti che pesava di più nel piatto: quel che resta ora la mette avanti nella posta. Nel narrarlo fa affiorare cosa aveva fatto Vera con quel contatto: davanti a Otto cala il gelo.
 {: .esempio }
 
 
@@ -1460,7 +1460,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Introdurre.** Giocare una carta nel piatto senza catturare nulla: si mette in campo un proprio elemento (un vantaggio futuro per i Protagonisti, un ostacolo per l'Opposizione). Introdurre non annulla: non può cancellare un elemento avversario già in gioco.
 
-**Jolly.** L'unica carta jolly: una risorsa dei Protagonisti, fuori dal mazzo, disponibile dall'inizio. Non si usa nell'asta e usarlo non dà punti a nessuno. I Protagonisti lo giocano nelle scene 1-3 come cattura sleale (ne scelgono il valore, 1-10, seppellendo una carta della mano); poi passa all'Opposizione, che nelle scene 2-4 lo spende come spinta (Capitolo 5).
+**Jolly.** L'unica carta jolly: una risorsa dei Protagonisti, fuori dal mazzo, disponibile dall'inizio. Non si usa nell'asta e usarlo non dà punti a nessuno. Ha valore elastico ma cattura una sola carta. I Protagonisti lo giocano nelle scene 1-3 come cattura sleale (seppellendo una carta della mano); poi passa all'Opposizione, che nelle scene 2-4 lo usa allo stesso modo, catturando una carta (Capitolo 5).
 
 **Maggioranza di seme.** In tre e quattro giocatori, chi controlla la mano di un lato per la scena è chi ha più carte del proprio seme, valutato a inizio scena.
 
@@ -1468,7 +1468,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Mano finale estesa.** Nella quinta scena, una figura comprata all'ultimo mercato è già in mano e resta giocabile (mai in riserva); dal mazzo prendi tutte le carte e scegli quelle che completano la mano a quattro, tenendo le altre come riserva.
 
-**Il peccato del Jolly.** Usare il Jolly è il peccato: un successo sleale. Quando i Protagonisti lo giocano, passa all'Opposizione; questa, spendendolo come spinta (trasforma una propria presa in scopa), fa emergere nella narrazione il compromesso commesso dai Protagonisti — il peccato che torna a galla e incrina l'alleanza. Nessun uso del Jolly dà punti.
+**Il peccato del Jolly.** Usare il Jolly è il peccato: un successo sleale. Quando i Protagonisti lo giocano, passa all'Opposizione; questa, usandolo allo stesso modo (cattura una carta), fa emergere nella narrazione il compromesso commesso dai Protagonisti — il peccato che torna a galla e incrina l'alleanza. Nessun uso del Jolly dà punti.
 
 **Mercato.** La fase tra una scena e l'altra: prima si compra (al massimo una figura per mercato, che entra subito in mano, in scena la scena successiva), poi si pesca fino a quattro carte (niente rimescolo: la figura occupa già uno slot). Si paga con i punti delle prese e delle scope.
 
@@ -1633,4 +1633,4 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 
 ---
 
-*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.36, che resta la fonte di verità del regolamento.*
+*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.37, che resta la fonte di verità del regolamento.*

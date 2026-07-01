@@ -139,11 +139,13 @@ function runGame(seed, seed2, seed3, wantTranscript){
       else if(meWins([...piatto, c], false)) normalWins=true;
     }
     if(normalWins) return null;   // la scena è già vinta con la carta normale: NON sprecare il Jolly
-    const piattoSum=piatto.reduce((s,x)=>s+cval(x),0);
+    // v1.37: il Jolly cattura UNA sola carta. Scopa solo se nel piatto è rimasta una carta sola; altrimenti
+    // cerca la singola carta la cui rimozione fa passare i totali dalla mia parte (preferisci la più alta).
     let pick=null;
-    if(piattoSum<=10){ const cm=cp(piattoSum); const ci=cm.findIndex(cmb=>cmb.length===piatto.length); if(ci>=0) pick={v:piattoSum, ci, scopa:true}; }
-    if(!pick) for(let v=10; v>=1 && !pick; v--){ const cm=cp(v); for(let i=0;i<cm.length;i++){ const cmb=cm[i]; const rem=piatto.filter(x=>!cmb.some(y=>y.id===x.id)); if(meWins(rem,false)){ pick={v, ci:i, scopa:false}; break; } } }
-    if(!pick) return null;   // nemmeno il Jolly fa vincere: tienilo
+    if(piatto.length===1 && meWins([], true)) pick={cardId:piatto[0].id, scopa:true};
+    if(!pick){ const cand=[...piatto].sort((x,y)=>cval(y)-cval(x));
+      for(const x of cand){ const rem=piatto.filter(y=>y.id!==x.id); if(meWins(rem,false)){ pick={cardId:x.id, scopa:false}; break; } } }
+    if(!pick) return null;   // nemmeno il Jolly (una carta) fa vincere: tienilo
     const bury=ME.mano.filter(x=>!x.jolly).slice().sort((x,y)=>cval(x)-cval(y))[0];
     if(!bury) return null;
     pick.buryId=bury.id;
@@ -218,9 +220,11 @@ function runGame(seed, seed2, seed3, wantTranscript){
     { const pk=jollyPick(a); if(pk) consider(pk.scopa?900:850, ()=>{
       click(document.getElementById("btnUsaJolly"));
       const be=[...document.querySelectorAll("#jollyBury .carta")].find(el=>parseInt(el.dataset.id)===pk.buryId); click(be);
-      const jv=[...box().querySelectorAll("button[data-v]")].filter(b=>!b.disabled);
-      const bt=jv.find(b=>parseInt(b.dataset.v)===pk.v)||jv[jv.length-1]; click(bt);
-      const jc=[...box().querySelectorAll("#jollyCombos button[data-c]")]; click(jc[pk.ci]||jc[0]); jollyP++; }); }
+      // v1.37: cattura di UNA carta: opzioniJolly mostra un bottone data-i per carta del piatto
+      const opts=[...box().querySelectorAll("button[data-i]")];
+      const idx=G().piatto.findIndex(x=>x.id===pk.cardId);
+      click(opts[idx>=0?idx:0]);
+      if(a==="P") jollyP++; else jollyO++; }); }
     return best;
   }
 
@@ -358,20 +362,8 @@ function runGame(seed, seed2, seed3, wantTranscript){
           click(sp[0]); logUltima(); return "spinta";
         }
       }
-      // v1.33: spinta-Jolly di O (il peccato emerge) — presa→scopa. Gioco OTTIMALE: la scopa fa VINCERE la
-      // posta a O (svuota il piatto), quindi la si usa SOLO alla chiusura e SOLO se senza O perderebbe la scena.
-      const bsj=document.getElementById("btnSpintaJolly");
-      if(bsj){
-        const g=G(), own=g.lati.O.semi;
-        const closing = g.lati.P.mano.length===0 && g.lati.O.mano.length===0 && !g.lati.P.astaCarta && !g.lati.O.astaCarta;
-        const oT=g.piatto.filter(c=> own.includes(c.seme)).reduce((s,c)=>s+cardVal(c),0);
-        const pT=g.piatto.filter(c=>!own.includes(c.seme)).reduce((s,c)=>s+cardVal(c),0);
-        if(closing && g.piatto.length>0 && oT<=pT){   // senza la spinta O perde/pareggia la posta → ribaltala
-          jollyO++;
-          log(`   → SPINTA-JOLLY (il peccato emerge): presa→scopa alla chiusura, ribalta la scena (piatto O ${oT} vs P ${pT}).`);
-          click(bsj); logUltima(); return "spinta-jolly";
-        }
-      }
+      // v1.37: niente più spinta-Jolly. O usa il Jolly come CATTURA (una carta) nel proprio turno, come P
+      // (gestito in scegliMossa/jollyPick), non in narrazione.
       click(document.getElementById("narrOk")); return f;
     }
 
