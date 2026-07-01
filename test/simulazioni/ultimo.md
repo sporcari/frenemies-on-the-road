@@ -1,27 +1,28 @@
 # Benchmark di bilanciamento — ultimo run
 
-**Data:** 2026-07-01T21:03:41.698Z · **Commit:** 6ad74cc (working tree sporco) · **KB:** v1.39
+**Data:** 2026-07-01T21:59:19.669Z · **Commit:** 096c1ca (working tree sporco) · **KB:** v1.40
 **Campione:** 250 partite (seed 1-250) · **Scoring:** presa 1, scopa 3 (v1.32)
 **Policy mercato:** greedy: 1 figura per mercato per lato, la piu costosa acquistabile non ancora posseduta (Re>Regina>Fante)
 
-> Confronto (Δ) rispetto al run precedente: commit 6ad74cc, KB v1.38, 2026-07-01T20:34:47.031Z (stesso N=250).
+> Confronto (Δ) rispetto al run precedente: commit 6ad74cc, KB v1.39, 2026-07-01T21:03:41.698Z (stesso N=250).
 
 ## A) Esito della partita
 
-- **Vittorie della missione:** Protagonisti **52.40%** (+4.4) · Opposizione **47.60%** (-4.4)
-- **Esiti:** VITTORIA PIENA 17.60% (-0.4) · PER IL ROTTO DELLA CUFFIA 34.80% (+4.8) · SCONFITTA DIGNITOSA 19.20% (-3.6) · FALLIMENTO TOTALE 28.40% (-0.8)
-- **Ribaltoni dopo i colpi di scena:** pro-Protagonisti 25.60% (+6) · pro-Opposizione 26.00% (-5.6)
+- **Vittorie della missione:** Protagonisti **52.40%** (+0) · Opposizione **47.60%** (+0)
+- **Crescita per scaglione (P):** 0-2 6.00% · 3-6 49.60% · 7+ 44.40%
+- **Crescita per scaglione (O):** 0-2 10.80% · 3-6 58.80% · 7+ 30.40%
+- **Ribaltoni dopo i colpi di scena:** pro-Protagonisti 25.60% (+0) · pro-Opposizione 26.00% (+0)
 
 ## B.1) Punti guadagnati (lordi) per scena
 
 | Scena | Protagonisti | Opposizione |
 |---|---|---|
 | 1 | 2.35 (+0) | 2.19 (+0) |
-| 2 | 2.78 (-0.02) | 2.86 (+0) |
-| 3 | 2.56 (+0.02) | 3.23 (+0) |
-| 4 | 2.74 (+0) | 3.04 (-0.02) |
-| 5 | 3.37 (-0.02) | 2.28 (-0.14) |
-| **Totale** | **13.80** (-0.01) | **13.60** (-0.16) |
+| 2 | 2.78 (+0) | 2.86 (+0) |
+| 3 | 2.56 (+0) | 3.23 (+0) |
+| 4 | 2.74 (+0) | 3.04 (+0) |
+| 5 | 3.37 (+0) | 2.28 (+0) |
+| **Totale** | **13.80** (+0) | **13.60** (+0) |
 
 A fine partita — **netti** (Crescita): P 6.42 · O 5.37 · **spesi** al mercato: P 7.38 · O 8.24
 
@@ -33,9 +34,9 @@ A fine partita — **netti** (Crescita): P 6.42 · O 5.37 · **spesi** al mercat
 |---|---|---|
 | 1 | 0.46 (+0) | 0.44 (+0) |
 | 2 | 0.95 (+0) | 0.94 (+0) |
-| 3 | 1.38 (+0) | 1.52 (+0.01) |
-| 4 | 1.78 (+0) | 1.92 (-0.01) |
-| 5 | 1.78 (+0) | 1.92 (-0.01) |
+| 3 | 1.38 (+0) | 1.52 (+0) |
+| 4 | 1.78 (+0) | 1.92 (+0) |
+| 5 | 1.78 (+0) | 1.92 (+0) |
 
 ## C) Scene
 
@@ -53,11 +54,11 @@ Poste medie vinte: P **2.98** · O **2.02**
 
 **Rapporto scene vinte per partita (P-O su 5):**
 
-- 5-0: 10.40% (+0.4)
-- 4-1: 22.40% (-3.6)
+- 5-0: 10.40% (+0)
+- 4-1: 22.40% (+0)
 - 3-2: 32.40% (+0)
-- 2-3: 26.00% (+2.8)
-- 1-4: 7.60% (+0.4)
+- 2-3: 26.00% (+0)
+- 1-4: 7.60% (+0)
 - 0-5: 1.20% (+0)
 
 ## D) Meccaniche

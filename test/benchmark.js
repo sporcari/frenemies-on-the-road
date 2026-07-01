@@ -50,9 +50,12 @@ if(!n){ console.error("Nessuna partita completata."); process.exit(1); }
 const round=(x,d=2)=>Math.round(x*10**d)/10**d;
 const avg=f=>round(rows.reduce((s,r)=>s+f(r),0)/n);
 const pct=f=>round(100*rows.filter(f).length/n,1);
-const ESITI=["VITTORIA PIENA","PER IL ROTTO DELLA CUFFIA","SCONFITTA DIGNITOSA","FALLIMENTO TOTALE"];
-const pWin=r=>r.outcome===ESITI[0]||r.outcome===ESITI[1];
-const oWin=r=>r.outcome===ESITI[2]||r.outcome===ESITI[3];
+// v1.40: la missione è solo compiuta/fallita (decisa dal duello, r.missione). Non ci sono più i
+// quattro esiti nominati; il secondo dato del finale è la Crescita, letta a scaglioni per lato.
+const pWin=r=>r.missione==="P";
+const oWin=r=>r.missione==="O";
+const SCAGLIONI=["0-2","3-6","7+"];   // Nessuna/Minaccia spenta · Crescita/intatta · Grande/L'idra
+const scaglione=v=>v<=2?SCAGLIONI[0]:v<=6?SCAGLIONI[1]:SCAGLIONI[2];
 // media dei punti GUADAGNATI in ogni scena (delta del cumulato lordo)
 const perScenaPunti=k=>{ const o=[]; for(let sc=0;sc<5;sc++) o.push(avg(r=>(r[k][sc]||0)-(sc>0?(r[k][sc-1]||0):0))); return o; };
 // media figure POSSEDUTE a fine di ogni scena (figCum ha 1 voce per mercato: dopo S1..S4; S5 = come S4)
@@ -62,7 +65,8 @@ const perScenaFig=k=>{ const o=[]; for(let sc=0;sc<5;sc++) o.push(avg(r=>(r[k][M
 const metrics={
   esito:{
     vittP_pct:pct(pWin), vittO_pct:pct(oWin),
-    esiti:Object.fromEntries(ESITI.map(e=>[e,pct(r=>r.outcome===e)])),
+    crescitaScaglioni:{ P:Object.fromEntries(SCAGLIONI.map(s=>[s,pct(r=>scaglione(r.puntiP)===s)])),
+                        O:Object.fromEntries(SCAGLIONI.map(s=>[s,pct(r=>scaglione(r.puntiO)===s)])) },
     ribaltoni:{ proP_pct:pct(r=>r.missione==="P" && r.difApparente==="O"),   // v1.38: lo sfidante P ribalta il duello
                 proO_pct:pct(r=>r.missione==="O" && r.difApparente==="P") },
   },
@@ -114,7 +118,8 @@ else if(before) md+=`> Run precedente con N diverso (${before.n}): niente confro
 
 md+=`## A) Esito della partita\n\n`;
 md+=`- **Vittorie della missione:** Protagonisti **${fixed(metrics.esito.vittP_pct)}%**${d(metrics.esito.vittP_pct,cmp?.esito.vittP_pct)} · Opposizione **${fixed(metrics.esito.vittO_pct)}%**${d(metrics.esito.vittO_pct,cmp?.esito.vittO_pct)}\n`;
-md+=`- **Esiti:** `+ESITI.map(e=>`${e} ${fixed(metrics.esito.esiti[e])}%${d(metrics.esito.esiti[e],cmp?.esito.esiti[e])}`).join(" · ")+`\n`;
+md+=`- **Crescita per scaglione (P):** `+SCAGLIONI.map(s=>`${s} ${fixed(metrics.esito.crescitaScaglioni.P[s])}%${d(metrics.esito.crescitaScaglioni.P[s],cmp?.esito.crescitaScaglioni?.P?.[s])}`).join(" · ")+`\n`;
+md+=`- **Crescita per scaglione (O):** `+SCAGLIONI.map(s=>`${s} ${fixed(metrics.esito.crescitaScaglioni.O[s])}%${d(metrics.esito.crescitaScaglioni.O[s],cmp?.esito.crescitaScaglioni?.O?.[s])}`).join(" · ")+`\n`;
 md+=`- **Ribaltoni dopo i colpi di scena:** pro-Protagonisti ${fixed(metrics.esito.ribaltoni.proP_pct)}%${d(metrics.esito.ribaltoni.proP_pct,cmp?.esito.ribaltoni.proP_pct)} · pro-Opposizione ${fixed(metrics.esito.ribaltoni.proO_pct)}%${d(metrics.esito.ribaltoni.proO_pct,cmp?.esito.ribaltoni.proO_pct)}\n\n`;
 
 md+=`## B.1) Punti guadagnati (lordi) per scena\n\n`;
@@ -161,7 +166,10 @@ function card(rec, idx, prev){
   h+=`<h3>A · Esito della partita</h3><table><tr><th></th><th>Protagonisti</th><th>Opposizione</th></tr>`;
   h+=`<tr><td>Vittorie missione</td><td class="big">${fx(m.esito.vittP_pct)}%${dH(m.esito.vittP_pct,pm?.esito.vittP_pct)}</td><td class="big">${fx(m.esito.vittO_pct)}%${dH(m.esito.vittO_pct,pm?.esito.vittO_pct)}</td></tr>`;
   h+=`<tr><td>Ribaltoni post-colpi</td><td>${fx(m.esito.ribaltoni.proP_pct)}%${dH(m.esito.ribaltoni.proP_pct,pm?.esito.ribaltoni.proP_pct)}</td><td>${fx(m.esito.ribaltoni.proO_pct)}%${dH(m.esito.ribaltoni.proO_pct,pm?.esito.ribaltoni.proO_pct)}</td></tr></table>`;
-  h+=`<p class="esiti">`+Object.entries(m.esito.esiti).map(([k,v])=>`<span>${esc(k)}: <b>${fx(v)}%</b>${dH(v,pm?.esito.esiti[k])}</span>`).join(" · ")+`</p>`;
+  if(m.esito.crescitaScaglioni){
+    const scRow=(lato)=>SCAGLIONI.map(s=>`<span>${s}: <b>${fx(m.esito.crescitaScaglioni[lato][s])}%</b>${dH(m.esito.crescitaScaglioni[lato][s],pm?.esito.crescitaScaglioni?.[lato]?.[s])}</span>`).join(" · ");
+    h+=`<p class="esiti">Crescita a scaglioni · P: ${scRow("P")} — O: ${scRow("O")}</p>`;
+  }
   // B.1
   h+=`<h3>B.1 · Punti guadagnati (lordi) per scena</h3><table><tr><th>Scena</th><th>Protagonisti</th><th>Opposizione</th></tr>`;
   scene.forEach((s,i)=>{ h+=`<tr><td>${s}</td><td>${fx(m.puntiLordiPerScena.P[i])}${dH(m.puntiLordiPerScena.P[i],pm?.puntiLordiPerScena.P[i])}</td><td>${fx(m.puntiLordiPerScena.O[i])}${dH(m.puntiLordiPerScena.O[i],pm?.puntiLordiPerScena.O[i])}</td></tr>`; });

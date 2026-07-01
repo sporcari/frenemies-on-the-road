@@ -2832,23 +2832,36 @@ function conteggioDefinitivo(){
   G.fase="finale"; render();
 }
 
+// v1.40: la Crescita (punti non spesi) letta a scaglioni 0-2 / 3-6 / 7+, per lato. Soglie tarate sulla
+// distribuzione reale del benchmark (mediana 6). Restituisce [etichetta, lettura].
+function scaglioneCrescita(prot, val){
+  if(val<=2) return prot
+    ? ["Nessuna crescita","Eravate così concentrati sull'obiettivo da non guardare in faccia nessuno: né cosa stavate diventando, né l'altro che vi camminava accanto. Ne uscite uguali a prima, se non peggio."]
+    : ["Minaccia spenta","I nemici hanno fallito e si sono sfilacciati. Il pericolo che rappresentavano si è in gran parte consumato in questa storia."];
+  if(val<=6) return prot
+    ? ["Crescita","Qualcosa è cambiato rispetto a chi eravate alla partenza. Ciascuno ha imparato a vedere il valore nell'altro: ne nasce una stima reciproca, non ancora una resa."]
+    : ["Minaccia intatta","Hanno incassato il colpo ma sono ancora in piedi, pronti a riorganizzarsi. La storia li ha rallentati, non fermati."];
+  return prot
+    ? ["Grande crescita","Il viaggio vi ha trasformati. Ciascuno ha preso un po' dall'altro, fino a entrare in sintonia: da una storia così non si torna gli stessi."]
+    : ["L'idra","Per ogni testa mozzata ne sono ricresciute altre. Escono da questa vicenda più forti e radicati di prima: torneranno, e peggio."];
+}
+
 function rFinale(){
   const vp=G.scene.filter(s=>s&&s.vincitore==="P").length;
   const vo=G.scene.filter(s=>s&&s.vincitore==="O").length;
   function punti(l){ return puntiMercato(l); }   // punti non spesi = L.punti (la Crescita); già a 0 per chi l'ha spesa nel pareggio
   const rec5=G.scene[4];
   const pP=punti("P"), pO=punti("O");
-  // v1.38: la MISSIONE la decide il DUELLO dei colpi di scena (rec5.missione), non i totali del piatto.
-  // La Crescita (pP/pO) è l'asse narrativo. Ribaltone = lo sfidante ha rovesciato l'esito apparente.
+  // v1.40: la MISSIONE è solo COMPIUTA o FALLITA (la decide il DUELLO, rec5.missione); niente più
+  // quattro esiti nominati dall'incrocio con la Crescita. La Crescita si legge A SCAGLIONI, per lato,
+  // come misura a parte (non riqualifica la missione). Ribaltone = lo sfidante ha rovesciato l'apparenza.
   const missioneP = rec5.missione === "P";
   const ribaltone = rec5.missione !== rec5.vincitore;
-  const puntiP = pP>pO, pari = pP===pO;
+  const flip = ribaltone ? ", ribaltando l'esito apparente all'ultima carta" : "";
   const OUTCOME = missioneP
-    ? (ribaltone ? ["PER IL ROTTO DELLA CUFFIA","la missione riesce ribaltando l'esito apparente all'ultima carta"]
-       : (puntiP||pari ? ["VITTORIA PIENA","ce l'avete fatta, e da soli — la missione riesce con le proprie forze"]
-                       : ["PER IL ROTTO DELLA CUFFIA","vinto, ma grazie agli aiuti e a caro prezzo"]))
-    : (puntiP ? ["SCONFITTA DIGNITOSA","caduti a testa alta, con l'esperienza come tesoro"]
-              : ["FALLIMENTO TOTALE","travolti su ogni fronte"]);
+    ? ["MISSIONE COMPIUTA", "i protagonisti ce l'hanno fatta"+flip]
+    : ["MISSIONE FALLITA", "l'Opposizione ha vinto"+flip];
+  const scP = scaglioneCrescita(true, pP), scO = scaglioneCrescita(false, pO);
   const tf=totaleSeme("fiori"), tq=totaleSeme("quadri");
   const oppNat = tq>tf
     ? "♦ È stata soprattutto l'opposizione organizzata a ostacolarli: un nemico con un volto, un piano, una volontà."
@@ -2875,6 +2888,11 @@ function rFinale(){
       <div class="pannello" style="text-align:center"><span class="etichetta">Punti — scope + prese</span>
         <div class="punti-big">${pP} — ${pO}</div>
         <div class="contatori">prese ×1, scope ×3 · scene vinte ${vp}/${vo}</div></div>
+    </div>
+    <div class="pannello">
+      <span class="etichetta">La Crescita — chi siete diventati (misura a parte, non tocca la missione)</span>
+      <div class="lettura"><b>Protagonisti (${pP}): ${scP[0]}.</b> ${scP[1]}</div>
+      <div class="lettura"><b>Opposizione (${pO}): ${scO[0]}.</b> ${scO[1]}</div>
     </div>
     <div class="pannello">
       <span class="etichetta">L'ultima scena</span>
@@ -3041,16 +3059,16 @@ const REGOLE={
     <h3>Colpi di scena finali (24)</h3>
     Dopo che ciascuno ha giocato le 4 carte si fa il <b>primo conteggio</b>, come in ogni scena: si determina e si <b>narra l'esito apparente</b> (lo racconta chi ha perso). Poi il <b>piatto si svuota</b> e si gioca il <b>duello a rilancio</b> con le carte della <b>riserva</b> (solo numeriche). Chi ha vinto il primo conteggio <b>difende</b> dietro un <b>muro pari al numero di scene che ha vinto</b> (1-5); l'altro <b>sfida</b> e <b>apre</b> calando dalla riserva una carta di valore <b>≥ al muro</b>, narrando il colpo di scena. Poi, a <b>turni alterni</b>, ognuno prende la testa calando una carta di valore <b>≥ a quella in cima</b> (<b>pareggiare ribalta</b>: nemmeno un 10 è al sicuro, glielo pareggia l'altro 10). Chi non può più superare, o rinuncia, perde: <b>vince la missione l'ultimo che riesce a calare</b>. Se lo sfidante non ha nemmeno una carta ≥ al muro, la missione resta al difensore. Niente prese, scope o eliminazioni: contano solo i valori.
     <div class="es">Difensore con muro 3 (ha vinto 3 scene). Lo sfidante apre con un 6 (≥3), risposta 8, lo sfidante rilancia 9, il difensore pareggia con un 9 e ribalta; se lo sfidante non ha nulla ≥9, vince il difensore. Tieni in riserva una carta media (per aprire) e una alta (per vincere).</div>
-    <h3>Il finale: i due piani (25–26)</h3>
-    Il finale si legge su due piani. <b>Primo piano, la missione</b>: la decide il <b>duello dei colpi di scena</b> (l'ultimo che cala), non il piatto — il primo conteggio dà solo l'esito apparente e chi difende. Se il primo conteggio è <b>pari</b>, prima del duello chi ha più <b>Crescita</b> (a pari Crescita, chi ha l'iniziativa) può <b>azzerarla</b> per vincere il conteggio e difendere, oppure rinunciare cedendo la scena all'altro; se nessuno esercita, il pareggio va all'Opposizione. Un finale può <b>ribaltare</b> l'apparenza: chi sembrava perdere la scena può vincere la missione dalla riserva. <b>Secondo piano, la Crescita</b>: i punti accumulati e non spesi (prese 1, scope 3, lo speso vale 0) dicono quanto i tuoi personaggi sono cresciuti lungo il viaggio. Che cosa sia lo decidi tu (maturazione, evoluzione interiore, reputazione e prestigio); e il seme delle carte con cui hai fatto i punti dà un indizio di che cosa sia cresciuto di più, tra i tuoi due semi: più Cuori = crescita di legame ed empatia, più Picche = di forza e affermazione (per l'Opposizione, Quadri vs Fiori). Spendere punti in figure = aver chiamato aiuto e diviso il merito; tenerli = essersi fatti un nome. Vale per entrambi i lati: per i protagonisti è una promessa, per l'Opposizione una minaccia (l'idra).
-    <table><tr><th>Missione</th><th>Punti</th><th>Esito</th></tr>
-    <tr><td>Vinta</td><td>Vinti</td><td><b>Vittoria piena</b> — ce l'avete fatta, e da soli</td></tr>
-    <tr><td>Vinta</td><td>Persi</td><td><b>Per il rotto della cuffia</b> — vinto, ma grazie agli aiuti e a caro prezzo</td></tr>
-    <tr><td>Persa</td><td>Vinti</td><td><b>Sconfitta dignitosa</b> — caduti a testa alta, l'esperienza è il tesoro</td></tr>
-    <tr><td>Persa</td><td>Persi</td><td><b>Fallimento totale</b> — travolti su ogni fronte</td></tr></table>
-    Un fallimento totale dei protagonisti è una <b>vittoria piena dell'Opposizione</b>: narrala come trionfo dell'avversario, non come casella vuota.
-    <h3>Fine partita ed epilogo</h3>
-    Oltre ai due piani, danno voce all'epilogo altre due dimensioni: il <b>rapporto</b> tra i protagonisti e il <b>privilegio di chi ha vinto più scene</b>. Ciascuno risponde alle domande che lo riguardano: chi ha vinto la missione (hanno ottenuto ciò che volevano? e se non ha vinto i punti: a che prezzo, con quale rimpianto?), chi ha vinto i punti (come sono cresciuti?), chi giocava i Protagonisti (che cosa pensa ora Picche di Cuori, e viceversa?), e chi ha perso la missione ma vinto più scene (cosa ignora chi ha vinto, non è tutto oro quel che luccica? oppure quale riscatto trae?). Poi, facoltativo, l'<b>epilogo</b>: vignette, ciascuna su un Qualcuno (protagonista, PNG, antagonista), ambientate giorni o anni dopo. Si narra a turno, mai due di fila; "passo" chiude (l'altro narra un'ultima vignetta, poi finisce); nessun tetto al numero, nessun costo. È l'unico spazio in cui un destino dato per certo può essere riaperto: qui salta la regola d'oro "introdurre non annulla".`}
+    <h3>Il finale: la missione e la Crescita (25–26)</h3>
+    <b>La missione</b> la decide il <b>duello dei colpi di scena</b> (l'ultimo che cala), non il piatto: il primo conteggio dà solo l'esito apparente e chi difende. Se il primo conteggio è <b>pari</b>, prima del duello chi ha più <b>Crescita</b> (a pari Crescita, chi ha l'iniziativa) può <b>azzerarla</b> per vincere il conteggio e difendere, oppure rinunciare cedendo la scena all'altro; se nessuno esercita, il pareggio va all'Opposizione. Un finale può <b>ribaltare</b> l'apparenza: chi sembrava perdere la scena può vincere la missione dalla riserva. Alla fine i protagonisti hanno <b>compiuto la missione o hanno fallito</b>, e basta: il gioco ha già raccontato che tipo di vittoria è stata, non serve una tabella a qualificarla.<br><br>
+    <b>La Crescita</b> è una misura a parte, che <b>non si incrocia</b> con la missione: i punti accumulati e non spesi (prese 1, scope 3, lo speso vale 0) dicono quanto i tuoi personaggi sono cresciuti lungo il viaggio. Che cosa sia lo decidi tu (maturazione, evoluzione interiore, reputazione e prestigio); e il seme delle carte con cui hai fatto i punti dà un indizio, tra i tuoi due semi: più Cuori = legame ed empatia, più Picche = forza e affermazione (per l'Opposizione, Quadri vs Fiori). Spendere punti in figure = aver chiamato aiuto e diviso il merito; tenerli = essersi fatti un nome. La si legge <b>a scaglioni</b>, per entrambi i lati: per i protagonisti è una promessa, per l'Opposizione l'idra.
+    <table><tr><th>Punti non spesi</th><th>Protagonisti</th><th>Opposizione</th></tr>
+    <tr><td>0-2</td><td><b>Nessuna crescita</b></td><td><b>Minaccia spenta</b></td></tr>
+    <tr><td>3-6</td><td><b>Crescita</b></td><td><b>Minaccia intatta</b></td></tr>
+    <tr><td>7+</td><td><b>Grande crescita</b></td><td><b>L'idra</b> (torneranno, e peggio)</td></tr></table>
+    Una missione fallita dai protagonisti è una <b>missione compiuta dall'Opposizione</b>: narrala come trionfo dell'avversario, non come casella vuota.
+    <h3>L'epilogo</h3>
+    Letta la Crescita, facoltativo, l'<b>epilogo</b>: vignette, ciascuna su un Qualcuno (protagonista, PNG, antagonista), ambientate giorni o anni dopo. La Crescita appena letta è il primo materiale (grande crescita dei protagonisti = una vignetta di sintonia, dell'Opposizione = un'ombra sul futuro). Si narra a turno, mai due di fila; "passo" chiude (l'altro narra un'ultima vignetta, poi finisce); nessun tetto al numero, nessun costo. È l'unico spazio in cui un destino dato per certo può essere riaperto: qui salta la regola d'oro "introdurre non annulla".`}
 };
 const AIUTO_FASE={asta:"asta",asta_rivela:"asta",apertura:"asta",turno:"azioni",narrazione:"semi",
   fine_scena:"lettura",mano_estesa:"scena5",primo_conteggio:"scena5",colpi:"scena5",mercato:"mercato",
@@ -3268,7 +3286,7 @@ JOLLY: un solo Jolly, RISORSA dei PROTAGONISTI (non è nel mazzo: ce l'hanno dav
 
 RISORSE DEL PITCH (spinte): sono otto, due per seme (le tue sono ♦ e ♣). Dopo una presa fatta con una CARTA NUMERICA puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e il piatto viene spazzato via (le carte rimaste finiscono negli scarti comuni). La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola (due per seme, entrambe usabili); una sola spinta per presa; MAI su una presa di FIGURA (una presa fatta con Fante/Regina/Re non è promuovibile a scopa); VIETATA nell'ultima scena. (I tratti "cosa i protagonisti si detestano" sono solo narrativi, non spinte.)
 
-QUINTA SCENA: la mano finale si sceglie dopo il mercato; in RISERVA vanno solo carte NUMERICHE (le figure restano in mano). Scelta: tieni le carte alte in mano per vincere il primo conteggio, oppure in riserva per vincere il duello finale — bastano una media (per aprire) e una alta (per vincere). Dopo il primo conteggio si gioca il DUELLO A RILANCIO: il piatto si svuota, chi ha vinto il conteggio DIFENDE dietro un MURO pari alle scene che ha vinto (1-5), l'altro SFIDA e apre calando dalla riserva una carta di valore >= al muro; poi a turni alterni si prende la testa con una carta >= a quella in cima (PAREGGIARE RIBALTA: nemmeno un 10 e' sicuro). Chi non puo' piu' superare (o rinuncia) perde: vince la missione l'ultimo che cala. Se lo sfidante non ha nulla >= al muro, vince il difensore. Il primo conteggio da' solo l'esito apparente; la MISSIONE la decide il duello. Se il primo conteggio e' pari, prima del duello chi ha piu' Crescita (a pari, chi ha l'iniziativa) puo' azzerarla per vincere il conteggio e difendere, oppure cedere; se nessuno esercita, vince l'Opposizione. Il finale si legge su due piani: la MISSIONE (chi vince il duello) e la CRESCITA (i punti non spesi: figure comprate = aiuto chiamato, punti tenuti = nome che ci si e' fatti; per te e' la minaccia che resta, l'idra). Un fallimento totale dei protagonisti e' una tua vittoria piena, da narrare come trionfo. Poi, facoltativo, l'epilogo: vignette su un Qualcuno, giorni o anni dopo, a turni e senza due di fila.
+QUINTA SCENA: la mano finale si sceglie dopo il mercato; in RISERVA vanno solo carte NUMERICHE (le figure restano in mano). Scelta: tieni le carte alte in mano per vincere il primo conteggio, oppure in riserva per vincere il duello finale — bastano una media (per aprire) e una alta (per vincere). Dopo il primo conteggio si gioca il DUELLO A RILANCIO: il piatto si svuota, chi ha vinto il conteggio DIFENDE dietro un MURO pari alle scene che ha vinto (1-5), l'altro SFIDA e apre calando dalla riserva una carta di valore >= al muro; poi a turni alterni si prende la testa con una carta >= a quella in cima (PAREGGIARE RIBALTA: nemmeno un 10 e' sicuro). Chi non puo' piu' superare (o rinuncia) perde: vince la missione l'ultimo che cala. Se lo sfidante non ha nulla >= al muro, vince il difensore. Il primo conteggio da' solo l'esito apparente; la MISSIONE la decide il duello. Se il primo conteggio e' pari, prima del duello chi ha piu' Crescita (a pari, chi ha l'iniziativa) puo' azzerarla per vincere il conteggio e difendere, oppure cedere; se nessuno esercita, vince l'Opposizione. Il finale: la MISSIONE e' solo COMPIUTA o FALLITA (la decide il duello; il gioco ha gia' raccontato che tipo di vittoria e' stata, niente tabella di esiti). La CRESCITA e' una misura A PARTE, NON si incrocia con la missione: i punti non spesi (figure comprate = aiuto chiamato, punti tenuti = nome che ci si e' fatti) si leggono A SCAGLIONI, per te la minaccia che resta, l'idra: 0-2 minaccia spenta, 3-6 minaccia intatta, 7+ l'idra (tornerete, e peggio); per i protagonisti 0-2 nessuna crescita, 3-6 crescita, 7+ grande crescita. Una missione fallita dai protagonisti e' una tua missione compiuta, da narrare come trionfo. Poi, facoltativo, l'epilogo: vignette su un Qualcuno, giorni o anni dopo, a turni e senza due di fila; la Crescita appena letta e' il primo materiale.
 
 RESA (solo se NON hai l'iniziativa, ti resta UNA sola carta, scene 1-4): se la tua ultima carta non può cambiare la scena (non fa presa e, anche giocandola, non ti porta sopra il totale dei Protagonisti), conviene arrenderti invece di sprecarla. Due mosse, ciascuna UNA volta per partita: RITIRATA STRATEGICA = cedi la scena e rimescoli la carta nel mazzo (più riserva per i colpi di scena finali); RESA ONOREVOLE = cedi la scena, vale 1 punto (la carta va negli scarti). In entrambe perdi la posta della scena e racconti tu come arretri per riorganizzarti. NON arrenderti se la carta può prendere o se ti fa superare i Protagonisti: giocala.
 

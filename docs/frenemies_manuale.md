@@ -19,7 +19,7 @@
 
 **Capitolo 6. L'ultima scena.** La mano estesa, i colpi di scena, il conteggio definitivo.
 
-**Capitolo 7. Il finale.** I due piani del finale, la Crescita, i quattro esiti, le domande di fine partita e l'epilogo a vignette.
+**Capitolo 7. Il finale.** La Crescita, letta a scaglioni per ciascun lato, e l'epilogo a vignette.
 
 **Appendice A. Lo scenario demo: Il sole di mezzanotte.** Un pitch completo, pronto da giocare.
 
@@ -161,15 +161,15 @@ Siate generosi anche quando ci saranno degli "sconfinamenti" nelle narrazioni. I
 
 ## 1.9 Come finisce?
 
-L'esito della missione dei protagonisti si decide nell'ultima scena: chi vince quella compie o fallisce la missione. Ma il come finisce davvero la storia passa attraverso l'interpretazione di come si è svolto tutto il viaggio. Il finale si legge su due piani: la Missione, cioè se i protagonisti l'hanno compiuta, e la Crescita, cioè i punti accumulati nel corso della partita con prese e scope, che dicono quanto i protagonisti sono migliorati e si sono fatti un nome. Dall'incrocio di questi due piani nasce l'esito finale.
+L'esito della missione dei protagonisti si decide nell'ultima scena: chi vince quella compie o fallisce la missione, e il gioco ha già raccontato lungo la strada che tipo di vittoria o di sconfitta sia stata. Resta da leggere un solo dato in più, la Crescita: i punti accumulati nel corso della partita con prese e scope e non spesi, che dicono quanto i protagonisti sono cresciuti e si sono fatti un nome (e, per l'Opposizione, quanto è diventata una minaccia). È una misura a parte, che non si incrocia con la missione e si legge a scaglioni per ciascun lato.
 
-- **Vittoria piena:** ce l'hanno fatta al di là di ogni aspettativa, e con le proprie forze.
-- **Per il rotto della cuffia:** a stento ce l'hanno fatta, ma grazie agli aiuti, al caso o a caro prezzo.
-- **Sconfitta dignitosa:** hanno fallito, ma a testa alta, e l'esperienza maturata è il loro tesoro.
-- **Fallimento totale:** hanno fallito e ne sono stati travolti.
+La Crescita si legge a scaglioni, uno per lato:
 
-Oltre all'esito della missione, la storia racconterà anche il destino del rapporto tra i due protagonisti: si rafforzato, evoluto o è deflagrato?
-Stabilito l'esito, i giocatori racconteranno a turno, con brevi scenette, il destino dei vari personaggi, fino all'ultima dissolvenza al nero.
+- **Protagonisti:** poca crescita (siete rimasti quelli della partenza), crescita (qualcosa è cambiato, nasce una stima reciproca) o grande crescita (il viaggio vi ha trasformati).
+- **Opposizione:** stesso numero ma segno opposto, la minaccia che resta: spenta (i nemici si sono sfilacciati), intatta (rallentati, non fermati) o l'idra (escono più forti di prima, torneranno).
+
+Oltre all'esito della missione, la storia racconterà anche il destino del rapporto tra i due protagonisti: si è rafforzato, evoluto o è deflagrato?
+Letta la Crescita, i giocatori racconteranno a turno, con brevi scenette, il destino dei vari personaggi, fino all'ultima dissolvenza al nero.
 
 
 ## 1.10 Flusso della partita {: .salto-pagina }
@@ -185,7 +185,7 @@ In breve, fase per fase:
 - **Mercato.** Tra una scena e l'altra si spendono i punti per comprare le figure, carte più potenti (Capitolo 4).
 - **Ultima scena.** Si gioca con una mano estesa (si scelgono le carte da giocare, le altre vanno in riserva) e decide la Missione (Capitolo 6).
 - **Colpi di scena.** Le carte di riserva ribaltano l'esito apparente e fissano il destino della Missione (Capitolo 6).
-- **Lettura del finale e domande.** Si determina l'esito della storia e si risponde alle domande di fine partita (Capitolo 7).
+- **Lettura del finale.** Si legge la Crescita di ciascun lato, a scaglioni (Capitolo 7).
 - **Epilogo.** A turno, brevi vignette sul destino dei personaggi, fino all'ultima dissolvenza (Capitolo 7).
 
 
@@ -753,7 +753,7 @@ La missione la decide il **duello dei colpi di scena**: chi cala per ultimo la v
 
 **Se il primo conteggio è pari**, prima del duello si decide chi difende con una facoltà legata alla Crescita: il lato con **più Crescita** (a pari Crescita, il lato con l'**iniziativa**) può **azzerare tutta la propria Crescita** per aggiudicarsi il primo conteggio e difendere, oppure **rinunciare**, cedendo così la vittoria della scena all'altro (che difende senza spendere nulla). Se chi ha diritto non ha Crescita da spendere, di fatto cede; se nessuno esercita, il pareggio va all'Opposizione. In ogni caso, deciso il difensore, il duello si gioca comunque.
 
-L'altra cosa che si guarda è chi ha vinto ai punti complessivi (la Crescita). Di come Missione e Crescita si combinano nel finale parla il prossimo capitolo.
+L'altra cosa che si guarda è la Crescita di ciascun lato: i punti complessivi accumulati e non spesi. Non si combina con la Missione, è una misura a parte; come si legge lo dice il prossimo capitolo.
 
 ---
 
@@ -764,48 +764,33 @@ L'altra cosa che si guarda è chi ha vinto ai punti complessivi (la Crescita). D
 «Sì. Questo potrei farlo.» (Il Signore degli Anelli: il ritorno del Re)
 {: .citazione }
 
-Dopo i colpi di scena viene il finale: il momento in cui si tirano le somme. Si guarda com'è andata la missione, quanti punti ha fatto ciascun lato e quante scene ha vinto.
+Finita l'ultima scena, la storia ha già detto la cosa più importante: chi ha vinto e come. La scena 5 e i colpi di scena l'hanno messa in scena, e quell'esito non si tocca più: non c'è una tabella che venga a dirvi di che tipo di vittoria si è trattato, perché ve l'ha già raccontato il gioco. Quello che resta da fare nel finale è leggere un solo dato in più, la Crescita, e poi chiudere con l'epilogo.
 
-## 7.1 I due piani del finale
+## 7.1 La Crescita
 
-Il finale si legge su due piani, la Missione e la Crescita, e dal loro incrocio nascono quattro esiti.
+I punti che un lato ha accumulato con prese e scope, e non ha speso al mercato, sono la sua Crescita. Non riqualificano la vittoria e non si incrociano con la Missione: sono una misura a parte, che dice qualcosa in più su chi avete portato fino in fondo. Quanto i protagonisti sono cresciuti lungo il viaggio; quanto l'Opposizione è diventata una minaccia.
 
-Il primo piano è la missione: al termine dei colpi di scena, i protagonisti hanno compiuto la loro missione o hanno fallito. Il secondo piano è la Crescita: i punti accumulati con prese e scope e non spesi, che dicono quanto i protagonisti sono cresciuti con le proprie forze. Il primo è l'esito esterno della storia, la seconda la sua misura intima.
+Che cosa sia di preciso questa crescita lo decide il giocatore: può essere la maturazione di un personaggio, una sua evoluzione interiore, oppure la reputazione e il prestigio che si è guadagnato. Spendere i punti per comprare figure significa aver chiamato aiuto e dover dividere il merito; tenerli significa essersi fatti un nome. E un indizio di che cosa sia cresciuto di più sta nei due semi di ciascun lato: si guarda con quale dei due si sono fatti più punti. Per i protagonisti una predominanza di Cuori indica una crescita passata dal legame e dall'empatia, una di Picche una crescita di forza e affermazione; per l'Opposizione vale lo stesso fra i nemici di Quadri e il caos di Fiori.
 
-## 7.2 Crescita
+La si legge a scaglioni, sempre, per entrambi i lati. Lo stesso numero racconta cose opposte a seconda del lato: per i protagonisti è una promessa, per l'Opposizione è l'idra a cui per ogni testa mozzata ne ricrescono altre.
 
-I punti che un lato ha accumulato con prese e scope, e non ha speso al mercato, misurano la sua Crescita: quanto i suoi personaggi sono cresciuti lungo il viaggio. Spendere i punti per comprare figure significa aver chiamato aiuto e dover dividere il merito; tenerli significa essersi fatti un nome. La Crescita vale per entrambi i lati, ma cambia segno: per i protagonisti è una promessa, per l'Opposizione è una minaccia, l'idra a cui per ogni testa mozzata ne ricrescono altre.
+**Crescita dei Protagonisti**
 
-Che cosa sia di preciso questa crescita lo decide il giocatore: può essere la maturazione di un personaggio, una sua evoluzione interiore, oppure la reputazione e il prestigio che si è guadagnato. Pochi punti rimasti raccontano personaggi cresciuti poco, molti un cammino che ha lasciato il segno. E un indizio di che cosa sia cresciuto di più sta nei due semi di ciascun lato: si guarda con quale dei due si sono fatti più punti. Per i protagonisti una predominanza di Cuori indica una crescita passata dal legame e dall'empatia, una di Picche una crescita di forza e affermazione; per l'Opposizione vale lo stesso fra i nemici di Quadri e il caos di Fiori.
+- **0-2 · Nessuna crescita.** Eravate così concentrati sull'obiettivo da non guardare in faccia nessuno: né cosa stavate diventando, né l'altro che vi camminava accanto. Ne uscite uguali a prima, se non peggio, e il rapporto non ha potuto giovarne.
+- **3-6 · Crescita.** Qualcosa è cambiato rispetto a chi eravate alla partenza. Ciascuno ha imparato a vedere il valore nell'altro, pur restando convinto che il proprio modo sia il migliore: ne nasce una stima reciproca, non ancora una resa.
+- **7+ · Grande crescita.** Il viaggio vi ha trasformati. Ciascuno ha preso un po' dall'altro, fino a entrare in sintonia, e non vedete più il mondo come prima. Da una storia così non si torna gli stessi, e con ogni probabilità vi vorrete bene per il resto della vita.
 
-## 7.3 I quattro esiti
+**Crescita dell'Opposizione**
 
-| Missione | Punti | Esito |
-|---|---|---|
-| Vinta | Vinti | Vittoria piena: ce l'avete fatta, e da soli |
-| Vinta | Persi | Per il rotto della cuffia: vinto, ma grazie agli aiuti e a caro prezzo |
-| Persa | Vinti | Sconfitta dignitosa: caduti a testa alta, con l'esperienza come tesoro |
-| Persa | Persi | Fallimento totale: travolti su ogni fronte |
+- **0-2 · Minaccia spenta.** I nemici hanno fallito e si sono sfilacciati. Il pericolo che rappresentavano si è in gran parte consumato in questa storia.
+- **3-6 · Minaccia intatta.** Hanno incassato il colpo ma sono ancora in piedi, pronti a riorganizzarsi. La storia li ha rallentati, non fermati.
+- **7+ · L'idra.** Per ogni testa mozzata ne sono ricresciute altre. Escono da questa vicenda più forti e più radicati di quando è cominciata: torneranno, e peggio.
 
+Volendo, le due Crescite si leggono anche insieme: grande crescita da entrambe le parti racconta eroi trasformati che però hanno risvegliato qualcosa di terribile; nessuna crescita da entrambe, due forze che si sono logorate a vicenda senza che nessuno ne esca davvero.
 
-In caso di parità ai punti, la parità va a chi ha vinto la missione: missione vinta dà Vittoria piena, missione persa dà Fallimento totale.
+## 7.2 L'epilogo
 
-## 7.4 Le domande di fine partita
-
-Oltre a questi due piani, il finale si legge su altre due dimensioni, che non entrano nella tabella ma danno voce all'epilogo: il rapporto tra i due protagonisti, e il privilegio di chi ha condotto il viaggio vincendo più scene.
-
-Per dare voce a tutto questo, ciascun giocatore risponde alle domande che lo riguardano.
-
-- **A chi ha vinto la missione:** "I miei personaggi hanno ottenuto davvero quello che volevano?" E se non ha vinto anche ai punti, aggiunge: "Ma a che prezzo, con quale rimpianto?"
-- **A chi ha vinto il punteggio:** "In che modo i miei personaggi sono cresciuti?"
-- **A chi giocava i Protagonisti:** "Che cosa pensa ora Picche di Cuori, e viceversa? Come si è evoluto il loro rapporto?"
-- **A chi ha perso la missione ma ha vinto più scene dell'avversario,** a scelta una delle due: "Chi ha compiuto la missione ignora qualcosa: non è tutto oro quel che luccica. Che cosa gli sfugge?" oppure "Quale riscatto o consolazione i miei personaggi possono trarre da questa storia?"
-
-Tutto quanto si è stabilito finora, l'esito della missione, la Crescita di ciascun lato, le scene vinte, serve proprio a rispondere a queste domande. Rispondervi non è un passaggio formale: mette a fuoco la storia nella testa dei giocatori, ne fissa i contorni e ne ricava dei fatti precisi. Sono questi fatti il materiale da cui si attinge per le vignette dell'epilogo.
-
-## 7.5 L'epilogo
-
-Date le risposte, si gioca l'epilogo: una sequenza di vignette, ciascuna incentrata su un Qualcuno (un protagonista, un PNG, un antagonista), ambientata giorni, settimane o anni dopo l'avventura. È il cioccolatino dopo il pasto: è facoltativo, e se non te la senti va benissimo lo stesso.
+Letta la Crescita, si chiude con l'epilogo: una sequenza di vignette, ciascuna incentrata su un Qualcuno (un protagonista, un PNG, un antagonista), ambientata giorni, settimane o anni dopo l'avventura. È il cioccolatino dopo il pasto: è facoltativo, e se non te la senti va benissimo lo stesso. La Crescita appena letta è il primo materiale da cui attingere: una grande crescita dei protagonisti chiede una vignetta che mostri quella sintonia, una grande crescita dell'Opposizione un'ombra che si allunga sul futuro.
 
 Le poche regole sono tutte di buon senso:
 
@@ -1244,7 +1229,7 @@ Ma il primo conteggio è solo l'esito apparente. Ora si rivelano i **colpi di sc
 
 <div class="fiction"><span class="chi">Paola narra</span>Vera scende dal cassone con le mani alzate. Alì le punta il mitra contro, il dito sul grilletto. Ma una mano gli abbassa la canna: «Non farlo. È mia figlia.» L'uomo si toglie il velo, e Vera resta senza fiato: è Aldo, suo padre, quello che ha pianto per anni come morto, vivo e schierato con i custodi di Zerzura. Lascia cadere il revolver e gli corre incontro: il Sole lo aveva inseguito per onorare il sacrificio del padre, per dare un senso al suo sogno, e adesso quel padre è lì, in carne e ossa, a stringerla. Ed è Aldo a rivelarle la verità che i Veglianti custodiscono: il Sole di Mezzanotte non va portato via, va riportato nella cripta prima che l'eclissi finisca. Quell'artefatto tiene sigillato un demone nella sua dimensione; strapparlo da Zerzura aprirebbe la porta al suo ritorno, e scatenerebbe forze malefiche sul mondo. Salvarlo non significava prenderlo, ma lasciarlo dov'è. Anche Otto raggiunge il vecchio amico, e per un istante, in mezzo alla sabbia, sembra che i conti di una vita possano riaprirsi. Ma su quel volto di Otto, che legge sette lingue morte, Vera ha già letto la verità peggiore: lui lo sapeva, che suo padre era vivo, e aveva taciuto.</div>
 
-Esaurite le riserve, si fa il conteggio definitivo. Nel piatto restano 2♠, 10♦ e 9♠: **Protagonisti 11, Opposizione 10.** I Protagonisti vincono il piatto, e con esso la missione: il Sole di Mezzanotte non lascerà Zerzura. E poiché Paola conserva ancora sette punti non spesi, la sua Crescita, contro i due di Omar, è una **Vittoria piena.** Il diario del rapporto segna su, su, pari, pari, **giù**: nell'ultima scena i due si sono allontanati, perché a decidere è stata la forza di Vera, e perché il segreto taciuto da Otto pesa più di prima.
+Esaurite le riserve, si fa il conteggio definitivo. Nel piatto restano 2♠, 10♦ e 9♠: **Protagonisti 11, Opposizione 10.** I Protagonisti vincono il piatto, e con esso la missione: il Sole di Mezzanotte non lascerà Zerzura. Resta da leggere la Crescita: Paola conserva sette punti non spesi (**grande crescita**), Omar due (**minaccia spenta**). Il diario del rapporto segna su, su, pari, pari, **giù**: nell'ultima scena i due si sono allontanati, perché a decidere è stata la forza di Vera, e perché il segreto taciuto da Otto pesa più di prima.
 
 **Avendo perso la posta, l'esito lo racconta Omar.**
 {: .azione }
@@ -1253,23 +1238,15 @@ Esaurite le riserve, si fa il conteggio definitivo. Nel piatto restano 2♠, 10�
 
 ## Come si chiude la partita
 
-La quinta scena ha due conteggi, e così l'intera partita si legge su due piani.
+La missione l'hanno decisa i colpi di scena: i Protagonisti vincono il piatto, 11 a 10, quindi il Sole di Mezzanotte resta sigillato a Zerzura, dove deve stare. Il gioco ha già raccontato lungo la strada che tipo di vittoria sia stata: sofferta, ribaltata all'ultima carta, con un segreto che pesa tra i due. Non serve una tabella a qualificarla.
 
-Il primo è la **missione**: chi ha vinto il piatto finale. I Protagonisti, 11 a 10, quindi il Sole di Mezzanotte resta sigillato a Zerzura, dove deve stare.
+Resta da leggere la **Crescita**, i punti che ciascun lato non ha speso al mercato. Paola ne conserva sette: per i Protagonisti è una **grande crescita**, il viaggio li ha trasformati. Omar ne ha due: per l'Opposizione è una **minaccia spenta**, la Loggia esce sfilacciata da questa storia. È una misura a parte, non cambia la vittoria; dice solo chi sono diventati, e diventa il primo materiale per l'epilogo.
 
-Il secondo è la **Crescita**: i punti che ciascun lato non ha speso al mercato. Paola ne conserva sette, Omar due: anche qui avanti i Protagonisti. Vincere entrambi i piani è una **Vittoria piena**.
-
-Restano le domande di fine partita. Paola ha vinto la missione, la Crescita e più scene, e risponde così.
-
-**Hanno ottenuto ciò che volevano?** Sì, e più di quanto sperassero: volevano vederci chiaro nei misteri ancestrali del Sole di Mezzanotte e seguire le orme di Aldo Falco. Hanno avuto entrambe le cose, e hanno scoperto che quelle orme non portavano a una tomba, ma a un padre vivo.
-
-**Come sono cresciuti?** Hanno dimostrato il loro valore, e adesso sanno, come già lo sanno i loro nemici, che la magia e i poteri sovrannaturali esistono davvero. Da Zerzura non si torna gli stessi di prima.
-
-**Come si è evoluto il rapporto?** Vera ha imparato a rispettare Otto, e Otto lei. Il viaggio ha rafforzato il loro legame, nonostante i segreti che si sono portati dietro e l'avventatezza con cui Vera ha più volte messo tutti a rischio. Il diario aveva segnato l'ultima scena in discesa, per il silenzio di Otto sul padre di lei; ma a conti fatti non sono più i due che si punzecchiavano al Cairo.
+Prima delle vignette, Paola si ferma un momento su quello che è successo. I suoi personaggi hanno ottenuto ciò che volevano, e più di quanto sperassero: volevano vederci chiaro nei misteri del Sole di Mezzanotte e seguire le orme di Aldo Falco, e hanno scoperto che quelle orme non portavano a una tomba, ma a un padre vivo. Sono cresciuti: hanno dimostrato il loro valore, e adesso sanno, come già i loro nemici, che la magia e i poteri sovrannaturali esistono davvero; da Zerzura non si torna gli stessi. E il rapporto: Vera ha imparato a rispettare Otto, e Otto lei. Il viaggio ha rafforzato il loro legame, nonostante i segreti e l'avventatezza con cui Vera ha più volte messo tutti a rischio; il diario segnava l'ultima scena in discesa, per il silenzio di Otto sul padre di lei, ma a conti fatti non sono più i due che si punzecchiavano al Cairo.
 
 ## Epilogo
 
-Date le risposte, Paola e Omar si concedono il cioccolatino: una manciata di vignette, a turno, ciascuna su un personaggio, ambientate giorni o anni dopo.
+Letta la Crescita, Paola e Omar si concedono il cioccolatino: una manciata di vignette, a turno, ciascuna su un personaggio, ambientate giorni o anni dopo.
 
 <div class="fiction"><span class="chi">Paola narra</span>Qualche mese dopo, al Museo del Cairo, Fatima discute la tesi di dottorato. In prima fila, commossi, ci sono suo padre Kalim e lo zio Faruq, impacciati nei vestiti buoni e fieri come non mai. Il suo relatore non è più il professor Mansour, ma Otto Lenzi, che intanto si è guadagnato la cattedra. Quando la proclamano dottoressa, è lui il primo ad alzarsi ad applaudire.</div>
 
@@ -1439,13 +1416,13 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Coppia dei protagonisti.** I due personaggi al centro della storia, uno legato a Cuori e uno a Picche. Diversi tra loro, in conflitto, ma con un motivo per restare insieme.
 
-**Crescita.** Il secondo piano del finale: i punti accumulati e non spesi a fine partita, che misurano quanto i personaggi di un lato sono cresciuti nel viaggio. Pochi punti, poca crescita. Vale per entrambi i lati, promessa per i Protagonisti e minaccia per l'Opposizione; il seme con cui si sono fatti più punti suggerisce in che cosa si è cresciuti. (vedi 7.2)
+**Crescita.** I punti accumulati e non spesi a fine partita, che misurano quanto i personaggi di un lato sono cresciuti nel viaggio. Non riqualifica la missione, è una misura a parte, e si legge a scaglioni (0-2, 3-6, 7+) per ciascun lato: promessa per i Protagonisti, minaccia per l'Opposizione. Il seme con cui si sono fatti più punti suggerisce in che cosa si è cresciuti. (vedi 7.1)
 
 **Cuori (♥).** Seme dei Protagonisti: il protagonista empatico e relazionale. Dialogo, legame, mediazione, richiesta di aiuto, intuizione emotiva.
 
 **Domande di fine partita.** Le domande a cui ciascun giocatore risponde alla fine, secondo come è andata (chi ha vinto la missione, chi i punti, chi giocava i protagonisti, chi ha perso la missione ma vinto più scene). Mettono a fuoco la storia e producono i fatti su cui si costruisce l'epilogo.
 
-**Epilogo.** La sequenza facoltativa di vignette dopo le domande di fine partita. Si narra a turno, mai due di fila; "passo" chiude. È l'unico momento in cui un destino dato per certo può essere riaperto.
+**Epilogo.** La sequenza facoltativa di vignette con cui si chiude, letta la Crescita. Si narra a turno, mai due di fila; "passo" chiude. È l'unico momento in cui un destino dato per certo può essere riaperto.
 
 **Esito apparente / esito reale.** Nella quinta scena il primo conteggio dà l'esito apparente ("sembra finita"); solo dopo i colpi di scena il conteggio definitivo rivela l'esito reale della missione.
 
@@ -1502,8 +1479,6 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 **Quadri (♦).** Seme dell'Opposizione: i nemici attivi e intenzionali. Fazioni ostili, inseguitori, antagonisti, minacce organizzate.
 
 **Qualcuno (i Qualcuno).** Qualunque elemento della storia (persona, gruppo, luogo, oggetto) con una propria volontà e un destino. Diventa un Qualcuno quando gli si dà un nome e lo si annota: un Qualcuno senza nome non esiste.
-
-**Quattro esiti.** Le quattro chiusure possibili, dall'incrocio tra missione e punti: Vittoria piena (missione e punti), Per il rotto della cuffia (missione sì, punti no), Sconfitta dignitosa (missione no, punti sì), Fallimento totale (né l'una né gli altri).
 
 **Re (♦ deus ex machina).** Figura: costo 8 punti, vale 10. Effetto: recupera dagli scarti comuni una carta del suo stesso seme (la mano resta), che nelle scene 1-4 si rimescola nel tuo mazzo e nell'ultima scena entra nella riserva.
 

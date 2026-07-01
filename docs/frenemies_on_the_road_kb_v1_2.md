@@ -644,43 +644,39 @@ Al termine dell'ultima scena:
 
 In ogni caso, deciso il difensore, il **duello dei colpi di scena si gioca comunque** e stabilisce l'esito reale.
 
-**La Crescita come asse narrativo.** I punti non spesi restano il secondo piano di lettura del finale (aiuto chiamato / nome che ci si è fatti, §26), oltre a fornire — solo in caso di pareggio — la facoltà qui sopra. *(Fino alla v1.37 la Crescita era il tie-break di un piatto finale pari; dalla v1.38 il piatto non decide più la missione, la decide il duello, e la Crescita fa da spareggio solo sul ruolo di difensore.)*
+**La Crescita come asse narrativo.** I punti non spesi restano la misura a parte con cui si legge il finale (aiuto chiamato / nome che ci si è fatti, letta a scaglioni, §26), oltre a fornire, solo in caso di pareggio, la facoltà qui sopra. *(Fino alla v1.37 la Crescita era il tie-break di un piatto finale pari; dalla v1.38 il piatto non decide più la missione, la decide il duello, e la Crescita fa da spareggio solo sul ruolo di difensore.)*
 
 ---
 
-# PARTE VIII — GLI OUTCOME FINALI
+# PARTE VIII — IL FINALE
 
-## 26. I quattro esiti
+## 26. La Crescita *(v1.40)*
 
-Il finale si legge su **due piani**, la **missione** e la **Crescita**, e dal loro incrocio nascono quattro esiti.
+Finita l'ultima scena, la storia ha già detto la cosa più importante: **chi ha vinto e come**. La scena 5 e i colpi di scena (§24) lo hanno messo in scena, e quell'esito non si tocca più: non c'è una tabella che venga a dire di che *tipo* di vittoria si è trattato, perché lo ha già raccontato il gioco. Al termine dei colpi di scena i Protagonisti hanno **compiuto la missione o hanno fallito**, e basta. Quello che resta da leggere nel finale è **un solo dato in più**, la Crescita, e poi si chiude con l'epilogo. La Crescita **non riqualifica** la missione e **non si incrocia** con essa: è una misura a parte.
 
-**Primo piano, la missione.** Al termine dei colpi di scena, chi vince il piatto (Cuori + Picche contro Fiori + Quadri) ha compiuto la missione o ha fallito: è l'esito esterno della storia.
+I punti che un lato ha accumulato con prese e scope, e **non ha speso** al mercato, sono la sua **Crescita**: quanto i suoi personaggi sono cresciuti lungo il viaggio. Che cosa sia di preciso lo decide il giocatore (la maturazione di un personaggio, una sua evoluzione interiore, oppure la reputazione e il **prestigio** che si è guadagnato), e il **seme** delle carte con cui si sono fatti i punti dà un indizio di che cosa sia cresciuto di più: confrontando i **due semi del proprio lato**, una predominanza di Cuori indica una crescita di legame ed empatia, una di Picche una crescita di forza e affermazione (per l'Opposizione, lo stesso fra i nemici di Quadri e il caos di Fiori). Spendere punti per comprare figure significa aver **chiamato aiuto** e dover dividere il merito; tenerli significa **essersi fatti un nome**.
 
-**Secondo piano, la Crescita.** I punti accumulati e **non spesi** (prese + scope) non dicono se la missione è riuscita, ma quanto i personaggi di un lato sono **cresciuti** lungo il viaggio: pochi punti rimasti raccontano una crescita modesta, molti un cammino che ha lasciato il segno. Che cosa sia di preciso questa crescita lo decide il giocatore (la maturazione di un personaggio, una sua evoluzione interiore, oppure la reputazione e il **prestigio** che si è guadagnato), e il **seme** delle carte con cui si sono fatti i punti dà già un indizio di che cosa sia cresciuto di più: confrontando i **due semi del proprio lato**, una predominanza di Cuori indica una crescita di legame ed empatia, una di Picche una crescita di forza e affermazione (per l'Opposizione, lo stesso fra i nemici di Quadri e il caos di Fiori). Spendere punti per comprare figure significa aver **chiamato aiuto** e dover dividere il merito; tenerli significa **essersi fatti un nome**. La Crescita vale per entrambi i lati, con segno opposto: per i Protagonisti è una **promessa**, per l'Opposizione una **minaccia** (l'idra: per ogni testa mozzata ne ricrescono altre).
+La si legge **a scaglioni**, sempre, **per entrambi i lati**. Lo stesso numero racconta cose opposte a seconda del lato: per i Protagonisti è una **promessa**, per l'Opposizione è l'**idra** a cui per ogni testa mozzata ne ricrescono altre.
 
-| Missione | Punti | Esito |
-|---|---|---|
-| Vinta | Vinti | **Vittoria piena** — ce l'avete fatta, e da soli |
-| Vinta | Persi | **Per il rotto della cuffia** — vinto, ma grazie agli aiuti e a caro prezzo |
-| Persa | Vinti | **Sconfitta dignitosa** — caduti a testa alta, con l'esperienza come tesoro |
-| Persa | Persi | **Fallimento totale** — travolti su ogni fronte |
+**Crescita dei Protagonisti**
 
-> **Parità ai punti:** se i punti finiscono pari (e il piatto **non** è in pareggio), la parità va a chi ha vinto la missione (missione vinta → **Vittoria piena**, missione persa → **Fallimento totale**). Se invece è il **piatto** a essere in pareggio, la missione si decide sulla **Crescita** (§25): chi ne ha di più la spende per aggiudicarsi il piatto, a parità vince il lato dei Protagonisti, e quando a spuntarla sono i Protagonisti l'esito è sempre **Per il rotto della cuffia**.
+- **0-2 · Nessuna crescita.** Eravate così concentrati sull'obiettivo da non guardare in faccia nessuno: né cosa stavate diventando, né l'altro che vi camminava accanto. Ne uscite uguali a prima, se non peggio, e il rapporto non ha potuto giovarne.
+- **3-6 · Crescita.** Qualcosa è cambiato rispetto a chi eravate alla partenza. Ciascuno ha imparato a vedere il valore nell'altro, pur restando convinto che il proprio modo sia il migliore: ne nasce una stima reciproca, non ancora una resa.
+- **7+ · Grande crescita.** Il viaggio vi ha trasformati. Ciascuno ha preso un po' dall'altro, fino a entrare in sintonia, e non vedete più il mondo come prima. Da una storia così non si torna gli stessi, e con ogni probabilità vi vorrete bene per il resto della vita.
 
-> **Lettura simmetrica:** un **Fallimento totale** dei Protagonisti è, nello stesso istante, una **Vittoria piena dell'Opposizione**: va narrata come il trionfo dell'avversario, non come una casella vuota.
+**Crescita dell'Opposizione**
 
-### 26.1 — Le domande di fine partita *(v1.16)*
+- **0-2 · Minaccia spenta.** I nemici hanno fallito e si sono sfilacciati. Il pericolo che rappresentavano si è in gran parte consumato in questa storia.
+- **3-6 · Minaccia intatta.** Hanno incassato il colpo ma sono ancora in piedi, pronti a riorganizzarsi. La storia li ha rallentati, non fermati.
+- **7+ · L'idra.** Per ogni testa mozzata ne sono ricresciute altre. Escono da questa vicenda più forti e più radicati di quando è cominciata: torneranno, e peggio.
 
-Oltre ai due piani, il finale si legge su **altre due dimensioni** che non entrano nella tabella ma danno voce all'epilogo: il **rapporto** tra i due protagonisti (§27.2) e il **privilegio di chi ha condotto il viaggio vincendo più scene**. Per dare voce a tutto questo, ciascun giocatore risponde alle domande che lo riguardano:
+Volendo, le due Crescite si leggono anche **insieme**: grande crescita da entrambe le parti racconta eroi trasformati che però hanno risvegliato qualcosa di terribile; nessuna crescita da entrambe, due forze che si sono logorate a vicenda senza che nessuno ne esca davvero.
 
-- **A chi ha vinto la missione:** "I miei personaggi hanno ottenuto davvero quello che volevano?" E se non ha vinto anche ai punti, aggiunge: "Ma a che prezzo, con quale rimpianto?"
-- **A chi ha vinto il punteggio:** "In che modo i miei personaggi sono cresciuti?"
-- **A chi giocava i Protagonisti:** "Che cosa pensa ora Picche di Cuori, e viceversa? Come si è evoluto il loro rapporto?"
-- **A chi ha perso la missione ma ha vinto più scene dell'avversario,** a scelta una delle due: "Chi ha compiuto la missione ignora qualcosa: non è tutto oro quel che luccica. Che cosa gli sfugge?" oppure "Quale riscatto o consolazione i miei personaggi possono trarre da questa storia?"
+> **Lettura simmetrica della missione:** una missione **fallita** dai Protagonisti è, nello stesso istante, una missione **compiuta** dall'Opposizione: va narrata come il trionfo dell'avversario, non come una casella vuota.
 
-### 26.2 — L'epilogo *(v1.16)*
+### 26.1 — L'epilogo *(v1.16)*
 
-Date le risposte, si gioca l'**epilogo**: una sequenza di **vignette**, ciascuna incentrata su un **Qualcuno** (un protagonista, un PNG, un antagonista), ambientata giorni, settimane o anni dopo l'avventura. È **facoltativo** (il "cioccolatino" dopo il pasto).
+Letta la Crescita, si chiude con l'**epilogo**: una sequenza di **vignette**, ciascuna incentrata su un **Qualcuno** (un protagonista, un PNG, un antagonista), ambientata giorni, settimane o anni dopo l'avventura. È **facoltativo** (il "cioccolatino" dopo il pasto). La Crescita appena letta è il primo materiale da cui attingere: una grande crescita dei Protagonisti chiede una vignetta che mostri quella sintonia, una grande crescita dell'Opposizione un'ombra che si allunga sul futuro.
 
 - Si narra **a turno**; non si possono narrare **due vignette di fila**. Quando il lato dei Protagonisti è diviso tra due giocatori, tra loro ha l'ultima parola chi ha realizzato più scope.
 - **"Passo" = chiusura:** quando un giocatore passa, l'altro può narrare al massimo **un'ultima vignetta**, poi l'epilogo finisce.
@@ -725,7 +721,7 @@ Al termine della quinta scena si confrontano i valori totali di Fiori e Quadri n
 - Fiori dominanti → è stato il caos, la sfortuna o la fragilità interna a decidere
 - Parità → entrambi gli assi hanno inciso in modo simile
 
-> **Esempio di lettura completa:** Frank e Skunk vincono il piatto finale ma perdono ai punti (Vittoria per il rotto della cuffia). Nelle scene 1, 3 e 4 dominavano le Picche: il rapporto è stato duro per la maggior parte del viaggio, con Frank a dettare legge. Nella scena 5 dominano i Cuori: si sono avvicinati solo alla fine, davanti al jet. Nell'ultimo piatto dominano i Fiori: non sono stati i sicari a quasi fermarli, ma il caos e la fragilità della coppia.
+> **Esempio di lettura completa:** Frank e Skunk compiono la missione, e i pochi punti non spesi li lasciano in fascia bassa di Crescita (poca crescita: ce l'hanno fatta, ma restano quelli di prima). Nelle scene 1, 3 e 4 dominavano le Picche: il rapporto è stato duro per la maggior parte del viaggio, con Frank a dettare legge. Nella scena 5 dominano i Cuori: si sono avvicinati solo alla fine, davanti al jet. Nell'ultimo piatto dominano i Fiori: non sono stati i sicari a quasi fermarli, ma il caos e la fragilità della coppia.
 
 ---
 
@@ -950,11 +946,17 @@ Il taccuino del professor Aldo Falco, l'unico che abbia mai annotato la via per 
 
 La partita d'esempio completa, narrata scena per scena sullo scenario demo (§33), è l'**Appendice B del manuale del giocatore** ("Il sole di mezzanotte"): cinque scene, i quattro mercati, il finale e l'epilogo. È una partita vera a 2 giocatori (Paola gioca i Protagonisti, Omar l'Opposizione), generata e verificata dal motore (seed 34/367) e poi narrata.
 
-In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, giù**), vetrina di tutte e tre le figure (Fante e Regina di Paola, Re di Omar), del Jolly, di tre spinte del pitch e dei colpi di scena finali. Il primo conteggio dà l'Opposizione in vantaggio, ma i colpi di scena ribaltano il piatto: esito **Vittoria piena** (piatto 11-10; i Protagonisti vincono anche la Crescita).
+In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, giù**), vetrina di tutte e tre le figure (Fante e Regina di Paola, Re di Omar), del Jolly, di tre spinte del pitch e dei colpi di scena finali. Il primo conteggio dà l'Opposizione in vantaggio, ma i colpi di scena ribaltano l'apparenza: i Protagonisti **compiono la missione** (piatto 11-10) e chiudono con la Crescita più alta.
 
 ---
 
 # REGISTRO MODIFICHE
+
+## v1.40 (luglio 2026) — il finale non incrocia più Missione e Crescita: Crescita a scaglioni, via i quattro esiti e le domande
+
+1. **§26 riscritto: niente incrocio, niente tabella, niente domande di fine partita.** Fino alla v1.39 il finale si leggeva su **due piani** che si **incrociavano** in una tabella di **quattro esiti nominati** (Vittoria piena / Per il rotto della cuffia / Sconfitta dignitosa / Fallimento totale), seguita dalle **domande di fine partita** (§26.1). Ora l'esito della missione è **solo compiuta/fallita** (già deciso dalla scena 5 e dal duello dei colpi di scena, §24: il gioco lo ha già raccontato, non serve una tabella a qualificarlo), e la **Crescita** diventa una **misura a parte** che **non si incrocia** con la missione: la si legge **a scaglioni, per entrambi i lati**, e la si tiene presente per l'**epilogo**. Rimosse la tabella dei quattro esiti, la nota «Parità ai punti» e le domande di fine partita. Resta la lettura simmetrica (missione fallita dai Protagonisti = compiuta dall'Opposizione). L'epilogo (ex §26.2) diventa §26.1 e attinge alla Crescita come primo materiale.
+2. **Scaglioni della Crescita (0-2 / 3-6 / 7+).** Protagonisti: **Nessuna crescita** (0-2), **Crescita** (3-6), **Grande crescita** (7+). Opposizione, stesso numero ma segno opposto (l'idra): **Minaccia spenta** (0-2), **Minaccia intatta** (3-6), **L'idra** (7+). Soglie tarate sulla **distribuzione reale** del benchmark (250 partite, 500 lati: mediana 6, quartili 4 e 8): con le tre fasce così, la bassa scatta ~14% (P) / ~25% (O), la media ~50% / ~59%, l'alta ~44% / ~30% — la «grande crescita» resta un traguardo, non l'automatismo (con soglie più basse tipo 4+ scattava nell'80-85% dei casi). Motivazione (dal designer, Saverio): il tipo di vittoria lo racconta già il gioco; la Crescita non deve riqualificare la missione ma solo dire «chi siete diventati», e alimentare le vignette dell'epilogo.
+3. **Propagazione (stesso commit).** `index.html`: `rFinale` (rimosso il cartellone dei quattro esiti nominati; ora intestazione **missione compiuta/fallita** dal duello + due pannelli **Crescita a scaglioni**, uno per lato; restano i pannelli di colore «L'ultima scena» e «Il rapporto»), `REGOLE` (blocco finale: via tabella e domande, dentro gli scaglioni), `REGOLE_IA` (descrizione del finale). KB §26 (+ §25 nota «asse narrativo» e Appendice B in breve). Manuale: cap. 7 riscritto (§7.1 Crescita a scaglioni, §7.2 epilogo; rimossi i vecchi §7.1 due piani, §7.3 quattro esiti, §7.4 domande), più §1.9 «Come finisce?», indice, flusso §1.10 e coda del §6.3. Diario decisioni. **Benchmark** `test/benchmark.js`: la metrica di vittoria passa da `r.outcome` (stringa dell'esito, non più esistente) a `r.missione` (vincitore del duello); la voce «Esiti» (i quattro nominati) è sostituita dalla **distribuzione della Crescita per scaglione**. La simulazione è **identica** (nessuna meccanica tocca: missione, punti e mercato invariati), cambia solo la lettura/etichettatura del finale; la vecchia riga «Esiti» non è più confrontabile. **Collaudo:** suite core verde.
 
 ## v1.39 (luglio 2026) — il Jolly dell'Opposizione: la carta ceduta si scarta (asimmetria)
 
@@ -1191,4 +1193,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.39*
+*Frenemies on the Road — Knowledge Base v1.40*
