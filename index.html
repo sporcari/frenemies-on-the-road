@@ -625,8 +625,12 @@ function carta(seme, val, fig=null, jolly=false){
 function nuovoLato(chiave, nome, semi){
   const mazzo = [];
   semi.forEach(s=>{ for(let v=1; v<=10; v++) mazzo.push(carta(s,v)); });
-  return {chiave, nome, semi, mazzo:mischia(mazzo), mano:[],
-          astaCarta:null, riserva:[], punti:0};   // punti: valuta numerica (presa 1, scopa 3); le carte giocate vanno negli scarti comuni
+  const L = {chiave, nome, semi, mazzo:mischia(mazzo), mano:[],
+             astaCarta:null, riserva:[], punti:0};   // punti: valuta numerica (presa 1, scopa 3); le carte giocate vanno negli scarti comuni
+  // v1.33: il Jolly non sta nel mazzo. È una RISORSA dei Protagonisti, disponibile davanti al
+  // giocatore dall'inizio (scene 1-4): si afferra seppellendo una carta in fondo al proprio mazzo.
+  if(chiave==="P"){ const j=carta(null,0,null,true); j.seme="jolly"; L.jolly=j; }
+  return L;
 }
 function nuovaPartita(){
   idc = 0;
@@ -642,7 +646,7 @@ function nuovaPartita(){
     scopeGiocatore:{picche:0,cuori:0,quadri:0,fiori:0},
     svuotoConScopa:null,   // lato che ha svuotato il piatto con una scopa (per assegnare la scena a piatto vuoto)
     scartiComuni:[],       // pila degli scarti comune: ci finiscono TUTTE le carte giocate (prese, scope, catture, figure sacrificate); è il bacino da cui pesca il Re
-    jollyPeccato:null,     // la carta del Jolly, consegnata all'Opposizione come promemoria del peccato (§22.6)
+    jollyPassatoScena:null, // v1.33: scena (indice) in cui P ha giocato il Jolly; O può usarlo solo in una scena successiva (mai due usi nella stessa scena)
     pers:{A:{nome:"",desc:""}, B:{nome:"",desc:""}},
     pitch:PITCH_TEMPLATE.map(p=>({seme:p.seme, risposta:"", usata:false})),   // usata: vincolo per singola spinta (due per seme, entrambe spendibili)
     ritirata:{P:{mazzo:false,prese:false},O:{mazzo:false,prese:false}},   // ritirata strategica: ciascuna variante una volta per lato
@@ -660,7 +664,7 @@ function nuovaPartita(){
     astaWinner:null,
     astaPicks:{P:null,O:null},
     ultimaGiocata:"",
-    jollyEntrato:false, jollyIntroVisto:false, figureComprate:[],
+    figureComprate:[],
     png:{},                // metadati PNG-figura acquistati: chiave "<fig><seme>" -> {nome, desc}
     pngNarr:[],            // PNG narrativi creati in narrazione: {seme, nome, desc, scena}
     storia:[],             // log narrativo (solo vs Claude): {scena, lato, testo} in ordine; fonte per storiaTestoIA
@@ -906,7 +910,7 @@ function latoCheAgisce(){
     if(rec.vincitore==="P"||rec.vincitore==="O") return altro(rec.vincitore);
     return rec.iniziativa || G.hostLato;
   }
-  if(f==="jolly_intro"||f==="finale"||f==="primo_conteggio") return G.hostLato;
+  if(f==="finale"||f==="primo_conteggio") return G.hostLato;
   if(f==="narrazione") return G.narrLato || G.attore;
   if(f==="mercato") return G.mercatoLato || G.hostLato;
   if(f==="asta_rivela") return G.rivela && G.rivela.win ? G.rivela.win : G.attore;
@@ -999,7 +1003,7 @@ if(MAIN_EL){
   if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=>adattaViewport());
 }
 
-const FASI_CONDIVISE=new Set(["fine_scena","asta_rivela","jolly_intro","finale","mercato","primo_conteggio"]);
+const FASI_CONDIVISE=new Set(["fine_scena","asta_rivela","finale","mercato","primo_conteggio"]);
 function claudeStaGiocando(){
   // Visibilità dell'overlay "Claude sta generando": rispecchia, da G, le condizioni
   // di dispatch di iaScheduler (azione di turno dell'Opposizione in modalità vs Claude),
@@ -1044,7 +1048,6 @@ function render(){
   else if(f==="colpi") rColpi();
   else if(f==="mano_estesa") rManoEstesa();
   else if(f==="mercato") rMercato();
-  else if(f==="jolly_intro") rJollyIntro();
   else if(f==="finale") rFinale();
   if(spettatore() && FASI_CONDIVISE.has(f)){
     SC.querySelectorAll("button,input,textarea").forEach(el=>el.disabled=true);
@@ -1532,7 +1535,7 @@ function rSetup(){
     ${normalizzaLista(G.nemici).length||normalizzaLista(G.caos).length?`<div class="pannello">
       ${normalizzaLista(G.nemici).length?`<span class="etichetta">♦ Nemici</span><div style="margin-bottom:8px">${listaLettura(G.nemici,"","font-size:13.5px")}</div>`:""}
       ${normalizzaLista(G.caos).length?`<span class="etichetta">♣ Caos</span>${listaLettura(G.caos,"","font-size:13.5px")}`:""}</div>`:""}
-    <p class="sotto">Ogni lato parte con 20 carte (1–10 dei propri semi) — esattamente cinque scene: quando il mazzo finisce, la strada finisce. Figure e Jolly arriveranno strada facendo.</p>`;
+    <p class="sotto">Ogni lato parte con 20 carte (1–10 dei propri semi) — esattamente cinque scene: quando il mazzo finisce, la strada finisce. Le figure arriveranno strada facendo; il Jolly è già lì, risorsa dei Protagonisti.</p>`;
 
   SC.innerHTML=`
     <div style="text-align:center;display:flex;gap:6px;justify-content:center;margin-bottom:14px">${punti}</div>
@@ -1759,9 +1762,10 @@ function rTurno(){
     <div class="mano-area lato-${l.toLowerCase()}${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}">
       <div class="mano-titolo">
         <span class="etichetta" style="margin:0">${g.daAsta?"Ultima giocata — la carta dell'asta":"Mano di "+nomeLato(l)+(latoDiviso(l)?" — gioca "+nomeControllore(l)+" "+SIMBOLI[G.controllo[l]]:"")}</span>
-        <span class="contatori">punti ${L.punti} · mazzo ${L.mazzo.length}${G.scena<4?" · "+recapSpinte:""}</span>
+        <span class="contatori">punti ${L.punti} · mazzo ${L.mazzo.length}${(lato(l).jolly && G.scena<4)?" · 🃏 Jolly":""}${G.scena<4?" · "+recapSpinte:""}</span>
       </div>
       <div class="mazzo-carte" id="manoTurno">${ordina(g.carte).map(c=>cartaHTML(c)).join("")}</div>
+      ${(jollyUsabile(l) && !g.daAsta)?`<div class="opzioni" style="margin-top:8px"><button id="btnUsaJolly" class="azione">🃏 Usa il Jolly (mossa sleale)</button></div>`:""}
       <div id="pannelloAzione"></div>
     </div>`;
   SC.querySelectorAll("#manoTurno .carta").forEach(el=>{
@@ -1774,6 +1778,7 @@ function rTurno(){
   });
   const bRit=document.getElementById("btnRitirata"); if(bRit) bRit.addEventListener("click",()=>chiediRitirata("mazzo"));
   const bResa=document.getElementById("btnResa"); if(bResa) bResa.addEventListener("click",()=>chiediRitirata("prese"));
+  const bJolly=document.getElementById("btnUsaJolly"); if(bJolly) bJolly.addEventListener("click",avviaUsaJolly);
 }
 
 function mostraOpzioni(c, daAsta){
@@ -1934,9 +1939,6 @@ function suggerimento(c, tipo, dettagli, latoNarr, stessoLato){
       ? `<br><br><b>Azione maldestra.</b> Hai preso una carta del tuo stesso lato: raccontalo come un pasticcio in cui Cuori e Picche, le due anime dei protagonisti, si sono ostacolati o annullati a vicenda.`
       : `<br><br><b>Azione maldestra.</b> Hai preso una carta del tuo stesso lato: raccontalo come un pasticcio in cui Fiori e Quadri, il caos e i nemici organizzati, si sono intralciati o annullati a vicenda.`;
   }
-  if(!prot && (tipo==="presa"||tipo==="scopa") && jollyMarkerO()){
-    testo += `<br><br><b>Il peccato emerge (facoltativo).</b> Possiedi il marcatore del Jolly: in questa giocata puoi far riaffiorare nella narrazione il compromesso sleale di cui uno dei protagonisti si è macchiato, l'inganno o il torbido patto, per incrinare la loro alleanza e rendere il momento più drammatico. Solo narrazione: non cambia punti né carte.`;
-  }
   let extra="";
   if(c && c.fig){
     const f=FIGURE[c.fig];
@@ -2042,6 +2044,11 @@ function rNarrazione(){
       ${spinteDisponibili(G.narrLato||G.attore).map(({p,i})=>
         `<button class="spinta-riga" data-spinta="${i}"><span class="sm" style="color:var(--${p.seme})">${SIMBOLI[p.seme]}</span> «${p.risposta}»</button>`).join("")}
     </div>`:""}
+    ${jollySpintaDisponibile(G.narrLato||G.attore)?`
+    <div class="pannello">
+      <span class="etichetta">🃏 Il peccato emerge — spendi il Jolly come spinta: la presa diventa SCOPA e il piatto si svuota</span>
+      <button class="spinta-riga" id="btnSpintaJolly">🃏 Usa il Jolly: presa → SCOPA</button>
+    </div>`:""}
     ${(G.pngNarr||[]).length?`<div class="spinte-mano"><span class="lbl">PNG creati</span>${(G.pngNarr||[]).map(p=>`<span class="spinta-chip" style="border-left-color:var(--${p.seme})"><b style="color:var(--${p.seme})">${SIMBOLI[p.seme]}</b> ${p.nome||"(senza nome)"}</span>`).join("")}</div>`:""}
     ${ioNarro?`<div class="pannello lato-${(G.narrLato||G.attore).toLowerCase()}">
       <span class="etichetta">La tua narrazione (Claude la legge per restare coerente con la storia)</span>
@@ -2053,6 +2060,7 @@ function rNarrazione(){
     </div>`;
   SC.querySelectorAll("button[data-spinta]").forEach(b=>
     b.addEventListener("click",()=>eseguiSpinta(parseInt(b.dataset.spinta))));
+  const bsj=document.getElementById("btnSpintaJolly"); if(bsj) bsj.addEventListener("click",spintaJolly);
   const cpBtn=document.getElementById("creaPng"); if(cpBtn) cpBtn.addEventListener("click",creaPng);
   const niEl=document.getElementById("narrInput");
   if(niEl) niEl.addEventListener("input",e=>{ G.narr.bozza=e.target.value; const ok=document.getElementById("narrOk"); if(ok) ok.disabled=!e.target.value.trim(); });
@@ -2317,6 +2325,61 @@ function effettoFigura(c, poi){
 }
 
 /* ================= JOLLY ================= */
+function jollyUsabile(l){
+  // v1.33: la CATTURA col Jolly (la mossa sleale, valore elastico 1-10) è solo dei PROTAGONISTI, scene 1-4,
+  // con qualcosa da catturare. L'Opposizione, ricevuto il Jolly, lo usa diversamente: come spinta extra
+  // (presa→scopa, vedi jollySpintaDisponibile). Non usarlo è "resistere alla tentazione" (premio +2 a fine partita).
+  return l==="P" && !!lato("P").jolly && G.scena<3 && G.piatto.length>0;   // P: scene 1-3
+}
+function avviaUsaJolly(){
+  // swap "bury-first" (simmetrico): cedi una carta della mano, che va in FONDO al proprio mazzo, e afferri
+  // il Jolly al suo posto. La cattura non dà punti a nessuno (tattica pura); poi il Jolly passa all'avversario.
+  const l=G.attore, L=lato(l), prot=(l==="P");
+  const box=document.getElementById("pannelloAzione");
+  const intro = prot
+    ? `Mossa <b>sleale</b>: nessuno segna punti, ma il Jolly passerà all'Opposizione, che potrà usarlo (e far emergere il peccato).`
+    : `Impugni la stessa arma sleale e <b>fai emergere il peccato</b>: nessuno segna punti.`;
+  box.innerHTML=`<div class="banner">${intro} Scegli una carta della mano da <b>seppellire in fondo al mazzo</b>: al suo posto afferri il Jolly. Oppure <b>resisti alla tentazione</b>.</div>
+    <div class="mazzo-carte" id="jollyBury">${ordina(L.mano).map(c=>cartaHTML(c)).join("")}</div>
+    <div class="opzioni" style="margin-top:8px"><button id="jollyAnnulla" class="secondaria">🛡️ Resisti alla tentazione</button></div>`;
+  box.querySelectorAll("#jollyBury .carta").forEach(el=>el.addEventListener("click",()=>{
+    const x=L.mano.find(c=>c.id==el.dataset.id); if(!x) return;
+    rimuoviDaMano(l,x,false); L.mazzo.push(x);      // la carta ceduta va in fondo al proprio mazzo (torna in gioco)
+    const j=L.jolly; L.jolly=null; L.mano.push(j);  // il Jolly entra in mano al posto della carta ceduta
+    opzioniJolly(j);   // da qui il flusso è quello di sempre: valore 1–10 → cattura (giocaJolly)
+  }));
+  document.getElementById("jollyAnnulla").addEventListener("click",render);   // niente ancora committato: si torna al turno
+}
+function jollySpintaDisponibile(l){
+  // v1.33: l'Opposizione, ricevuto il Jolly da P, lo spende come SPINTA EXTRA: trasforma una propria presa
+  // in scopa (il peccato che emerge). Solo O, scene 1-4, su una presa (boostCard), in una scena successiva
+  // a quella in cui P ha giocato il Jolly (mai due usi del Jolly nella stessa scena).
+  if(l!=="O" || !lato("O").jolly || !G.narr || !G.narr.boostCard) return false;
+  if(G.scena<1 || G.scena>=4) return false;   // O: scene 2-4
+  if(G.jollyPassatoScena!=null && G.scena<=G.jollyPassatoScena) return false;
+  return true;
+}
+function spintaJolly(){
+  // O spende il Jolly come spinta: la presa diventa scopa (+2 punti, svuota il piatto). Il Jolly è speso.
+  const l=G.narrLato||G.attore, L=lato(l);
+  const c=(G.scartiComuni||[]).find(x=>x.id===G.narr.boostCard);
+  if(!c || !L.jolly) return;
+  const j=L.jolly; L.jolly=null; G.scartiComuni.push(j);   // il Jolly è speso: il peccato è emerso
+  // v1.33: usare il Jolly non dà punti a nessuno. La spinta svuota il piatto (vince la posta), ma 0 Crescita.
+  const residue=G.piatto.length;
+  if(residue){ G.scartiComuni.push(...G.piatto); G.piatto=[]; }
+  G.svuotoConScopa = l;
+  G.narr.boostCard=null;
+  G.narr.tipo="scopa";
+  G.narr.sugg=`<b>IL PECCATO EMERGE — il Jolly trasforma la presa in SCOPA${residue?" e svuota il piatto":""}.</b> Il compromesso di cui uno dei protagonisti si è macchiato riaffiora e travolge la scena a favore dell'Opposizione.`;
+  G.ultimaGiocata+=` 🃏 Il peccato emerge: il Jolly trasforma la presa in SCOPA${residue?` e raccoglie le ${residue} carte rimaste nel piatto`:""}.`;
+  render();
+}
+function premioJollyNonUsato(){
+  // v1.33: chi arriva a fine partita col Jolly NON usato incassa 2 punti Crescita, che pesano SOLO nel
+  // conteggio finale (i mercati sono chiusi: non sono spendibili). È il premio per aver resistito alla tentazione.
+  ["P","O"].forEach(l=>{ const L=lato(l); if(L.jolly){ L.punti+=2; L.jolly=null; } });
+}
 function scartaJolly(c, motivo){
   // il Jolly esce di mano senza catturare: piatto vuoto (niente bersaglio) o scelta di resistere alla tentazione
   const l=G.attore;
@@ -2341,14 +2404,13 @@ function opzioniJolly(c){
     document.getElementById("jScarta").addEventListener("click",()=>scartaJolly(c,"vuoto"));
     return;
   }
-  let html=`<div class="banner">Dichiara il valore del Jolly (1–10). Mossa <b>sleale</b>: il vantaggio sul tavolo è tuo, ma il <b>punto andrà all'avversario</b>. Narra come ottieni il successo <b>contro i principi e la lealtà</b>. Oppure <b>resisti alla tentazione</b> e scartalo senza usarlo.</div><div class="opzioni">`;
+  let html=`<div class="banner">Hai seppellito una carta in fondo al mazzo e afferrato il Jolly. Dichiara il suo valore (1–10) e cattura: il vantaggio sul tavolo è tuo, ma il <b>punto andrà all'avversario</b>. Narra come ottieni il successo <b>contro i principi e la lealtà</b>.</div><div class="opzioni">`;
   for(let v=1;v<=10;v++){
     const ha=combosPresa(v).length>0;
     html+=`<button data-v="${v}" ${ha?"":"disabled style='opacity:.3'"}>${v}</button>`;
   }
-  html+=`</div><div class="opzioni" style="margin-top:8px"><button id="jResisti" class="secondaria">🛡️ Resisti alla tentazione: scarta il Jolly</button></div><div id="jollyCombos"></div>`;
+  html+=`</div><div id="jollyCombos"></div>`;
   box.innerHTML=html;
-  document.getElementById("jResisti").addEventListener("click",()=>scartaJolly(c,"resisti"));
   box.querySelectorAll("button[data-v]").forEach(b=>b.addEventListener("click",()=>{
     const v=parseInt(b.dataset.v);
     const combos=combosPresa(v);
@@ -2361,31 +2423,33 @@ function opzioniJolly(c){
   }));
 }
 function giocaJolly(c, v, combo){
-  const l=G.attore, L=lato(l), avv=altro(l), A=lato(avv);
+  // v1.33: il Jolly è SPECULARE. La cattura NON dà punti a nessuno (è puramente tattica: posta e piatto).
+  // Poi il Jolly PASSA all'avversario, che potrà usarlo una sola volta allo stesso modo:
+  //  - se lo gioca P, passa all'Opposizione (che, giocandolo, farà emergere il peccato);
+  //  - se lo gioca O, il peccato è ormai emerso: il Jolly è speso e va negli scarti.
+  const l=G.attore, L=lato(l), avv=altro(l), A=lato(avv), prot=(l==="P");
   rimuoviDaMano(l,c,false);
   G.piatto=G.piatto.filter(x=>!combo.some(y=>y.id===x.id));
   G.scartiComuni.push(...combo);   // carte catturate → scarti comuni
-  if(G.piatto.length===0){
-    // SCOPA col Jolly: il piatto è pulito (vantaggio di chi gioca), ma i 3 punti vanno all'AVVERSARIO e la carta del Jolly gli resta come promemoria
-    A.punti += 3; aggiungiScopa(avv); G.jollyPeccato=c;
-    G.svuotoConScopa=l;   // chi ripulisce il piatto vince la posta della scena
-    G.ultimaGiocata=`${nomeLato(l)} — SCOPA col Jolly come ${v}. Il piatto è ripulito, ma la scopa (3 punti) va a ${nomeLato(avv)}.`;
-    vaiNarrazione(c,"scopa","",null,
-      `<b>Svolta sleale.</b> ${nomeLato(l)} ripulisce la scena con un mezzo che tradisce principi e lealtà: il vantaggio è pieno, ma il merito — e i 3 punti — finiscono a ${nomeLato(avv)}.`);
+  const scopa = G.piatto.length===0;
+  if(prot){ A.jolly=c; G.jollyPassatoScena=G.scena; } else { G.scartiComuni.push(c); }   // passa a O (usabile solo in una scena successiva), oppure è speso (O l'ha usato)
+  if(scopa){
+    G.svuotoConScopa=l;   // chi ripulisce il piatto vince la posta della scena (nessun punto cambia mano)
+    G.ultimaGiocata= prot
+      ? `${nomeLato(l)} — SCOPA col Jolly come ${v}: piatto ripulito, nessun punto cambia mano. Il Jolly passa a ${nomeLato(avv)}.`
+      : `${nomeLato(l)} — SCOPA col Jolly come ${v}: il peccato emerge, piatto ripulito, nessun punto cambia mano.`;
+    vaiNarrazione(c,"scopa","",null, prot
+      ? `<b>Svolta sleale.</b> ${nomeLato(l)} ripulisce la scena con un mezzo che tradisce principi e lealtà: nessuno segna punti, ma il Jolly passa in mano all'avversario.`
+      : `<b>Il peccato emerge.</b> ${nomeLato(l)} impugna la stessa arma sporca e ripulisce la scena: riaffiora il compromesso di cui uno dei protagonisti si era macchiato. Nessuno segna punti.`);
   }else{
-    // PRESA col Jolly: il punto (1) va all'AVVERSARIO e la carta del Jolly gli resta come promemoria
-    A.punti += 1; G.jollyPeccato=c;
     G.svuotoConScopa=null;
-    G.ultimaGiocata=`${nomeLato(l)} — presa col Jolly come ${v}. Il punto della presa va a ${nomeLato(avv)}.`;
-    vaiNarrazione(c,"presa","",null,
-      `<b>Vantaggio sleale.</b> ${nomeLato(l)} ottiene un successo andando contro i principi e la lealtà: il vantaggio è suo, ma il punto della presa va a ${nomeLato(avv)}.`);
+    G.ultimaGiocata= prot
+      ? `${nomeLato(l)} — presa col Jolly come ${v}: nessun punto cambia mano. Il Jolly passa a ${nomeLato(avv)}.`
+      : `${nomeLato(l)} — presa col Jolly come ${v}: il peccato emerge. Nessun punto cambia mano.`;
+    vaiNarrazione(c,"presa","",null, prot
+      ? `<b>Vantaggio sleale.</b> ${nomeLato(l)} ottiene un successo andando contro i principi e la lealtà: nessuno segna punti, ma il Jolly passa in mano all'avversario.`
+      : `<b>Il peccato emerge.</b> ${nomeLato(l)} impugna la stessa arma sleale: riaffiora il compromesso commesso da uno dei protagonisti. Nessuno segna punti.`);
   }
-}
-
-function jollyMarkerO(){
-  // §22.6: la carta del Jolly è consegnata all'Opposizione come promemoria del peccato (G.jollyPeccato).
-  // Finché l'Opposizione la possiede ha la LICENZA NARRATIVA di far emergere il peccato in una sua presa o scopa.
-  return G.jollyPeccato || null;
 }
 
 /* ================= FINE SCENA ================= */
@@ -2466,7 +2530,7 @@ function rFineScena(){
     </div>`;
   document.getElementById("fs-avanti").addEventListener("click",()=>{
     if(!claudeEsito && !ritirataEsito) rec.riassunto=document.getElementById("fs-riassunto").value;
-    if(G.scena===4){ G.fase="finale"; render(); return }
+    if(G.scena===4){ premioJollyNonUsato(); G.fase="finale"; render(); return }
     avviaMercato();
   });
   const fsr=document.getElementById("fsRiprova"); if(fsr) fsr.addEventListener("click", rigeneraEsito);
@@ -2475,7 +2539,6 @@ function rFineScena(){
 /* ================= MERCATO ================= */
 function avviaMercato(){
   // v1.15: ordine MERCATO → (rimescolo se hai comprato) → PESCA. Qui NON si pesca: prima gli acquisti.
-  if(G.scena===1 && !G.jollyEntrato) entraJollyNeiMazzi();   // dopo la 2ª scena il Jolly entra nel mazzo dei Protagonisti
   G.compratoMercato={P:false,O:false};
   G.mercatoLato = G.modalita==="online" ? "P" : null;
   G.fase="mercato"; render();
@@ -2576,8 +2639,7 @@ function rMercato(){
   document.getElementById("m-fine").addEventListener("click",()=>{
     if(online && G.mercatoLato==="P"){ G.mercatoLato="O"; render(); return }
     G.mercatoLato=null;
-    if(G.scena===1 && !G.jollyIntroVisto){ G.jollyIntroVisto=true; G.fase="jolly_intro"; render(); }
-    else if(G.scena===3){ avviaManoEstesa(); }   // prima della 5ª: la scelta delle 4 carte è DOPO il mercato
+    if(G.scena===3){ avviaManoEstesa(); }   // prima della 5ª: la scelta delle 4 carte è DOPO il mercato
     else avanzaScena();
   });
 }
@@ -2638,27 +2700,6 @@ function pagaCosto(l, costo){
   // quindi il pagamento non muove più alcuna carta.
   L.punti -= costo;
   return true;
-}
-function entraJollyNeiMazzi(){
-  // un solo Jolly, nel mazzo dei Protagonisti
-  G.jollyEntrato=true;
-  const L=lato("P"), j=carta(null,0,null,true);
-  j.seme="jolly";
-  L.mazzo.splice(Math.floor(Math.random()*(L.mazzo.length+1)),0,j);
-}
-function rJollyIntro(){
-  SC.innerHTML=`
-    <h2 class="ts">Qualcosa cambia sulla strada</h2>
-    <div class="cartellone"><div class="grande">Entra il Jolly</div>
-      <div class="sc">uno solo, nel mazzo dei Protagonisti</div></div>
-    <div class="pannello" style="font-size:14px">
-      Il Jolly vale quanto dichiari (1–10) e serve <b>solo per catturare</b> (presa o scopa) — mai nell'asta.
-      È una mossa <b>sleale</b>: il vantaggio sul tavolo è di chi lo gioca, ma il <b>punto va all'avversario</b> (presa = 1, scopa = 3).
-      Narra sempre come ottieni il successo <b>andando contro i principi e la lealtà</b>.
-      Se a piatto vuoto resta solo il Jolly, viene scartato senza effetto.
-    </div>
-    <button class="azione" id="j-ok">Si riparte</button>`;
-  document.getElementById("j-ok").addEventListener("click",avanzaScena);
 }
 function avanzaScena(){
   G.scena++;
@@ -2759,6 +2800,7 @@ function conteggioDefinitivo(){
   // vs Claude: l'esito lo narra chi ha perso la posta della scena finale (in parità chi ha vinto l'asta); se è l'Opposizione, lo scrive Claude (schermata fine_scena → "Vai al finale")
   const _rec=G.scene[G.scena];
   const _narr=(_rec.vincitore==="P"||_rec.vincitore==="O")?altro(_rec.vincitore):_rec.iniziativa;
+  premioJollyNonUsato();
   if(G.modalita==="solo" && _narr==="O"){ G.fase="fine_scena"; render(); return; }
   G.fase="finale"; render();
 }
@@ -2936,17 +2978,18 @@ const REGOLE={
     Tutte le figure comprate (Fante, Regina, Re) <b>entrano nel mazzo</b>: a fine mercato, se hai comprato, il mazzo si rimescola e solo dopo peschi la nuova mano, così possono capitarti già nella scena seguente. L'effetto di una figura scatta <b>quando la giochi</b>.
     <div class="es">"Jess — la nostra fonte all'interno della stazione — ci dice dove si trovano le prove e quando le sentinelle cambiano turno." (Fante)</div>`},
   jolly:{titolo:"Il Jolly",html:`
-    <h3>Ingresso e uso</h3>
-    Un solo Jolly, nel <b>mazzo dei Protagonisti</b>, entra al termine della <b>seconda scena</b>. Non può essere usato nell'asta. Chi lo gioca <b>dichiara il valore (1–10)</b> e lo usa <b>solo per catturare</b> (presa o scopa).
-    <h3>Mossa sleale: il punto va all'avversario</h3>
-    Il vantaggio sul tavolo è di chi gioca il Jolly (ripulisce o alleggerisce il piatto), ma i <b>punti vanno all'avversario</b>: una presa col Jolly = <b>1 punto all'avversario</b>, una scopa = <b>3 punti all'avversario</b>. Sono punti normali dell'Opposizione: valgono al conteggio finale e si possono spendere al mercato. La <b>carta del Jolly</b> viene consegnata all'avversario come promemoria del peccato.
+    <h3>Una risorsa dei Protagonisti (non una carta del mazzo)</h3>
+    Un solo Jolly, <b>fuori dal mazzo</b>, davanti ai Protagonisti fin dall'inizio. Per usarlo <b>seppellisci una carta della mano in fondo al tuo mazzo</b> e afferri il Jolly al suo posto. Non si usa nell'asta. <b>Non dà punti a nessuno</b>: è una mossa tattica (vince la posta, ripulisce il piatto).
+    <h3>L'uso dei Protagonisti: la cattura sleale (scene 1-3)</h3>
+    Nel tuo turno <b>dichiari il valore (1–10)</b> e catturi (presa; se svuoti il piatto, scopa). È il <b>peccato</b>: un successo ottenuto andando contro i principi e la lealtà. Poi il Jolly <b>passa all'Opposizione</b>: il costo non è in punti, è che consegni al nemico la stessa arma.
+    <div class="es">"Vera infrange la promessa di restare pulita e sfrutta un vecchio contatto del contrabbando — Otto ancora non lo sa."</div>
+    <h3>L'uso dell'Opposizione: il peccato emerge (scene 2-4)</h3>
+    Ricevuto il Jolly, l'Opposizione lo spende come <b>spinta extra</b>: dopo una sua presa, <b>butta il Jolly</b> per trasformarla in <b>scopa</b> (svuota il piatto, vince la posta), e nel farlo <b>mette in scena il peccato</b> dei Protagonisti. Anche questo uso non dà punti. Mai due usi nella stessa scena: l'Opposizione lo gioca solo in una scena <b>successiva</b> a quella in cui i Protagonisti l'hanno usato.
+    <div class="es">"Davanti a Otto emerge cosa ha fatto Vera con quel contatto: la scena volge all'Opposizione, e fra i due cala il gelo."</div>
     <h3>Vincolo narrativo</h3>
-    Si narra sempre un successo ottenuto <b>andando contro i principi e la lealtà</b>. A macchiarsi del peccato è <b>uno solo dei due protagonisti</b>: una ricaduta nei vecchi vizi o un gesto avventato che non tiene conto dell'altro; l'altro <b>può non saperne nulla, oppure assistervi e giudicarlo</b>. Il Jolly è il seme di una discordia destinata a sbocciare più avanti.
-    <div class="es">"Kai minaccia il teste con informazioni false per farlo parlare — tecnicamente illegale, sicuramente efficace."</div>
-    <h3>Resistere alla tentazione</h3>
-    Usare il Jolly non è obbligatorio: invece di giocarlo puoi <b>scartarlo senza effetto</b>, rinunciando al vantaggio sleale. (Anche a piatto vuoto, dove non c'è nulla da catturare, il Jolly viene scartato senza effetto e il piatto resta com'era.)
-    <h3>Il peccato emerge (narrativo)</h3>
-    Finché l'Opposizione <b>ha davanti a sé la carta del Jolly</b> (consegnatale come promemoria), in una sua qualsiasi presa o scopa può far <b>riaffiorare nella narrazione il peccato</b> che uno dei protagonisti ha commesso col Jolly, l'inganno o il torbido compromesso, per far sbocciare la discordia tra loro e rendere il momento più drammatico. È <b>solo narrazione</b>: non cambia punti né carte.`},
+    A macchiarsi del peccato è <b>uno solo dei due protagonisti</b>: una ricaduta nei vecchi vizi o un gesto avventato; l'altro <b>può non saperne nulla, oppure assistervi e giudicarlo</b>. Quando l'Opposizione gioca il Jolly, quel compromesso torna a galla e incrina l'alleanza.
+    <h3>Resistere alla tentazione: +2 Crescita</h3>
+    Usare il Jolly non è obbligatorio. Chi lo tiene <b>senza mai usarlo</b> incassa a fine partita <b>2 punti Crescita</b> (pesano solo nel conteggio finale, non spendibili al mercato): è il premio di chi ha resistito alla scorciatoia.`},
   pitch:{titolo:"Risorse del pitch",html:`
     <h3>Spinte e tratti (9.5–9.6)</h3>
     I due <b>"cosa si detestano"</b> sono <b>tratti dei protagonisti</b>: solo narrativi, senza effetto in gioco. Le <b>spinte</b> sono <b>otto, due per seme</b>: motivazione e asso di ciascun protagonista (♠ e ♥) più, dall'Opposizione, mezzi e movente (♦) e catastrofi e crepe (♣). Le risposte delle spinte <b>diventano risorse di gioco</b>.
@@ -2984,7 +3027,7 @@ const REGOLE={
 };
 const AIUTO_FASE={asta:"asta",asta_rivela:"asta",apertura:"asta",turno:"azioni",narrazione:"semi",
   fine_scena:"lettura",mano_estesa:"scena5",primo_conteggio:"scena5",colpi:"scena5",mercato:"mercato",
-  jolly_intro:"jolly",finale:"lettura",setup:"semi",modalita:"semi",lobby:"semi"};
+  finale:"lettura",setup:"semi",modalita:"semi",lobby:"semi"};
 function apriRegole(chiave){
   const nav=document.getElementById("regoleNav");
   nav.innerHTML=Object.entries(REGOLE).map(([k,r])=>
@@ -3194,7 +3237,7 @@ MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Ordine: prima com
 - Re (costo 8, valore 10): recuperi dagli scarti comuni una carta del suo stesso seme (la mano resta), nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.
 Ogni figura che compri è un PNG: dalle subito un nome e un breve ruolo (chi è), e richiamalo quando giochi quella carta e quando narri (il suo effetto meccanico è ciò che quel personaggio fa nella storia). Più in generale, ogni elemento rilevante che introduci (un nemico, un alleato, un luogo, un oggetto) con una sua volontà e un ruolo da seguire è un «Qualcuno»: dagli un nome se conta per il seguito, altrimenti resta una comparsa.
 
-JOLLY: un solo Jolly, solo nel mazzo dei Protagonisti, entra dopo la 2ª scena. Tu non lo giochi mai (sta nel loro mazzo). Chi lo gioca dichiara il valore e cattura, ma i PUNTI vanno all'AVVERSARIO (presa 1, scopa 3 all'altro lato): se i Protagonisti lo usano, quei punti (1 o 3) entrano nel TUO bottino come risorsa normale — valgono al conteggio finale e li puoi spendere al mercato; la carta del Jolly ti viene consegnata come promemoria del peccato. I Protagonisti possono anche resistere alla tentazione e scartarlo senza usarlo. A macchiarsi del peccato è UNO SOLO dei due protagonisti (l'altro può non saperlo, oppure assistervi e giudicarlo): è il seme di una discordia destinata a sbocciare. IL PECCATO EMERGE (narrativo): finché hai davanti a te la carta del Jolly, in una tua qualsiasi presa o scopa puoi far riaffiorare nella narrazione quel peccato (l'inganno, il torbido compromesso che uno dei due ha commesso col Jolly), per far sbocciare la discordia tra loro e drammatizzare. È solo narrazione, non cambia punti né carte.
+JOLLY: un solo Jolly, RISORSA dei PROTAGONISTI (non è nel mazzo: ce l'hanno davanti dall'inizio). Usarlo NON dà punti a nessuno. I Protagonisti lo usano nelle scene 1-3: seppelliscono una carta della mano in fondo al loro mazzo e catturano col Jolly (valore elastico 1-10) — è il PECCATO, un successo sleale contro i propri principi. Appena lo usano, il Jolly PASSA A TE (Opposizione): il loro costo non è in punti, è che consegnano a te la stessa arma. Da quel momento TU puoi usarlo, ma DIVERSAMENTE, come SPINTA EXTRA: nelle scene 2-4, dopo una TUA presa, puoi spendere il Jolly per trasformarla in SCOPA (svuoti il piatto, vinci la posta) — anche questo non dà punti — e nel narrarlo FAI EMERGERE IL PECCATO: il compromesso di cui uno dei protagonisti si è macchiato riaffiora e incrina la loro alleanza. Vincoli: solo in una scena SUCCESSIVA a quella in cui i Protagonisti l'hanno usato (mai due usi nella stessa scena); una volta giocato è speso. A macchiarsi del peccato è UNO SOLO dei due protagonisti (l'altro può non saperlo, o assistervi e giudicarlo): è il seme di una discordia che sboccia. Se nessuno lo usa, chi lo tiene a fine partita incassa 2 punti Crescita (contano solo nell'esito finale, non spendibili al mercato).
 
 RISORSE DEL PITCH (spinte): sono otto, due per seme (le tue sono ♦ e ♣). Dopo una presa normale puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e il piatto viene spazzato via (le carte rimaste finiscono negli scarti comuni). La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola (due per seme, entrambe usabili); una sola spinta per presa; VIETATA nell'ultima scena. (I tratti "cosa i protagonisti si detestano" sono solo narrativi, non spinte.)
 
@@ -3242,7 +3285,7 @@ PIATTO: ${G.piatto.length?G.piatto.map(c=>nomeCarta(c)).join(", "):"vuoto"} (som
 LA TUA MANO: ${O.mano.map(c=>nomeCarta(c)).join(", ")||"vuota"}.
 CARTE GIÀ USCITE (catturate o spese, non torneranno in gioco; servono a dedurre cosa resta agli avversari): ${uscite.length?uscite.join(", "):"nessuna"}.
 I tuoi punti ${O.punti}, punti avversari ${P.punti} (presa 1, scopa 3).
-Totali del piatto ora: Protagonisti ${totaleProt()}, Opposizione ${totaleOpp()}.${figure?`\nFigure comprate: ${figure}.`:""}${pngN?`\nPNG narrativi: ${pngN}.`:""}`;
+Totali del piatto ora: Protagonisti ${totaleProt()}, Opposizione ${totaleOpp()}.${figure?`\nFigure comprate: ${figure}.`:""}${pngN?`\nPNG narrativi: ${pngN}.`:""}${lato("O").jolly?`\nHAI IL JOLLY (te l'hanno passato i Protagonisti usandolo): nelle scene 2-4, DOPO una tua presa, puoi spenderlo come SPINTA per trasformarla in SCOPA e FAR EMERGERE IL PECCATO dei protagonisti (non dà punti a nessuno), ma solo in una scena successiva a quella in cui l'hanno usato. Se non lo usi, a fine partita vale 2 punti Crescita.`:""}`;
 }
 
 async function chiamaClaude(istruzioni, feedback){
@@ -3323,10 +3366,7 @@ function regSemeTxt(seme){
     : "";
 }
 function istruzNarrBase(){
-  const peccato = (G.narr && (G.narr.tipo==="presa"||G.narr.tipo==="scopa") && jollyMarkerO())
-    ? ` Possiedi il marcatore del Jolly: in questa presa o scopa PUOI far riaffiorare il peccato dei Protagonisti (l'inganno, il torbido compromesso che uno dei due ha commesso col Jolly) per far sbocciare la discordia tra loro e rendere il momento più drammatico. È solo narrazione, non cambia punti né carte; usalo quando dà più tensione alla storia.`
-    : "";
-  return `Hai appena agito: "${G.ultimaGiocata||""}". ${regSemeTxt(G.narr&&G.narr.seme)} Narra la mossa in 1-2 frasi, in italiano, dal punto di vista dell'Opposizione, coerente con la storia finora.${peccato}`;
+  return `Hai appena agito: "${G.ultimaGiocata||""}". ${regSemeTxt(G.narr&&G.narr.seme)} Narra la mossa in 1-2 frasi, in italiano, dal punto di vista dell'Opposizione, coerente con la storia finora.`;
 }
 function istruzApertura(){
   return `Hai vinto l'iniziativa: APRI LA SCENA. Scegli un titolo evocativo (2-4 parole) e dichiara la posta (cosa succede se va male per i Protagonisti), coerenti con la missione e con la fase narrativa.`;

@@ -116,10 +116,10 @@ Il mazzo si divide tra i giocatori nel seguente modo:
 Prima di cominciare, prepara i mazzi così:
 
 - togli da entrambi i mazzi tutte le figure (Fante, Regina, Re): entreranno in gioco più tardi, comprandole al mercato;
-- togli entrambi i Jolly dal mazzo: uno rientrerà dopo la seconda scena dalla parte dei Protagonisti, l'altro resta fuori dalla partita;
+- togli entrambi i Jolly dal mazzo: uno lo tieni da parte come risorsa dei Protagonisti (fuori dal mazzo, disponibile dall'inizio — vedi Capitolo 5), l'altro resta fuori dalla partita;
 - restano quindi soltanto le carte numeriche, dall'Asso al 10, di ciascun seme: venti carte per lato.
 
-Venti carte bastano esattamente per cinque scene, perché ogni lato ne pesca quattro a scena. Tienilo a mente, perché è una regola con un peso strategico: quando il mazzo finisce, la partita finisce. Non si rimescolano mai gli scarti dentro il mazzo. Gli unici modi per aggiungere carte al mazzo sono le figure comprate al mercato, una sola volta per lato la carta della Ritirata strategica (lo vedremo nel Capitolo 3) e la carta che il Re recupera dagli scarti nelle scene 1-4 (nell'ultima scena finisce invece nella riserva); ai Protagonisti, in più, dopo la seconda scena si aggiunge il Jolly.
+Venti carte bastano esattamente per cinque scene, perché ogni lato ne pesca quattro a scena. Tienilo a mente, perché è una regola con un peso strategico: quando il mazzo finisce, la partita finisce. Non si rimescolano mai gli scarti dentro il mazzo. Gli unici modi per aggiungere carte al mazzo sono le figure comprate al mercato, una sola volta per lato la carta della Ritirata strategica (lo vedremo nel Capitolo 3) e la carta che il Re recupera dagli scarti nelle scene 1-4 (nell'ultima scena finisce invece nella riserva). Il Jolly (Capitolo 5) non entra mai nel mazzo, è una risorsa a parte dei Protagonisti; l'unica carta che muove verso il mazzo è quella che un lato cede per afferrarlo, che torna in fondo al proprio mazzo.
 
 ## 1.6 Che cosa significano i semi
 
@@ -668,40 +668,39 @@ Paola ha solo il fante in mano, nel piatto c'è un 10 di quadri che non può pre
 Il Jolly è lo strumento del compromesso morale. Rappresenta il trope della tentazione che colpisce uno dei protagonisti nell'indulgere in comportamenti discutibili che fanno parte del suo passato.
 Tipicamente in questo genere di storie i protagonisti si ritrovano spesso a dover mediare e agire seguendo dei compromessi, al fine di trovare un modo per collaborare e fare gioco di squadra. Usare il Jolly per risolvere un problema significa ignorare qualunque mediazione o compromesso ed agire alla propria maniera, anche a costo di scandalizzare, deludere, disgustare o ingannare il compagno.
 
-Il Jolly è uno solo, sta nel mazzo dei Protagonisti e si aggiunge al termine della seconda scena. Da quel momento ogni pescata dei Protagonisti può portare in mano la tentazione di questa drammatica scorciatoia.
+Il Jolly è uno solo ed è una risorsa dei Protagonisti: non sta nel mazzo, sta davanti a loro fin dall'inizio della partita, come una tentazione sempre a portata di mano.
 
-## 5.1 Come si usa meccanicamente
+## 5.1 Come si usa: la cattura sleale dei Protagonisti (scene 1-3)
 
-- Il Jolly non si può usare nell'asta d'inizio scena.
-- Chi lo gioca decide quale valore assume, da 1 a 10.
-- Serve solo per catturare: fa una presa, e se quella presa svuota il piatto è una scopa.
-- Oppure i protagonisti possono resistere alla tentazione, semplicemente scartandolo.
+Nel proprio turno, invece di giocare una carta della mano, un Protagonista può afferrare il Jolly. Per farlo:
 
-## 5.2 I demoni del passato
+- **seppellisce una carta della mano in fondo al proprio mazzo** e prende il Jolly al suo posto;
+- **dichiara quale valore assume, da 1 a 10**, e lo usa solo per catturare: fa una presa, e se quella presa svuota il piatto è una scopa;
+- non si usa mai nell'asta d'inizio scena, e i Protagonisti possono giocarlo **solo nelle scene 1, 2 o 3**.
 
-Se il Jolly viene usato per fare una presa o una scopa ottiene un vantaggio immediato per la scena, ma i punti vengono dati all'opposizione:
+Usare il Jolly **non fa segnare punti a nessuno**: è una mossa puramente tattica, che vince la posta della scena o ripulisce il piatto. Il suo prezzo è un altro (§5.2).
 
-- una presa con il Jolly vale 1 punto per l'opposizione;
-- una scopa con il Jolly vale 3 punti per l'opposizione.
+## 5.2 Il prezzo del peccato: armi il tuo avversario
 
-Narrativamente, si racconta sempre un successo ottenuto andando contro i propri principi, come la propria lealtà verso l'altro protagonista sia venuta meno o come sia tornato a vecchi vizi o abbia agito in modo avventato senza considerare la sensibilità dell'altro personaggio.
-E' importante ricordare che solo uno dei due Protagonisti si macchia del peccato, mentre l'altro lo giudicherà. Il Jolly è il seme di una discordia destinato a sbocciare più avanti.
+Se il Jolly non costa punti, dov'è il prezzo? È che, appena i Protagonisti lo usano, **la carta passa all'Opposizione**. Hai preso la scorciatoia sleale e così hai messo in mano al tuo nemico la stessa arma sporca: lui la userà contro di te, e nel farlo il tuo peccato verrà alla luce (§5.4).
 
-Il giocatore usa il Jolly come 9 per fare scopa e racconta: "Vera infrange la promessa di restare sobria e lontana dai guai: sfida Ulrich e i suoi sgherri a una gara di cicchetti e quando sono tutti ubriachi riesce a rubare la chiave del magazzino." E' evidente che questa cosa avrà conseguenze a partire dalla sbornia da smaltire il giorno dopo e che sarà difficile nascondere.
+Narrativamente si racconta sempre un successo ottenuto andando contro i propri principi: la lealtà verso l'altro protagonista che viene meno, un ritorno ai vecchi vizi, un gesto avventato che non tiene conto della sensibilità dell'altro. È importante ricordare che **solo uno dei due Protagonisti si macchia del peccato**, mentre l'altro può non saperne nulla oppure assistervi e giudicarlo. Il Jolly è il seme di una discordia destinato a sbocciare più avanti.
+
+Nel piatto resta un 4♣ e Vera non ha di meglio in mano. Seppellisce un 3♠ in fondo al mazzo, afferra il Jolly, lo dichiara 4 e cattura il 4♣: è una scopa, il piatto è pulito e la posta è dei Protagonisti. Nessuno segna punti, ma il Jolly passa a Omar. "Vera infrange la promessa di restare pulita e sfrutta un vecchio contatto del contrabbando — Otto ancora non lo sa."
 {: .esempio }
 
-Il vantaggio è suo, ma quel punto, sul tabellino, va all'Opposizione.  finito nel campo dell'Opposizione è una risorsa come le altre: vale i suoi punti al conteggio finale e si può spendere al mercato per comprare una figura.
+## 5.3 Resistere alla tentazione: due punti di Crescita
 
-## 5.3 Resistere alla tentazione
+Usare il Jolly non è obbligatorio. Chi lo detiene può non usarlo affatto: **chi arriva a fine partita col Jolly ancora in mano incassa 2 punti Crescita**. Sono punti che pesano solo nel conteggio finale (i mercati sono ormai chiusi: non si possono spendere per comprare figure) e premiano chi ha resistito alla scorciatoia. Vale per entrambi i lati: se i Protagonisti resistono, i due punti sono loro; se peccano e l'Opposizione riceve il Jolly ma a sua volta non lo spende, i due punti vanno all'Opposizione.
 
-Usare il Jolly, però, non è obbligatorio. Chi lo ha in mano può anche resistere alla tentazione e scartarlo senza effetto, rinunciando al vantaggio immorale: nessuno paga niente, e i principi restano intatti. Lo stesso vale, per forza, nel caso limite del piatto vuoto, dove non c'è nulla da catturare: il Jolly si scarta senza effetto e il piatto resta com'era.
+## 5.4 Il peccato emerge: la spinta dell'Opposizione (scene 2-4)
 
-Il giocatore che scarta il Jolly deve narrare come il personaggio sia stato tentato di cadere nel peccato, ma come poi alla fine abbia resistito.
-Anche questo crea un momento narrativamente interessante, che stabilisce in modo fattuale l'evoluzione del personaggio.
+Ricevuto il Jolly, l'Opposizione lo usa in modo speculare ma diverso: come **spinta extra**. Dopo una propria presa, l'Opposizione butta il Jolly e trasforma quella presa in una **scopa** (svuota il piatto e vince la posta) — anche per lei senza segnare punti. E nel giocarlo **mette in scena il peccato**: il compromesso di cui uno dei protagonisti si è macchiato riaffiora e travolge la scena, incrinando l'alleanza tra i due.
 
-## 5.4 Il peccato emerge
+L'Opposizione può farlo **solo nelle scene 2, 3 o 4**, e **mai nella stessa scena** in cui i Protagonisti hanno usato il Jolly: il peccato riemerge *dopo*, in una scena successiva. Una volta giocato, il Jolly è speso.
 
-Il peccato compiuto diventa un'arma narrativa nelle mani dell'Opposizione. Finché l'Opposizione possiede il Jolly, durante una sua qualsiasi presa o scopa può far riaffiorare nella narrazione quel peccato: l'inganno, la scorciatoia sleale, il torbido patto di cui uno dei protagonisti si è macchiato. È solo narrazione, non cambia punti né carte; serve a far sbocciare la discordia tra i due protagonisti e a rendere il momento ancora più drammatico.
+Due scene dopo, l'Opposizione fa una presa con una carta di Quadri e butta il Jolly per trasformarla in scopa: il piatto si svuota, la scena è sua. Nel narrarlo fa affiorare cosa aveva fatto Vera con quel contatto: davanti a Otto cala il gelo.
+{: .esempio }
 
 
 ---
@@ -1457,7 +1456,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Introdurre.** Giocare una carta nel piatto senza catturare nulla: si mette in campo un proprio elemento (un vantaggio futuro per i Protagonisti, un ostacolo per l'Opposizione). Introdurre non annulla: non può cancellare un elemento avversario già in gioco.
 
-**Jolly.** L'unica carta jolly, nel mazzo dei Protagonisti dalla terza scena in poi. Non si usa nell'asta; chi lo gioca ne sceglie il valore e cattura, ma i punti vanno all'avversario (la mossa sleale).
+**Jolly.** L'unica carta jolly: una risorsa dei Protagonisti, fuori dal mazzo, disponibile dall'inizio. Non si usa nell'asta e usarlo non dà punti a nessuno. I Protagonisti lo giocano nelle scene 1-3 come cattura sleale (ne scelgono il valore, 1-10, seppellendo una carta della mano); poi passa all'Opposizione, che nelle scene 2-4 lo spende come spinta (Capitolo 5).
 
 **Maggioranza di seme.** In tre e quattro giocatori, chi controlla la mano di un lato per la scena è chi ha più carte del proprio seme, valutato a inizio scena.
 
@@ -1465,13 +1464,13 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Mano finale estesa.** Nella quinta scena, se hai più di quattro carte nel mazzo, le prendi tutte, scegli le quattro con cui giochi la scena e tieni le altre come riserva.
 
-**Il peccato del Jolly** Quando un Jolly viene giocato, la carta viene consegnata all'Opposizione come promemoria. Finché l'Opposizione la possiede, in una sua presa o scopa può far emergere nella narrazione il compromesso commesso dai Protagonisti: il peccato che torna a galla. Solo narrazione, nessun effetto su punti o carte.
+**Il peccato del Jolly.** Usare il Jolly è il peccato: un successo sleale. Quando i Protagonisti lo giocano, passa all'Opposizione; questa, spendendolo come spinta (trasforma una propria presa in scopa), fa emergere nella narrazione il compromesso commesso dai Protagonisti — il peccato che torna a galla e incrina l'alleanza. Nessun uso del Jolly dà punti.
 
 **Mercato.** La fase tra una scena e l'altra: prima si comprano le figure (che entrano nel mazzo), poi, se hai comprato, si rimescola, infine si pesca la nuova mano. Si paga con i punti delle prese e delle scope.
 
 **Missione.** Lo scopo della partita: l'obiettivo dei protagonisti, chiaro e con una scadenza. Se falliscono entro la fine della storia, l'occasione è persa per sempre.
 
-**Mossa sleale.** L'uso del Jolly: dà a chi lo gioca il vantaggio sul tavolo ma regala il punto all'avversario. Si narra come un successo ottenuto tradendo i propri principi.
+**Mossa sleale.** L'uso del Jolly da parte dei Protagonisti: dà il vantaggio sul tavolo senza segnare punti, ma consegna il Jolly all'avversario. Si narra come un successo ottenuto tradendo i propri principi.
 
 **Opposizione.** Il lato che ostacola i protagonisti, fatto di Quadri (i nemici) e Fiori (il caos). Non deve essere un'unica fazione: possono essere attori diversi, anche rivali, che comunque remano contro.
 
@@ -1493,7 +1492,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Primo conteggio.** Il conteggio della quinta scena fatto dopo le quattro carte a testa, come in ogni scena: dà l'esito apparente, prima dei colpi di scena.
 
-**Protagonisti.** Il lato degli eroi, fatto di Cuori (l'empatico) e Picche (il duro). Hanno il proprio mazzo e, dalla terza scena, il Jolly.
+**Protagonisti.** Il lato degli eroi, fatto di Cuori (l'empatico) e Picche (il duro). Hanno il proprio mazzo e, come risorsa fuori dal mazzo, il Jolly.
 
 **Punti.** Si contano così: ogni presa un punto (anche con figura), ogni scopa tre punti. Valgono sia per pagare al mercato sia, se non spesi, per la Crescita a fine partita.
 
@@ -1630,4 +1629,4 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 
 ---
 
-*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.32, che resta la fonte di verità del regolamento.*
+*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.33, che resta la fonte di verità del regolamento.*

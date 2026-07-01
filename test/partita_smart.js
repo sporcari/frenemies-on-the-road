@@ -84,7 +84,7 @@ function runGame(seed, seed2, seed3, wantTranscript){
 
   const T=[];
   const log=s=>T.push(s);
-  let spinteUsate=0, colpiFatti=0, acquisti=0, jollyGiocati=0, reseedFatto=false, reseed3Fatto=false;
+  let spinteUsate=0, colpiFatti=0, acquisti=0, jollyP=0, jollyO=0, reseedFatto=false, reseed3Fatto=false;
   let spintaScena=-1, ultimaLoggata="", pageError=null, resaCount=0, primoP=0, primoO=0;
   const grossP=[], grossO=[];   // punti lordi cumulativi a fine di ogni scena (indice = scena 0..4)
   const figCumP=[], figCumO=[];   // figure comprate cumulative dopo ogni mercato (1 voce per mercato, 4 mercati)
@@ -109,6 +109,47 @@ function runGame(seed, seed2, seed3, wantTranscript){
   } };
   window.addEventListener("error",e=>{ pageError=e.message; });
 
+  // v1.33: il Jolly è SPECULARE (lo usano entrambi i lati). La cattura non dà punti: il costo è armare
+  // l'avversario (il Jolly gli passa). Il driver lo usa SOLO quando ASSICURA la scena alla mossa di
+  // CHIUSURA del lato attore `a` (scopa che svuota, o presa che lo lascia avanti nella posta) e solo se
+  // la giocata normale dell'ultima carta NON vincerebbe. Restituisce {v,ci,scopa,buryId} o null. Serve
+  // anche a NON arrendersi quando il Jolly può vincere.
+  function jollyPick(a){
+    // v1.33: gioco OTTIMALE = usare il Jolly SOLO se fa vincere una scena che altrimenti si perderebbe.
+    // Lo si valuta alla mossa di CHIUSURA (dove l'esito della posta è certo): se la carta normale NON vince
+    // ma il Jolly (scopa, o presa che lascia avanti) sì, si gioca. Se la scena è già vinta, si tiene.
+    if(!document.getElementById("btnUsaJolly")) return null;
+    const g=G(), piatto=g.piatto, ME=g.lati[a], OPP=g.lati[a==="P"?"O":"P"];
+    const closing = ME.mano.length===1 && OPP.mano.length===0 && !ME.astaCarta && !OPP.astaCarta;
+    if(!closing) return null;
+    const ownA=ME.semi, cval=x=>x.jolly?(x.val||0):(x.fig?FIGVAL[x.fig]:x.val);
+    const meWins=(rem,scopaMe)=>{ if(!rem.length) return scopaMe;
+      const mT=rem.filter(x=>ownA.includes(x.seme)).reduce((s,x)=>s+cval(x),0);
+      const oT=rem.filter(x=>!ownA.includes(x.seme)).reduce((s,x)=>s+cval(x),0);
+      return mT>oT; };   // parità: conservativo, non conta come vinta
+    const c=ME.mano[0]; let normalWins=false;
+    if(c.fig){
+      const pot=piatto.filter(x=>!x.jolly);
+      if(pot.length && Math.min(...pot.map(cval))<=FIGVAL[c.fig]){
+        for(let v=1; v<=FIGVAL[c.fig] && !normalWins; v++) cp(v).forEach(cmb=>{ const rem=piatto.filter(x=>!cmb.some(y=>y.id===x.id)); if(meWins(rem, rem.length===0)) normalWins=true; });
+      } else if(meWins(piatto.slice(), false)) normalWins=true;
+    } else {
+      const combos=cp(c.val);
+      if(combos.length) combos.forEach(cmb=>{ const rem=piatto.filter(x=>!cmb.some(y=>y.id===x.id)); if(meWins(rem, rem.length===0)) normalWins=true; });
+      else if(meWins([...piatto, c], false)) normalWins=true;
+    }
+    if(normalWins) return null;   // la scena è già vinta con la carta normale: NON sprecare il Jolly
+    const piattoSum=piatto.reduce((s,x)=>s+cval(x),0);
+    let pick=null;
+    if(piattoSum<=10){ const cm=cp(piattoSum); const ci=cm.findIndex(cmb=>cmb.length===piatto.length); if(ci>=0) pick={v:piattoSum, ci, scopa:true}; }
+    if(!pick) for(let v=10; v>=1 && !pick; v--){ const cm=cp(v); for(let i=0;i<cm.length;i++){ const cmb=cm[i]; const rem=piatto.filter(x=>!cmb.some(y=>y.id===x.id)); if(meWins(rem,false)){ pick={v, ci:i, scopa:false}; break; } } }
+    if(!pick) return null;   // nemmeno il Jolly fa vincere: tienilo
+    const bury=ME.mano.filter(x=>!x.jolly).slice().sort((x,y)=>cval(x)-cval(y))[0];
+    if(!bury) return null;
+    pick.buryId=bury.id;
+    return pick;
+  }
+
   // --- scelta della mossa nel turno, secondo le euristiche ---
   function scegliMossa(a){
     const g=G(), piatto=g.piatto, own=g.lati[a].semi;
@@ -126,20 +167,7 @@ function runGame(seed, seed2, seed3, wantTranscript){
 
     for(const el of domCards){
       const c=objOf(el); if(!c) continue;
-      if(c.jolly){
-        if(piatto.length===0){
-          consider(60, ()=>{ click(el); click(document.getElementById("jScarta")); jollyGiocati++; });
-        }else{
-          // il Jolly regala punti all'avversario: usalo malvolentieri, solo se costretto
-          let vBest=-1, ci=0, sc=false;
-          for(let v=10; v>=1; v--){ const cm=cp(v); if(cm.length){ vBest=v; ci=0; sc=cm[0].length===piatto.length; if(sc) break; } }
-          if(vBest>0) consider(sc?-10:-30, ()=>{ click(el);
-            const jv=[...box().querySelectorAll("button[data-v]")].filter(b=>!b.disabled);
-            const bt=jv.find(b=>parseInt(b.dataset.v)===vBest)||jv[jv.length-1]; click(bt);
-            const jc=[...box().querySelectorAll("#jollyCombos button[data-c]")]; click(jc[0]); jollyGiocati++; });
-        }
-        continue;
-      }
+      // v1.33: il Jolly non è più una carta della mano ma una risorsa (vedi jollyPick, considerato a fondo funzione).
       if(c.fig){
         const pot=piatto.filter(x=>!x.jolly);
         // v1.26: una figura che non cattura nulla si sacrifica come marcatore da 1 punto (mai scopa),
@@ -186,6 +214,13 @@ function runGame(seed, seed2, seed3, wantTranscript){
         consider(score, ()=>{ click(el); click(box().querySelector("button[data-piatto]")); });
       }
     }
+    // Jolly (speculare, entrambi i lati): usalo solo se ASSICURA la scena alla chiusura (vedi jollyPick).
+    { const pk=jollyPick(a); if(pk) consider(pk.scopa?900:850, ()=>{
+      click(document.getElementById("btnUsaJolly"));
+      const be=[...document.querySelectorAll("#jollyBury .carta")].find(el=>parseInt(el.dataset.id)===pk.buryId); click(be);
+      const jv=[...box().querySelectorAll("button[data-v]")].filter(b=>!b.disabled);
+      const bt=jv.find(b=>parseInt(b.dataset.v)===pk.v)||jv[jv.length-1]; click(bt);
+      const jc=[...box().querySelectorAll("#jollyCombos button[data-c]")]; click(jc[pk.ci]||jc[0]); jollyP++; }); }
     return best;
   }
 
@@ -292,7 +327,7 @@ function runGame(seed, seed2, seed3, wantTranscript){
                                     : (c.jolly ? piatto.length>0 : cp(c.val).length>0));
         const tOwn=piatto.filter(x=>own.includes(x.seme)).reduce((s,x)=>s+cardVal(x),0);
         const tOpp=piatto.filter(x=>!own.includes(x.seme)).reduce((s,x)=>s+cardVal(x),0);
-        if(c && !canCap && (tOwn+cardVal(c))<=tOpp){   // la carta non cambia la scena: arrenditi
+        if(c && !canCap && (tOwn+cardVal(c))<=tOpp && !jollyPick(a)){   // la carta non cambia la scena e il Jolly non salva: arrenditi
           const b=bResa||bRit; click(b);
           const conf=document.getElementById("ritConferma"); if(conf) click(conf);
           resaCount++;
@@ -320,6 +355,20 @@ function runGame(seed, seed2, seed3, wantTranscript){
           spintaScena=g.scena; spinteUsate++;
           log(`   → SPINTA DEL PITCH: «${sp[0].textContent.trim()}» — presa→scopa${isClosing?" (mossa conclusiva: assicura la scena)":""} (spazza ${oppSwept} avversario vs ${mySwept} mio).`);
           click(sp[0]); logUltima(); return "spinta";
+        }
+      }
+      // v1.33: spinta-Jolly di O (il peccato emerge) — presa→scopa. Gioco OTTIMALE: la scopa fa VINCERE la
+      // posta a O (svuota il piatto), quindi la si usa SOLO alla chiusura e SOLO se senza O perderebbe la scena.
+      const bsj=document.getElementById("btnSpintaJolly");
+      if(bsj){
+        const g=G(), own=g.lati.O.semi;
+        const closing = g.lati.P.mano.length===0 && g.lati.O.mano.length===0 && !g.lati.P.astaCarta && !g.lati.O.astaCarta;
+        const oT=g.piatto.filter(c=> own.includes(c.seme)).reduce((s,c)=>s+cardVal(c),0);
+        const pT=g.piatto.filter(c=>!own.includes(c.seme)).reduce((s,c)=>s+cardVal(c),0);
+        if(closing && g.piatto.length>0 && oT<=pT){   // senza la spinta O perde/pareggia la posta → ribaltala
+          jollyO++;
+          log(`   → SPINTA-JOLLY (il peccato emerge): presa→scopa alla chiusura, ribalta la scena (piatto O ${oT} vs P ${pT}).`);
+          click(bsj); logUltima(); return "spinta-jolly";
         }
       }
       click(document.getElementById("narrOk")); return f;
@@ -387,7 +436,6 @@ function runGame(seed, seed2, seed3, wantTranscript){
       click(document.getElementById("m-fine")); return f;
     }
 
-    if(f==="jolly_intro"){ log(``); log(`-- Dopo la seconda scena: il JOLLY entra nel mazzo dei Protagonisti. --`); click(document.getElementById("j-ok")); return f; }
 
     if(f==="primo_conteggio"){
       const g=G();
@@ -463,13 +511,13 @@ function runGame(seed, seed2, seed3, wantTranscript){
       // (i colpi di scena non danno punti); se il fine_scena della S5 non l'ha registrato, lo fissiamo qui.
       if(grossP[4]==null) grossP[4]=pv("P")+spentP;
       if(grossO[4]==null) grossO[4]=pv("O")+spentO;
-      const riass=`SEED=${sd} scene=${vinte} scopeP=${scopeCount("P")} scopeO=${scopeCount("O")} puntiP=${pv("P")} puntiO=${pv("O")} jolly=${jollyGiocati} spinte=${spinteUsate} colpi=${colpiFatti} acq=${acquisti} rese=${resaCount} figure=${[...figset].sort().join("")} outcome="${outcome}"`;
+      const riass=`SEED=${sd} scene=${vinte} scopeP=${scopeCount("P")} scopeO=${scopeCount("O")} puntiP=${pv("P")} puntiO=${pv("O")} jollyP=${jollyP} jollyO=${jollyO} spinte=${spinteUsate} colpi=${colpiFatti} acq=${acquisti} rese=${resaCount} figure=${[...figset].sort().join("")} outcome="${outcome}"`;
       const fnT=`transcript_smart_seed_${seed}${seed2!==seed?"_"+seed2:""}${seed3!==seed2?"_"+seed3:""}.txt`;
       const poste=g.scene.map(s=>s?s.vincitore:"-");
       const nP=poste.filter(x=>x==="P").length, nO=poste.filter(x=>x==="O").length;
       const arco=poste.map(x=>x==="P"?"P":x==="O"?"O":x==="parita"?"=":"-").join("");
       const __r={riass, T, fnT, ok:true, seed:sd, outcome, arco, figset:[...figset], resaCount,
-        figP:[...figP].sort().join(""), figO:[...figO].sort().join(""), figGiocate:[...figGiocate].sort().join(""), jollyGiocati,
+        figP:[...figP].sort().join(""), figO:[...figO].sort().join(""), figGiocate:[...figGiocate].sort().join(""), jollyP, jollyO, jollyGiocati:jollyP+jollyO,
         fanteSbircia, fanteScambio, jollyTipo, reginaColpo, reColpo, reginaPresa, reginaSacr, fanteSacr,
         poste, sceneOK45: poste[3]==="O" && poste[4]==="P",
         nP, nO, primoP, primoO, finalP, finalO,

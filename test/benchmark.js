@@ -81,7 +81,7 @@ const metrics={
     figureComprateP:avg(r=>r.buysP), figureComprateO:avg(r=>r.buysO),
     distrFigureP:[0,1,2,3].map(k=>pct(r=>r.buysP===k)), distrFigureO:[0,1,2,3].map(k=>pct(r=>r.buysO===k)),
     scopeP:avg(r=>r.scopeP), scopeO:avg(r=>r.scopeO),
-    resePerPartita:avg(r=>r.resaCount), jollyGiocati:avg(r=>r.jollyGiocati),
+    resePerPartita:avg(r=>r.resaCount), jollyGiocati:avg(r=>r.jollyGiocati), jollyP:avg(r=>r.jollyP), jollyO:avg(r=>r.jollyO),
   },
 };
 
@@ -141,7 +141,7 @@ md+=`- **Figure comprate/partita:** P ${fixed(metrics.meccaniche.figureComprateP
 md+=`  - distribuzione P (0/1/2/3): ${metrics.meccaniche.distrFigureP.map(fixed).join("% / ")}%\n`;
 md+=`  - distribuzione O (0/1/2/3): ${metrics.meccaniche.distrFigureO.map(fixed).join("% / ")}%\n`;
 md+=`- **Scope/partita:** P ${fixed(metrics.meccaniche.scopeP)} · O ${fixed(metrics.meccaniche.scopeO)}\n`;
-md+=`- **Rese/partita:** ${fixed(metrics.meccaniche.resePerPartita)} · **Jolly giocati/partita:** ${fixed(metrics.meccaniche.jollyGiocati)}\n`;
+md+=`- **Rese/partita:** ${fixed(metrics.meccaniche.resePerPartita)} · **Jolly usati/partita:** ${fixed(metrics.meccaniche.jollyGiocati)} (cattura P ${fixed(metrics.meccaniche.jollyP)} · spinta O ${fixed(metrics.meccaniche.jollyO)})\n`;
 
 fs.writeFileSync(path.join(dir,"ultimo.md"), md);
 
@@ -177,7 +177,7 @@ function card(rec, idx, prev){
   h+=`</table><p class="small">Poste medie: P <b>${fx(m.scene.posteMedie.P)}</b> · O <b>${fx(m.scene.posteMedie.O)}</b></p>`;
   h+=`<p class="esiti">`+Object.entries(m.scene.rapporto).map(([k,v])=>`<span>${k}: <b>${fx(v)}%</b>${dH(v,pm?.scene.rapporto[k])}</span>`).join(" · ")+`</p>`;
   // D
-  h+=`<h3>D · Meccaniche</h3><p class="small">Figure comprate: P ${fx(m.meccaniche.figureComprateP)} · O ${fx(m.meccaniche.figureComprateO)} — Scope: P ${fx(m.meccaniche.scopeP)} · O ${fx(m.meccaniche.scopeO)} — Rese: ${fx(m.meccaniche.resePerPartita)} — Jolly: ${fx(m.meccaniche.jollyGiocati)}</p>`;
+  h+=`<h3>D · Meccaniche</h3><p class="small">Figure comprate: P ${fx(m.meccaniche.figureComprateP)} · O ${fx(m.meccaniche.figureComprateO)} — Scope: P ${fx(m.meccaniche.scopeP)} · O ${fx(m.meccaniche.scopeO)} — Rese: ${fx(m.meccaniche.resePerPartita)} — Jolly: ${fx(m.meccaniche.jollyGiocati)} (P ${fx(m.meccaniche.jollyP)} · O ${fx(m.meccaniche.jollyO)})</p>`;
   h+=`</section>`;
   return h;
 }

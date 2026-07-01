@@ -63,7 +63,7 @@ Durante la partita emergono in modo naturale temi come:
 - collaborazione vs individualismo
 - sacrificio vs sopravvivenza
 
-Il sistema del Jolly, in particolare, introduce il tema del compromesso morale: il vantaggio ottenuto "nel modo sbagliato" ha un prezzo immediato — il merito, e i punti, finiscono all'avversario.
+Il sistema del Jolly, in particolare, introduce il tema del compromesso morale: il vantaggio ottenuto "nel modo sbagliato" non costa punti, ma **consegna al nemico la stessa arma sporca** — che la userà per far riemergere il peccato. Chi resiste alla tentazione, e non lo usa, è premiato (§22).
 
 > La domanda centrale che il gioco pone è: **cosa sei disposto a fare pur di ottenere ciò che vuoi?**
 
@@ -153,12 +153,12 @@ Si usa un mazzo francese standard.
 Stato iniziale:
 
 - Le figure (Fante, Regina, Re) sono rimosse da entrambi i mazzi
-- I Jolly non sono ancora in gioco
+- Il Jolly non sta nel mazzo: è una **risorsa dei Protagonisti**, fuori dal mazzo, disponibile dall'inizio (§22)
 - I mazzi iniziali contengono solo le carte numeriche (**Asso–10**) dei rispettivi semi: **20 carte per lato**
 
-Le figure entrano nei mazzi tramite acquisto nel mercato tra le scene. Il Jolly (uno solo, nel mazzo dei Protagonisti) entra dopo la seconda scena.
+Le figure entrano nei mazzi tramite acquisto nel mercato tra le scene. Il Jolly (uno solo) non entra mai nel mazzo: è una risorsa dei Protagonisti, disponibile davanti a loro dall'inizio della partita (§22).
 
-> **Nota (v1.1):** 20 carte bastano esattamente per le cinque scene (4 pescate a scena). Quando il mazzo finisce, la partita finisce: non esiste alcun rimescolo degli scarti nel mazzo. Gli unici ingressi di carte nel mazzo sono le figure acquistate al mercato, la carta che la Ritirata strategica rimescola nel proprio mazzo (§18.1) e, dalla v1.27, la carta che il **Re** recupera dagli scarti comuni e rimescola nel proprio mazzo (§21, solo nelle scene 1-4; nell'ultima scena la carta recuperata dal Re entra invece nella riserva); il Jolly, inoltre, entra una sola volta dopo la seconda scena nel mazzo dei Protagonisti.
+> **Nota (v1.1):** 20 carte bastano esattamente per le cinque scene (4 pescate a scena). Quando il mazzo finisce, la partita finisce: non esiste alcun rimescolo degli scarti nel mazzo. Gli unici ingressi di carte nel mazzo sono le figure acquistate al mercato, la carta che la Ritirata strategica rimescola nel proprio mazzo (§18.1) e, dalla v1.27, la carta che il **Re** recupera dagli scarti comuni e rimescola nel proprio mazzo (§21, solo nelle scene 1-4; nell'ultima scena la carta recuperata dal Re entra invece nella riserva). Il Jolly (v1.33) **non entra mai nel mazzo** (è una risorsa fuori dal mazzo, §22); l'unico movimento verso il mazzo che introduce è la **carta che un lato cede per afferrarlo**, che finisce in fondo al proprio mazzo.
 
 ## 9. Preparazione narrativa: il pitch
 
@@ -436,7 +436,7 @@ Si sommano i valori delle carte presenti nel piatto:
 
 Chi ha il totale più alto vince la posta della scena.
 
-> **Scena chiusa da una scopa (v1.3):** se la scena finisce con il **piatto vuoto** perché l'ultima giocata è stata una **scopa**, la posta è vinta da **chi ha fatto la scopa**, anche se i totali del piatto sarebbero 0-0. (Vale anche per la scopa fatta col Jolly: la posta va a chi ha ripulito il piatto, mentre i 3 punti vanno all'avversario.)
+> **Scena chiusa da una scopa (v1.3):** se la scena finisce con il **piatto vuoto** perché l'ultima giocata è stata una **scopa**, la posta è vinta da **chi ha fatto la scopa**, anche se i totali del piatto sarebbero 0-0. (Vale anche per la scopa fatta col Jolly: la posta va a chi ha ripulito il piatto; il Jolly però non dà punti a nessuno, §22.)
 
 > **Parità dei totali (v1.22):** se i totali del piatto sono pari, con carte ancora sul tavolo, la posta è vinta da chi ha giocato l'**ultima carta** del round, cioè il lato che **non** aveva l'iniziativa. (La scopa a piatto vuoto qui sopra ne è il caso particolare: chi fa la scopa finale è proprio chi gioca l'ultima carta.) Coerente con la regola su chi narra l'esito: in parità la posta la perde il vincitore dell'asta, che quindi la racconta.
 
@@ -543,44 +543,47 @@ Comprare una figura significa **preparare l'ingresso di un PNG importante e pote
 
 # PARTE VI — IL JOLLY
 
-## 22. Il Jolly: ingresso, uso e conseguenze
+## 22. Il Jolly: la scorciatoia sleale, speculare *(v1.33)*
 
-### 22.1 — Ingresso *(v1.3)*
+### 22.1 — Una risorsa, non una carta del mazzo *(v1.33)*
 
-C'è **un solo Jolly**, nel **mazzo dei Protagonisti**, aggiunto al termine della **seconda scena**.
+C'è **un solo Jolly**, e **non sta nel mazzo**: è una **risorsa dei Protagonisti**, disponibile davanti a loro fin dall'inizio della partita. Si afferra solo quando si decide di usarlo (§22.2). Non usarlo affatto ha comunque un piccolo premio (§22.5).
 
-### 22.2 — Uso *(v1.3)*
+### 22.2 — L'uso dei Protagonisti: la cattura sleale (scene 1-3) *(v1.33)*
 
-- Non può essere usato nell'asta d'inizio scena
-- Il giocatore decide quale valore assume (da 1 a 10)
-- Serve **solo per catturare** (presa); se la cattura svuota il piatto è una scopa
+Nel proprio turno, invece di giocare normalmente, un Protagonista può **seppellire una carta della mano in fondo al proprio mazzo** e afferrare il Jolly al suo posto. Il Jolly:
 
-### 22.3 — Mossa sleale: il punto va all'avversario *(v1.3)*
+- non si usa mai nell'asta d'inizio scena;
+- vale il numero che il giocatore dichiara (da 1 a 10) e serve **solo per catturare** (presa; se svuota il piatto è scopa);
+- **non dà punti a nessuno**: è una mossa puramente tattica (vince la posta, ripulisce o alleggerisce il piatto), non segna Crescita.
 
-Il Jolly dà a chi lo gioca il **vantaggio sul tavolo** (ripulisce o alleggerisce il piatto), ma i suoi **punti vanno all'avversario** e la **carta del Jolly gli viene consegnata** come promemoria del peccato:
+I Protagonisti possono usarlo **solo nelle scene 1-3**. È il **peccato**: un successo ottenuto andando contro i principi e la lealtà.
 
-- presa col Jolly → **1 punto all'avversario**
-- scopa col Jolly → **3 punti all'avversario**
+### 22.3 — La conseguenza: il Jolly passa all'Opposizione *(v1.33)*
 
-Chi gioca il Jolly conserva comunque il vantaggio di scena (se la scopa svuota il piatto a fine scena, vince la posta), ma regala i punti. Non c'è più né il *peccato latente* né il *counter* della v1.1–v1.2: il costo è immediato.
+Il costo della scorciatoia non è in punti: appena i Protagonisti usano il Jolly, la carta **passa all'Opposizione**. In pratica si **consegna al nemico la stessa arma sporca**, che lui userà a modo suo (§22.4) — e nel farlo il peccato dei Protagonisti verrà alla luce.
 
-### 22.4 — Vincolo narrativo
+### 22.4 — L'uso dell'Opposizione: il peccato emerge (scene 2-4) *(v1.33)*
 
-Si narra sempre un successo ottenuto **andando contro i principi e la lealtà**. A macchiarsi del peccato è **uno solo dei due protagonisti**: una ricaduta nei vecchi vizi, oppure un gesto avventato che non tiene conto dell'altro. L'altro **può non saperne nulla, oppure assistervi e giudicarlo**. Il Jolly è il seme di una discordia destinata a sbocciare più avanti.
+Ricevuto il Jolly, l'Opposizione lo spende in modo **speculare ma diverso**: come **spinta extra**. Dopo una propria presa, l'Opposizione **butta il Jolly** e trasforma quella presa in una **scopa** (svuota il piatto e vince la posta). Anche questo uso **non dà punti**. Nel giocarlo, l'Opposizione **mette in scena il peccato**: il compromesso di cui uno dei protagonisti si è macchiato riaffiora e travolge la scena.
 
-> **Esempio:** Frank usa il Jolly come 9 per fare presa. Narra: "Frank agita un fascicolo falso sotto il naso del sergente dell'archivio: o collabora, o il suo nome ci finisce dentro." Il vantaggio è suo, ma quel punto, contabilmente, va all'Opposizione.
+Vincoli:
 
-### 22.5 — Scarto del Jolly: resistere alla tentazione *(v1.25)*
+- solo nelle **scene 2-4**;
+- **mai due usi del Jolly nella stessa scena**: l'Opposizione può giocarlo solo in una scena **successiva** a quella in cui i Protagonisti l'hanno usato (il peccato riemerge *dopo*, non nello stesso momento);
+- una volta giocato, il Jolly è **speso** ed esce dal gioco.
 
-Usare il Jolly non è obbligatorio. Chi lo ha in mano può **scartarlo senza effetto**, rinunciando al vantaggio sleale: è la scelta di **resistere alla tentazione**. Lo stesso vale, per forza, quando il piatto è vuoto e il Jolly non ha nulla da catturare *(v1.3)*: viene scartato senza effetto e il piatto resta com'era.
+### 22.5 — Resistere alla tentazione: +2 Crescita *(v1.33)*
 
-### 22.6 — Il peccato emerge: la licenza narrativa dell'Opposizione *(v1.25)*
+Usare il Jolly non è obbligatorio. Chi lo detiene può **non usarlo affatto**: chi arriva a fine partita col Jolly ancora in mano incassa **2 punti Crescita**, che pesano **solo nel conteggio finale** (i mercati sono ormai chiusi: non sono spendibili per comprare figure). È il premio di **chi ha resistito alla scorciatoia**. Vale per entrambi i lati: se i Protagonisti resistono, i +2 sono loro; se peccano e l'Opposizione riceve il Jolly ma non lo spende, i +2 vanno all'Opposizione.
 
-Quando i Protagonisti giocano il Jolly (§22.3), i punti che ne nascono (1 da presa, 3 da scopa) entrano nel bottino dell'Opposizione come punti normali: una risorsa a tutti gli effetti, che l'Opposizione può **tenere fino al conteggio finale**, dove vale i suoi punti, oppure **spendere al mercato** per concorrere all'acquisto di una figura.
+### 22.6 — Vincolo narrativo *(v1.33)*
 
-Il peccato compiuto resta, ma solo in **chiave narrativa**. Finché l'Opposizione **ha davanti a sé la carta del Jolly** (consegnatale come promemoria), in una sua qualsiasi presa o scopa può far **riaffiorare nella narrazione il peccato** che uno dei protagonisti ha commesso col Jolly: l'inganno, il torbido compromesso. È **solo narrazione** e non cambia punti né carte: serve a **far sbocciare la discordia tra i protagonisti** e a rendere il momento ancora più drammatico.
+A macchiarsi del peccato è **uno solo dei due protagonisti**: una ricaduta nei vecchi vizi, o un gesto avventato che non tiene conto dell'altro. L'altro **può non saperne nulla, oppure assistervi e giudicarlo**. Quando l'Opposizione gioca il Jolly (§22.4), quel compromesso torna a galla e incrina l'alleanza: è il seme di discordia che sboccia.
 
-> **Esempio:** a fine scena 4 l'Opposizione fa una presa e, avendo ancora davanti a sé la carta del Jolly, ne approfitta per far affiorare il vecchio compromesso: davanti a Otto emerge cosa ha fatto Vera con il Jolly. La presa vale comunque solo il suo punto, ma fra i due cala il gelo.
+> **Esempio (i Protagonisti usano il Jolly).** Nel piatto resta un 4♣ e Vera non ha di meglio in mano. Seppellisce un 3♠ in fondo al proprio mazzo, afferra il Jolly, lo dichiara **4** e cattura il 4♣: **SCOPA**, il piatto è pulito e la posta è dei Protagonisti. Nessuno segna punti, ma il Jolly passa a Omar. Narra: "Vera infrange la promessa di restare pulita e sfrutta un vecchio contatto del contrabbando — Otto ancora non lo sa."
+>
+> **Esempio (l'Opposizione fa emergere il peccato).** Due scene dopo, l'Opposizione fa una presa con una carta di Quadri e **butta il Jolly** per trasformarla in scopa: il piatto si svuota, la scena è sua. Nel narrarlo fa affiorare cosa aveva fatto Vera con quel contatto: davanti a Otto cala il gelo. Nessuno segna punti, ma fra i due si apre una crepa.
 
 ---
 
@@ -747,18 +750,16 @@ Nell'ultima scena emergono due strategie principali che si oppongono:
    ├── Il piatto resta sul tavolo per la scena successiva
    ├── Pesca della nuova mano
    └── Mercato: acquisto figure → mazzo → rimescola
+   (Jolly: risorsa dei Protagonisti, usabile nelle scene 1-3; se usato passa all'Opposizione, §22)
 
-3. DOPO LA SECONDA SCENA
-   └── Il Jolly entra nel mazzo dei Protagonisti
-
-4. QUINTA SCENA
+3. QUINTA SCENA
    ├── Mercato, poi mano estesa (più di 4 carte) → scelta di 4 + riserva
    ├── Round normale
    ├── Primo conteggio → esito apparente
    ├── Colpi di scena dalla riserva (alternati)
    └── Conteggio definitivo
 
-5. FINALE
+4. FINALE
    ├── Vittoria del piatto → esito esterno della missione
    ├── Tie-break → scope → prese
    ├── Incrocio piatto + punti → uno dei quattro outcome
@@ -942,6 +943,15 @@ In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, 
 ---
 
 # REGISTRO MODIFICHE
+
+## v1.33 (luglio 2026) — il Jolly speculare: cattura sleale (P) e spinta che fa emergere il peccato (O), zero punti
+
+1. **§22 riscritto: il Jolly non sta più nel mazzo, è una risorsa fuori dal mazzo.** Prima (v1.3-v1.32) era una carta aggiunta al mazzo dei Protagonisti dopo la 2ª scena, pescata a caso, che regalava punti all'avversario. Ora è una **risorsa dei Protagonisti disponibile dall'inizio**, che si afferra **seppellendo una carta della mano in fondo al proprio mazzo**. **Usare il Jolly non dà punti a nessuno**: è una mossa tattica (vince la posta, ripulisce il piatto), non segna Crescita.
+2. **Uso asimmetrico e speculare.** *Protagonisti (scene 1-3):* cattura sleale col valore elastico 1-10 (il **peccato**). *Opposizione (scene 2-4):* ricevuto il Jolly, lo spende come **spinta extra** (trasforma una propria presa in scopa) e nel farlo **mette in scena il peccato**. Mai due usi nella stessa scena: O lo gioca solo in una scena **successiva** a quella di P.
+3. **Il costo è narrativo/strategico, non in punti.** Usare il Jolly **consegna la stessa arma al nemico** (passa a O). Chi invece **resiste** (non lo usa) e lo tiene fino a fine partita incassa **+2 Crescita**, che pesano solo nel conteggio finale (non spendibili al mercato).
+4. **Rimosso il vecchio modello "punti all'avversario + marcatore del peccato".** Via i punti del Jolly all'avversario (presa 1 / scopa 3), via la licenza narrativa passiva del vecchio §22.6 (ora il peccato emerge quando O gioca il Jolly), via lo scarto volontario "senza effetto" (resistere = non usarlo, con premio +2).
+5. **Motivazione (dal designer, Saverio) e bilanciamento.** Il vecchio Jolly che regalava punti a O sbilanciava a favore di O; il modello speculare a **zero punti** rimette la vittoria della missione vicino all'equilibrio e valida il tema ("il peccato si ritorce contro": usarlo arma il nemico). Le finestre 1-3 / 2-4 danno un arco drammatico (Protagonisti avanti, l'Opposizione ha il suo momento in scena 4, finale in bilico). Benchmark con la policy "usa il Jolly solo per ribaltare una scena che altrimenti perderesti" (`node test/benchmark.js`).
+6. **Propagazione.** Motore `index.html`: Jolly come risorsa `lato("P").jolly`, `avviaUsaJolly` (swap + cattura a 0 punti, passa a O in `giocaJolly`), `jollySpintaDisponibile`/`spintaJolly` (uso di O), `premioJollyNonUsato` (+2 a fine), `jollyPassatoScena` (mai due usi nella stessa scena), finestre in `jollyUsabile`; rimossi `entraJollyNeiMazzi`, `rJollyIntro`/fase `jolly_intro`, `jollyMarkerO`, `G.jollyPeccato`. Aggiornati `REGOLE`, `REGOLE_IA`, `setupPerIA`/`statoPerIA`. Driver `partita_smart.js` (usi di P e O, metrica separata `jollyP`/`jollyO`) e `benchmark.js`. KB (§22, §7 setup, §8 ingressi nel mazzo, flusso §29) e manuale (Capitolo 5, glossario, setup). **Nota:** l'esempio canonico (§34/Appendice B) resta OBSOLETO (già dalla v1.32) e va rifatto col nuovo seed-vetrina; l'Appendice B pre-ridisegno è archiviata in `docs/archivio/`.
 
 ## v1.32 (luglio 2026) — punteggio a gettoni: le carte non fanno più da marcatori
 
@@ -1129,4 +1139,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.32*
+*Frenemies on the Road — Knowledge Base v1.33*
