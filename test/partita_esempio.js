@@ -300,15 +300,15 @@ try{
       const outcome=esito?esito.textContent.trim():"?";
       log(``); log(`-- CONTEGGIO DEFINITIVO E FINALE --`);
       log(`   Piatto finale: ${piatto()}`);
-      const pv=l=>{const L=g.lati[l];return (L.bonus||0)+L.prese.reduce((a,c)=>a+(c.fig?2:1),0)+L.scope.filter(c=>!c.esposta).length*4;};
+      const pv=l=>g.lati[l].punti;   // v1.32: i punti sono la valuta numerica (Crescita)
+      const scopeCount=l=>g.lati[l].semi.reduce((a,s)=>a+(g.scopeGiocatore[s]||0),0);
       const ps=l=>g.piatto.filter(c=>g.lati[l].semi.includes(c.seme)).reduce((a,c)=>a+(c.jolly?0:(c.fig?{F:8,D:9,R:10}[c.fig]:c.val)),0);
       log(`   Valori nel piatto: Protagonisti (♥+♠) ${ps("P")} contro Opposizione (♦+♣) ${ps("O")}.`);
-      log(`   Punti complessivi (presa 1, figura 2, scopa 4): Protagonisti ${pv("P")} (${g.lati.P.prese.length} prese, ${g.lati.P.scope.length} scope), Opposizione ${pv("O")} (${g.lati.O.prese.length} prese, ${g.lati.O.scope.length} scope).`);
+      log(`   Punti complessivi (Crescita; presa 1, scopa 3): Protagonisti ${pv("P")} (${scopeCount("P")} scope), Opposizione ${pv("O")} (${scopeCount("O")} scope).`);
       log(`   Esito: ${outcome}`);
-      log(`   Scope — Protagonisti: ${g.lati.P.scope.map(cstr).join(" ")||"nessuna"} · Opposizione: ${g.lati.O.scope.map(cstr).join(" ")||"nessuna"}`);
       log(`   Diario del rapporto per scena: ${g.scene.map(s=>s?s.rapporto:"-").join(", ")}`);
       const vinte=g.scene.map(s=>s?s.vincitore:"-").join("");
-      const riass=`SEED=${SEED} ok scene=${vinte} scopeP=${g.lati.P.scope.length} scopeO=${g.lati.O.scope.length} jolly=${jollyGiocati} counter=${counterFatto} spinte=${spinteUsate} colpi=${colpiFatti} acquisti=${acquisti} outcome="${outcome}"`;
+      const riass=`SEED=${SEED} ok scene=${vinte} scopeP=${scopeCount("P")} scopeO=${scopeCount("O")} jolly=${jollyGiocati} counter=${counterFatto} spinte=${spinteUsate} colpi=${colpiFatti} acquisti=${acquisti} outcome="${outcome}"`;
       console.log(riass);
       if(process.env.TRANSCRIPT){
         const fnT=`transcript_seed_${SEED}${SEED2!==SEED?"_"+SEED2:""}${SEED3!==SEED2?"_"+SEED3:""}.txt`;

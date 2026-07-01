@@ -104,6 +104,7 @@ Come si formula bene una posta lo vedremo nel Capitolo 3. Per ora basti sapere c
 ## 1.5 I materiali
 
 Ti serve un normale mazzo di carte francesi, qualcosa per scrivere, le schede del gioco e qualche altro foglietto (index card o post-it).
+Durante il gioco, ciascun giocatore farà dei punti che poi possono essere spesi come valuta. Per tener traccia di questi punteggi può essere comodo utilizzare dei token o dei dadi. In alternativa ricordatevi di scriverli e tenerli aggiornati sulle schede dei giocatori.
 
 Il mazzo si divide tra i giocatori nel seguente modo:
 
@@ -354,12 +355,12 @@ Rispetto alla scopa che forse conosci, qui cambiano alcune cose:
 
 ### Segnare i punti
 
-Le carte usate per fare le prese e le scope vengono conservate davanti a ciascun giocatore, per conteggiare i punti fatti.
-Quelle delle prese in verticale, per ricordarsi che valgono 1 punto e quelle delle scope in orizzontale per ricordarsi che valgono 3 punti.
+
+I punti li puoi appuntare sulla scheda, oppure se non vuoi continuare a cancellare e riscrivere il tuo punteggio attuale potete usare gettoni di qualunque tipo.
 
 I punti hanno un doppio uso: 
 
-1. puoi spenderli al mercato per comprare le figure. Quando i punti vengono spesi le carte che servono come loro marcatore vengono messe nella pila degli scarti.
+1. puoi spenderli al mercato per comprare le figure.
 2. oppure tenerli fino a fine partita così verranno conteggiati come Crescita e avranno un peso nella determinazione dell'esito finale della storia.
 
 ## 3.3 Mano e asta per l'iniziativa
@@ -475,7 +476,9 @@ Sulla stessa nota conviene segnare anche con quale carta hai introdotto il Qualc
 
 Il fatto che la carta corrispondente a un Qualcuno venga catturata o eliminata dal piatto non implica automaticamente che questo elemento scompaia totalmente dalla storia in termini di fiction. Semplicemente non potrà contribuire in modo meccanico al conseguimento della posta di quella scena, perché la sua carta è stata presa e messa negli scarti.
 
-I Protagonisti introducono il 3 di Cuori, e Otto rivela di avere una conoscenza nell'hotel dove si tiene l'asta della serata (l'evento al centro della scena): Hatim il Concierge, un suo vecchio compagno del club di scacchi dei tempi del Cairo, che potrebbe farli entrare da una porta sul retro. Sul post-it finisce "3 di Cuori = Hatim il Concierge, amico di Otto, può aprire il retro". Più tardi l'Opposizione cattura proprio il 3 di Cuori, e il marcatore le dice subito chi sta neutralizzando: il direttore dell'hotel convoca Hatim nel suo ufficio per una ramanzina e gli proibisce di dare una mano a quei due ed anzi di tenerli d'occhio. La presa ha già la sua narrazione, coerente con quanto era stato introdotto.
+I Protagonisti introducono il 3 di Cuori, e Otto rivela di avere una conoscenza nell'hotel dove si tiene l'asta della serata (l'evento al centro della scena): Hatim il Concierge, un suo vecchio compagno del club di scacchi dei tempi del Cairo, che potrebbe farli entrare da una porta sul retro. Sul post-it finisce "3 di Cuori = Hatim il Concierge, amico di Otto, può aprire il retro". Più tardi l'Opposizione cattura proprio il 3 di Cuori. Il valore della carta ci dice subito chi si sta neutralizzando. 
+"Il direttore dell'hotel convoca Hatim nel suo ufficio per una ramanzina e gli proibisce di dare una mano a quei due ed anzi di tenerli d'occhio." 
+La presa ha già la sua narrazione, coerente con quanto era stato introdotto.
 {: .esempio }
 
 Le figure (Fante, Regina, Re) sono un caso particolare di Qualcuno: personaggi potenti che si possono aggiungere al mazzo, acquistandoli al mercato.
@@ -503,7 +506,9 @@ Fare scopa accade quando la presa lascia il piatto vuoto: togli all'avversario o
 Scopa con un 6 di Picche, e Vera mette al tappeto in pochi secondi i due uomini della Loggia che bloccavano il vicolo. La strada è libera, la situazione ribaltata.
 {: .esempio }
 
-C'è un caso particolare. Una figura giocata quando non ha nulla da catturare (il piatto è vuoto, oppure restano solo carte fuori dalla sua portata) non resta sul tavolo: si sacrifica e va tra le tue prese come marcatore da 1 punto, come una resa, lasciando dove sono le eventuali carte fuori portata. Una scopa è sempre e solo una presa che svuota il piatto, quindi una figura che non cattura nulla non può farne una. Il suo effetto speciale scatta lo stesso. Narrativamente è l'alleato che si immola, o che risulta meno incisivo del previsto.
+C'è un caso particolare. Una figura giocata quando non ha nulla da catturare (il piatto è vuoto, oppure restano solo carte fuori dalla sua portata) non resta sul tavolo: si sacrifica e si conta come se avesse preso sé stessa, lasciando dove sono le eventuali carte fuori portata. In questo caso la figura viene scartata e si segna 1 punto.
+Il suo effetto speciale però scatta lo stesso.
+Narrativamente si può raccontare che l'alleato che si immola, o fa qualcosa che a causa delle circostanze risulta meno incisivo del previsto.
 
 ## 3.10 Darsi una spinta
 
@@ -610,11 +615,13 @@ L'ordine conta: prima compri, poi peschi, così le figure comprate possono capit
 
 ## 4.2 Come si paga
 
-Le tue risorse sono i marcatori che hai accumulato: ogni presa vale 1 punto (anche con figura), ogni scopa 3 punti.
+La valuta con cui paghi le figure sono i punti che hai fatto giocando: ogni presa vale 1 punto (anche con figura), ogni scopa 3 punti.
 
-Quando paghi, prendi le carte che usavi per marcare le prese e le scope e le metti finiscono negli scarti comuni. Le figure comprate entrano direttamente nel mazzo,.
+La figura acquistata entra nel mazzo, dopodiché si aggiorna il punteggio togliendo i punti spesi.
 
-Una regola di tetto: ogni giocatore può comprare al massimo un Fante, una Regina e un Re in tutta la partita, ovviamente solo dei propri semi.
+Ogni giocatore può comprare al massimo un Fante, una Regina e un Re in tutta la partita, ovviamente solo dei propri semi.
+
+Il seme della figura come al solito suggerisce la natura del personaggio.
 
 ## 4.3 Le figure: costi, valori, effetti
 
@@ -628,7 +635,7 @@ Una regola di tetto: ogni giocatore può comprare al massimo un Fante, una Regin
 
 **Le figure catturano in modo più ampio.** Una figura non prende solo l'esatto pari: cattura dal piatto un gruppo di carte la cui somma è minore o uguale al suo valore (Fante 8, Regina 9, Re 10). Anche per le figure la cattura è obbligata: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 1 punto come ogni altra. 
 
-Le figure però non possono essere usate per ottenere una maggioranza a fine scena, infatti non possono essere aggiunte al piatto, ma unicamente per far prese e scope. Per questo, hanno un potere di presa "elastico". Quando giochi una figura che non ha nulla da catturare, la figura non resta sul tavolo: si sacrifica e finisce direttamente tra le tue prese come marcatore da 1 punto, come una resa, e le eventuali carte fuori dalla sua portata restano dove sono. Una scopa è sempre e solo una presa che svuota il piatto, quindi una figura che non cattura nulla non può farne una, nemmeno quando il piatto è vuoto. In ogni caso narri come il PNG corrispondente si immola, o risulta meno incisivo del previsto per qualche scherzo del fato.
+Le figure però non possono essere usate per ottenere una maggioranza a fine scena, infatti non possono essere aggiunte al piatto, ma unicamente per far prese e scope. Per questo, hanno un potere di presa "elastico". Quando giochi una figura che non ha nulla da catturare, la figura non resta sul tavolo: si sacrifica prendendo sé stessa e facendo guadagnare 1 punto, come una resa. Le eventuali carte fuori dalla sua portata restano sul piatto dove sono. In ogni caso narri come il PNG corrispondente si immola, o risulta meno incisivo del previsto per qualche scherzo del fato.
 
 Paola ha solo il fante in mano, nel piatto c'è un 10 di quadri che non può prendere. Narra quindi che Kalim(fante di picche) decide di fermarsi per causare una frana nello stretto canyon e rallentare gli inseguitori.
 {: .esempio }
@@ -658,8 +665,8 @@ Paola ha solo il fante in mano, nel piatto c'è un 10 di quadri che non può pre
 «Ma non si può discutere, non so neanche di che cavolo parla.» (Prima di mezzanotte)
 {: .citazione }
 
-Il Jolly è lo strumento del compromesso morale. Rappresenta il trope della tentazione che colpisce uno dei protagonisti nell'indulgere in comportamenti sbagliati che fanno parte del suo passato.
-Infatti, tipicamente in questo genere di storie si vede che uno dei due protagonisti, grazie alla comunione di intenti, le diversità di vedute e di metodi possono ridursi. Usare il Jolly per risolvere un problema in un certo senso riporta il personaggio al punto di partenza, sul suo percorso di evoluzione, portandolo a mostrare il suo lato peggiore, mostrando che quelle differenze ci sono ancora.
+Il Jolly è lo strumento del compromesso morale. Rappresenta il trope della tentazione che colpisce uno dei protagonisti nell'indulgere in comportamenti discutibili che fanno parte del suo passato.
+Tipicamente in questo genere di storie i protagonisti si ritrovano spesso a dover mediare e agire seguendo dei compromessi, al fine di trovare un modo per collaborare e fare gioco di squadra. Usare il Jolly per risolvere un problema significa ignorare qualunque mediazione o compromesso ed agire alla propria maniera, anche a costo di scandalizzare, deludere, disgustare o ingannare il compagno.
 
 Il Jolly è uno solo, sta nel mazzo dei Protagonisti e si aggiunge al termine della seconda scena. Da quel momento ogni pescata dei Protagonisti può portare in mano la tentazione di questa drammatica scorciatoia.
 
@@ -672,10 +679,10 @@ Il Jolly è uno solo, sta nel mazzo dei Protagonisti e si aggiunge al termine de
 
 ## 5.2 I demoni del passato
 
-Se il Jolly viene usato per fare una presa o una scopa ottiene un vantaggio immediato per la scena, ma il suo marcatore dei punti va nel campo dell'avversario:
+Se il Jolly viene usato per fare una presa o una scopa ottiene un vantaggio immediato per la scena, ma i punti vengono dati all'opposizione:
 
-- una presa con il Jolly vale 1 punto all'avversario;
-- una scopa con il Jolly vale 3 punti all'avversario.
+- una presa con il Jolly vale 1 punto per l'opposizione;
+- una scopa con il Jolly vale 3 punti per l'opposizione.
 
 Narrativamente, si racconta sempre un successo ottenuto andando contro i propri principi, come la propria lealtà verso l'altro protagonista sia venuta meno o come sia tornato a vecchi vizi o abbia agito in modo avventato senza considerare la sensibilità dell'altro personaggio.
 E' importante ricordare che solo uno dei due Protagonisti si macchia del peccato, mentre l'altro lo giudicherà. Il Jolly è il seme di una discordia destinato a sbocciare più avanti.
@@ -683,7 +690,7 @@ E' importante ricordare che solo uno dei due Protagonisti si macchia del peccato
 Il giocatore usa il Jolly come 9 per fare scopa e racconta: "Vera infrange la promessa di restare sobria e lontana dai guai: sfida Ulrich e i suoi sgherri a una gara di cicchetti e quando sono tutti ubriachi riesce a rubare la chiave del magazzino." E' evidente che questa cosa avrà conseguenze a partire dalla sbornia da smaltire il giorno dopo e che sarà difficile nascondere.
 {: .esempio }
 
-Il vantaggio è suo, ma quel punto, sul tabellino, va all'Opposizione. Il marcatore finito nel campo dell'Opposizione è una risorsa come le altre: vale i suoi punti al conteggio finale e si può spendere al mercato per comprare una figura.
+Il vantaggio è suo, ma quel punto, sul tabellino, va all'Opposizione.  finito nel campo dell'Opposizione è una risorsa come le altre: vale i suoi punti al conteggio finale e si può spendere al mercato per comprare una figura.
 
 ## 5.3 Resistere alla tentazione
 
@@ -694,7 +701,7 @@ Anche questo crea un momento narrativamente interessante, che stabilisce in modo
 
 ## 5.4 Il peccato emerge
 
-Il peccato compiuto diventa un'arma narrativa nelle mani dell'Opposizione. Finché l'Opposizione possiede il marcatore del Jolly, in una sua qualsiasi presa o scopa può far riaffiorare nella narrazione quel peccato: l'inganno, la scorciatoia sleale, il torbido patto di cui uno dei protagonisti si è macchiato. È solo narrazione, non cambia punti né carte; serve a far sbocciare la discordia tra i due protagonisti e a rendere il momento ancora più drammatico.
+Il peccato compiuto diventa un'arma narrativa nelle mani dell'Opposizione. Finché l'Opposizione possiede il Jolly, durante una sua qualsiasi presa o scopa può far riaffiorare nella narrazione quel peccato: l'inganno, la scorciatoia sleale, il torbido patto di cui uno dei protagonisti si è macchiato. È solo narrazione, non cambia punti né carte; serve a far sbocciare la discordia tra i due protagonisti e a rendere il momento ancora più drammatico.
 
 
 ---
@@ -1012,11 +1019,11 @@ Fine del round: nel piatto restano il 10♦, l'1♥ e il 2♣. **Protagonisti 1,
 
 Adesso scatta un evento fisso: dopo la seconda scena il Jolly entra nel mazzo dei Protagonisti, pronto a comparire in una delle mani successive.
 
-Tra una scena e l'altra si spendono i punti accumulati per comprare le figure (Fante, Regina, Re). I punti sono i marcatori delle prese e delle scope: 1 per presa, 3 per scopa. Dopo due scene Paola ne ha 8 (3 dalla scopa del Cairo; sul treno 3 di scopa, 1 di presa e 1 di resa onorevole), Omar appena 2 (una presa per scena).
+Tra una scena e l'altra si spendono i punti accumulati per comprare le figure (Fante, Regina, Re). Dopo due scene Paola ne ha 8 (3 dalla scopa del Cairo; sul treno 3 di scopa, 1 di presa e 1 di resa onorevole), Omar appena 2 (una presa per scena).
 
 <div class="fiction"><span class="chi">Paola annuncia</span>Faruq, arrivato a El Qara, sa esattamente a chi rivolgersi: suo cugino Kalim, esperta guida del deserto. E sulla index card scrive chi è: Kalim è un uomo sui cinquant'anni, dal fisico asciutto, temprato dal sole e dal vento del deserto, con gli occhi saggi di chi il mare di sabbia lo conosce come il palmo della sua mano. Sa dove i pozzi danno ancora acqua e dove le dune nascondono le piste sepolte.</div>
 
-**Paola compra il Fante ♥ (costa 3 punti, le restano 5).** Comprare una figura significa preparare l'ingresso di un PNG potente, che entra in scena quando se ne gioca la carta. Il Fante, come la Regina e il Re, va nel mazzo: avendo comprato, a fine mercato Paola rimescola e solo dopo ripesca la nuova mano, così potrà ritrovarselo già nella scena seguente, come anche il Jolly. Lezione del mercato: i punti sono una valuta, e i marcatori (le prese da 1, le scope da 3) sono solo il modo di segnarli. Paola ha otto punti, due prese e due scope; paga i tre del Fante con una delle sue scope, che ne vale esattamente tre, e le restano l'altra scopa e le due prese, cinque punti in tutto. E se anche avesse dovuto spezzare una scopa per una cifra più piccola, il resto non sarebbe andato perso: il mercato lo restituisce sempre. Quel che non spende resta lì come Crescita, e peserà alla fine.
+**Paola compra il Fante ♥ (costa 3 punti, le restano 5).** Comprare una figura significa preparare l'ingresso di un PNG potente, che entra in scena quando se ne gioca la carta. Il Fante, come la Regina e il Re, va nel mazzo: avendo comprato, a fine mercato Paola rimescola e solo dopo ripesca la nuova mano, così potrà ritrovarselo già nella scena seguente, come anche il Jolly. Lezione del mercato: i punti sono la valuta con cui si comprano le figure. Paola ha otto punti, due prese e due scope; paga i tre del Fante con una delle sue scope, che ne vale esattamente tre, e le restano l'altra scopa e le due prese, cinque punti in tutto. Quel che non spende resta lì come Crescita, e peserà alla fine.
 {: .azione }
 
 **Omar non compra: tiene i punti.** Con due soli punti non arriverebbe nemmeno a un Fante, e comunque preferisce risparmiare per una figura ben più potente, da calare al momento giusto più avanti.
@@ -1049,7 +1056,7 @@ All'asta Paola cala il 3♠, Omar il 4♣: il 4 batte il 3, vince Omar, e per la
 
 <div class="fiction"><span class="chi">Omar narra</span>Ma una sentinella sola non è tutto l'accampamento. Per i canyon si aggira almeno una dozzina di guerrieri: girano tra le rocce, si passano la voce di posto in posto, controllano ogni varco di quel labirinto scavato dal vento. Al centro dell'accampamento hanno acceso un fuoco, e su quello gira lento un capretto che arrostisce, mentre gli uomini vanno e vengono dalla brace. Anche ammesso di slegare i due europei, farli uscire vivi da quel dedalo, con tutti quegli occhi addosso, è un'altra faccenda.</div>
 
-**Paola gioca il 10♥ e cattura il 10♦: presa.** Controlla la index card del 10♦ e ci ritrova Alì, il guerriero che li aveva catturati sul treno: il marcatore le dice subito chi sta togliendo di mezzo. In ♥, il seme dei legami, usa la carta alta appena guadagnata da Kalim per neutralizzare la minaccia più pesante dell'Opposizione, e lo fa con l'astuzia invece che con la forza.
+**Paola gioca il 10♥ e cattura il 10♦: presa.** Controlla la index card del 10♦ e ci ritrova Alì, il guerriero che li aveva catturati sul treno: il valore della carta le dice subito chi sta togliendo di mezzo. In ♥, il seme dei legami, usa la carta alta appena guadagnata da Kalim per neutralizzare la minaccia più pesante dell'Opposizione, e lo fa con l'astuzia invece che con la forza.
 {: .azione }
 
 <div class="fiction"><span class="chi">Paola narra</span>Al riparo della grotta Kalim taglia le corde, toglie i bavagli e in un sussurro spiega ai due chi è e come stanno le cose: è la guida mandata da Faruq, fuori ci sono dodici guerrieri, e l'unico modo di uscirne è non dare nell'occhio. Poi mette in atto il piano. Ancora vestito da sentinella, accompagna Otto fuori dalla grotta e lo conduce diritto da Alì. L'accademico recita la sua parte alla perfezione: in un arabo fluente e lamentoso spiega di avere un bisogno urgente, e si mette a protestare per le condizioni in cui li tengono, una vergogna per gente d'onore. Alì, infastidito, annuisce e ordina alla sua guardia di scortare il prigioniero alle latrine e di non perderlo di vista un istante, convinto di star dando un ordine a uno dei suoi.</div>
@@ -1069,12 +1076,12 @@ All'asta Paola cala il 3♠, Omar il 4♣: il 4 batte il 3, vince Omar, e per la
 
 <div class="fiction"><span class="chi">Omar narra</span>Ma nel buio Kalim, per la fretta, sbaglia cunicolo. I tre si lanciano in una gola sempre più stretta e si ritrovano in un cul de sac: davanti, una parete scoscesa e in parte franata chiude il passaggio, un caos di massi e ghiaia che nessun cammello potrà mai risalire. Alle spalle, l'unico imbocco da cui sono entrati, e da lì arriva già l'eco dei Veglianti che montano in sella. Tornare indietro è fuori discussione, e davanti non c'è strada.</div>
 
-**Paola gioca il Jolly e dichiara che vale 4: cattura il 4♣, ed è una SCOPA** che svuota il piatto. Ma il Jolly è la mossa sleale: i suoi 3 punti vanno a Omar, e il marcatore del peccato passa all'Opposizione, pronto a tornare a galla quando meno serve ai Protagonisti. Vera compra la salvezza a un prezzo che le macchia le mani.
+**Paola gioca il Jolly e dichiara che vale 4: cattura il 4♣, ed è una SCOPA** che svuota il piatto. Ma il Jolly è la mossa sleale: i suoi 3 punti vanno a Omar, e la carta del peccato passa all'Opposizione, pronta a tornare a galla quando meno serve ai Protagonisti. Vera compra la salvezza a un prezzo che le macchia le mani.
 {: .azione }
 
 <div class="fiction"><span class="chi">Paola narra</span>Una corda cade dall'alto della parete: è Faruq, che dall'orlo del canyon ha seguito ogni loro mossa. Kalim spinge su per primo Otto, puntellandolo, ma l'accademico è impacciato e lento, e intanto da dietro arrivano le voci degli inseguitori e le loro torce cominciano a chiazzare di luce le pareti della gola. Vera capisce che qualcuno deve far guadagnare tempo agli altri, e decide in un istante. Dal tascapane tira fuori un candelotto di dinamite che ha sottratto all'accampamento, ne accende la miccia con un fiammifero e lo scaglia verso l'imbocco del cunicolo. L'esplosione stacca mezza parete: una frana di massi rovina addosso agli inseguitori, il boato rimbomba per tutto il canyon, e una nube di polvere cala su quello che resta. Quando Otto si volta dall'alto della corda, fissa Vera come se non la riconoscesse, incredulo che sia arrivata a tanto. I quattro si lasciano il canyon alle spalle, salvi, ma con le mani sporche di sangue.</div>
 
-Fine del round: il piatto è vuoto, **0 a 0**. A parità conta chi ha calato l'ultima carta, ed è stata Paola, con il Jolly: la posta va ai Protagonisti, e Vera e Otto sono liberi. In scena Paola ha incassato cinque punti, due prese e una scopa, mentre i tre punti dell'ultima scopa, quella del Jolly, sono finiti a Omar. Il diario del rapporto si legge dai Cuori e dalle Picche rimasti nel piatto: qui non resta niente, e il diario segna **parità**. La scopa finale ha spazzato via tutto, così nessun seme colora l'esito; e il colpo che il legame ha incassato stanotte non è inciso nel diario, ma nel marcatore del peccato del Jolly, che ora è in mano a Omar.
+Fine del round: il piatto è vuoto, **0 a 0**. A parità conta chi ha calato l'ultima carta, ed è stata Paola, con il Jolly: la posta va ai Protagonisti, e Vera e Otto sono liberi. In scena Paola ha incassato cinque punti, due prese e una scopa, mentre i tre punti dell'ultima scopa, quella del Jolly, sono finiti a Omar. Il diario del rapporto si legge dai Cuori e dalle Picche rimasti nel piatto: qui non resta niente, e il diario segna **parità**. La scopa finale ha spazzato via tutto, così nessun seme colora l'esito.
 
 **Avendo perso la posta, l'esito lo racconta Omar.** A piatto pari tocca comunque a lui, che aveva vinto l'iniziativa, e ne approfitta per calcarne le ombre.
 {: .azione }
@@ -1422,7 +1429,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Colpi di scena.** La coda della quinta scena: dopo il primo conteggio si gioca a turni strettamente alterni calando le carte tenute in riserva. Ogni carta entra nel piatto, somma il suo valore al proprio totale e può eliminare una carta di seme avversario di valore pari o inferiore. Nessun lato gioca due colpi di fila: la fase finisce appena, dopo un colpo, tocca a un lato senza riserva.
 
-**Concedere la scena (arrendersi).** Nelle scene 1-4, chi non ha l'iniziativa e ha una sola carta in mano può rinunciare a giocarla e cedere la posta. In due modi, una volta ciascuno per lato: la ritirata strategica (la carta torna nel proprio mazzo e farà numero per la quinta scena) e la resa onorevole (la carta si tiene tra le prese e vale un punto).
+**Concedere la scena (arrendersi).** Nelle scene 1-4, chi non ha l'iniziativa e ha una sola carta in mano può rinunciare a giocarla e cedere la posta. In due modi, una volta ciascuno per lato: la ritirata strategica (la carta torna nel proprio mazzo e farà numero per la quinta scena) e la resa onorevole (vale un punto e la carta finisce negli scarti comuni).
 
 **Conteggio definitivo.** Il conteggio finale della partita, fatto quando i colpi di scena sono finiti (la fase si chiude appena, dopo un colpo, tocca a un lato senza riserva): si sommano Cuori e Picche contro Quadri e Fiori. Chi ha il totale più alto vince il piatto e quindi la missione. In pareggio decide la Crescita (i punti non spesi): chi ne ha di più la spende tutta per aggiudicarsi il piatto, a parità di Crescita vince il lato dei protagonisti, e quando il pareggio lo vincono loro l'esito è sempre Per il rotto della cuffia.
 
@@ -1458,7 +1465,8 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Mano finale estesa.** Nella quinta scena, se hai più di quattro carte nel mazzo, le prendi tutte, scegli le quattro con cui giochi la scena e tieni le altre come riserva.
 
-**Marcatore del Jolly (il peccato).** Il punto regalato all'avversario col Jolly entra nel campo dell'Opposizione come risorsa normale (vale al conteggio, spendibile al mercato). Finché l'Opposizione lo possiede, in una sua presa o scopa può far emergere nella narrazione il compromesso commesso dai Protagonisti: il peccato che torna a galla. Solo narrazione, nessun effetto su punti o carte.
+**Il peccato del Jolly** Quando un Jolly viene giocato, la carta viene consegnata all'Opposizione come promemoria. Finché l'Opposizione la possiede, in una sua presa o scopa può far emergere nella narrazione il compromesso commesso dai Protagonisti: il peccato che torna a galla. Solo narrazione, nessun effetto su punti o carte.
+
 **Mercato.** La fase tra una scena e l'altra: prima si comprano le figure (che entrano nel mazzo), poi, se hai comprato, si rimescola, infine si pesca la nuova mano. Si paga con i punti delle prese e delle scope.
 
 **Missione.** Lo scopo della partita: l'obiettivo dei protagonisti, chiaro e con una scadenza. Se falliscono entro la fine della storia, l'occasione è persa per sempre.
@@ -1503,13 +1511,13 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Round.** Il ciclo di gioco di una scena, dall'asta all'ultima carta giocata. Round e scena coincidono.
 
-**Sacrificio.** Quando una figura non ha nulla da catturare non resta nel piatto: si sacrifica e va tra le prese di chi la gioca come marcatore da un punto, come una resa (mai una scopa: la scopa è sempre e solo una presa che svuota il piatto). L'effetto della figura scatta comunque.
+**Sacrificio.** Quando una figura non ha nulla da catturare non resta nel piatto: si sacrifica e viene scartata come se avesse preso sé stessa. Questa presa atipica vale comunque 1 punto. L'effetto della figura scatta comunque.
 
-**Scarti comuni.** La pila dove finiscono le carte catturate e i punti spesi al mercato. Non danno punti, ma sono il bacino da cui pesca il Re.
+**Scarti comuni.** La pila dove finiscono le carte catturate e le figure sacrificate. Non danno punti, ma sono il bacino da cui pesca il Re.
 
 **Scena.** Una delle cinque unità della partita: Innesco, Adattamento, Frattura, Crisi, Risoluzione. Ognuna ha un luogo, un momento e una posta.
 
-**Scopa.** Una presa che svuota del tutto il piatto: il successo pieno. Vale tre punti e si tiene da parte, in orizzontale, distinta dalle prese.
+**Scopa.** Una presa che svuota del tutto il piatto: il successo pieno. Vale tre punti.
 
 **Semi.** I quattro semi del mazzo, due per lato: Cuori e Picche ai Protagonisti, Quadri e Fiori all'Opposizione. Ciascuno ha un significato narrativo che si adatta al tono scelto.
 
@@ -1622,4 +1630,4 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 
 ---
 
-*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.30, che resta la fonte di verità del regolamento.*
+*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.32, che resta la fonte di verità del regolamento.*

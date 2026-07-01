@@ -396,7 +396,7 @@ Quando la presa lascia il piatto vuoto: togli all'avversario **ogni** risorsa in
 
 > **Esempio:** Scopa con un 6 di Picche → Frank disarma i due sicari nel parcheggio nel giro di dieci secondi. La strada è libera, la situazione è ribaltata.
 
-> **Sacrificio di una figura (v1.6, esteso v1.23, corretto v1.26):** una figura non resta **mai** nel piatto. Se non ha nulla da catturare si **sacrifica** e va tra le prese di chi la gioca come **marcatore da 1 punto** (come una resa onorevole), lasciando sul tavolo le eventuali carte fuori portata. Una **scopa** è sempre e solo una **presa che lascia il piatto vuoto** (§17): una figura che non cattura nulla non può farne una, nemmeno quando il piatto è vuoto. L'effetto speciale della figura scatta comunque. Narrativamente è l'alleato che si immola, o che risulta meno incisivo del previsto.
+> **Sacrificio di una figura (v1.6, esteso v1.23, corretto v1.26, punteggio a gettoni v1.32):** una figura non resta **mai** nel piatto. Se non ha nulla da catturare si **sacrifica**: vale **1 punto** (come una resa onorevole) e la sua carta finisce negli **scarti comuni**, lasciando sul tavolo le eventuali carte fuori portata. Una **scopa** è sempre e solo una **presa che lascia il piatto vuoto** (§17): una figura che non cattura nulla non può farne una, nemmeno quando il piatto è vuoto. L'effetto speciale della figura scatta comunque. Narrativamente è l'alleato che si immola, o che risulta meno incisivo del previsto.
 
 ## 16. Regole di presa
 
@@ -414,15 +414,16 @@ Le prese seguono la logica della Scopa tradizionale:
 
 ## 17. Gestione di prese e scope
 
-### 17.1 — Prese *(v1.6)*
+### 17.1 — Prese *(v1.6, punteggio a gettoni v1.32)*
 
-La carta con cui fai la presa si **tiene da parte in verticale**: ogni presa vale **1 punto**, anche se fatta con una **figura**. Le carte catturate dal piatto vanno **subito nella pila degli scarti comune** e non danno punti.
+Ogni presa vale **1 punto**, anche se fatta con una **figura**. Il punto si **segna a parte** (gettoni o un foglio, vedi §20): sia la carta con cui fai la presa sia le carte catturate dal piatto vanno **subito nella pila degli scarti comune** e non fanno da segnapunti.
 
-### 17.2 — Scope *(v1.6)*
+### 17.2 — Scope *(v1.6, punteggio a gettoni v1.32)*
 
-La carta con cui fai la scopa si **tiene da parte in orizzontale**: vale **3 punti**. Le carte catturate vanno anch'esse negli scarti comuni.
+Ogni scopa vale **3 punti**, segnati a parte come per la presa. Anche qui **tutte** le carte coinvolte (quella con cui fai la scopa e quelle catturate) vanno **subito negli scarti comuni**.
 
 - Ogni presa vale **1 punto** (anche con figura), ogni scopa **3 punti**, sia in fase di acquisto sia nel conteggio finale (i punti non spesi mantengono lo stesso valore).
+- I punti sono una **valuta** da segnare con gettoni o su un foglio: le carte non si tengono più davanti a sé come marcatori (verticale/orizzontale). Vedi §20.
 
 ## 18. Fine del round e vittoria della scena
 
@@ -454,7 +455,7 @@ Il giocatore che non ha vinto l'iniziativa può rinunciare alla scena invece di 
 Ci sono due modi di arrendersi, ciascuno usabile una sola volta per lato in tutta la partita:
 
 - **Ritirata strategica:** la carta viene rimescolata nel proprio mazzo. Non vale punti, ma diventa una carta in più per la mano estesa e per i colpi di scena della quinta scena.
-- **Resa onorevole:** la carta viene tenuta tra le proprie prese come un normale marcatore, e vale 1 punto (come ogni presa, anche se è una figura).
+- **Resa onorevole:** vale **1 punto** (come ogni presa, anche se è una figura) e la carta finisce negli **scarti comuni**.
 
 In entrambi i casi la posta della scena va all'avversario senza conteggio. Se a cedere è l'Opposizione, i Protagonisti raggiungono la posta come per una scena vinta normalmente. La carta della resa non entra nel piatto: il piatto resta com'è dopo le giocate dell'avversario e passa alla scena successiva come sempre.
 
@@ -480,7 +481,9 @@ Risorse disponibili:
 - Ogni **presa** → **1 punto** (anche se fatta con una figura)
 - Ogni **scopa** → **3 punti**
 
-I punti sono una **valuta lineare**: i marcatori (prese da 1, scope da 3) sono solo il modo pratico di segnarli, si potrebbero tenere anche con gettoni o su un foglio. Al mercato quindi si **paga il costo e si tiene sempre il resto**: due scope (6 punti) per una Regina (5) lasciano **1 punto**, esattamente come sei prese ne lascerebbero uno. In pratica il motore copre il costo spendendo i marcatori (con meno spreco possibile, per conservare i semi di quelli che restano) e l'eventuale **eccedenza di una scopa spezzata torna come punti** (bonus, senza seme). I marcatori spesi vanno negli **scarti comuni**. Le figure acquistate entrano nel mazzo, non in mano e non negli scarti.
+I punti sono una **valuta** vera e propria, da segnare con **gettoni o su un foglio** (presa 1, scopa 3): non si tengono più le carte davanti a sé come marcatori (verticale/orizzontale). Le carte di prese e scope, come quelle catturate, vanno **subito negli scarti comuni** nel momento della giocata (§17), quindi al mercato non si sposta alcuna carta: si **paga il costo e si tiene sempre il resto** semplicemente sottraendo i punti spesi. Due scope (6 punti) per una Regina (5) lasciano **1 punto**, esattamente come sei prese ne lascerebbero uno. Le figure acquistate entrano nel **mazzo**, non in mano e non negli scarti.
+
+> **Nota (v1.32).** Poiché spendere punti non muove più carte, gli scarti comuni — il bacino da cui pesca il **Re** (§21) — si alimentano solo dalle carte già giocate (prese, scope, catture, figure sacrificate), a prescindere dagli acquisti al mercato.
 
 > **Una figura per tipo (v1.3):** ogni giocatore può comprare al massimo **un Fante, una Regina, un Re** in tutta la partita (a prescindere dal seme).
 
@@ -554,7 +557,7 @@ C'è **un solo Jolly**, nel **mazzo dei Protagonisti**, aggiunto al termine dell
 
 ### 22.3 — Mossa sleale: il punto va all'avversario *(v1.3)*
 
-Il Jolly dà a chi lo gioca il **vantaggio sul tavolo** (ripulisce o alleggerisce il piatto), ma il suo **marcatore va nel campo dell'avversario**:
+Il Jolly dà a chi lo gioca il **vantaggio sul tavolo** (ripulisce o alleggerisce il piatto), ma i suoi **punti vanno all'avversario** e la **carta del Jolly gli viene consegnata** come promemoria del peccato:
 
 - presa col Jolly → **1 punto all'avversario**
 - scopa col Jolly → **3 punti all'avversario**
@@ -573,11 +576,11 @@ Usare il Jolly non è obbligatorio. Chi lo ha in mano può **scartarlo senza eff
 
 ### 22.6 — Il peccato emerge: la licenza narrativa dell'Opposizione *(v1.25)*
 
-Quando i Protagonisti giocano il Jolly (§22.3), il marcatore che ne nasce entra nel campo dell'Opposizione come una sua normale presa (1 punto) o scopa (3 punti): è una risorsa a tutti gli effetti, che l'Opposizione può **tenere fino al conteggio finale**, dove vale i suoi punti, oppure **spendere al mercato** per concorrere all'acquisto di una figura.
+Quando i Protagonisti giocano il Jolly (§22.3), i punti che ne nascono (1 da presa, 3 da scopa) entrano nel bottino dell'Opposizione come punti normali: una risorsa a tutti gli effetti, che l'Opposizione può **tenere fino al conteggio finale**, dove vale i suoi punti, oppure **spendere al mercato** per concorrere all'acquisto di una figura.
 
-Il peccato compiuto resta, ma solo in **chiave narrativa**. Finché l'Opposizione **possiede il marcatore del Jolly**, in una sua qualsiasi presa o scopa può far **riaffiorare nella narrazione il peccato** che uno dei protagonisti ha commesso col Jolly: l'inganno, il torbido compromesso. È **solo narrazione** e non cambia punti né carte: serve a **far sbocciare la discordia tra i protagonisti** e a rendere il momento ancora più drammatico.
+Il peccato compiuto resta, ma solo in **chiave narrativa**. Finché l'Opposizione **ha davanti a sé la carta del Jolly** (consegnatale come promemoria), in una sua qualsiasi presa o scopa può far **riaffiorare nella narrazione il peccato** che uno dei protagonisti ha commesso col Jolly: l'inganno, il torbido compromesso. È **solo narrazione** e non cambia punti né carte: serve a **far sbocciare la discordia tra i protagonisti** e a rendere il momento ancora più drammatico.
 
-> **Esempio:** a fine scena 4 l'Opposizione fa una presa e, avendo ancora in campo il marcatore del Jolly, ne approfitta per far affiorare il vecchio compromesso: davanti a Otto emerge cosa ha fatto Vera con il Jolly. La presa vale comunque solo il suo punto, ma fra i due cala il gelo.
+> **Esempio:** a fine scena 4 l'Opposizione fa una presa e, avendo ancora davanti a sé la carta del Jolly, ne approfitta per far affiorare il vecchio compromesso: davanti a Otto emerge cosa ha fatto Vera con il Jolly. La presa vale comunque solo il suo punto, ma fra i due cala il gelo.
 
 ---
 
@@ -940,6 +943,13 @@ In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, 
 
 # REGISTRO MODIFICHE
 
+## v1.32 (luglio 2026) — punteggio a gettoni: le carte non fanno più da marcatori
+
+1. **§17/§20: i punti si segnano a parte (gettoni o foglio), non con le carte.** Fino alla v1.31 la valuta era già lineare, ma i punti si **tenevano fisicamente** con le carte davanti al giocatore (prese in verticale = 1, scope in orizzontale = 3), e spenderli al mercato voleva dire **spostare quelle carte negli scarti**. Ora i punti sono un **numero** che si segna con gettoni o su un foglio; **tutte** le carte giocate — quella con cui fai presa/scopa, quelle catturate e le figure sacrificate — vanno **subito negli scarti comuni** al momento della giocata. Spendere al mercato **non muove più carte**: si sottrae il costo e si tiene il resto. Motivazione (dal designer, Saverio): tenere le carte come marcatori complicava il dare il resto dopo il mercato (una scopa da 3 è una carta indivisibile); slegare i punti dalle carte rende il resto immediato.
+2. **Conseguenza sul Re.** Gli **scarti comuni** (il bacino da cui pesca il Re, §21) ora si alimentano solo dalle carte già giocate, **a prescindere dagli acquisti** al mercato: prima le carte-marcatore raggiungevano gli scarti solo se spese, ora vi arrivano tutte all'atto della giocata. Il bacino del Re è quindi più ricco e non dipende più dalla spesa.
+3. **Jolly.** I **punti** del Jolly vanno all'avversario come numero; la **carta del Jolly** gli viene consegnata come promemoria del peccato (la licenza narrativa del §22.6 vale finché ha davanti a sé quella carta).
+4. **Propagazione.** *Testi:* manuale (§3.2 «Segnare i punti», §4.2, glossario), KB §17/§20/§15.3/§18.1/§22.3/§22.6, `index.html` costanti `REGOLE` e `REGOLE_IA`, diario decisioni. *Motore `index.html`:* modello a punti numerici (`L.punti` al posto degli array `L.prese`/`L.scope` e del `bonus`), carte di prese/scope/sacrifici/resa negli scarti all'atto della giocata, `pagaCosto` ridotta a `L.punti -= costo`, Jolly che assegna punti all'avversario e deposita la carta in `G.jollyPeccato`, `jollyMarkerO` sul nuovo token, lookup della spinta dagli scarti, rimosso il campo morto `.esposta`. *Driver di test:* `test_partita.js`, `partita_esempio.js`, `partita_smart.js` adeguati al modello numerico (lo scoring non è più iniettabile: è fisso a presa 1/scopa 3). **Collaudo core verde** (`test_partita` NG2/NG4, `test_adatta`, `test_solo`, `test_riprova`). *Ancora da fare:* **rigenerazione dell'esempio canonico** (§34/Appendice B) — il bacino degli scarti cambia e con esso l'effetto del Re; da fare insieme alla migrazione a seed 34/367 già pendente da prima.
+
 ## v1.31 (luglio 2026) — i punti sono una valuta lineare: al mercato si tiene sempre il resto
 
 1. **§20: i punti sono una valuta, il mercato dà sempre il resto.** Chiarimento del designer (Saverio): i punti sono una **valuta lineare**; i marcatori (prese 1, scope 3) sono solo il modo pratico di segnarli (si potrebbero usare gettoni o un foglio). Quindi al mercato si **paga il costo e si tiene sempre il resto**, anche quando si spezza una scopa: 2 scope (6) per una Regina (5) lasciano **1**; 1 presa + 1 scopa (4) per un Fante (3) lasciano **1**. Prima il motore spendeva rigidamente **bonus → prese → scope** e la scopa spezzata **non dava resto**, così si sovrappagava (il Fante da 3 con 4 punti lasciava 0). **Sparisce del tutto il concetto di «scopa che non dà resto».** Motivazione: il sovrappagamento era un artefatto dell'ordine di spesa, non una scelta di design.
@@ -1119,4 +1129,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.31*
+*Frenemies on the Road — Knowledge Base v1.32*

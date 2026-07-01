@@ -77,12 +77,12 @@ function passo(i){
       const g=G();
       if(g.scena>=4) throw new Error("VINCOLO VIOLATO: spinta offerta in scena "+(g.scena+1));
       const lt=g.narrLato||g.attore;
-      const bc=g.lati[lt].prese.find(x=>x.id===g.narr.boostCard);
+      const bc=g.scartiComuni.find(x=>x.id===g.narr.boostCard);   // la carta della presa è ora negli scarti comuni
       for(const b of sp){ const p=g.pitch[parseInt(b.dataset.spinta)];
         if(p.seme!==bc.seme) throw new Error("VINCOLO VIOLATO: risposta "+p.seme+" su presa "+bc.seme); }
     }
     if(sp.length && spinteUsate<4){ spinteUsate++;
-      const g=G(), lt=g.narrLato||g.attore, presePrima=g.lati[lt].prese.length, piattoPrima=g.piatto.length;
+      const g=G(), piattoPrima=g.piatto.length;
       click(sp[0]); log.push("SPINTA usata, scena "+(g.scena+1)+", piatto raccolto: "+piattoPrima);
       if(G().piatto.length!==0) throw new Error("VINCOLO VIOLATO: piatto non svuotato dopo la spinta");
       return "spinta" }
@@ -137,9 +137,9 @@ try{
       console.log("rapporti:",g.scene.map(s=>s?s.rapporto:"-").join(","));
       console.log("jolly entrato:",g.jollyEntrato,"| acquisto:",compratoUnaVolta,"| spinte:",spinteUsate,"| colpi:",colpiFatti);
       console.log("piatto finale:",g.piatto.length,"carte");
-      const tot=l=>["mazzo","mano","prese","scope","riserva"].map(k=>g.lati[l][k].length).join("/");
+      const tot=l=>["mazzo","mano","riserva"].map(k=>g.lati[l][k].length).join("/")+" · punti "+g.lati[l].punti;
       console.log("nGiocatori:",g.nGiocatori,"| scopeGiocatore:",JSON.stringify(g.scopeGiocatore),"| controllo finale:",JSON.stringify(g.controllo),"| scarti comuni:",g.scartiComuni.length);
-      console.log("P mazzo/mano/prese/scope/riserva:",tot("P"));
+      console.log("P mazzo/mano/riserva · punti:",tot("P"));
       console.log("O:",tot("O"));
       process.exit(0);
     }

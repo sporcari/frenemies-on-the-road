@@ -22,15 +22,13 @@ npm i jsdom (una volta sola), poi dalla radice del repo:
 - node test/test_partita.js  e  NG=4 node test/test_partita.js
 - node test/test_adatta.js  e  node test/test_solo.js
 - node test/test_riprova.js (meccanismo "Rigenera" vs Claude; seed fisso)
-- SEED=23 SEED2=43 SEED3=5 TRANSCRIPT=1 node test/partita_esempio.js e diff del
-  transcript generato (transcript_seed_23_43_5.txt, nella radice) con
-  test/transcript_seed_23_43_5_v2.txt: se cambia, il §34 del regolamento va
-  riscritto. NB l'esempio usa TRE seed: SEED governa le scene 1-2, SEED2 la
-  scena 3, SEED3 le scene 4-5 (l'RNG si rigenera a fine 2ª scena con SEED2 e a
-  fine 3ª scena con SEED3, ogni volta sul solo mazzo residuo). Così le scene 1-3
-  restano fisse e curate, e le 4-5 si sono scelte col terzo seed (Opposizione che
-  vince la Crisi con la spinta ♣ e compra il Re). Il driver alza a 3 il tetto
-  delle spinte usate, per far spendere all'Opposizione la spinta rimasta in scena 4.
+- (SOSPESO) La partita d'esempio del §34/Appendice B e il suo transcript di
+  riferimento sono OBSOLETI dalla v1.32 (i punti sono diventati valuta numerica a
+  gettoni) e in attesa di un nuovo seed-vetrina. I vecchi transcript sono stati
+  eliminati e il diff del transcript NON fa più parte del collaudo. I driver
+  test/partita_esempio.js e test/partita_smart.js restano come strumenti (girano
+  sul modello numerico), ma partita_esempio.js è ancora scriptato sul vecchio
+  seed 23 e va rifatto quando si sceglie il nuovo seed-vetrina.
 
 ## Protocollo per le modifiche alle REGOLE
 Le regole sono duplicate in più punti: una modifica che tocca le regole va
@@ -39,8 +37,9 @@ ancora la regola vecchia):
 1. docs/frenemies_decisioni.md - una riga nel diario: cosa cambia e perché.
 2. docs/frenemies_on_the_road_kb_v1_2.md - la fonte di verità: testo della
    regola e, se serve, l'esempio (§33 scenario demo, §34 partita d'esempio) e
-   il registro modifiche. Se cambia il transcript (vedi Collaudo), rigenera
-   test/transcript_seed_23_43_v2.txt e riallinea il §34.
+   il registro modifiche. NB: il §34/Appendice B è al momento OBSOLETO (v1.32) e
+   va rifatto con un nuovo seed-vetrina; il diff del transcript non fa più parte
+   del collaudo (vedi Collaudo).
 3. index.html - tre rappresentazioni delle stesse regole, da tenere in sync:
    - costante REGOLE: il regolamento in-app per i giocatori (pulsante "?"),
      inclusi i suoi esempi (blocchi `.es`).

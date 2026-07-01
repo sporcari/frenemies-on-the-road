@@ -62,14 +62,9 @@ function runGame(seed, seed2, seed3, wantTranscript){
   html=html.replace("<script>",`<script>
 (function(){let s=${seed}>>>0;window.__reseed=function(n){s=n>>>0};Math.random=function(){s|=0;s=(s+0x6D2B79F5)|0;let t=Math.imul(s^(s>>>15),1|s);t=(t+Math.imul(t^(t>>>7),61|t))^t;return((t^(t>>>14))>>>0)/4294967296};})();
 `);
-  if(SCOPA!==4){   // simula la scopa che vale SCOPA punti: scoring (puntiMercato) e pagamento al mercato
-    html=html.replace("c=>!c.esposta).length*4;","c=>!c.esposta).length*"+SCOPA+";");
-    html=html.replace("resto-=4;","resto-="+SCOPA+";");
-  }
-  if(FIGPRESA!==2){   // simula la presa con figura che vale FIGPRESA punti: scoring e pagamento al mercato
-    html=html.replace("s+(c.fig?2:1)","s+(c.fig?"+FIGPRESA+":1)");
-    html=html.replace("resto-=2;","resto-="+FIGPRESA+";");
-  }
+  // v1.32: lo scoring è ora FISSO nel motore (presa 1, scopa 3) tramite L.punti numerico, non più
+  // iniettabile via replace (la vecchia rappresentazione a carte-marcatore è stata rimossa). Le costanti
+  // SCOPA/FIGPRESA restano solo per l'euristica delle spinte e per le etichette dei report.
   const dom=new JSDOM(html,{runScripts:"dangerously",pretendToBeVisual:true});
   const {window}=dom, {document}=window;
   const click=el=>{ if(el) el.dispatchEvent(new window.Event("click",{bubbles:true})); };
@@ -122,7 +117,7 @@ function runGame(seed, seed2, seed3, wantTranscript){
     const oppVal=cmb=>cmb.filter(x=>!own.includes(x.seme)).reduce((s,x)=>s+cardVal(x),0);
     const ownVal=cmb=>cmb.filter(x=>own.includes(x.seme)).reduce((s,x)=>s+cardVal(x),0);
     // carte di valore v ancora possibili in mano avversaria (conteggio carte, euristica 4)
-    const viste=[...piatto, ...g.lati[a].mano, ...(g.scartiComuni||[]), ...g.lati.P.prese,...g.lati.P.scope,...g.lati.O.prese,...g.lati.O.scope];
+    const viste=[...piatto, ...g.lati[a].mano, ...(g.scartiComuni||[])];   // v1.32: prese/scope sono già negli scarti comuni
     const ignote=v=>Math.max(0,4-viste.filter(x=>!x.fig&&!x.jolly&&x.val===v).length);
     let best=null;
     const consider=(score,exec)=>{ if(!best||score>best.score) best={score,exec}; };
@@ -435,7 +430,8 @@ function runGame(seed, seed2, seed3, wantTranscript){
       const g=G();
       const esito=document.querySelector(".cartellone .grande");
       const outcome=esito?esito.textContent.trim():"?";
-      const pv=l=>{const L=g.lati[l];return (L.bonus||0)+L.prese.reduce((a,c)=>a+(c.fig?FIGPRESA:1),0)+L.scope.filter(c=>!c.esposta).length*SCOPA;};
+      const pv=l=>g.lati[l].punti;   // v1.32: i punti sono la valuta numerica (Crescita)
+      const scopeCount=l=>g.lati[l].semi.reduce((a,s)=>a+(g.scopeGiocatore[s]||0),0);
       const ps=l=>g.piatto.filter(c=>g.lati[l].semi.includes(c.seme)).reduce((a,c)=>a+(c.jolly?0:cardVal(c)),0);
       log(``); log(`-- CONTEGGIO DEFINITIVO E FINALE --`);
       log(`   Piatto finale: ${piattoStr()}`);
@@ -446,7 +442,7 @@ function runGame(seed, seed2, seed3, wantTranscript){
       const vinte=g.scene.map(s=>s?s.vincitore:"-").join(",");
       const sd=`${seed}${seed2!==seed?"/"+seed2:""}${seed3!==seed2?"/"+seed3:""}`;
       const finalP=ps("P"), finalO=ps("O");
-      const riass=`SEED=${sd} scene=${vinte} scopeP=${g.lati.P.scope.length} scopeO=${g.lati.O.scope.length} puntiP=${pv("P")} puntiO=${pv("O")} jolly=${jollyGiocati} spinte=${spinteUsate} colpi=${colpiFatti} acq=${acquisti} rese=${resaCount} figure=${[...figset].sort().join("")} outcome="${outcome}"`;
+      const riass=`SEED=${sd} scene=${vinte} scopeP=${scopeCount("P")} scopeO=${scopeCount("O")} puntiP=${pv("P")} puntiO=${pv("O")} jolly=${jollyGiocati} spinte=${spinteUsate} colpi=${colpiFatti} acq=${acquisti} rese=${resaCount} figure=${[...figset].sort().join("")} outcome="${outcome}"`;
       const fnT=`transcript_smart_seed_${seed}${seed2!==seed?"_"+seed2:""}${seed3!==seed2?"_"+seed3:""}.txt`;
       const poste=g.scene.map(s=>s?s.vincitore:"-");
       const nP=poste.filter(x=>x==="P").length, nO=poste.filter(x=>x==="O").length;
@@ -457,7 +453,7 @@ function runGame(seed, seed2, seed3, wantTranscript){
         poste, sceneOK45: poste[3]==="O" && poste[4]==="P",
         nP, nO, primoP, primoO, finalP, finalO,
         flipDopoColpi: primoP<=primoO && finalP>finalO,   // sotto al primo conteggio, sopra dopo i colpi
-        scopeP:g.lati.P.scope.length, scopeO:g.lati.O.scope.length, puntiP:pv("P"), puntiO:pv("O"),
+        scopeP:scopeCount("P"), scopeO:scopeCount("O"), puntiP:pv("P"), puntiO:pv("O"),
         spentP, spentO, buysP, buysO, lordoP:pv("P")+spentP, lordoO:pv("O")+spentO};
       try{ dom.window.close(); }catch(e){}   // libera il JSDOM (cruciale nei batch)
       return __r;

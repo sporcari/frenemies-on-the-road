@@ -620,13 +620,13 @@ const PLAYSET=[
 /* ---------------- stato ---------------- */
 let idc = 0;
 function carta(seme, val, fig=null, jolly=false){
-  return {id:++idc, seme, val, fig, jolly, tappata:false, peccato:false, esposta:false};
+  return {id:++idc, seme, val, fig, jolly, tappata:false, peccato:false};
 }
 function nuovoLato(chiave, nome, semi){
   const mazzo = [];
   semi.forEach(s=>{ for(let v=1; v<=10; v++) mazzo.push(carta(s,v)); });
-  return {chiave, nome, semi, mazzo:mischia(mazzo), mano:[], prese:[], scope:[],
-          astaCarta:null, riserva:[], bonus:0};
+  return {chiave, nome, semi, mazzo:mischia(mazzo), mano:[],
+          astaCarta:null, riserva:[], punti:0};   // punti: valuta numerica (presa 1, scopa 3); le carte giocate vanno negli scarti comuni
 }
 function nuovaPartita(){
   idc = 0;
@@ -641,7 +641,8 @@ function nuovaPartita(){
     prevControllo:{P:null,O:null},
     scopeGiocatore:{picche:0,cuori:0,quadri:0,fiori:0},
     svuotoConScopa:null,   // lato che ha svuotato il piatto con una scopa (per assegnare la scena a piatto vuoto)
-    scartiComuni:[],       // pila degli scarti comune: ci finiscono le carte catturate dal piatto e i marcatori spesi
+    scartiComuni:[],       // pila degli scarti comune: ci finiscono TUTTE le carte giocate (prese, scope, catture, figure sacrificate); è il bacino da cui pesca il Re
+    jollyPeccato:null,     // la carta del Jolly, consegnata all'Opposizione come promemoria del peccato (§22.6)
     pers:{A:{nome:"",desc:""}, B:{nome:"",desc:""}},
     pitch:PITCH_TEMPLATE.map(p=>({seme:p.seme, risposta:"", usata:false})),   // usata: vincolo per singola spinta (due per seme, entrambe spendibili)
     ritirata:{P:{mazzo:false,prese:false},O:{mazzo:false,prese:false}},   // ritirata strategica: ciascuna variante una volta per lato
@@ -721,8 +722,7 @@ function totaleSeme(s){ return G.piatto.filter(c=>c.seme===s).reduce((t,c)=>t+c.
 function totaleProt(){ return totaleSeme("cuori")+totaleSeme("picche") }
 function totaleOpp(){ return totaleSeme("quadri")+totaleSeme("fiori") }
 function puntiMercato(l){
-  const L=lato(l);
-  return L.bonus + L.prese.length + L.scope.filter(c=>!c.esposta).length*3;   // presa 1 (anche con figura), scopa 3
+  return lato(l).punti;   // valuta numerica: presa 1 (anche con figura), scopa 3; i punti non spesi sono la Crescita
 }
 function figuraTipoComprata(l, f){   // il lato ha già comprato una figura di questo tipo (qualsiasi seme)?
   return (G.figureComprate||[]).some(e=>e[0]===f && semiLato(l).includes(e.slice(1)));
@@ -784,7 +784,7 @@ function eseguiRitirata(l, variante, testo){
     L.mazzo.splice(Math.floor(Math.random()*(L.mazzo.length+1)),0,card);
     G.ritirata[l].mazzo=true;
   }else{
-    L.prese.push(card);   // marcatore: 1 se numerica, 2 se figura
+    L.punti += 1; G.scartiComuni.push(card);   // resa onorevole: 1 punto, la carta va negli scarti comuni
     G.ritirata[l].prese=true;
   }
   G.ritirataScena={lato:l, variante, testo:(testo||"")};
@@ -800,7 +800,7 @@ function chiediRitirata(variante){
   const nome=RESA_NOME[variante];
   const dett = variante==="mazzo"
     ? `rimescola ${nomeCarta(card)} nel mazzo (più riserva per i colpi di scena)`
-    : `tiene ${nomeCarta(card)} tra le prese (1 punto)`;
+    : `${nomeCarta(card)} vale 1 punto e va negli scarti`;
   modale(`<h2 class="ts">${nome}</h2>
     <p class="sotto">${nomeLato(l)} cede la posta della scena: ${dett}. Non è la fine, è una ritirata: racconta come arretra, come si ritira per riprovarci.</p>
     <textarea id="ritNarr" rows="3" placeholder="Come si ritira…"></textarea>
@@ -1759,7 +1759,7 @@ function rTurno(){
     <div class="mano-area lato-${l.toLowerCase()}${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}">
       <div class="mano-titolo">
         <span class="etichetta" style="margin:0">${g.daAsta?"Ultima giocata — la carta dell'asta":"Mano di "+nomeLato(l)+(latoDiviso(l)?" — gioca "+nomeControllore(l)+" "+SIMBOLI[G.controllo[l]]:"")}</span>
-        <span class="contatori">prese ${L.prese.length} · scope ${L.scope.filter(c=>!c.esposta).length} · mazzo ${L.mazzo.length}${G.scena<4?" · "+recapSpinte:""}</span>
+        <span class="contatori">punti ${L.punti} · mazzo ${L.mazzo.length}${G.scena<4?" · "+recapSpinte:""}</span>
       </div>
       <div class="mazzo-carte" id="manoTurno">${ordina(g.carte).map(c=>cartaHTML(c)).join("")}</div>
       <div id="pannelloAzione"></div>
@@ -1845,7 +1845,7 @@ function rimuoviDaMano(l, c, daAsta){
 function giocaCarta(c, combo, daAsta){
   const l=G.attore, L=lato(l);
   // una figura non resta mai nel piatto: se non le viene passata una cattura, si sacrifica
-  // come marcatore da 1 punto (come una resa); le carte fuori portata restano nel piatto
+  // (1 punto, come una resa; la carta va negli scarti); le carte fuori portata restano nel piatto
   if(c.fig && !combo){
     const pot=G.piatto.filter(x=>!x.jolly);
     const haBersaglio = pot.length>0 && Math.min(...pot.map(x=>x.val))<=c.val;
@@ -1861,21 +1861,21 @@ function giocaCarta(c, combo, daAsta){
   let msg = `${nomeLato(l)} — ${nomeCarta(c)}: `;
   let tipo="piatto", dettagli="";
   if(sacrificio){
-    L.prese.push(c); tipo="presa";
+    L.punti += 1; G.scartiComuni.push(c); tipo="presa";   // sacrificio: 1 punto, la carta va negli scarti
     msg+= sacrificioVuoto
-      ? `${FIGURE[c.fig].nome} trova il piatto vuoto e non ha nulla da catturare: si sacrifica e va tra le prese, vale 1 punto.`
+      ? `${FIGURE[c.fig].nome} trova il piatto vuoto e non ha nulla da catturare: si sacrifica, vale 1 punto (la carta va negli scarti).`
       : `${FIGURE[c.fig].nome} si sacrifica senza nulla da catturare — vale 1 punto, le carte fuori portata restano sul tavolo.`;
   }else if(combo){
     dettagli = combo.map(x=>(x.fig?FIGURE[x.fig].nome.charAt(0):x.val)+SIMBOLI[x.seme]).join(" + ");
     G.piatto = G.piatto.filter(x=>!combo.some(y=>y.id===x.id));
     G.scartiComuni.push(...combo);   // le carte catturate vanno subito negli scarti comuni
     if(G.piatto.length===0){
-      L.scope.push(c);  // la carta che ha fatto scopa: marcatore (3 punti)
+      L.punti += 3; G.scartiComuni.push(c);  // scopa: 3 punti, la carta va negli scarti comuni
       aggiungiScopa(l);
       tipo="scopa";
       msg+=`SCOPA! Il piatto è ripulito — un successo pieno, una svolta.`;
     }else{
-      L.prese.push(c);  // la carta che ha fatto presa: marcatore (1 punto)
+      L.punti += 1; G.scartiComuni.push(c);  // presa: 1 punto, la carta va negli scarti comuni
       tipo="presa";
       msg+=`presa di ${combo.length} cart${combo.length>1?"e":"a"} — un successo, magari con un costo.`;
     }
@@ -1963,18 +1963,17 @@ function spinteResidue(l){
 }
 function spinteDisponibili(l){
   if(G.scena>=4 || !G.narr || !G.narr.boostCard) return [];
-  const c=lato(l).prese.find(x=>x.id===G.narr.boostCard);
+  const c=(G.scartiComuni||[]).find(x=>x.id===G.narr.boostCard);   // la carta della presa è ora negli scarti; serve solo il suo seme
   if(!c) return [];
   return G.pitch.map((p,i)=>({p,i}))
     .filter(({p,i})=>PITCH_TEMPLATE[i].spinta!==false && p.seme===c.seme && semiLato(l).includes(p.seme) && p.risposta && !p.usata);
 }
 function eseguiSpinta(idxPitch){
   const l=G.narrLato||G.attore, L=lato(l), p=G.pitch[idxPitch];
-  const c=L.prese.find(x=>x.id===G.narr.boostCard);
+  const c=(G.scartiComuni||[]).find(x=>x.id===G.narr.boostCard);
   if(!c) return;
   p.usata=true;   // una spinta per presa: boostCard si azzera sotto, quindi niente seconda spinta sulla stessa presa
-  L.prese=L.prese.filter(x=>x.id!==c.id);
-  L.scope.push(c);
+  L.punti += 2;   // la presa (1 punto) diventa scopa (3 punti): +2; la carta è già negli scarti comuni
   aggiungiScopa(l);
   const residue=G.piatto.length;
   if(residue){ G.scartiComuni.push(...G.piatto); G.piatto=[]; }   // carte raccolte → scarti comuni
@@ -2367,15 +2366,15 @@ function giocaJolly(c, v, combo){
   G.piatto=G.piatto.filter(x=>!combo.some(y=>y.id===x.id));
   G.scartiComuni.push(...combo);   // carte catturate → scarti comuni
   if(G.piatto.length===0){
-    // SCOPA col Jolly: il piatto è pulito (vantaggio di chi gioca), ma il marcatore (3 punti) va all'AVVERSARIO
-    A.scope.push(c); aggiungiScopa(avv);
+    // SCOPA col Jolly: il piatto è pulito (vantaggio di chi gioca), ma i 3 punti vanno all'AVVERSARIO e la carta del Jolly gli resta come promemoria
+    A.punti += 3; aggiungiScopa(avv); G.jollyPeccato=c;
     G.svuotoConScopa=l;   // chi ripulisce il piatto vince la posta della scena
     G.ultimaGiocata=`${nomeLato(l)} — SCOPA col Jolly come ${v}. Il piatto è ripulito, ma la scopa (3 punti) va a ${nomeLato(avv)}.`;
     vaiNarrazione(c,"scopa","",null,
       `<b>Svolta sleale.</b> ${nomeLato(l)} ripulisce la scena con un mezzo che tradisce principi e lealtà: il vantaggio è pieno, ma il merito — e i 3 punti — finiscono a ${nomeLato(avv)}.`);
   }else{
-    // PRESA col Jolly: il marcatore (1 punto) va all'AVVERSARIO
-    A.prese.push(c);
+    // PRESA col Jolly: il punto (1) va all'AVVERSARIO e la carta del Jolly gli resta come promemoria
+    A.punti += 1; G.jollyPeccato=c;
     G.svuotoConScopa=null;
     G.ultimaGiocata=`${nomeLato(l)} — presa col Jolly come ${v}. Il punto della presa va a ${nomeLato(avv)}.`;
     vaiNarrazione(c,"presa","",null,
@@ -2384,10 +2383,9 @@ function giocaJolly(c, v, combo){
 }
 
 function jollyMarkerO(){
-  // §22.6: marcatore del Jolly nel campo dell'Opposizione (la carta Jolly stessa, in O.scope o O.prese).
-  // Finché l'Opposizione lo possiede ha la LICENZA NARRATIVA di far emergere il peccato in una sua presa o scopa.
-  const O=lato("O");
-  return O.scope.find(c=>c.jolly) || O.prese.find(c=>c.jolly) || null;
+  // §22.6: la carta del Jolly è consegnata all'Opposizione come promemoria del peccato (G.jollyPeccato).
+  // Finché l'Opposizione la possiede ha la LICENZA NARRATIVA di far emergere il peccato in una sua presa o scopa.
+  return G.jollyPeccato || null;
 }
 
 /* ================= FINE SCENA ================= */
@@ -2444,7 +2442,7 @@ function rFineScena(){
     <div class="cartellone"><div class="grande">${vincNome}</div>
       <div class="sc">${rec.perScopa?"scopa a piatto vuoto — la scena va a chi l'ha fatta":`piatto: ♥+♠ ${rec.totP} contro ♦+♣ ${rec.totO}`}</div></div>
     ${rec.perScopa?`<div class="banner scopa">La scena finisce con una <b>scopa a piatto vuoto</b>: la vince ${nomeLato(rec.vincitore)}, che ha ripulito il tavolo.</div>`:""}
-    ${ritirataEsito?`<div class="banner">${rec.ritirataVariante==="mazzo"?"🏳️":"🎖️"} <b>${RESA_NOME[rec.ritirataVariante]}</b> di ${nomeLato(rec.perRitirata)}: cede la scena e ${rec.ritirataVariante==="mazzo"?"rimescola la carta nel mazzo (più riserva per i colpi di scena)":"tiene la carta tra le prese (1 punto)"}.</div>`:""}
+    ${ritirataEsito?`<div class="banner">${rec.ritirataVariante==="mazzo"?"🏳️":"🎖️"} <b>${RESA_NOME[rec.ritirataVariante]}</b> di ${nomeLato(rec.perRitirata)}: cede la scena e ${rec.ritirataVariante==="mazzo"?"rimescola la carta nel mazzo (più riserva per i colpi di scena)":"vale 1 punto (la carta va negli scarti)"}.</div>`:""}
     ${rec.vincitore==="P"?`<div class="banner">La posta è raggiunta.${rec.recupero?` I Protagonisti recuperano ${rec.recupero} dagli scarti, in fondo al mazzo.`:""}</div>`:""}
     ${rec.vincitore==="O"?`<div class="banner">La posta fallisce: la situazione peggiora per i protagonisti. Nessun recupero.</div>`:""}
     ${rec.vincitore==="parita"?`<div class="banner">Totali in equilibrio: la posta resta sospesa, nessun recupero.</div>`:""}
@@ -2548,7 +2546,7 @@ function rMercato(){
     return `<div class="pannello">
       <span class="etichetta">${nomeLato(l)} ${L.semi.map(s=>SIMBOLI[s]).join("")}</span>
       <div class="punti-big" id="punti-${l}">${punti}</div>
-      <div class="contatori">prese ${L.prese.length} (×1) · scope ${L.scope.filter(c=>!c.esposta).length} (×3)${L.bonus?` · bonus ${L.bonus}`:""}</div>
+      <div class="contatori">punti da spendere · 1 a presa, 3 a scopa · il resto si tiene</div>
       <div style="margin-top:10px">
         ${Object.entries(FIGURE).map(([k,f])=>{
           const presa=figuraTipoComprata(l,k);   // una figura per tipo per lato
@@ -2634,38 +2632,11 @@ function chiediPng(l,f,s,b){
 }
 function pagaCosto(l, costo){
   const L=lato(l);
-  if(puntiMercato(l)<costo) return false;
-  // I punti sono una VALUTA LINEARE: si paga il costo e si tiene sempre il resto. I marcatori
-  // (bonus, prese da 1, scope da 3) sono solo il modo fisico di segnare i punti, per economia di
-  // materiale. Quindi: si copre il costo spendendo marcatori (con meno spreco possibile,
-  // così da alterare il meno possibile i semi che restano) e l'eventuale ECCEDENZA di una scopa
-  // spezzata torna come punti bonus (valuta senza seme). Il totale che resta è sempre punti-costo.
-  const uno = L.bonus + L.prese.length;                       // marcatori da 1 disponibili
-  const treDisp = L.scope.filter(c=>!c.esposta).length;       // marcatori da 3 disponibili
-  let scelta=null;   // {scope, uni, spesa}
-  for(let s=0; s<=treDisp; s++){
-    const manca = costo - 3*s;
-    let uni, spesa;
-    if(manca<=0){ uni=0; spesa=3*s; }            // le scope da sole coprono il costo (con eccedenza da restituire)
-    else if(manca<=uno){ uni=manca; spesa=costo; }  // pagamento esatto
-    else continue;                                  // servono più scope
-    // minimizza la spesa (quindi il resto da restituire, quindi i semi persi in bonus);
-    // a parità di spesa preferisci usare più scope, così restano più marcatori da 1
-    if(!scelta || spesa<scelta.spesa || (spesa===scelta.spesa && s>scelta.scope)) scelta={scope:s, uni, spesa};
-  }
-  if(!scelta) return false;   // garantito da puntiMercato>=costo, ma per sicurezza
-  // applica: prima i marcatori da 1 (bonus poi prese), poi le scope; gli spesi vanno negli scarti comuni
-  let uni=scelta.uni;
-  const usaBonus=Math.min(L.bonus, uni); L.bonus-=usaBonus; uni-=usaBonus;
-  while(uni>0 && L.prese.length){
-    G.scartiComuni.push(L.prese.splice(Math.floor(Math.random()*L.prese.length),1)[0]); uni-=1;
-  }
-  for(let k=0; k<scelta.scope; k++){
-    const i=L.scope.findIndex(c=>!c.esposta);
-    if(i<0) break;
-    G.scartiComuni.push(L.scope.splice(i,1)[0]);
-  }
-  L.bonus += (scelta.spesa - costo);   // il resto della scopa spezzata torna come punti (valuta lineare)
+  if(L.punti<costo) return false;
+  // I punti sono una VALUTA NUMERICA (v1.32): si sottrae il costo e si tiene sempre il resto.
+  // Le carte di prese/scope sono già negli scarti comuni (ci finiscono all'atto della giocata),
+  // quindi il pagamento non muove più alcuna carta.
+  L.punti -= costo;
   return true;
 }
 function entraJollyNeiMazzi(){
@@ -2795,7 +2766,7 @@ function conteggioDefinitivo(){
 function rFinale(){
   const vp=G.scene.filter(s=>s&&s.vincitore==="P").length;
   const vo=G.scene.filter(s=>s&&s.vincitore==="O").length;
-  function punti(l){ return puntiMercato(l); }   // punti non spesi: bonus + prese×1 + scope×3 (la Crescita)
+  function punti(l){ return puntiMercato(l); }   // punti non spesi = L.punti (la Crescita)
   // vittoria del piatto = esito esterno della missione; in pareggio decide la Crescita (v1.29)
   const rec5=G.scene[4];
   let pP=punti("P"), pO=punti("O");
@@ -2923,7 +2894,7 @@ const REGOLE={
     Una carta prende <b>una carta di uguale valore</b> nel piatto, oppure <b>un gruppo di carte la cui somma</b> è uguale al suo valore. Se il piatto si svuota → scopa.<br>
     <b>La presa è obbligatoria:</b> se la carta che giochi può prendere, <b>non</b> puoi metterla nel piatto, devi catturare (puoi però giocare nel piatto un'altra carta che non prende).<br>
     Se sei costretto a prendere una carta del <b>tuo stesso lato</b>, raccontalo come un'azione maldestra in cui le due anime del lato (Cuori e Picche, oppure Fiori e Quadri) si sono ostacolate o annullate a vicenda.<br>
-    <b>Figure (cattura flessibile):</b> una figura cattura un gruppo di carte di somma <b>minore o uguale</b> al suo valore (Fante 8, Regina 9, Re 10), anche carte dei propri semi; resta obbligatoria se c'è un bersaglio alla portata. Se svuota il piatto è scopa, altrimenti è una presa che vale <b>1 punto</b> come ogni altra. Una figura <b>non resta mai nel piatto</b>: se non ha nulla da catturare si <b>sacrifica</b> e va tra le tue prese come marcatore da <b>1 punto</b> (come una resa onorevole), lasciando sul tavolo le eventuali carte fuori portata. Una scopa è sempre e solo una presa che svuota il piatto, quindi una figura che non cattura nulla non può farne una. L'effetto speciale della figura scatta comunque.
+    <b>Figure (cattura flessibile):</b> una figura cattura un gruppo di carte di somma <b>minore o uguale</b> al suo valore (Fante 8, Regina 9, Re 10), anche carte dei propri semi; resta obbligatoria se c'è un bersaglio alla portata. Se svuota il piatto è scopa, altrimenti è una presa che vale <b>1 punto</b> come ogni altra. Una figura <b>non resta mai nel piatto</b>: se non ha nulla da catturare si <b>sacrifica</b>, vale <b>1 punto</b> (come una resa onorevole) e la sua carta va negli scarti comuni, lasciando sul tavolo le eventuali carte fuori portata. Una scopa è sempre e solo una presa che svuota il piatto, quindi una figura che non cattura nulla non può farne una. L'effetto speciale della figura scatta comunque.
     <div class="es">"Presa: il 6♣ era la carta di credito bloccata. Vai a impegnare l'orologio d'oro e ti riempi le tasche di contanti: l'ostacolo è superato, a un prezzo."</div>
     <h3>Il piatto resta</h3>
     A fine scena le carte rimaste nel piatto <b>non si toccano</b>: chi apre la scena successiva può già fare presa o scopa.`},
@@ -2936,7 +2907,7 @@ const REGOLE={
     <h3>Chi narra l'esito</h3>
     Chi ha <b>vinto l'asta</b> ha inquadrato la scena (titolo e posta); a raccontare <b>com'è finita</b> è invece chi ha <b>perso la posta</b> (la scena), così da poterne calcare le ombre e i costi. In caso di <b>parità</b> dei totali narra chi ha <b>vinto l'asta</b> (per non far narrare due volte di fila chi ha appena giocato l'ultima carta del round). Vale anche per la resa (§18.1): chi cede la posta ne narra l'esito.
     <h3>Arrendersi alla scena</h3>
-    Chi <b>non ha l'iniziativa</b>, con una <b>sola carta</b> in mano e nelle <b>scene 1-4</b>, può cedere la posta invece di giocare l'ultima carta (utile quando quella carta non cambierebbe l'esito). Due modi, una volta ciascuno per lato: <b>Ritirata strategica</b> (rimescola la carta nel mazzo, più riserva per i colpi di scena) e <b>Resa onorevole</b> (tiene la carta tra le prese, 1 punto). La posta va all'avversario senza conteggio; se a cedere è l'Opposizione, i Protagonisti raggiungono la posta come per una scena vinta.
+    Chi <b>non ha l'iniziativa</b>, con una <b>sola carta</b> in mano e nelle <b>scene 1-4</b>, può cedere la posta invece di giocare l'ultima carta (utile quando quella carta non cambierebbe l'esito). Due modi, una volta ciascuno per lato: <b>Ritirata strategica</b> (rimescola la carta nel mazzo, più riserva per i colpi di scena) e <b>Resa onorevole</b> (vale 1 punto, la carta va negli scarti). La posta va all'avversario senza conteggio; se a cedere è l'Opposizione, i Protagonisti raggiungono la posta come per una scena vinta.
     <h3>Lettura del piatto — chi ha deciso l'esito (27.1)</h3>
     Il seme col valore più alto nel piatto racconta <i>come</i> è andata, indipendentemente da chi ha vinto:
     ♠ forza dei protagonisti · ♥ dialogo dei protagonisti · ♦ l'opposizione organizzata · ♣ la sfortuna e il caos.
@@ -2948,9 +2919,9 @@ const REGOLE={
     <h3>Fase di mercato (tra le scene)</h3>
     Ordine importante (dalla 2ª scena): <b>1)</b> si effettuano gli acquisti (max <b>una figura per tipo</b>) · <b>2)</b> le figure entrano nel <b>mazzo</b> · <b>3)</b> se hai comprato, il mazzo viene <b>rimescolato</b> · <b>4)</b> si pesca la nuova mano di 4 carte.
     <h3>Economia</h3>
-    <ul><li>Ogni <b>presa</b> → <b>1 punto</b> (carta tenuta in verticale), anche se fatta con una figura</li>
-    <li>Ogni <b>scopa</b> → <b>3 punti</b> (carta tenuta in orizzontale)</li></ul>
-    Le carte catturate dal piatto vanno subito negli <b>scarti comuni</b>; i marcatori spesi al mercato pure. A fine partita i punti non spesi mantengono lo stesso valore (presa 1, scopa 3).`},
+    <ul><li>Ogni <b>presa</b> → <b>1 punto</b>, anche se fatta con una figura</li>
+    <li>Ogni <b>scopa</b> → <b>3 punti</b></li></ul>
+    I punti si <b>segnano a parte</b> (gettoni o un foglio): le carte non si tengono più come marcatori. Tutte le carte giocate — quella di presa/scopa e quelle catturate — vanno <b>subito negli scarti comuni</b>. Al mercato si <b>paga il costo e si tiene sempre il resto</b>, senza spostare carte. A fine partita i punti non spesi mantengono lo stesso valore (presa 1, scopa 3).`},
   figure:{titolo:"Le figure",html:`
     <h3>Doppia natura</h3>
     Meccanica (carte forti con effetti) e narrativa (alleati o PNG significativi). Si può comprare al massimo <b>una figura per tipo</b>.
@@ -2968,21 +2939,21 @@ const REGOLE={
     <h3>Ingresso e uso</h3>
     Un solo Jolly, nel <b>mazzo dei Protagonisti</b>, entra al termine della <b>seconda scena</b>. Non può essere usato nell'asta. Chi lo gioca <b>dichiara il valore (1–10)</b> e lo usa <b>solo per catturare</b> (presa o scopa).
     <h3>Mossa sleale: il punto va all'avversario</h3>
-    Il vantaggio sul tavolo è di chi gioca il Jolly (ripulisce o alleggerisce il piatto), ma il <b>marcatore va all'avversario</b>: una presa col Jolly = <b>1 punto all'avversario</b>, una scopa = <b>3 punti all'avversario</b>. Il marcatore è una risorsa normale dell'Opposizione: vale i suoi punti al conteggio finale e si può spendere al mercato.
+    Il vantaggio sul tavolo è di chi gioca il Jolly (ripulisce o alleggerisce il piatto), ma i <b>punti vanno all'avversario</b>: una presa col Jolly = <b>1 punto all'avversario</b>, una scopa = <b>3 punti all'avversario</b>. Sono punti normali dell'Opposizione: valgono al conteggio finale e si possono spendere al mercato. La <b>carta del Jolly</b> viene consegnata all'avversario come promemoria del peccato.
     <h3>Vincolo narrativo</h3>
     Si narra sempre un successo ottenuto <b>andando contro i principi e la lealtà</b>. A macchiarsi del peccato è <b>uno solo dei due protagonisti</b>: una ricaduta nei vecchi vizi o un gesto avventato che non tiene conto dell'altro; l'altro <b>può non saperne nulla, oppure assistervi e giudicarlo</b>. Il Jolly è il seme di una discordia destinata a sbocciare più avanti.
     <div class="es">"Kai minaccia il teste con informazioni false per farlo parlare — tecnicamente illegale, sicuramente efficace."</div>
     <h3>Resistere alla tentazione</h3>
     Usare il Jolly non è obbligatorio: invece di giocarlo puoi <b>scartarlo senza effetto</b>, rinunciando al vantaggio sleale. (Anche a piatto vuoto, dove non c'è nulla da catturare, il Jolly viene scartato senza effetto e il piatto resta com'era.)
     <h3>Il peccato emerge (narrativo)</h3>
-    Finché l'Opposizione <b>possiede il marcatore del Jolly</b>, in una sua qualsiasi presa o scopa può far <b>riaffiorare nella narrazione il peccato</b> che uno dei protagonisti ha commesso col Jolly, l'inganno o il torbido compromesso, per far sbocciare la discordia tra loro e rendere il momento più drammatico. È <b>solo narrazione</b>: non cambia punti né carte.`},
+    Finché l'Opposizione <b>ha davanti a sé la carta del Jolly</b> (consegnatale come promemoria), in una sua qualsiasi presa o scopa può far <b>riaffiorare nella narrazione il peccato</b> che uno dei protagonisti ha commesso col Jolly, l'inganno o il torbido compromesso, per far sbocciare la discordia tra loro e rendere il momento più drammatico. È <b>solo narrazione</b>: non cambia punti né carte.`},
   pitch:{titolo:"Risorse del pitch",html:`
     <h3>Spinte e tratti (9.5–9.6)</h3>
     I due <b>"cosa si detestano"</b> sono <b>tratti dei protagonisti</b>: solo narrativi, senza effetto in gioco. Le <b>spinte</b> sono <b>otto, due per seme</b>: motivazione e asso di ciascun protagonista (♠ e ♥) più, dall'Opposizione, mezzi e movente (♦) e catastrofi e crepe (♣). Le risposte delle spinte <b>diventano risorse di gioco</b>.
     <h3>La prima difficoltà (9.7)</h3>
     Dopo le domande, tutti rispondono insieme: <b>che cosa vi impedisce di compiere subito la missione?</b> La risposta non è spuntabile: si decide insieme ma <b>l'ultima parola spetta all'Opposizione</b>, e inquadra la <b>Scena 1</b>.
     <h3>Uso meccanico (9.8)</h3>
-    Dopo una presa normale si può <b>spuntare la risposta corrispondente al seme della carta di presa</b>: la presa diventa una <b>scopa</b> e le carte rimaste nel piatto finiscono tra le prese di chi spunta. Condizioni:
+    Dopo una presa normale si può <b>spuntare la risposta corrispondente al seme della carta di presa</b>: la presa diventa una <b>scopa</b> e le carte rimaste nel piatto vengono spazzate via (finiscono negli scarti comuni). Condizioni:
     <ul><li>la risposta deve entrare esplicitamente nella narrazione (scena, rivelazione o flashback)</li>
     <li>ogni risposta si usa una volta sola; sono <b>due per seme, entrambe spendibili</b> (varietà di scelta, non potenza)</li>
     <li><b>una sola spinta per presa</b>: una presa diventa scopa con una spinta, bruciarne una seconda sulla stessa giocata non aggiunge nulla</li>
@@ -3088,7 +3059,7 @@ function resaTracker(l){
       <span style="font-size:17px;line-height:1">${used?"☑":"☐"}</span><span><b>${nome}</b>${used?" · usata":""}<br><span style="color:var(--grigio)">${desc}</span></span></div>`;
   return `<div class="pannello"><span class="etichetta">Mosse di resa — ${nomeLato(l)} (una sola volta ciascuna)</span>
     ${riga(r.mazzo,"Ritirata strategica","cede la scena e rimescola la carta nel mazzo (più riserva per i colpi di scena)")}
-    ${riga(r.prese,"Resa onorevole","cede la scena e tiene la carta tra le prese, 1 punto")}</div>`;
+    ${riga(r.prese,"Resa onorevole","cede la scena, vale 1 punto (la carta va negli scarti)")}</div>`;
 }
 let schedaTab="A";
 function apriSchede(tab){
@@ -3212,7 +3183,7 @@ ASTA E APERTURA: a inizio scena ogni lato pesca 4 carte e ne gioca 1 coperta per
 
 ROUND: ci si alterna a partire dal vincitore dell'iniziativa, 4 giocate a testa. Nel tuo turno puoi:
 - Giocare una carta nel piatto = INTRODURRE una tua risorsa: un ostacolo, una minaccia o un imprevisto (♦ nemici con intenzione, ♣ caos e sfortuna) con cui i protagonisti dovranno fare i conti. Non risolve nulla, predispone. La tua narrazione AGGIUNGE un tuo elemento, NON annulla quello dei protagonisti: finché una loro carta è nel piatto, ciò che rappresenta resta in piedi. Un elemento avversario lo neutralizzi (lo togli, lo ribalti, ne mostri l'inutilità) solo con una PRESA o una SCOPA.
-- Fare una PRESA (vale 1 punto) = togli una risorsa ai protagonisti, o ne mostri l'inutilità (si ritorce contro di loro): un successo, anche se può avere un costo. Una carta prende una carta di pari valore nel piatto, oppure un gruppo la cui somma è pari al suo valore. La presa è OBBLIGATORIA: se la carta che giochi può prendere, devi catturare, non puoi metterla nel piatto. Se sei costretto a prendere una TUA carta (♦/♣), narra Fiori e Quadri che si intralciano o si annullano a vicenda. Con una FIGURA (Fante 8, Regina 9, Re 10) la presa vale 1 come ogni altra e la cattura è FLESSIBILE: prende un gruppo di somma MINORE O UGUALE al valore della figura, anche carte dei tuoi semi. Una figura NON resta mai nel piatto: se non ha nulla da catturare si SACRIFICA tra le tue prese come marcatore da 1 punto (come una resa), lasciando sul tavolo le carte fuori portata. Una SCOPA è sempre e solo una presa che svuota il piatto: una figura che non cattura nulla NON fa scopa.
+- Fare una PRESA (vale 1 punto) = togli una risorsa ai protagonisti, o ne mostri l'inutilità (si ritorce contro di loro): un successo, anche se può avere un costo. Una carta prende una carta di pari valore nel piatto, oppure un gruppo la cui somma è pari al suo valore. La presa è OBBLIGATORIA: se la carta che giochi può prendere, devi catturare, non puoi metterla nel piatto. Se sei costretto a prendere una TUA carta (♦/♣), narra Fiori e Quadri che si intralciano o si annullano a vicenda. Con una FIGURA (Fante 8, Regina 9, Re 10) la presa vale 1 come ogni altra e la cattura è FLESSIBILE: prende un gruppo di somma MINORE O UGUALE al valore della figura, anche carte dei tuoi semi. Una figura NON resta mai nel piatto: se non ha nulla da catturare si SACRIFICA (vale 1 punto, come una resa) e la sua carta va negli scarti comuni, lasciando sul tavolo le carte fuori portata. Una SCOPA è sempre e solo una presa che svuota il piatto: una figura che non cattura nulla NON fa scopa.
 - Fare una SCOPA (vale 3 punti) = svolta: la presa svuota il piatto, annienti in un colpo ogni vantaggio dei protagonisti. Successo pieno, sopra ogni aspettativa. Vale molto più di una presa.
 
 FINE SCENA: si sommano i valori delle carte rimaste nel piatto: ♦+♣ contano per te, ♥+♠ per i Protagonisti; la posta la vince il totale più alto. MA se la scena si chiude col piatto vuoto perché l'ultima giocata è stata una scopa, la posta la vince chi ha fatto la scopa. In caso di parità dei totali la posta la vince chi ha giocato l'ultima carta del round, cioè chi non ha l'iniziativa. Il piatto NON si svuota tra le scene: chi apre la successiva può già prendere. Se vincono i Protagonisti la posta è raggiunta; se vinci tu, la loro posta fallisce e la situazione peggiora per loro. CHI NARRA L'ESITO: chi ha vinto l'asta ha inquadrato la scena (titolo e posta); a raccontare com'è finita è chi ha PERSO LA POSTA (la scena), così da poterne calcare le ombre e i costi. In parità dei totali narra chi ha vinto l'asta. Quindi narri TU l'esito quando i Protagonisti vincono la scena (è la tua sconfitta: raccontala con onestà, calcando sulle ombre e sul prezzo che pagheranno); se la scena la vinci tu, l'esito lo narrano i Protagonisti.
@@ -3223,13 +3194,13 @@ MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Ordine: prima com
 - Re (costo 8, valore 10): recuperi dagli scarti comuni una carta del suo stesso seme (la mano resta), nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.
 Ogni figura che compri è un PNG: dalle subito un nome e un breve ruolo (chi è), e richiamalo quando giochi quella carta e quando narri (il suo effetto meccanico è ciò che quel personaggio fa nella storia). Più in generale, ogni elemento rilevante che introduci (un nemico, un alleato, un luogo, un oggetto) con una sua volontà e un ruolo da seguire è un «Qualcuno»: dagli un nome se conta per il seguito, altrimenti resta una comparsa.
 
-JOLLY: un solo Jolly, solo nel mazzo dei Protagonisti, entra dopo la 2ª scena. Tu non lo giochi mai (sta nel loro mazzo). Chi lo gioca dichiara il valore e cattura, ma il marcatore va all'AVVERSARIO (presa 1, scopa 3 all'altro lato): se i Protagonisti lo usano, quel marcatore (1 o 3 punti) entra nel TUO campo come risorsa normale — vale al conteggio finale e lo puoi spendere al mercato. I Protagonisti possono anche resistere alla tentazione e scartarlo senza usarlo. A macchiarsi del peccato è UNO SOLO dei due protagonisti (l'altro può non saperlo, oppure assistervi e giudicarlo): è il seme di una discordia destinata a sbocciare. IL PECCATO EMERGE (narrativo): finché possiedi il marcatore del Jolly, in una tua qualsiasi presa o scopa puoi far riaffiorare nella narrazione quel peccato (l'inganno, il torbido compromesso che uno dei due ha commesso col Jolly), per far sbocciare la discordia tra loro e drammatizzare. È solo narrazione, non cambia punti né carte.
+JOLLY: un solo Jolly, solo nel mazzo dei Protagonisti, entra dopo la 2ª scena. Tu non lo giochi mai (sta nel loro mazzo). Chi lo gioca dichiara il valore e cattura, ma i PUNTI vanno all'AVVERSARIO (presa 1, scopa 3 all'altro lato): se i Protagonisti lo usano, quei punti (1 o 3) entrano nel TUO bottino come risorsa normale — valgono al conteggio finale e li puoi spendere al mercato; la carta del Jolly ti viene consegnata come promemoria del peccato. I Protagonisti possono anche resistere alla tentazione e scartarlo senza usarlo. A macchiarsi del peccato è UNO SOLO dei due protagonisti (l'altro può non saperlo, oppure assistervi e giudicarlo): è il seme di una discordia destinata a sbocciare. IL PECCATO EMERGE (narrativo): finché hai davanti a te la carta del Jolly, in una tua qualsiasi presa o scopa puoi far riaffiorare nella narrazione quel peccato (l'inganno, il torbido compromesso che uno dei due ha commesso col Jolly), per far sbocciare la discordia tra loro e drammatizzare. È solo narrazione, non cambia punti né carte.
 
-RISORSE DEL PITCH (spinte): sono otto, due per seme (le tue sono ♦ e ♣). Dopo una presa normale puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e le carte rimaste nel piatto finiscono tra le tue prese. La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola (due per seme, entrambe usabili); una sola spinta per presa; VIETATA nell'ultima scena. (I tratti "cosa i protagonisti si detestano" sono solo narrativi, non spinte.)
+RISORSE DEL PITCH (spinte): sono otto, due per seme (le tue sono ♦ e ♣). Dopo una presa normale puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e il piatto viene spazzato via (le carte rimaste finiscono negli scarti comuni). La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola (due per seme, entrambe usabili); una sola spinta per presa; VIETATA nell'ultima scena. (I tratti "cosa i protagonisti si detestano" sono solo narrativi, non spinte.)
 
 QUINTA SCENA: la mano finale si sceglie dopo il mercato; le carte oltre le 4 vanno in RISERVA. Dopo il primo conteggio si gioca a COLPI DI SCENA: a turni STRETTAMENTE ALTERNI (inizia chi sta perdendo) cali una carta dalla riserva, che entra nel piatto e può eliminare una carta di seme avversario di valore pari o inferiore (finisce negli scarti; la tua resta). Nel tuo turno, finché hai riserva devi giocare. NESSUNO gioca due colpi di fila: se dopo un colpo tocca a chi non ha più riserva, la fase FINISCE subito (l'eventuale riserva in eccesso dell'altro resta inutilizzata). Il primo conteggio (dopo le 4 carte) dà solo l'esito apparente, che si narra come in ogni scena; solo dopo i colpi di scena, rivelati una carta alla volta, il conteggio definitivo dice se la missione riesce o fallisce. Il finale si legge su due piani: la MISSIONE (chi vince il piatto; in pareggio decide la Crescita, il lato con più punti non spesi li spende tutti per aggiudicarsi il piatto, a parità vince il lato dei Protagonisti) e la CRESCITA (i punti non spesi: figure comprate = aiuto chiamato, punti tenuti = nome che ci si è fatti; per te è la minaccia che resta, l'idra). Un fallimento totale dei protagonisti è una tua vittoria piena, da narrare come trionfo. Poi, facoltativo, l'epilogo: vignette su un Qualcuno, giorni o anni dopo, a turni e senza due di fila.
 
-RESA (solo se NON hai l'iniziativa, ti resta UNA sola carta, scene 1-4): se la tua ultima carta non può cambiare la scena (non fa presa e, anche giocandola, non ti porta sopra il totale dei Protagonisti), conviene arrenderti invece di sprecarla. Due mosse, ciascuna UNA volta per partita: RITIRATA STRATEGICA = cedi la scena e rimescoli la carta nel mazzo (più riserva per i colpi di scena finali); RESA ONOREVOLE = cedi la scena e tieni la carta tra le prese (1 punto). In entrambe perdi la posta della scena e racconti tu come arretri per riorganizzarti. NON arrenderti se la carta può prendere o se ti fa superare i Protagonisti: giocala.
+RESA (solo se NON hai l'iniziativa, ti resta UNA sola carta, scene 1-4): se la tua ultima carta non può cambiare la scena (non fa presa e, anche giocandola, non ti porta sopra il totale dei Protagonisti), conviene arrenderti invece di sprecarla. Due mosse, ciascuna UNA volta per partita: RITIRATA STRATEGICA = cedi la scena e rimescoli la carta nel mazzo (più riserva per i colpi di scena finali); RESA ONOREVOLE = cedi la scena, vale 1 punto (la carta va negli scarti). In entrambe perdi la posta della scena e racconti tu come arretri per riorganizzarti. NON arrenderti se la carta può prendere o se ti fa superare i Protagonisti: giocala.
 
 STRATEGIA, in ordine di priorità a ogni tuo turno:
 (1) SCOPA: se tra le opzioni c'è una scopa, falla. Vale 3 punti e svuota il piatto: è quasi sempre la mossa migliore.
@@ -3263,14 +3234,14 @@ function statoPerIA(){
   const figure=Object.entries(G.png||{}).map(([k,v])=>FIGURE[k[0]]?`${FIGURE[k[0]].nome} di ${k.slice(1)}${v&&v.nome?" ("+v.nome+")":""}`:"").filter(Boolean).join(", ");
   const pngN=(G.pngNarr||[]).map(p=>`${SIMBOLI[p.seme]} ${p.nome||""}`.trim()).filter(s=>s.length>2).join(", ");
   const sommaPiatto=G.piatto.reduce((s,c)=>s+(c.val||0),0);
-  // carte già uscite (catturate o spese): scarti comuni + marcatori di prese/scope dei due lati; non torneranno in mano
-  const uscite=[...(G.scartiComuni||[]), ...O.prese, ...O.scope, ...P.prese, ...P.scope]
+  // carte già uscite (giocate: prese, scope, catture, sacrifici): sono tutte negli scarti comuni; non torneranno in mano
+  const uscite=[...(G.scartiComuni||[])]
     .filter(c=>c && !c.jolly).map(c=>nomeCarta(c));
   return `STATO ATTUALE. Scena ${G.scena+1}/5 (${FASI_NARR[G.scena]||""}). Titolo: ${rec.titolo||"-"}. Posta: ${rec.posta||"-"}.
 PIATTO: ${G.piatto.length?G.piatto.map(c=>nomeCarta(c)).join(", "):"vuoto"} (somma dei valori: ${sommaPiatto}).
 LA TUA MANO: ${O.mano.map(c=>nomeCarta(c)).join(", ")||"vuota"}.
 CARTE GIÀ USCITE (catturate o spese, non torneranno in gioco; servono a dedurre cosa resta agli avversari): ${uscite.length?uscite.join(", "):"nessuna"}.
-Tue prese ${O.prese.length}, tue scope ${O.scope.length} · prese avversarie ${P.prese.length}, scope avversarie ${P.scope.length}.
+I tuoi punti ${O.punti}, punti avversari ${P.punti} (presa 1, scopa 3).
 Totali del piatto ora: Protagonisti ${totaleProt()}, Opposizione ${totaleOpp()}.${figure?`\nFigure comprate: ${figure}.`:""}${pngN?`\nPNG narrativi: ${pngN}.`:""}`;
 }
 
@@ -3500,7 +3471,7 @@ async function iaTurno(){
       if(pot.length===0){
         ops.push({desc:`gioca ${nomeCarta(c)}: SACRIFICIO eroico — scopa con sé stessa`, esegui:()=>giocaCarta(c,"sacrificio",g.daAsta)});
       }else if(Math.min(...pot.map(x=>x.val))>c.val){
-        ops.push({desc:`gioca ${nomeCarta(c)}: SACRIFICIO a vuoto — nessuna carta è alla sua portata, va tra le tue prese (1 punto) e le carte fuori portata restano`, esegui:()=>giocaCarta(c,"sacrificio_presa",g.daAsta)});
+        ops.push({desc:`gioca ${nomeCarta(c)}: SACRIFICIO a vuoto — nessuna carta è alla sua portata, vale 1 punto (la carta va negli scarti) e le carte fuori portata restano`, esegui:()=>giocaCarta(c,"sacrificio_presa",g.daAsta)});
       }else{
         const def=comboFiguraDefault("O",c.val);
         const svuota=def.length===pot.length;
@@ -3528,7 +3499,7 @@ async function iaNarrazione(){
   const spinte=spinteDisponibili("O");
   const haBoost=G.narr&&G.narr.boostCard&&spinte.length>0;
   if(iaNarrTesto===null){
-    const r=await chiamaClaude(istruzNarrBase()+`${haBoost?`\nPuoi anche SPUNTARE la risorsa del pitch corrispondente al seme della carta con cui hai preso, per trasformare questa presa in SCOPA vera: le carte rimaste nel piatto finiscono tra le tue prese. Risorse disponibili:\n${spinte.map(({p,i},k)=>k+": "+SIMBOLI[p.seme]+" "+p.risposta).join("\n")}\nUsala solo se la risorsa entra davvero nella narrazione: è una svolta, non un bonus.`:""}\nJSON: {"narrazione":"...", "spinta": ${haBoost?"<numero> oppure null":"null"}}`);
+    const r=await chiamaClaude(istruzNarrBase()+`${haBoost?`\nPuoi anche SPUNTARE la risorsa del pitch corrispondente al seme della carta con cui hai preso, per trasformare questa presa in SCOPA vera: il piatto viene spazzato via (le carte rimaste finiscono negli scarti comuni). Risorse disponibili:\n${spinte.map(({p,i},k)=>k+": "+SIMBOLI[p.seme]+" "+p.risposta).join("\n")}\nUsala solo se la risorsa entra davvero nella narrazione: è una svolta, non un bonus.`:""}\nJSON: {"narrazione":"...", "spinta": ${haBoost?"<numero> oppure null":"null"}}`);
     iaNarrTesto=(r&&r.narrazione)||"L'Opposizione stringe il cerchio, senza fretta.";
     if(haBoost&&r&&Number.isInteger(r.spinta)&&spinte[r.spinta]){
       iaBusy=false;
