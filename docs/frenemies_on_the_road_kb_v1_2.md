@@ -156,9 +156,9 @@ Stato iniziale:
 - Il Jolly non sta nel mazzo: è una **risorsa dei Protagonisti**, fuori dal mazzo, disponibile dall'inizio (§22)
 - I mazzi iniziali contengono solo le carte numeriche (**Asso–10**) dei rispettivi semi: **20 carte per lato**
 
-Le figure entrano nei mazzi tramite acquisto nel mercato tra le scene. Il Jolly (uno solo) non entra mai nel mazzo: è una risorsa dei Protagonisti, disponibile davanti a loro dall'inizio della partita (§22).
+Le figure si acquistano al mercato tra le scene: dalla **v1.34** non entrano più nel mazzo ma **direttamente nella mano** ed entrano in scena nella scena immediatamente successiva (§21.1, §19). Il Jolly (uno solo) non entra mai nel mazzo: è una risorsa dei Protagonisti, disponibile davanti a loro dall'inizio della partita (§22).
 
-> **Nota (v1.1):** 20 carte bastano esattamente per le cinque scene (4 pescate a scena). Quando il mazzo finisce, la partita finisce: non esiste alcun rimescolo degli scarti nel mazzo. Gli unici ingressi di carte nel mazzo sono le figure acquistate al mercato, la carta che la Ritirata strategica rimescola nel proprio mazzo (§18.1) e, dalla v1.27, la carta che il **Re** recupera dagli scarti comuni e rimescola nel proprio mazzo (§21, solo nelle scene 1-4; nell'ultima scena la carta recuperata dal Re entra invece nella riserva). Il Jolly (v1.33) **non entra mai nel mazzo** (è una risorsa fuori dal mazzo, §22); l'unico movimento verso il mazzo che introduce è la **carta che un lato cede per afferrarlo**, che finisce in fondo al proprio mazzo.
+> **Nota (v1.1, agg. v1.34):** 20 carte bastano esattamente per le cinque scene (4 pescate a scena). Quando il mazzo finisce, la partita finisce: non esiste alcun rimescolo degli scarti nel mazzo. Le **figure comprate al mercato** (dalla v1.34) **non entrano più nel mazzo**: vanno in mano e occupano uno slot, quindi la pescata di fine mercato completa a 4 con una carta base in meno (il mazzo resta neutro). Gli ingressi di carte nel mazzo sono quindi solo: la carta che la Ritirata strategica rimescola nel proprio mazzo (§18.1) e, dalla v1.27, la carta che il **Re** recupera dagli scarti comuni e rimescola nel proprio mazzo (§21, solo nelle scene 1-4; nell'ultima scena la carta recuperata dal Re entra invece nella riserva). Il Jolly (v1.33) **non entra mai nel mazzo** (è una risorsa fuori dal mazzo, §22); l'unico movimento verso il mazzo che introduce è la **carta che un lato cede per afferrarlo**, che finisce in fondo al proprio mazzo.
 
 ## 9. Preparazione narrativa: il pitch
 
@@ -291,11 +291,13 @@ Quando si gioca una carta di Fiori, si introduce o si fa agire: sfortuna, incide
 All'inizio di ogni scena:
 
 1. Ogni lato pesca 4 carte dal proprio mazzo
-2. Ogni lato gioca 1 carta coperta come asta per l'iniziativa
+2. Ogni lato gioca 1 **carta numerica** coperta come asta per l'iniziativa
 3. Le due carte vengono rivelate insieme
 4. Chi ha la carta più alta vince l'iniziativa e giocherà per primo
 
 La carta usata nell'asta dal **vincitore** non viene persa: resta **scoperta sul tavolo** e verrà rigiocata alla fine del round, come sua ultima giocata, così l'avversario sa fin dall'inizio con quale carta chiuderà *(v1.21)*. La carta d'asta del **perdente** torna nella sua mano *(v1.1)*.
+
+> **Asta = solo carte numeriche (v1.34):** nell'asta non si possono puntare né il **Jolly** né le **figure** (Fante, Regina, Re). Come il Jolly, una figura non va mai "sprecata" coperta nell'asta: entra in scena e ottiene sempre il suo momento quando la giochi.
 
 > **Parità nell'asta (v1.1):** se le due carte hanno lo stesso valore, l'iniziativa va a chi **non** l'ha avuta nella scena precedente. Alla prima scena, in caso di parità, l'iniziativa va all'**Opposizione** — il mondo è contro di voi fin dall'inizio.
 
@@ -467,12 +469,13 @@ Se invece non ci si arrende, si gioca la carta e la scena si conta normalmente (
 
 ## 19. Fase di mercato tra le scene
 
-Ordine corretto *(v1.15)* — prima si compra, poi si pesca, così le figure comprate possono capitare già nella scena seguente:
+Ordine corretto *(v1.34)* — prima si compra, poi si pesca; la figura comprata **entra direttamente in mano** ed entrerà in scena nella scena immediatamente successiva:
 
 1. Si effettuano gli acquisti
-2. Le carte acquistate vengono aggiunte al **mazzo** (tutte le figure, Fante incluso)
-3. **Se** hai comprato almeno una figura, il tuo mazzo viene **rimescolato**
-4. Si pesca la nuova mano di 4 carte per la scena successiva
+2. Ogni figura comprata (Fante, Regina o Re) **entra subito nella mano** (non nel mazzo)
+3. Si **pesca fino a 4 carte** per la scena successiva: la figura occupa già uno slot, quindi si pescano solo le carte base che mancano per arrivare a 4
+
+Non c'è più alcun rimescolo del mazzo al mercato. **Costo autoregolato:** poiché la figura occupa uno slot mano, in quella scena peschi una carta base in meno (3 base + la figura), e la carta base che non peschi resta nel mazzo (neutro). *(Fino alla v1.15 la figura entrava nel mazzo, che poi si rimescolava, e diventava una pescata futura e casuale.)*
 
 ## 20. Economia di acquisto
 
@@ -481,7 +484,7 @@ Risorse disponibili:
 - Ogni **presa** → **1 punto** (anche se fatta con una figura)
 - Ogni **scopa** → **3 punti**
 
-I punti sono una **valuta** vera e propria, da segnare con **gettoni o su un foglio** (presa 1, scopa 3): non si tengono più le carte davanti a sé come marcatori (verticale/orizzontale). Le carte di prese e scope, come quelle catturate, vanno **subito negli scarti comuni** nel momento della giocata (§17), quindi al mercato non si sposta alcuna carta: si **paga il costo e si tiene sempre il resto** semplicemente sottraendo i punti spesi. Due scope (6 punti) per una Regina (5) lasciano **1 punto**, esattamente come sei prese ne lascerebbero uno. Le figure acquistate entrano nel **mazzo**, non in mano e non negli scarti.
+I punti sono una **valuta** vera e propria, da segnare con **gettoni o su un foglio** (presa 1, scopa 3): non si tengono più le carte davanti a sé come marcatori (verticale/orizzontale). Le carte di prese e scope, come quelle catturate, vanno **subito negli scarti comuni** nel momento della giocata (§17), quindi al mercato non si sposta alcuna carta: si **paga il costo e si tiene sempre il resto** semplicemente sottraendo i punti spesi. Due scope (6 punti) per una Regina (5) lasciano **1 punto**, esattamente come sei prese ne lascerebbero uno. Le figure acquistate entrano **in mano** *(v1.34)*, non nel mazzo e non negli scarti: sono in scena già dalla scena successiva.
 
 > **Nota (v1.32).** Poiché spendere punti non muove più carte, gli scarti comuni — il bacino da cui pesca il **Re** (§21) — si alimentano solo dalle carte già giocate (prese, scope, catture, figure sacrificate), a prescindere dagli acquisti al mercato.
 
@@ -511,7 +514,7 @@ Comprare una figura significa **preparare l'ingresso di un PNG importante e pote
 
 **Effetto meccanico (v1.15):** quando giochi il Fante, **sbirci le prime 2 carte del tuo mazzo** e, se vuoi, ne **scambi una con una carta della tua mano**. La carta che cedi torna **in cima** al mazzo, insieme alla carta sbirciata che non hai preso; quella che prendi entra in mano (mano e mazzo restano della stessa dimensione). Lo scambio è facoltativo e al massimo uno. Come per le altre figure, l'effetto si attiva **quando la carta viene giocata**.
 
-**Consegna all'acquisto (v1.15):** il Fante, come Regina e Re, **entra nel mazzo**; a fine mercato, se hai comprato, il mazzo si rimescola e solo dopo peschi la nuova mano (§19), così può capitarti già nella scena seguente. *(Prima della v1.15 il Fante entrava direttamente in mano: regola rimossa con il nuovo ordine del mercato.)*
+**Consegna all'acquisto (v1.34):** il Fante, come Regina e Re, **entra direttamente in mano** e va in scena nella scena immediatamente successiva; occupa uno slot, quindi a fine mercato peschi le carte base che mancano per arrivare a 4 (§19). Non c'è più alcun rimescolo. *(Tra la v1.15 e la v1.33 la figura entrava nel mazzo, che si rimescolava a fine mercato: era una pescata futura e casuale.)*
 
 **Funzione:** controllo del draw, preparazione delle prossime pescate.
 
@@ -593,10 +596,10 @@ A macchiarsi del peccato è **uno solo dei due protagonisti**: una ricaduta nei 
 
 ### 23.1 — Mano finale estesa
 
-Se un giocatore ha **più di 4 carte** rimanenti nel mazzo (la mano finale si sceglie **dopo il mercato**, così le figure appena comprate possono entrarci):
+La mano finale si sceglie **dopo il mercato**. Una figura comprata all'ultimo mercato è già in mano *(v1.34)* e resta **sempre giocabile** (mai in riserva): occupa uno dei 4 posti. Restano quindi da scegliere `4 − (carte già in mano)` carte dal mazzo. Se nel mazzo ci sono più carte dei posti liberi:
 
-- Le prende tutte in mano
-- Sceglie 4 carte con cui giocherà la scena
+- Si prendono tutte in mano
+- Si scelgono le carte che completano la mano a **4** (le figure comprate sono già dentro)
 - Le altre vengono tenute da parte come **riserva**
 
 La riserva alimenta i colpi di scena (§24), ma è anche la fonte da cui si pesca quando un effetto lo richiede e il mazzo è ormai esaurito: in particolare la Regina avversaria (§21) rimpiazza dalla riserva la carta che costringe a scartare.
@@ -748,8 +751,7 @@ Nell'ultima scena emergono due strategie principali che si oppongono:
    │   ├── Protagonisti vincono → la posta è raggiunta
    │   └── Opposizione vince → situazione peggiora
    ├── Il piatto resta sul tavolo per la scena successiva
-   ├── Pesca della nuova mano
-   └── Mercato: acquisto figure → mazzo → rimescola
+   └── Mercato: acquisto figure → in mano → pesca fino a 4 (niente rimescolo)
    (Jolly: risorsa dei Protagonisti, usabile nelle scene 1-3; se usato passa all'Opposizione, §22)
 
 3. QUINTA SCENA
@@ -943,6 +945,16 @@ In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, 
 ---
 
 # REGISTRO MODIFICHE
+
+## v1.34 (luglio 2026) — le figure comprate entrano in mano, non nel mazzo
+
+1. **§19/§21.1: la figura comprata entra direttamente in mano.** Fino alla v1.15 la figura acquistata al mercato entrava nel **mazzo**, che poi si **rimescolava**, ed era quindi una pescata futura e casuale (poteva non uscire mai). Ora entra **direttamente nella mano** e va **in scena nella scena immediatamente successiva** all'acquisto. Nuovo ordine del mercato: acquisti → figura in mano → **pesca fino a 4** (niente più rimescolo).
+2. **Costo autoregolato.** La figura occupa uno slot mano, quindi in quella scena si pescano solo 3 carte base invece di 4; la carta base che non peschi resta nel mazzo (che resta neutro).
+3. **§11: asta = solo carte numeriche.** Come il Jolly, anche le **figure** non si possono puntare nell'asta d'inizio scena: così una figura non viene mai "sprecata" coperta e ottiene sempre il suo momento in scena quando la giochi.
+4. **§8: le figure non entrano più nel mazzo.** Aggiornata la lista degli ingressi di carte nel mazzo (restano: Ritirata strategica e recupero del Re).
+5. **§23.1: scena 5.** Una figura comprata all'ultimo mercato è già in mano ed è forzata tra le carte giocabili (mai in riserva); si scelgono solo `4 − (carte già in mano)` carte dal mazzo.
+6. **Informazione parziale (feature).** L'avversario sa che hai comprato una figura e che entrerà la scena dopo: è diegetico (crei un PNG con nome nella fiction condivisa) e alimenta la tensione dell'asta.
+7. **Propagazione (stesso commit).** Motore `index.html` (`acquistaFigura` → `L.mano.push`; rimossi `rimescolaSeComprato`/`G.compratoMercato`; `avviaMercato`/`avanzaScena` senza rimescolo; `rManoEstesa` forza le figure tra le giocabili; asta `rAsta`/`iaAsta` esclude `c.jolly||c.fig`), `REGOLE`/`REGOLE_IA`/prompt `iaMercato`, questa KB (§8, §11, §19, §20, §21.1, §23.1, flusso §29, registro, footer), manuale (mercato, setup, asta, glossario, footer). Driver `test/partita_smart.js` (asta esclude figure, mano estesa a `slot`). **Bilanciamento** (benchmark 250 seed, policy di mercato invariata): missione P **51.2%** (da 53.6%). **Collaudo:** suite core verde; `test_riprova` migrato a seed 5.
 
 ## v1.33 (luglio 2026) — il Jolly speculare: cattura sleale (P) e spinta che fa emergere il peccato (O), zero punti
 
@@ -1139,4 +1151,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.33*
+*Frenemies on the Road — Knowledge Base v1.34*

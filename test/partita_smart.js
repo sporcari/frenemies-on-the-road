@@ -282,9 +282,10 @@ function runGame(seed, seed2, seed3, wantTranscript){
 
     if(f==="asta"){
       const a=G().attore, g=G();
-      const carte=[...document.querySelectorAll("#manoAsta .carta")].filter(c=>!c.classList.contains("jolly"));
-      if(!carte.length) throw new Error("asta senza carte");
       const objOf=el=>g.lati[a].mano.find(c=>c.id===parseInt(el.dataset.id));
+      // v1.34: nell'asta si usano solo carte numeriche (Jolly e figure escluse)
+      const carte=[...document.querySelectorAll("#manoAsta .carta")].filter(el=>{const c=objOf(el);return c&&!c.jolly&&!c.fig;});
+      if(!carte.length) throw new Error("asta senza carte");
       // voglio l'iniziativa solo se posso scopare subito il carryover; col piatto vuoto la evito
       const piatto=g.piatto, ps=piatto.reduce((s,x)=>s+cardVal(x),0);
       let scopaSubito=false;
@@ -391,15 +392,13 @@ function runGame(seed, seed2, seed3, wantTranscript){
       if(btn.disabled){
         const g=G(), L=g.lati[g.attore];
         const objOf=el=>L.mazzo.find(x=>x.id===parseInt(el.dataset.id));
-        const isFig=el=>{ const c=objOf(el); return !!(c&&c.fig); };
         const valOf=el=>{ const c=objOf(el); return c?(c.val||0):0; };
-        const tutte=[...document.querySelectorAll("#estCarte .carta")];
-        // Mano: FIGURE e Jolly si giocano in scena (lì contano), più le numeriche BASSE per riempire i 4 posti.
-        // Riserva: solo numeriche, e le più ALTE (nei colpi eliminano di più e pesano di più nel piatto).
-        const figure=tutte.filter(isFig);
-        const jolly=tutte.filter(c=>c.classList.contains("jolly"));
-        const altre=tutte.filter(c=>!c.classList.contains("jolly")&&!isFig(c)).sort((a,b)=>valOf(a)-valOf(b)); // basse prima → in mano
-        [...figure,...jolly,...altre].slice(0,4).forEach(c=>click(c));
+        // v1.34: la figura comprata all'ultimo mercato è già in mano (sempre giocabile): #estCarte mostra
+        // solo il mazzo (numeriche). Restano da scegliere slot = 4 - carte già in mano; prendo le più BASSE
+        // (in mano riempiono i posti), le più ALTE vanno in riserva (nei colpi pesano di più).
+        const slot=Math.max(0, 4-L.mano.length);
+        const altre=[...document.querySelectorAll("#estCarte .carta")].sort((a,b)=>valOf(a)-valOf(b));
+        altre.slice(0,slot).forEach(c=>click(c));
       }
       const g=G(); log(`   MANO ESTESA (scena 5): ${nomeL(g.attore)} tiene 4 carte, il resto in riserva.`);
       click(document.getElementById("estOk")); return f;

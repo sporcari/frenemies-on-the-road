@@ -41,7 +41,9 @@ function passo(i){
     for(let k=0;k<10;k++){ const inp=document.getElementById("w-pitch-"+k); if(inp) inp.value="Risposta di prova "+(k+1); }
     click(document.getElementById("w-avanti")); return f+G().passo }
   if(f==="asta"){
-    const carte=[...document.querySelectorAll("#manoAsta .carta")].filter(c=>!c.classList.contains("jolly"));
+    // v1.34: nell'asta solo carte numeriche (Jolly e figure escluse)
+    const manoA=G().lati[G().attore].mano;
+    const carte=[...document.querySelectorAll("#manoAsta .carta")].filter(el=>{const c=manoA.find(x=>x.id==el.dataset.id);return c&&!c.jolly&&!c.fig;});
     if(!carte.length) throw new Error("asta senza carte selezionabili (mano: "+G().lati[G().attore].mano.length+", mazzo P/O: "+G().lati.P.mazzo.length+"/"+G().lati.O.mazzo.length+", scena "+(G().scena+1)+")");
     click(carte[Math.floor(Math.random()*carte.length)]);
     click(document.getElementById("confAsta"));

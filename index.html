@@ -1618,7 +1618,7 @@ function rAsta(){
   const L=lato(G.attore);
   SC.innerHTML = `
     <h2 class="ts">Asta per l'iniziativa</h2>
-    <p class="sotto">${nomeLato(G.attore)}: scegli una carta coperta. La più alta vince l'iniziativa e apre la scena. ${L.mano.some(c=>c.jolly)?"Il Jolly non può essere usato nell'asta.":""}</p>
+    <p class="sotto">${nomeLato(G.attore)}: scegli una carta coperta. La più alta vince l'iniziativa e apre la scena. ${L.mano.some(c=>c.jolly||c.fig)?"Il Jolly e le figure non si usano nell'asta.":""}</p>
     <div class="tavolo-top">
       <div class="tot-lato p">♥+♠ Protagonisti <b>${totaleProt()}</b></div>
       <div class="tot-lato o">♦+♣ Opposizione <b>${totaleOpp()}</b></div>
@@ -1631,7 +1631,7 @@ function rAsta(){
   let scelta=null;
   SC.querySelectorAll("#manoAsta .carta").forEach(el=>{
     const c=L.mano.find(x=>x.id==el.dataset.id);
-    if(c.jolly){ el.style.opacity=.35; return }
+    if(c.jolly||c.fig){ el.style.opacity=.35; return }
     el.addEventListener("click",()=>{
       SC.querySelectorAll(".carta").forEach(x=>x.classList.remove("sel"));
       el.classList.add("sel"); scelta=c;
@@ -2538,18 +2538,12 @@ function rFineScena(){
 
 /* ================= MERCATO ================= */
 function avviaMercato(){
-  // v1.15: ordine MERCATO → (rimescolo se hai comprato) → PESCA. Qui NON si pesca: prima gli acquisti.
-  G.compratoMercato={P:false,O:false};
+  // v1.34: ordine MERCATO → PESCA (niente rimescolo). Qui NON si pesca: prima gli acquisti.
+  // La figura comprata entra in mano (vedi acquistaFigura); la pescata a fine mercato completa a 4.
   G.mercatoLato = G.modalita==="online" ? "P" : null;
   G.fase="mercato"; render();
 }
-// v1.15: rimescola il mazzo dei lati che hanno comprato una figura al mercato (chiamata prima della pescata)
-function rimescolaSeComprato(){
-  const c=G.compratoMercato||{};
-  ["P","O"].forEach(l=>{ if(c[l]) lato(l).mazzo=mischia(lato(l).mazzo); });
-}
 function avviaManoEstesa(){
-  rimescolaSeComprato();   // v1.15: il mazzo (con le figure comprate) si rimescola prima di scegliere la mano estesa
   G.estesa={P:false,O:false};
   G.fase="mano_estesa"; G.attore="P"; velo("P",render);
 }
@@ -2561,22 +2555,27 @@ function rManoEstesa(){
       <div class="tot-lato o">♦+♣ Opposizione <b>${totaleOpp()}</b></div>
     </div>
     <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto</span>'}</div>`;
-  if(L.mazzo.length>4){
+  // v1.34: una figura comprata all'ultimo mercato è già in mano: resta sempre giocabile (mai in riserva).
+  // Occupa uno slot, quindi restano da scegliere solo (4 - carte già in mano) carte dal mazzo.
+  const inMano=[...L.mano], slot=Math.max(0, 4-inMano.length);
+  if(L.mazzo.length>slot){
     const tutte=[...L.mazzo];
+    const figHTML = inMano.length ? `<p class="sotto">Già in mano, entra in scena: ${inMano.map(c=>nomeCarta(c)).join(", ")}.</p>` : "";
     SC.innerHTML=`
       <h2 class="ts">Mano finale — ${nomeLato(l)}</h2>
-      <p class="sotto">Nel mazzo restano ${tutte.length} carte: le prendi tutte. Scegline 4 per l'ultima scena; le altre vanno in riserva, fuori dal gioco.</p>
+      <p class="sotto">Nel mazzo restano ${tutte.length} carte: le prendi tutte. Scegline ${slot} per l'ultima scena; le altre vanno in riserva, fuori dal gioco.</p>
+      ${figHTML}
       ${piattoHTML}
       <div class="pannello${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}"><div class="mazzo-carte" id="estCarte">${ordina(tutte).map(c=>cartaHTML(c)).join("")}</div></div>
-      <button class="azione" id="estOk" disabled>Conferma (0/4)</button>`;
+      <button class="azione" id="estOk" disabled>Conferma (0/${slot})</button>`;
     const scelte=new Set();
     const btn=document.getElementById("estOk");
     SC.querySelectorAll("#estCarte .carta").forEach(el=>el.addEventListener("click",()=>{
       const id=parseInt(el.dataset.id);
       if(scelte.has(id)){scelte.delete(id);el.classList.remove("sel")}
-      else if(scelte.size<4){scelte.add(id);el.classList.add("sel")}
-      btn.disabled=scelte.size!==4;
-      btn.textContent=`Conferma (${scelte.size}/4)`;
+      else if(scelte.size<slot){scelte.add(id);el.classList.add("sel")}
+      btn.disabled=scelte.size!==slot;
+      btn.textContent=`Conferma (${scelte.size}/${slot})`;
     }));
     btn.addEventListener("click",()=>{
       L.mano.push(...tutte.filter(c=>scelte.has(c.id)));
@@ -2585,7 +2584,7 @@ function rManoEstesa(){
       fineEstesa(l);
     });
   }else{
-    pescaFinoA(l,4);   // ≤4 carte: le prende tutte, nessuna scelta da fare
+    pescaFinoA(l,4);   // ≤slot carte nel mazzo: le prende tutte (la figura in mano è già dentro)
     SC.innerHTML=`
       <h2 class="ts">Mano finale — ${nomeLato(l)}</h2>
       <p class="sotto">${L.mazzo.length===0?"Hai preso in mano tutte le carte rimaste.":"Hai pescato la mano per l'ultima scena."}</p>
@@ -2627,7 +2626,7 @@ function rMercato(){
     : "Chiudi il mercato e riparti";
   SC.innerHTML=`
     <h2 class="ts">Il mercato${online?" — "+nomeLato(G.mercatoLato):""}</h2>
-    <p class="sotto">${G.scena===3?"Compra ora: la mano dell'ultima scena la sceglierai subito dopo.":"La nuova mano si pesca dopo il mercato."} Pagamento automatico: i punti sono una valuta (i marcatori sono solo il modo di segnarli), quindi paghi il costo e tieni sempre il resto; i marcatori spesi vanno negli scarti comuni. Le figure entrano nel mazzo, che si rimescola prima della pescata. Si può comprare al massimo una figura per tipo.</p>
+    <p class="sotto">${G.scena===3?"Compra ora: la mano dell'ultima scena la sceglierai subito dopo.":"La nuova mano si pesca dopo il mercato."} Pagamento automatico: i punti sono una valuta (i marcatori sono solo il modo di segnarli), quindi paghi il costo e tieni sempre il resto; i marcatori spesi vanno negli scarti comuni. Le figure comprate entrano subito in mano ed entrano in scena la prossima scena (occupano uno slot: peschi le carte base che mancano per arrivare a 4). Si può comprare al massimo una figura per tipo.</p>
     <div class="mercato-griglia">${pannelli}</div>
     <button class="azione" id="m-fine">${etichettaFine}</button>`;
   SC.querySelectorAll("button[data-f]").forEach(b=>b.addEventListener("click",()=>{
@@ -2663,12 +2662,11 @@ function acquistaFigura(l,f,s,nome,desc,b){
     SC.querySelectorAll(`button[data-l="${l}"]`).forEach(x=>{ x.disabled = puntiMercato(l)<FIGURE[x.dataset.f].costo; });
     inviaStato();
   };
-  // tutte le figure (Fante incluso, v1.15) entrano nel mazzo; il mazzo si rimescola a FINE mercato,
-  // prima della pescata della nuova mano, solo se hai comprato qualcosa (vedi avanzaScena / avviaManoEstesa).
-  L.mazzo.push(fig);
-  G.compratoMercato=G.compratoMercato||{P:false,O:false};
-  G.compratoMercato[l]=true;
-  finalizza("entra nel mazzo (rimescolato a fine mercato).");
+  // v1.34: la figura comprata entra DIRETTAMENTE in mano (non nel mazzo): entra in scena
+  // nella scena immediatamente successiva. Occupa uno slot mano, quindi la pescata a fine
+  // mercato completa a 4 pescando una carta base in meno (costo autoregolato). Niente rimescolo.
+  L.mano.push(fig);
+  finalizza("entra in mano: in scena la prossima scena.");
 }
 function chiediPng(l,f,s,b){
   const fig=FIGURE[f];
@@ -2706,7 +2704,7 @@ function avanzaScena(){
   // v1.15: la nuova mano si pesca DOPO il mercato. La quinta scena (scena 4) usa la mano estesa,
   // scelta dopo il mercato: niente pescata qui. Le figure non restano mai nel piatto, quindi
   // non c'è più alcuna neutralizzazione al confine con l'ultima scena.
-  if(G.scena<4){ rimescolaSeComprato(); pescaFinoA("P",4); pescaFinoA("O",4); }
+  if(G.scena<4){ pescaFinoA("P",4); pescaFinoA("O",4); }
   iniziaScena();
 }
 
@@ -2906,8 +2904,8 @@ const REGOLE={
   asta:{titolo:"Asta e apertura",html:`
     <h3>Inizio scena: mano e asta</h3>
     <ul><li>Ogni lato pesca <b>4 carte</b> dal proprio mazzo</li>
-    <li>Ogni lato gioca <b>1 carta coperta</b> come asta per l'iniziativa</li>
-    <li>Le carte si rivelano insieme: la più alta vince l'iniziativa (il Jolly non può partecipare)</li>
+    <li>Ogni lato gioca <b>1 carta numerica coperta</b> come asta per l'iniziativa</li>
+    <li>Le carte si rivelano insieme: la più alta vince l'iniziativa (<b>il Jolly e le figure non partecipano</b>: si usano solo in scena)</li>
     <li><b>Parità:</b> l'iniziativa va a chi <b>non</b> l'ha avuta nella scena precedente; alla prima scena, all'<b>Opposizione</b></li>
     <li>La carta d'asta del vincitore resta da parte <b>scoperta</b>: la rigiocherà come <b>sua ultima giocata</b> del round, e l'avversario sa già qual è. Il perdente riprende la propria in mano</li></ul>
     <h3>Apertura della scena</h3>
@@ -2959,7 +2957,7 @@ const REGOLE={
     Alla quinta scena, ♣ contro ♦ nell'ultimo piatto: chi li ha davvero ostacolati — un nemico con un piano, o il mondo stesso?`},
   mercato:{titolo:"Mercato",html:`
     <h3>Fase di mercato (tra le scene)</h3>
-    Ordine importante (dalla 2ª scena): <b>1)</b> si effettuano gli acquisti (max <b>una figura per tipo</b>) · <b>2)</b> le figure entrano nel <b>mazzo</b> · <b>3)</b> se hai comprato, il mazzo viene <b>rimescolato</b> · <b>4)</b> si pesca la nuova mano di 4 carte.
+    Ordine importante (dalla 2ª scena): <b>1)</b> si effettuano gli acquisti (max <b>una figura per tipo</b>) · <b>2)</b> ogni figura comprata entra <b>subito in mano</b> · <b>3)</b> si <b>pesca fino a 4</b> carte (la figura occupa già uno slot, quindi peschi solo le carte base che mancano). Niente rimescolo: la figura entra in scena <b>la scena successiva</b>.
     <h3>Economia</h3>
     <ul><li>Ogni <b>presa</b> → <b>1 punto</b>, anche se fatta con una figura</li>
     <li>Ogni <b>scopa</b> → <b>3 punti</b></li></ul>
@@ -2974,8 +2972,8 @@ const REGOLE={
     <tr><td><b>Regina</b> — la manipolatrice</td><td>5</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo.</td></tr>
     <tr><td><b>Re</b> — il deus ex machina</td><td>8</td><td>10</td><td>Recupera dagli scarti comuni una carta del suo stesso seme (la mano resta): nelle scene 1-4 si rimescola nel tuo mazzo, nell'ultima entra nella riserva dei colpi di scena.</td></tr></table>
     <b>Cattura flessibile:</b> in gioco le figure catturano un gruppo di somma minore o uguale al loro valore (vedi Azioni e prese); come ogni presa, vale 1 punto. I costi 3/5/8 rendono pari le due strade verso un Re: un Re, oppure un Fante più una Regina.
-    <h3>Le figure entrano nel mazzo</h3>
-    Tutte le figure comprate (Fante, Regina, Re) <b>entrano nel mazzo</b>: a fine mercato, se hai comprato, il mazzo si rimescola e solo dopo peschi la nuova mano, così possono capitarti già nella scena seguente. L'effetto di una figura scatta <b>quando la giochi</b>.
+    <h3>Le figure entrano in mano</h3>
+    Tutte le figure comprate (Fante, Regina, Re) <b>entrano subito in mano</b> ed entrano in scena <b>la scena successiva</b> all'acquisto. Occupano uno slot mano, quindi in quella scena peschi una carta base in meno (niente rimescolo). L'effetto di una figura scatta <b>quando la giochi</b>. L'avversario sa che l'hai comprata (è un PNG con un nome): la tensione è parte del gioco.
     <div class="es">"Jess — la nostra fonte all'interno della stazione — ci dice dove si trovano le prove e quando le sentinelle cambiano turno." (Fante)</div>`},
   jolly:{titolo:"Il Jolly",html:`
     <h3>Una risorsa dei Protagonisti (non una carta del mazzo)</h3>
@@ -3011,7 +3009,7 @@ const REGOLE={
     Tra i due protagonisti, l'ultima parola spetta a chi ha realizzato <b>più scope</b>.`},
   scena5:{titolo:"La quinta scena",html:`
     <h3>Mano finale estesa (23.1)</h3>
-    La mano finale si sceglie <b>dopo il mercato</b>. Se un giocatore ha <b>più di 4 carte</b> nel mazzo: le prende tutte, sceglie le 4 con cui giocherà, le altre vanno da parte come <b>riserva</b>.
+    La mano finale si sceglie <b>dopo il mercato</b>. Una figura comprata all'ultimo mercato è già in mano e resta <b>sempre giocabile</b> (mai in riserva): occupa uno dei 4 posti. Delle carte del mazzo se ne scelgono quante ne servono per completare la mano a <b>4</b>: le prendi tutte, scegli quelle che giochi, le altre vanno da parte come <b>riserva</b>.
     <h3>Colpi di scena finali (24)</h3>
     Dopo che ciascuno ha giocato le 4 carte si fa il <b>primo conteggio</b>, come in ogni scena: si determina e si <b>narra l'esito apparente</b> (lo racconta chi ha perso la posta). Sembra finita, ma poi si gioca a <b>turni strettamente alterni</b> con le carte della <b>riserva</b> (inizia chi sta perdendo): nel tuo turno, finché hai riserva <b>devi</b> giocare una carta, che <b>entra nel piatto</b> e può <b>eliminare</b> una carta di <b>seme avversario</b> di valore <b>pari o inferiore</b> (va negli scarti; la tua resta sul tavolo). Si rivelano una alla volta. <b>Nessuno gioca due colpi di fila</b>: quando dopo un colpo tocca all'altro lato e questo non ha più riserva, la fase <b>finisce subito</b> (non si torna indietro). Chi inizia gioca quindi al massimo una carta in più dell'avversario, e l'eventuale riserva in eccesso resta inutilizzata. Solo allora il conteggio definitivo dice se la missione è riuscita o fallita.
     <h3>Il finale: i due piani (25–26)</h3>
@@ -3222,7 +3220,7 @@ const REGOLE_IA=`Sei l'OPPOSIZIONE in "Frenemies on the Road", gioco narrativo c
 
 STRUTTURA: 5 scene (Innesco, Adattamento, Frattura, Crisi, Risoluzione). Ogni scena: asta, apertura, round di giocate, fine scena; tra le scene c'è il mercato. La partita si decide sul piatto della quinta scena.
 
-ASTA E APERTURA: a inizio scena ogni lato pesca 4 carte e ne gioca 1 coperta per l'iniziativa; la più alta vince (il Jolly non partecipa; in parità vince chi NON ha avuto l'iniziativa nella scena precedente, alla scena 1 l'Opposizione). La carta d'asta del vincitore resta scoperta sul tavolo e torna come sua ULTIMA giocata del round (l'avversario sa già qual è); quella del perdente torna in mano. Chi vince apre la scena: sceglie un titolo e dichiara la POSTA, poi gioca per primo. Non c'è un passo di framing a parte: la PRIMA carta del round (giocata da chi ha l'iniziativa) apre la scena, e la sua narrazione mette in quadro anche la situazione e l'atmosfera iniziale. Come ogni giocata, il seme della carta suggerisce il tono (♠ frenetico e sotto pressione, ♥ tregua o intimità, ♦ attacco o imboscata, ♣ imprevisto e instabilità). La posta è una difficoltà concreta da superare o un obiettivo intermedio da ottenere (procurarsi qualcosa, riuscire a entrare in un luogo, riuscire a uscirne), non un esito vago. Formulala esplicitando ENTRAMBI i rami: cosa ottengono i Protagonisti se la vincono (si avvicinano alla missione), cosa va storto se la vinci tu (sono ostacolati). La posta non è mai indispensabile: vincerla avvicina al traguardo, perderla complica, ma la missione resta raggiungibile fino all'ultima scena. IL COSA, NON IL COME: la posta dice l'obiettivo concreto, mai il modo di ottenerlo (che emerge dalle giocate), e va lasciata abbastanza aperta ("orientarsi nel deserto" sì, "orientarsi col taccuino" no, perché prenarra ciò che deve nascere dalla scena). CLIMAX: fai crescere la posta di scena in scena (sempre più drammatica, ardua o decisiva); non bruciare subito le poste estreme (se già alla scena 1 si rischia il carcere di massima sicurezza e vinci tu, la storia diventa un'evasione e perde la missione). Scala indicativa (non vincolante): scena 1 il tempo, scena 2 una risorsa preziosa, scena 3 la motivazione/il morale, scena 4 la tenuta dell'alleanza tra i protagonisti, scena 5 l'esito dell'intera avventura. FAIL FORWARD: anche quando i protagonisti perdono la posta, lasciagli qualcosa per andare avanti (esperienza, un'opportunità, una risorsa verso la missione); complica, non bloccarli in un vicolo cieco. CONTINUITÀ: aggancia sempre l'apertura all'esito della scena precedente; lo stato dei protagonisti è conseguenza di com'è finita la posta prima (se non sono usciti dalla cella non puoi aprirli già in fuga per strada).
+ASTA E APERTURA: a inizio scena ogni lato pesca 4 carte e ne gioca 1 NUMERICA coperta per l'iniziativa; la più alta vince (il Jolly e le figure NON partecipano all'asta: si usano solo in scena; in parità vince chi NON ha avuto l'iniziativa nella scena precedente, alla scena 1 l'Opposizione). La carta d'asta del vincitore resta scoperta sul tavolo e torna come sua ULTIMA giocata del round (l'avversario sa già qual è); quella del perdente torna in mano. Chi vince apre la scena: sceglie un titolo e dichiara la POSTA, poi gioca per primo. Non c'è un passo di framing a parte: la PRIMA carta del round (giocata da chi ha l'iniziativa) apre la scena, e la sua narrazione mette in quadro anche la situazione e l'atmosfera iniziale. Come ogni giocata, il seme della carta suggerisce il tono (♠ frenetico e sotto pressione, ♥ tregua o intimità, ♦ attacco o imboscata, ♣ imprevisto e instabilità). La posta è una difficoltà concreta da superare o un obiettivo intermedio da ottenere (procurarsi qualcosa, riuscire a entrare in un luogo, riuscire a uscirne), non un esito vago. Formulala esplicitando ENTRAMBI i rami: cosa ottengono i Protagonisti se la vincono (si avvicinano alla missione), cosa va storto se la vinci tu (sono ostacolati). La posta non è mai indispensabile: vincerla avvicina al traguardo, perderla complica, ma la missione resta raggiungibile fino all'ultima scena. IL COSA, NON IL COME: la posta dice l'obiettivo concreto, mai il modo di ottenerlo (che emerge dalle giocate), e va lasciata abbastanza aperta ("orientarsi nel deserto" sì, "orientarsi col taccuino" no, perché prenarra ciò che deve nascere dalla scena). CLIMAX: fai crescere la posta di scena in scena (sempre più drammatica, ardua o decisiva); non bruciare subito le poste estreme (se già alla scena 1 si rischia il carcere di massima sicurezza e vinci tu, la storia diventa un'evasione e perde la missione). Scala indicativa (non vincolante): scena 1 il tempo, scena 2 una risorsa preziosa, scena 3 la motivazione/il morale, scena 4 la tenuta dell'alleanza tra i protagonisti, scena 5 l'esito dell'intera avventura. FAIL FORWARD: anche quando i protagonisti perdono la posta, lasciagli qualcosa per andare avanti (esperienza, un'opportunità, una risorsa verso la missione); complica, non bloccarli in un vicolo cieco. CONTINUITÀ: aggancia sempre l'apertura all'esito della scena precedente; lo stato dei protagonisti è conseguenza di com'è finita la posta prima (se non sono usciti dalla cella non puoi aprirli già in fuga per strada).
 
 ROUND: ci si alterna a partire dal vincitore dell'iniziativa, 4 giocate a testa. Nel tuo turno puoi:
 - Giocare una carta nel piatto = INTRODURRE una tua risorsa: un ostacolo, una minaccia o un imprevisto (♦ nemici con intenzione, ♣ caos e sfortuna) con cui i protagonisti dovranno fare i conti. Non risolve nulla, predispone. La tua narrazione AGGIUNGE un tuo elemento, NON annulla quello dei protagonisti: finché una loro carta è nel piatto, ciò che rappresenta resta in piedi. Un elemento avversario lo neutralizzi (lo togli, lo ribalti, ne mostri l'inutilità) solo con una PRESA o una SCOPA.
@@ -3231,8 +3229,8 @@ ROUND: ci si alterna a partire dal vincitore dell'iniziativa, 4 giocate a testa.
 
 FINE SCENA: si sommano i valori delle carte rimaste nel piatto: ♦+♣ contano per te, ♥+♠ per i Protagonisti; la posta la vince il totale più alto. MA se la scena si chiude col piatto vuoto perché l'ultima giocata è stata una scopa, la posta la vince chi ha fatto la scopa. In caso di parità dei totali la posta la vince chi ha giocato l'ultima carta del round, cioè chi non ha l'iniziativa. Il piatto NON si svuota tra le scene: chi apre la successiva può già prendere. Se vincono i Protagonisti la posta è raggiunta; se vinci tu, la loro posta fallisce e la situazione peggiora per loro. CHI NARRA L'ESITO: chi ha vinto l'asta ha inquadrato la scena (titolo e posta); a raccontare com'è finita è chi ha PERSO LA POSTA (la scena), così da poterne calcare le ombre e i costi. In parità dei totali narra chi ha vinto l'asta. Quindi narri TU l'esito quando i Protagonisti vincono la scena (è la tua sconfitta: raccontala con onestà, calcando sulle ombre e sul prezzo che pagheranno); se la scena la vinci tu, l'esito lo narrano i Protagonisti.
 
-MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Ordine: prima compri, poi (se hai comprato) il mazzo si rimescola, poi peschi la nuova mano. Con i punti compri figure (max una per tipo) che entrano nel tuo mazzo:
-- Fante (costo 3, valore 8): entra nel mazzo come le altre figure; quando lo giochi, sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una carta della mano (la carta che cedi torna in cima).
+MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Ordine: prima compri, poi peschi fino a 4 (niente rimescolo). Con i punti compri figure (max una per tipo) che entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno):
+- Fante (costo 3, valore 8): entra in mano; quando lo giochi, sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una carta della mano (la carta che cedi torna in cima).
 - Regina (costo 5, valore 9): l'avversario scarta una carta a caso dalla mano e pesca dal mazzo.
 - Re (costo 8, valore 10): recuperi dagli scarti comuni una carta del suo stesso seme (la mano resta), nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.
 Ogni figura che compri è un PNG: dalle subito un nome e un breve ruolo (chi è), e richiamalo quando giochi quella carta e quando narri (il suo effetto meccanico è ciò che quel personaggio fa nella storia). Più in generale, ogni elemento rilevante che introduci (un nemico, un alleato, un luogo, un oggetto) con una sua volontà e un ruolo da seguire è un «Qualcuno»: dagli un nome se conta per il seguito, altrimenti resta una comparsa.
@@ -3468,7 +3466,7 @@ function iaScheduler(){
 
 async function iaAsta(){
   iaBusy=true;
-  const carte=[...document.querySelectorAll("#manoAsta .carta")].filter(x=>!x.classList.contains("jolly"));
+  const carte=[...document.querySelectorAll("#manoAsta .carta")].filter(x=>{const c=lato("O").mano.find(y=>y.id==x.dataset.id);return c&&!c.jolly&&!c.fig;});
   const op=carte.map((el,i)=>{const c=lato("O").mano.find(x=>x.id==el.dataset.id);return `${i}: gioca coperto ${nomeCarta(c)}`});
   const r=await chiamaClaude(`ASTA PER L'INIZIATIVA: la carta più alta vince e apre la scena; la carta del vincitore sarà la sua ultima giocata, quella del perdente torna in mano.\nOPZIONI:\n${op.join("\n")}\nJSON: {"scelta": <numero>}`);
   const i=(r&&Number.isInteger(r.scelta)&&carte[r.scelta])?r.scelta:Math.floor(Math.random()*carte.length);
@@ -3598,7 +3596,7 @@ async function iaMercato(){
   const btns=[...document.querySelectorAll('button[data-l="O"][data-f]')].filter(b=>!b.disabled);
   if(btns.length){
     const op=btns.map((b,i)=>`${i}: ${FIGURE[b.dataset.f].nome} di ${b.dataset.s} ${SIMBOLI[b.dataset.s]} (costo ${FIGURE[b.dataset.f].costo})`);
-    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (una presa vale 1, una scopa 3). Le figure entrano nel tuo mazzo (a fine mercato, se compri, il mazzo si rimescola e poi peschi); puoi comprare al massimo una figura per tipo. Effetti: Fante (costo 3) = sbircia le prime 2 carte del mazzo e, se vuoi, ne scambi una con una di mano; Regina (costo 5) = l'avversario scarta una carta a caso; Re (costo 8) = recupera dagli scarti comuni una carta del suo stesso seme (la mano resta), nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.\nOPZIONI (puoi sceglierne più d'una o nessuna):\n${op.join("\n")}\nJSON: {"acquisti": [numeri] }`);
+    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (una presa vale 1, una scopa 3). Le figure che compri entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno, niente rimescolo); puoi comprare al massimo una figura per tipo. Effetti: Fante (costo 3) = sbircia le prime 2 carte del mazzo e, se vuoi, ne scambi una con una di mano; Regina (costo 5) = l'avversario scarta una carta a caso; Re (costo 8) = recupera dagli scarti comuni una carta del suo stesso seme (la mano resta), nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.\nOPZIONI (puoi sceglierne più d'una o nessuna):\n${op.join("\n")}\nJSON: {"acquisti": [numeri] }`);
     if(r&&Array.isArray(r.acquisti)) for(const i of r.acquisti){
       const b=btns[i];
       if(b&&document.contains(b)&&!b.disabled){
@@ -3617,9 +3615,13 @@ async function iaManoEstesa(){
   const btn=document.getElementById("estOk");
   if(btn&&!btn.disabled){ iaBusy=false; clicca(btn); return }
   const carte=[...document.querySelectorAll("#estCarte .carta")];
+  // v1.34: una figura comprata all'ultimo mercato è già in mano (sempre giocabile): #estCarte mostra solo il
+  // mazzo, e resta da scegliere slot = 4 - carte già in mano per completare la mano giocabile.
+  const slot=Math.max(0, 4-lato("O").mano.length);
+  const inMano=lato("O").mano.map(c=>nomeCarta(c)).join(", ");
   const op=carte.map((el,i)=>{const c=lato("O").mazzo.find(x=>x.id==el.dataset.id);return `${i}: ${c?nomeCarta(c):"?"}`});
-  const r=await chiamaClaude(`MANO FINALE: prendi tutte le carte rimaste, ne tieni 4 per l'ultima scena; le altre vanno in riserva per i colpi di scena (lì ogni carta entra nel piatto e può eliminare una carta avversaria di valore pari o inferiore: per la riserva servono quindi carte ALTE dei tuoi semi).\nCARTE:\n${op.join("\n")}\nJSON: {"tieni": [quattro numeri]}`);
-  let sel=(r&&Array.isArray(r.tieni)&&r.tieni.length===4&&r.tieni.every(i=>carte[i]))?r.tieni:[0,1,2,3];
+  const r=await chiamaClaude(`MANO FINALE: prendi tutte le carte rimaste, ne tieni ${slot} per l'ultima scena${inMano?` (in mano hai già ${inMano}, che gioca comunque)`:""}; le altre vanno in riserva per i colpi di scena (lì ogni carta entra nel piatto e può eliminare una carta avversaria di valore pari o inferiore: per la riserva servono quindi carte ALTE dei tuoi semi).\nCARTE:\n${op.join("\n")}\nJSON: {"tieni": [${slot} numeri]}`);
+  let sel=(r&&Array.isArray(r.tieni)&&r.tieni.length===slot&&r.tieni.every(i=>carte[i]))?r.tieni:carte.map((_,i)=>i).slice(0,slot);
   iaBusy=false;
   sel.forEach(i=>clicca(carte[i]));
   clicca(document.getElementById("estOk"));

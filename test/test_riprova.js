@@ -3,12 +3,15 @@
 // pulsanti di rigenerazione compaiono, e lo stub di rete risponde con testi SEMPRE DIVERSI
 // (un contatore), così la rigenerazione è verificabile: ogni "Rigenera" deve cambiare il
 // contenuto mostrato e NON deve duplicare le voci del log narrativo.
-// Seed fisso (mulberry32) per riproducibilità. Uso: npm i jsdom && SEED=2 node test/test_riprova.js
-// (default SEED=2: vincitori scene O,O,O,P,P, così i Protagonisti vincono almeno una scena e
-//  l'Opposizione/Claude narra il suo esito, come richiede la regola "narra chi perde la posta").
+// Seed fisso (mulberry32) per riproducibilità. Uso: npm i jsdom && SEED=5 node test/test_riprova.js
+// (default SEED=5: vincitori scene O,O,P,P,P, con buon margine su entrambi i lati: l'Opposizione
+//  apre le scene 1-2 (rigenera apertura) e i Protagonisti vincono le scene 3-5, così Claude narra
+//  il suo esito, come richiede la regola "narra chi perde la posta". Margine scelto per robustezza:
+//  il percorso asincrono dell'IA non è perfettamente deterministico e un singolo esito di scena può
+//  oscillare; con 2 vittorie O e 3 P entrambe le condizioni restano soddisfatte).
 const {JSDOM}=require("jsdom");
 const fs=require("fs");
-const SEED=parseInt(process.env.SEED||"2");
+const SEED=parseInt(process.env.SEED||"5");
 
 let html=fs.readFileSync(require("path").join(__dirname,"..","index.html"),"utf8");
 html=html.replace(/<script src=[^>]+><\/script>/g,"");
@@ -98,7 +101,8 @@ async function main(){
 
     const attoreO = G().attore==="O";
     if(f==="asta" && !attoreO){
-      const c=[...document.querySelectorAll("#manoAsta .carta")].filter(x=>!x.classList.contains("jolly"));
+      const manoA=G().lati[G().attore].mano;   // v1.34: asta solo numeriche (Jolly e figure escluse)
+      const c=[...document.querySelectorAll("#manoAsta .carta")].filter(x=>{const o=manoA.find(y=>y.id==x.dataset.id);return o&&!o.jolly&&!o.fig;});
       click(c[Math.floor(Math.random()*c.length)]); click(document.getElementById("confAsta"));
       await dorme(20); continue;
     }

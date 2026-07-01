@@ -119,7 +119,7 @@ Prima di cominciare, prepara i mazzi così:
 - togli entrambi i Jolly dal mazzo: uno lo tieni da parte come risorsa dei Protagonisti (fuori dal mazzo, disponibile dall'inizio — vedi Capitolo 5), l'altro resta fuori dalla partita;
 - restano quindi soltanto le carte numeriche, dall'Asso al 10, di ciascun seme: venti carte per lato.
 
-Venti carte bastano esattamente per cinque scene, perché ogni lato ne pesca quattro a scena. Tienilo a mente, perché è una regola con un peso strategico: quando il mazzo finisce, la partita finisce. Non si rimescolano mai gli scarti dentro il mazzo. Gli unici modi per aggiungere carte al mazzo sono le figure comprate al mercato, una sola volta per lato la carta della Ritirata strategica (lo vedremo nel Capitolo 3) e la carta che il Re recupera dagli scarti nelle scene 1-4 (nell'ultima scena finisce invece nella riserva). Il Jolly (Capitolo 5) non entra mai nel mazzo, è una risorsa a parte dei Protagonisti; l'unica carta che muove verso il mazzo è quella che un lato cede per afferrarlo, che torna in fondo al proprio mazzo.
+Venti carte bastano esattamente per cinque scene, perché ogni lato ne pesca quattro a scena. Tienilo a mente, perché è una regola con un peso strategico: quando il mazzo finisce, la partita finisce. Non si rimescolano mai gli scarti dentro il mazzo. Le figure comprate al mercato non entrano nel mazzo: vanno direttamente in mano (Capitolo 4), e la carta base che occuperebbero resta nel mazzo. Gli unici modi per aggiungere carte al mazzo sono quindi una sola volta per lato la carta della Ritirata strategica (lo vedremo nel Capitolo 3) e la carta che il Re recupera dagli scarti nelle scene 1-4 (nell'ultima scena finisce invece nella riserva). Il Jolly (Capitolo 5) non entra mai nel mazzo, è una risorsa a parte dei Protagonisti; l'unica carta che muove verso il mazzo è quella che un lato cede per afferrarlo, che torna in fondo al proprio mazzo.
 
 ## 1.6 Che cosa significano i semi
 
@@ -183,7 +183,7 @@ In breve, fase per fase:
 - **Pitch.** Si definiscono insieme le basi della storia: Personaggi, Missione, Opposizione, Difficoltà iniziale (Capitolo 2).
 - **Scene 1-4.** Il cuore del gioco: ogni scena è una sfida a carte, con asta e posta (Capitolo 3).
 - **Mercato.** Tra una scena e l'altra si spendono i punti per comprare le figure, carte più potenti (Capitolo 4).
-- **Ultima scena.** Si gioca con una mano estesa (le figure comprate sono carte in più di riserva) e decide la Missione (Capitolo 6).
+- **Ultima scena.** Si gioca con una mano estesa (si scelgono le carte da giocare, le altre vanno in riserva) e decide la Missione (Capitolo 6).
 - **Colpi di scena.** Le carte di riserva ribaltano l'esito apparente e fissano il destino della Missione (Capitolo 6).
 - **Lettura del finale e domande.** Si determina l'esito della storia e si risponde alle domande di fine partita (Capitolo 7).
 - **Epilogo.** A turno, brevi vignette sul destino dei personaggi, fino all'ultima dissolvenza (Capitolo 7).
@@ -368,11 +368,11 @@ I punti hanno un doppio uso:
 All'inizio di ogni scena:
 
 1. ogni lato pesca 4 carte dal proprio mazzo;
-2. ogni lato sceglie 1 carta e la gioca coperta, come puntata per l'iniziativa;
+2. ogni lato sceglie 1 carta numerica e la gioca coperta, come puntata per l'iniziativa;
 3. le due carte si rivelano insieme;
 4. chi ha giocato la carta più alta vince l'iniziativa e giocherà per primo.
 
-La carta usata nell'asta ha un destino diverso a seconda di chi vince. La carta del vincitore non è persa: la mette da parte scoperta, in vista sul tavolo, e la rigiocherà alla fine del round, come sua ultima giocata. La carta del perdente, invece, torna semplicemente nella sua mano.
+Nell'asta si usano solo carte numeriche: il Jolly e le figure (Fante, Regina, Re) non si possono puntare, perché il loro momento è la scena, non la puntata coperta. La carta usata nell'asta ha un destino diverso a seconda di chi vince. La carta del vincitore non è persa: la mette da parte scoperta, in vista sul tavolo, e la rigiocherà alla fine del round, come sua ultima giocata. La carta del perdente, invece, torna semplicemente nella sua mano.
 
 In caso di parità, se le due carte hanno lo stesso valore, l'iniziativa va a chi non l'ha avuta nella scena precedente. Alla prima scena, in caso di parità, l'iniziativa va all'Opposizione: il mondo è contro i protagonisti fin dall'inizio.
 
@@ -481,7 +481,7 @@ I Protagonisti introducono il 3 di Cuori, e Otto rivela di avere una conoscenza 
 La presa ha già la sua narrazione, coerente con quanto era stato introdotto.
 {: .esempio }
 
-Le figure (Fante, Regina, Re) sono un caso particolare di Qualcuno: personaggi potenti che si possono aggiungere al mazzo, acquistandoli al mercato.
+Le figure (Fante, Regina, Re) sono un caso particolare di Qualcuno: personaggi potenti che si acquistano al mercato ed entrano direttamente in mano.
 
 ## 3.8 Prendere: superare un ostacolo, con un eventuale costo
 
@@ -606,18 +606,19 @@ Tra una scena e l'altra si apre il mercato, dove si spendono i punti accumulati 
 
 ## 4.1 L'ordine corretto del mercato
 
-L'ordine conta: prima compri, poi peschi, così le figure comprate possono capitarti già nella scena dopo. Seguilo così:
+L'ordine conta: prima compri, poi peschi, e la figura comprata entra in scena già nella scena successiva. Seguilo così:
 
 1. si fanno gli acquisti;
-2. le carte acquistate si aggiungono al mazzo (tutte le figure, Fante incluso);
-3. se hai comprato qualcosa, il tuo mazzo si rimescola;
-4. si pesca la nuova mano di 4 carte per la scena successiva.
+2. ogni figura comprata (Fante, Regina o Re) entra subito nella tua mano;
+3. si pesca fino a 4 carte: la figura occupa già uno slot, quindi peschi solo le carte base che mancano per arrivare a 4.
+
+Non c'è alcun rimescolo. Poiché la figura occupa un posto in mano, in quella scena peschi una carta base in meno (tre carte base più la figura), e la carta base che non peschi resta nel mazzo, che così non si gonfia. È un costo che si autoregola: la potenza della figura si paga anche con una carta base in meno in quella mano.
 
 ## 4.2 Come si paga
 
 La valuta con cui paghi le figure sono i punti che hai fatto giocando: ogni presa vale 1 punto (anche con figura), ogni scopa 3 punti.
 
-La figura acquistata entra nel mazzo, dopodiché si aggiorna il punteggio togliendo i punti spesi.
+La figura acquistata entra in mano, dopodiché si aggiorna il punteggio togliendo i punti spesi.
 
 Ogni giocatore può comprare al massimo un Fante, una Regina e un Re in tutta la partita, ovviamente solo dei propri semi.
 
@@ -640,7 +641,7 @@ Le figure però non possono essere usate per ottenere una maggioranza a fine sce
 Paola ha solo il fante in mano, nel piatto c'è un 10 di quadri che non può prendere. Narra quindi che Kalim(fante di picche) decide di fermarsi per causare una frana nello stretto canyon e rallentare gli inseguitori.
 {: .esempio }
 
-**Fante, l'informatore.** Effetto: quando lo giochi, sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una carta della mano (la carta che cedi torna in cima, insieme a quella sbirciata che non hai preso; mano e mazzo restano di quattro e di quante erano). Serve a procurarti la carta giusta al momento giusto, e scatta quando giochi la carta. Come Regina e Re, il Fante entra nel mazzo all'acquisto: a fine mercato, se hai comprato, il mazzo si rimescola e poi peschi, così può capitarti già nella scena dopo. Narrativamente è un alleato informatore, un contatto che procura notizie preziose.
+**Fante, l'informatore.** Effetto: quando lo giochi, sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una carta della mano (la carta che cedi torna in cima, insieme a quella sbirciata che non hai preso; mano e mazzo restano di quattro e di quante erano). Serve a procurarti la carta giusta al momento giusto, e scatta quando giochi la carta. Come Regina e Re, il Fante entra in mano all'acquisto ed è in scena già nella scena successiva. Narrativamente è un alleato informatore, un contatto che procura notizie preziose.
 
 "Un vecchio contatto di Otto al bazar ci dice quali carovane stanno per partire e quali piste evitare per non incrociare gli uomini della Loggia."
 {: .esempio }
@@ -714,10 +715,10 @@ La quinta scena, la Risoluzione, si gioca come le altre, ma con alcune regole in
 
 ## 6.1 La selezione della mano finale e delle riserve
 
-La mano finale si sceglie dopo il mercato, così le figure appena comprate possono entrarci. Se a quel punto un giocatore ha più di 4 carte rimaste nel mazzo:
+La mano finale si sceglie dopo il mercato. Una figura comprata all'ultimo mercato è già in mano e resta sempre giocabile, mai in riserva: occupa uno dei 4 posti. Restano quindi da scegliere solo le carte del mazzo che servono a completare la mano a 4. Se a quel punto nel mazzo ci sono più carte dei posti liberi:
 
 - le prende tutte in mano;
-- ne sceglie 4 con cui giocherà la scena;
+- sceglie le carte che completano la mano a 4 (le figure già in mano sono comunque dentro);
 - tiene le altre da parte come Riserva.
 
 La Riserva alimenta i colpi di scena.
@@ -1420,7 +1421,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Apertura della scena.** Il primo momento della scena. Chi vince l'asta dichiara titolo e posta, poi gioca la prima carta: non c'è un passo di ambientazione a parte, è la narrazione di quella prima giocata a mettere in scena dove sono i protagonisti, con quale atmosfera, e che cosa accade.
 
-**Asta.** Il modo in cui si assegna l'iniziativa a inizio scena. Ogni lato pesca quattro carte e ne gioca una coperta, poi si scoprono insieme: la più alta vince e gioca per prima. In parità l'iniziativa va a chi non l'aveva nella scena precedente (alla prima scena, all'Opposizione).
+**Asta.** Il modo in cui si assegna l'iniziativa a inizio scena. Ogni lato pesca quattro carte e ne gioca una numerica coperta, poi si scoprono insieme: la più alta vince e gioca per prima. Nell'asta si usano solo carte numeriche: il Jolly e le figure non si possono puntare. In parità l'iniziativa va a chi non l'aveva nella scena precedente (alla prima scena, all'Opposizione).
 
 **Atmosfera.** Il tono con cui si apre la scena, suggerito dal seme della prima carta giocata: Picche pressione o conflitto, Cuori tregua o intimità, Quadri attacco o imboscata, Fiori imprevisto. È uno spunto, non un obbligo.
 
@@ -1462,11 +1463,11 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Mano.** Le quattro carte pescate da un lato a inizio scena.
 
-**Mano finale estesa.** Nella quinta scena, se hai più di quattro carte nel mazzo, le prendi tutte, scegli le quattro con cui giochi la scena e tieni le altre come riserva.
+**Mano finale estesa.** Nella quinta scena, una figura comprata all'ultimo mercato è già in mano e resta giocabile (mai in riserva); dal mazzo prendi tutte le carte e scegli quelle che completano la mano a quattro, tenendo le altre come riserva.
 
 **Il peccato del Jolly.** Usare il Jolly è il peccato: un successo sleale. Quando i Protagonisti lo giocano, passa all'Opposizione; questa, spendendolo come spinta (trasforma una propria presa in scopa), fa emergere nella narrazione il compromesso commesso dai Protagonisti — il peccato che torna a galla e incrina l'alleanza. Nessun uso del Jolly dà punti.
 
-**Mercato.** La fase tra una scena e l'altra: prima si comprano le figure (che entrano nel mazzo), poi, se hai comprato, si rimescola, infine si pesca la nuova mano. Si paga con i punti delle prese e delle scope.
+**Mercato.** La fase tra una scena e l'altra: prima si comprano le figure (che entrano subito in mano, in scena la scena successiva), poi si pesca fino a quattro carte (niente rimescolo: la figura occupa già uno slot). Si paga con i punti delle prese e delle scope.
 
 **Missione.** Lo scopo della partita: l'obiettivo dei protagonisti, chiaro e con una scadenza. Se falliscono entro la fine della storia, l'occasione è persa per sempre.
 
@@ -1629,4 +1630,4 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 
 ---
 
-*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.33, che resta la fonte di verità del regolamento.*
+*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.34, che resta la fonte di verità del regolamento.*
