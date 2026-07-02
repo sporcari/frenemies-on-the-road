@@ -365,9 +365,9 @@ const LETT_RAPP = {
 };
 const FIGURE = {
   F:{nome:"Fante", titolo:"L'informatore", val:8, costo:3,
-     eff:"Sbircia le prime 2 carte del mazzo e, se vuoi, scambiane una con una carta della mano."},
+     eff:"Sbircia le prime 2 carte del mazzo e, se vuoi, scambiane una con una carta della mano. Nell'ultima scena, col mazzo esaurito, sbirci la riserva avversaria e ne togli una carta (la scegli tu): torna nella sua mano, e lui rimette in riserva la sua carta più bassa."},
   D:{nome:"Regina", titolo:"La manipolatrice", val:9, costo:5,
-     eff:"L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo."},
+     eff:"L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo. Nell'ultima scena, se il mazzo è esaurito, pesca a caso dalla riserva; se non ha né mazzo né riserva, raccoglie dagli scarti una carta che scegli tu."},
   R:{nome:"Re", titolo:"Il deus ex machina", val:10, costo:8,
      eff:"Recupera dagli scarti comuni una carta numerica del suo stesso seme, di valore fino a 10 meno le scene già vinte dall'avversario: nelle scene 1-4 si rimescola nel tuo mazzo, nell'ultima entra nella riserva."}
 };
@@ -2228,13 +2228,88 @@ function creaPng(){
 function modale(html){ document.getElementById("modaleCorpo").innerHTML=html; document.getElementById("ovModale").classList.add("attivo") }
 function chiudiModale(){ const c=document.getElementById("modaleCorpo"); c.style.maxWidth=""; document.getElementById("ovModale").classList.remove("attivo") }
 
+function effettoFanteRiserva(l, poi){
+  // v1.42: Fante nell'ultima scena col mazzo esaurito. Chi lo gioca sbircia la riserva avversaria
+  // e ne toglie una carta (la sceglie lui), che torna nella mano nemica; l'avversario rimette in
+  // riserva la sua carta di mano numerica piu' bassa (la scelta razionale che cede).
+  const A=lato(altro(l));
+  const fai=(risId)=>{
+    const ri=A.riserva.findIndex(x=>x.id===risId);
+    if(ri<0){ poi(); return }
+    const presa=A.riserva.splice(ri,1)[0];
+    A.mano.push(presa);
+    const cede=A.mano.filter(x=>!x.jolly && !x.fig && x.id!==presa.id).sort((a,b)=>a.val-b.val)[0];
+    if(cede){ A.mano=A.mano.filter(x=>x.id!==cede.id); A.riserva.push(cede); }
+    G.ultimaGiocata += cede
+      ? ` Il Fante fruga tra le riserve nemiche: ${nomeCarta(presa)} torna nella loro mano, e al suo posto in riserva finisce ${nomeCarta(cede)}.`
+      : ` Il Fante fruga tra le riserve nemiche: ${nomeCarta(presa)} torna nella loro mano.`;
+    poi();
+  };
+  if(G.modalita==="solo" && l==="O"){   // l'IA toglie la carta piu' alta della riserva avversaria (indebolisce il duello)
+    const alta=A.riserva.slice().sort((a,b)=>b.val-a.val)[0];
+    fai(alta.id); return;
+  }
+  let sel=null;
+  modale(`<h2 class="ts">Fante — L'informatore</h2>
+    <p class="sotto">Il mazzo e' esaurito. Sbirci la <b>riserva dell'avversario</b> e scegli una carta da togliergli: torna nella sua mano, e lui rimette in riserva la sua carta di mano piu' bassa.</p>
+    <span class="etichetta">Riserva avversaria</span>
+    <div class="mazzo-carte" id="fanteRis">${A.riserva.map(x=>cartaHTML(x)).join("")}</div>
+    <div style="display:flex;gap:8px;margin-top:14px">
+      <button class="azione" id="fanteRisOk" disabled>Togli questa carta</button>
+    </div>`);
+  document.querySelectorAll("#fanteRis .carta").forEach(el=>el.addEventListener("click",()=>{
+    document.querySelectorAll("#fanteRis .carta").forEach(x=>x.classList.remove("sel"));
+    el.classList.add("sel"); sel=parseInt(el.dataset.id);
+    const b=document.getElementById("fanteRisOk"); if(b) b.disabled=false;
+  }));
+  document.getElementById("fanteRisOk").addEventListener("click",()=>{ chiudiModale(); fai(sel); });
+}
+function reginaDaScarti(l, scartata, scartiDisp, poi){
+  // v1.42: Regina nell'ultima scena, avversario senza mazzo ne' riserva. Chi gioca la Regina sceglie
+  // una carta degli scarti comuni e costringe l'avversario a raccoglierla in mano.
+  const A=lato(altro(l));
+  const dai=(id)=>{
+    const idx=G.scartiComuni.findIndex(x=>x.id===id);
+    const data = idx>=0 ? G.scartiComuni.splice(idx,1)[0] : null;
+    if(data) A.mano.push(data);
+    G.ultimaGiocata += data
+      ? ` La Regina agisce: l'avversario scarta ${nomeCarta(scartata)} e, senza mazzo né riserva, è costretto a raccogliere ${nomeCarta(data)} dagli scarti.`
+      : ` La Regina agisce: l'avversario scarta ${nomeCarta(scartata)} e resta con una carta in meno.`;
+    poi();
+  };
+  if(G.modalita==="solo" && l==="O"){   // l'IA gli rifila la carta piu' bassa (la peggiore per lui)
+    const bassa=scartiDisp.slice().sort((a,b)=>a.val-b.val)[0];
+    dai(bassa.id); return;
+  }
+  let sel=null;
+  modale(`<h2 class="ts">Regina — La manipolatrice</h2>
+    <p class="sotto">L'avversario è senza mazzo e senza riserva. Scegli tu quale carta degli <b>scarti comuni</b> costringerlo a raccogliere in mano.</p>
+    <span class="etichetta">Scarti comuni</span>
+    <div class="mazzo-carte" id="reginaScarti">${scartiDisp.map(x=>cartaHTML(x)).join("")}</div>
+    <div style="display:flex;gap:8px;margin-top:14px">
+      <button class="azione" id="reginaScartiOk" disabled>Dagli questa carta</button>
+    </div>`);
+  document.querySelectorAll("#reginaScarti .carta").forEach(el=>el.addEventListener("click",()=>{
+    document.querySelectorAll("#reginaScarti .carta").forEach(x=>x.classList.remove("sel"));
+    el.classList.add("sel"); sel=parseInt(el.dataset.id);
+    const b=document.getElementById("reginaScartiOk"); if(b) b.disabled=false;
+  }));
+  document.getElementById("reginaScartiOk").addEventListener("click",()=>{ chiudiModale(); dai(sel); });
+}
 function effettoFigura(c, poi){
   const l=G.attore, L=lato(l), A=lato(altro(l));
   if(c.fig==="F"){
     // Fante (v1.15): sbirci le prime 2 del mazzo e, se vuoi, ne scambi una con una carta della mano;
     // la carta che cedi torna in cima al mazzo insieme alla carta sbirciata non scelta.
     const top=L.mazzo.slice(0,2);
-    if(top.length===0 || L.mano.length===0){ poi(); return }
+    // v1.42: nell'ultima scena il mazzo e' esaurito; il Fante agisce allora sulla RISERVA avversaria.
+    // Chi gioca il Fante sceglie una carta della riserva avversaria e la sposta nella mano nemica;
+    // l'avversario rimette in riserva la sua carta di mano piu' bassa (la scelta razionale che cede).
+    if(top.length===0){
+      if(A.riserva.length>0 && A.mano.length>0){ effettoFanteRiserva(l, poi); return }
+      poi(); return;   // ne' mazzo ne' bersaglio nella riserva avversaria: nessun effetto
+    }
+    if(L.mano.length===0){ poi(); return }
     const fai=(topId,manoId)=>{
       const ti=L.mazzo.findIndex(x=>x.id===topId), mi=L.mano.findIndex(x=>x.id===manoId);
       if(ti>=0 && mi>=0){ const dc=L.mazzo[ti], hc=L.mano[mi]; L.mano[mi]=dc; L.mazzo[ti]=hc; }
@@ -2270,20 +2345,31 @@ function effettoFigura(c, poi){
     document.getElementById("fanteSwap").addEventListener("click",()=>{ fai(topSel,manoSel); chiudiModale(); poi(); });
   }
   else if(c.fig==="D"){
-    if(A.mano.length>0){
-      const i=Math.floor(Math.random()*A.mano.length);
-      const scartata=A.mano.splice(i,1)[0];
-      scarta(scartata);   // se è una figura, esce dal gioco (non recuperabile dal Re)
-      // sostituzione: la prima carta del mazzo; se il mazzo è vuoto ma c'è una riserva (ultima scena), si pesca dalla riserva
-      let pescata=null, fonte="";
-      if(A.mazzo.length>0){ pescata=A.mazzo.shift(); fonte="dal mazzo"; }
-      else if(A.riserva.length>0){ pescata=A.riserva.shift(); fonte="dalla riserva"; }
-      if(pescata) A.mano.push(pescata);
-      G.ultimaGiocata += pescata
-        ? ` La Regina agisce: l'avversario scarta ${nomeCarta(scartata)} e pesca ${fonte}.`
-        : ` La Regina agisce: l'avversario scarta ${nomeCarta(scartata)} e resta con una carta in meno.`;
+    if(A.mano.length===0){ poi(); return }
+    const i=Math.floor(Math.random()*A.mano.length);
+    const scartata=A.mano.splice(i,1)[0];
+    scarta(scartata);   // se è una figura, esce dal gioco (non recuperabile dal Re)
+    // sostituzione: la prima carta del mazzo;
+    if(A.mazzo.length>0){
+      A.mano.push(A.mazzo.shift());
+      G.ultimaGiocata += ` La Regina agisce: l'avversario scarta ${nomeCarta(scartata)} e pesca dal mazzo.`;
+      poi(); return;
     }
-    poi();
+    // ultima scena, mazzo esaurito: rimpiazzo con una carta A CASO dalla riserva (v1.42)
+    if(A.riserva.length>0){
+      const ri=Math.floor(Math.random()*A.riserva.length);
+      A.mano.push(A.riserva.splice(ri,1)[0]);
+      G.ultimaGiocata += ` La Regina agisce: l'avversario scarta ${nomeCarta(scartata)} e pesca a caso dalla riserva.`;
+      poi(); return;
+    }
+    // v1.42: né mazzo né riserva -> l'avversario e' costretto a raccogliere dagli scarti comuni una carta scelta da chi ha giocato la Regina
+    const scartiDisp=G.scartiComuni.filter(x=>!x.fig && x.id!==scartata.id);
+    if(scartiDisp.length===0){
+      G.ultimaGiocata += ` La Regina agisce: l'avversario scarta ${nomeCarta(scartata)} e resta con una carta in meno.`;
+      poi(); return;
+    }
+    reginaDaScarti(l, scartata, scartiDisp, poi);
+    return;
   }
   else if(c.fig==="R"){
     // v1.27: il Re RECUPERA una carta dagli scarti comuni dello STESSO SEME del Re giocato (non scambio, la mano resta).
@@ -3016,8 +3102,8 @@ const REGOLE={
     <h3>Comprare una figura crea un PNG</h3>
     Comprare una figura prepara l'ingresso di un PNG importante e potente (la potenza cresce Fante &lt; Regina &lt; Re), su due piani: in fiction e nelle meccaniche, che scattano quando giochi la carta. Al momento dell'acquisto decidi <b>nome, ruolo e aspetto</b> e li annoti su una index card dal tuo lato, col <b>valore</b> della carta. Da lì è un personaggio a tutti gli effetti, e il suo effetto meccanico è ciò che fa nella storia. <b>Una figura senza nome non si compra.</b>
     <table><tr><th>Figura</th><th>Costo</th><th>Valore</th><th>Effetto</th></tr>
-    <tr><td><b>Fante</b> — l'informatore</td><td>3</td><td>8</td><td>Sbircia le prime 2 carte del mazzo; se vuole, ne scambia una con una carta della mano (la carta ceduta torna in cima).</td></tr>
-    <tr><td><b>Regina</b> — la manipolatrice</td><td>5</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo.</td></tr>
+    <tr><td><b>Fante</b> — l'informatore</td><td>3</td><td>8</td><td>Sbircia le prime 2 carte del mazzo; se vuole, ne scambia una con una carta della mano (la carta ceduta torna in cima). Nell'ultima scena, col mazzo esaurito, sbircia la riserva avversaria e ne toglie una carta (la sceglie lui): torna nella mano nemica, e l'avversario rimette in riserva la sua carta più bassa.</td></tr>
+    <tr><td><b>Regina</b> — la manipolatrice</td><td>5</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo. Nell'ultima scena, se il mazzo è esaurito, pesca a caso dalla riserva; se non ha né mazzo né riserva, è costretto a raccogliere dagli scarti una carta scelta da chi ha giocato la Regina.</td></tr>
     <tr><td><b>Re</b> — il deus ex machina</td><td>8</td><td>10</td><td>Recupera dagli scarti comuni una carta <b>numerica</b> del suo stesso seme (la mano resta), di valore <b>fino a 10 meno le scene già vinte dall'avversario</b>: nelle scene 1-4 si rimescola nel tuo mazzo, nell'ultima entra nella riserva dei colpi di scena.</td></tr></table>
     <p class="sotto">Una figura, una volta giocata (cattura, scopa o sacrificio), <b>esce dal gioco</b>: non va negli scarti comuni e non è più recuperabile (nemmeno dal Re). In <b>riserva</b> per i colpi di scena vanno quindi solo carte numeriche.</p>
     <b>Cattura flessibile:</b> in gioco le figure catturano un gruppo di somma minore o uguale al loro valore (vedi Azioni e prese); come ogni presa, vale 1 punto. I costi 3/5/8 rendono pari le due strade verso un Re: un Re, oppure un Fante più una Regina.
@@ -3281,8 +3367,8 @@ ROUND: ci si alterna a partire dal vincitore dell'iniziativa, 4 giocate a testa.
 FINE SCENA: si sommano i valori delle carte rimaste nel piatto: ♦+♣ contano per te, ♥+♠ per i Protagonisti; la posta la vince il totale più alto. MA se la scena si chiude col piatto vuoto perché l'ultima giocata è stata una scopa, la posta la vince chi ha fatto la scopa. In caso di parità dei totali la posta la vince chi ha giocato l'ultima carta del round, cioè chi non ha l'iniziativa. Il piatto NON si svuota tra le scene: chi apre la successiva può già prendere. Se vincono i Protagonisti la posta è raggiunta; se vinci tu, la loro posta fallisce e la situazione peggiora per loro. CHI NARRA L'ESITO: chi ha vinto l'asta ha inquadrato la scena (titolo e posta); a raccontare com'è finita è chi ha PERSO LA POSTA (la scena), così da poterne calcare le ombre e i costi. In parità dei totali narra chi ha vinto l'asta. Quindi narri TU l'esito quando i Protagonisti vincono la scena (è la tua sconfitta: raccontala con onestà, calcando sulle ombre e sul prezzo che pagheranno); se la scena la vinci tu, l'esito lo narrano i Protagonisti.
 
 MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Ordine: prima compri, poi peschi fino a 4 (niente rimescolo). Con i punti compri figure (al massimo UNA per mercato, e una sola per tipo in tutta la partita) che entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno):
-- Fante (costo 3, valore 8): entra in mano; quando lo giochi, sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una carta della mano (la carta che cedi torna in cima).
-- Regina (costo 5, valore 9): l'avversario scarta una carta a caso dalla mano e pesca dal mazzo.
+- Fante (costo 3, valore 8): entra in mano; quando lo giochi, sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una carta della mano (la carta che cedi torna in cima). Nell'ultima scena, col mazzo esaurito, l'effetto cambia: sbirci la RISERVA avversaria e ne togli una carta a tua scelta (torna nella sua mano), e l'avversario rimette in riserva la sua carta di mano più bassa.
+- Regina (costo 5, valore 9): l'avversario scarta una carta a caso dalla mano e pesca dal mazzo. Nell'ultima scena, se il mazzo è esaurito, pesca a CASO dalla riserva; se non ha né mazzo né riserva, è costretto a raccogliere dagli scarti comuni una carta che scegli TU.
 - Re (costo 8, valore 10): recuperi dagli scarti comuni una carta NUMERICA del suo stesso seme (la mano resta), di valore FINO A 10 meno le scene già vinte dall'avversario, nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena (dove pesa: alimenta il duello finale). Una figura, una volta giocata, ESCE DAL GIOCO (non negli scarti), quindi il Re trova solo numeri.
 Ogni figura che compri è un PNG: dalle subito un nome e un breve ruolo (chi è), e richiamalo quando giochi quella carta e quando narri (il suo effetto meccanico è ciò che quel personaggio fa nella storia). Più in generale, ogni elemento rilevante che introduci (un nemico, un alleato, un luogo, un oggetto) con una sua volontà e un ruolo da seguire è un «Qualcuno»: dagli un nome se conta per il seguito, altrimenti resta una comparsa.
 
@@ -3643,7 +3729,7 @@ async function iaMercato(){
   const btns=[...document.querySelectorAll('button[data-l="O"][data-f]')].filter(b=>!b.disabled);
   if(btns.length){
     const op=btns.map((b,i)=>`${i}: ${FIGURE[b.dataset.f].nome} di ${b.dataset.s} ${SIMBOLI[b.dataset.s]} (costo ${FIGURE[b.dataset.f].costo})`);
-    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (una presa vale 1, una scopa 3). Le figure che compri entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno, niente rimescolo); puoi comprare al massimo UNA figura per mercato (e una sola per tipo in tutta la partita). Effetti: Fante (costo 3) = sbircia le prime 2 carte del mazzo e, se vuoi, ne scambi una con una di mano; Regina (costo 5) = l'avversario scarta una carta a caso; Re (costo 8) = recupera dagli scarti comuni una carta NUMERICA del suo stesso seme (la mano resta), di valore FINO A 10 meno le scene già vinte dall'avversario, nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.\nOPZIONI (scegline UNA o nessuna):\n${op.join("\n")}\nJSON: {"acquisto": <numero oppure null> }`);
+    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (una presa vale 1, una scopa 3). Le figure che compri entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno, niente rimescolo); puoi comprare al massimo UNA figura per mercato (e una sola per tipo in tutta la partita). Effetti: Fante (costo 3) = sbircia le prime 2 carte del mazzo e, se vuoi, ne scambi una con una di mano (nell'ultima scena, mazzo esaurito, sbirci la riserva avversaria e ne togli una carta a tua scelta, che torna nella sua mano, e lui rimette in riserva la sua piu' bassa); Regina (costo 5) = l'avversario scarta una carta a caso (nell'ultima scena, se il mazzo e' esaurito pesca a caso dalla riserva; se non ha ne' mazzo ne' riserva raccoglie dagli scarti una carta che scegli tu); Re (costo 8) = recupera dagli scarti comuni una carta NUMERICA del suo stesso seme (la mano resta), di valore FINO A 10 meno le scene già vinte dall'avversario, nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.\nOPZIONI (scegline UNA o nessuna):\n${op.join("\n")}\nJSON: {"acquisto": <numero oppure null> }`);
     // v1.35: una sola figura per mercato. Accetta il nuovo formato "acquisto"; per retrocompatibilità legge anche il primo di "acquisti".
     const scelta = r ? (Number.isInteger(r.acquisto) ? r.acquisto : (Array.isArray(r.acquisti)&&Number.isInteger(r.acquisti[0]) ? r.acquisti[0] : null)) : null;
     if(scelta!==null){

@@ -93,6 +93,7 @@ function runGame(seed, seed2, seed3, wantTranscript){
   const figP=new Set(), figO=new Set();       // figure COMPRATE per lato
   const figGiocate=new Set();                 // figure effettivamente GIOCATE in azione (F/D/R), via ultimaGiocata
   let fanteSbircia=false, fanteScambio=false; // l'effetto v1.15 del Fante si è VISTO (modale) / ha fatto uno scambio
+  let fanteRiserva=false, reginaScarti=false; // v1.42: effetti dedicati in scena 5 (Fante sulla riserva avv., Regina dagli scarti)
   let jollyTipo="";                           // come è stato usato il Jolly: "scopa"/"presa" sleale, o "scarto"
   let reginaColpo=false, reColpo=false;        // figura calata DURANTE i colpi di scena (entrata scenica in cripta)
   let reginaPresa=false, reginaSacr=false;     // la Regina (Pablo) fa una PRESA VERA in scena vs si sacrifica da 1 pt
@@ -267,6 +268,28 @@ function runGame(seed, seed2, seed3, wantTranscript){
           log(`   → effetto RE: recupera ${cstr(top.c)} dagli scarti (${g.scena>=4?"nella riserva":"rimescolata nel mazzo"}).`);
         } else { click(document.getElementById("reNo")); log("   → effetto RE: nessuna carta del seme negli scarti."); }
         return "re";
+      }
+      const fanteRisOk=document.getElementById("fanteRisOk");
+      if(fanteRisOk){   // v1.42: Fante in scena 5, mazzo esaurito: tolgo la carta PIÙ ALTA dalla riserva avversaria
+        const g=G(), altro=g.attore==="P"?"O":"P", A=g.lati[altro];
+        const cards=[...document.querySelectorAll("#fanteRis .carta")]
+          .map(el=>({el, c:(A.riserva||[]).find(x=>x.id===parseInt(el.dataset.id))})).filter(o=>o.c);
+        if(!cards.length) throw new Error("fante-riserva senza carte");
+        const top=cards.slice().sort((a,b)=>b.c.val-a.c.val)[0];
+        click(top.el); click(fanteRisOk); fanteRiserva=true;
+        log(`   → effetto FANTE (scena 5): toglie ${cstr(top.c)} dalla riserva avversaria.`);
+        return "fante-ris";
+      }
+      const reginaScartiOk=document.getElementById("reginaScartiOk");
+      if(reginaScartiOk){   // v1.42: Regina, avversario senza mazzo né riserva: gli rifilo la carta PIÙ BASSA degli scarti
+        const g=G();
+        const cards=[...document.querySelectorAll("#reginaScarti .carta")]
+          .map(el=>({el, c:(g.scartiComuni||[]).find(x=>x.id===parseInt(el.dataset.id))})).filter(o=>o.c);
+        if(!cards.length) throw new Error("regina-scarti senza carte");
+        const bassa=cards.slice().sort((a,b)=>a.c.val-b.c.val)[0];
+        click(bassa.el); click(reginaScartiOk); reginaScarti=true;
+        log(`   → effetto REGINA (scena 5): rifila ${cstr(bassa.c)} dagli scarti.`);
+        return "regina-scarti";
       }
       const pngOk=document.getElementById("pngOk");
       if(pngOk){ const n=document.getElementById("m-png-nome"); if(n) n.value="PNG di prova";
@@ -526,7 +549,7 @@ function runGame(seed, seed2, seed3, wantTranscript){
       const arco=poste.map(x=>x==="P"?"P":x==="O"?"O":x==="parita"?"=":"-").join("");
       const __r={riass, T, fnT, ok:true, seed:sd, outcome, arco, figset:[...figset], resaCount,
         figP:[...figP].sort().join(""), figO:[...figO].sort().join(""), figGiocate:[...figGiocate].sort().join(""), jollyP, jollyO, jollyGiocati:jollyP+jollyO,
-        fanteSbircia, fanteScambio, jollyTipo, reginaColpo, reColpo, reginaPresa, reginaSacr, fanteSacr,
+        fanteSbircia, fanteScambio, fanteRiserva, reginaScarti, jollyTipo, reginaColpo, reColpo, reginaPresa, reginaSacr, fanteSacr,
         poste, sceneOK45: poste[3]==="O" && poste[4]==="P",
         nP, nO, primoP, primoO, finalP, finalO,
         missione: g.scene[4]?g.scene[4].missione:null,               // v1.38: vincitore del duello dei colpi
@@ -618,7 +641,7 @@ if(require.main!==module){
     // Selezione alternativa (richiesta giu 2026): mercato canonico (P: Fante+Regina, O: Re),
     // tutte e 3 le figure E il jolly GIOCATI, unico vincolo su esiti: scena 4 = O, scena 5 = P.
     const regS=r=>r.reginaSacr?"SACR-1pt":r.reginaPresa?"PRESA":r.reginaColpo?"colpo":"-";
-    const fmt2=r=>`SEED=${r.seed} arco=${r.arco} | Fante:${r.fanteSacr?"SACR-1pt":r.fanteScambio?"SCAMBIO":r.fanteSbircia?"sbircia":"NO-effetto"} Regina:${regS(r)} Jolly:${r.jollyTipo||"-"} | primo ${r.primoP}-${r.primoO}→${r.finalP}-${r.finalO} rese=${r.resaCount} | "${r.outcome}"`;
+    const fmt2=r=>`SEED=${r.seed} arco=${r.arco} | Fante:${r.fanteSacr?"SACR-1pt":r.fanteScambio?"SCAMBIO":r.fanteSbircia?"sbircia":r.fanteRiserva?"riserva-S5":"NO-effetto"} Regina:${regS(r)}${r.reginaScarti?"+scarti-S5":""} Jolly:${r.jollyTipo||"-"} | primo ${r.primoP}-${r.primoO}→${r.finalP}-${r.finalO} rese=${r.resaCount} | "${r.outcome}"`;
     const base=r=>r.figP==="DF" && r.figO==="R" && ["F","D","R"].every(x=>r.figGiocate.includes(x)) && r.jollyGiocati>0 && r.sceneOK45;
     const ok=rows.filter(base);
     console.log(``);

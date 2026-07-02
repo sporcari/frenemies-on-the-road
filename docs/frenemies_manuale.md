@@ -166,7 +166,7 @@ L'esito della missione dei protagonisti si decide nell'ultima scena: chi vince q
 La Crescita si legge a scaglioni, uno per lato:
 
 - **Protagonisti:** poca crescita (siete rimasti quelli della partenza), crescita (qualcosa è cambiato, nasce una stima reciproca) o grande crescita (il viaggio vi ha trasformati).
-- **Opposizione:** stesso numero ma segno opposto, la minaccia che resta: spenta (i nemici si sono sfilacciati), intatta (rallentati, non fermati) o l'idra (escono più forti di prima, torneranno).
+- **Opposizione:**  può risultare: sventata (i nemici si sono sfilacciati), intatta (rallentati, non fermati) o come un'Idra (torneranno più forti di prima).
 
 Oltre all'esito della missione, la storia racconterà anche il destino del rapporto tra i due protagonisti: si è rafforzato, evoluto o è deflagrato?
 Letta la Crescita, i giocatori racconteranno a turno, con brevi scenette, il destino dei vari personaggi, fino all'ultima dissolvenza al nero.
@@ -185,7 +185,7 @@ In breve, fase per fase:
 - **Mercato.** Tra una scena e l'altra si spendono i punti per comprare le figure, carte più potenti (Capitolo 4).
 - **Ultima scena.** Si gioca con una mano estesa (si scelgono le carte da giocare, le altre vanno in riserva) e decide la Missione (Capitolo 6).
 - **Colpi di scena.** Le carte di riserva ribaltano l'esito apparente e fissano il destino della Missione (Capitolo 6).
-- **Lettura del finale.** Si legge la Crescita di ciascun lato, a scaglioni (Capitolo 7).
+- **Lettura del finale.** Si legge la Crescita di ciascun lato interpretandone il significato narrativo (Capitolo 7).
 - **Epilogo.** A turno, brevi vignette sul destino dei personaggi, fino all'ultima dissolvenza (Capitolo 7).
 
 
@@ -237,11 +237,14 @@ Nello scenario demo Picche è Vera Falco, eroina d'azione atletica e impulsiva, 
 
 Scegliere una buona coppia di protagonisti è molto più importante di una buona missione: quella, in fin dei conti, è ciò che nel gergo cinematografico si chiama McGuffin, un espediente per avviare la storia e motivare i personaggi. Anche in questo caso siate propositivi e ascoltate i suggerimenti di tutti, anche se l'ultima decisione sui protagonisti spetta al giocatore che li interpreta.
 
+Cercate di trovare un buon motivo per cui per nessuna ragione uno dei due personaggi, possa rinunciare alla missione. Potranno litigare, minacciarsi infinite volte di separarsi, ma non potranno farlo mai, davvero.
+
 Compilate quindi la scheda, scrivendo il nome di ciascun personaggio, spiegando in poche parole chi è, la sua età e il suo aspetto.
 Inoltre rispondete alle seguenti domande
 
 1. Cosa il Picche detesta di Cuori?
 2. Cosa il Cuori detesta di Picche?
+3. Com'è il mio aspetto fisico e il mio look?
 
 
 ## 2.4 L'Opposizione
@@ -296,6 +299,14 @@ Questa risposta viene stabilita insieme dai due giocatori, anche se l'ultima par
 Nello scenario demo la prima difficoltà è che il taccuino di Aldo Falco, l'unico che annoti la via per Zerzura, stasera va all'asta in una sala privata del Cairo: la Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito. La Scena 1 nasce esattamente da qui.
 {: .esempio }
 
+Se siete a corto di idee pensate ad una di queste possibili situazioni
+
+1. Procurarsi qualcosa/qualcuno che manca (Una mappa, un oggetto, un alleato)
+2. Uscire da una situazione spiacevole (I personaggi incominciano separati/intrappolati/bloccati)
+3. Raggiungere un luogo prima che sia troppo tardi (per prendere un trasporto, per guadagnare tempo rispetto al nemico)
+
+Di fatto questa difficoltà iniziale influenzerà molto probabilmente la posta della prima scena.
+
 # Capitolo 3. Come si gioca una scena
 
 «Ma perché?»
@@ -349,19 +360,18 @@ Qualche consiglio per cominciare a giocare bene:
 Rispetto alla scopa che forse conosci, qui cambiano alcune cose:
 
 - **I punti.** Nella scopa tradizionale le prese non valgono nulla e a contare sono solo le scope; qui ogni presa vale 1 punto e ogni scopa 3 (come si segnano i punti lo vedi poco sotto). E, soprattutto, prese e scope non sono solo punti: significano qualcosa nella storia, come vedremo con le tre mosse.
-- **Figure e Jolly "elastici".** Le carte numeriche catturano per valore esatto; le figure e il Jolly no. Una figura (Fante, Regina, Re) cattura un gruppo di carte la cui somma è minore o uguale al suo valore (Fante 8, Regina 9, Re 10); il Jolly ha valore elastico ma cattura una sola carta (quella che scegli). Le figure si comprano al mercato (Capitolo 4), il Jolly ha il suo capitolo (Capitolo 5).
-- **Prese con spinta.** Dopo una presa fatta con una carta numerica puoi spendere una spinta, per trasformarla in una scopa e svuotare il piatto (non vale sulle prese di figura)
+- **Figure e Jolly "elastici".** Le carte numeriche catturano per valore esatto; le figure e il Jolly no. Una figura (Fante, Regina, Re) cattura un gruppo di carte la cui somma è minore o uguale al suo valore (Fante 8, Regina 9, Re 10); il Jolly ha valore elastico ma cattura una sola carta (quella che scegli). Le figure si comprano al mercato (Capitolo 4), il funzionamento del Jolly verrà spiegato più dettagliatamente nel Capitolo 5.
+- **Prese con spinta.** Dopo una presa fatta con una carta numerica puoi spendere una spinta, per trasformarla in una scopa e svuotare il piatto.
 - **Minigioco di maggioranze** A differenza di una partita a scopa, un round di Frenemies non si vince facendo più punti, ma ottenendo la maggioranza sommando i valori delle proprie carte nel piatto con quelle dell'avversario. Questo cambia di molto l'approccio tattico alla partita, rendendo a volte più conveniente aggiungere una carta alta al piatto, piuttosto che usarla per fare una presa.
 
 ### Segnare i punti
-
 
 I punti li puoi appuntare sulla scheda, oppure se non vuoi continuare a cancellare e riscrivere il tuo punteggio attuale potete usare gettoni di qualunque tipo.
 
 I punti hanno un doppio uso: 
 
 1. puoi spenderli al mercato per comprare le figure.
-2. oppure tenerli fino a fine partita così verranno conteggiati come Crescita e avranno un peso nella determinazione dell'esito finale della storia.
+2. oppure tenerli fino a fine partita così verranno conteggiati come Crescita e stabiliranno come i personaggi si sono evoluti e cosa diventeranno alla fine della storia.
 
 ## 3.3 Mano e asta per l'iniziativa
 
@@ -380,7 +390,9 @@ In caso di parità, se le due carte hanno lo stesso valore, l'iniziativa va a ch
 
 Vincere l'asta non è automaticamente un vantaggio: ogni scelta ha due facce, e vale la pena pesarle.
 
-Giocare una carta alta nell'asta, e quindi puntare a vincere l'iniziativa, ha diversi pregi. Ti dà il diritto di fissare il titolo e la posta della scena, e di aprirla giocando per primo. E, dato che la carta d'asta del vincitore torna in gioco come sua ultima giocata, mandi una carta alta proprio in fondo, quando è più facile che trovi qualcosa da catturare: una carta alta fa presa o scopa più spesso. In più, se la scena eredita un piatto non vuoto da quella precedente, chi ha l'iniziativa gioca per primo e può fare subito una presa su quelle carte. Il rovescio della medaglia: se il piatto è vuoto, giocare per primo significa per forza introdurre una carta, che l'avversario può catturare subito, magari con una scopa ai tuoi danni.
+Giocare una carta alta nell'asta, e quindi puntare a vincere l'iniziativa, ha diversi pregi. Ti dà il diritto di fissare il titolo e la posta della scena, e di aprirla giocando per primo. Tuttavia la carta con cui si vinta l'asta viene bloccata scoperta sul tavolo e non potrà essere usata dal giocatore, se non come ultima della scena. Può essere un vantaggio perché a fine scena sarà più facile usarla per una presa, tuttavia il tuo avversario la conosce e può agire di conseguenza.
+
+In più, se la scena eredita un piatto non vuoto da quella precedente, chi ha l'iniziativa giocherà per primo e potrà fare subito una presa su quelle carte. Il rovescio della medaglia: se il piatto è vuoto, giocare per primo significa per forza introdurre una carta, che l'avversario può catturare subito, magari con una scopa ai tuoi danni.
 
 Non avere l'iniziativa ha vantaggi speculari. Sei tu a chiudere la scena, giocando l'ultima carta del round. E poiché la carta d'asta del vincitore resta scoperta sul tavolo, sai fin dall'inizio con quale carta lui chiuderà il round: un'informazione preziosa per pianificare le tue giocate. Inoltre, se il piatto è vuoto o ha solo carte basse, puoi aprire il tuo gioco proprio con una scopa, raccogliendo quello che l'avversario è stato costretto a calare per primo.
 
@@ -418,6 +430,14 @@ Un esempio di crescendo, niente affatto vincolante ma utile a dare l'idea di com
 
 **Fail forward.** Anche quando viene persa, una buona posta lascia ai protagonisti qualcosa per andare avanti: un po' di esperienza, una nuova opportunità, oppure una nuova risorsa da spendere lungo il viaggio verso la missione. Il fallimento alza il prezzo e complica le cose, ma non deve mai inchiodare i protagonisti in una situazione frustrante e senza uscita. Una scena persa fa avanzare la storia esattamente come una vinta: la spinge solo in una direzione più dura.
 
+Come già detto nel paragrafo 2.7 se siete a corto di idee pensate ad una di queste possibili situazioni. Ma soprattutto fatevi guidare dal punto in cui la storia vi ha condotto.
+
+1. Procurarsi qualcosa/qualcuno che manca (Una mappa, un oggetto, un alleato)
+2. Uscire da una situazione spiacevole (i personaggi sono separati/intrappolati/bloccati)
+3. Raggiungere un luogo prima che sia troppo tardi (per prendere un trasporto, per guadagnare tempo rispetto al nemico)
+4. Trovare un posto tranquillo dove dormire/mangiare/curarsi/recuperare le forze.
+
+
 ## 3.5 L'apertura della scena: titolo e atmosfera
 
 Oltre alla posta, chi vince l'asta dà alla scena un titolo: la sua identità, come il capitolo di un libro o l'episodio di una miniserie (vedi anche il Capitolo 1).
@@ -441,9 +461,8 @@ L'atmosfera la suggerisce il seme di quella prima carta, e può tradursi in un a
 Nel tuo turno puoi fare una di queste cose:
 
 - **giocare una carta nel piatto**, cioè introdurre una tua risorsa nella scena (possibile solo se quella carta non può catturare: vedi la presa obbligatoria, più avanti);
-- **fare una presa normale**, cioè togliere carte dal piatto secondo le regole della Scopa;
+- **fare una presa**, cioè togliere carte dal piatto secondo le regole della Scopa;
 - **fare una scopa**, se la presa svuota completamente il piatto.
-
 
 ### E poi narra
 
@@ -521,7 +540,7 @@ Cinque condizioni regolano questo potere:
 - la spinta usata deve entrare davvero nella narrazione, come scena presente, rivelazione o flashback;
 - ogni spinta si usa una sola volta in tutta la partita; ogni lato ne ha quattro, due per seme, e tutte sono spendibili. Averne due per seme non è un raddoppio di potenza ma di scelta: puoi spendere in una scena la motivazione che lega quel personaggio alla missione, e tenere per più avanti la dote che gli fa da asso nella manica;
 - una sola spinta per presa: una presa diventa scopa con una spinta, e bruciarne una seconda sulla stessa giocata non aggiunge nulla;
-- mai su una presa di figura: la spinta vale solo su una presa fatta con una carta numerica; una presa fatta con una figura (Fante, Regina, Re) non diventa scopa, perché la figura è già di suo una carta forte;
+- mai su una presa di figura: la spinta vale solo su una presa fatta con una carta numerica; una presa fatta con una figura (Fante, Regina, Re, Jolly) non permette di attivare la spinta;
 - una spinta non si può usare nell'ultima scena: nella Risoluzione il piatto si svuota solo con una scopa.
 
 L'idea è che sia la carta giusta, nel momento giusto, a sbloccare la rivelazione: il legame con il seme non è un dettaglio, è il senso della regola.
@@ -539,10 +558,11 @@ In questo caso, invece di sprecare la carta, può decidere di Concedere la scena
 
 Ci sono due modi di concedere, e ciascuno si può usare una sola volta per lato in tutta la partita.
 
-- **Ritirata strategica:** la carta viene rimescolata nel mazzo. Non vale punti, ma diventa una carta in più e potrà tornare utile per i colpi di scena dell'ultima scena.
-- **Resa onorevole:** la carta viene conteggiata come una presa e vale 1 punto.
+- **Ritirata strategica:** la carta viene rimescolata nel mazzo. Non vale punti, ma diventa una carta in più e potrà tornare utile per i colpi di scena dell'ultima scena. Il giocatore narra come i suoi personaggi lascino il campo, rinunciando per il momento alla posta.
 
-In entrambi i casi la posta va all'avversario senza conteggio e il giocatore deve narrare in che modo i suoi personaggi fanno una Ritirata o una Resa.
+- **Resa onorevole:** la carta viene conteggiata come una presa e vale 1 punto. Il giocatore narra come i suoi personaggi ammettano la sconfitta di fronte al nemico, arrendendosi.
+
+In entrambi i casi la vittoria della scena va all'avversario senza conteggio e lo sconfitto narra la chiusura della scena e come la posta viene conquistata dal vincitore.
 
 ## 3.12 La fine del round
 
@@ -611,11 +631,10 @@ L'ordine conta: prima compri, poi peschi, e la figura comprata entra in scena gi
 
 1. fai l'acquisto: al massimo una figura per mercato;
 2. la figura comprata (Fante, Regina o Re) entra subito nella tua mano;
-3. si pesca fino a 4 carte: la figura occupa già uno slot, quindi peschi solo le carte base che mancano per arrivare a 4.
+3. I giocatori pescano fino a 4 carte: la figura occupa già uno slot, quindi peschi solo le carte base che mancano per arrivare a 4.
 
-Puoi comprare una sola figura per mercato: comprata quella, il mercato è chiuso ai tuoi acquisti fino alla volta successiva. Il motivo è che la figura entra in scena la scena dopo, quindi comprarne più d'una in un colpo affollerebbe quella scena di personaggi (fino a una mano di sole figure); così invece le figure si distribuiscono lungo il viaggio, una per scena.
+Puoi comprare una sola figura per mercato: comprata quella, il mercato è chiuso ai tuoi acquisti fino alla volta successiva.
 
-Non c'è alcun rimescolo. Poiché la figura occupa un posto in mano, in quella scena peschi una carta base in meno (tre carte base più la figura), e la carta base che non peschi resta nel mazzo, che così non si gonfia. È un costo che si autoregola: la potenza della figura si paga anche con una carta base in meno in quella mano.
 
 ## 4.2 Come si paga
 
@@ -644,22 +663,42 @@ Le figure però non possono essere usate per ottenere una maggioranza a fine sce
 Paola ha solo il fante in mano, nel piatto c'è un 10 di quadri che non può prendere. Narra quindi che Kalim(fante di picche) decide di fermarsi per causare una frana nello stretto canyon e rallentare gli inseguitori.
 {: .esempio }
 
+
+**Limitazioni** 
+Li figure però hanno delle limitazioni rispetto alle carte numeriche
+
+1. Non possono essere usate durante l'asta
+2. Non possono attivare la spinta
+3. Non possono aggiunte al piatto, ma devono essere usate sempre per fare presa o scopa
+4. Non possono essere messe nella Riserva per i colpi di scena alla preparazione della scena 5
+5. Le figure, una volta giocate (che catturino, facciano scopa o si sacrifichino), **escono dal gioco**: non finiscono negli scarti comuni come le carte numeriche e non saranno mai più recuperabili.
+
+
 **Fante, l'informatore.** Effetto: quando lo giochi, sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una carta della mano (la carta che cedi torna in cima, insieme a quella sbirciata che non hai preso; mano e mazzo restano di quattro e di quante erano). Serve a procurarti la carta giusta al momento giusto, e scatta quando giochi la carta. Come Regina e Re, il Fante entra in mano all'acquisto ed è in scena già nella scena successiva. Narrativamente è un alleato informatore, un contatto che procura notizie preziose.
 
 "Un vecchio contatto di Otto al bazar ci dice quali carovane stanno per partire e quali piste evitare per non incrociare gli uomini della Loggia."
 {: .esempio }
 
-**Regina, la manipolatrice.** Effetto: l'avversario scarta una carta a caso dalla mano e la sostituisce con la prima carta del suo mazzo. Nell'ultima scena, se il mazzo è esaurito ma restano carte in riserva, il rimpiazzo si pesca dalla riserva; se non c'è né mazzo né riserva, l'avversario resta semplicemente con una carta in meno. Serve a disturbare, a ridurre il controllo della mano nemica. Narrativamente è seduzione, manipolazione, qualcosa che semina disordine tra gli avversari.
+Se il Fante viene giocato nell'ultima scena, il mazzo è ormai esaurito e non c'è nulla da sbirciare: l'effetto cambia bersaglio. Chi gioca il Fante sbircia la Riserva dell'avversario e sceglie una carta da togliergli, che torna nella sua mano; l'avversario, a sua volta, rimette in Riserva la sua carta di mano più bassa. Gli si strappa così una carta dei colpi di scena (di solito la più alta) sostituendola con una più debole.
+
+**Regina, la manipolatrice.** Effetto: l'avversario scarta una carta a caso dalla mano e la sostituisce con la prima carta del suo mazzo. Nell'ultima scena, se il mazzo è esaurito ma restano carte in Riserva, il rimpiazzo si pesca a caso dalla Riserva. Se non c'è né mazzo né Riserva, l'avversario è costretto a raccogliere dagli scarti comuni una carta scelta da chi ha giocato la Regina.
+
+La Regina serve a disturbare, a ridurre il controllo della mano nemica. Narrativamente è seduzione, manipolazione, qualcosa che semina disordine tra gli avversari.
 
 "Una vecchia conoscenza di Otto trattiene in chiacchiere il luogotenente della Loggia durante un ricevimento: lui si distrae, abbassa la guardia."
 {: .esempio }
 
-**Re, il deus ex machina.** Effetto: recuperi dalla pila degli scarti comuni una carta **numerica** del suo stesso seme, di valore **fino a 10 meno le scene già vinte dall'avversario** (10 è il valore del Re; più scene ti ha già portato via l'avversario, più basso è il tetto), senza togliere nulla dalla mano. Nelle scene 1-4 la carta recuperata si rimescola nel tuo mazzo; nell'ultima scena entra direttamente nella tua riserva, pronta per i colpi di scena, ed è lì che pesa, perché una carta alta in Riserva è decisiva nel duello finale. Proprio per questo il tetto morde soprattutto in scena 5: se l'avversario ha già vinto due scene o più, il 10 diventa irraggiungibile, e non puoi comprare il Re all'ultimo mercato solo per infilare in Riserva la carta più alta come colpo di scena imbattibile. Se negli scarti non c'è alcuna carta numerica di quel seme entro il tetto, l'effetto non fa nulla. Serve a recuperare una risorsa mirata all'ultimo momento. Narrativamente è un alleato fortissimo, un personaggio influente, un intervento quasi provvidenziale.
+**Re, il deus ex machina.** Effetto: recuperi dalla pila degli scarti comuni una carta **numerica** del suo stesso seme, di valore **fino a 10 meno in numero di scene già vinte dall'avversario**; Quindi più scene ti ha già portato via l'avversario, più basso è il tetto. Se acquisto il re nel mercato dopo la scena 4 e il mio avversario ha già vinto 2 scene, come massimo potrò recuperare dagli scarti un 8.
 
-> Le figure, una volta giocate (che catturino, facciano scopa o si sacrifichino), **escono dal gioco**: non finiscono negli scarti comuni come le carte numeriche e non sono più recuperabili, nemmeno dal Re. Per questo il Re trova negli scarti solo numeri, e in Riserva vanno solo carte numeriche.
+Nelle scene 1-4 la carta recuperata si rimescola nel tuo mazzo, mentre nell'ultima scena questa carta entra direttamente nella tua riserva, pronta per i colpi di scena, ed è lì che pesa, perché una carta alta in Riserva è decisiva nel duello finale. 
+Il Re serve a recuperare una risorsa mirata all'ultimo momento. Narrativamente è un alleato fortissimo, un personaggio influente, un intervento quasi provvidenziale.
 
 "Un vecchio compagno di scavi di Aldo, che tutti credevano scomparso nel deserto, ricompare nel momento peggiore con una carovana armata e le mappe giuste."
 {: .esempio }
+
+**Creare i PNG delle figure.** 
+I nomi Informatore, Manipolatrice, Deus ex machina corrispondono all'effetto speciale meccanico e possono dare un'ispirazione nella creazione del personaggio, ma non sentitevi limitati da essi. La manipolatrice può essere chiunque crei scompiglio nelle file avversarie, magari proprio un PNG nemico che fa il voltagabbana o un bambino che crea una crisi di coscienza. L'informatore può essere una guida, un mercenario, un hacker, un inside-man di una big company. Mentre il deus ex machina sarà qualcuno con posizioni al vertice, molto importante o molto forte.
+
 
 ---
 
@@ -674,40 +713,54 @@ Paola ha solo il fante in mano, nel piatto c'è un 10 di quadri che non può pre
 Il Jolly è lo strumento del compromesso morale. Rappresenta il trope della tentazione che colpisce uno dei protagonisti nell'indulgere in comportamenti discutibili che fanno parte del suo passato.
 Tipicamente in questo genere di storie i protagonisti si ritrovano spesso a dover mediare e agire seguendo dei compromessi, al fine di trovare un modo per collaborare e fare gioco di squadra. Usare il Jolly per risolvere un problema significa ignorare qualunque mediazione o compromesso ed agire alla propria maniera, anche a costo di scandalizzare, deludere, disgustare o ingannare il compagno.
 
-Il Jolly è uno solo ed è una risorsa dei Protagonisti: non sta nel mazzo, sta davanti a loro fin dall'inizio della partita, come una tentazione sempre a portata di mano.
+Il Jolly è uno solo e ad inizio partita è una risorsa dei Protagonisti: non sta nel mazzo, ma sul tavolo nell'area di gioco dei Protagonisti, come una tentazione sempre a portata di mano.
 
-## 5.1 Come si usa: la cattura sleale dei Protagonisti (scene 1-3)
+## 5.1 Come si usa: la presa sleale dei Protagonisti (scene 1-3)
 
-Nel proprio turno, invece di giocare una carta della mano, un Protagonista può afferrare il Jolly. Per farlo:
+Nel proprio turno, invece di giocare una carta della mano, il giocatore Protagonisti può usare il Jolly. Per farlo:
 
 - **seppellisce una carta della mano in fondo al proprio mazzo** e prende il Jolly al suo posto;
-- il Jolly ha **valore elastico ma cattura una sola carta**: si sceglie quale carta del piatto prendere (se era l'unica rimasta, è una scopa);
-- non si usa mai nell'asta d'inizio scena, e i Protagonisti possono giocarlo **solo nelle scene 1, 2 o 3**.
+- Effettua la presa di **una singola carta dal piatto**, infatti il Jolly ha **valore elastico da 1 a 10**. 
+- Se la carta era l'unica rimasta la presa diventa una scopa. E se questa è l'ultima scopa della scena, allora otterrà la posta;
 
-Usare il Jolly **non fa segnare punti a nessuno**: è una mossa puramente tattica, che vince la posta della scena o ripulisce il piatto. Il suo prezzo è un altro (§5.2).
+## 5.2 Limitazioni
 
-## 5.2 Il prezzo del peccato: armi il tuo avversario
+1. Il Jolly può essere usato dai Protagonisti solo una volta per partita e solo nelle scene 1,2,3. 
+2. Le prese e le scope fatte con Jolly non danno punti
+3. Dopo averlo speso, il Jolly passa al nemico
 
-Se il Jolly non costa punti, dov'è il prezzo? È che, appena i Protagonisti lo usano, **la carta passa all'Opposizione**. Hai preso la scorciatoia sleale e così hai messo in mano al tuo nemico la stessa arma sporca: lui la userà contro di te, e nel farlo il tuo peccato verrà alla luce (§5.4).
+## 5.3 Narrare la presa sleale
+
+Se il Jolly non costa punti, dov'è il prezzo? È che, appena i Protagonisti lo usano, **la carta passa all'Opposizione**. Hai preso la scorciatoia sleale e così hai messo in mano al tuo nemico la stessa arma sporca: lui la userà contro di te, e nel farlo il tuo peccato verrà alla luce (§5.5).
 
 Narrativamente si racconta sempre un successo ottenuto andando contro i propri principi: la lealtà verso l'altro protagonista che viene meno, un ritorno ai vecchi vizi, un gesto avventato che non tiene conto della sensibilità dell'altro. È importante ricordare che **solo uno dei due Protagonisti si macchia del peccato**, mentre l'altro può non saperne nulla oppure assistervi e giudicarlo. Il Jolly è il seme di una discordia destinato a sbocciare più avanti.
 
 Nel piatto resta un 4♣ e Vera non ha di meglio in mano. Seppellisce un 3♠ in fondo al mazzo, afferra il Jolly, lo dichiara 4 e cattura il 4♣: è una scopa, il piatto è pulito e la posta è dei Protagonisti. Nessuno segna punti, ma il Jolly passa a Omar. "Vera infrange la promessa di restare pulita e sfrutta un vecchio contatto del contrabbando — Otto ancora non lo sa."
 {: .esempio }
 
-## 5.3 Resistere alla tentazione: due punti di Crescita
+## 5.4 Resistere alla tentazione: due punti di Crescita
 
-Usare il Jolly non è obbligatorio. Chi lo detiene può non usarlo affatto: **chi arriva a fine partita col Jolly ancora in mano incassa 2 punti Crescita**. Sono punti che pesano solo nel conteggio finale (i mercati sono ormai chiusi: non si possono spendere per comprare figure) e premiano chi ha resistito alla scorciatoia. Vale per entrambi i lati: se i Protagonisti resistono, i due punti sono loro; se peccano e l'Opposizione riceve il Jolly ma a sua volta non lo spende, i due punti vanno all'Opposizione.
+Usare il Jolly non è obbligatorio. Chi lo detiene può non usarlo affatto: **chi arriva a fine partita col Jolly ancora in mano incassa 2 punti Crescita**. Sono punti che pesano solo nel conteggio finale (i mercati sono ormai chiusi: non si possono spendere per comprare figure) ma questi punti serviranno a rompere un eventuale pareggio al termine della scena 5 e determineranno a fine partita quanto i tuoi personaggi sono cresciuti. Questo vale per entrambi i lati: se i Protagonisti resistono, i due punti sono loro; se peccano e l'Opposizione riceve il Jolly ma a sua volta non lo spende, i due punti vanno all'Opposizione.
 
-## 5.4 Il peccato emerge: la stessa cattura dell'Opposizione (scene 2-4)
+## 5.5 Il peccato emerge: la stessa cattura dell'Opposizione (scene 2-4)
 
-Ricevuto il Jolly, l'Opposizione lo usa per catturare come i Protagonisti, ma con un'**asimmetria**: mentre i Protagonisti *seppelliscono* la carta che cedono (e quindi la riavranno, in scena o in riserva), l'Opposizione la **scarta**. Afferrare il Jolly ha così per lei un **costo**: il suo mazzo cala di una carta, cioè una in meno verso la riserva dei colpi di scena. Nel proprio turno scarta una carta, afferra il Jolly e **cattura una sola carta** del piatto (valore elastico; se era l'unica rimasta è scopa) — senza segnare punti. E nel giocarlo **mette in scena il peccato**: impugnare la stessa arma sleale fa riaffiorare il compromesso di cui uno dei protagonisti si è macchiato, incrinando l'alleanza tra i due. Il perché dell'asimmetria: i Protagonisti, usando il Jolly, pagano già armando l'Opposizione (le passano la carta); l'Opposizione, che è l'ultima a detenerlo e non arma nessuno, paga invece con la carta scartata.
+Ricevuto il Jolly, l'Opposizione lo usa per catturare come i Protagonisti, ma con un'**asimmetria**: mentre i Protagonisti *seppelliscono* una carta dalla mano, andandola a mettere in fondo al mazzo, l'Opposizione invece la **scarta**. Afferrare il Jolly ha così per lei un **costo**: il suo mazzo si riduce e questo significa che avrà una carta in meno durante i colpi di scena. 
 
-L'Opposizione può farlo **solo nelle scene 2, 3 o 4**, e **mai nella stessa scena** in cui i Protagonisti hanno usato il Jolly: il peccato riemerge *dopo*, in una scena successiva. Una volta giocato, il Jolly è speso.
+Quindi:
+
+- Nel proprio turno scarta una carta, afferra il Jolly;
+- **cattura una sola carta** del piatto (valore elastico; se era l'unica rimasta è scopa) senza segnare punti;
+
+E durante la narrazione **mette in scena il peccato**: ovvero fa sì che in quella presa riaffiori il peccato di cui uno dei protagonisti si è macchiato, incrinando l'alleanza tra i due. 
+
+L'Opposizione può giocare il Jolly **solo nelle scene 2, 3 o 4**, e **mai nella stessa scena** in cui i Protagonisti hanno usato il Jolly: il peccato riemerge *dopo*, in una scena successiva. Una volta giocato, il Jolly è speso.
 
 Due scene dopo, l'Opposizione scarta una carta (il suo mazzo cala di 1), afferra il Jolly e cattura la carta dei Protagonisti che pesava di più nel piatto: quel che resta ora la mette avanti nella posta. Nel narrarlo fa affiorare cosa aveva fatto Vera con quel contatto: davanti a Otto cala il gelo.
 {: .esempio }
 
+## 5.6 Vale la pena? Sì!
+
+Al di là del valore narrativo ed estetico e parlando solo sul piano tattico, in certe occasioni il Jolly può essere determinante per vincere una scena. In situazioni in cui l'unica opzione sarebbe concedere la scena, poter scartare un'inutile carta bassa e fare invece scopa può essere una giocata molto forte, oltre che un momento interessante per la storia.
 
 ---
 
@@ -728,32 +781,44 @@ La mano finale si sceglie dopo il mercato. Una figura comprata all'ultimo mercat
 
 In Riserva vanno **solo carte numeriche**: le figure restano in mano e si giocano in scena (del resto una figura, una volta usata, esce dal gioco). La scelta è **strategica**: tenere le carte alte in mano per vincere il primo conteggio ed essere il difensore, oppure metterle in Riserva per vincere il duello dei colpi di scena. Bastano poche carte ben scelte — una media per superare il muro e aprire, una alta per vincere il rilancio.
 
-La Riserva alimenta i colpi di scena.
+La Riserva alimenta i colpi di scena che verranno spiegati in seguito.
+Inoltre se all'inizio dell'ultima scena un giocatore ha ancora il Jolly non speso, lo rimuove dal gioco e si segna 2 punti Crescita.
 
-## 6.2 I colpi di scena — il duello a rilancio
 
-Dopo aver determinato l'esito apparente della scena e averlo narrato come in tutte le precedenti, il **piatto si svuota** e comincia la fase dei colpi di scena: un duello a rilancio con le carte della Riserva.
+## 6.2 Il conteggio alla fine dell'ultima scena
 
-Chi ha vinto il primo conteggio è il **difensore**; l'altro è lo **sfidante**, che apre. Il difensore parte protetto da un **muro** pari al **numero di scene che ha vinto** (da 1 a 5): la vittoria dell'ultima scena vale 1, quindi ogni scena vinta è uno strato in più da scavalcare. È la forza che ti sei costruito nella storia a difenderti.
+L'ultima scena si conteggia come le altre e produce un **esito apparente della missione**: chi ha la maggioranza dei totali vince la posta e ne diventa il **difensore**. Ma questo esito non è ancora quello definitivo: la fase dei colpi di scena (§6.3) può ribaltarlo.
+
+Cambia solo la regola del **pareggio**. Nelle scene precedenti, a totali pari (con carte ancora sul tavolo) la posta andava a chi aveva giocato l'ultima carta; nell'ultima scena, invece, si può **spendere tutta la propria Crescita** (i punti di prese e scope non spesi) per aggiudicarsi la **vittoria del conteggio** e diventare **difensore**.
+
+La facoltà di azzerare i punti Crescita in cambio della vittoria spetta prima al lato con più punti Crescita e, in caso di parità, a chi ha l'**iniziativa**.
+
+Chi ne ha diritto può **spendere tutta la propria Crescita** per aggiudicarsi la vittoria del conteggio, oppure **rinunciare**. Se rinuncia, la vittoria va al suo avversario, che non dovrà spendere nulla.
+
+
+## 6.3 I colpi di scena — il duello a rilancio
+
+Dopo aver determinato l'esito apparente della scena e averlo narrato come in tutte le precedenti, il **piatto si svuota** e comincia la fase dei Colpi di scena: un duello a rilanci con le carte che si erano conservate in Riserva.
+
+Chi ha vinto il primo conteggio è il **difensore**; l'altro è lo **sfidante**, che apre. Il difensore parte protetto da un **"muro"** che ha un valore numerico pari al **numero di scene che ha vinto** (da 1 a 5).
+È la forza che ti sei costruito con i successi nel corso della storia a difenderti ed il tuo avversario per attaccarti dovrà eguagliarlo con almeno una carta dalla sua Riserva.
 
 Le regole del duello:
 
-- **Apertura:** lo sfidante cala dalla Riserva una carta di valore **maggiore o uguale al muro** e narra il colpo di scena. Se non ha nemmeno una carta all'altezza del muro, non apre e la missione resta al difensore.
+- **Apertura:** lo sfidante cala dalla Riserva una carta di valore **maggiore o uguale al muro** e narra il colpo di scena. Se non ha nemmeno una carta all'altezza del muro, non apre e la missione resta al difensore. Non c'è nulla da fare, la Missione è assicurata a chi l'ha vinta.
 - **Rilancio:** a turni alterni, ognuno prende la testa calando una carta di valore **maggiore o uguale** a quella in cima. **Pareggiare ribalta**: nemmeno un 10 è al sicuro, glielo pareggia l'altro 10.
 - **Fine:** chi non può più superare (nessuna carta all'altezza in Riserva), o rinuncia, perde. **Vince la missione l'ultimo che è riuscito a calare.**
 
 In questa fase non si fanno prese, scope o eliminazioni: contano solo i valori che si rincorrono. Le figure non partecipano (in Riserva ci sono solo numeri). Dopo ogni carta calata si narra il colpo di scena, una verità che rilancia sopra la precedente — come le cose non fossero come sembravano.
 
-Al primo conteggio i Protagonisti difendono con un muro di 3 (hanno vinto 3 scene). Apre l'Opposizione con un 6 di Quadri (6 è ≥ 3): "il funzionario che credevano neutralizzato è ancora al suo posto". Rispondono i Protagonisti con un 8 di Picche; l'Opposizione cala un 8 di Fiori e **pareggia, ribaltando**. I Protagonisti non hanno nulla di valore 8 o più e si fermano: vince chi ha calato per ultimo, l'Opposizione. Nemmeno l'8 dei Protagonisti era al sicuro.
+Al primo conteggio i Protagonisti difendono con un muro di 3 (hanno vinto 3 scene). 
+Apre l'Opposizione con un 6 di Quadri (6 è ≥ 3): "L'artefatto che reggi in mano in realtà non è che una copia, abbiamo noi l'originale". Rispondono i Protagonisti con un 8 di Picche; 
+l'Opposizione cala un 8 di Fiori e **pareggia, ribaltando**. 
+"Dalle spalle compaiono degli sgherri che vi puntano le armi alla schiena... E allora ci darete il vostro originale" 
+I Protagonisti non hanno nulla di valore 8 o più e si fermano: vince chi ha calato per ultimo, l'Opposizione. Nemmeno l'8 dei Protagonisti era al sicuro. 
+"Consegnamo con mani tremanti l'artefatto... è vostro ma sarà la vostra rovina"
 {: .esempio }
 
-## 6.3 Il conteggio definitivo
-
-La missione la decide il **duello dei colpi di scena**: chi cala per ultimo la vince. Il primo conteggio dei semi (Cuori più Picche contro Fiori più Quadri) serve solo a stabilire l'**esito apparente** e chi difende; l'esito **reale** può ribaltarlo — chi sembrava perdere la scena può vincere la missione dalla Riserva.
-
-**Se il primo conteggio è pari**, prima del duello si decide chi difende con una facoltà legata alla Crescita: il lato con **più Crescita** (a pari Crescita, il lato con l'**iniziativa**) può **azzerare tutta la propria Crescita** per aggiudicarsi il primo conteggio e difendere, oppure **rinunciare**, cedendo così la vittoria della scena all'altro (che difende senza spendere nulla). Se chi ha diritto non ha Crescita da spendere, di fatto cede; se nessuno esercita, il pareggio va all'Opposizione. In ogni caso, deciso il difensore, il duello si gioca comunque.
-
-L'altra cosa che si guarda è la Crescita di ciascun lato: i punti complessivi accumulati e non spesi. Non si combina con la Missione, è una misura a parte; come si legge lo dice il prossimo capitolo.
 
 ---
 
@@ -764,7 +829,7 @@ L'altra cosa che si guarda è la Crescita di ciascun lato: i punti complessivi a
 «Sì. Questo potrei farlo.» (Il Signore degli Anelli: il ritorno del Re)
 {: .citazione }
 
-Finita l'ultima scena, la storia ha già detto la cosa più importante: chi ha vinto e come. La scena 5 e i colpi di scena l'hanno messa in scena, e quell'esito non si tocca più: non c'è una tabella che venga a dirvi di che tipo di vittoria si è trattato, perché ve l'ha già raccontato il gioco. Quello che resta da fare nel finale è leggere un solo dato in più, la Crescita, e poi chiudere con l'epilogo.
+Finita l'ultima scena, la storia ha già detto la cosa più importante: chi ha vinto e come. La scena 5 e i colpi di scena l'hanno messa in scena, e quell'esito non è più in discussione. Quello che resta da fare nel finale è leggere un solo dato in più, la Crescita, e poi chiudere con l'epilogo.
 
 ## 7.1 La Crescita
 
@@ -772,21 +837,21 @@ I punti che un lato ha accumulato con prese e scope, e non ha speso al mercato, 
 
 Che cosa sia di preciso questa crescita lo decide il giocatore: può essere la maturazione di un personaggio, una sua evoluzione interiore, oppure la reputazione e il prestigio che si è guadagnato. Spendere i punti per comprare figure significa aver chiamato aiuto e dover dividere il merito; tenerli significa essersi fatti un nome. E un indizio di che cosa sia cresciuto di più sta nei due semi di ciascun lato: si guarda con quale dei due si sono fatti più punti. Per i protagonisti una predominanza di Cuori indica una crescita passata dal legame e dall'empatia, una di Picche una crescita di forza e affermazione; per l'Opposizione vale lo stesso fra i nemici di Quadri e il caos di Fiori.
 
-La si legge a scaglioni, sempre, per entrambi i lati. Lo stesso numero racconta cose opposte a seconda del lato: per i protagonisti è una promessa, per l'Opposizione è l'idra a cui per ogni testa mozzata ne ricrescono altre.
+Si deve vedere il valore numerico totalizzato in quale scaglione ricade e leggere l'esito corrispondente.
 
 **Crescita dei Protagonisti**
 
-- **0-2 · Nessuna crescita.** Eravate così concentrati sull'obiettivo da non guardare in faccia nessuno: né cosa stavate diventando, né l'altro che vi camminava accanto. Ne uscite uguali a prima, se non peggio, e il rapporto non ha potuto giovarne.
-- **3-6 · Crescita.** Qualcosa è cambiato rispetto a chi eravate alla partenza. Ciascuno ha imparato a vedere il valore nell'altro, pur restando convinto che il proprio modo sia il migliore: ne nasce una stima reciproca, non ancora una resa.
+- **0-2 · Nessuna crescita.** Eravate così concentrati sull'obiettivo da non guardare in faccia nessuno: né cosa stavate diventando, né l'altro che vi camminava accanto. Ne uscite uguali a prima, se non peggio, e il rapporto di conseguenza ne esce distrutto.
+- **3-6 · Crescita.** Qualcosa è cambiato rispetto a chi eravate alla partenza. Ciascuno ha imparato a vedere il valore nell'altro e ad ammettere che esistono altri punti di vista, pur restando convinto che il proprio approccio sia il migliore. Il rapporto si evolve in una forma di stima e rispetto reciproco.
 - **7+ · Grande crescita.** Il viaggio vi ha trasformati. Ciascuno ha preso un po' dall'altro, fino a entrare in sintonia, e non vedete più il mondo come prima. Da una storia così non si torna gli stessi, e con ogni probabilità vi vorrete bene per il resto della vita.
 
 **Crescita dell'Opposizione**
 
-- **0-2 · Minaccia spenta.** I nemici hanno fallito e si sono sfilacciati. Il pericolo che rappresentavano si è in gran parte consumato in questa storia.
+- **0-2 · Minaccia sventata.** I nemici hanno fallito e si sono sfilacciati. Il pericolo che rappresentavano si è in gran parte consumato in questa storia.
 - **3-6 · Minaccia intatta.** Hanno incassato il colpo ma sono ancora in piedi, pronti a riorganizzarsi. La storia li ha rallentati, non fermati.
-- **7+ · L'idra.** Per ogni testa mozzata ne sono ricresciute altre. Escono da questa vicenda più forti e più radicati di quando è cominciata: torneranno, e peggio.
+- **7+ · Come l'idra.** Per ogni testa mozzata ne sono ricresciute altre. Escono da questa vicenda più forti e più radicati di quando è cominciata: torneranno, e peggio.
 
-Volendo, le due Crescite si leggono anche insieme: grande crescita da entrambe le parti racconta eroi trasformati che però hanno risvegliato qualcosa di terribile; nessuna crescita da entrambe, due forze che si sono logorate a vicenda senza che nessuno ne esca davvero.
+Volendo, le due Crescite si leggono anche insieme: grande crescita da entrambe le parti racconta eroi trasformati che però hanno risvegliato qualcosa di terribile; nessuna crescita da entrambe, due forze che si sono logorate a vicenda senza che nessuno ne esca davvero vittorioso.
 
 ## 7.2 L'epilogo
 

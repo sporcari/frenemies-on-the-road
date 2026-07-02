@@ -518,6 +518,8 @@ Comprare una figura significa **preparare l'ingresso di un PNG importante e pote
 
 **Effetto meccanico (v1.15):** quando giochi il Fante, **sbirci le prime 2 carte del tuo mazzo** e, se vuoi, ne **scambi una con una carta della tua mano**. La carta che cedi torna **in cima** al mazzo, insieme alla carta sbirciata che non hai preso; quella che prendi entra in mano (mano e mazzo restano della stessa dimensione). Lo scambio è facoltativo e al massimo uno. Come per le altre figure, l'effetto si attiva **quando la carta viene giocata**.
 
+**Nell'ultima scena, col mazzo esaurito (v1.42):** nella scena 5 il mazzo è ormai vuoto, quindi non c'è nulla da sbirciare. L'effetto cambia bersaglio e agisce sulla **riserva avversaria**: chi gioca il Fante la sbircia e **sceglie una carta da toglierle**, che torna nella **mano** dell'avversario; l'avversario, a sua volta, **rimette in riserva** una carta della propria mano (la scelta razionale è la più bassa). Riserva e mano dell'avversario restano della stessa dimensione, ma gli si sottrae una carta-colpo di scena (di solito la più alta) rimpiazzandola con una più debole. Se l'avversario non ha riserva (o non ha mano), l'effetto non fa nulla.
+
 **Consegna all'acquisto (v1.34):** il Fante, come Regina e Re, **entra direttamente in mano** e va in scena nella scena immediatamente successiva; occupa uno slot, quindi a fine mercato peschi le carte base che mancano per arrivare a 4 (§19). Non c'è più alcun rimescolo. *(Tra la v1.15 e la v1.33 la figura entrava nel mazzo, che si rimescolava a fine mercato: era una pescata futura e casuale.)*
 
 **Funzione:** controllo del draw, preparazione delle prossime pescate.
@@ -528,7 +530,7 @@ Comprare una figura significa **preparare l'ingresso di un PNG importante e pote
 
 ### Regina — La manipolatrice
 
-**Effetto meccanico:** l'avversario scarta una carta a caso dalla mano e la sostituisce con la prima carta del suo mazzo. Nell'ultima scena, quando il mazzo è esaurito ma restano carte in **riserva**, la carta di rimpiazzo si pesca dalla riserva (la prima); se non c'è né mazzo né riserva, l'avversario resta semplicemente con una carta in meno.
+**Effetto meccanico (agg. v1.42):** l'avversario scarta una carta a caso dalla mano e la sostituisce con la prima carta del suo mazzo. Nell'ultima scena, quando il mazzo è esaurito ma restano carte in **riserva**, la carta di rimpiazzo si pesca **a caso** dalla riserva; se non c'è né mazzo né riserva, l'avversario è costretto a **raccogliere dagli scarti comuni** una carta **scelta da chi ha giocato la Regina** (che gli rifilerà la peggiore). Se anche gli scarti sono vuoti, resta con una carta in meno. *(Fino alla v1.41 il rimpiazzo dalla riserva era la prima carta e, senza mazzo né riserva, l'avversario restava semplicemente con una carta in meno.)*
 
 **Funzione:** disruption, riduce il controllo della mano avversaria.
 
@@ -952,6 +954,13 @@ In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, 
 
 # REGISTRO MODIFICHE
 
+## v1.42 (luglio 2026) — Fante e Regina: effetti dedicati per i casi limite dell'ultima scena
+
+1. **§21 (Fante): nuovo effetto nell'ultima scena col mazzo esaurito.** Fino alla v1.41 il Fante giocato in scena 5 (mazzo vuoto) non faceva nulla: non c'erano carte da sbirciare. Dalla v1.42 in quel caso l'effetto agisce sulla **riserva avversaria**: chi gioca il Fante la sbircia e **sceglie** una carta da toglierle (torna nella mano dell'avversario), e l'avversario **rimette in riserva** la propria carta di mano più bassa. Riserva e mano dell'avversario restano di pari dimensione, ma gli si strappa una carta-colpo di scena (di solito la più alta) sostituendola con una più debole. Se l'avversario non ha riserva (o non ha mano), l'effetto non fa nulla. Interpretazione fissata con Saverio: **sceglie chi gioca il Fante** quale carta togliere dalla riserva; il ritorno in riserva dell'avversario è automatizzato con la carta più bassa (la scelta razionale che cede).
+2. **§21 (Regina): rimpiazzo dalla riserva "a caso" e recupero dagli scarti se manca tutto.** Nell'ultima scena, quando il mazzo è esaurito, il rimpiazzo della carta scartata si pesca **a caso** dalla riserva (prima era "la prima"). E se l'avversario non ha né mazzo né riserva, non resta più "con una carta in meno": è costretto a **raccogliere dagli scarti comuni** una carta **scelta da chi ha giocato la Regina** (che gli rifilerà la peggiore); solo se anche gli scarti sono vuoti resta con una carta in meno.
+3. **Propagazione (stesso commit):** motore `index.html` — `effettoFigura` ramo Fante (nuovo helper `effettoFanteRiserva` con modale + ramo IA) e ramo Regina (rimpiazzo riserva a caso, nuovo helper `reginaDaScarti` con modale + ramo IA); costante `FIGURE` (`eff` di Fante e Regina); tabella `REGOLE`; `REGOLE_IA`; prompt del mercato. KB §21 (Fante, Regina) + registro + footer v1.42. Manuale (§5 Fante/Regina). Driver `test/partita_smart.js` (handler dei nuovi modali `fanteRisOk`/`reginaScartiOk` + categorizzazione seed). Diario decisioni.
+4. **Collaudo:** suite core verde. **Benchmark:** da rilanciare (gli effetti scattano in scena 5, dove pesano su riserva e duello). L'esempio §34/Appendice B resta obsoleto (nuovo seed-vetrina da scegliere).
+
 ## v1.41 (luglio 2026) — tetto al recupero del Re: valore massimo 10 meno le scene vinte dall'avversario
 
 1. **§21 (Re): la carta recuperata ha un tetto di valore.** Fino alla v1.40 il Re recuperava dagli scarti comuni una qualsiasi carta **numerica** del proprio seme, senza limiti di valore. Dalla v1.41 la carta recuperata deve avere **valore al massimo 10 meno le scene già vinte dall'avversario** (10 è il valore del Re; contano solo le scene **già risolte** prima di quella in corso, i pareggi non contano). Il tetto scende da 10 (avversario a 0 scene) fino a 6 (avversario a 4 scene): morde progressivamente su 7-8-9-10. Se negli scarti non c'è alcuna numerica del seme entro il tetto, l'effetto non fa nulla. Tutto il resto del Re resta invariato (vincolo di seme, mano invariata, scene 1-4 nel mazzo / scena 5 in riserva, effetto anche sul sacrificio).
@@ -1199,4 +1208,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.41*
+*Frenemies on the Road — Knowledge Base v1.42*

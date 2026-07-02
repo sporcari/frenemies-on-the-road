@@ -473,7 +473,7 @@ def diag_flusso_partita():
 
     yb = box(y, ["Ultima scena"]); parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
     yb = box(y, ["Colpi di scena"]); parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
-    yb = box(y, ["Lettura del finale e domande"]); parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
+    yb = box(y, ["Valutazione della Crescita"]); parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
     ep_top = y
     yb = box(y, ["Epilogo: vignette a turno"]); ep_mid = (y + yb) / 2
     parts.append(arrow(cx, yb, cx, yb + 16)); y = yb + 16
