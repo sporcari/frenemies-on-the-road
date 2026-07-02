@@ -369,7 +369,7 @@ const FIGURE = {
   D:{nome:"Regina", titolo:"La manipolatrice", val:9, costo:5,
      eff:"L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo."},
   R:{nome:"Re", titolo:"Il deus ex machina", val:10, costo:8,
-     eff:"Recupera dagli scarti comuni una carta numerica del suo stesso seme: nelle scene 1-4 si rimescola nel tuo mazzo, nell'ultima entra nella riserva."}
+     eff:"Recupera dagli scarti comuni una carta numerica del suo stesso seme, di valore fino a 10 meno le scene già vinte dall'avversario: nelle scene 1-4 si rimescola nel tuo mazzo, nell'ultima entra nella riserva."}
 };
 
 /* ---------------- materiali di ispirazione (knowledge base) ---------------- */
@@ -2288,7 +2288,11 @@ function effettoFigura(c, poi){
   else if(c.fig==="R"){
     // v1.27: il Re RECUPERA una carta dagli scarti comuni dello STESSO SEME del Re giocato (non scambio, la mano resta).
     // Scene 1-4: la carta recuperata si rimescola nel mazzo del lato. Scena 5: si aggiunge alla riserva (colpi di scena).
-    const scartiUtili=G.scartiComuni.filter(x=>x.seme===c.seme && !x.fig);   // v1.38: solo carte numeriche (le figure sono fuori gioco)
+    // v1.41: tetto di valore = 10 (valore del Re) meno le scene GIA' VINTE dall'avversario (solo scene risolte; i pareggi non contano).
+    // Nerf mirato: spezza la strategia "Re all'ultimo mercato -> recupero il 10 -> riserva imbattibile" e lo stallo se la giocano entrambi.
+    const scenePerseAvv=G.scene.filter(s=>s && s.vincitore===altro(l)).length;
+    const tetto=10-scenePerseAvv;
+    const scartiUtili=G.scartiComuni.filter(x=>x.seme===c.seme && !x.fig && x.val<=tetto);   // v1.38: solo numeriche; v1.41: valore <= tetto
     if(scartiUtili.length===0){ poi(); return }
     const inRiserva=G.scena>=4;   // scena 5 (indice 4): alimenta i colpi di scena
     const recupera=(scartoId)=>{
@@ -2301,13 +2305,13 @@ function effettoFigura(c, poi){
         ? ` Il Re interviene: ${nomeCarta(sc)} torna dagli scarti nella riserva, pronta per i colpi di scena.`
         : ` Il Re interviene: ${nomeCarta(sc)} torna dagli scarti, rimescolata nel mazzo.`;
     };
-    if(G.modalita==="solo" && l==="O"){   // l'IA non passa dal modale: recupera il seme del Re di valore più alto
+    if(G.modalita==="solo" && l==="O"){   // l'IA non passa dal modale: recupera il seme del Re di valore più alto entro il tetto
       const top=scartiUtili.slice().sort((a,b)=>b.val-a.val)[0];
       recupera(top.id); poi(); return;
     }
     let scartoSel=null;
     modale(`<h2 class="ts">Re — Il deus ex machina</h2>
-      <p class="sotto">Recupera una carta ${SIMBOLI[c.seme]} dagli scarti comuni. ${inRiserva?"Va nella tua <b>riserva</b>, pronta per i colpi di scena.":"Si <b>rimescola nel tuo mazzo</b>."} La tua mano resta invariata.</p>
+      <p class="sotto">Recupera una carta ${SIMBOLI[c.seme]} dagli scarti comuni di valore <b>fino a ${tetto}</b> (10 meno le scene gia' vinte dall'avversario). ${inRiserva?"Va nella tua <b>riserva</b>, pronta per i colpi di scena.":"Si <b>rimescola nel tuo mazzo</b>."} La tua mano resta invariata.</p>
       <span class="etichetta">Scarti comuni ${SIMBOLI[c.seme]}</span>
       <div class="mazzo-carte" id="reScarti">${scartiUtili.map(x=>cartaHTML(x)).join("")}</div>
       <div style="display:flex;gap:8px;margin-top:14px">
@@ -3014,7 +3018,7 @@ const REGOLE={
     <table><tr><th>Figura</th><th>Costo</th><th>Valore</th><th>Effetto</th></tr>
     <tr><td><b>Fante</b> — l'informatore</td><td>3</td><td>8</td><td>Sbircia le prime 2 carte del mazzo; se vuole, ne scambia una con una carta della mano (la carta ceduta torna in cima).</td></tr>
     <tr><td><b>Regina</b> — la manipolatrice</td><td>5</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano e pesca la prima del suo mazzo.</td></tr>
-    <tr><td><b>Re</b> — il deus ex machina</td><td>8</td><td>10</td><td>Recupera dagli scarti comuni una carta <b>numerica</b> del suo stesso seme (la mano resta): nelle scene 1-4 si rimescola nel tuo mazzo, nell'ultima entra nella riserva dei colpi di scena.</td></tr></table>
+    <tr><td><b>Re</b> — il deus ex machina</td><td>8</td><td>10</td><td>Recupera dagli scarti comuni una carta <b>numerica</b> del suo stesso seme (la mano resta), di valore <b>fino a 10 meno le scene già vinte dall'avversario</b>: nelle scene 1-4 si rimescola nel tuo mazzo, nell'ultima entra nella riserva dei colpi di scena.</td></tr></table>
     <p class="sotto">Una figura, una volta giocata (cattura, scopa o sacrificio), <b>esce dal gioco</b>: non va negli scarti comuni e non è più recuperabile (nemmeno dal Re). In <b>riserva</b> per i colpi di scena vanno quindi solo carte numeriche.</p>
     <b>Cattura flessibile:</b> in gioco le figure catturano un gruppo di somma minore o uguale al loro valore (vedi Azioni e prese); come ogni presa, vale 1 punto. I costi 3/5/8 rendono pari le due strade verso un Re: un Re, oppure un Fante più una Regina.
     <h3>Le figure entrano in mano</h3>
@@ -3279,7 +3283,7 @@ FINE SCENA: si sommano i valori delle carte rimaste nel piatto: ♦+♣ contano 
 MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Ordine: prima compri, poi peschi fino a 4 (niente rimescolo). Con i punti compri figure (al massimo UNA per mercato, e una sola per tipo in tutta la partita) che entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno):
 - Fante (costo 3, valore 8): entra in mano; quando lo giochi, sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una carta della mano (la carta che cedi torna in cima).
 - Regina (costo 5, valore 9): l'avversario scarta una carta a caso dalla mano e pesca dal mazzo.
-- Re (costo 8, valore 10): recuperi dagli scarti comuni una carta NUMERICA del suo stesso seme (la mano resta), nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena (dove pesa: alimenta il duello finale). Una figura, una volta giocata, ESCE DAL GIOCO (non negli scarti), quindi il Re trova solo numeri.
+- Re (costo 8, valore 10): recuperi dagli scarti comuni una carta NUMERICA del suo stesso seme (la mano resta), di valore FINO A 10 meno le scene già vinte dall'avversario, nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena (dove pesa: alimenta il duello finale). Una figura, una volta giocata, ESCE DAL GIOCO (non negli scarti), quindi il Re trova solo numeri.
 Ogni figura che compri è un PNG: dalle subito un nome e un breve ruolo (chi è), e richiamalo quando giochi quella carta e quando narri (il suo effetto meccanico è ciò che quel personaggio fa nella storia). Più in generale, ogni elemento rilevante che introduci (un nemico, un alleato, un luogo, un oggetto) con una sua volontà e un ruolo da seguire è un «Qualcuno»: dagli un nome se conta per il seguito, altrimenti resta una comparsa.
 
 JOLLY: un solo Jolly, RISORSA dei PROTAGONISTI (non è nel mazzo: ce l'hanno davanti dall'inizio). Usarlo NON dà punti a nessuno. I Protagonisti lo usano nelle scene 1-3: seppelliscono una carta della mano in fondo al loro mazzo, afferrano il Jolly e catturano UNA SOLA carta del piatto (valore elastico; se era l'unica rimasta è scopa) — è il PECCATO, un successo sleale contro i propri principi. Appena lo usano, il Jolly PASSA A TE (Opposizione): il loro costo non è in punti, è che consegnano a te la stessa arma. Da quel momento TU puoi usarlo, ma con un'ASIMMETRIA (v1.39): mentre loro SEPPELLISCONO la carta (la riavranno), tu la SCARTI — il tuo mazzo cala di 1, una carta in meno verso la riserva dei colpi di scena: è il tuo costo. Nelle scene 2-4, nel tuo turno scarti una carta, afferri il Jolly e catturi UNA SOLA carta del piatto (anche questo non dà punti) — e nel narrarlo FAI EMERGERE IL PECCATO: il compromesso di cui uno dei protagonisti si è macchiato riaffiora e incrina la loro alleanza. Conviene soprattutto per togliere dal tavolo la carta avversaria che ti fa perdere la posta, o per una scopa quando nel piatto è rimasta una sola carta. Vincoli: solo in una scena SUCCESSIVA a quella in cui i Protagonisti l'hanno usato (mai due usi nella stessa scena); una volta giocato è speso. A macchiarsi del peccato è UNO SOLO dei due protagonisti (l'altro può non saperlo, o assistervi e giudicarlo): è il seme di una discordia che sboccia. Se nessuno lo usa, chi lo tiene a fine partita incassa 2 punti Crescita (contano solo nell'esito finale, non spendibili al mercato).
@@ -3639,7 +3643,7 @@ async function iaMercato(){
   const btns=[...document.querySelectorAll('button[data-l="O"][data-f]')].filter(b=>!b.disabled);
   if(btns.length){
     const op=btns.map((b,i)=>`${i}: ${FIGURE[b.dataset.f].nome} di ${b.dataset.s} ${SIMBOLI[b.dataset.s]} (costo ${FIGURE[b.dataset.f].costo})`);
-    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (una presa vale 1, una scopa 3). Le figure che compri entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno, niente rimescolo); puoi comprare al massimo UNA figura per mercato (e una sola per tipo in tutta la partita). Effetti: Fante (costo 3) = sbircia le prime 2 carte del mazzo e, se vuoi, ne scambi una con una di mano; Regina (costo 5) = l'avversario scarta una carta a caso; Re (costo 8) = recupera dagli scarti comuni una carta NUMERICA del suo stesso seme (la mano resta), nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.\nOPZIONI (scegline UNA o nessuna):\n${op.join("\n")}\nJSON: {"acquisto": <numero oppure null> }`);
+    const r=await chiamaClaude(`MERCATO: hai ${puntiMercato("O")} punti (una presa vale 1, una scopa 3). Le figure che compri entrano SUBITO IN MANO ed entrano in scena la SCENA SUCCESSIVA (occupano uno slot: peschi una carta base in meno, niente rimescolo); puoi comprare al massimo UNA figura per mercato (e una sola per tipo in tutta la partita). Effetti: Fante (costo 3) = sbircia le prime 2 carte del mazzo e, se vuoi, ne scambi una con una di mano; Regina (costo 5) = l'avversario scarta una carta a caso; Re (costo 8) = recupera dagli scarti comuni una carta NUMERICA del suo stesso seme (la mano resta), di valore FINO A 10 meno le scene già vinte dall'avversario, nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena.\nOPZIONI (scegline UNA o nessuna):\n${op.join("\n")}\nJSON: {"acquisto": <numero oppure null> }`);
     // v1.35: una sola figura per mercato. Accetta il nuovo formato "acquisto"; per retrocompatibilità legge anche il primo di "acquisti".
     const scelta = r ? (Number.isInteger(r.acquisto) ? r.acquisto : (Array.isArray(r.acquisti)&&Number.isInteger(r.acquisti[0]) ? r.acquisti[0] : null)) : null;
     if(scelta!==null){
