@@ -33,6 +33,10 @@
 
 **Appendice F. Glossario.** Tutti i termini di gioco, in ordine alfabetico.
 
+**Appendice G. Le schede da fotocopiare.** Schede dei protagonisti, foglio del pitch, carte dei Qualcuno.
+
+**Appendice H. Handout riassuntivi.** Sei schede di riepilogo da tavolo: sequenza della scena, figure, Jolly, spareggio finale, duello dei colpi di scena, scaglioni della Crescita.
+
 ---
 
 # Capitolo 1. Benvenuto a bordo: una panoramica generale
@@ -1194,6 +1198,8 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 <div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div></div>
 </div>
 </div>
+<span class="sg-lab">Aspetto fisico e look <i>(com'&egrave; fatto, come si veste, un tratto riconoscibile)</i></span>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div></div>
 <span class="sg-lab">Cosa detesta dell'altro <i>(spunto narrativo, senza effetto sul gioco)</i></span>
 <div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
 <span class="sg-lab">Le sue due spinte <span class="sg-seme p">&#9824;</span> <i>&mdash; portarne una in narrazione trasforma una presa in scopa (entrambe spendibili, una sola per presa)</i></span>
@@ -1216,6 +1222,8 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 <div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div></div>
 </div>
 </div>
+<span class="sg-lab">Aspetto fisico e look <i>(com'&egrave; fatto, come si veste, un tratto riconoscibile)</i></span>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div></div>
 <span class="sg-lab">Cosa detesta dell'altro <i>(spunto narrativo, senza effetto sul gioco)</i></span>
 <div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
 <span class="sg-lab">Le sue due spinte <span class="sg-seme c">&#9829;</span> <i>&mdash; portarne una in narrazione trasforma una presa in scopa (entrambe spendibili, una sola per presa)</i></span>
@@ -1276,6 +1284,84 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 </div>
 </div>
 
+# Appendice H. Handout riassuntivi
+
+Sei schede di riepilogo da tenere in vista al tavolo: la sequenza di una scena, le figure, il Jolly, lo spareggio del pareggio finale, il duello dei colpi di scena e gli scaglioni della Crescita. Non sostituiscono i capitoli, servono a ricordare in un colpo d'occhio; per i dettagli e gli esempi si rimanda al testo.
+
+<div class="sg-foglio" style="page-break-inside:avoid;margin-bottom:16px">
+<div class="sg-titolo">H.1 &middot; La sequenza di una scena (scene 1-4)</div>
+<div class="sg-box">
+<ol>
+<li><b>Controllo della mano condivisa:</b> la gestisce chi ha la maggioranza del proprio seme nella mano appena pescata (a parità, chi non l'ha controllata nella scena prima).</li>
+<li><b>Asta per l'iniziativa:</b> ognuno cala coperta una carta <i>numerica</i> (figure e Jolly esclusi). Vince la più alta; a parità l'iniziativa va a chi non l'aveva nella scena precedente (alla scena 1, all'Opposizione).</li>
+<li><b>Apertura:</b> chi vince l'asta fissa <b>titolo</b> e <b>posta</b> e apre giocando per primo. La sua carta d'asta resta scoperta sul tavolo e sarà la sua ultima giocata del round.</li>
+<li><b>Il turno:</b> a turni alterni, una mossa a testa: metti una carta nel piatto, oppure fai una <b>presa</b>, oppure una <b>scopa</b> (presa che svuota il piatto). La presa è <b>obbligatoria</b>. Dopo ogni mossa, <b>narra</b>.</li>
+<li><b>Spinta:</b> dopo una presa fatta con una carta <i>numerica</i> puoi spendere una spinta del suo seme per trasformarla in scopa. Una sola per presa; mai su una presa di figura; mai nell'ultima scena.</li>
+<li><b>Concedere</b> (solo chi non ha l'iniziativa, sull'ultima carta): <b>ritirata strategica</b> (la carta torna nel mazzo, 0 punti) oppure <b>resa onorevole</b> (vale 1 punto). La posta va all'avversario.</li>
+<li><b>Fine round:</b> vince la posta chi ha la <b>somma di valori</b> più alta nel piatto (le proprie carte più quelle dell'avversario). A parità, la posta va a chi ha giocato l'ultima carta; una scopa a piatto vuoto la vince chi l'ha fatta.</li>
+<li><b>Mercato</b> tra una scena e l'altra (vedi H.2).</li>
+</ol>
+</div>
+</div>
+
+<div class="sg-foglio" style="page-break-inside:avoid;margin-bottom:16px">
+<div class="sg-titolo">H.2 &middot; Le figure</div>
+<div class="sg-box">
+<p style="margin:0 0 6px"><b>Al mercato:</b> massimo una figura per mercato, una sola per tipo in tutta la partita. Entra subito in mano ed è in scena dalla scena successiva. <b>Cattura flessibile:</b> prende un gruppo di carte di somma minore o uguale al suo valore. Se non ha nulla da catturare si <b>sacrifica</b> (vale 1 punto). Una figura giocata <b>esce dal gioco</b> (non va negli scarti, non è recuperabile).</p>
+<table>
+<tr><th>Figura</th><th>Costo</th><th>Val.</th><th>Effetto (scatta quando la giochi)</th></tr>
+<tr><td><b>Fante</b><br>l'informatore</td><td>3</td><td>8</td><td>Sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una di mano. <b>Ultima scena</b> (mazzo esaurito): sbirci la riserva avversaria e ne togli una carta a tua scelta (torna nella sua mano), e lui rimette in riserva la sua carta più bassa.</td></tr>
+<tr><td><b>Regina</b><br>la manipolatrice</td><td>5</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano e pesca la prima del mazzo. <b>Ultima scena:</b> se il mazzo è esaurito pesca a caso dalla riserva; se non ha né mazzo né riserva raccoglie dagli scarti una carta che scegli tu.</td></tr>
+<tr><td><b>Re</b><br>il deus ex machina</td><td>8</td><td>10</td><td>Recuperi dagli scarti comuni una carta numerica del suo stesso seme, di valore fino a 10 meno le scene già vinte dall'avversario. Scene 1-4: rimescolata nel mazzo. Ultima scena: nella riserva.</td></tr>
+</table>
+</div>
+</div>
+
+<div class="sg-foglio" style="page-break-inside:avoid;margin-bottom:16px">
+<div class="sg-titolo">H.3 &middot; Il Jolly</div>
+<div class="sg-box">
+<p style="margin:0 0 6px">Uno solo, risorsa dei <b>Protagonisti</b>, sul tavolo dall'inizio. Usarlo <b>non dà punti a nessuno</b>. Cattura <b>una sola carta</b> del piatto (valore elastico da 1 a 10; se era l'unica rimasta è scopa).</p>
+<ul>
+<li><b>Protagonisti (scene 1-3):</b> seppelliscono una carta in fondo al proprio mazzo, afferrano il Jolly e catturano. È il <b>peccato</b>. Appena usato, il Jolly <b>passa all'Opposizione</b>.</li>
+<li><b>Opposizione (scene 2-4):</b> <b>scarta</b> una carta (costo: il suo mazzo cala di 1), afferra il Jolly e cattura. Nel narrarlo <b>fa emergere il peccato</b>. Solo in una scena successiva a quella in cui l'hanno usato i Protagonisti, mai due usi nella stessa scena.</li>
+<li><b>Resistere:</b> chi arriva a fine partita col Jolly non speso incassa <b>+2 punti Crescita</b>.</li>
+</ul>
+</div>
+</div>
+
+<div class="sg-foglio" style="page-break-inside:avoid;margin-bottom:16px">
+<div class="sg-titolo">H.4 &middot; L'ultima scena: il conteggio e lo spareggio</div>
+<div class="sg-box">
+<p style="margin:0 0 6px">L'ultima scena si conteggia come le altre e dà un <b>esito apparente</b>: chi ha la maggioranza dei totali vince la posta e ne diventa il <b>difensore</b>. Ma non è ancora la missione: la decide il duello (H.5).</p>
+<p style="margin:0"><b>In caso di pareggio</b> (totali pari, con carte ancora sul tavolo) si compra la vittoria del conteggio <b>azzerando tutta la propria Crescita</b> (i punti non spesi). La facoltà spetta prima al lato con più Crescita (a parità, a chi ha l'iniziativa): può spendere e difendere, oppure rinunciare, cedendo la vittoria all'altro, che difende <b>senza spendere nulla</b>.</p>
+</div>
+</div>
+
+<div class="sg-foglio" style="page-break-inside:avoid;margin-bottom:16px">
+<div class="sg-titolo">H.5 &middot; Il duello dei colpi di scena</div>
+<div class="sg-box">
+<p style="margin:0 0 6px">Il piatto si svuota e si gioca con le carte della <b>Riserva</b> (solo numeriche). Il <b>difensore</b> parte protetto da un <b>muro</b> pari al numero di scene che ha vinto (da 1 a 5).</p>
+<ul>
+<li><b>Apertura:</b> lo sfidante cala una carta di valore <b>maggiore o uguale al muro</b> e narra il colpo di scena. Se non ce l'ha, la missione resta al difensore.</li>
+<li><b>Rilancio:</b> a turni, si prende la testa calando una carta <b>maggiore o uguale</b> a quella in cima. <b>Pareggiare ribalta</b>: nemmeno un 10 è al sicuro.</li>
+<li><b>Fine:</b> chi non può più superare (o rinuncia) perde. <b>Vince la missione l'ultimo che è riuscito a calare.</b></li>
+</ul>
+</div>
+</div>
+
+<div class="sg-foglio" style="page-break-inside:avoid;margin-bottom:16px">
+<div class="sg-titolo">H.6 &middot; Gli scaglioni della Crescita</div>
+<div class="sg-box">
+<p style="margin:0 0 6px">La <b>Crescita</b> sono i punti di prese e scope <b>non spesi</b> al mercato. È una misura a parte, non si incrocia con la missione, e si legge a scaglioni per ciascun lato (è il primo materiale per l'epilogo).</p>
+<table>
+<tr><th>Punti</th><th>Protagonisti</th><th>Opposizione</th></tr>
+<tr><td><b>0-2</b></td><td>Nessuna crescita</td><td>Minaccia sventata</td></tr>
+<tr><td><b>3-6</b></td><td>Crescita</td><td>Minaccia intatta</td></tr>
+<tr><td><b>7+</b></td><td>Grande crescita</td><td>Come l'idra</td></tr>
+</table>
+</div>
+</div>
+
 ---
 
-*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.41, che resta la fonte di verità del regolamento.*
+*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.42, che resta la fonte di verità del regolamento.*
