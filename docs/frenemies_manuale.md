@@ -35,7 +35,7 @@
 
 **Appendice G. Le schede da fotocopiare.** Schede dei protagonisti, foglio del pitch, carte dei Qualcuno.
 
-**Appendice H. Handout riassuntivi.** Sei schede di riepilogo da tavolo: sequenza della scena, figure, Jolly, spareggio finale, duello dei colpi di scena, scaglioni della Crescita.
+**Appendice H. Handout riassuntivi.** Otto schede di riepilogo da tavolo: sequenza della scena, figure, Jolly, spareggio finale, duello dei colpi di scena, scaglioni della Crescita, significato dei semi, le tre mosse e la spinta.
 
 ---
 
@@ -1286,7 +1286,7 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 
 # Appendice H. Handout riassuntivi
 
-Sei schede di riepilogo da tenere in vista al tavolo: la sequenza di una scena, le figure, il Jolly, lo spareggio del pareggio finale, il duello dei colpi di scena e gli scaglioni della Crescita. Non sostituiscono i capitoli, servono a ricordare in un colpo d'occhio; per i dettagli e gli esempi si rimanda al testo.
+Otto schede di riepilogo da tenere in vista al tavolo: la sequenza di una scena, le figure, il Jolly, lo spareggio del pareggio finale, il duello dei colpi di scena, gli scaglioni della Crescita, il significato dei semi e le tre mosse con la spinta. Non sostituiscono i capitoli, servono a ricordare in un colpo d'occhio; per i dettagli e gli esempi si rimanda al testo.
 
 <div class="sg-foglio" style="page-break-inside:avoid;margin-bottom:16px">
 <div class="sg-titolo">H.1 &middot; La sequenza di una scena (scene 1-4)</div>
@@ -1359,6 +1359,32 @@ Sei schede di riepilogo da tenere in vista al tavolo: la sequenza di una scena, 
 <tr><td><b>3-6</b></td><td>Crescita</td><td>Minaccia intatta</td></tr>
 <tr><td><b>7+</b></td><td>Grande crescita</td><td>Come l'idra</td></tr>
 </table>
+</div>
+</div>
+
+<div class="sg-foglio" style="page-break-inside:avoid;margin-bottom:16px">
+<div class="sg-titolo">H.7 &middot; Il significato dei semi</div>
+<div class="sg-box">
+<p style="margin:0 0 6px">Il seme della carta che giochi ispira la narrazione della mossa. I <b>Protagonisti</b> hanno <span class="sg-seme p">&#9824;</span> Picche e <span class="sg-seme c">&#9829;</span> Cuori; l'<b>Opposizione</b> ha <span class="sg-seme q">&#9830;</span> Quadri e <span class="sg-seme f">&#9827;</span> Fiori.</p>
+<table>
+<tr><th>Seme</th><th>Chi</th><th>Significato</th></tr>
+<tr><td><span class="sg-seme p">&#9824;</span> <b>Picche</b></td><td>Il protagonista duro</td><td>Risolutezza, forza, conflitto, egoismo.</td></tr>
+<tr><td><span class="sg-seme c">&#9829;</span> <b>Cuori</b></td><td>Il protagonista empatico</td><td>Mediazione, dialogo, legame, intuizione emotiva.</td></tr>
+<tr><td><span class="sg-seme q">&#9830;</span> <b>Quadri</b></td><td>I nemici attivi</td><td>Fazioni ostili o rivali, vecchi nemici personali.</td></tr>
+<tr><td><span class="sg-seme f">&#9827;</span> <b>Fiori</b></td><td>Il caos</td><td>Sfortuna, imprevisti, attriti tra i protagonisti, complicazioni di ogni genere.</td></tr>
+</table>
+</div>
+</div>
+
+<div class="sg-foglio" style="page-break-inside:avoid;margin-bottom:16px">
+<div class="sg-titolo">H.8 &middot; Le tre mosse e la spinta</div>
+<div class="sg-box">
+<ul>
+<li><b>Introdurre</b> (giocare una carta nel piatto): disponi una risorsa in scena, prepari il terreno. <b>Non annulla e non supera</b> ostacoli: aggiungi il tuo, non togli quello dell'avversario. Per i Protagonisti è un elemento che potrà tornare utile; per l'Opposizione un nuovo problema (Quadri nemici, Fiori caos).</li>
+<li><b>Prendere</b> (presa, <b>1 punto</b>): togli una risorsa all'avversario, superi un ostacolo. Un successo vero, a volte con un costo. Se sei costretto a catturare una carta del tuo stesso lato è una <b>presa maldestra</b> (le due anime che si intralciano).</li>
+<li><b>Fare scopa</b> (la presa svuota il piatto, <b>3 punti</b>): successo pieno, una svolta o un ribaltamento. Vale più di una presa e si segna a parte.</li>
+</ul>
+<p style="margin:6px 0 0"><b>La spinta.</b> Dopo una presa fatta con una carta <i>numerica</i>, spunti una spinta del pitch del <b>seme</b> di quella carta: la presa diventa <b>scopa</b> (3 punti). Condizioni: deve entrare davvero nella narrazione; ogni spinta una sola volta (ogni lato ne ha quattro, due per seme); una sola spinta per presa; <b>mai</b> su una presa di figura o Jolly; <b>mai</b> nell'ultima scena.</p>
 </div>
 </div>
 
