@@ -112,6 +112,11 @@ button.secondaria{
   margin-bottom:calc(12px*var(--k,1));
 }
 #piatto .vuoto{color:var(--grigio);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+.tavolo-riga{display:flex;gap:calc(10px*var(--k,1));align-items:stretch;margin-bottom:calc(12px*var(--k,1))}
+.tavolo-riga #piatto{flex:1;margin-bottom:0}
+.asta-riservata{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(6px*var(--k,1));border:1px solid var(--bordo);border-radius:var(--r);padding:calc(10px*var(--k,1)) calc(12px*var(--k,1));text-align:center}
+.asta-riservata.lato-p{background:rgba(106,76,147,.22);border-color:var(--viola)}
+.asta-riservata.lato-o{background:rgba(47,109,140,.22);border-color:var(--acciaio)}
 .banner{
   border-left:3px solid var(--mezzeria);background:rgba(245,166,35,.07);border-radius:0 8px 8px 0;
   padding:calc(8px*var(--k,1)) 12px;font-size:max(11.5px,calc(13px*var(--k,1)));font-style:italic;margin-bottom:calc(10px*var(--k,1));
@@ -933,7 +938,10 @@ function rSpettatore(){
         <div class="tot-lato p">♥+♠ Protagonisti <b>${totaleProt()}</b></div>
         <div class="tot-lato o">♦+♣ Opposizione <b>${totaleOpp()}</b></div>
       </div>
-      <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto</span>'}</div>`;
+      <div class="tavolo-riga">
+        <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto</span>'}</div>
+        ${astaRiservataHTML()}
+      </div>`;
   }
   if(f==="narrazione" && G.narr){
     extra=`<div style="display:flex;justify-content:center;margin:10px 0">${G.narr.html}</div>
@@ -1718,6 +1726,14 @@ function rApertura(){
   const ar=document.getElementById("a-riprova"); if(ar) ar.addEventListener("click", rigeneraApertura);
 }
 
+/* Carta d'asta del vincitore: tenuta da parte e mostrata accanto al piatto finché
+   non si gioca per ultima. Solo render, non tocca G (la carta vive in lato(win).astaCarta). */
+function astaRiservataHTML(){
+  if(!G.astaWinner) return "";
+  const c=lato(G.astaWinner).astaCarta;
+  if(!c) return "";
+  return `<div class="asta-riservata lato-${G.astaWinner.toLowerCase()}"><span class="etichetta">Carta d'asta<br>${nomeLato(G.astaWinner)}<br>ultima giocata</span>${cartaHTML(c,"mini")}</div>`;
+}
 /* ================= TURNO ================= */
 function carteGiocabili(l){
   const L=lato(l);
@@ -1753,7 +1769,10 @@ function rTurno(){
       <div class="tot-lato p">♥+♠ Protagonisti <b>${totaleProt()}</b></div>
       <div class="tot-lato o">♦+♣ Opposizione <b>${totaleOpp()}</b></div>
     </div>
-    <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto — una presa qui sarebbe scopa</span>'}</div>
+    <div class="tavolo-riga">
+      <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto — una presa qui sarebbe scopa</span>'}</div>
+      ${g.daAsta?"":astaRiservataHTML()}
+    </div>
     ${(concessioneDisponibile() && !(G.modalita==="solo" && G.attore==="O"))?`<div class="opzioni" style="margin:8px 0"><button id="btnConcedi" class="azione">🏳️ Concedi la scena (1 punto)</button></div>`:""}
     <div class="mano-area lato-${l.toLowerCase()}${G.modalita==="solo"&&l==="O"?" ia-nascosta":""}">
       <div class="mano-titolo">
