@@ -733,7 +733,7 @@ Li figure però hanno delle limitazioni rispetto alle carte numeriche
 1. Non possono essere usate durante l'asta
 2. Non possono attivare la spinta
 3. Non possono aggiunte al piatto, ma devono essere usate sempre per fare presa o scopa
-4. Non possono essere messe nella Riserva per i colpi di scena alla preparazione della scena 5
+4. Non possono essere messe nella Riserva alla preparazione dell'ultima scena
 5. Le figure, una volta giocate (che catturino, facciano scopa o si sacrifichino), **escono dal gioco**: non finiscono negli scarti comuni come le carte numeriche e non saranno mai più recuperabili.
 
 
@@ -1364,8 +1364,8 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 <p style="margin:0 0 6px"><b>Al mercato:</b> massimo una figura per mercato, una sola per tipo in tutta la partita. Entra subito in mano ed è in scena dalla scena successiva. <b>Cattura flessibile:</b> prende un gruppo di carte di somma minore o uguale al suo valore. Se non ha nulla da catturare si <b>sacrifica</b> (vale 1 punto). Una figura giocata <b>esce dal gioco</b> (non va negli scarti, non è recuperabile).</p>
 <table>
 <tr><th>Figura</th><th>Costo</th><th>Val.</th><th>Effetto (scatta quando la giochi)</th></tr>
-<tr><td><b>Fante</b><br>l'informatore</td><td>3</td><td>8</td><td>Sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una di mano. <b>Ultima scena</b> (mazzo esaurito): sbirci la riserva avversaria e ne togli una carta a tua scelta (torna nella sua mano), e lui rimette in riserva la sua carta più bassa.</td></tr>
-<tr><td><b>Regina</b><br>la manipolatrice</td><td>6</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano e pesca la prima del mazzo. <b>Ultima scena:</b> se il mazzo è esaurito pesca a caso dalla riserva; se non ha né mazzo né riserva raccoglie dagli scarti una carta che scegli tu.</td></tr>
+<tr><td><b>Fante</b><br>l'informatore</td><td>3</td><td>8</td><td>Spii le prime 3 carte di un mazzo a scelta (il tuo o quello avversario) e decidi quali lasciare in cima e quali mandare in fondo, guardandole soltanto (restano nel mazzo). <b>Ultima scena</b> (nessun mazzo da spiare): nessun effetto, vale solo per la presa.</td></tr>
+<tr><td><b>Regina</b><br>la manipolatrice</td><td>6</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano; al suo posto prende in mano una carta bassa che scegli tu dagli scarti comuni (non tocca il suo mazzo). Se gli scarti sono vuoti, resta con una carta in meno.</td></tr>
 <tr><td><b>Re</b><br>il deus ex machina</td><td>9</td><td>10</td><td>Recuperi dagli scarti comuni una carta numerica del suo stesso seme, di valore fino a 10 meno le scene già vinte dall'avversario. Scene 1-4: rimescolata nel mazzo. Ultima scena: nella riserva.</td></tr>
 </table>
 </div>
