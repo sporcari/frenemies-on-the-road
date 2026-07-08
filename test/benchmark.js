@@ -129,7 +129,7 @@ md+=`| **Totale** | **${fixed(metrics.puntiTotali.lordoP)}**${d(metrics.puntiTot
 md+=`A fine partita — **netti** (Crescita): P ${fixed(metrics.puntiTotali.nettoP)} · O ${fixed(metrics.puntiTotali.nettoO)} · **spesi** al mercato: P ${fixed(metrics.puntiTotali.spesoP)} · O ${fixed(metrics.puntiTotali.spesoO)}\n\n`;
 
 md+=`## B.2) Figure possedute (cumulative) a fine scena\n\n`;
-md+=`*Spesa "quantizzata": ogni figura è un blocco di punti (Fante 3, Regina 5, Re 8).*\n\n`;
+md+=`*Spesa "quantizzata": ogni figura è un blocco di punti (Fante 3, Regina 6, Re 9).*\n\n`;
 md+=`| Scena | Protagonisti | Opposizione |\n|---|---|---|\n`;
 for(let sc=0;sc<5;sc++) md+=`| ${sc+1} | ${fixed(metrics.figurePerScena.P[sc])}${d(metrics.figurePerScena.P[sc],cmp?.figurePerScena.P[sc])} | ${fixed(metrics.figurePerScena.O[sc])}${d(metrics.figurePerScena.O[sc],cmp?.figurePerScena.O[sc])} |\n`;
 md+=`\n`;

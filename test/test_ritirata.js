@@ -1,9 +1,10 @@
-// Collaudo della ritirata strategica (una partita per processo; ripetere per coprire entrambe le varianti).
-// Forza la mossa appena il pulsante compare e verifica condizioni, effetti e tetto di una volta per variante.
-// Uso: node test/test_ritirata.js  (ripetere in un loop per vedere sia "mazzo" sia "prese").
+// Collaudo di "Concedere la scena" (v1.44: mossa unica, +1 punto, carta agli scarti, una volta per lato).
+// Forza la concessione appena il pulsante compare e verifica condizioni ed effetti. Gira in PvP (locale):
+// verifica anche che in PvP NON compaia la textarea di narrazione (si narra al tavolo).
+// Uso: node test/test_ritirata.js
 const {JSDOM}=require("jsdom");
 let html=require("fs").readFileSync(require("path").join(__dirname,"..","index.html"),"utf8").replace(/<script src=[^>]+><\/script>/g,"");
-html=html.replace("/* ================= AVVIO ================= */","window.__G=()=>G; window.__rv=l=>ritirataVarianti(l);\n/* AVVIO */");
+html=html.replace("/* ================= AVVIO ================= */","window.__G=()=>G;\n/* AVVIO */");
 const dom=new JSDOM(html,{runScripts:"dangerously",pretendToBeVisual:true});
 const {window}=dom,{document}=window;
 const click=el=>el&&el.dispatchEvent(new window.Event("click",{bubbles:true}));
@@ -11,42 +12,37 @@ const G=()=>window.__G(), fase=()=>window.__G().fase;
 const veloA=()=>document.getElementById("velo").classList.contains("attivo");
 const modA=()=>document.getElementById("ovModale").classList.contains("attivo");
 
-let varianti=new Set(), ritirate=0;
+let concessioni=0;
 function assert(c,m){ if(!c) throw new Error("VINCOLO VIOLATO: "+m); }
 
 function passo(){
   if(fase()==="turno"){
     const g=G(), l=g.attore;
-    const btnR=document.getElementById("btnRitirata"), btnS=document.getElementById("btnResa");
-    if(btnR||btnS){
-      assert(l!==g.astaWinner,"ritirata offerta a chi ha l'iniziativa");
-      assert(g.lati[l].mano.length===1,"ritirata offerta con != 1 carta in mano");
-      assert(g.scena<4,"ritirata offerta in scena 5");
-      const vs=window.__rv(l);
-      // preferisci la variante non ancora vista (per coprirle entrambe nei vari run)
-      let variante = (!varianti.has("mazzo") && vs.includes("mazzo")) ? "mazzo"
-                   : (!varianti.has("prese") && vs.includes("prese")) ? "prese"
-                   : (vs.includes("mazzo") ? "mazzo" : "prese");
-      let useBtn = variante==="mazzo" ? btnR : btnS;
-      if(!useBtn){ variante = variante==="mazzo" ? "prese" : "mazzo"; useBtn = variante==="mazzo" ? btnR : btnS; }
-      const mazzoPre=g.lati[l].mazzo.length;
-      click(useBtn);
-      assert(modA(),"modale ritirata non aperto");
-      const ni=document.getElementById("ritNarr"); if(ni) ni.value="Mi ritiro per riorganizzarmi.";
+    const btn=document.getElementById("btnConcedi");
+    if(btn){
+      assert(l!==g.astaWinner,"concessione offerta a chi ha l'iniziativa");
+      assert(g.lati[l].mano.length===1,"concessione offerta con != 1 carta in mano");
+      assert(g.scena<4,"concessione offerta in scena 5");
+      assert(g.concessione[l]===false,"concessione offerta a chi l'ha già usata");
+      const puntiPre=g.lati[l].punti, mazzoPre=g.lati[l].mazzo.length;
+      click(btn);
+      assert(modA(),"modale concessione non aperto");
+      assert(!document.getElementById("ritNarr"),"in PvP la textarea di concessione non deve comparire");
       click(document.getElementById("ritConferma"));
       const G2=G(), rec=G2.scene[G2.scena];
-      assert(rec.perRitirata===l,"perRitirata non impostato");
+      assert(rec.concessaDa===l,"concessaDa non impostato");
       assert(rec.vincitore===(l==="P"?"O":"P"),"vincitore non assegnato all'altro lato");
-      assert(G2.ritirata[l][variante]===true,"flag variante non impostato");
-      assert(rec.riassunto && rec.riassunto.length>0,"riassunto della ritirata vuoto");
-      assert(!window.__rv(l).includes(variante),"variante ancora disponibile dopo l'uso");
-      if(variante==="mazzo") assert(G2.lati[l].mazzo.length===mazzoPre+1,"il mazzo non e' cresciuto di 1");
-      varianti.add(variante); ritirate++;
+      assert(G2.concessione[l]===true,"flag concessione non impostato");
+      assert(G2.lati[l].punti===puntiPre+1,"la concessione non ha dato 1 punto");
+      assert(G2.lati[l].mazzo.length===mazzoPre,"la carta della concessione non deve entrare nel mazzo");
+      assert(G2.lati[l].mano.length===0,"la carta della concessione non è stata rimossa dalla mano");
+      concessioni++;
       return;
     }
   }
-  if(modA()){const f=document.getElementById("fanteNo"),rNo=document.getElementById("reNo");
-    if(f){click(f);return} if(rNo){click(rNo);return}
+  if(modA()){const fmm=document.getElementById("fanteMazzoMio"),fro=document.getElementById("fanteReordOk"),rNo=document.getElementById("reNo");
+    if(fmm){click(fmm);return} if(fro){click(fro);return} if(rNo){click(rNo);return}
+    const rs=document.getElementById("reginaScartiOk");if(rs){const c=document.querySelector("#reginaScarti .carta");if(c)click(c);click(rs);return}
     const p=document.getElementById("pngOk");if(p){let a=document.getElementById("m-png-nome");if(a)a.value="X";let b=document.getElementById("m-png-desc");if(b)b.value="Y";click(p);return}
     const q=document.getElementById("pngnOk");if(q){let a=document.getElementById("m-pngn-nome");if(a)a.value="X";click(q);return}throw new Error("modale sconosciuto");}
   if(veloA()){click(document.getElementById("veloBtn"));return}
@@ -77,4 +73,4 @@ function passo(){
 let done=false;
 for(let i=0;i<4000;i++){ if(fase()==="finale"){done=true;break} passo(); }
 if(!done){ console.log("PARTITA NON COMPLETATA"); process.exit(1); }
-console.log("ritirata OK · partita completata · ritirate="+ritirate+" · varianti viste: "+([...varianti].join(",")||"nessuna"));
+console.log("concessione OK · partita completata · concessioni="+concessioni);

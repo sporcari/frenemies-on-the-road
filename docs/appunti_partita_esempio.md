@@ -11,7 +11,59 @@ carte). La dettatura di Saverio va ancorata a quelle carte.
 
 ---
 
-## ⚠️⚠️⚠️ RIPRENDERE DA QUI (agg. 26 giu 2026) — EURISTICA + SEED FATTI, manca SOLO la fiction S3-S5
+## 🔴🔴🔴 RIPRENDERE DA QUI (agg. 3 lug 2026) — TUTTO L'ESEMPIO 34/367 È OBSOLETO: nuova ricerca seed in corso
+
+**Perché si ricomincia.** La fiction S1-S5 scritta nel manuale sul seed **34/367** (tutta la roba
+datata 30 giu qui sotto) è **meccanicamente OBSOLETA**: dalla v1.32 in poi sono cambiate le regole di
+fondo su cui era ancorata. In particolare:
+- **v1.32** punteggio a gettoni (valuta numerica), tutte le carte giocate vanno subito negli scarti
+  comuni → cambia il bacino del Re.
+- **v1.33 / v1.37** il **Jolly è stato ridisegnato**: è una risorsa dei Protagonisti FUORI dal mazzo
+  (la si afferra seppellendo una carta), cattura **una sola** carta, **0 punti**, e passa P→O. Il beat
+  della vecchia S3 «Jolly sleale come 4 → 3 punti a Omar» **non esiste più**.
+- **v1.34 / v1.35 / v1.36** le figure comprate entrano in **MANO** (non nel mazzo, niente rimescolo),
+  **una per mercato**, e **niente spinta su una presa di figura**. Le vecchie sequenze di carte non si
+  riproducono.
+- **v1.38 / v1.40** la **scena 5 è un DUELLO A RILANCIO**: dopo il primo conteggio il piatto si svuota
+  e la missione la decide un duello con le carte della **riserva** (il difensore dietro un «muro» = scene
+  vinte; lo sfidante apre ≥ muro; a turni alterni si prende la testa ≥ cima, **pareggiare ribalta**;
+  vince l'ultimo che cala). **Tutta la fiction dei "colpi di scena" della vecchia S5 (`7♥ elimina 5♦`…)
+  è morta.**
+- L'esito finale è solo **MISSIONE COMPIUTA / FALLITA** + flag **RIBALTONE**; la Crescita si legge a
+  scaglioni a parte (v1.40). Non esistono più "Vittoria piena" / "per il rotto della cuffia".
+
+**Decisioni prese con Saverio (3 lug 2026):**
+1. **Ambito ricerca = ENTRAMBE, poi confronto.** (a) **FIXSEED=34** (le scene 1-2 sono meccanicamente
+   invariate — nessuna figura né Jolly prima della scena 3 — quindi la fiction S1-S2 già dettata resta
+   valida; si ricerca solo il residuo S3-S5 via SEED2/SEED3); (b) **ricerca da zero** (seed nuovo per
+   tutte e 5 le scene). Si portano a Saverio i candidati migliori delle due.
+2. **Finale = RIBALTONE OBBLIGATORIO.** Equivalente moderno del "rotto della cuffia": i Protagonisti
+   **perdono il primo conteggio della scena 5** e poi **vincono la missione nel duello a rilancio**.
+   NB: ciò implica che l'esito **apparente** della scena 5 è dell'Opposizione (l'arco delle poste NON
+   finisce con una "P" — un arco tipo …O-O con missione P).
+3. **Vetrina, must-have (tutti e quattro):** (a) tutte e 3 le figure **giocate** in scena con effetto
+   visibile; (b) **Jolly mostrato** (P lo afferra + usa, poi passa a O che lo rigioca: ciclo del peccato);
+   (c) **esattamente una resa**; (d) **effetti figura di scena 5 (v1.42)**: Fante che sbircia la riserva
+   avversaria e/o Regina che pesca dagli scarti (una figura tenuta fino alla scena 5).
+
+**Driver aggiornato (3 lug).** `test/partita_smart.js`: i criteri del BATCH erano tarati sul vecchio
+modello (filtro "ROTTO DELLA CUFFIA" e distribuzione a 4 esiti = codice morto). Rifatti sui **6 criteri
+correnti**: c1 missione=P · c2 ribaltone (`flipDopoColpi`) · c3 tutte 3 le figure GIOCATE · c4 Jolly
+giocato · c5 esattamente una resa · c6 effetto figura S5 (`fanteRiserva||reginaScarti`). Aggiornati anche
+il blocco `FIGJOLLY` (ranking per effetti v1.42, niente più `sceneOK45`/jolly-scopa) e le medie/esiti.
+Il **motore** del driver era già corrente (implementa duello, `missione`, `flipDopoColpi`, effetti v1.42).
+Comandi: `BATCH=300 node --max-old-space-size=8192 test/partita_smart.js` (fresh) e con `FIXSEED=34` davanti.
+Nota empirica dallo smoke test: c2 (ribaltone-P) e c6 (figura S5) **raramente coesistono** col gioco
+greedy → attesa che il candidato "6 su 6" sia raro; i "5 su 6" andranno valutati coi tradeoff (come già
+accadde con cuffia vs showcase completo per il 34/367).
+
+**PROSSIMO PASSO:** letti i risultati della ricerca (fresh + FIXSEED=34), scegliere con Saverio il nuovo
+seed-vetrina, poi rifare la fiction S3-S5 (S1-S2 se fresh) col metodo solito. Tutto ciò che segue qui
+sotto (datato 26/25/30 giu) è STORICO: fiction e meccaniche del 34/367 da NON riusare alla lettera.
+
+---
+
+## ⚠️⚠️⚠️ (STORICO 26 giu 2026) — EURISTICA + SEED FATTI, manca SOLO la fiction S3-S5
 
 **Euristica anti-spreco figure: FATTA** (decisione #45 nel diario). In `test/partita_smart.js`, alla presa con figura (ramo non-scopa di `scegliMossa`) si aggiunge `+FIGVAL[c.fig]`: la presa con figura batte la stessa presa con un numero, e tra due figure si cala prima la più alta (anti-stranding). Migliorata la ricerca `FIGJOLLY` (traccia `reginaPresa`/`reginaSacr`/`fanteSacr`, rilassato il malus "figura nei colpi") e aggiunto `BATCHSTART=N`. Test core verdi. Nessun effetto su motore/regole/`partita_esempio.js`.
 
@@ -126,7 +178,7 @@ Preferenze aggiuntive di Saverio (per scegliere tra i candidati): **arco P,O,P,O
 - Rifare il driver canonico (`partita_esempio.js`) per le regole v1.15: nuovo modale Fante (`#fanteSwap`/`#fanteNo`), etichette punteggio (presa 1 / scopa 3), via la Scena-4 scriptata e il meccanismo a 3 seed (col nuovo flusso e mescola-se-comprato si può usare un solo SEED, o una linea scriptata nuova). Rigenerare il transcript di riferimento.
 - Riscrivere §34 (KB, togliere la nota "stale") e Appendice B (manuale) con la fiction (Saverio detta, io anchoro alle carte del nuovo transcript). Formato Appendice B invariato (vedi sotto).
 - Rigenerare i PDF (`python3 docs/genera_pdf_manuale.py` e `docs/genera_pdf.py` per la KB) e il `.docx` (`docs/genera_docx_appendiceB.py`).
-- Restano in sospeso anche: sweep esempi inline Frank/Skunk → Vera/Otto; eventuale ritocco costi figure (3/5/8, per ora invariato).
+- Restano in sospeso anche: sweep esempi inline Frank/Skunk → Vera/Otto. (Costi figure: fatti, ora 3/6/9 dalla v1.45; Regina 5→6, Re 8→9, Fante invariato.)
 
 ---
 

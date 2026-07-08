@@ -72,7 +72,11 @@ async function main(){
     if(mod()){
       const ck=document.getElementById("ckOk");
       if(ck){ const k=document.getElementById("ckInput"); if(k) k.value="sk-ant-test"; click(ck); await dorme(20); continue; }   // imposta la chiave fittizia
-      if(G().attore==="P") click(document.getElementById("fanteNo")||document.getElementById("reNo"));
+      if(G().attore==="P"){
+        const rs=document.getElementById("reginaScartiOk");   // Regina (v1.43): seleziona una carta degli scarti e conferma
+        if(rs){ const c=document.querySelector("#reginaScarti .carta"); if(c) click(c); click(rs); }
+        else click(document.getElementById("fanteMazzoMio")||document.getElementById("fanteReordOk")||document.getElementById("reNo"));
+      }
       await dorme(30); continue;
     }
 
@@ -163,7 +167,7 @@ async function main(){
     }
     if(f==="fine_scena"){
       const rec=G().scene[G().scena];
-      const claudeEsito = G().modalita==="solo" && !rec.perRitirata && (rec.vincitore==="P" || (rec.vincitore==="parita" && rec.iniziativa==="O"));   // l'esito lo narra chi perde la posta: l'Opposizione quando vince la scena i Protagonisti (in parità chi ha vinto l'asta)
+      const claudeEsito = G().modalita==="solo" && !rec.concessaDa && (rec.vincitore==="P" || (rec.vincitore==="parita" && rec.iniziativa==="O"));   // l'esito lo narra chi perde la posta: l'Opposizione quando vince la scena i Protagonisti (in parità chi ha vinto l'asta)
       if(claudeEsito && !document.getElementById("fsEsito")){ await dorme(40); continue }   // aspetta l'iniezione dell'esito
       if(claudeEsito && !okEsito){
         const fsE=document.getElementById("fsEsito");

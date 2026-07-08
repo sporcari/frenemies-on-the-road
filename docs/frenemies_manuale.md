@@ -33,7 +33,7 @@
 
 **Appendice F. Glossario.** Tutti i termini di gioco, in ordine alfabetico.
 
-**Appendice G. Le schede da fotocopiare.** Schede dei protagonisti, foglio del pitch, carte dei Qualcuno.
+**Appendice G. Le schede da fotocopiare.** Schede dei protagonisti, scheda del viaggio, scheda dell'opposizione, carte dei Qualcuno.
 
 **Appendice H. Handout riassuntivi.** Otto schede di riepilogo da tavolo: sequenza della scena, figure, Jolly, spareggio finale, duello dei colpi di scena, scaglioni della Crescita, significato dei semi, le tre mosse e la spinta.
 
@@ -123,7 +123,7 @@ Prima di cominciare, prepara i mazzi così:
 - togli entrambi i Jolly dal mazzo: uno lo tieni da parte come risorsa dei Protagonisti (fuori dal mazzo, disponibile dall'inizio — vedi Capitolo 5), l'altro resta fuori dalla partita;
 - restano quindi soltanto le carte numeriche, dall'Asso al 10, di ciascun seme: venti carte per lato.
 
-Venti carte bastano esattamente per cinque scene, perché ogni lato ne pesca quattro a scena. Tienilo a mente, perché è una regola con un peso strategico: quando il mazzo finisce, la partita finisce. Non si rimescolano mai gli scarti dentro il mazzo. Le figure comprate al mercato non entrano nel mazzo: vanno direttamente in mano (Capitolo 4), e la carta base che occuperebbero resta nel mazzo. Gli unici modi per aggiungere carte al mazzo sono quindi una sola volta per lato la carta della Ritirata strategica (lo vedremo nel Capitolo 3) e la carta numerica che il Re recupera dagli scarti nelle scene 1-4 (nell'ultima scena finisce invece nella riserva). Il Jolly (Capitolo 5) non entra mai nel mazzo, è una risorsa a parte dei Protagonisti; l'unica carta che muove verso il mazzo è quella che un lato cede per afferrarlo, che torna in fondo al proprio mazzo.
+Venti carte bastano esattamente per cinque scene, perché ogni lato ne pesca quattro a scena. Tienilo a mente, perché è una regola con un peso strategico: quando il mazzo finisce, la partita finisce. Non si rimescolano mai gli scarti dentro il mazzo. Le figure comprate al mercato non entrano nel mazzo: vanno direttamente in mano (Capitolo 4), e la carta base che occuperebbero resta nel mazzo. L'unico modo per aggiungere carte al mazzo è quindi la carta numerica che il Re recupera dagli scarti nelle scene 1-4 (nell'ultima scena finisce invece nella riserva). Il Jolly (Capitolo 5) non entra mai nel mazzo, è una risorsa a parte dei Protagonisti; l'unica carta che muove verso il mazzo è quella che un lato cede per afferrarlo, che torna in fondo al proprio mazzo.
 
 ## 1.6 Che cosa significano i semi
 
@@ -462,13 +462,13 @@ L'atmosfera la suggerisce il seme di quella prima carta, e può tradursi in un a
 
 ## 3.6 Che cosa puoi fare nel tuo turno
 
-Nel tuo turno puoi fare una di queste cose:
+Nel tuo turno puoi eseguire una di queste tre mosse:
 
-- **giocare una carta nel piatto**, cioè introdurre una tua risorsa nella scena (possibile solo se quella carta non può catturare: vedi la presa obbligatoria, più avanti);
+- **aggiungere una carta al piatto**, cioè introdurre una tua risorsa nella scena (possibile solo se quella carta non può catturare: vedi la presa obbligatoria, più avanti);
 - **fare una presa**, cioè togliere carte dal piatto secondo le regole della Scopa;
 - **fare una scopa**, se la presa svuota completamente il piatto.
 
-### E poi narra
+### E poi narrala
 
 Dopo ciascuna mossa è fondamentale che il giocatore narri cosa succede, ovvero cosa avviene nella storia (in fiction) a seguito della sua giocata.
 A volte questo è l'aspetto che può sembrare più difficile per chi non è abituato agli story-game e ai giochi di ruolo, ovvero improvvisare un pezzo di storia così su due piedi.
@@ -480,6 +480,7 @@ Vera è messa spalle al muro e raccoglie la prima cosa che gli capita a tiro: l'
 {: .esempio }
 
 In generale conviene sempre immaginarsi bene la situazione e pensare semplice, c'è un chiché tipico del genere che si adatta alla situazione? Usalo! C'è qualcosa di ragionevole o ovvio da dire? Dillo. E' molto più divertente una giocata fluida e scorrevole piuttosto che una gara a dire la cosa più bislacca e originale. E se sei proprio in crisi, chiedi agli altri giocatori, magari hanno una buona idea che può sbloccarti, in fondo è anche un gioco collaborativo.
+
 
 
 ## 3.7 Introdurre: giocare una carta nel piatto
@@ -508,30 +509,55 @@ Le figure (Fante, Regina, Re) sono un caso particolare di Qualcuno: personaggi p
 
 ## 3.8 Prendere: superare un ostacolo, con un eventuale costo
 
-Prendere significa togliere una risorsa all'avversario, prendendo le sue carte dal piatto. È un successo vero, non un risultato a metà, anche se a volte costa un compromesso o un sacrificio. La carta che togli può essere un buono spunto da cui partire per la narrazione della mossa, perché rappresenta ciò che stai superando. 
-Inoltre la pressa fa guadagnare un punto che può essere speso nella fase di mercato o conservato fino a fine partita per determinare la Crescita.
-Per i Protagonisti è un ostacolo dell'Opposizione che viene superato. Per l'Opposizione, è una risorsa dei protagonisti che viene distrutta, o neutralizzata.
+Prendere significa togliere una risorsa all'avversario, catturando le sue carte dal piatto. È un successo vero, non un risultato a metà, anche se a volte costa un compromesso o un sacrificio. La carta che togli è un buono spunto da cui partire per la narrazione della mossa, perché rappresenta ciò che stai superando. 
+Inoltre la presa fa guadagnare un punto, da spendere al mercato o conservare fino a fine partita per la Crescita. Per i Protagonisti è un ostacolo dell'Opposizione che viene superato; per l'Opposizione, una risorsa dei protagonisti che viene distrutta o neutralizzata.
 
-Dal lato Protagonisti: il 6 di Fiori era la carta di credito bloccata. Fai la presa e dichiari: "Vado a impegnare il mio orologio d'oro e ottengo un bel gruzzolo di contanti." L'ostacolo è superato, a un prezzo. Dal lato Opposizione: i protagonisti avevano introdotto un secondino gentile, vecchio compagno di scuola. L'Opposizione prende quella carta: appena lui si allontana, telefona al cattivo per avvertirlo che li tiene in pugno. Il vantaggio apparente era una trappola.
+Dal lato Protagonisti: il 6♦ era la carta di credito bloccata. Fai la presa e dichiari: «Vado a impegnare il mio orologio d'oro e ottengo un bel gruzzolo di contanti.» L'ostacolo è superato, a un prezzo. Dal lato Opposizione: i protagonisti avevano introdotto un secondino gentile, vecchio compagno di scuola. L'Opposizione prende quella carta: appena lui si allontana, telefona al cattivo per avvertirlo. Il vantaggio apparente era una trappola.
 {: .esempio }
+
+Una presa è sempre un successo: superi un ostacolo e vale un punto. Ma quanto ti avvicini alla posta dipende da come la racconti. Puoi limitarti a rimuovere la minaccia, oppure narrarla in modo che ti spinga in avanti. Premi sull'acceleratore! 
+
+Se l'Opposizione ha messo in scena un uomo armato che ti sbarra la strada, «lo disarmo» chiude il problema e ti lascia dove sei; «lo disarmo, lo stendo con un pugno e supero il varco» chiude il problema e guadagna terreno verso l'obiettivo. Stessa carta, stesso punto: a fare la differenza è la narrazione, che conviene sempre orientare verso ciò che porta avanti la storia.
+
+Non essere timido: quando prendi hai segnato un punto, fai una narrazione aggressiva «con i denti». Meglio una presa narrata alla grande, magari un po' sopra le righe, che una risolta a mezza voce: se ti allarghi troppo sarà l'altro a frenarti, e intanto la scena è andata avanti. Lo stallo, invece, non lo corregge nessuno e finisce per creare situazioni poco soddisfacenti.
 
 ### Presa maldestra
 
-A volte sei costretto a catturare una carta del tuo stesso schieramento (Cuori e Picche per i Protagonisti, Fiori e Quadri per l'Opposizione): la cattura è obbligata anche quando la carta nel piatto è dalla tua parte. Raccontalo come un gesto maldestro, le due anime del lato che si ostacolano o si annullano a vicenda.
+A volte sei costretto a catturare una carta del tuo stesso schieramento (Cuori e Picche per i Protagonisti, Fiori e Quadri per l'Opposizione): la cattura è obbligata anche quando la carta nel piatto è dalla tua parte.
+Ci sono due modi di raccontarlo.
+
+Uno è le due anime del lato che si intralciano, l'una che manda all'aria ciò che l'altra aveva costruito:
+
+- il personaggio empatico ostacola l'energico;
+- l'energico vanifica un'alleanza stretta dall'empatico;
+- il caos vanifica una minaccia messa in scena dai nemici;
+- un'azione dei nemici riporta ordine eliminando il caos.
+
+Un altro modo, più interessante sul lato Protagonisti, è che un personaggio stia agendo insolitamente contro la propria natura:
+
+- l'energico si trattiene, si apre, si confida;
+- l'empatico perde la pazienza e agisce d'impeto.
 
 Otto ha appena messo in scena un alleato disposto ad aiutarli (un Cuori nel piatto), ma Vera, impaziente, agisce di slancio con una carta di Picche che cattura proprio quel Cuori. Meccanicamente è una presa come un'altra; in fiction è un autogol della coppia: l'irruenza di Vera manda all'aria l'aggancio costruito da Otto, e l'alleato, offeso, si tira indietro.
 {: .esempio }
 
-## 3.9 Fare scopa: successo pieno, svolta, ribaltamento
-
-Fare scopa accade quando la presa lascia il piatto vuoto: togli all'avversario ogni risorsa in scena in un colpo solo. È un successo sopra ogni aspettativa, quasi un colpo di fortuna. Vale più di una presa normale, si segna a parte, ed è una risorsa importante e duratura.
-
-Scopa con un 6 di Picche, e Vera mette al tappeto in pochi secondi i due uomini della Loggia che bloccavano il vicolo. La strada è libera, la situazione ribaltata.
+Anche l'Opposizione può caderci, ed è il caso che si immagina con più fatica. All'asta del Cairo Omar gioca un 3♣, il caos, e cattura due carte ♦ che aveva calato poco prima, gli uomini della Loggia lanciati all'inseguimento di Vera: un Fiori che si porta via due Quadri, il caos che vanifica una minaccia già messa in scena dai nemici. In fiction è l'attacco di panico di Otto in piena sala d'aste a dirottare tutto: i suoi uomini smettono di rincorrere Vera e si stringono attorno allo studioso che barcolla, perché Otto, che sa leggere il taccuino, vale più del taccuino stesso.
 {: .esempio }
 
-C'è un caso particolare. Una figura giocata quando non ha nulla da catturare (il piatto è vuoto, oppure restano solo carte fuori dalla sua portata) non resta sul tavolo: si sacrifica e si conta come se avesse preso sé stessa, lasciando dove sono le eventuali carte fuori portata. In questo caso la figura viene scartata e si segna 1 punto.
-Il suo effetto speciale però scatta lo stesso.
-Narrativamente si può raccontare che l'alleato che si immola, o fa qualcosa che a causa delle circostanze risulta meno incisivo del previsto.
+La presa può anche essere "mista": la stessa mossa cattura insieme una carta nemica e una tua. È al tempo stesso un successo e un danno interno: superi un ostacolo avversario, ma nel farlo travolgi qualcosa della tua stessa parte. La chiave di lettura non cambia: sta a chi narra usare lo spunto dell'autogol come costo, compromesso o incoerenza del personaggio.
+
+Ricorda che in ogni caso una Presa è un successo, fa superare un ostacolo e avvicina al raggiungimento della posta, queste considerazioni sono solo colore narrativo.
+
+## 3.9 Fare scopa: successo pieno, svolta, ribaltamento
+
+Fare scopa accade quando la presa lascia il piatto vuoto: togli all'avversario ogni risorsa in scena in un colpo solo ed ottieni un vantaggio concreto. In narrazione si traduce in un successo sopra ogni aspettativa, quasi un colpo di fortuna. Anche meccanicamente rende di più di una presa normale e infatti vale 3 punti.
+
+Il treno, dirottato su un binario morto, sta per deragliare: nel piatto è rimasto solo il 6♣, il caos del deserto che precipita tutto verso lo schianto. Vera prende con il 6♠ e svuota il piatto: scopa. Vera corre verso la locomotiva, trova il macchinista svenuto e tira la leva dei freni con tutte le sue forze. Il treno stride, sbanda e si ferma a pochi metri dalla fine dei binari. Quando il macchinista si riprende, lui e tutti i passeggeri ringraziano Vera ed offrono il loro aiuto per sdebitarsi.
+{: .esempio }
+
+Nota la differenza con una presa semplice. Fermare il treno in tempo, togliere di mezzo la minaccia del deragliamento, sarebbe già stata una presa: un ostacolo superato, e basta. È la scopa a darle il di più: non solo scampa il disastro, ma ne esce con vantaggio: la riconoscenza del macchinista e dei passeggeri, un aiuto su cui potrà contare anche più avanti. La presa risolve; la scopa risolve e regala qualcosa in più, che resta anche nelle scene seguenti.
+
+Vale allora, a maggior ragione, quanto detto sulla presa (§3.8): se già lì conviene narrare in avanti invece di limitarsi a rimuovere la minaccia, con una scopa puoi osare molto di più e ottenere un vantaggio concreto rispetto a prima.
 
 ## 3.10 Darsi una spinta
 
@@ -552,7 +578,38 @@ L'idea è che sia la carta giusta, nel momento giusto, a sbloccare la rivelazion
 L'Opposizione ha scritto, come spinta di Fiori: "Aldo Falco è vivo: è diventato un Vegliante. Otto lo ha capito, e tace." In una scena avanzata il giocatore dell'Opposizione prende con una carta di Fiori e spunta questa spinta con una rivelazione: tra i custodi incappucciati della cripta Vera riconosce il passo di suo padre, e capisce che Otto lo sapeva già da giorni. La rivelazione spacca la coppia, la presa diventa una scopa, e il piatto si svuota nelle prese di chi ha spuntato.
 {: .esempio }
 
-## 3.11 Concedere la scena
+Anche i Protagonisti spingono così. Sul treno bloccato dalla tempesta Otto prende con il 9♥ (una presa normale) e spunta la spinta ♥ del suo pitch, il peso di aver riaperto lui la caccia con la sua traduzione: la presa diventa scopa e svuota il piatto. In fiction, chino sul taccuino di Aldo, lo coglie un'illuminazione e ripete a mezza voce una formula in una lingua arcaica; fuori, come obbedisse a quelle parole, la tempesta di sabbia si placa, e il treno può ripartire.
+{: .esempio }
+
+
+## 3.11 Dalla mossa alla narrazione
+
+Se vieni dai giochi di ruolo tradizionali, parti da qui: non stai "provando" a fare qualcosa. Là dichiari un'azione e tiri un dado per vedere se riesce; qui il caso ha già parlato quando hai giocato la carta. Non chiedi permesso, non speri: racconti un esito che è già tuo. Non c'è provare: c'è il fare.
+
+Chiarito questo, ogni volta che giochi una carta e devi narrare, segui tre passi.
+
+**Passo 1. Guarda la mossa: ti dice CHE COSA racconti.**
+
+- **Hai introdotto** (calato una carta nel piatto)? Metti in scena un fatto nuovo a tuo favore. Guardi avanti, prepari qualcosa che tornerà utile. Non risolvi nulla di ciò che è già in tavola. *Chiediti: in che modo il fatto che introduci ti può tornare utile per la posta?*
+- **Hai preso?** Superi o annulli un ostacolo già in scena e avanzi verso l'obiettivo della scena. Parti dalla carta che hai tolto: è lei che rappresenta ciò che stai superando. *Chiediti: in che modo questo superamento dell'ostacolo ti avvicina alla posta?*
+- **Hai fatto scopa?** Ribalti tutto: una svolta piena, spazzi via gli ostacoli in un colpo solo e ottieni vantaggio. *Chiediti: quale vantaggio concreto ottieni?*
+
+**Passo 2. Guarda il seme: ti dice CHI agisce.**
+
+- ♠ il protagonista Picche, con forza, istinto, azione diretta.
+- ♥ il protagonista Cuori, con dialogo, empatia, un alleato.
+- ♦ i nemici, che agiscono con intenzione (non per forza una sola fazione).
+- ♣ il caos: sfortuna, imprevisti, o gli attriti tra i due protagonisti.
+
+**Passo 3. Guarda il valore: ti dice QUANTO è grande.**
+
+- Basso (1-3): un gesto piccolo, poco appariscente, sottile, subdolo.
+- Medio (4-7): un fatto concreto, non ignorabile.
+- Alto (8-10): un colpo imponente, un personaggio potente, un'azione spettacolare.
+
+Metti insieme i tre passi e racconta. E se le risposte alle domande del Passo 1 reggono, la narrazione è ottima e funzionale.
+
+## 3.12 Concedere la scena
 
 Esiste un'ulteriore mossa che può essere fatta soltanto dal giocatore che dovrebbe giocare l'ultima carta della scena e soltanto nelle scene dalla 1 alla 4.
 
@@ -560,15 +617,14 @@ Questa possibilità si verifica quando giocatore ha solo una carta in mano, e sa
 
 In questo caso, invece di sprecare la carta, può decidere di Concedere la scena, ricavandone un piccolo vantaggio.
 
-Ci sono due modi di concedere, e ciascuno si può usare una sola volta per lato in tutta la partita.
-
-- **Ritirata strategica:** la carta viene rimescolata nel mazzo. Non vale punti, ma diventa una carta in più e potrà tornare utile per i colpi di scena dell'ultima scena. Il giocatore narra come i suoi personaggi lascino il campo, rinunciando per il momento alla posta.
-
-- **Resa onorevole:** la carta viene conteggiata come una presa e vale 1 punto. Il giocatore narra come i suoi personaggi ammettano la sconfitta di fronte al nemico, arrendendosi.
+Concedere la scena vale **1 punto** (la carta viene conteggiata come una presa) e la carta finisce negli scarti comuni. Si può fare una sola volta per lato in tutta la partita. Il giocatore narra come i suoi personaggi ammettano la sconfitta di fronte al nemico, o lascino il campo rinunciando per il momento alla posta.
 
 In entrambi i casi la vittoria della scena va all'avversario senza conteggio e lo sconfitto narra la chiusura della scena e come la posta viene conquistata dal vincitore.
 
-## 3.12 La fine del round
+Sul treno per El Qara ai Protagonisti resta in mano solo il 4♠, una carta che non cambierebbe più la scena, ormai perduta. Paola concede la scena: vale 1 punto. Ed è un Picche, il seme di Vera, così la concessione prende il suo volto, ed è lei, che non molla mai, a decidere per una volta di non battersi. «Ci arrendiamo, ma non fate del male a questi uomini... è noi che volete», dice alzando le mani dietro la nuca. La scena va all'Opposizione, e la chiusura la racconta chi si è arreso.
+{: .esempio }
+
+## 3.13 La fine del round
 
 Quando viene calata l'ultima carta del round, e quindi l'ultimo a giocare non ha concesso la scena, il round finisce e si conta il piatto. Si sommano i valori delle carte rimaste:
 
@@ -583,7 +639,7 @@ Se la scena finisce con una parità vince chi ha giocato l'ultima carta, ovvero 
 E il piatto? Il piatto resta. A fine scena le carte rimaste sul tavolo non si toccano: restano lì per la scena successiva. Questo significa che chi apre la nuova scena può già fare una presa, o perfino una scopa, con la sua prima giocata.
 
 
-## 3.13 Narrare l'esito della scena
+## 3.14 Narrare l'esito della scena
 
 Stabilito chi ha vinto la posta, l'esito va raccontato. A narrarlo è chi ha **perso la posta**, cioè il lato che ha perso la scena: così chi ha incassato la sconfitta può raccontarla. 
 
@@ -608,10 +664,13 @@ Questa lettura è indipendente da chi ha vinto la scena: i protagonisti possono 
 
 Letta scena dopo scena, questa prevalenza di seme costruisce il quadro che si tira insieme alla fine della partita.
 
+All'asta del Cairo nel piatto domina ♥, e la scena è dei Protagonisti: il taccuino è loro. A narrare l'esito è Omar, che ha perso la posta. «Quando l'assistente apre finalmente la porta del caveau, Vera scatta fuori come una molla e lo travolge. Agli uomini della Loggia basta vederla uscire di corsa per capire: la riconoscono, e si lanciano al suo inseguimento per le vie del Cairo.» La posta è raggiunta, ma chi ha perso calca l'ombra che resta: adesso la Loggia sa chi cercare. E il ♥ dominante dice chi ha deciso la scena, il legame tra i due, non la forza.
+{: .esempio }
 
-## 3.14 La continuità tra le scene
 
-Una scena finisce con un esito, e quell'esito, raccontato da chi ha perso la posta (vedi §3.13), non è solo un sigillo: è il trampolino della scena successiva.
+## 3.15 La continuità tra le scene
+
+Una scena finisce con un esito, e quell'esito, raccontato da chi ha perso la posta (vedi §3.14), non è solo un sigillo: è il trampolino della scena successiva.
 
 Ogni scena, infatti, si aggancia a com'è finita la posta di quella precedente. Lo stato in cui si trovano i protagonisti è conseguenza diretta di quell'esito: se la posta è stata vinta, la nuova scena parte da una posizione di vantaggio; se è stata persa, da una situazione ostacolata o peggiorata. La regola d'oro è una sola: resta coerente con la scena precedente, ma porta avanti la storia, non inchiodarla sulla difficoltà iniziale.
 
@@ -655,16 +714,16 @@ Il seme della figura come al solito suggerisce la natura del personaggio.
 | Figura | Costo | Valore di presa |
 |---|---|---|
 | Fante | 3 punti | 1-8 |
-| Regina | 5 punti | 1-9 |
-| Re | 8 punti | 1-10 |
+| Regina | 6 punti | 1-9 |
+| Re | 9 punti | 1-10 |
 
 **Comprare una figura vuol dire preparare l'ingresso di un Qualcuno.** Quando acquisti una figura stai preparando l'ingresso nella storia di un Qualcuno di importante e potente. Di norma si tratta di un individuo, ma in certi casi può essere un oggetto senziente, un gruppo di persone. L'importante è che abbia un nome e sia intrinsecamente rilevante, dato che avrà un effetto meccanico molto forte. La sua potenza va di pari passo con il valore della carta: Fante, poi Regina, poi Re. E questa importanza vale su due piani insieme, in fiction e nelle meccaniche associate alla figura, che si innescano nel momento in cui la carta viene giocata. Per questo, appena compri una figura, devi decidere chi è questo nuovo personaggio: come si chiama, qual è il suo ruolo, che aspetto ha. Lo scrivi su una index card, dalla tua parte del tavolo, segnando anche il valore della carta a cui corrisponde. Da quel momento non è più "il Fante" o "la Regina", ma quell'alleato in carne e ossa, pronto a rientrare in scena quando giocherai la carta. Una figura senza nome non si compra.
 
 **Le figure catturano in modo più ampio.** Una figura non prende solo l'esatto pari: cattura dal piatto un gruppo di carte la cui somma è minore o uguale al suo valore (Fante 8, Regina 9, Re 10). Anche per le figure la cattura è obbligata: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 1 punto come ogni altra. 
 
-Le figure però non possono essere usate per ottenere una maggioranza a fine scena, infatti non possono essere aggiunte al piatto, ma unicamente per far prese e scope. Per questo, hanno un potere di presa "elastico". Quando giochi una figura che non ha nulla da catturare, la figura non resta sul tavolo: si sacrifica prendendo sé stessa e facendo guadagnare 1 punto, come una resa. Le eventuali carte fuori dalla sua portata restano sul piatto dove sono. In ogni caso narri come il PNG corrispondente si immola, o risulta meno incisivo del previsto per qualche scherzo del fato.
+Le figure però non possono essere usate per ottenere una maggioranza a fine scena, infatti non possono essere aggiunte al piatto, ma unicamente per far prese e scope. Per questo, hanno un potere di presa "elastico". Quando giochi una figura che non ha nulla da catturare, la figura non resta sul tavolo: si sacrifica prendendo sé stessa e facendo guadagnare 1 punto, come concedere la scena; il suo effetto speciale scatta comunque. Le eventuali carte fuori dalla sua portata restano sul piatto dove sono. In ogni caso narri come il PNG corrispondente si immola, o risulta meno incisivo del previsto per qualche scherzo del fato.
 
-Paola ha solo il fante in mano, nel piatto c'è un 10 di quadri che non può prendere. Narra quindi che Kalim(fante di picche) decide di fermarsi per causare una frana nello stretto canyon e rallentare gli inseguitori.
+Paola ha solo il fante in mano, nel piatto c'è un 10 di quadri che non può prendere. Narra quindi che Kalim (fante di cuori) si separa dal gruppo: cancella le tracce degli altri e lascia bene in vista le proprie, per farsi seguire dagli inseguitori e attirarli lontano dai compagni.
 {: .esempio }
 
 
@@ -678,14 +737,15 @@ Li figure però hanno delle limitazioni rispetto alle carte numeriche
 5. Le figure, una volta giocate (che catturino, facciano scopa o si sacrifichino), **escono dal gioco**: non finiscono negli scarti comuni come le carte numeriche e non saranno mai più recuperabili.
 
 
-**Fante, l'informatore.** Effetto: quando lo giochi, sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una carta della mano (la carta che cedi torna in cima, insieme a quella sbirciata che non hai preso; mano e mazzo restano di quattro e di quante erano). Serve a procurarti la carta giusta al momento giusto, e scatta quando giochi la carta. Come Regina e Re, il Fante entra in mano all'acquisto ed è in scena già nella scena successiva. Narrativamente è un alleato informatore, un contatto che procura notizie preziose.
+**Fante, l'informatore.** Effetto: quando lo giochi, spii le prime 3 carte di un mazzo a scelta, il tuo o quello dell'avversario, e decidi quali lasciare in cima e quali mandare in fondo. Le guardi soltanto: nessuna carta si muove, restano tutte nel mazzo. Serve a procurarti la carta giusta al momento giusto, spiando il tuo mazzo, o a seppellire quella buona che l'avversario sta per pescare, spiando il suo. L'effetto scatta quando giochi la carta e il suo valore si vede alla pescata successiva: conta quindi anche se giochi il Fante come ultima carta della scena. Come Regina e Re, il Fante entra in mano all'acquisto ed è in scena già nella scena successiva. Narrativamente è un alleato informatore, un contatto che procura notizie preziose.
+
+Nell'ultima scena non c'è più alcun mazzo da spiare: il Fante non ha effetto e si gioca solo per la sua presa. Non è un'eccezione da ricordare, è il confine naturale dell'abilità, l'informatore non ha più un futuro da anticipare. Per questo il Fante conviene comprarlo e usarlo presto.
 
 "Un vecchio contatto di Otto al bazar ci dice quali carovane stanno per partire e quali piste evitare per non incrociare gli uomini della Loggia."
 {: .esempio }
 
-Se il Fante viene giocato nell'ultima scena, il mazzo è ormai esaurito e non c'è nulla da sbirciare: l'effetto cambia bersaglio. Chi gioca il Fante sbircia la Riserva dell'avversario e sceglie una carta da togliergli, che torna nella sua mano; l'avversario, a sua volta, rimette in Riserva la sua carta di mano più bassa. Gli si strappa così una carta dei colpi di scena (di solito la più alta) sostituendola con una più debole.
 
-**Regina, la manipolatrice.** Effetto: l'avversario scarta una carta a caso dalla mano e la sostituisce con la prima carta del suo mazzo. Nell'ultima scena, se il mazzo è esaurito ma restano carte in Riserva, il rimpiazzo si pesca a caso dalla Riserva. Se non c'è né mazzo né Riserva, l'avversario è costretto a raccogliere dagli scarti comuni una carta scelta da chi ha giocato la Regina.
+**Regina, la manipolatrice.** Effetto: l'avversario scarta una carta a caso dalla mano; al suo posto prende in mano una carta bassa che scegli tu dagli scarti comuni. Gli togli una carta a caso e gli rifili la peggiore: è un declassamento garantito. La Regina non tocca il mazzo dell'avversario, il rimpiazzo viene solo dagli scarti. Vale così in ogni scena, senza eccezioni; se per caso gli scarti fossero vuoti, l'avversario resta con una carta in meno.
 
 La Regina serve a disturbare, a ridurre il controllo della mano nemica. Narrativamente è seduzione, manipolazione, qualcosa che semina disordine tra gli avversari.
 
@@ -739,7 +799,7 @@ Se il Jolly non costa punti, dov'è il prezzo? È che, appena i Protagonisti lo 
 
 Narrativamente si racconta sempre un successo ottenuto andando contro i propri principi: la lealtà verso l'altro protagonista che viene meno, un ritorno ai vecchi vizi, un gesto avventato che non tiene conto della sensibilità dell'altro. È importante ricordare che **solo uno dei due Protagonisti si macchia del peccato**, mentre l'altro può non saperne nulla oppure assistervi e giudicarlo. Il Jolly è il seme di una discordia destinato a sbocciare più avanti.
 
-Nel piatto resta un 4♣ e Vera non ha di meglio in mano. Seppellisce un 3♠ in fondo al mazzo, afferra il Jolly, lo dichiara 4 e cattura il 4♣: è una scopa, il piatto è pulito e la posta è dei Protagonisti. Nessuno segna punti, ma il Jolly passa a Omar. "Vera infrange la promessa di restare pulita e sfrutta un vecchio contatto del contrabbando — Otto ancora non lo sa."
+Nel vicolo cieco resta il 4♣, la parete franata che sbarra la fuga, e Vera non ha di meglio in mano. Seppellisce una carta in fondo al mazzo, afferra il Jolly, lo dichiara 4 e cattura il 4♣: è una scopa, il piatto è pulito e la posta è dei Protagonisti. Nessuno segna punti, ma il Jolly passa all'Opposizione. In fiction è il peccato di Vera: dal tascapane tira fuori un candelotto di dinamite sottratto all'accampamento, ne accende la miccia e lo scaglia verso l'imbocco del cunicolo. La frana di massi rovina addosso agli inseguitori. Quando Otto si volta dall'alto della corda, la fissa incredulo che sia arrivata a tanto: si lasciano il canyon alle spalle, salvi, ma con le mani sporche di sangue.
 {: .esempio }
 
 ## 5.4 Resistere alla tentazione: due punti di Crescita
@@ -1083,7 +1143,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Colpi di scena.** La coda della quinta scena: dopo il primo conteggio il piatto si svuota e si gioca un duello a rilancio con le carte tenute in riserva. Chi ha vinto il conteggio difende dietro un muro pari alle scene che ha vinto; l'altro apre calando una carta di valore ≥ al muro, poi a turni alterni si prende la testa con una carta ≥ a quella in cima (pareggiare ribalta). Vince la missione l'ultimo che riesce a calare.
 
-**Concedere la scena (arrendersi).** Nelle scene 1-4, chi non ha l'iniziativa e ha una sola carta in mano può rinunciare a giocarla e cedere la posta. In due modi, una volta ciascuno per lato: la ritirata strategica (la carta torna nel proprio mazzo e farà numero per la quinta scena) e la resa onorevole (vale un punto e la carta finisce negli scarti comuni).
+**Concedere la scena (arrendersi).** Nelle scene 1-4, chi non ha l'iniziativa e ha una sola carta in mano può rinunciare a giocarla e cedere la posta: vale un punto (la carta conta come una presa) e finisce negli scarti comuni. Una sola volta per lato.
 
 **Conteggio definitivo.** L'esito della missione, deciso dal duello dei colpi di scena: la vince chi cala per ultimo. Il primo conteggio dei semi (Cuori e Picche contro Quadri e Fiori) dà solo l'esito apparente e stabilisce chi difende. Se il primo conteggio è pari, chi ha più Crescita (a pari, chi ha l'iniziativa) può azzerarla per vincere il conteggio e difendere, oppure cedere all'altro; se nessuno esercita, vince l'Opposizione.
 
@@ -1101,7 +1161,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Esito apparente / esito reale.** Nella quinta scena il primo conteggio dà l'esito apparente ("sembra finita"); solo dopo i colpi di scena il conteggio definitivo rivela l'esito reale della missione.
 
-**Fante (♣ informatore).** Figura da comprare al mercato: costo 3 punti, vale 8 quando si gioca. Effetto: sbirci le prime due carte del tuo mazzo e, se vuoi, ne scambi una con una della tua mano.
+**Fante (♣ informatore).** Figura da comprare al mercato: costo 3 punti, vale 8 quando si gioca. Effetto: spii le prime 3 carte di un mazzo a scelta (il tuo o quello dell'avversario) e decidi quali lasciare in cima e quali mandare in fondo, guardandole soltanto. Nell'ultima scena, senza mazzo da spiare, vale solo per la presa.
 
 **Figure.** Le carte speciali che si comprano al mercato (Fante, Regina, Re), ciascuna una sola volta per lato. Hanno un effetto che scatta quando le giochi, catturano in modo flessibile e, se non hanno bersagli, si sacrificano. Comprare una figura significa creare un personaggio non giocante con nome, ruolo e aspetto.
 
@@ -1155,9 +1215,9 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Qualcuno (i Qualcuno).** Qualunque elemento della storia (persona, gruppo, luogo, oggetto) con una propria volontà e un destino. Diventa un Qualcuno quando gli si dà un nome e lo si annota: un Qualcuno senza nome non esiste.
 
-**Re (♦ deus ex machina).** Figura: costo 8 punti, vale 10. Effetto: recupera dagli scarti comuni una carta del suo stesso seme (la mano resta), di valore fino a 10 meno le scene già vinte dall'avversario, che nelle scene 1-4 si rimescola nel tuo mazzo e nell'ultima scena entra nella riserva.
+**Re (♦ deus ex machina).** Figura: costo 9 punti, vale 10. Effetto: recupera dagli scarti comuni una carta del suo stesso seme (la mano resta), di valore fino a 10 meno le scene già vinte dall'avversario, che nelle scene 1-4 si rimescola nel tuo mazzo e nell'ultima scena entra nella riserva.
 
-**Regina (♥ manipolatrice).** Figura: costo 5 punti, vale 9. Effetto: l'avversario scarta a caso una carta dalla mano e la sostituisce con la prima del suo mazzo.
+**Regina (♥ manipolatrice).** Figura: costo 6 punti, vale 9. Effetto: l'avversario scarta a caso una carta dalla mano e al suo posto prende in mano una carta bassa che scegli tu dagli scarti comuni (non tocca il suo mazzo).
 
 **Riserva.** Le carte oltre le quattro giocate nella quinta scena: alimentano i colpi di scena.
 
@@ -1181,9 +1241,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Vignetta.** La singola scena dell'epilogo, incentrata su un Qualcuno, ambientata giorni o anni dopo. Chiusura dolce o amara, colpo di scena retrospettivo o gancio per un seguito: a piacere.
 
-# Appendice G. Le schede da fotocopiare
-
-Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciascun momento della preparazione: le **schede dei protagonisti** (una per ogni eroe della coppia), il **foglio del pitch** (il quadro condiviso da riempire insieme) e le **schede dei Qualcuno** (le carte da ritagliare per annotare persone, gruppi, luoghi e oggetti con un nome e una volontà). Sono lo stesso materiale che il gioco digitale raccoglie nel suo wizard di setup, qui in forma cartacea per chi gioca al tavolo.
+# Appendice G. Le schede e materiali da stampare
 
 <div class="sg-foglio">
 <div class="sg-titolo"><span class="sg-seme p">&#9824;</span> Scheda del protagonista &middot; Picche</div>
@@ -1191,79 +1249,79 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 <div class="sg-cols">
 <div class="sg-col">
 <span class="sg-lab">Nome</span><div class="sg-box">&nbsp;</div>
-<span class="sg-lab">Interpretato da</span><div class="sg-box">&nbsp;</div>
 </div>
 <div class="sg-col">
 <span class="sg-lab">Chi &egrave;</span>
-<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div></div>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
 </div>
 </div>
 <span class="sg-lab">Aspetto fisico e look <i>(com'&egrave; fatto, come si veste, un tratto riconoscibile)</i></span>
 <div class="sg-box sg-righe"><div class="r"></div><div class="r"></div></div>
 <span class="sg-lab">Cosa detesta dell'altro <i>(spunto narrativo, senza effetto sul gioco)</i></span>
-<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div></div>
 <span class="sg-lab">Le sue due spinte <span class="sg-seme p">&#9824;</span> <i>&mdash; portarne una in narrazione trasforma una presa in scopa (entrambe spendibili, una sola per presa)</i></span>
 <div class="sg-box">
-<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme p">&#9824;</span> Perch&eacute; per lui/lei &egrave; importante la missione?</div><div class="scrivi"></div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
-<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme p">&#9824;</span> Quale dote o risorsa potrebbe essere un asso nella manica?</div><div class="scrivi"></div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
+<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme p">&#9824;</span> Perch&eacute; per lui/lei &egrave; importante la missione?</div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
+<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme p">&#9824;</span> Quale dote o risorsa potrebbe essere un asso nella manica?</div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
 </div>
 </div>
 
-<div class="sg-foglio sg-break">
+<div class="sg-foglio">
 <div class="sg-titolo"><span class="sg-seme c">&#9829;</span> Scheda del protagonista &middot; Cuori</div>
 <div class="sg-occh">Il protagonista empatico e relazionale. Una scheda per ciascuno dei due eroi: una differenza evidente, un conflitto, un motivo per restare insieme nonostante tutto.</div>
 <div class="sg-cols">
 <div class="sg-col">
 <span class="sg-lab">Nome</span><div class="sg-box">&nbsp;</div>
-<span class="sg-lab">Interpretato da</span><div class="sg-box">&nbsp;</div>
 </div>
 <div class="sg-col">
 <span class="sg-lab">Chi &egrave;</span>
-<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div></div>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
 </div>
 </div>
 <span class="sg-lab">Aspetto fisico e look <i>(com'&egrave; fatto, come si veste, un tratto riconoscibile)</i></span>
 <div class="sg-box sg-righe"><div class="r"></div><div class="r"></div></div>
 <span class="sg-lab">Cosa detesta dell'altro <i>(spunto narrativo, senza effetto sul gioco)</i></span>
-<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div></div>
 <span class="sg-lab">Le sue due spinte <span class="sg-seme c">&#9829;</span> <i>&mdash; portarne una in narrazione trasforma una presa in scopa (entrambe spendibili, una sola per presa)</i></span>
 <div class="sg-box">
-<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme c">&#9829;</span> Perch&eacute; per lui/lei &egrave; importante la missione?</div><div class="scrivi"></div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
-<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme c">&#9829;</span> Quale dote o risorsa potrebbe essere un asso nella manica?</div><div class="scrivi"></div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
+<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme c">&#9829;</span> Perch&eacute; per lui/lei &egrave; importante la missione?</div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
+<div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme c">&#9829;</span> Quale dote o risorsa potrebbe essere un asso nella manica?</div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
 </div>
 </div>
 
 <div class="sg-foglio sg-break">
-<div class="sg-titolo">Il pitch &middot; foglio del tavolo</div>
-<div class="sg-occh">Il viaggio in cinque scene. Da compilare insieme prima di partire.</div>
+<div class="sg-titolo">Scheda del viaggio</div>
+<div class="sg-occh">Il quadro condiviso del viaggio. Da compilare insieme prima di partire.</div>
 <div class="sg-cols">
-<div class="sg-col"><span class="sg-lab">I protagonisti</span><div class="sg-box">&nbsp; &amp; &nbsp;</div></div>
 <div class="sg-col"><span class="sg-lab">Tono</span><div class="sg-box">&nbsp;</div></div>
 <div class="sg-col"><span class="sg-lab">Genere</span><div class="sg-box">&nbsp;</div></div>
 </div>
 <span class="sg-lab">La premessa <i>(dove siete, chi siete, cosa &egrave; appena successo &mdash; da leggere al tavolo)</i></span>
-<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div></div>
 <span class="sg-lab">La missione <i>(un obiettivo concreto + una scadenza improrogabile: &laquo;&hellip;PRIMA che&hellip;&raquo;)</i></span>
-<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div></div>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div></div>
 <span class="sg-lab">La prima difficolt&agrave; <i>(cosa impedisce di compiere subito la missione: &egrave; il materiale della Scena 1; ultima parola all'Opposizione)</i></span>
-<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div></div>
-<hr class="sg-strada">
-<div class="sg-sez">L'Opposizione</div>
-<div class="sg-hint">Il mondo &egrave; sempre contro di voi, ma non sempre per gli stessi motivi.</div>
-<div class="sg-cols">
-<div class="sg-col">
-<span class="sg-lab"><span class="sg-seme q">&#9830;</span> I nemici &mdash; chi li ostacola con intenzione</span>
-<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div></div>
 </div>
-<div class="sg-col">
-<span class="sg-lab"><span class="sg-seme f">&#9827;</span> Il caos &mdash; sfortuna, imprevisti, attriti</span>
-<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
-</div>
-</div>
-<span class="sg-lab">Le spinte dell'Opposizione <i>&mdash; una in narrazione trasforma una presa in scopa (tutte spendibili, una sola per presa; mai nell'ultima scena)</i></span>
+
+<div class="sg-foglio sg-break">
+<div class="sg-titolo">Scheda dell'opposizione</div>
+<div class="sg-occh">Il mondo &egrave; sempre contro di voi, ma non sempre per gli stessi motivi. Due fronti, un seme ciascuno.</div>
+<div class="sg-sez"><span class="sg-seme q">&#9830;</span> Quadri &middot; I nemici</div>
+<div class="sg-hint">Chi ostacola i protagonisti con intenzione: volti, fazione, gerarchia.</div>
+<span class="sg-lab">Chi sono</span>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div></div>
+<span class="sg-lab">Le due spinte <span class="sg-seme q">&#9830;</span> <i>&mdash; portarne una in narrazione trasforma una presa in scopa (tutte spendibili, una sola per presa; mai nell'ultima scena)</i></span>
 <div class="sg-box">
 <div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme q">&#9830;</span> Quali sono i mezzi, metodi o armi pi&ugrave; temibili della fazione nemica?</div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
 <div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme q">&#9830;</span> Perch&eacute; deve assolutamente impedire ai protagonisti di ottenere ci&ograve; che vogliono?</div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
+</div>
+<div class="sg-sez"><span class="sg-seme f">&#9827;</span> Fiori &middot; Il caos</div>
+<div class="sg-hint">Sfortuna, imprevisti, attriti: il mondo che rema contro senza un volto.</div>
+<span class="sg-lab">Che forma prende</span>
+<div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div><div class="r"></div></div>
+<span class="sg-lab">Le due spinte <span class="sg-seme f">&#9827;</span> <i>&mdash; portarne una in narrazione trasforma una presa in scopa (tutte spendibili, una sola per presa; mai nell'ultima scena)</i></span>
+<div class="sg-box">
 <div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme f">&#9827;</span> Quali catastrofi o eventi imprevedibili possono manifestarsi nell'ambientazione?</div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
 <div class="sg-spinta"><div class="q"><div class="dom"><span class="sg-seme f">&#9827;</span> Cosa i protagonisti non hanno considerato e potrebbe far saltare la loro alleanza?</div><div class="scrivi"></div></div><div class="sg-usata"><span class="sg-cb"></span><br>usata</div></div>
 </div>
@@ -1271,22 +1329,18 @@ Tre fogli da stampare o fotocopiare e compilare a penna al tavolo, uno per ciasc
 </div>
 
 <div class="sg-foglio sg-break">
-<div class="sg-titolo">I Qualcuno &middot; carte da ritagliare</div>
-<div class="sg-occh">Persone, gruppi, popoli, luoghi o oggetti con una loro volont&agrave; e un destino da seguire. Un Qualcuno senza nome non esiste.</div>
-<div class="sg-nota"><b>Come si usa.</b> Annota qui chi entra in scena con un ruolo da seguire, e con quale carta &egrave; stato introdotto: quella carta lo rappresenta nel piatto finch&eacute; non viene catturata. Le figure comprate al mercato (Fante &middot; Regina &middot; Re) sono Qualcuno, e dare loro un nome &egrave; obbligatorio.</div>
-<div class="sg-griglia">
-<div class="sg-qcard"><div class="sg-qtop"><span class="sg-qn">Qualcuno</span></div><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div><span class="sg-lab">Descrizione</span><div class="sg-scrivi"></div><div class="sg-scrivi"></div><span class="sg-lab">Carta</span><div class="sg-scrivi"></div></div>
-<div class="sg-qcard"><div class="sg-qtop"><span class="sg-qn">Qualcuno</span></div><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div><span class="sg-lab">Descrizione</span><div class="sg-scrivi"></div><div class="sg-scrivi"></div><span class="sg-lab">Carta</span><div class="sg-scrivi"></div></div>
-<div class="sg-qcard"><div class="sg-qtop"><span class="sg-qn">Qualcuno</span></div><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div><span class="sg-lab">Descrizione</span><div class="sg-scrivi"></div><div class="sg-scrivi"></div><span class="sg-lab">Carta</span><div class="sg-scrivi"></div></div>
-<div class="sg-qcard"><div class="sg-qtop"><span class="sg-qn">Qualcuno</span></div><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div><span class="sg-lab">Descrizione</span><div class="sg-scrivi"></div><div class="sg-scrivi"></div><span class="sg-lab">Carta</span><div class="sg-scrivi"></div></div>
-<div class="sg-qcard"><div class="sg-qtop"><span class="sg-qn">Qualcuno</span></div><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div><span class="sg-lab">Descrizione</span><div class="sg-scrivi"></div><div class="sg-scrivi"></div><span class="sg-lab">Carta</span><div class="sg-scrivi"></div></div>
-<div class="sg-qcard"><div class="sg-qtop"><span class="sg-qn">Qualcuno</span></div><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div><span class="sg-lab">Descrizione</span><div class="sg-scrivi"></div><div class="sg-scrivi"></div><span class="sg-lab">Carta</span><div class="sg-scrivi"></div></div>
-</div>
+<div class="sg-titolo">I Qualcuno</div>
+<div class="sg-qcard sg-qrow"><div class="sg-cols"><div class="sg-col" style="flex:3"><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div></div><div class="sg-col" style="flex:2"><span class="sg-lab" style="margin-top:0">Carta</span><div class="sg-scrivi"></div></div></div><span class="sg-lab">Descrizione</span><div class="sg-scrivi"></div></div>
+<div class="sg-qcard sg-qrow"><div class="sg-cols"><div class="sg-col" style="flex:3"><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div></div><div class="sg-col" style="flex:2"><span class="sg-lab" style="margin-top:0">Carta</span><div class="sg-scrivi"></div></div></div><span class="sg-lab">Descrizione</span><div class="sg-scrivi"></div></div>
+<div class="sg-qcard sg-qrow"><div class="sg-cols"><div class="sg-col" style="flex:3"><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div></div><div class="sg-col" style="flex:2"><span class="sg-lab" style="margin-top:0">Carta</span><div class="sg-scrivi"></div></div></div><span class="sg-lab">Descrizione</span><div class="sg-scrivi"></div></div>
+<div class="sg-qcard sg-qrow"><div class="sg-cols"><div class="sg-col" style="flex:3"><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div></div><div class="sg-col" style="flex:2"><span class="sg-lab" style="margin-top:0">Carta</span><div class="sg-scrivi"></div></div></div><span class="sg-lab">Descrizione</span><div class="sg-scrivi"></div></div>
+<div class="sg-qcard sg-qrow"><div class="sg-cols"><div class="sg-col" style="flex:3"><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div></div><div class="sg-col" style="flex:2"><span class="sg-lab" style="margin-top:0">Carta</span><div class="sg-scrivi"></div></div></div><span class="sg-lab">Descrizione</span><div class="sg-scrivi"></div></div>
+<div class="sg-qcard sg-qrow"><div class="sg-cols"><div class="sg-col" style="flex:3"><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div></div><div class="sg-col" style="flex:2"><span class="sg-lab" style="margin-top:0">Carta</span><div class="sg-scrivi"></div></div></div><span class="sg-lab">Descrizione</span><div class="sg-scrivi"></div></div>
+<div class="sg-qcard sg-qrow"><div class="sg-cols"><div class="sg-col" style="flex:3"><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div></div><div class="sg-col" style="flex:2"><span class="sg-lab" style="margin-top:0">Carta</span><div class="sg-scrivi"></div></div></div><span class="sg-lab">Descrizione</span><div class="sg-scrivi"></div></div>
+<div class="sg-qcard sg-qrow"><div class="sg-cols"><div class="sg-col" style="flex:3"><span class="sg-lab" style="margin-top:0">Nome</span><div class="sg-scrivi"></div></div><div class="sg-col" style="flex:2"><span class="sg-lab" style="margin-top:0">Carta</span><div class="sg-scrivi"></div></div></div><span class="sg-lab">Descrizione</span><div class="sg-scrivi"></div></div>
 </div>
 
 # Appendice H. Handout riassuntivi
-
-Otto schede di riepilogo da tenere in vista al tavolo: la sequenza di una scena, le figure, il Jolly, lo spareggio del pareggio finale, il duello dei colpi di scena, gli scaglioni della Crescita, il significato dei semi e le tre mosse con la spinta. Non sostituiscono i capitoli, servono a ricordare in un colpo d'occhio; per i dettagli e gli esempi si rimanda al testo.
 
 <div class="sg-foglio" style="page-break-inside:avoid;margin-bottom:16px">
 <div class="sg-titolo">H.1 &middot; La sequenza di una scena (scene 1-4)</div>
@@ -1297,7 +1351,7 @@ Otto schede di riepilogo da tenere in vista al tavolo: la sequenza di una scena,
 <li><b>Apertura:</b> chi vince l'asta fissa <b>titolo</b> e <b>posta</b> e apre giocando per primo. La sua carta d'asta resta scoperta sul tavolo e sarà la sua ultima giocata del round.</li>
 <li><b>Il turno:</b> a turni alterni, una mossa a testa: metti una carta nel piatto, oppure fai una <b>presa</b>, oppure una <b>scopa</b> (presa che svuota il piatto). La presa è <b>obbligatoria</b>. Dopo ogni mossa, <b>narra</b>.</li>
 <li><b>Spinta:</b> dopo una presa fatta con una carta <i>numerica</i> puoi spendere una spinta del suo seme per trasformarla in scopa. Una sola per presa; mai su una presa di figura; mai nell'ultima scena.</li>
-<li><b>Concedere</b> (solo chi non ha l'iniziativa, sull'ultima carta): <b>ritirata strategica</b> (la carta torna nel mazzo, 0 punti) oppure <b>resa onorevole</b> (vale 1 punto). La posta va all'avversario.</li>
+<li><b>Concedere la scena</b> (solo chi non ha l'iniziativa, sull'ultima carta, scene 1-4): vale 1 punto e la carta va negli scarti. Una volta per lato. La posta va all'avversario.</li>
 <li><b>Fine round:</b> vince la posta chi ha la <b>somma di valori</b> più alta nel piatto (le proprie carte più quelle dell'avversario). A parità, la posta va a chi ha giocato l'ultima carta; una scopa a piatto vuoto la vince chi l'ha fatta.</li>
 <li><b>Mercato</b> tra una scena e l'altra (vedi H.2).</li>
 </ol>
@@ -1311,8 +1365,8 @@ Otto schede di riepilogo da tenere in vista al tavolo: la sequenza di una scena,
 <table>
 <tr><th>Figura</th><th>Costo</th><th>Val.</th><th>Effetto (scatta quando la giochi)</th></tr>
 <tr><td><b>Fante</b><br>l'informatore</td><td>3</td><td>8</td><td>Sbirci le prime 2 carte del tuo mazzo e, se vuoi, ne scambi una con una di mano. <b>Ultima scena</b> (mazzo esaurito): sbirci la riserva avversaria e ne togli una carta a tua scelta (torna nella sua mano), e lui rimette in riserva la sua carta più bassa.</td></tr>
-<tr><td><b>Regina</b><br>la manipolatrice</td><td>5</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano e pesca la prima del mazzo. <b>Ultima scena:</b> se il mazzo è esaurito pesca a caso dalla riserva; se non ha né mazzo né riserva raccoglie dagli scarti una carta che scegli tu.</td></tr>
-<tr><td><b>Re</b><br>il deus ex machina</td><td>8</td><td>10</td><td>Recuperi dagli scarti comuni una carta numerica del suo stesso seme, di valore fino a 10 meno le scene già vinte dall'avversario. Scene 1-4: rimescolata nel mazzo. Ultima scena: nella riserva.</td></tr>
+<tr><td><b>Regina</b><br>la manipolatrice</td><td>6</td><td>9</td><td>L'avversario scarta una carta a caso dalla mano e pesca la prima del mazzo. <b>Ultima scena:</b> se il mazzo è esaurito pesca a caso dalla riserva; se non ha né mazzo né riserva raccoglie dagli scarti una carta che scegli tu.</td></tr>
+<tr><td><b>Re</b><br>il deus ex machina</td><td>9</td><td>10</td><td>Recuperi dagli scarti comuni una carta numerica del suo stesso seme, di valore fino a 10 meno le scene già vinte dall'avversario. Scene 1-4: rimescolata nel mazzo. Ultima scena: nella riserva.</td></tr>
 </table>
 </div>
 </div>
@@ -1388,6 +1442,38 @@ Otto schede di riepilogo da tenere in vista al tavolo: la sequenza di una scena,
 </div>
 </div>
 
+<div class="sg-foglio" style="page-break-inside:avoid;margin-bottom:16px">
+<div class="sg-titolo">H.9 &middot; Come narrare una mossa</div>
+<div class="sg-box">
+<p style="margin:0 0 6px">Il caso ha già parlato quando hai giocato la carta: non stai "provando" nulla, racconti un esito che è già tuo. <b>Non c'è provare, c'è il fare.</b> Per trovare la narrazione segui tre passi.</p>
+<ol>
+<li><b>La mossa dice CHE COSA racconti.</b>
+<ul>
+<li><b>Hai introdotto?</b> Metti in scena un nuovo fatto che potrà tornarti utile per la posta.</li>
+<li><b>Hai preso?</b> Superi o annulli un ostacolo e ti avvicini alla posta.</li>
+<li><b>Hai fatto scopa?</b> Spazzi via ogni ostacolo e ottieni un vantaggio concreto.</li>
+</ul>
+</li>
+<li><b>Il seme dice CHI agisce.</b>
+<ul>
+<li><span class="sg-seme p">&#9824;</span> il protagonista duro (forza, istinto).</li>
+<li><span class="sg-seme c">&#9829;</span> il protagonista empatico (dialogo, alleati).</li>
+<li><span class="sg-seme q">&#9830;</span> i nemici, con intenzione.</li>
+<li><span class="sg-seme f">&#9827;</span> il caos (sfortuna, imprevisti, attriti tra i due).</li>
+</ul>
+</li>
+<li><b>Il valore dice QUANTO è grande.</b>
+<ul>
+<li><b>Basso (1-3):</b> un gesto piccolo, sottile, subdolo.</li>
+<li><b>Medio (4-7):</b> un fatto concreto, non ignorabile.</li>
+<li><b>Alto (8-10):</b> un colpo imponente, un'azione spettacolare, un personaggio potente.</li>
+</ul>
+</li>
+</ol>
+<p style="margin:6px 0 0">Metti insieme i tre passi e racconta: cerca la cosa ovvia, il cliché di genere che calza. Se sai rispondere alle domande del primo passo, la narrazione è ottima e funzionale.</p>
+</div>
+</div>
+
 ---
 
-*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.42, che resta la fonte di verità del regolamento.*
+*Frenemies on the Road. Manuale del gioco, derivato dalla Knowledge Base v1.45, che resta la fonte di verità del regolamento.*

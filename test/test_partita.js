@@ -16,10 +16,14 @@ let compratoUnaVolta=false, spinteUsate=0, colpiFatti=0, pngCreato=false, log=[]
 function passo(i){
   // modali degli effetti figura
   if(modaleAttivo()){
-    const fNo=document.getElementById("fanteNo");   // nuovo Fante: sbircia 2 e lascia così (salta lo scambio)
-    if(fNo){ click(fNo); return "fante" }
+    const fmm=document.getElementById("fanteMazzoMio");   // Fante (v1.43): scegli il tuo mazzo da spiare
+    if(fmm){ click(fmm); return "fante" }
+    const fro=document.getElementById("fanteReordOk");    // poi conferma senza mandare nulla in fondo (no-op)
+    if(fro){ click(fro); return "fante" }
     const rNo=document.getElementById("reNo");
     if(rNo){ click(rNo); return "re-no" }
+    const rs=document.getElementById("reginaScartiOk");   // Regina (v1.43): rifila una carta dagli scarti (percorso unico)
+    if(rs){ const c=document.querySelector("#reginaScarti .carta"); if(c) click(c); click(rs); return "regina-scarti" }
     const pngOk=document.getElementById("pngOk");      // modale acquisto figura (nome/desc)
     if(pngOk){ const ni=document.getElementById("m-png-nome"); if(ni) ni.value="Figura di prova";
       const di=document.getElementById("m-png-desc"); if(di) di.value="Descrizione di prova"; click(pngOk); return "png-figura" }

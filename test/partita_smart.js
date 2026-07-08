@@ -92,13 +92,13 @@ function runGame(seed, seed2, seed3, wantTranscript){
   const figset=new Set();
   const figP=new Set(), figO=new Set();       // figure COMPRATE per lato
   const figGiocate=new Set();                 // figure effettivamente GIOCATE in azione (F/D/R), via ultimaGiocata
-  let fanteSbircia=false, fanteScambio=false; // l'effetto v1.15 del Fante si è VISTO (modale) / ha fatto uno scambio
-  let fanteRiserva=false, reginaScarti=false; // v1.42: effetti dedicati in scena 5 (Fante sulla riserva avv., Regina dagli scarti)
+  let fanteSbircia=false, fanteScambio=false; // v1.43: l'effetto del Fante si è VISTO (modale) / ha mandato ≥1 carta in fondo
+  let fanteRiserva=false, reginaScarti=false; // v1.43: fanteRiserva ora sempre false (in scena 5 il Fante non ha effetto); reginaScarti resta (Regina dagli scarti)
   let jollyTipo="";                           // come è stato usato il Jolly: "scopa"/"presa" sleale, o "scarto"
   let reginaColpo=false, reColpo=false;        // figura calata DURANTE i colpi di scena (entrata scenica in cripta)
   let reginaPresa=false, reginaSacr=false;     // la Regina (Pablo) fa una PRESA VERA in scena vs si sacrifica da 1 pt
   let fanteSacr=false;                          // il Fante (Kalim) si sacrifica da 1 pt invece di catturare
-  const COSTO={F:3,D:5,R:8};
+  const COSTO={F:3,D:6,R:9};
   const astaScelte={P:null,O:null};
   const logUltima=()=>{ const u=G().ultimaGiocata; if(u && u!==ultimaLoggata){ log("   → "+u); ultimaLoggata=u;
     if(/Fante di/.test(u)){ figGiocate.add("F"); if(/sacrifica/.test(u)) fanteSacr=true; }
@@ -241,19 +241,26 @@ function runGame(seed, seed2, seed3, wantTranscript){
   function passo(){
     if(pageError) throw new Error("pagina: "+pageError);
     if(modaleAttivo()){
-      const fanteSwap=document.getElementById("fanteSwap");
-      if(fanteSwap){   // nuovo Fante (v1.15): sbircia 2, scambia la più alta con la carta di mano più bassa se conviene
-        const g=G(), L=g.lati[g.attore];
-        fanteSbircia=true;   // il modale è apparso: l'effetto v1.15 del Fante si è visto (mazzo non vuoto)
-        const topAlta=L.mazzo.slice(0,2).slice().sort((a,b)=>b.val-a.val)[0];
-        const manoBassa=L.mano.filter(c=>!c.jolly).slice().sort((a,b)=>a.val-b.val)[0];
-        if(topAlta && manoBassa && topAlta.val>manoBassa.val){
-          fanteScambio=true;
-          click([...document.querySelectorAll("#fanteTop .carta")].find(x=>parseInt(x.dataset.id)===topAlta.id));
-          click([...document.querySelectorAll("#fanteMano .carta")].find(x=>parseInt(x.dataset.id)===manoBassa.id));
-          click(fanteSwap); log(`   → effetto FANTE: sbircia il mazzo e scambia ${cstr(manoBassa)} con ${cstr(topAlta)}.`);
-        } else { click(document.getElementById("fanteNo")); log("   → effetto FANTE: sbircia il mazzo e lascia così."); }
-        return "fante";
+      const fanteMazzoMio=document.getElementById("fanteMazzoMio");
+      if(fanteMazzoMio){   // Fante (v1.43): scelta del mazzo da spiare. Policy P: spia il PROPRIO mazzo (migliora la pescata)
+        fanteSbircia=true;   // il modale e' apparso: l'effetto del Fante si e' visto (c'e' almeno un mazzo)
+        click(fanteMazzoMio); log("   → effetto FANTE: spia il proprio mazzo.");
+        return "fante-scelta";
+      }
+      const fanteReordOk=document.getElementById("fanteReordOk");
+      if(fanteReordOk){   // Fante (v1.43): riordino. Policy: manda in fondo le carte basse (val<=4) delle 3 sbirciate
+        fanteSbircia=true;
+        const g=G();
+        const findCard=(id)=>{ for(const L of [g.lati.P,g.lati.O]){ const c=(L.mazzo||[]).find(x=>x.id===id); if(c) return c; } return null; };
+        let buried=0;
+        [...document.querySelectorAll("#fantePeek .carta")].forEach(el=>{
+          const c=findCard(parseInt(el.dataset.id));
+          if(c && c.val<=4){ click(el); buried++; }
+        });
+        if(buried) fanteScambio=true;   // repurpose (v1.43): "ha mandato almeno una carta in fondo"
+        click(fanteReordOk);
+        log(`   → effetto FANTE: spia il mazzo e ne caccia ${buried} in fondo.`);
+        return "fante-reord";
       }
       const reOk=document.getElementById("reOk");
       if(reOk){   // v1.27: il Re recupera la carta del suo seme di VALORE PIÙ ALTO dagli scarti comuni (massimizza)
@@ -269,26 +276,15 @@ function runGame(seed, seed2, seed3, wantTranscript){
         } else { click(document.getElementById("reNo")); log("   → effetto RE: nessuna carta del seme negli scarti."); }
         return "re";
       }
-      const fanteRisOk=document.getElementById("fanteRisOk");
-      if(fanteRisOk){   // v1.42: Fante in scena 5, mazzo esaurito: tolgo la carta PIÙ ALTA dalla riserva avversaria
-        const g=G(), altro=g.attore==="P"?"O":"P", A=g.lati[altro];
-        const cards=[...document.querySelectorAll("#fanteRis .carta")]
-          .map(el=>({el, c:(A.riserva||[]).find(x=>x.id===parseInt(el.dataset.id))})).filter(o=>o.c);
-        if(!cards.length) throw new Error("fante-riserva senza carte");
-        const top=cards.slice().sort((a,b)=>b.c.val-a.c.val)[0];
-        click(top.el); click(fanteRisOk); fanteRiserva=true;
-        log(`   → effetto FANTE (scena 5): toglie ${cstr(top.c)} dalla riserva avversaria.`);
-        return "fante-ris";
-      }
       const reginaScartiOk=document.getElementById("reginaScartiOk");
-      if(reginaScartiOk){   // v1.42: Regina, avversario senza mazzo né riserva: gli rifilo la carta PIÙ BASSA degli scarti
+      if(reginaScartiOk){   // Regina (v1.43): percorso unico, rifilo all'avversario la carta PIÙ BASSA degli scarti
         const g=G();
         const cards=[...document.querySelectorAll("#reginaScarti .carta")]
           .map(el=>({el, c:(g.scartiComuni||[]).find(x=>x.id===parseInt(el.dataset.id))})).filter(o=>o.c);
         if(!cards.length) throw new Error("regina-scarti senza carte");
         const bassa=cards.slice().sort((a,b)=>a.c.val-b.c.val)[0];
         click(bassa.el); click(reginaScartiOk); reginaScarti=true;
-        log(`   → effetto REGINA (scena 5): rifila ${cstr(bassa.c)} dagli scarti.`);
+        log(`   → effetto REGINA: rifila ${cstr(bassa.c)} dagli scarti.`);
         return "regina-scarti";
       }
       const pngOk=document.getElementById("pngOk");
@@ -356,19 +352,19 @@ function runGame(seed, seed2, seed3, wantTranscript){
       const carte=[...document.querySelectorAll("#manoTurno .carta")];
       if(!carte.length) throw new Error("turno senza carte");
       log(`   ${nomeL(a)} — mano: ${mano(a)} | piatto: ${piattoStr()}`);
-      // RESA: ultimo a giocare (non iniziativa, 1 carta, scene 1-4) con carta ininfluente → cede la scena
-      const bResa=document.getElementById("btnResa"), bRit=document.getElementById("btnRitirata");
-      if(bResa||bRit){
+      // CONCEDERE LA SCENA: ultimo a giocare (non iniziativa, 1 carta, scene 1-4) con carta ininfluente → cede la scena
+      const bConc=document.getElementById("btnConcedi");
+      if(bConc){
         const g=G(), L=g.lati[a], c=L.mano[0], own=L.semi, piatto=g.piatto;
         const canCap = c && (c.fig ? (piatto.filter(x=>!x.jolly).length>0 && Math.min(...piatto.filter(x=>!x.jolly).map(cardVal))<=FIGVAL[c.fig])
                                     : (c.jolly ? piatto.length>0 : cp(c.val).length>0));
         const tOwn=piatto.filter(x=>own.includes(x.seme)).reduce((s,x)=>s+cardVal(x),0);
         const tOpp=piatto.filter(x=>!own.includes(x.seme)).reduce((s,x)=>s+cardVal(x),0);
-        if(c && !canCap && (tOwn+cardVal(c))<=tOpp && !jollyPick(a)){   // la carta non cambia la scena e il Jolly non salva: arrenditi
-          const b=bResa||bRit; click(b);
+        if(c && !canCap && (tOwn+cardVal(c))<=tOpp && !jollyPick(a)){   // la carta non cambia la scena e il Jolly non salva: concedi
+          click(bConc);
           const conf=document.getElementById("ritConferma"); if(conf) click(conf);
           resaCount++;
-          log(`   → ${nomeL(a)} — ${bResa?"RESA ONOREVOLE":"RITIRATA STRATEGICA"}: ultima carta (${cstr(c)}) ininfluente, cede la scena.`);
+          log(`   → ${nomeL(a)} — CONCEDE LA SCENA: ultima carta (${cstr(c)}) ininfluente, cede la posta (1 punto).`);
           return "resa";
         }
       }
@@ -473,9 +469,15 @@ function runGame(seed, seed2, seed3, wantTranscript){
         // ancora posseduta che il lato può permettersi (Fante, se no Regina, se no Re). Spende prima
         // possibile e massimizza il numero di figure comprate. L'eventuale sbilanciamento si corregge
         // sui COSTI delle figure (costante FIGURE in index.html), non su questa policy.
+        // OEXP=1 (ricerca vetrina, lug 2026): l'Opposizione compra la figura più COSTOSA affrontabile
+        // (Re-first), non la più economica. Serve a sbloccare distribuzioni "bilanciate col Re": es.
+        // P Fante+Regina, O Regina+Re. Cambia solo l'ORDINE di preferenza di O, non l'affrontabilità.
+        const OEXP=process.env.OEXP==="1";
         for(const l of ["P","O"]){
           const btns=[...document.querySelectorAll(`button[data-f][data-l="${l}"]`)].filter(x=>!x.disabled);
-          if(btns.length) buy(btns.sort((x,y)=>ord[x.dataset.f]-ord[y.dataset.f])[0]);
+          if(!btns.length) continue;
+          const desc=(l==="O" && OEXP);
+          buy(btns.sort((x,y)=>desc?ord[y.dataset.f]-ord[x.dataset.f]:ord[x.dataset.f]-ord[y.dataset.f])[0]);
         }
       }
       figCumP.push(buysP); figCumO.push(buysO);   // figure cumulative comprate dopo questo mercato
@@ -576,12 +578,18 @@ if(require.main!==module){
   const START=parseInt(process.env.BATCHSTART||"1");
   for(let s=START;s<=BATCH;s++){
     let r; try{ r=runGame(FIXSEED>0?FIXSEED:s, s, s, false); }catch(e){ continue; }
-    const c1=(r.nP===3&&r.nO===2)||(r.nP===2&&r.nO===3);          // poste bilanciate 3/2
-    const c2=/ROTTO DELLA CUFFIA/.test(r.outcome) && r.finalP>r.finalO; // Prot vincono di misura
-    const c3=r.flipDopoColpi;                                     // sotto al primo conteggio, sopra dopo i colpi
-    const c4=["F","D","R"].every(x=>r.figset.includes(x));        // tutte e 3 le figure comprate
-    const c5=r.resaCount>=1;                                      // almeno una resa
-    r._c={c1,c2,c3,c4,c5,n:[c1,c2,c3,c4,c5].filter(Boolean).length};
+    // Criteri VETRINA aggiornati al modello corrente (v1.40+): la missione è COMPIUTA/FALLITA e in
+    // scena 5 si gioca il DUELLO A RILANCIO. Il vecchio "per il rotto della cuffia" è ora il RIBALTONE
+    // (lo sfidante vince il duello dalla riserva dopo aver perso il primo conteggio). Sei must-have
+    // confermati con Saverio (lug 2026): missione P + ribaltone + tutte e 3 le figure GIOCATE + Jolly
+    // mostrato + esattamente una resa + un effetto figura di scena 5 (v1.42).
+    const c1=r.missione==="P";                                    // i Protagonisti compiono la missione
+    const c2=r.flipDopoColpi;                                     // RIBALTONE: vinta nel duello dopo il primo conteggio perso
+    const c3=["F","D","R"].every(x=>r.figGiocate.includes(x));    // tutte e 3 le figure GIOCATE in scena
+    const c4=r.jollyGiocati>0;                                    // il Jolly entra in gioco (mostrato)
+    const c5=r.resaCount===1;                                     // esattamente una resa
+    const c6=r.fanteRiserva||r.reginaScarti;                      // effetto figura di scena 5 (v1.42) visibile
+    r._c={c1,c2,c3,c4,c5,c6,n:[c1,c2,c3,c4,c5,c6].filter(Boolean).length};
     r.T=null;   // libera la memoria del transcript nel batch
     rows.push(r);
   }
@@ -596,8 +604,8 @@ if(require.main!==module){
   console.log(`  distribuzione figure Prot:  0→${pct(r=>r.buysP===0).toFixed(0)}%  1→${pct(r=>r.buysP===1).toFixed(0)}%  2→${pct(r=>r.buysP===2).toFixed(0)}%  3→${pct(r=>r.buysP===3).toFixed(0)}%`);
   console.log(`  scope: Protagonisti ${avg(r=>r.scopeP).toFixed(2)} · Opposizione ${avg(r=>r.scopeO).toFixed(2)}`);
   console.log(`  rese/partita ${avg(r=>r.resaCount).toFixed(2)} · poste vinte: Prot ${avg(r=>r.nP).toFixed(2)} Opp ${avg(r=>r.nO).toFixed(2)}`);
-  console.log(`  vittoria finale Protagonisti ${pct(r=>r.finalP>r.finalO).toFixed(1)}% · "per il rotto della cuffia" ${pct(r=>/ROTTO DELLA CUFFIA/.test(r.outcome)).toFixed(1)}%`);
-  const ESITI=["VITTORIA PIENA","PER IL ROTTO DELLA CUFFIA","SCONFITTA DIGNITOSA","FALLIMENTO TOTALE"];
+  console.log(`  missione compiuta (Prot) ${pct(r=>r.missione==="P").toFixed(1)}% · di cui RIBALTONE ${pct(r=>r.missione==="P"&&r.flipDopoColpi).toFixed(1)}% · ribaltoni totali ${pct(r=>r.flipDopoColpi).toFixed(1)}%`);
+  const ESITI=["MISSIONE COMPIUTA","MISSIONE FALLITA"];
   console.log(`  distribuzione esiti finali:`);
   ESITI.forEach(e=>{ const n=rows.filter(r=>r.outcome===e).length; console.log(`     ${e}: ${n} (${(100*n/N).toFixed(1)}%)`); });
   const altri=rows.filter(r=>!ESITI.includes(r.outcome));
@@ -611,8 +619,8 @@ if(require.main!==module){
     console.log(`     Scena ${sc+1}: Prot ${dP.toFixed(2)} · Opp ${dO.toFixed(2)}`);
   }
   console.log(`     TOTALE partita:  Prot ${avg(r=>r.grossP[4]||0).toFixed(2)} · Opp ${avg(r=>r.grossO[4]||0).toFixed(2)}`);
-  const pWin=r=>r.outcome==="VITTORIA PIENA"||r.outcome==="PER IL ROTTO DELLA CUFFIA";
-  const oWin=r=>r.outcome==="SCONFITTA DIGNITOSA"||r.outcome==="FALLIMENTO TOTALE";
+  const pWin=r=>r.missione==="P";
+  const oWin=r=>r.missione==="O";
   console.log(`  VITTORIE della partita (missione): Protagonisti ${pct(pWin).toFixed(1)}% · Opposizione ${pct(oWin).toFixed(1)}%`);
   const combos={};
   rows.forEach(r=>{ const k=`${r.nP}-${r.nO}`; combos[k]=(combos[k]||0)+1; });
@@ -622,42 +630,64 @@ if(require.main!==module){
   if(pariAvg>0.005) console.log(`     (scene senza vincitore netto P/O, in media: ${pariAvg.toFixed(2)}/partita)`);
   console.log("");
   rows.sort((a,b)=>b._c.n-a._c.n);
-  const fmt=r=>`SEED=${r.seed} arco=${r.arco} [${r._c.c1?"3/2":"---"} ${r._c.c2?"cuffia":"------"} ${r._c.c3?"ribalt":"------"} ${r._c.c4?"FDR":"---"} ${r._c.c5?"resa":"----"}] | primo ${r.primoP}-${r.primoO} → finale ${r.finalP}-${r.finalO} | scope ${r.scopeP}-${r.scopeO} | fig=${[...r.figset].sort().join("")} rese=${r.resaCount} | "${r.outcome}"`;
-  const full=rows.filter(r=>r._c.n===5);
+  const fmt=r=>`SEED=${r.seed} arco=${r.arco} [${r._c.c1?"MISS-P":"------"} ${r._c.c2?"ribalt":"------"} ${r._c.c3?"FDR":"---"} ${r._c.c4?"jolly":"-----"} ${r._c.c5?"1resa":"-----"} ${r._c.c6?"figS5":"-----"}] | primo ${r.primoP}-${r.primoO}→miss ${r.missione} | scope ${r.scopeP}-${r.scopeO} | figP/O=${r.figP||"-"}/${r.figO||"-"} jP/O=${r.jollyP}/${r.jollyO} rese=${r.resaCount} | Fante:${r.fanteScambio?"in-fondo":r.fanteSbircia?"spia":r.fanteSacr?"SACR":"-"} Regina:${r.reginaScarti?"scartiS5":r.reginaPresa?"presa":r.reginaSacr?"SACR":"-"}`;
+  const full=rows.filter(r=>r._c.n===6);
   const arcoCercato=process.env.ARCO||"";
   if(arcoCercato){
     const hit=full.filter(r=>r.arco===arcoCercato);
-    console.log(`=== ${hit.length} seed con arco ${arcoCercato} E tutti e 5 i criteri ===`);
+    console.log(`=== ${hit.length} seed con arco ${arcoCercato} E tutti e 6 i criteri ===`);
     hit.forEach(r=>console.log(fmt(r)));
-    console.log(`--- (altri ${full.length} seed con tutti e 5 i criteri, arco qualsiasi) ---`);
+    console.log(`--- (altri ${full.length} seed con tutti e 6 i criteri, arco qualsiasi) ---`);
   } else {
-    console.log(`=== ${full.length} seed su ${BATCH} soddisfano TUTTI e 5 i criteri ===`);
+    console.log(`=== ${full.length} seed su ${BATCH} soddisfano TUTTI e 6 i criteri ===`);
   }
   full.forEach(r=>console.log(fmt(r)));
-  console.log(`--- migliori parziali (4 su 5) ---`);
+  console.log(`--- migliori parziali (5 su 6) ---`);
+  rows.filter(r=>r._c.n===5).slice(0,20).forEach(r=>console.log(fmt(r)));
+  console.log(`--- parziali (4 su 6) ---`);
   rows.filter(r=>r._c.n===4).slice(0,15).forEach(r=>console.log(fmt(r)));
 
+  // RELAX distribuzione (Saverio, lug 2026): invece di pretendere il canonico esatto, basta che ENTRAMBI
+  // i lati schierino ALMENO 2 figure (distribuzione più equa), mantenendo ribaltone a favore di P + Jolly
+  // giocato + esattamente una resa. Sotto la policy greedy realistica (non forzata).
+  const nfig=s=>(s||"").length;
+  const equa=rows.filter(r=>r.missione==="P" && r.flipDopoColpi && nfig(r.figP)>=2 && nfig(r.figO)>=2 && r.jollyGiocati>0 && r.resaCount===1);
+  equa.sort((a,b)=>((b._c.c6?1:0)-(a._c.c6?1:0)) || (Math.abs(a.scopeP-a.scopeO)-Math.abs(b.scopeP-b.scopeO)));
+  console.log(``);
+  console.log(`=== ≥2 FIGURE PER LATO + ribaltone P + Jolly + esattamente una resa: ${equa.length} ===`);
+  equa.forEach(r=>console.log(fmt(r)));
+
+  // Come sopra, ma il RE deve comparire (tutti e 3 i tipi) e nessuna figura sacrificata: la vetrina
+  // "bilanciata col Re" che Saverio cerca (P Fante+Regina, O col Re). Usare tipicamente con OEXP=1.
+  const conRe=equa.filter(r=>r.figset.includes("R") && !r.reginaSacr && !r.fanteSacr);
+  console.log(``);
+  console.log(`=== di cui col RE in campo e nessuna figura sacrificata: ${conRe.length} ===`);
+  conRe.forEach(r=>console.log(fmt(r)));
+
   if(process.env.FIGJOLLY){
-    // Selezione alternativa (richiesta giu 2026): mercato canonico (P: Fante+Regina, O: Re),
-    // tutte e 3 le figure E il jolly GIOCATI, unico vincolo su esiti: scena 4 = O, scena 5 = P.
-    const regS=r=>r.reginaSacr?"SACR-1pt":r.reginaPresa?"PRESA":r.reginaColpo?"colpo":"-";
-    const fmt2=r=>`SEED=${r.seed} arco=${r.arco} | Fante:${r.fanteSacr?"SACR-1pt":r.fanteScambio?"SCAMBIO":r.fanteSbircia?"sbircia":r.fanteRiserva?"riserva-S5":"NO-effetto"} Regina:${regS(r)}${r.reginaScarti?"+scarti-S5":""} Jolly:${r.jollyTipo||"-"} | primo ${r.primoP}-${r.primoO}→${r.finalP}-${r.finalO} rese=${r.resaCount} | "${r.outcome}"`;
-    const base=r=>r.figP==="DF" && r.figO==="R" && ["F","D","R"].every(x=>r.figGiocate.includes(x)) && r.jollyGiocati>0 && r.sceneOK45;
+    // Selezione alternativa (aggiornata lug 2026 al modello v1.40+): P:Fante+Regina, O:Re, tutte e 3 le
+    // figure E il Jolly GIOCATI, e la missione compiuta dai Protagonisti con RIBALTONE (duello vinto
+    // dopo il primo conteggio perso). Nessun vincolo sull'arco delle poste (un ribaltone implica che
+    // l'esito apparente della scena 5 è dell'Opposizione).
+    const regS=r=>r.reginaScarti?"scarti-S5":r.reginaSacr?"SACR-1pt":r.reginaPresa?"PRESA":r.reginaColpo?"colpo":"-";
+    const fmt2=r=>`SEED=${r.seed} arco=${r.arco} | Fante:${r.fanteSacr?"SACR-1pt":r.fanteScambio?"IN-FONDO":r.fanteSbircia?"spia":"NO-effetto"} Regina:${regS(r)} Jolly:jP${r.jollyP}/jO${r.jollyO} | primo ${r.primoP}-${r.primoO}→miss ${r.missione}${r.flipDopoColpi?" (RIBALTONE)":""} rese=${r.resaCount}`;
+    const base=r=>r.figP==="DF" && r.figO==="R" && ["F","D","R"].every(x=>r.figGiocate.includes(x)) && r.jollyGiocati>0 && r.missione==="P" && r.flipDopoColpi;
     const ok=rows.filter(base);
     console.log(``);
-    console.log(`=== FIGJOLLY: ${ok.length} seed con P:Fante+Regina, O:Re, tutte le figure + jolly GIOCATI, S4=O S5=P ===`);
-    // ranking per "vetrina ideale": la Regina (Pablo) deve fare qualcosa di SIGNIFICATIVO (presa vera, o
-    // ingresso nei colpi di scena in cripta) e NON un sacrificio da 1 pt — questo è il criterio nuovo,
-    // più importante; poi effetto Fante visibile, Jolly sleale e finale "per il rotto della cuffia".
-    const punteggio=r=>(r.reginaPresa?4:r.reginaColpo?3:0)-(r.reginaSacr?4:0)-(r.fanteSacr?3:0)
-        +(r.fanteScambio?3:r.fanteSbircia?1:0)+(r.jollyTipo==="scopa"?2:r.jollyTipo==="presa"?1:0)
-        +(/ROTTO DELLA CUFFIA/.test(r.outcome)?2:0);
+    console.log(`=== FIGJOLLY: ${ok.length} seed con P:Fante+Regina, O:Re, tutte le figure + Jolly GIOCATI, missione P con RIBALTONE ===`);
+    // ranking per "vetrina ideale": premia gli EFFETTI FIGURA DI SCENA 5 (v1.42: Fante sbircia la
+    // riserva, Regina pesca dagli scarti), poi effetto figura ordinario visibile, Jolly su entrambi i
+    // lati (ciclo del peccato P→O), esattamente una resa. Penalizza le figure sprecate come sacrificio.
+    const punteggio=r=>(r.reginaScarti?4:r.reginaPresa?3:r.reginaSacr?-4:0)
+        +(r.fanteRiserva?4:r.fanteScambio?3:r.fanteSbircia?1:r.fanteSacr?-3:0)
+        +((r.jollyP>0&&r.jollyO>0)?2:r.jollyGiocati>0?1:0)
+        +(r.resaCount===1?1:0);
     ok.sort((a,b)=>punteggio(b)-punteggio(a));
     ok.forEach(r=>console.log(`[${punteggio(r)}] `+fmt2(r)));
-    // IDEALI: nessuna figura sprecata (né Regina né Fante), effetto Fante visibile, finale "per il rotto della cuffia".
-    const ideali=ok.filter(r=>(r.reginaPresa||r.reginaColpo) && !r.reginaSacr && !r.fanteSacr && (r.fanteScambio||r.fanteSbircia) && /ROTTO DELLA CUFFIA/.test(r.outcome));
+    // IDEALI: nessuna figura sprecata, un effetto figura di scena 5 (v1.42) visibile, esattamente una resa.
+    const ideali=ok.filter(r=>!r.reginaSacr && !r.fanteSacr && (r.fanteRiserva||r.reginaScarti) && r.resaCount===1);
     console.log(``);
-    console.log(`=== IDEALI (nessuna figura sprecata + effetto Fante visibile + cuffia): ${ideali.length} ===`);
+    console.log(`=== IDEALI (nessuna figura sprecata + effetto figura di scena 5 v1.42 + esattamente una resa): ${ideali.length} ===`);
     ideali.forEach(r=>console.log(fmt2(r)));
   }
 }else{

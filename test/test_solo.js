@@ -29,7 +29,11 @@ async function main(){
     if(mod()){
       const ck=document.getElementById("ckOk");
       if(ck){ click(ck); await dorme(20); continue; }   // prompt setup Claude (modello + chiave) → Inizia, senza chiave
-      if(G().attore==="P") click(document.getElementById("fanteNo")||document.getElementById("reNo"));
+      if(G().attore==="P"){
+        const rs=document.getElementById("reginaScartiOk");   // Regina (v1.43): seleziona una carta degli scarti e conferma
+        if(rs){ const c=document.querySelector("#reginaScarti .carta"); if(c) click(c); click(rs); }
+        else click(document.getElementById("fanteMazzoMio")||document.getElementById("fanteReordOk")||document.getElementById("reNo"));
+      }
       await dorme(30); continue;
     }
 
