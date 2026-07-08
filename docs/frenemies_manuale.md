@@ -311,6 +311,25 @@ Se siete a corto di idee pensate ad una di queste possibili situazioni
 
 Di fatto questa difficoltà iniziale influenzerà molto probabilmente la posta della prima scena.
 
+## 2.8 E se volessi fare una FanFiction?
+
+Frenemies è perfetto anche per giocare con personaggi che già amate. Non serve inventarne due da zero: prendetene due da un franchise che vi piace, metteteli in coppia e affidate loro una missione. Tutto il resto (i loro difetti, il modo in cui si completano e si detestano, le loro spinte) lo conoscete già, perché sta nella storia da cui vengono. Il conflitto tra i due, quello che qui chiamiamo "cosa si detestano", ve lo regala il canone: basta portarlo al tavolo.
+
+Qualche esempio per capirsi:
+
+- **C3PO e Chewbacca**, da Star Wars: un droide protocollare pignolo e un wookiee che risolve tutto di forza, spediti insieme a recuperare un pezzo introvabile dietro le linee nemiche.
+- **Katara e Zuko**, da La leggenda di Aang: la maestra dell'acqua e il principe del fuoco, nemici diventati a fatica alleati per salvare Aang.
+- **il Dottore e Donna**, da Doctor Who: un alieno millenario e una temp londinese dalla lingua tagliente, per rimettere a posto una catastrofe galattica.
+- **il Mandaloriano e Grogu**, da The Mandalorian: un cacciatore di taglie di poche parole e un cucciolo alieno dai poteri misteriosi in missione per conto della Nuova Repubblica.
+- **Neytiri e il colonnello Quaritch**, da Avatar: la guerriera Na'vi e il suo nemico giurato (Stephen Lang), obbligati da un nemico comune a un'alleanza che nessuno dei due sopporta.
+- **Trinità e Bambino**, dai film di Trinità: due fratelli fuorilegge, il pistolero più pigro e svelto del West e un bestione perennemente affamato, che litigano su tutto ma il colpo alla fine lo mettono a segno insieme.
+- **Geralt di Rivia e Ranuncolo**, da The Witcher: uno strigo taciturno che ammazza mostri a contratto e un bardo chiacchierone che gli si è appiccicato per farne ballate, di villaggio in villaggio verso il prossimo lavoro.
+- **Xena e Olimpia**, da Xena - Principessa guerriera: la guerriera dal passato oscuro e la giovane barda idealista che le si è unita, in cerca di redenzione lungo la strada.
+- **Draco e Ron**, da Harry Potter: il rampollo sanguepuro sprezzante e il Weasley orgoglioso e squattrinato, nemici dal primo giorno, costretti a fidarsi l'uno dell'altro per uscire vivi da una Hogwarts sotto assedio.
+- **il Biondo e Tuco**, da Il buono, il brutto, il cattivo: un cacciatore di taglie glaciale e un bandito ciarliero che si tradiscono a ogni occasione, tenuti insieme solo dall'oro sepolto che nessuno dei due può dissotterrare senza l'altro.
+
+Assegnata la missione, il gioco fa il resto: le scene diventano le tappe del loro viaggio e la Crescita racconta come cambia il loro rapporto lungo la strada.
+
 # Capitolo 3. Come si gioca una scena
 
 «Ma perché?»
