@@ -5,9 +5,13 @@ Tutto in italiano. Niente lineette (trattini lunghi) nei testi nuovi.
 
 ## Prima di toccare codice o regole
 Leggi docs/frenemies_decisioni.md (diario delle decisioni) e, per le regole,
-docs/frenemies_on_the_road_kb_v1_2.md, che è la fonte di verità del regolamento.
-Il PDF del manuale NON sta nel repo: si rigenera dal markdown via WeasyPrint
-solo alle milestone.
+docs/frenemies_manuale.md, il manuale del giocatore: è la fonte di verità del
+regolamento e vince su tutto (KB, testi dell'app, playset). Dove il manuale si
+contraddice da solo vale il capitolo che spiega la regola nel dettaglio, non il
+riassunto né il glossario; quello che il manuale non prevede non va nel gioco.
+La KB (docs/frenemies_on_the_road_kb_v1_2.md) è una copia tecnica allineata al
+manuale. I due PDF si rigenerano dai loro markdown via WeasyPrint:
+docs/genera_pdf_manuale.py per il manuale, docs/genera_pdf.py per la KB.
 
 ## Regole ferree del codice (index.html, file unico HTML/JS client-side)
 - Stato globale G separato dall'interfaccia: le funzioni di render r*() non
@@ -51,12 +55,14 @@ Le regole sono duplicate in più punti: una modifica che tocca le regole va
 propagata, nello STESSO commit, a TUTTI questi (verifica che nessuno descriva
 ancora la regola vecchia):
 1. docs/frenemies_decisioni.md - una riga nel diario: cosa cambia e perché.
-2. docs/frenemies_on_the_road_kb_v1_2.md - la fonte di verità: testo della
+2. docs/frenemies_manuale.md - la fonte di verità: testo della regola nel suo
+   capitolo, esempi, glossario (App. F) e handout (App. H); poi rigenera il PDF.
+3. docs/frenemies_on_the_road_kb_v1_2.md - la copia tecnica: testo della
    regola e, se serve, l'esempio (§33 scenario demo, §34 partita d'esempio) e
    il registro modifiche. NB: il §34/Appendice B è al momento OBSOLETO (v1.32) e
    va rifatto con un nuovo seed-vetrina; il diff del transcript non fa più parte
    del collaudo (vedi Collaudo).
-3. index.html - tre rappresentazioni delle stesse regole, da tenere in sync:
+4. index.html - tre rappresentazioni delle stesse regole, da tenere in sync:
    - costante REGOLE: il regolamento in-app per i giocatori (pulsante "?"),
      inclusi i suoi esempi (blocchi `.es`).
    - costante REGOLE_IA: il regolamento condensato inviato a Claude in modalità
@@ -66,11 +72,10 @@ ancora la regola vecchia):
      del pitch, stato della partita).
 
 Aggiorna SEMPRE anche gli ESEMPI quando cambia la regola che illustrano: gli
-esempi vivono nel KB (esempi inline, §10, §34) e in index.html (blocchi `.es`
-di REGOLE, esempi di tono in REGOLE_IA). Il PDF del manuale si rigenera dal solo
-KB (docs/genera_pdf.py): per il manuale il KB è già la fonte unica; le copie in
-index.html non possono pescare da file esterni (file unico, niente build) e
-vanno allineate a mano qui.
+esempi vivono nel manuale, nel KB (esempi inline, §10, §34) e in index.html
+(blocchi `.es` di REGOLE, esempi di tono in REGOLE_IA). Le copie in index.html
+non possono pescare da file esterni (file unico, niente build) e vanno allineate
+a mano al manuale.
 
 ## Documentazione delle decisioni
 Ogni nuova interpretazione di regole o scelta architetturale (anche non di

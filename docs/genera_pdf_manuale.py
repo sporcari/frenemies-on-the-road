@@ -4,8 +4,8 @@
 Flusso: Markdown -> HTML -> (iniezione diagrammi SVG) -> WeasyPrint -> PDF.
 
 A differenza di genera_pdf.py (che produce il PDF della Knowledge Base, la
-fonte di verita delle regole), questo script genera il manuale discorsivo
-pensato per la revisione di un editor, arricchito da diagrammi di flusso.
+copia tecnica delle regole), questo script genera il manuale, fonte di verita
+del regolamento, arricchito da diagrammi di flusso.
 
 I diagrammi sono SVG nativi (WeasyPrint non esegue JavaScript): nel markdown
 ci sono segnaposto `<!-- DIAGRAMMA: chiave -->` che qui vengono sostituiti con
