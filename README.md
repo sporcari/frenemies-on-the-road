@@ -4,7 +4,7 @@ Gioco narrativo competitivo per 2, 3 o 4 giocatori su meccaniche tipo Scopa, amb
 
 ## Struttura
 
-- `index.html` — il gioco completo, un solo file HTML/JS tutto client-side (pass-and-play, online a 2 via PeerJS, modalità solo contro Claude)
+- `index.html` — il gioco completo, un solo file HTML/JS tutto client-side (pass-and-play, online a 2 via PeerJS, modalità solo contro l'AI Bot)
 - `manifest.webmanifest`, `sw.js`, `icon-*.png` — PWA
 - `docs/frenemies_on_the_road_kb_v1_2.md` — regolamento, fonte di verità (il PDF si rigenera da qui via WeasyPrint)
 - `docs/frenemies_decisioni.md` — diario delle decisioni, da consultare prima di modificare codice o regole

@@ -267,7 +267,7 @@ button.secondaria{
 </div>
 </div>
 
-<div id="iaBadge">🃏 Claude sta tramando…</div>
+<div id="iaBadge">🃏 AI Bot sta tramando…</div>
 <div id="velo">
   <h3>Passa il tablet a</h3>
   <div class="nome" id="veloNome"></div>
@@ -276,7 +276,7 @@ button.secondaria{
 </div>
 
 <div id="veloIA">
-  <div class="nome">🃏 Claude</div>
+  <div class="nome">🃏 AI Bot</div>
   <h3>sta generando…</h3>
   <div class="strada-velo"></div>
 </div>
@@ -1109,8 +1109,8 @@ function rModalita(){
     </div>
     <div class="pannello" style="cursor:pointer" id="md-solo">
       <span class="etichetta">Un giocatore</span>
-      <b style="font-family:'Oswald',sans-serif;font-size:18px;letter-spacing:1px">CONTRO CLAUDE</b>
-      <div style="font-size:13.5px;color:var(--grigio)">Tu guidi i Protagonisti ♥♠, Claude gioca e narra l'Opposizione ♦♣.</div>
+      <b style="font-family:'Oswald',sans-serif;font-size:18px;letter-spacing:1px">CONTRO L'AI BOT</b>
+      <div style="font-size:13.5px;color:var(--grigio)">Tu guidi i Protagonisti ♥♠, l'AI Bot gioca e narra l'Opposizione ♦♣.</div>
     </div>`;
   document.getElementById("md-locale").addEventListener("click",()=>{
     G.modalita="locale"; G.fase="setup"; render();
@@ -1189,7 +1189,7 @@ function salvaCampi(){
   ["picche","cuori","quadri","fiori"].forEach(sm=>{
     const v=g("w-g"+sm); if(v!==null) G.giocatori[sm]=v;
   });
-  if(G.modalita==="solo"){ G.nGiocatori=2; if(!G.nomi.O) G.nomi.O="Claude"; }
+  if(G.modalita==="solo"){ G.nGiocatori=2; if(!G.nomi.O) G.nomi.O="AI Bot"; }
   if(G.nGiocatori===2){ G.giocatori.picche=G.giocatori.cuori=G.nomi.P; G.giocatori.quadri=G.giocatori.fiori=G.nomi.O; }
   if(G.nGiocatori===3){ G.giocatori.quadri=G.giocatori.fiori=G.nomi.O; }
   const pa=g("w-persA"); if(pa!==null) G.pers.A.nome=pa;
@@ -1469,7 +1469,7 @@ function rSetup(){
     <h2 class="ts">Le spinte dell'Opposizione</h2>
     <p class="sotto">Quattro spinte, due per seme (♦ e ♣): mezzi e movente dei nemici, catastrofi e crepe. <b>Portando in narrazione una di queste potrai trasformare una presa in una scopa</b> (due per seme, ciascuna una volta sola, una per presa).</p>
     <div class="pannello">
-      <span class="etichetta">♦♣ Le spinte dell'Opposizione${claudeOpp?" — definite da Claude":""}</span>
+      <span class="etichetta">♦♣ Le spinte dell'Opposizione${claudeOpp?", definite dall'AI Bot":""}</span>
       ${claudeOpp?domandeRO(6,10):domandeHtml(6,10)}
     </div>`;
   }
@@ -1488,14 +1488,14 @@ function rSetup(){
     let oppCorpo;
     if(claudeAttivo && G.oppGenerata) oppCorpo=`
       <div class="pannello">
-        <span class="etichetta">♦ I nemici organizzati (definiti da Claude)</span>
+        <span class="etichetta">♦ I nemici organizzati (definiti dall'AI Bot)</span>
         ${listaLettura(G.nemici,"lettura")||`<div class="lettura">—</div>`}
-        <span class="etichetta" style="margin-top:10px">♣ Il caos (definito da Claude)</span>
+        <span class="etichetta" style="margin-top:10px">♣ Il caos (definito dall'AI Bot)</span>
         ${listaLettura(G.caos,"lettura")||`<div class="lettura">—</div>`}
         <div style="margin-top:10px"><button class="secondaria" id="w-reopp">🔁 Rigenera</button></div>
       </div>`;
     else if(claudeAttivo) oppCorpo=`
-      <div class="pannello"><div class="lettura">🃏 Claude sta inventando l'Opposizione…</div></div>`;
+      <div class="pannello"><div class="lettura">🃏 L'AI Bot sta inventando l'Opposizione…</div></div>`;
     else{
       // editor a lista: ogni voce è un attore/elemento separato, aggiunto con "+" (o Invio) e rimovibile con "✕"
       const editorLista=(chiave,etichetta,ph)=>{
@@ -1517,7 +1517,7 @@ function rSetup(){
       <div class="pannello">
         ${editorLista("nemici","♦ I nemici: chi li insegue o li ostacola con intenzione (anche attori diversi, perfino rivali, con ragioni diverse)","Forze dell'ordine, un rivale personale, un opportunista…")}
         <div style="margin-top:14px">${editorLista("caos","♣ Il caos — la sfortuna, gli imprevisti, gli attriti che li perseguitano","Un'auto che non parte mai, il tempo che cambia, vecchi conti in sospeso…")}</div>
-        ${G.modalita==="solo"&&canaleIA?`<div style="margin-top:14px"><button class="secondaria" id="w-reopp">🃏 Lascia decidere a Claude</button></div>`:""}
+        ${G.modalita==="solo"&&canaleIA?`<div style="margin-top:14px"><button class="secondaria" id="w-reopp">🃏 Lascia decidere all'AI Bot</button></div>`:""}
       </div>`;
     }
     corpo=`
@@ -1712,10 +1712,10 @@ function rApertura(){
       <input type="text" id="a-titolo" value="${rec.titolo}">
     </div>
     ${G.piatto.length?`<div class="banner">Nel piatto restano ${G.piatto.length} carte dalla scena precedente: chi apre può già fare presa o scopa.</div>`:""}
-    ${claudeApre?`<p class="sotto">Claude ha proposto titolo e posta: puoi modificarli, accettarli con "Apri la scena" o farli rigenerare.</p>`:""}
+    ${claudeApre?`<p class="sotto">L'AI Bot ha proposto titolo e posta: puoi modificarli, accettarli con "Apri la scena" o farli rigenerare.</p>`:""}
     <div style="display:flex;gap:10px">
       <button class="azione" style="flex:1" id="a-via">Apri la scena</button>
-      ${claudeApre?`<button class="secondaria" id="a-riprova" title="Fai rigenerare titolo e posta a Claude">🔁 Rigenera</button>`:""}
+      ${claudeApre?`<button class="secondaria" id="a-riprova" title="Fai rigenerare titolo e posta all'AI Bot">🔁 Rigenera</button>`:""}
     </div>`;
   document.getElementById("a-via").addEventListener("click",()=>{
     rec.titolo=document.getElementById("a-titolo").value;
@@ -2029,13 +2029,13 @@ function rNarrazione(){
       <span class="etichetta">Il piatto ora</span>
       <div id="piatto">${G.piatto.length?G.piatto.map(c=>cartaHTML(c,"mini")).join(""):'<span class="vuoto">Piatto vuoto</span>'}</div>
       <div class="pannello">
-        <span class="etichetta">🃏 Claude · l'Opposizione${n.seme?" "+SIMBOLI[n.seme]:""}</span>
+        <span class="etichetta">🃏 AI Bot · l'Opposizione${n.seme?" "+SIMBOLI[n.seme]:""}</span>
         <div style="font-size:max(12px,calc(13.5px*var(--k,1)));color:var(--grigio);margin-bottom:8px">${descrizioneMossaO(n)}</div>
         <div class="lettura" id="iaNarrSlot" style="font-size:max(14px,calc(16px*var(--k,1)));line-height:1.5"></div>
       </div>
       <div style="display:flex;gap:10px">
         <button class="azione" style="flex:1" id="narrOk" disabled>Avanti</button>
-        ${canaleIA()?`<button class="secondaria" id="narrRiprova" disabled title="Fai rigenerare la narrazione a Claude">🔁 Rigenera</button>`:""}
+        ${canaleIA()?`<button class="secondaria" id="narrRiprova" disabled title="Fai rigenerare la narrazione all'AI Bot">🔁 Rigenera</button>`:""}
       </div>`;
     document.getElementById("narrOk").addEventListener("click",()=>{
       const fn=narrDopo; narrDopo=null; G.narr=null; G.narrLato=null;
@@ -2062,7 +2062,7 @@ function rNarrazione(){
     </div>`:""}
     ${(G.pngNarr||[]).length?`<div class="spinte-mano"><span class="lbl">PNG creati</span>${(G.pngNarr||[]).map(p=>`<span class="spinta-chip" style="border-left-color:var(--${p.seme})"><b style="color:var(--${p.seme})">${SIMBOLI[p.seme]}</b> ${p.nome||"(senza nome)"}</span>`).join("")}</div>`:""}
     ${ioNarro?`<div class="pannello lato-${(G.narrLato||G.attore).toLowerCase()}">
-      <span class="etichetta">La tua narrazione (Claude la legge per restare coerente con la storia)</span>
+      <span class="etichetta">La tua narrazione (l'AI Bot la legge per restare coerente con la storia)</span>
       <textarea id="narrInput" placeholder="Racconta cosa accade in questo momento della storia, poi tocca Narrato.">${G.narr.bozza||""}</textarea>
     </div>`:""}
     <div style="display:flex;gap:10px">
@@ -2094,17 +2094,17 @@ function storiaTestoIA(){
 }
 function inArtefatto(){ return !!(window.claude && typeof window.claude.complete==="function"); }
 const MODELLI_IA=[
-  ["claude-sonnet-4-6","Sonnet 4.6 — equilibrato, economico"],
-  ["claude-opus-4-8","Opus 4.8 — il più capace"],
-  ["claude-fable-5","Fable 5 — massima potenza, costoso"],
-  ["claude-haiku-4-5","Haiku 4.5 — rapido, molto economico"]
+  ["claude-sonnet-5","Sonnet 5, equilibrato"],
+  ["claude-opus-5","Opus 5, molto capace"],
+  ["claude-fable-5-1","Fable 5.1, massima potenza, costoso"],
+  ["claude-haiku-4-5","Haiku 4.5, rapido, molto economico"]
 ];
 function chiediSetupClaude(avvia){
   // prompt mostrato dopo aver scelto "Contro Claude" (avvia=true) o dal pulsante 🔑 (avvia=false)
   const art=inArtefatto();
   const opts=MODELLI_IA.map(([v,t])=>`<option value="${v}"${v===claudeModel?" selected":""}>${t}</option>`).join("");
   const selStyle="width:100%;background:var(--notte);border:1px solid var(--bordo);border-radius:8px;color:var(--osso);font-family:'IBM Plex Sans',sans-serif;font-size:15px;padding:10px 12px;outline:none";
-  modale(`<h2 class="ts">Gioca contro Claude</h2>
+  modale(`<h2 class="ts">Gioca contro l'AI Bot</h2>
     ${art?`<p class="sotto">Sei dentro Claude.ai: le chiamate non richiedono chiave né scelta del modello.</p>`
     :`<p class="sotto">Le chiamate sono a tuo carico. Scegli il modello e incolla la tua chiave Anthropic (sk-ant-...). Restano solo in questa scheda, non vengono salvati né esportati. La chiave si ottiene su console.anthropic.com.</p>
       <span class="etichetta">Modello</span>
@@ -2121,7 +2121,7 @@ function chiediSetupClaude(avvia){
       const v=(document.getElementById("ckInput").value||"").trim(); if(v) claudeKey=v;
     }
     chiudiModale();
-    if(avvia){ G.modalita="solo"; G.nGiocatori=2; G.nomi.O="Claude"; G.fase="setup"; }
+    if(avvia){ G.modalita="solo"; G.nGiocatori=2; G.nomi.O="AI Bot"; G.fase="setup"; }
     render();
   });
   document.getElementById("ckNo").addEventListener("click",chiudiModale);
@@ -2148,7 +2148,7 @@ function scenePresentiStoria(){
   return [...s].sort((a,b)=>a-b);
 }
 function renderStoria(){
-  if(!G.storia.length) return `${storiaLabel()}<div class="vuoto">Si riempirà con le narrazioni, tue e di Claude.</div>`;
+  if(!G.storia.length) return `${storiaLabel()}<div class="vuoto">Si riempirà con le narrazioni, tue e dell'AI Bot.</div>`;
   const scene=scenePresentiStoria();
   const corrente=scene[scene.length-1];
   const attiva=scene.includes(storiaTabAttiva)?storiaTabAttiva:corrente;
@@ -2597,7 +2597,7 @@ function rFineScena(){
       <div class="lettura">${LETT_RAPP[rec.rapporto]}</div>
     </div>
     <div class="pannello">
-      <span class="etichetta">${concessaEsito?"🏳️ La concessione, raccontata da chi cede la scena":claudeEsito?"🃏 Claude · com'è finita la scena":"Com'è finita la scena — riassunto per il diario"}</span>
+      <span class="etichetta">${concessaEsito?"🏳️ La concessione, raccontata da chi cede la scena":claudeEsito?"🃏 AI Bot · com'è finita la scena":"Com'è finita la scena — riassunto per il diario"}</span>
       ${concessaEsito
         ? `<div class="lettura" id="fsEsitoSlot">${rec.riassunto?`<div id="fsEsito">🏳️ ${rec.riassunto}</div>`:"<i>nessuna narrazione</i>"}</div>`
         : claudeEsito
@@ -2607,7 +2607,7 @@ function rFineScena(){
     ${G.scena<4?`<div class="banner">Le carte restano nel piatto: chi aprirà la prossima scena potrà già fare presa o scopa.</div>`:""}
     <div style="display:flex;gap:10px">
       <button class="azione" style="flex:1" id="fs-avanti"${claudeEsito&&!rec.riassunto?" disabled":""}>${G.scena===4?"Vai al finale":"Vai al mercato"}</button>
-      ${claudeEsito&&canaleIA()?`<button class="secondaria" id="fsRiprova"${rec.riassunto?"":" disabled"} title="Fai rigenerare l'esito a Claude">🔁 Rigenera</button>`:""}
+      ${claudeEsito&&canaleIA()?`<button class="secondaria" id="fsRiprova"${rec.riassunto?"":" disabled"} title="Fai rigenerare l'esito all'AI Bot">🔁 Rigenera</button>`:""}
     </div>`;
   document.getElementById("fs-avanti").addEventListener("click",()=>{
     if(!claudeEsito && !concessaEsito) rec.riassunto=document.getElementById("fs-riassunto").value;
@@ -3328,7 +3328,7 @@ document.getElementById("btnNuova").addEventListener("click",()=>{
 /* ================= MODALITÀ SOLO — CLAUDE GIOCA L'OPPOSIZIONE ================= */
 let iaBusy=false, iaNarrTesto=null;
 let claudeKey="";   // BYOK: chiave Anthropic del giocatore, solo in memoria di questa scheda (mai in G, mai salvata)
-let claudeModel="claude-sonnet-4-6";   // modello scelto dal giocatore (default il più economico)
+let claudeModel="claude-sonnet-5";   // modello scelto dal giocatore
 let oppGenInCorso=false;   // generazione dell'Opposizione (setup solo) in corso
 function iaBadge(on){ const b=document.getElementById("iaBadge"); if(b) b.style.display=on?"block":"none" }
 
@@ -3422,16 +3422,21 @@ async function chiamaClaude(istruzioni, feedback){
       // fuori dall'artefatto: BYOK, chiamata diretta col tasto del giocatore (header anti-CORS).
       // Il prompt caching del system riduce il costo ripetuto del regolamento.
       if(!claudeKey) return null;   // senza chiave del giocatore, l'IA ripiega sulla mossa automatica
+      const conFallback=claudeModel==="claude-opus-5"||claudeModel==="claude-fable-5-1";
       const r=await fetch("https://api.anthropic.com/v1/messages",{
         method:"POST",
         headers:{
           "content-type":"application/json",
           "x-api-key":claudeKey,
           "anthropic-version":"2023-06-01",
-          "anthropic-dangerous-direct-browser-access":"true"
+          "anthropic-dangerous-direct-browser-access":"true",
+          ...(conFallback?{"anthropic-beta":"server-side-fallback-2026-07-01"}:{})
         },
         body:JSON.stringify({
-          model:claudeModel, max_tokens:1024,
+          // il ragionamento dei modelli che pensano consuma max_tokens: tetto ampio, effort basso
+          model:claudeModel, max_tokens:16000,
+          ...(claudeModel!=="claude-haiku-4-5"?{output_config:{effort:"low"}}:{}),
+          ...(conFallback?{fallbacks:"default"}:{}),
           system:[{type:"text", text:sys, cache_control:{type:"ephemeral"}}],
           messages:[{role:"user", content:userMsg}]})});
       const d=await r.json();
@@ -3451,7 +3456,7 @@ function canaleIA(){ return !!(claudeKey || inArtefatto()); }
 function rifiutoRiprova(onRigenera){
   iaBusy=true;   // blocca iaScheduler mentre l'umano decide e Claude rigenera
   modale(`<h2 class="ts">🔁 Rigenera</h2>
-    <p class="sotto">Claude rigenererà questo contenuto. Se vuoi, scrivi cosa non andava (tono, coerenza, contenuto). Puoi anche lasciare vuoto.</p>
+    <p class="sotto">L'AI Bot rigenererà questo contenuto. Se vuoi, scrivi cosa non andava (tono, coerenza, contenuto). Puoi anche lasciare vuoto.</p>
     <textarea id="fbTesto" rows="3" placeholder="Cosa non ti convince? (facoltativo)"></textarea>
     <div style="display:flex;gap:10px;margin-top:12px">
       <button class="secondaria" style="flex:1" id="fbNo">Annulla</button>
