@@ -1,4 +1,5 @@
-// Collaudo di "Concedere la scena" (v1.44: mossa unica, +1 punto, carta agli scarti, una volta per lato).
+// Collaudo di "Concedere la scena" (v1.44: mossa unica, +1 punto, carta agli scarti, una volta per lato;
+// v1.46: solo con un'ultima carta inutile, manuale §3.12).
 // Forza la concessione appena il pulsante compare e verifica condizioni ed effetti. Gira in PvP (locale):
 // verifica anche che in PvP NON compaia la textarea di narrazione (si narra al tavolo).
 // Uso: node test/test_ritirata.js
@@ -15,6 +16,21 @@ const modA=()=>document.getElementById("ovModale").classList.contains("attivo");
 let concessioni=0;
 function assert(c,m){ if(!c) throw new Error("VINCOLO VIOLATO: "+m); }
 
+// condizione del manuale §3.12 (carta inutile) e +2 del Jolly non speso all'inizio della scena 5 (§6.1),
+// su un'istanza separata per non toccare la partita
+{
+  const w2=new JSDOM(html,{runScripts:"dangerously",pretendToBeVisual:true}).window, ev=s=>w2.eval(s);
+  ev(`G.fase="turno"; G.scena=1; G.astaWinner="O"; G.attore="P"; G.concessione={P:false,O:false};
+      G.piatto=[{id:"a",seme:"quadri",val:9},{id:"b",seme:"cuori",val:2}];`);
+  const puo=v=>ev(`G.lati.P.mano=[{id:"x",seme:"picche",val:${v}}]; concessioneDisponibile()`);
+  assert(puo(3)===true,"carta inutile (3: nessuna presa, 2+3<9) non concedibile");
+  assert(puo(2)===false,"concessione offerta con una carta che fa presa");
+  assert(puo(7)===false,"concessione offerta con una carta che pareggia (a pari vince chi gioca l'ultima)");
+  assert(ev(`G.lati.P.mano=[{id:"f",seme:"picche",val:8,fig:"fante"}]; concessioneDisponibile()`)===false,"concessione offerta con una figura che ha un bersaglio");
+  ev(`G.scena=4; G.lati.P.jolly={id:"J",jolly:true}; G.lati.P.punti=5; iniziaScena();`);
+  assert(ev(`G.lati.P.punti===7 && !G.lati.P.jolly`),"il Jolly non speso non dà +2 all'inizio della scena 5");
+}
+
 function passo(){
   if(fase()==="turno"){
     const g=G(), l=g.attore;
@@ -24,6 +40,7 @@ function passo(){
       assert(g.lati[l].mano.length===1,"concessione offerta con != 1 carta in mano");
       assert(g.scena<4,"concessione offerta in scena 5");
       assert(g.concessione[l]===false,"concessione offerta a chi l'ha già usata");
+      assert(window.eval("ultimaCartaInutile(G.attore)"),"concessione offerta con una carta utile");
       const puntiPre=g.lati[l].punti, mazzoPre=g.lati[l].mazzo.length;
       click(btn);
       assert(modA(),"modale concessione non aperto");

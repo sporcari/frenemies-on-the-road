@@ -778,18 +778,30 @@ function comboFiguraDefault(l, val){
   return ownLeq.length?[ownLeq[0]]:[];
 }
 
-/* Concedere la scena (scene 1-4): chi non ha l'iniziativa, con una sola carta, cede la posta:
-   fa 1 punto e la carta va negli scarti comuni (una sola volta per lato) */
+/* Concedere la scena (manuale §3.12, scene 1-4): chi gioca l'ultima carta (non ha l'iniziativa), con
+   una sola carta che non gli serve a nulla, cede la posta: 1 punto, carta agli scarti, una volta per lato */
+function ultimaCartaInutile(l){
+  const c=lato(l).mano[0];
+  if(!c) return false;
+  if(c.fig){   // una figura non si aggiunge al piatto: inutile solo se nessuna carta è alla sua portata
+    const pot=G.piatto.filter(x=>!x.jolly);
+    return pot.length>0 && Math.min(...pot.map(x=>x.val))>c.val;
+  }
+  if(combosPresa(c.val).length) return false;
+  const mio = l==="P" ? totaleProt() : totaleOpp(), suo = l==="P" ? totaleOpp() : totaleProt();
+  return mio+c.val < suo;   // a pari totale vincerebbe lui, che gioca l'ultima carta
+}
 function concessioneDisponibile(){
   if(G.fase!=="turno" || G.scena>=4) return false;
   const l=G.attore;
   if(l===G.astaWinner) return false;          // solo chi NON ha l'iniziativa
   if(lato(l).mano.length!==1) return false;   // solo con una sola carta in mano
-  return !G.concessione[l];                   // una sola volta per lato
+  if(G.concessione[l]) return false;          // una sola volta per lato
+  return ultimaCartaInutile(l);
 }
 function eseguiConcessione(l, testo){
   const L=lato(l), card=L.mano[0];
-  if(!card || G.concessione[l] || l===G.astaWinner || G.scena>=4 || L.mano.length!==1) return;
+  if(!card || G.concessione[l] || l===G.astaWinner || G.scena>=4 || L.mano.length!==1 || !ultimaCartaInutile(l)) return;
   L.mano=L.mano.filter(x=>x.id!==card.id);
   L.punti += 1; scarta(card);   // 1 punto (figura → fuori gioco, numero → scarti comuni)
   G.concessione[l]=true;
@@ -804,8 +816,8 @@ function chiediConcessione(){
   if(!card || !concessioneDisponibile()) return;
   const chiediTesto = G.modalita==="solo";   // vs Claude serve il testo per il diario; in PvP si narra al tavolo
   modale(`<h2 class="ts">Concedere la scena</h2>
-    <p class="sotto">${nomeLato(l)} cede la posta della scena: ${nomeCarta(card)} vale 1 punto e va negli scarti. Non è la fine, è una ritirata: ${chiediTesto?"racconta come arretra, come si ritira per riprovarci.":"raccontate al tavolo come arretra, come si ritira per riprovarci."}</p>
-    ${chiediTesto?`<textarea id="ritNarr" rows="3" placeholder="Come si ritira…"></textarea>`:""}
+    <p class="sotto">${nomeLato(l)} cede la posta della scena: ${nomeCarta(card)} vale 1 punto e va negli scarti. ${chiediTesto?"Racconta":"Raccontate al tavolo"} come i personaggi ammettono la sconfitta o lasciano il campo, rinunciando per il momento alla posta, e come la posta va al vincitore.</p>
+    ${chiediTesto?`<textarea id="ritNarr" rows="3" placeholder="Come cedono la scena…"></textarea>`:""}
     <div class="opzioni" style="margin-top:12px">
       <button id="ritConferma">Conferma — concedi la scena</button>
       <button class="neutra" id="ritAnnulla">Annulla</button>
@@ -1604,6 +1616,7 @@ function rSetup(){
 function iniziaScena(){
   // pesca iniziale solo per la prima scena (le altre pescano nel mercato)
   if(G.scena===0){ pescaFinoA("P",4); pescaFinoA("O",4); }
+  if(G.scena===4) premioJollyNonUsato();
   calcolaControllo();
   G.scene[G.scena] = G.scene[G.scena] || {titolo:"",posta:"",iniziativa:null,ambiente:"",vincitore:null,dominante:null,rapporto:null,totP:0,totO:0,riassunto:""};
   G.astaPicks={P:null,O:null};
@@ -2431,8 +2444,8 @@ function avviaUsaJolly(){
   document.getElementById("jollyAnnulla").addEventListener("click",render);   // niente ancora committato: si torna al turno
 }
 function premioJollyNonUsato(){
-  // v1.33: chi arriva a fine partita col Jolly NON usato incassa 2 punti Crescita, che pesano SOLO nel
-  // conteggio finale (i mercati sono chiusi: non sono spendibili). È il premio per aver resistito alla tentazione.
+  // manuale §6.1: all'inizio dell'ultima scena chi ha ancora il Jolly non speso lo toglie dal gioco e segna
+  // 2 punti Crescita (i mercati sono chiusi: non spendibili, ma contano nello spareggio della scena 5).
   ["P","O"].forEach(l=>{ const L=lato(l); if(L.jolly){ L.punti+=2; L.jolly=null; } });
 }
 function scartaJolly(c, motivo){
@@ -2610,7 +2623,7 @@ function rFineScena(){
     </div>`;
   document.getElementById("fs-avanti").addEventListener("click",()=>{
     if(!claudeEsito && !concessaEsito) rec.riassunto=document.getElementById("fs-riassunto").value;
-    if(G.scena===4){ premioJollyNonUsato(); G.fase="finale"; render(); return }
+    if(G.scena===4){ G.fase="finale"; render(); return }
     avviaMercato();
   });
   const fsr=document.getElementById("fsRiprova"); if(fsr) fsr.addEventListener("click", rigeneraEsito);
@@ -2896,7 +2909,6 @@ function conteggioDefinitivo(){
   G.colpi=null;
   // vs Claude: l'esito lo narra chi ha perso il primo conteggio; se è l'Opposizione, lo scrive Claude
   const _narr=altro(difensore);
-  premioJollyNonUsato();
   if(G.modalita==="solo" && _narr==="O"){ G.fase="fine_scena"; render(); return; }
   G.fase="finale"; render();
 }
@@ -2905,14 +2917,14 @@ function conteggioDefinitivo(){
 // distribuzione reale del benchmark (mediana 6). Restituisce [etichetta, lettura].
 function scaglioneCrescita(prot, val){
   if(val<=2) return prot
-    ? ["Nessuna crescita","Eravate così concentrati sull'obiettivo da non guardare in faccia nessuno: né cosa stavate diventando, né l'altro che vi camminava accanto. Ne uscite uguali a prima, se non peggio."]
-    : ["Minaccia spenta","I nemici hanno fallito e si sono sfilacciati. Il pericolo che rappresentavano si è in gran parte consumato in questa storia."];
+    ? ["Nessuna crescita","Eravate così concentrati sull'obiettivo da non guardare in faccia nessuno: né cosa stavate diventando, né l'altro che vi camminava accanto. Ne uscite uguali a prima, se non peggio, e il rapporto di conseguenza ne esce distrutto."]
+    : ["Minaccia sventata","I nemici hanno fallito e si sono sfilacciati. Il pericolo che rappresentavano si è in gran parte consumato in questa storia."];
   if(val<=6) return prot
-    ? ["Crescita","Qualcosa è cambiato rispetto a chi eravate alla partenza. Ciascuno ha imparato a vedere il valore nell'altro: ne nasce una stima reciproca, non ancora una resa."]
+    ? ["Crescita","Qualcosa è cambiato rispetto a chi eravate alla partenza. Ciascuno ha imparato a vedere il valore nell'altro e ad ammettere che esistono altri punti di vista, pur restando convinto che il proprio approccio sia il migliore. Il rapporto si evolve in una forma di stima e rispetto reciproco."]
     : ["Minaccia intatta","Hanno incassato il colpo ma sono ancora in piedi, pronti a riorganizzarsi. La storia li ha rallentati, non fermati."];
   return prot
-    ? ["Grande crescita","Il viaggio vi ha trasformati. Ciascuno ha preso un po' dall'altro, fino a entrare in sintonia: da una storia così non si torna gli stessi."]
-    : ["L'idra","Per ogni testa mozzata ne sono ricresciute altre. Escono da questa vicenda più forti e radicati di prima: torneranno, e peggio."];
+    ? ["Grande crescita","Il viaggio vi ha trasformati. Ciascuno ha preso un po' dall'altro, fino a entrare in sintonia, e non vedete più il mondo come prima. Da una storia così non si torna gli stessi, e con ogni probabilità vi vorrete bene per il resto della vita."]
+    : ["Come l'idra","Per ogni testa mozzata ne sono ricresciute altre. Escono da questa vicenda più forti e più radicati di quando è cominciata: torneranno, e peggio."];
 }
 
 function rFinale(){
@@ -3060,7 +3072,7 @@ const REGOLE={
     <h3>Chi narra l'esito</h3>
     Chi ha <b>vinto l'asta</b> ha inquadrato la scena (titolo e posta); a raccontare <b>com'è finita</b> è invece chi ha <b>perso la posta</b> (la scena), così da poterne calcare le ombre e i costi. In caso di <b>parità</b> dei totali narra chi ha <b>vinto l'asta</b> (per non far narrare due volte di fila chi ha appena giocato l'ultima carta del round). Vale anche per la concessione (§18.1): chi cede la posta ne narra l'esito.
     <h3>Concedere la scena</h3>
-    Chi <b>non ha l'iniziativa</b>, con una <b>sola carta</b> in mano e nelle <b>scene 1-4</b>, può <b>concedere la scena</b> invece di giocare l'ultima carta (utile quando quella carta non cambierebbe l'esito): fa <b>1 punto</b> (come una presa) e la carta va negli <b>scarti comuni</b>. Una sola volta per lato. La posta va all'avversario senza conteggio; se a cedere è l'Opposizione, i Protagonisti raggiungono la posta come per una scena vinta.
+    Nelle <b>scene 1-4</b>, chi deve giocare l'<b>ultima carta</b> della scena (chi <b>non ha l'iniziativa</b>) e ha una <b>sola carta</b> in mano che non gli serve a nulla (non può fare prese o scopa e, aggiunta al piatto, non basterebbe a raggiungere la maggioranza) può <b>concedere la scena</b> invece di sprecarla: fa <b>1 punto</b> (come una presa) e la carta va negli <b>scarti comuni</b>. Una sola volta per lato. La posta va all'avversario senza conteggio; se a cedere è l'Opposizione, i Protagonisti raggiungono la posta come per una scena vinta.
     <h3>Lettura del piatto — chi ha deciso l'esito (27.1)</h3>
     Il seme col valore più alto nel piatto racconta <i>come</i> è andata, indipendentemente da chi ha vinto:
     ♠ forza dei protagonisti · ♥ dialogo dei protagonisti · ♦ l'opposizione organizzata · ♣ la sfortuna e il caos.
@@ -3101,7 +3113,7 @@ const REGOLE={
     <h3>Vincolo narrativo</h3>
     A macchiarsi del peccato è <b>uno solo dei due protagonisti</b>: una ricaduta nei vecchi vizi o un gesto avventato; l'altro <b>può non saperne nulla, oppure assistervi e giudicarlo</b>. Quando l'Opposizione gioca il Jolly, quel compromesso torna a galla e incrina l'alleanza.
     <h3>Resistere alla tentazione: +2 Crescita</h3>
-    Usare il Jolly non è obbligatorio. Chi lo tiene <b>senza mai usarlo</b> incassa a fine partita <b>2 punti Crescita</b> (pesano solo nel conteggio finale, non spendibili al mercato): è il premio di chi ha resistito alla scorciatoia.`},
+    Usare il Jolly non è obbligatorio. Chi lo ha ancora <b>non speso</b> all'<b>inizio dell'ultima scena</b> lo toglie dal gioco e incassa <b>2 punti Crescita</b> (i mercati sono chiusi: non sono spendibili, ma contano nello spareggio della scena 5 e nella Crescita finale): è il premio di chi ha resistito alla scorciatoia.`},
   pitch:{titolo:"Risorse del pitch",html:`
     <h3>Spinte e tratti (9.5–9.6)</h3>
     I due <b>"cosa si detestano"</b> sono <b>tratti dei protagonisti</b>: solo narrativi, senza effetto in gioco. Le <b>spinte</b> sono <b>otto, due per seme</b>: motivazione e asso di ciascun protagonista (♠ e ♥) più, dall'Opposizione, mezzi e movente (♦) e catastrofi e crepe (♣). Le risposte delle spinte <b>diventano risorse di gioco</b>.
@@ -3129,12 +3141,12 @@ const REGOLE={
     Dopo che ciascuno ha giocato le 4 carte si fa il <b>primo conteggio</b>, come in ogni scena: si determina e si <b>narra l'esito apparente</b> (lo racconta chi ha perso). Poi il <b>piatto si svuota</b> e si gioca il <b>duello a rilancio</b> con le carte della <b>riserva</b> (solo numeriche). Chi ha vinto il primo conteggio <b>difende</b> dietro un <b>muro pari al numero di scene che ha vinto</b> (1-5); l'altro <b>sfida</b> e <b>apre</b> calando dalla riserva una carta di valore <b>≥ al muro</b>, narrando il colpo di scena. Poi, a <b>turni alterni</b>, ognuno prende la testa calando una carta di valore <b>≥ a quella in cima</b> (<b>pareggiare ribalta</b>: nemmeno un 10 è al sicuro, glielo pareggia l'altro 10). Chi non può più superare, o rinuncia, perde: <b>vince la missione l'ultimo che riesce a calare</b>. Se lo sfidante non ha nemmeno una carta ≥ al muro, la missione resta al difensore. Niente prese, scope o eliminazioni: contano solo i valori.
     <div class="es">Difensore con muro 3 (ha vinto 3 scene). Lo sfidante apre con un 6 (≥3), risposta 8, lo sfidante rilancia 9, il difensore pareggia con un 9 e ribalta; se lo sfidante non ha nulla ≥9, vince il difensore. Tieni in riserva una carta media (per aprire) e una alta (per vincere).</div>
     <h3>Il finale: la missione e la Crescita (25–26)</h3>
-    <b>La missione</b> la decide il <b>duello dei colpi di scena</b> (l'ultimo che cala), non il piatto: il primo conteggio dà solo l'esito apparente e chi difende. Se il primo conteggio è <b>pari</b>, prima del duello chi ha più <b>Crescita</b> (a pari Crescita, chi ha l'iniziativa) può <b>azzerarla</b> per vincere il conteggio e difendere, oppure rinunciare cedendo la scena all'altro; se nessuno esercita, il pareggio va all'Opposizione. Un finale può <b>ribaltare</b> l'apparenza: chi sembrava perdere la scena può vincere la missione dalla riserva. Alla fine i protagonisti hanno <b>compiuto la missione o hanno fallito</b>, e basta: il gioco ha già raccontato che tipo di vittoria è stata, non serve una tabella a qualificarla.<br><br>
+    <b>La missione</b> la decide il <b>duello dei colpi di scena</b> (l'ultimo che cala), non il piatto: il primo conteggio dà solo l'esito apparente e chi difende. Se il primo conteggio è <b>pari</b>, prima del duello chi ha più <b>Crescita</b> (a pari Crescita, chi ha l'iniziativa) può <b>azzerarla</b> per vincere il conteggio e difendere, oppure rinunciare cedendo la scena all'altro, che difende senza spendere nulla. Un finale può <b>ribaltare</b> l'apparenza: chi sembrava perdere la scena può vincere la missione dalla riserva. Alla fine i protagonisti hanno <b>compiuto la missione o hanno fallito</b>, e basta: il gioco ha già raccontato che tipo di vittoria è stata, non serve una tabella a qualificarla.<br><br>
     <b>La Crescita</b> è una misura a parte, che <b>non si incrocia</b> con la missione: i punti accumulati e non spesi (prese 1, scope 3, lo speso vale 0) dicono quanto i tuoi personaggi sono cresciuti lungo il viaggio. Che cosa sia lo decidi tu (maturazione, evoluzione interiore, reputazione e prestigio); e il seme delle carte con cui hai fatto i punti dà un indizio, tra i tuoi due semi: più Cuori = legame ed empatia, più Picche = forza e affermazione (per l'Opposizione, Quadri vs Fiori). Spendere punti in figure = aver chiamato aiuto e diviso il merito; tenerli = essersi fatti un nome. La si legge <b>a scaglioni</b>, per entrambi i lati: per i protagonisti è una promessa, per l'Opposizione l'idra.
     <table><tr><th>Punti non spesi</th><th>Protagonisti</th><th>Opposizione</th></tr>
-    <tr><td>0-2</td><td><b>Nessuna crescita</b></td><td><b>Minaccia spenta</b></td></tr>
+    <tr><td>0-2</td><td><b>Nessuna crescita</b></td><td><b>Minaccia sventata</b></td></tr>
     <tr><td>3-6</td><td><b>Crescita</b></td><td><b>Minaccia intatta</b></td></tr>
-    <tr><td>7+</td><td><b>Grande crescita</b></td><td><b>L'idra</b> (torneranno, e peggio)</td></tr></table>
+    <tr><td>7+</td><td><b>Grande crescita</b></td><td><b>Come l'idra</b> (torneranno, e peggio)</td></tr></table>
     Una missione fallita dai protagonisti è una <b>missione compiuta dall'Opposizione</b>: narrala come trionfo dell'avversario, non come casella vuota.
     <h3>L'epilogo</h3>
     Letta la Crescita, facoltativo, l'<b>epilogo</b>: vignette, ciascuna su un Qualcuno (protagonista, PNG, antagonista), ambientate giorni o anni dopo. La Crescita appena letta è il primo materiale (grande crescita dei protagonisti = una vignetta di sintonia, dell'Opposizione = un'ombra sul futuro). Si narra a turno, mai due di fila; "passo" chiude (l'altro narra un'ultima vignetta, poi finisce); nessun tetto al numero, nessun costo. È l'unico spazio in cui un destino dato per certo può essere riaperto: qui salta la regola d'oro "introdurre non annulla".`}
@@ -3350,13 +3362,13 @@ MERCATO (tra le scene): ogni presa vale 1 punto, ogni scopa 3. Ordine: prima com
 - Re (costo 9, valore 10): recuperi dagli scarti comuni una carta NUMERICA del suo stesso seme (la mano resta), di valore FINO A 10 meno le scene già vinte dall'avversario, nelle scene 1-4 rimescolata nel tuo mazzo, nell'ultima scena nella riserva dei colpi di scena (dove pesa: alimenta il duello finale). Una figura, una volta giocata, ESCE DAL GIOCO (non negli scarti), quindi il Re trova solo numeri.
 Ogni figura che compri è un PNG: dalle subito un nome e un breve ruolo (chi è), e richiamalo quando giochi quella carta e quando narri (il suo effetto meccanico è ciò che quel personaggio fa nella storia). Più in generale, ogni elemento rilevante che introduci (un nemico, un alleato, un luogo, un oggetto) con una sua volontà e un ruolo da seguire è un «Qualcuno»: dagli un nome se conta per il seguito, altrimenti resta una comparsa.
 
-JOLLY: un solo Jolly, RISORSA dei PROTAGONISTI (non è nel mazzo: ce l'hanno davanti dall'inizio). Usarlo NON dà punti a nessuno. I Protagonisti lo usano nelle scene 1-3: seppelliscono una carta della mano in fondo al loro mazzo, afferrano il Jolly e catturano UNA SOLA carta del piatto (valore elastico; se era l'unica rimasta è scopa) — è il PECCATO, un successo sleale contro i propri principi. Appena lo usano, il Jolly PASSA A TE (Opposizione): il loro costo non è in punti, è che consegnano a te la stessa arma. Da quel momento TU puoi usarlo, ma con un'ASIMMETRIA (v1.39): mentre loro SEPPELLISCONO la carta (la riavranno), tu la SCARTI — il tuo mazzo cala di 1, una carta in meno verso la riserva dei colpi di scena: è il tuo costo. Nelle scene 2-4, nel tuo turno scarti una carta, afferri il Jolly e catturi UNA SOLA carta del piatto (anche questo non dà punti) — e nel narrarlo FAI EMERGERE IL PECCATO: il compromesso di cui uno dei protagonisti si è macchiato riaffiora e incrina la loro alleanza. Conviene soprattutto per togliere dal tavolo la carta avversaria che ti fa perdere la posta, o per una scopa quando nel piatto è rimasta una sola carta. Vincoli: solo in una scena SUCCESSIVA a quella in cui i Protagonisti l'hanno usato (mai due usi nella stessa scena); una volta giocato è speso. A macchiarsi del peccato è UNO SOLO dei due protagonisti (l'altro può non saperlo, o assistervi e giudicarlo): è il seme di una discordia che sboccia. Se nessuno lo usa, chi lo tiene a fine partita incassa 2 punti Crescita (contano solo nell'esito finale, non spendibili al mercato).
+JOLLY: un solo Jolly, RISORSA dei PROTAGONISTI (non è nel mazzo: ce l'hanno davanti dall'inizio). Usarlo NON dà punti a nessuno. I Protagonisti lo usano nelle scene 1-3: seppelliscono una carta della mano in fondo al loro mazzo, afferrano il Jolly e catturano UNA SOLA carta del piatto (valore elastico; se era l'unica rimasta è scopa) — è il PECCATO, un successo sleale contro i propri principi. Appena lo usano, il Jolly PASSA A TE (Opposizione): il loro costo non è in punti, è che consegnano a te la stessa arma. Da quel momento TU puoi usarlo, ma con un'ASIMMETRIA (v1.39): mentre loro SEPPELLISCONO la carta (la riavranno), tu la SCARTI — il tuo mazzo cala di 1, una carta in meno verso la riserva dei colpi di scena: è il tuo costo. Nelle scene 2-4, nel tuo turno scarti una carta, afferri il Jolly e catturi UNA SOLA carta del piatto (anche questo non dà punti) — e nel narrarlo FAI EMERGERE IL PECCATO: il compromesso di cui uno dei protagonisti si è macchiato riaffiora e incrina la loro alleanza. Conviene soprattutto per togliere dal tavolo la carta avversaria che ti fa perdere la posta, o per una scopa quando nel piatto è rimasta una sola carta. Vincoli: solo in una scena SUCCESSIVA a quella in cui i Protagonisti l'hanno usato (mai due usi nella stessa scena); una volta giocato è speso. A macchiarsi del peccato è UNO SOLO dei due protagonisti (l'altro può non saperlo, o assistervi e giudicarlo): è il seme di una discordia che sboccia. Se nessuno lo usa, chi lo tiene all'inizio dell'ultima scena lo toglie dal gioco e incassa 2 punti Crescita (non spendibili al mercato, ma contano nello spareggio della quinta scena e nella Crescita finale).
 
 RISORSE DEL PITCH (spinte): sono otto, due per seme (le tue sono ♦ e ♣). Dopo una presa fatta con una CARTA NUMERICA puoi spuntare la risposta del pitch del SEME della carta con cui hai preso: la presa diventa una SCOPA vera e il piatto viene spazzato via (le carte rimaste finiscono negli scarti comuni). La risorsa deve entrare esplicitamente nella narrazione; ogni risposta una volta sola (due per seme, entrambe usabili); una sola spinta per presa; MAI su una presa di FIGURA (una presa fatta con Fante/Regina/Re non è promuovibile a scopa); VIETATA nell'ultima scena. (I tratti "cosa i protagonisti si detestano" sono solo narrativi, non spinte.)
 
-QUINTA SCENA: la mano finale si sceglie dopo il mercato; in RISERVA vanno solo carte NUMERICHE (le figure restano in mano). Scelta: tieni le carte alte in mano per vincere il primo conteggio, oppure in riserva per vincere il duello finale — bastano una media (per aprire) e una alta (per vincere). Dopo il primo conteggio si gioca il DUELLO A RILANCIO: il piatto si svuota, chi ha vinto il conteggio DIFENDE dietro un MURO pari alle scene che ha vinto (1-5), l'altro SFIDA e apre calando dalla riserva una carta di valore >= al muro; poi a turni alterni si prende la testa con una carta >= a quella in cima (PAREGGIARE RIBALTA: nemmeno un 10 e' sicuro). Chi non puo' piu' superare (o rinuncia) perde: vince la missione l'ultimo che cala. Se lo sfidante non ha nulla >= al muro, vince il difensore. Il primo conteggio da' solo l'esito apparente; la MISSIONE la decide il duello. Se il primo conteggio e' pari, prima del duello chi ha piu' Crescita (a pari, chi ha l'iniziativa) puo' azzerarla per vincere il conteggio e difendere, oppure cedere; se nessuno esercita, vince l'Opposizione. Il finale: la MISSIONE e' solo COMPIUTA o FALLITA (la decide il duello; il gioco ha gia' raccontato che tipo di vittoria e' stata, niente tabella di esiti). La CRESCITA e' una misura A PARTE, NON si incrocia con la missione: i punti non spesi (figure comprate = aiuto chiamato, punti tenuti = nome che ci si e' fatti) si leggono A SCAGLIONI, per te la minaccia che resta, l'idra: 0-2 minaccia spenta, 3-6 minaccia intatta, 7+ l'idra (tornerete, e peggio); per i protagonisti 0-2 nessuna crescita, 3-6 crescita, 7+ grande crescita. Una missione fallita dai protagonisti e' una tua missione compiuta, da narrare come trionfo. Poi, facoltativo, l'epilogo: vignette su un Qualcuno, giorni o anni dopo, a turni e senza due di fila; la Crescita appena letta e' il primo materiale.
+QUINTA SCENA: la mano finale si sceglie dopo il mercato; in RISERVA vanno solo carte NUMERICHE (le figure restano in mano). Scelta: tieni le carte alte in mano per vincere il primo conteggio, oppure in riserva per vincere il duello finale — bastano una media (per aprire) e una alta (per vincere). Dopo il primo conteggio si gioca il DUELLO A RILANCIO: il piatto si svuota, chi ha vinto il conteggio DIFENDE dietro un MURO pari alle scene che ha vinto (1-5), l'altro SFIDA e apre calando dalla riserva una carta di valore >= al muro; poi a turni alterni si prende la testa con una carta >= a quella in cima (PAREGGIARE RIBALTA: nemmeno un 10 e' sicuro). Chi non puo' piu' superare (o rinuncia) perde: vince la missione l'ultimo che cala. Se lo sfidante non ha nulla >= al muro, vince il difensore. Il primo conteggio da' solo l'esito apparente; la MISSIONE la decide il duello. Se il primo conteggio e' pari, prima del duello chi ha piu' Crescita (a pari, chi ha l'iniziativa) puo' azzerarla per vincere il conteggio e difendere, oppure rinunciare: allora vince il conteggio l'altro, senza spendere nulla. Il finale: la MISSIONE e' solo COMPIUTA o FALLITA (la decide il duello; il gioco ha gia' raccontato che tipo di vittoria e' stata, niente tabella di esiti). La CRESCITA e' una misura A PARTE, NON si incrocia con la missione: i punti non spesi (figure comprate = aiuto chiamato, punti tenuti = nome che ci si e' fatti) si leggono A SCAGLIONI, per te la minaccia che resta, l'idra: 0-2 minaccia sventata, 3-6 minaccia intatta, 7+ come l'idra (tornerete, e peggio); per i protagonisti 0-2 nessuna crescita, 3-6 crescita, 7+ grande crescita. Una missione fallita dai protagonisti e' una tua missione compiuta, da narrare come trionfo. Poi, facoltativo, l'epilogo: vignette su un Qualcuno, giorni o anni dopo, a turni e senza due di fila; la Crescita appena letta e' il primo materiale.
 
-CONCEDERE LA SCENA (solo se NON hai l'iniziativa, ti resta UNA sola carta, scene 1-4): se la tua ultima carta non può cambiare la scena (non fa presa e, anche giocandola, non ti porta sopra il totale dei Protagonisti), conviene concedere la scena invece di sprecarla. UNA sola volta per partita: fai 1 punto, la carta va negli scarti, perdi la posta della scena e racconti tu come arretri per riorganizzarti. NON concedere se la carta può prendere o se ti fa superare i Protagonisti: giocala.
+CONCEDERE LA SCENA (solo se NON hai l'iniziativa, ti resta UNA sola carta, scene 1-4, e quella carta non ti serve a nulla: non fa prese né scopa e, giocata nel piatto, non ti porta almeno al totale dei Protagonisti): invece di sprecarla puoi concedere la scena. UNA sola volta per partita: fai 1 punto, la carta va negli scarti, perdi la posta della scena e racconti tu come ammetti la sconfitta o lasci il campo, rinunciando per il momento alla posta.
 
 STRATEGIA, in ordine di priorità a ogni tuo turno:
 (1) SCOPA: se tra le opzioni c'è una scopa, falla. Vale 3 punti e svuota il piatto: è quasi sempre la mossa migliore.
@@ -3398,7 +3410,7 @@ PIATTO: ${G.piatto.length?G.piatto.map(c=>nomeCarta(c)).join(", "):"vuoto"} (som
 LA TUA MANO: ${O.mano.map(c=>nomeCarta(c)).join(", ")||"vuota"}.
 CARTE GIÀ USCITE (catturate o spese, non torneranno in gioco; servono a dedurre cosa resta agli avversari): ${uscite.length?uscite.join(", "):"nessuna"}.
 I tuoi punti ${O.punti}, punti avversari ${P.punti} (presa 1, scopa 3).
-Totali del piatto ora: Protagonisti ${totaleProt()}, Opposizione ${totaleOpp()}.${figure?`\nFigure comprate: ${figure}.`:""}${pngN?`\nPNG narrativi: ${pngN}.`:""}${lato("O").jolly?`\nHAI IL JOLLY (te l'hanno passato i Protagonisti usandolo): nelle scene 2-4, nel tuo turno, puoi SCARTARE una carta della mano (il tuo mazzo cala di 1 — è il tuo costo) e afferrare il Jolly per CATTURARE UNA SOLA carta del piatto (valore elastico; se era l'unica rimasta è scopa; non dà punti a nessuno), FACENDO EMERGERE IL PECCATO dei protagonisti — solo in una scena successiva a quella in cui l'hanno usato. Conviene per togliere la carta che ti fa perdere la posta. Se non lo usi, a fine partita vale 2 punti Crescita.`:""}`;
+Totali del piatto ora: Protagonisti ${totaleProt()}, Opposizione ${totaleOpp()}.${figure?`\nFigure comprate: ${figure}.`:""}${pngN?`\nPNG narrativi: ${pngN}.`:""}${lato("O").jolly?`\nHAI IL JOLLY (te l'hanno passato i Protagonisti usandolo): nelle scene 2-4, nel tuo turno, puoi SCARTARE una carta della mano (il tuo mazzo cala di 1 — è il tuo costo) e afferrare il Jolly per CATTURARE UNA SOLA carta del piatto (valore elastico; se era l'unica rimasta è scopa; non dà punti a nessuno), FACENDO EMERGERE IL PECCATO dei protagonisti — solo in una scena successiva a quella in cui l'hanno usato. Conviene per togliere la carta che ti fa perdere la posta. Se non lo usi, all'inizio dell'ultima scena vale 2 punti Crescita.`:""}`;
 }
 
 async function chiamaClaude(istruzioni, feedback){
@@ -3615,10 +3627,8 @@ async function iaTurno(){
   // concedere la scena: con una sola carta e senza iniziativa, l'Opposizione può cedere la posta (1 punto, carta agli scarti)
   if(concessioneDisponibile()){
     const c0=lato("O").mano[0];
-    const faPresa = c0.fig ? true : combosPresa(c0.val).length>0;
-    const tP=totaleProt(), tO=totaleOpp(), tOcon=tO+c0.val;
-    const utile = faPresa || (tOcon>tP && !(tO>tP));
-    const r=await chiamaClaude(`Sei rimasto con una sola carta (${nomeCarta(c0)}) e NON hai l'iniziativa: è la tua ULTIMA giocata. Sul tavolo i Protagonisti ♥♠ hanno ${tP}, tu ♦♣ hai ${tO}. La tua carta ${faPresa?"PUÒ fare presa":"non fa presa"}; se la giochi nel piatto il tuo totale diventa ${tOcon} (${tOcon>tP?"superi":"resti sotto a"} i Protagonisti). ${utile?"Giocarla TI SERVE: NON concedere.":"Giocarla NON cambia l'esito: conviene CONCEDERE la scena per non sprecarla."} Concedere la scena (una sola volta per partita): fai 1 punto, la carta va negli scarti, perdi la posta della scena e racconti tu come arretri.\nJSON: {"concedi": true oppure false, "narrazione":"..."}`);
+    const tP=totaleProt(), tO=totaleOpp();
+    const r=await chiamaClaude(`Sei rimasto con una sola carta (${nomeCarta(c0)}) e NON hai l'iniziativa: è la tua ULTIMA giocata. Sul tavolo i Protagonisti ♥♠ hanno ${tP}, tu ♦♣ hai ${tO}. La tua carta non fa prese né scopa e, giocata nel piatto, non ti basta per vincere la scena: conviene CONCEDERE la scena per non sprecarla. Concedere la scena (una sola volta per partita): fai 1 punto, la carta va negli scarti, perdi la posta della scena e racconti tu come arretri.\nJSON: {"concedi": true oppure false, "narrazione":"..."}`);
     if(r && r.concedi===true){ iaBusy=false; eseguiConcessione("O", (r.narrazione)||"L'Opposizione arretra per riorganizzarsi."); return; }
   }
   const g=carteGiocabili("O");

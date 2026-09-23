@@ -835,7 +835,7 @@ Nel vicolo cieco resta il 4♣, la parete franata che sbarra la fuga, e Vera non
 
 ## 5.4 Resistere alla tentazione: due punti di Crescita
 
-Usare il Jolly non è obbligatorio. Chi lo detiene può non usarlo affatto: **chi arriva a fine partita col Jolly ancora in mano incassa 2 punti Crescita**. Sono punti che pesano solo nel conteggio finale (i mercati sono ormai chiusi: non si possono spendere per comprare figure) ma questi punti serviranno a rompere un eventuale pareggio al termine della scena 5 e determineranno a fine partita quanto i tuoi personaggi sono cresciuti. Questo vale per entrambi i lati: se i Protagonisti resistono, i due punti sono loro; se peccano e l'Opposizione riceve il Jolly ma a sua volta non lo spende, i due punti vanno all'Opposizione.
+Usare il Jolly non è obbligatorio. Chi lo detiene può non usarlo affatto: **chi arriva all'inizio dell'ultima scena col Jolly ancora non speso lo toglie dal gioco e incassa 2 punti Crescita** (§6.1). I mercati sono ormai chiusi, quindi non si possono spendere per comprare figure, ma questi punti serviranno a rompere un eventuale pareggio al termine della scena 5 e determineranno a fine partita quanto i tuoi personaggi sono cresciuti. Questo vale per entrambi i lati: se i Protagonisti resistono, i due punti sono loro; se peccano e l'Opposizione riceve il Jolly ma a sua volta non lo spende, i due punti vanno all'Opposizione.
 
 ## 5.5 Il peccato emerge: la stessa cattura dell'Opposizione (scene 2-4)
 
@@ -1174,9 +1174,9 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Colpi di scena.** La coda della quinta scena: dopo il primo conteggio il piatto si svuota e si gioca un duello a rilancio con le carte tenute in riserva. Chi ha vinto il conteggio difende dietro un muro pari alle scene che ha vinto; l'altro apre calando una carta di valore ≥ al muro, poi a turni alterni si prende la testa con una carta ≥ a quella in cima (pareggiare ribalta). Vince la missione l'ultimo che riesce a calare.
 
-**Concedere la scena (arrendersi).** Nelle scene 1-4, chi non ha l'iniziativa e ha una sola carta in mano può rinunciare a giocarla e cedere la posta: vale un punto (la carta conta come una presa) e finisce negli scarti comuni. Una sola volta per lato.
+**Concedere la scena (arrendersi).** Nelle scene 1-4, chi deve giocare l'ultima carta della scena (chi non ha l'iniziativa) e ha una sola carta in mano che non gli serve a nulla (non può fare prese o scopa e, aggiunta al piatto, non basterebbe a raggiungere la maggioranza) può rinunciare a giocarla e cedere la posta: vale un punto (la carta conta come una presa) e finisce negli scarti comuni. Una sola volta per lato.
 
-**Conteggio definitivo.** L'esito della missione, deciso dal duello dei colpi di scena: la vince chi cala per ultimo. Il primo conteggio dei semi (Cuori e Picche contro Quadri e Fiori) dà solo l'esito apparente e stabilisce chi difende. Se il primo conteggio è pari, chi ha più Crescita (a pari, chi ha l'iniziativa) può azzerarla per vincere il conteggio e difendere, oppure cedere all'altro; se nessuno esercita, vince l'Opposizione.
+**Conteggio definitivo.** L'esito della missione, deciso dal duello dei colpi di scena: la vince chi cala per ultimo. Il primo conteggio dei semi (Cuori e Picche contro Quadri e Fiori) dà solo l'esito apparente e stabilisce chi difende. Se il primo conteggio è pari, chi ha più Crescita (a pari, chi ha l'iniziativa) può azzerarla per vincere il conteggio e difendere, oppure rinunciare e cedere all'altro, che difende senza spendere nulla.
 
 **Continuità.** Il principio per cui ogni scena riparte dall'esito di quella precedente: la situazione dei protagonisti è la conseguenza di come è andata la posta. Anche il piatto resta sul tavolo tra una scena e l'altra.
 
@@ -1409,7 +1409,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 <ul>
 <li><b>Protagonisti (scene 1-3):</b> seppelliscono una carta in fondo al proprio mazzo, afferrano il Jolly e catturano. È il <b>peccato</b>. Appena usato, il Jolly <b>passa all'Opposizione</b>.</li>
 <li><b>Opposizione (scene 2-4):</b> <b>scarta</b> una carta (costo: il suo mazzo cala di 1), afferra il Jolly e cattura. Nel narrarlo <b>fa emergere il peccato</b>. Solo in una scena successiva a quella in cui l'hanno usato i Protagonisti, mai due usi nella stessa scena.</li>
-<li><b>Resistere:</b> chi arriva a fine partita col Jolly non speso incassa <b>+2 punti Crescita</b>.</li>
+<li><b>Resistere:</b> chi arriva all'inizio dell'ultima scena col Jolly non speso lo toglie dal gioco e incassa <b>+2 punti Crescita</b>.</li>
 </ul>
 </div>
 </div>

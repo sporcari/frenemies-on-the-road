@@ -54,7 +54,7 @@ const pct=f=>round(100*rows.filter(f).length/n,1);
 // quattro esiti nominati; il secondo dato del finale è la Crescita, letta a scaglioni per lato.
 const pWin=r=>r.missione==="P";
 const oWin=r=>r.missione==="O";
-const SCAGLIONI=["0-2","3-6","7+"];   // Nessuna/Minaccia spenta · Crescita/intatta · Grande/L'idra
+const SCAGLIONI=["0-2","3-6","7+"];   // Nessuna/Minaccia sventata · Crescita/intatta · Grande/Come l'idra
 const scaglione=v=>v<=2?SCAGLIONI[0]:v<=6?SCAGLIONI[1]:SCAGLIONI[2];
 // media dei punti GUADAGNATI in ogni scena (delta del cumulato lordo)
 const perScenaPunti=k=>{ const o=[]; for(let sc=0;sc<5;sc++) o.push(avg(r=>(r[k][sc]||0)-(sc>0?(r[k][sc-1]||0):0))); return o; };

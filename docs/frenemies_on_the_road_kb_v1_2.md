@@ -454,7 +454,7 @@ Chi ha il totale più alto vince la posta della scena.
 
 ### 18.1 Concedere la scena *(v1.6, unificata v1.44)*
 
-Il giocatore che non ha vinto l'iniziativa può rinunciare alla scena invece di giocare la sua ultima carta. Concedere la scena è possibile solo nelle scene 1-4, solo a chi non ha l'iniziativa e solo quando gli resta una sola carta in mano: nella pratica è la sua ultima giocata del round (in due giocatori, l'ottava e ultima carta, che cala chi ha perso l'asta). Serve quando quella carta non può cambiare l'esito: invece di sprecarla, la si toglie dal round e si cede la posta all'avversario, raccontando come ci si ritira per riorganizzarsi.
+Il giocatore che non ha vinto l'iniziativa può rinunciare alla scena invece di giocare la sua ultima carta. Concedere la scena è possibile solo nelle scene 1-4, solo a chi non ha l'iniziativa e solo quando gli resta una sola carta in mano: nella pratica è la sua ultima giocata del round (in due giocatori, l'ottava e ultima carta, che cala chi ha perso l'asta). È possibile solo se quella carta **non gli è di alcuna utilità** *(v1.46)*: non può fare prese o scopa e, aggiunta al piatto, non basterebbe a raggiungere la maggioranza (il totale del proprio lato resterebbe sotto quello avversario; a pari totale vincerebbe lui, che gioca l'ultima carta). Una figura non si aggiunge al piatto: è inutile solo se nessuna carta del piatto è alla sua portata. Invece di sprecarla, la si toglie dal round e si cede la posta all'avversario, raccontando come i propri personaggi ammettono la sconfitta o lasciano il campo, rinunciando per il momento alla posta.
 
 Concedere la scena vale **1 punto** (come ogni presa, anche se è una figura) e la carta finisce negli **scarti comuni**. Si può fare **una sola volta per lato** in tutta la partita.
 
@@ -585,7 +585,7 @@ Vincoli:
 
 ### 22.5 — Resistere alla tentazione: +2 Crescita *(v1.33)*
 
-Usare il Jolly non è obbligatorio. Chi lo detiene può **non usarlo affatto**: chi arriva a fine partita col Jolly ancora in mano incassa **2 punti Crescita**, che pesano **solo nel conteggio finale** (i mercati sono ormai chiusi: non sono spendibili per comprare figure). È il premio di **chi ha resistito alla scorciatoia**. Vale per entrambi i lati: se i Protagonisti resistono, i +2 sono loro; se peccano e l'Opposizione riceve il Jolly ma non lo spende, i +2 vanno all'Opposizione.
+Usare il Jolly non è obbligatorio. Chi lo detiene può **non usarlo affatto**: se **all'inizio dell'ultima scena** ha ancora il Jolly non speso, lo toglie dal gioco e incassa **2 punti Crescita** *(v1.46)*. I mercati sono ormai chiusi, quindi non sono spendibili per comprare figure, ma contano già nello **spareggio del primo conteggio** della scena 5 (§25) e poi nella Crescita finale. È il premio di **chi ha resistito alla scorciatoia**. Vale per entrambi i lati: se i Protagonisti resistono, i +2 sono loro; se peccano e l'Opposizione riceve il Jolly ma non lo spende, i +2 vanno all'Opposizione.
 
 ### 22.6 — Vincolo narrativo *(v1.33)*
 
@@ -643,7 +643,7 @@ Al termine dell'ultima scena:
 
 1. il lato con **più Crescita**; a **pari Crescita**, il lato con l'**iniziativa** dell'ultima scena;
 2. chi ha la facoltà può **esercitarla** (spende, vince e difende) **oppure rinunciare**, e così **cede la vittoria dell'ultima scena all'altro** (che difende senza spendere nulla);
-3. se chi ha diritto non ha Crescita da spendere, di fatto cede all'altro; se nessuno esercita, il pareggio va all'**Opposizione** (il mondo è contro i protagonisti).
+3. se chi ha diritto non ha Crescita da spendere, di fatto cede all'altro.
 
 In ogni caso, deciso il difensore, il **duello dei colpi di scena si gioca comunque** e stabilisce l'esito reale.
 
@@ -663,17 +663,17 @@ La si legge **a scaglioni**, sempre, **per entrambi i lati**. Lo stesso numero r
 
 **Crescita dei Protagonisti**
 
-- **0-2 · Nessuna crescita.** Eravate così concentrati sull'obiettivo da non guardare in faccia nessuno: né cosa stavate diventando, né l'altro che vi camminava accanto. Ne uscite uguali a prima, se non peggio, e il rapporto non ha potuto giovarne.
-- **3-6 · Crescita.** Qualcosa è cambiato rispetto a chi eravate alla partenza. Ciascuno ha imparato a vedere il valore nell'altro, pur restando convinto che il proprio modo sia il migliore: ne nasce una stima reciproca, non ancora una resa.
+- **0-2 · Nessuna crescita.** Eravate così concentrati sull'obiettivo da non guardare in faccia nessuno: né cosa stavate diventando, né l'altro che vi camminava accanto. Ne uscite uguali a prima, se non peggio, e il rapporto di conseguenza ne esce distrutto.
+- **3-6 · Crescita.** Qualcosa è cambiato rispetto a chi eravate alla partenza. Ciascuno ha imparato a vedere il valore nell'altro e ad ammettere che esistono altri punti di vista, pur restando convinto che il proprio approccio sia il migliore. Il rapporto si evolve in una forma di stima e rispetto reciproco.
 - **7+ · Grande crescita.** Il viaggio vi ha trasformati. Ciascuno ha preso un po' dall'altro, fino a entrare in sintonia, e non vedete più il mondo come prima. Da una storia così non si torna gli stessi, e con ogni probabilità vi vorrete bene per il resto della vita.
 
 **Crescita dell'Opposizione**
 
-- **0-2 · Minaccia spenta.** I nemici hanno fallito e si sono sfilacciati. Il pericolo che rappresentavano si è in gran parte consumato in questa storia.
+- **0-2 · Minaccia sventata.** I nemici hanno fallito e si sono sfilacciati. Il pericolo che rappresentavano si è in gran parte consumato in questa storia.
 - **3-6 · Minaccia intatta.** Hanno incassato il colpo ma sono ancora in piedi, pronti a riorganizzarsi. La storia li ha rallentati, non fermati.
-- **7+ · L'idra.** Per ogni testa mozzata ne sono ricresciute altre. Escono da questa vicenda più forti e più radicati di quando è cominciata: torneranno, e peggio.
+- **7+ · Come l'idra.** Per ogni testa mozzata ne sono ricresciute altre. Escono da questa vicenda più forti e più radicati di quando è cominciata: torneranno, e peggio.
 
-Volendo, le due Crescite si leggono anche **insieme**: grande crescita da entrambe le parti racconta eroi trasformati che però hanno risvegliato qualcosa di terribile; nessuna crescita da entrambe, due forze che si sono logorate a vicenda senza che nessuno ne esca davvero.
+Volendo, le due Crescite si leggono anche **insieme**: grande crescita da entrambe le parti racconta eroi trasformati che però hanno risvegliato qualcosa di terribile; nessuna crescita da entrambe, due forze che si sono logorate a vicenda senza che nessuno ne esca davvero vittorioso.
 
 > **Lettura simmetrica della missione:** una missione **fallita** dai Protagonisti è, nello stesso istante, una missione **compiuta** dall'Opposizione: va narrata come il trionfo dell'avversario, non come una casella vuota.
 
@@ -955,6 +955,14 @@ In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, 
 
 # REGISTRO MODIFICHE
 
+## v1.46 (settembre 2026): allineamento al manuale, che diventa la fonte di verità
+
+1. **§22.5: il +2 Crescita del Jolly non speso si assegna all'inizio dell'ultima scena**, non più a fine partita (manuale §6.1): chi ha ancora il Jolly lo toglie dal gioco e segna 2 punti, che contano nello spareggio del primo conteggio della scena 5.
+2. **§18.1: concedere la scena richiede che l'ultima carta sia inutile** (manuale §3.12): non può fare prese o scopa e, aggiunta al piatto, non porterebbe il proprio lato almeno al totale avversario. Una figura è inutile solo se nessuna carta del piatto è alla sua portata.
+3. **§25: tolta la clausola "se nessuno esercita, il pareggio va all'Opposizione"**: il manuale §6.2 prevede solo esercitare o rinunciare, e chi rinuncia cede all'altro.
+4. **§26: nomi e testi degli scaglioni della Crescita come nel manuale §7.1** ("Minaccia sventata", "Come l'idra"; rapporto "ne esce distrutto" a 0-2, "stima e rispetto reciproco" a 3-6).
+5. **Propagazione (stesso commit).** Motore `index.html` (`premioJollyNonUsato` chiamato in `iniziaScena` alla scena 5, `ultimaCartaInutile` in `concessioneDisponibile`/`eseguiConcessione`, `scaglioneCrescita`, prompt di concessione del bot), `REGOLE`, `REGOLE_IA`, `statoPerIA`; manuale §5.4, H.3, glossario (Concedere, Conteggio definitivo); test `test_ritirata.js`; diario. **Benchmark** (250 partite, seed 1-250): missione invariata **P 54,4 / O 45,6**; Crescita P 7+ dal 51,2% al 49,2% (il +2 del Jolly ora può finire speso nello spareggio); rese 0,91 a partita.
+
 ## v1.45 (luglio 2026): costi delle figure a 3/6/9 (Regina da 5 a 6, Re da 8 a 9)
 
 1. **§21: nuovi costi al mercato.** La **Regina** passa da **5 a 6** punti e il **Re** da **8 a 9** (il **Fante** resta a **3**). I valori di presa non cambiano (Fante 8, Regina 9, Re 10). Scopo: rendere l'acquisto delle figure una scelta che pesa. Si conserva l'invariante di design dei costi: **Fante + Regina = 3 + 6 = 9 = Re** (prima 3 + 5 = 8 = Re), quindi comprare un Re, oppure un Fante più una Regina, continua a costare uguale (§16).
@@ -1234,4 +1242,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.45*
+*Frenemies on the Road — Knowledge Base v1.46*
