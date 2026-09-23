@@ -28,6 +28,7 @@ npm i jsdom (una volta sola), poi dalla radice del repo:
 - node test/test_riprova.js (meccanismo "Rigenera" vs Claude; seed fisso)
 - node test/test_ritirata.js (resa: ritirata strategica e resa onorevole; una
   singola esecuzione copre entrambe le varianti)
+- node test/test_controllo.js (controllo della mano condivisa a 3/4 giocatori)
 - (SOSPESO) La partita d'esempio del §34/Appendice B e il suo transcript di
   riferimento sono OBSOLETI dalla v1.32 (i punti sono diventati valuta numerica a
   gettoni) e in attesa di un nuovo seed-vetrina. I vecchi transcript sono stati

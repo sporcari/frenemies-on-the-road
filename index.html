@@ -647,7 +647,6 @@ function nuovaPartita(){
     giocatori:{picche:"",cuori:"",quadri:"",fiori:""},
     modo3:"maggioranza",
     controllo:{P:"picche",O:"quadri"},
-    prevControllo:{P:null,O:null},
     scopeGiocatore:{picche:0,cuori:0,quadri:0,fiori:0},
     svuotoConScopa:null,   // lato che ha svuotato il piatto con una scopa (per assegnare la scena a piatto vuoto)
     scartiComuni:[],       // pila degli scarti comune: ci finiscono le carte NUMERICHE giocate (prese, scope, catture); è il bacino da cui pesca il Re
@@ -835,9 +834,9 @@ function calcolaControllo(){
       const mano=lato(l).mano;
       const c1=mano.filter(c=>c.seme===s1).length, c2=mano.filter(c=>c.seme===s2).length;
       if(c1>c2) ctrl=s1; else if(c2>c1) ctrl=s2;
-      else ctrl = G.prevControllo[l] ? (G.prevControllo[l]===s1?s2:s1) : s1;  // parità: chi non ha controllato la scena prima
+      // parità: chi non ha controllato la scena precedente; alla prima scena Picche e Quadri
+      else ctrl = G.scena===0 ? (l==="P"?"picche":"quadri") : (G.controllo[l]===s1?s2:s1);
     }
-    G.prevControllo[l]=G.controllo[l];
     G.controllo[l]=ctrl;
   });
 }
