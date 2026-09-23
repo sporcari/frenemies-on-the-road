@@ -209,6 +209,9 @@ Se vuoi un esempio completo e pronto all'uso, in appendice troverai diversi play
 
 Per prima cosa scegliete un genere di riferimento della giocata: action, poliziesco, comedy, romance, fantasy, fantascienza o quello che preferite. E il tono: leggero, pesante, comico, commovente, demenziale, spaventoso. Queste scelte condivise non hanno un effetto meccanico, ma servono a mettere in chiaro cosa sarà in tema e cosa fuori, e ad allinearsi sulla stessa frequenza d'onda.
 
+Nello scenario demo il genere è l'avventura archeologica alla Indiana Jones e il tono è epico e romanzesco, con qualche siparietto ironico nato dal contrasto tra l'impulsiva Vera e il metodico Otto.
+{: .esempio }
+
 N.B. Ovviamente se la narrazione di un giocatore viene ritenuta per qualche motivo eccessiva o sgradevole o fuori dal tono e dal genere, gli altri possono farlo presente.
 
 ## 2.2 La Missione
@@ -250,6 +253,9 @@ Inoltre rispondete alle seguenti domande
 2. Cosa il Cuori detesta di Picche?
 3. Com'è il mio aspetto fisico e il mio look?
 
+Nello scenario demo Vera (Picche) non sopporta che «Otto si paralizza davanti a qualsiasi cosa strisci o voli, e prima di muovere un passo deve leggere qualcosa»; Otto (Cuori) non sopporta che «Vera agisce prima di pensare e fa saltare in aria cose che andrebbero studiate: tratta i reperti come maniglie».
+{: .esempio }
+
 
 ## 2.4 L'Opposizione
 
@@ -278,6 +284,9 @@ Per ogni seme una spinta riguarda la motivazione per Protagonista che deve assol
 5. Quale dote o risorsa del personaggio Picche potrebbe essere un asso nella manica? (spinta Picche)
 6. Quale dote o risorsa del personaggio Cuori potrebbe essere un asso nella manica? (spinta Cuori)
 
+Nello scenario demo, per Vera (Picche) la missione conta perché «suo padre è sparito cercando Zerzura: trovarla vuol dire realizzare il suo sogno e dare un senso al suo sacrificio», per Otto (Cuori) perché «la caccia l'ha riaperta la sua traduzione: se finisce male, è colpa sua»; la dote di Vera è che «nessuno guida, scala o spara come lei: dove finisce la strada, comincia lei», quella di Otto che «legge sette lingue morte e ha una faccia di cui tutti si fidano».
+{: .esempio }
+
 ## 2.6 Le spinte dell'Opposizione
 
 Poi sono i Protagonisti a interrogare l'Opposizione. Quattro domande, e tutte e quattro diventano saranno risorse spendibili come Spinta: due di Quadri, due di Fiori.
@@ -291,6 +300,9 @@ L'ultima domanda è la più atipica, infatti negli elementi a disposizione di Fi
 2. Perché l'Opposizione deve assolutamente impedire ai protagonisti di ottenere ciò che vogliono? (Quadri)
 3. Quali catastrofi o eventi imprevedibili possono manifestarsi in questa ambientazione? (Fiori)
 4. Che cosa i protagonisti non hanno considerato, e potrebbe far saltare la loro alleanza? (Fiori)
+
+Nello scenario demo le armi dei nemici sono che «la Loggia ha sicari in ogni porto; i Veglianti hanno costruito le trappole»; il motivo per fermare i protagonisti è che «la Loggia vuole l'artefatto, i Veglianti temono la fine: nessuno li lascerà arrivare alla cripta»; tra le catastrofi possibili «tempeste in anticipo, pozzi secchi, piste cancellate, un camion che perde olio»; e la crepa nell'alleanza è che «Aldo Falco è vivo: è un Vegliante. Otto lo ha capito, e tace».
+{: .esempio }
 
 ## 2.7 La prima difficoltà
 
