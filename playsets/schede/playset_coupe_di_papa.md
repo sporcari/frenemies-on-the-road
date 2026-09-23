@@ -1,6 +1,6 @@
 # Federico, Asia e la coupé di papà
 
-*Playset per Frenemies on the Road · tono Dramedy*
+*Playset per Frenemies on the Road · genere Dramedy*
 
 ## Premessa
 

@@ -1,6 +1,6 @@
 # Nico, Marta e la Costa delle Ginestre
 
-*Playset per Frenemies on the Road · tono Romance*
+*Playset per Frenemies on the Road · genere Romance*
 
 ## Premessa
 
@@ -56,4 +56,4 @@ Il ricorso è stato respinto stamattina: la via legale è chiusa. E nessuno sa d
 4. **Crisi · Il maestrale.** Tornare con Sandri, traghetti fermi e Helios alle calcagna. Se va bene: arrivano in aula in tempo. Se va male: arrivano a voto iniziato.
 5. **Risoluzione · Il consiglio comunale.** La deposizione, con l'aula piena e i soci di Helios in prima fila. Se va bene: la firma viene smontata davanti a tutti. Se va male: la firma apre i cantieri.
 
-*Nota sul tono Romance: i due "detesta" si possono leggere come rancore o come attrazione, e la dominanza di Cuori nel finale racconta il legame che prevale, non una semplice riconciliazione.*
+*Nota sul genere Romance: i due "detesta" si possono leggere come rancore o come attrazione.*

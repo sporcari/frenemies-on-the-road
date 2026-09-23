@@ -164,9 +164,9 @@ Le figure si acquistano al mercato tra le scene: dalla **v1.34** non entrano pi�
 
 Prima della prima scena si costruisce la fiction di base. Questa fase è fondamentale: definisce i materiali narrativi che diventeranno risorse meccaniche.
 
-### 9.1 — Scelta del tono
+### 9.1 — Scelta del genere e del tono *(separati dalla v1.48)*
 
-I giocatori scelgono un tono di riferimento, ad esempio: action, poliziesco, comedy, dramedy, romance. Il tono non cambia le regole, ma orienta il modo in cui si formulano le scene e si interpretano i risultati meccanici — il significato narrativo dei semi si adatta automaticamente al registro scelto.
+I giocatori scelgono un **genere** di riferimento (action, poliziesco, comedy, romance, fantasy, fantascienza o quello che preferiscono) e un **tono** (leggero, pesante, comico, commovente, demenziale, spaventoso), come nel manuale §2.1. Sono scelte condivise senza effetto meccanico: mettono in chiaro cosa sarà in tema e cosa fuori, e orientano il modo in cui si formulano le scene e si interpretano i risultati. *(Fino alla v1.47 il "tono" elencava in realtà dei generi.)*
 
 ### 9.2 — La coppia dei protagonisti
 
@@ -175,6 +175,8 @@ Si definiscono chi è il personaggio Picche e chi è il personaggio Cuori. La co
 - una differenza evidente
 - un conflitto interno
 - un motivo per collaborare nonostante tutto
+
+Per ciascun protagonista si scrivono il nome, chi è in poche parole, l'**età** e l'**aspetto** (com'è il suo aspetto fisico e il suo look), come nel manuale §2.3.
 
 > **Esempio (playset «La strada della vendetta»):** Frank (Picche), ex poliziotto sospeso per eccesso di forza, cinico e metodico. Skunk (Cuori), suo ex informatore, truffatore e intrallazzone dei bassifondi. Una spiata sbagliata di Skunk è costata a Frank il distintivo; collaborano perché Skunk ha in testa la pista di Vargas e il modo di superarne la sicurezza, mentre Frank, che si è fatto terra bruciata attorno, da solo non può più muovere un passo.
 
@@ -720,7 +722,7 @@ Nell'ultima scena emergono due strategie principali che si oppongono:
 
 ```
 1. PREPARAZIONE
-   ├── Scelta del tono
+   ├── Scelta del genere e del tono
    ├── Definizione della coppia protagonista
    ├── Definizione della missione
    ├── Definizione dell'Opposizione (♦ nemici, ♣ caos)
@@ -870,7 +872,7 @@ Ogni missione ha una struttura precisa: **un obiettivo concreto** + **una scaden
 
 Tutti gli esempi di questo regolamento, e la partita d'esempio in appendice, usano lo stesso scenario (i protagonisti sono Vera e Otto). È un pitch completo: si può giocare così com'è o usarlo come modello.
 
-**Tono:** action, avventura archeologica.
+**Genere:** avventura archeologica. **Tono:** epico e romanzesco, con qualche siparietto ironico nato dal contrasto tra Vera e Otto.
 
 **Protagonisti**
 
@@ -933,6 +935,13 @@ La partita d'esempio è l'**Appendice B del manuale del giocatore**, al momento 
 ---
 
 # REGISTRO MODIFICHE
+
+## v1.48 (settembre 2026): pitch allineato al manuale
+
+1. **§9.1: genere e tono separati** (manuale §2.1). Il genere è il riferimento (action, poliziesco, comedy, romance, fantasy, fantascienza…), il tono il registro (leggero, pesante, comico, commovente, demenziale, spaventoso).
+2. **§9.2: età e aspetto dei protagonisti** (manuale §2.3).
+3. **§33: genere avventura archeologica, tono epico e romanzesco.**
+4. **Propagazione (stesso commit).** `index.html`: passo del wizard "Genere e tono" con liste `GENERI`/`TONI` e campi liberi, campi età e aspetto nel wizard, nelle schede, nel riepilogo, nell'export/import dei playset e nel contesto del bot (`setupPerIA`); `COPPIE` e `MISSIONI` rigenerate dalle Appendici D ed E; scenario demo con la geografia delle scene dell'Appendice A (anche nel JSON e nella scheda); nei playset il vecchio "tono" diventa "genere" (tono vuoto), con compatibilità all'import dei vecchi file.
 
 ## v1.47 (settembre 2026): testi e letture allineati al manuale
 
@@ -1229,4 +1238,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.47*
+*Frenemies on the Road — Knowledge Base v1.48*

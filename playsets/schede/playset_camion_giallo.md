@@ -1,6 +1,6 @@
 # Morgana, Lampo e il camion giallo
 
-*Playset per Frenemies on the Road · tono Comedy*
+*Playset per Frenemies on the Road · genere Comedy*
 
 ## Premessa
 

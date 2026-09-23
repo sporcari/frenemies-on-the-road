@@ -3,7 +3,8 @@
   "playset": "Nico, Marta e la Costa delle Ginestre",
   "fonte": "playset originale, tono Romance (attivista e avvocatessa contro la speculazione)",
   "nGiocatori": 2,
-  "tono": "Romance",
+  "genere": "Romance",
+  "tono": "",
   "premessa": "Helios Sviluppo ha già venduto la Costa delle Ginestre sulla carta: porti turistici e resort al posto della baia. La valutazione d'impatto che ha aperto la strada è falsificata, e l'unico che può dimostrarlo è il geologo che firmò la perizia originale, sparito da dieci anni. Il comitato ha appena perso il ricorso: restano cinque giorni, un furgone, un attivista e l'avvocatessa che nessuno si aspettava dalla loro parte.",
   "missione": "Portare il geologo Sandri a deporre in consiglio PRIMA che venerdì la giunta firmi la convenzione che apre i cantieri sulla Costa delle Ginestre.",
   "primaDiff": "Il ricorso è stato respinto stamattina: la via legale è chiusa. E nessuno sa dove sia Sandri: l'unico indizio è nell'archivio del suo vecchio socio, che oggi lavora per la società del progetto.",
@@ -77,5 +78,5 @@
       "suggerimento_posta": "La deposizione, con l'aula piena e i soci di Helios in prima fila. Se va bene: la firma viene smontata davanti a tutti. Se va male: la firma apre i cantieri"
     }
   ],
-  "note_mappatura": "Formato 1: pers.A/B con campo 'detesta' (tratti narrativi, w-pitch-0 e w-pitch-1); 'spinte' con due risposte per seme (w-pitch-2..9 secondo PITCH_TEMPLATE); estensione opzionale 'png'. Tono Romance: i due 'detesta' sono scritti per leggersi anche come attrazione, e il segreto dei Fiori minaccia insieme l'alleanza e il sentimento; la dominanza di Cuori nel finale si legge come legame che prevale, non come semplice riconciliazione. Campo 'premessa': contesto narrativo da leggere al tavolo prima del pitch; mappa sul campo Premessa del wizard (pagina Missione, sopra l'obiettivo) e compare anche nella scheda Missione e nel riepilogo."
+  "note_mappatura": "Formato 1: pers.A/B con campo 'detesta' (tratti narrativi, w-pitch-0 e w-pitch-1); 'spinte' con due risposte per seme (w-pitch-2..9 secondo PITCH_TEMPLATE); estensione opzionale 'png'. Genere Romance: i due 'detesta' si possono leggere come rancore o come attrazione."
 }

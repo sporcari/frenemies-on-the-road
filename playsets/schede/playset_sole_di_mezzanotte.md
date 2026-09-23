@@ -1,6 +1,6 @@
 # Vera, Otto e il Sole di Mezzanotte
 
-*Playset per Frenemies on the Road · tono Action*
+*Playset per Frenemies on the Road · genere avventura archeologica · tono epico e romanzesco*
 
 ## Premessa
 
@@ -48,8 +48,8 @@ Il taccuino del professor Aldo Falco, l'unico che abbia mai annotato la via per 
 
 ## Geografia delle scene (indicativa)
 
-1. **Innesco · L'asta del Cairo.** Prendere il taccuino di Aldo. Se va bene: hanno gli appunti su come raggiungere l'artefatto e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio.
-2. **Adattamento · Il treno per El Qara.** Raggiungere El Qara in tempo. Se va bene: si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male: arrivano troppo tardi e restano senza quell'aiuto prezioso.
-3. **Frattura · Il mare di sabbia.** Orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se va bene: i protagonisti possono accamparsi e prepararsi alla ricerca. Se va male: si perdono nel deserto.
-4. **Crisi · Nella città perduta.** Trovare l'accesso alla cripta. Se va bene: sono a un passo dall'obiettivo. Se va male: restano in balia dei nemici e delle insidie della città perduta.
-5. **Risoluzione · La cripta del Sole.** L'eclissi. Se va bene: mettono in salvo il Sole di Mezzanotte. Se va male: il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata.
+1. **Innesco · L'asta del Cairo.** Mettere le mani sul taccuino di Aldo prima che venga aggiudicato all'asta, senza che la Loggia capisca chi sono. Se va bene: escono con il taccuino e un giorno di vantaggio. Se va male: il taccuino finisce nei forzieri della Loggia e quel vantaggio se lo tengono loro.
+2. **Adattamento · Il treno per El Qara.** Sparire verso il deserto senza una coda alle spalle. Se va bene: scendono a El Qara senza nessuno sulle loro tracce. Se va male: la Loggia li segue e sa dove sono diretti.
+3. **Frattura · Il mare di sabbia.** Attraversare il mare di sabbia verso Zerzura, dove i segreti pesano più delle dune. Se va bene: trovano la pista giusta e restano uniti. Se va male: perdono la pista, e un segreto si apre tra loro come una crepa.
+4. **Crisi · L'accampamento.** Superare l'ultima notte prima dell'ingresso nella cripta. Se va bene: all'alba sono davanti alla cripta, pronti e ancora alleati. Se va male: all'alba l'alleanza è incrinata e i nemici sanno dove sono.
+5. **Risoluzione · La cripta del Sole.** L'eclissi apre la cripta. Se va bene: mettono in salvo il Sole di Mezzanotte. Se va male: il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata.

@@ -370,36 +370,34 @@ const FIGURE = {
 };
 
 /* ---------------- materiali di ispirazione (knowledge base) ---------------- */
-const TONI=["Action","Poliziesco","Comedy","Dramedy","Romance"];
+const GENERI=["Action","Poliziesco","Comedy","Romance","Fantasy","Fantascienza"];
+const TONI=["Leggero","Pesante","Comico","Commovente","Demenziale","Spaventoso"];
 const COPPIE=[
-  // famiglia
-  "Padre burbero e anaffettivo / Figlio sensibile che si è allontanato dalla famiglia",
-  "Madre ipercontrollante e ambiziosa / Figlia che ha mollato tutto per seguire i propri sogni",
-  "Fratello maggiore abituato a proteggere tutti / Fratello minore che vuole cavarsela da solo",
-  "Nonno veterano incapace di mostrare affetto / Nipote attivista che lo considera un dinosauro",
-  "Zia eccentrica e manipolativa / Nipote rigido che non ha mai capito le sue intenzioni",
-  // professionale
+  // relazioni familiari e affettive
+  "Padre che non ha mai imparato a parlare / Figlio che ha smesso di aspettare che lo facesse",
+  "Madre che ha sacrificato tutto per la famiglia / Figlia che è scappata proprio da quella famiglia",
+  "Fratello maggiore rimasto a casa a mandare avanti tutto / Sorella scapestrata che sparisce per mesi e ricompare come se niente fosse",
+  // relazioni professionali e gerarchiche
   "Capoufficio ossessivo e iperpreciso / Stagista creativo e festaiolo che improvvisa tutto",
   "Detective di vecchia scuola che non si fida di nessuno / Profiler giovane che ragiona solo con i dati",
   "Avvocato cinico abituato a vincere sporco / Assistente legale idealista che crede ancora nel sistema",
-  "Chef stellato con problemi di controllo / Sous chef talentuoso e caotico che odia le regole",
-  "Manager freddo orientato ai numeri / Sindacalista appassionato che pensa solo alle persone",
-  // opposti sociali
+  "Manager freddo mandato a salvare l'azienda dal fallimento / Vecchio imprenditore che ha costruito tutto e non riesce a lasciare andare nessuno dei suoi",
+  // relazioni tra opposti sociali o culturali
   "Ex poliziotto sospeso per eccesso di forza / Assistente sociale che ha denunciato quella forza",
   "Contrabbandiere di professione / Funzionaria doganale in congedo forzato",
   "Aristocratico decaduto che non sa fare nulla di pratico / Meccanico di periferia che non si fida di chi ha i soldi",
   "Hacker anarchico che odia le istituzioni / Ex agente dei servizi che è stato le istituzioni",
   "Attivista ambientalista radicale / Petroliere in crisi di coscienza",
-  // ambienti distanti
+  // stereotipi e pregiudizi da ambienti sociali molto distanti
   "Operaio di fabbrica sindacalizzato e diffidente / Manager di consulenza che non ha mai toccato un attrezzo",
   "Poliziotto di quartiere cresciuto in strada / Avvocato di grido che ha sempre guardato dall'alto",
   "Nonna del sud con valori immutabili / Nipote gender fluid che torna solo ai funerali",
-  "Rugbista tatuato di provincia / Critica letteraria di sinistra — convinti entrambi di essere il problema dell'altro",
+  "Rugbista tatuato di provincia / Critica letteraria di sinistra, convinti entrambi di essere il problema dell'altro",
   "Prete di periferia che risolve tutto con la presenza / Psicologa laica convinta che la religione sia parte del problema",
   "Tiktoker di successo che vive di immagine / Giornalista investigativo che non ha mai aperto un social",
   "Ex galeotto con codice d'onore ferreo / Funzionaria ministeriale che crede nella riabilitazione ma non ha mai parlato con un detenuto",
   "Militare in pensione con visione in bianco e nero / Operatrice umanitaria che lavora nelle zone grigie da vent'anni",
-  // romance
+  // coppie per tono romance
   "Ladra professionista e metodica / Investigatore assicurativo che la insegue da tre anni",
   "Bodyguard senza parole / Ereditiera impulsiva che non vuole essere protetta",
   "Giornalista d'inchiesta disposto a tutto / Fonte che sa troppe cose e non si fida di nessuno",
@@ -408,33 +406,39 @@ const COPPIE=[
 ];
 const MISSIONI=[
   // salvataggio e protezione
-  "Estrarre il testimone chiave dal suo nascondiglio e portarlo in aula PRIMA che il processo venga archiviato per mancanza di prove e il mandante torni libero",
-  "Scoprire chi ha incastrato il collega e portare le prove al giudice PRIMA che venga trasferito nel carcere dove i mafiosi lo aspettano",
-  "Trovare e riportare a casa il ragazzo scomparso PRIMA che suo padre firmi la dichiarazione di morte presunta e perda ogni diritto di cercarlo",
-  "Mettere in salvo la famiglia del delatore PRIMA che il suo nome venga pubblicato dal giornalista corrotto",
-  "Raggiungere il medico e convincerlo a operare PRIMA che la finestra chirurgica si chiuda e il paziente non abbia più chances",
+  "Estrarre il testimone chiave dal suo nascondiglio e portarlo in aula prima che il processo venga archiviato per mancanza di prove e il mandante torni libero",
+  "Scoprire chi ha incastrato il collega e portare le prove al giudice prima che venga trasferito nel carcere dove i mafiosi lo aspettano",
+  "Trovare e riportare a casa il ragazzo scomparso prima che suo padre firmi la dichiarazione di morte presunta e perda ogni diritto di cercarlo",
+  "Mettere in salvo la famiglia del delatore prima che il suo nome venga pubblicato dal giornalista corrotto",
+  "Raggiungere il medico e convincerlo a operare prima che la finestra chirurgica si chiuda e il paziente non abbia più speranze",
   // recupero e consegna
-  "Raccogliere e consegnare i fondi necessari PRIMA che l'impresa di demolizioni butti giù l'orfanotrofio",
-  "Recuperare i documenti rubati e restituirli al legittimo proprietario PRIMA che vengano venduti all'asta all'estero e spariscano per sempre",
-  "Trovare la prova del falso in bilancio e consegnarla alla commissione PRIMA che il voto in assemblea renda l'acquisizione irreversibile",
-  "Recuperare il farmaco sperimentale dall'impianto abbandonato PRIMA che i tecnici lo distruggano nel sopralluogo di bonifica",
-  "Riportare la bambina al padre biologico oltre confine PRIMA che i documenti d'adozione vengano ratificati e lei sparisca nel sistema",
+  "Raccogliere e consegnare i fondi necessari prima che l'impresa di demolizioni butti giù l'orfanotrofio",
+  "Recuperare i documenti rubati e restituirli al legittimo proprietario prima che vengano venduti all'asta all'estero e spariscano per sempre",
+  "Trovare la prova del falso in bilancio e consegnarla alla commissione prima che il voto in assemblea renda l'acquisizione irreversibile",
+  "Recuperare il farmaco sperimentale dall'impianto abbandonato prima che i tecnici lo distruggano nel sopralluogo di bonifica",
+  "Riportare la bambina al padre biologico oltre confine prima che i documenti d'adozione vengano ratificati e lei sparisca nel sistema",
   // smascheramento e rivelazione
-  "Raccogliere le prove della corruzione del sindaco PRIMA che venga rieletto e i reati cadano in prescrizione",
-  "Identificare la talpa all'interno del dipartimento PRIMA che l'operazione undercover venga bruciata e i nostri agenti uccisi",
-  "Trovare il responsabile del sabotaggio PRIMA che il volo con duecento passeggeri a bordo decolli",
-  "Dimostrare che l'incidente non fu un incidente PRIMA che la famiglia firmi la transazione e rinunci a qualsiasi azione legale",
-  "Risalire a chi ha ordinato l'attentato PRIMA che il sicario completi il secondo contratto",
+  "Raccogliere le prove della corruzione del sindaco prima che venga rieletto e i reati cadano in prescrizione",
+  "Identificare la talpa all'interno del dipartimento prima che l'operazione sotto copertura venga bruciata e i nostri agenti uccisi",
+  "Trovare il responsabile del sabotaggio prima che il volo con duecento passeggeri a bordo decolli",
+  "Dimostrare che l'incidente non fu un incidente prima che la famiglia firmi la transazione e rinunci a qualsiasi azione legale",
+  "Risalire a chi ha ordinato l'attentato prima che il sicario completi il secondo contratto",
   // fuga e sopravvivenza
-  "Attraversare il territorio controllato dalla fazione nemica e raggiungere il confine PRIMA che scada il cessate il fuoco e la zona diventi una trappola mortale",
-  "Uscire dalla città PRIMA che venga istituito il blocco e i nostri nomi finiscano sulle liste di ricercati",
-  "Mettere al sicuro i server con le prove PRIMA che il reparto venga formalmente sequestrato e tutti i dati siano inaccessibili per sempre",
-  // on the road
+  "Attraversare il territorio controllato dalla fazione nemica e raggiungere il confine prima che scada il cessate il fuoco e la zona diventi una trappola mortale",
+  "Uscire dalla città prima che venga istituito il blocco e i nostri nomi finiscano sulle liste di ricercati",
+  "Mettere al sicuro i server con le prove prima che il reparto venga formalmente sequestrato e tutti i dati siano inaccessibili per sempre",
+  "Scappare dall'isola con l'unica barca disponibile prima che arrivi la seconda squadra, quella che non fa prigionieri",
+  "Raggiungere l'ambasciata prima che i documenti di protezione diplomatica scadano a mezzanotte",
+  // missioni on the road: solo la strada e il tempo
   "Attraversare il paese da nord a sud, insieme e con tutti i disagi del caso, per arrivare in tempo al funerale del genitore",
-  "Raggiungere il fratello all'altro capo del paese PRIMA che esca dall'ospedale e sparisca di nuovo senza dire dove va",
-  "Riportare le ceneri del padre nel paese d'origine, attraversando l'Europa, PRIMA che la famiglia laggiù si disperda per sempre",
-  "Portare il testimone scomodo dall'altra parte degli Stati Uniti PRIMA che qualcuno lo trovi — senza volare, senza lasciare tracce",
-  "Raggiungere la figlia che ha tagliato i ponti, attraverso tutto il paese, PRIMA che parta per un posto da cui non si torna"
+  "Raggiungere il fratello all'altro capo del paese prima che esca dall'ospedale e sparisca di nuovo senza dire dove va",
+  "Riportare le ceneri del padre nel paese d'origine, attraversando l'Europa, prima che la famiglia laggiù si disperda per sempre",
+  "Portare il testimone scomodo dall'altra parte del paese prima che qualcuno lo trovi, senza volare e senza lasciare tracce",
+  "Raggiungere la figlia che ha tagliato i ponti, attraverso tutto il paese, prima che parta per un posto da cui non si torna",
+  "Portare un innocente attraverso la frontiera senza documenti, senza contatti, senza margine di errore prima che chi lo cerca capisca quale strada ha preso",
+  "Rintracciare il cane del boss prima che il padrone torni dal carcere e scopra che è sparito",
+  "Recuperare la chiavetta con i dati imbarazzanti del ministro prima che finisca in diretta al telegiornale delle otto",
+  "Impedire che la fusione aziendale vada in porto prima che il contratto venga firmato e cinquecento persone vengano licenziate senza saperlo"
 ];
 // Playset pronti, incorporati (file unico, niente build: copie allineate a mano da playsets/*.json).
 // Formato di scambio (.json) e import/export: vedi caricaPlaysetObj/esportaPlaysetFile.
@@ -443,7 +447,7 @@ const MISSIONI=[
 const PLAYSET=[
   {
     playset:"La strada della vendetta",
-    tono:"Poliziesco",
+    genere:"Poliziesco", tono:"",
     missione:"Entro 36 ore Vargas atterrerà con un jet privato dalla Colombia su una pista segreta del New Mexico per un meeting con i boss locali, e ripartirà: una volta decollato, nessuna estradizione lo riporterà davanti a un giudice. Arrivare alla pista e farlo arrestare in flagranza prima del decollo.",
     primaDiff:"Skunk è in cella: i poliziotti corrotti lo hanno arrestato con un pretesto per consegnarlo agli uomini di Vargas dentro la prigione, dove un coltello costa poco e nessuno fa domande. Bisogna tirarlo fuori prima che qualcuno arrivi a lui.",
     pers:{
@@ -475,7 +479,7 @@ const PLAYSET=[
   },
   {
     playset:"Morgana, Lampo e il camion giallo",
-    tono:"Comedy",
+    genere:"Comedy", tono:"",
     premessa:"Domani all'alba la famiglia di Bea trasloca dall'altra parte della città. Durante l'ultimo giro al parco, Morgana e Lampo sono rimasti indietro: davanti a loro una notte intera di quartiere, alti venti centimetri, con il collezionista Mirko in agguato e gli scatoloni che si chiudono uno a uno.",
     missione:"Tornare nello scatolone dei giochi di Bea PRIMA che all'alba parta il camion giallo del trasloco.",
     primaDiff:"Dimenticati al parco, Morgana e Lampo sono finiti nella cesta degli oggetti smarriti che il custode porta nel deposito ogni sera. Il deposito riapre lunedì: uscire dalla cesta e dal parco prima che giri la chiave.",
@@ -508,7 +512,7 @@ const PLAYSET=[
   },
   {
     playset:"Nico, Marta e la Costa delle Ginestre",
-    tono:"Romance",
+    genere:"Romance", tono:"",
     premessa:"Helios Sviluppo ha già venduto la Costa delle Ginestre sulla carta: porti turistici e resort al posto della baia. La valutazione d'impatto che ha aperto la strada è falsificata, e l'unico che può dimostrarlo è il geologo che firmò la perizia originale, sparito da dieci anni. Il comitato ha appena perso il ricorso: restano cinque giorni, un furgone, un attivista e l'avvocatessa che nessuno si aspettava dalla loro parte.",
     missione:"Portare il geologo Sandri a deporre in consiglio PRIMA che venerdì la giunta firmi la convenzione che apre i cantieri sulla Costa delle Ginestre.",
     primaDiff:"Il ricorso è stato respinto stamattina: la via legale è chiusa. E nessuno sa dove sia Sandri: l'unico indizio è nell'archivio del suo vecchio socio, che oggi lavora per la società del progetto.",
@@ -545,7 +549,7 @@ const PLAYSET=[
   },
   {
     playset:"Federico, Asia e la coupé di papà",
-    tono:"Dramedy",
+    genere:"Dramedy", tono:"",
     premessa:"Augusto vive con Vanessa, la seconda moglie, trent'anni meno di lui. Da quando i figli si sono allontanati è lei a filtrare telefonate, visite e firme, e ora ha mosso l'attacco finale: con la perizia del dottor Maino e uno studio legale ha chiesto al giudice di interdirlo, chiuderlo in una casa di riposo e prendere il controllo del patrimonio. Federico e Asia, che non si parlano da anni, scoprono tutto a una settimana dall'udienza. Resta una sola carta: la controperizia del professor Lanza. E una sola macchina su cui Augusto accetti di salire.",
     missione:"Portare papà Augusto dal professor Lanza, a milleottocento chilometri, PRIMA che venerdì il giudice decida sull'interdizione.",
     primaDiff:"Augusto è in 'osservazione volontaria' nella clinica del dottor Maino, e le visite dei figli sono sospese su richiesta della moglie, per il suo bene. Prima di tutto bisogna entrare in quella clinica. E poi uscirne in tre.",
@@ -582,7 +586,7 @@ const PLAYSET=[
   },
   {
     playset:"Vera, Otto e il Sole di Mezzanotte",
-    tono:"Action",
+    genere:"Avventura archeologica", tono:"Epico e romanzesco",
     premessa:"Il Sole di Mezzanotte, l'artefatto più potente delle leggende del deserto, giace nella cripta di Zerzura, la città perduta sepolta dalle sabbie. La Loggia del Basilisco gli dà la caccia da decenni, i Veglianti la custodiscono perché nessuno la trovi, e la traduzione di Otto ha appena riacceso la corsa. Come arrivarci lo dice solo il prezioso taccuino di appunti di Aldo Falco, il padre di Vera, sparito nel deserto cercandola.",
     missione:"Prendere il Sole di Mezzanotte nella cripta di Zerzura, che l'eclissi apre tra cinque giorni, PRIMA che ci arrivi la Loggia del Basilisco.",
     primaDiff:"Il taccuino del professor Aldo Falco, l'unico che abbia mai annotato la via per Zerzura prima di sparire, stasera va all'asta in una sala privata del Cairo. La Loggia è già in città con una valigetta piena di banconote, e Vera e Otto non hanno nemmeno l'invito.",
@@ -605,11 +609,11 @@ const PLAYSET=[
       fiori:["Tempeste in anticipo, pozzi secchi, piste cancellate, un camion che perde olio.", "Aldo Falco è vivo: è un Vegliante. Otto lo ha capito, e tace."]
     },
     geografia_scene:[
-      {scena:1, fase:"Innesco", titolo:"L'asta del Cairo", suggerimento_posta:"Prendere il taccuino di Aldo. Se va bene: hanno gli appunti su come raggiungere l'artefatto e un giorno di vantaggio. Se va male: il taccuino finisce nelle mani della Loggia e un giorno di vantaggio"},
-      {scena:2, fase:"Adattamento", titolo:"Il treno per El Qara", suggerimento_posta:"Raggiungere El Qara in tempo. Se va bene: si uniscono alla carovana dei mercanti di datteri e ingaggiano le guide indigene. Se va male: arrivano troppo tardi e restano senza quell'aiuto prezioso"},
-      {scena:3, fase:"Frattura", titolo:"Il mare di sabbia", suggerimento_posta:"Orientarsi nel deserto e raggiungere l'oasi più vicina a dove dovrebbe trovarsi la città perduta. Se va bene: i protagonisti possono accamparsi e prepararsi alla ricerca. Se va male: si perdono nel deserto"},
-      {scena:4, fase:"Crisi", titolo:"Nella città perduta", suggerimento_posta:"Trovare l'accesso alla cripta. Se va bene: sono a un passo dall'obiettivo. Se va male: restano in balia dei nemici e delle insidie della città perduta"},
-      {scena:5, fase:"Risoluzione", titolo:"La cripta del Sole", suggerimento_posta:"L'eclissi. Se va bene: mettono in salvo il Sole di Mezzanotte. Se va male: il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata"}
+      {scena:1, fase:"Innesco", titolo:"L'asta del Cairo", suggerimento_posta:"Mettere le mani sul taccuino di Aldo prima che venga aggiudicato all'asta, senza che la Loggia capisca chi sono. Se va bene: escono con il taccuino e un giorno di vantaggio. Se va male: il taccuino finisce nei forzieri della Loggia e quel vantaggio se lo tengono loro"},
+      {scena:2, fase:"Adattamento", titolo:"Il treno per El Qara", suggerimento_posta:"Sparire verso il deserto senza una coda alle spalle. Se va bene: scendono a El Qara senza nessuno sulle loro tracce. Se va male: la Loggia li segue e sa dove sono diretti"},
+      {scena:3, fase:"Frattura", titolo:"Il mare di sabbia", suggerimento_posta:"Attraversare il mare di sabbia verso Zerzura, dove i segreti pesano più delle dune. Se va bene: trovano la pista giusta e restano uniti. Se va male: perdono la pista, e un segreto si apre tra loro come una crepa"},
+      {scena:4, fase:"Crisi", titolo:"L'accampamento", suggerimento_posta:"Superare l'ultima notte prima dell'ingresso nella cripta. Se va bene: all'alba sono davanti alla cripta, pronti e ancora alleati. Se va male: all'alba l'alleanza è incrinata e i nemici sanno dove sono"},
+      {scena:5, fase:"Risoluzione", titolo:"La cripta del Sole", suggerimento_posta:"L'eclissi apre la cripta. Se va bene: mettono in salvo il Sole di Mezzanotte. Se va male: il Sole di Mezzanotte esce da Zerzura nella valigetta sbagliata"}
     ]
   }
 ];
@@ -644,7 +648,7 @@ function nuovaPartita(){
     scartiComuni:[],       // pila degli scarti comune: ci finiscono le carte NUMERICHE giocate (prese, scope, catture); è il bacino da cui pesca il Re
     fuoriGioco:[],         // v1.38: le figure usate escono dal gioco (non negli scarti, quindi il Re non le ripesca)
     jollyPassatoScena:null, // v1.33: scena (indice) in cui P ha giocato il Jolly; O può usarlo solo in una scena successiva (mai due usi nella stessa scena)
-    pers:{A:{nome:"",desc:""}, B:{nome:"",desc:""}},
+    pers:{A:{nome:"",desc:"",eta:"",aspetto:""}, B:{nome:"",desc:"",eta:"",aspetto:""}},
     pitch:PITCH_TEMPLATE.map(p=>({seme:p.seme, risposta:"", usata:false})),   // usata: vincolo per singola spinta (due per seme, entrambe spendibili)
     concessione:{P:false,O:false},   // "Concedere la scena": una sola volta per lato (scene 1-4)
     concessioneScena:null,
@@ -1181,12 +1185,17 @@ function rLobby(){
 /* ================= WIZARD DI CREAZIONE ================= */
 const PASSI_WIZ=["Il gioco","Giocatori","Tono","Missione","Protagonisti","Opposizione","Spinte protagonisti","Spinte opposizione","Difficoltà iniziale","Pronti a partire"];
 function caso(a){return a[Math.floor(Math.random()*a.length)]}
+function persExtra(q){
+  const e=(q.eta||"").trim(), a=(q.aspetto||"").trim();
+  return (e?`<br><i>Età:</i> ${e}`:"")+(a?`<br><i>Aspetto:</i> ${a}`:"");
+}
 function salvaCampi(){
   const g=id=>{const e=document.getElementById(id);return e?e.value:null};
   const pm=g("w-premessa"); if(pm!==null) G.premessa=pm;
   const v=g("w-missione"); if(v!==null) G.missione=v;
   const pd=g("w-primadiff"); if(pd!==null) G.primaDiff=pd;
   const ge=g("w-genere"); if(ge!==null) G.genere=ge;
+  const to=g("w-tono"); if(to!==null) G.tono=to;
   const np=g("w-nomeP"); if(np!==null) G.nomi.P=np;
   const no=g("w-nomeO"); if(no!==null) G.nomi.O=no;
   ["picche","cuori","quadri","fiori"].forEach(sm=>{
@@ -1197,6 +1206,10 @@ function salvaCampi(){
   if(G.nGiocatori===3){ G.giocatori.quadri=G.giocatori.fiori=G.nomi.O; }
   const pa=g("w-persA"); if(pa!==null) G.pers.A.nome=pa;
   const da=g("w-descA"); if(da!==null) G.pers.A.desc=da;
+  ["A","B"].forEach(k=>{
+    const e=g("w-eta"+k); if(e!==null) G.pers[k].eta=e;
+    const as=g("w-aspetto"+k); if(as!==null) G.pers[k].aspetto=as;
+  });
   const pb=g("w-persB"); if(pb!==null) G.pers.B.nome=pb;
   const db=g("w-descB"); if(db!==null) G.pers.B.desc=db;
   G.pitch.forEach((p,i)=>{ const v=g("w-pitch-"+i); if(v!==null) p.risposta=v; });
@@ -1209,13 +1222,12 @@ function caricaPlaysetObj(ps){
   // tollerante al formato di scambio (.json) e a quello compatto incorporato
   if(!ps || typeof ps!=="object"){ alert("Playset non valido."); return; }
   const pers = ps.pers || {A:ps.persA, B:ps.persB};
-  if(ps.tono!=null) G.tono=ps.tono;
-  if(ps.genere!=null) G.genere=ps.genere;
+  if(ps.genere==null && ["Action","Poliziesco","Comedy","Dramedy","Romance"].includes(ps.tono)){ G.genere=ps.tono; G.tono=""; }
+  else{ if(ps.tono!=null) G.tono=ps.tono; if(ps.genere!=null) G.genere=ps.genere; }
   if(ps.premessa!=null) G.premessa=ps.premessa;
   if(ps.missione!=null) G.missione=ps.missione;
   if(ps.primaDiff!=null) G.primaDiff=ps.primaDiff;
-  if(pers && pers.A){ G.pers.A.nome=pers.A.nome||""; G.pers.A.desc=pers.A.desc||""; }
-  if(pers && pers.B){ G.pers.B.nome=pers.B.nome||""; G.pers.B.desc=pers.B.desc||""; }
+  ["A","B"].forEach(k=>{ const q=pers&&pers[k]; if(q){ G.pers[k].nome=q.nome||""; G.pers[k].desc=q.desc||""; G.pers[k].eta=q.eta||""; G.pers[k].aspetto=q.aspetto||""; } });
   if(ps.nemici!=null) G.nemici=normalizzaLista(ps.nemici);
   if(ps.caos!=null) G.caos=normalizzaLista(ps.caos);
   // indici del pitch: narrativi (i due "detesta") e spinte raggruppate per seme, derivati da PITCH_TEMPLATE
@@ -1308,8 +1320,8 @@ function esportaPlaysetFile(){
     missione:G.missione||"",
     primaDiff:G.primaDiff||"",
     pers:{
-      A:{nome:G.pers.A.nome, desc:G.pers.A.desc, detesta:(G.pitch[narrIdx[0]]||{}).risposta||""},
-      B:{nome:G.pers.B.nome, desc:G.pers.B.desc, detesta:(G.pitch[narrIdx[1]]||{}).risposta||""}
+      A:{nome:G.pers.A.nome, desc:G.pers.A.desc, eta:G.pers.A.eta||"", aspetto:G.pers.A.aspetto||"", detesta:(G.pitch[narrIdx[0]]||{}).risposta||""},
+      B:{nome:G.pers.B.nome, desc:G.pers.B.desc, eta:G.pers.B.eta||"", aspetto:G.pers.B.aspetto||"", detesta:(G.pitch[narrIdx[1]]||{}).risposta||""}
     },
     nemici:normalizzaLista(G.nemici),
     caos:normalizzaLista(G.caos),
@@ -1402,17 +1414,23 @@ function rSetup(){
   }
 
   else if(p===2) corpo=`
-    <h2 class="ts">Il tono</h2>
-    <p class="sotto">La stessa missione cambia faccia a seconda di come la raccontate. Scegliete insieme.</p>
-    <div class="opzioni" style="margin-bottom:10px">
-      ${TONI.map(t=>`<button data-tono="${t}" style="${G.tono===t?"background:var(--mezzeria);color:#1a1206;border-color:var(--mezzeria)":""}">${t}</button>`).join("")}
-      <button data-tono="" class="neutra" style="${G.tono===""?"border-color:var(--mezzeria)":""}">Libero</button>
+    <h2 class="ts">Genere e tono</h2>
+    <p class="sotto">Scelte condivise, senza effetto meccanico: servono a mettere in chiaro cosa sarà in tema e cosa fuori, e ad allinearsi sulla stessa frequenza d'onda.</p>
+    <div class="pannello">
+      <span class="etichetta">Genere</span>
+      <div class="opzioni" style="margin:6px 0 8px">
+        ${GENERI.map(t=>`<button data-genere="${t}" style="${G.genere===t?"background:var(--mezzeria);color:#1a1206;border-color:var(--mezzeria)":""}">${t}</button>`).join("")}
+      </div>
+      <input type="text" id="w-genere" value="${G.genere||""}" placeholder="O quello che preferite: avventura archeologica, western…">
     </div>
-    ${G.tono==="Romance"?`<div class="lettura">Nel tono Romance le domande del pitch cambiano valenza: "cosa detesta dell'altro" può nascondere attrazione, e la dominanza di ♥ nel finale non indica solo riconciliazione — indica che il legame ha prevalso sulla durezza.</div>`:""}
-    <div class="pannello" style="margin-top:12px">
-      <span class="etichetta">Genere <i style="font-weight:normal;color:var(--grigio)">(facoltativo)</i></span>
-      <input type="text" id="w-genere" value="${G.genere||""}" placeholder="Es. avventura, noir, fantascienza, commedia…">
-    </div>`;
+    <div class="pannello">
+      <span class="etichetta">Tono</span>
+      <div class="opzioni" style="margin:6px 0 8px">
+        ${TONI.map(t=>`<button data-tono="${t}" style="${G.tono===t?"background:var(--mezzeria);color:#1a1206;border-color:var(--mezzeria)":""}">${t}</button>`).join("")}
+      </div>
+      <input type="text" id="w-tono" value="${G.tono||""}" placeholder="O come preferite: epico e romanzesco, malinconico…">
+    </div>
+    ${/romance/i.test(G.genere||"")?`<div class="lettura">Nel genere Romance le domande del pitch cambiano valenza: "cosa detesta dell'altro" può nascondere attrazione.</div>`:""}`;
 
   else if(p===3) corpo=`
     <h2 class="ts">La missione</h2>
@@ -1437,12 +1455,20 @@ function rSetup(){
         <input type="text" id="w-persA" value="${G.pers.A.nome}" placeholder="Nome">
         <span class="etichetta" style="margin-top:8px">Chi è</span>
         <textarea id="w-descA" rows="5">${G.pers.A.desc}</textarea>
+        <span class="etichetta" style="margin-top:8px">Età</span>
+        <input type="text" id="w-etaA" value="${G.pers.A.eta||""}" placeholder="Es. trent'anni, sulla sessantina…">
+        <span class="etichetta" style="margin-top:8px">Com'è il suo aspetto fisico e il suo look?</span>
+        <textarea id="w-aspettoA" rows="2">${G.pers.A.aspetto||""}</textarea>
         <span class="etichetta" style="margin-top:8px">${PITCH_TEMPLATE[0].q(nA(),nB())} <i style="text-transform:none;letter-spacing:0">spunto narrativo, senza effetto</i></span>
         <textarea id="w-pitch-0" rows="4" placeholder="${PITCH_TEMPLATE[0].ph}">${G.pitch[0].risposta}</textarea></div>
       <div class="pannello"><span class="etichetta">Protagonista 2 · tende a ♥</span>
         <input type="text" id="w-persB" value="${G.pers.B.nome}" placeholder="Nome">
         <span class="etichetta" style="margin-top:8px">Chi è</span>
         <textarea id="w-descB" rows="5">${G.pers.B.desc}</textarea>
+        <span class="etichetta" style="margin-top:8px">Età</span>
+        <input type="text" id="w-etaB" value="${G.pers.B.eta||""}" placeholder="Es. trent'anni, sulla sessantina…">
+        <span class="etichetta" style="margin-top:8px">Com'è il suo aspetto fisico e il suo look?</span>
+        <textarea id="w-aspettoB" rows="2">${G.pers.B.aspetto||""}</textarea>
         <span class="etichetta" style="margin-top:8px">${PITCH_TEMPLATE[1].q(nA(),nB())} <i style="text-transform:none;letter-spacing:0">spunto narrativo, senza effetto</i></span>
         <textarea id="w-pitch-1" rows="4" placeholder="${PITCH_TEMPLATE[1].ph}">${G.pitch[1].risposta}</textarea></div>
     </div>`;
@@ -1532,13 +1558,13 @@ function rSetup(){
   else corpo=`
     <h2 class="ts">Il pitch</h2>
     <div class="cartellone"><div class="grande">${G.pers.A.nome||"P1"} & ${G.pers.B.nome||"P2"}</div>
-      <div class="sc">${G.tono||"tono libero"}${G.genere&&G.genere.trim()?" · "+G.genere.trim():""} · cinque scene</div></div>
+      <div class="sc">${genereTono()} · cinque scene</div></div>
     ${G.premessa?`<div class="pannello"><span class="etichetta">Premessa</span><div style="font-size:13.5px;line-height:1.6">${G.premessa}</div></div>`:""}
     ${G.missione?`<div class="pannello"><span class="etichetta">Missione</span><div style="font-size:14.5px">${G.missione}</div></div>`:""}
     ${G.primaDiff?`<div class="pannello"><span class="etichetta">Prima difficoltà — Scena 1</span><div style="font-size:13.5px">${G.primaDiff}</div></div>`:""}
     ${G.pers.A.desc||G.pers.B.desc?`<div class="riga2">
-      <div class="pannello"><span class="etichetta">${G.pers.A.nome||"P1"} ♠</span><div style="font-size:13.5px">${G.pers.A.desc}</div></div>
-      <div class="pannello"><span class="etichetta">${G.pers.B.nome||"P2"} ♥</span><div style="font-size:13.5px">${G.pers.B.desc}</div></div></div>`:""}
+      <div class="pannello"><span class="etichetta">${G.pers.A.nome||"P1"} ♠</span><div style="font-size:13.5px">${G.pers.A.desc}${persExtra(G.pers.A)}</div></div>
+      <div class="pannello"><span class="etichetta">${G.pers.B.nome||"P2"} ♥</span><div style="font-size:13.5px">${G.pers.B.desc}${persExtra(G.pers.B)}</div></div></div>`:""}
     ${normalizzaLista(G.nemici).length||normalizzaLista(G.caos).length?`<div class="pannello">
       ${normalizzaLista(G.nemici).length?`<span class="etichetta">♦ Nemici</span><div style="margin-bottom:8px">${listaLettura(G.nemici,"","font-size:13.5px")}</div>`:""}
       ${normalizzaLista(G.caos).length?`<span class="etichetta">♣ Caos</span>${listaLettura(G.caos,"","font-size:13.5px")}`:""}</div>`:""}
@@ -1560,9 +1586,14 @@ function rSetup(){
       salvaCampi(); G.modo3=b.dataset.modo3; render();
     }));
   }
-  if(p===2) SC.querySelectorAll("button[data-tono]").forEach(b=>b.addEventListener("click",()=>{
-    salvaCampi(); G.tono=b.dataset.tono; render();
-  }));
+  if(p===2){
+    SC.querySelectorAll("button[data-tono]").forEach(b=>b.addEventListener("click",()=>{
+      salvaCampi(); G.tono=b.dataset.tono; render();
+    }));
+    SC.querySelectorAll("button[data-genere]").forEach(b=>b.addEventListener("click",()=>{
+      salvaCampi(); G.genere=b.dataset.genere; render();
+    }));
+  }
   if(p===0) document.getElementById("w-playset").addEventListener("click", chiediPlayset);
   if(p===3) document.getElementById("w-ispMiss").addEventListener("click",()=>{
     document.getElementById("w-missione").value=caso(MISSIONI);
@@ -2095,6 +2126,10 @@ function storiaTestoIA(){
   if(!G.storia.length) return "";
   return "STORIA NARRATIVA FINORA (mantieni continuità con questi eventi):\n"+
     G.storia.map(v=>`Scena ${v.scena+1} [${nomeLato(v.lato)}]: ${v.testo}`).join("\n");
+}
+function genereTono(){
+  const g=(G.genere||"").trim(), t=(G.tono||"").trim();
+  return [g?`genere ${g}`:"", t?`tono ${t}`:""].filter(Boolean).join(" · ") || "genere e tono liberi";
 }
 function inArtefatto(){ return !!(window.claude && typeof window.claude.complete==="function"); }
 const MODELLI_IA=[
@@ -3145,7 +3180,7 @@ function apriDiario(){
   const dp=document.getElementById("diarioPitch");
   dp.innerHTML = (G.pers.A.nome||G.pers.B.nome||G.missione) ? `
     <div class="banner" style="margin-bottom:10px">
-      <b>${G.pers.A.nome||"P1"} ♠ & ${G.pers.B.nome||"P2"} ♥</b>${G.tono?` · ${G.tono}`:""}${G.genere&&G.genere.trim()?` · ${G.genere.trim()}`:""}
+      <b>${G.pers.A.nome||"P1"} ♠ & ${G.pers.B.nome||"P2"} ♥</b> · ${genereTono()}
       ${G.missione?`<br>${G.missione}`:""}
     </div>` : "";
   const cont=document.getElementById("diarioVoci");
@@ -3190,11 +3225,11 @@ function apriSchede(tab){
   const cartello=(grande,sc)=>`<div class="cartellone"><div class="grande">${grande}</div><div class="sc">${sc}</div></div>`;
   const TABS={
     A:{label:`♠ ${G.pers.A.nome||"Picche"}`, html:()=>{
-      const corpo=(G.pers.A.desc?`<div class="pannello"><span class="etichetta">Chi è</span><div style="font-size:14px">${G.pers.A.desc}</div></div>`:"")+qa(["picche"]);
+      const corpo=(G.pers.A.desc?`<div class="pannello"><span class="etichetta">Chi è</span><div style="font-size:14px">${G.pers.A.desc}${persExtra(G.pers.A)}</div></div>`:"")+qa(["picche"]);
       return cartello(nA,"Protagonista · la linea dura ♠")+(corpo||vuoto)+resaTracker("P");
     }},
     B:{label:`♥ ${G.pers.B.nome||"Cuori"}`, html:()=>{
-      const corpo=(G.pers.B.desc?`<div class="pannello"><span class="etichetta">Chi è</span><div style="font-size:14px">${G.pers.B.desc}</div></div>`:"")+qa(["cuori"]);
+      const corpo=(G.pers.B.desc?`<div class="pannello"><span class="etichetta">Chi è</span><div style="font-size:14px">${G.pers.B.desc}${persExtra(G.pers.B)}</div></div>`:"")+qa(["cuori"]);
       return cartello(nB,"Protagonista · la connessione ♥")+(corpo||vuoto)+resaTracker("P");
     }},
     O:{label:"♦♣ Opposizione", html:()=>{
@@ -3208,7 +3243,7 @@ function apriSchede(tab){
       const corpo=(G.premessa?`<div class="pannello"><span class="etichetta">La premessa</span><div style="font-size:13.5px;line-height:1.6">${G.premessa}</div></div>`:"")
         +(G.missione?`<div class="pannello"><span class="etichetta">La missione — la posta</span><div style="font-size:14.5px">${G.missione}</div></div>`:"")
         +(G.primaDiff?`<div class="pannello"><span class="etichetta">Prima difficoltà — Scena 1</span><div style="font-size:13.5px">${G.primaDiff}</div></div>`:"");
-      return cartello(`${nA} & ${nB}`,`${G.tono||"tono libero"}${G.genere&&G.genere.trim()?" · "+G.genere.trim():""} · cinque scene`)+(corpo||vuoto);
+      return cartello(`${nA} & ${nB}`,`${genereTono()} · cinque scene`)+(corpo||vuoto);
     }},
     P:{label:"PNG", html:()=>{
       const figs=G.figureComprate||[], narr=G.pngNarr||[];
@@ -3324,6 +3359,10 @@ QUANDO SPUNTARE UNA SPINTA (presa→scopa): vale di più sulla MOSSA CONCLUSIVA 
 
 NARRAZIONE: quando narri sei il mondo che rema contro i protagonisti. ♦ = nemici con un piano (sicari pazienti, poliziotti corrotti, fazioni ostili); ♣ = caos e sfortuna (tempeste, guasti, attriti, PNG molesti). Resta coerente con la storia già scritta, la missione, la posta della scena e le risposte del pitch. Sono ammessi gli sconfinamenti: puoi mostrare difetti e debolezze dei protagonisti, e costruisci sempre sugli elementi già introdotti dall'altro lato. Asciutto e cinematografico, 1-2 frasi. Esempi di tono: "Due uomini in giacca scura scendono da un SUV davanti al diner: hanno le foto." (♦) "Una gomma esplode in mezzo al deserto e la tempesta di sabbia è già all'orizzonte." (♣)`;
 
+function persIA(q){
+  const e=((q&&q.eta)||"").trim(), a=((q&&q.aspetto)||"").trim();
+  return (e?` Età: ${e}.`:"")+(a?` Aspetto: ${a}.`:"");
+}
 function setupPerIA(){
   // parte STATICA per partita (va nel blocco system cacheato: deve restare byte-identica)
   const P=G.pers||{A:{},B:{}};
@@ -3332,8 +3371,8 @@ function setupPerIA(){
   const spinte=G.pitch.map((p,i)=>({p,i})).filter(({i})=>PITCH_TEMPLATE[i].spinta!==false)
     .map(({p})=>(p.risposta&&p.risposta.trim())?`${SIMBOLI[p.seme]} ${p.risposta.trim()}`:"").filter(Boolean).join("\n");
   return `LA PARTITA. Missione dei Protagonisti: ${G.missione||"-"}.
-Tono: ${G.tono||"-"}.${G.genere&&G.genere.trim()?` Genere: ${G.genere.trim()}.`:""}${G.premessa?`\nPremessa: ${G.premessa}`:""}
-Protagonisti: ${P.A.nome||"P1"} ♠ ${(P.A.desc||"").trim()}${detA?` (detesta dell'altro: ${detA})`:""} | ${P.B.nome||"P2"} ♥ ${(P.B.desc||"").trim()}${detB?` (detesta dell'altro: ${detB})`:""}.
+Genere: ${(G.genere||"").trim()||"-"}. Tono: ${(G.tono||"").trim()||"-"}.${G.premessa?`\nPremessa: ${G.premessa}`:""}
+Protagonisti: ${P.A.nome||"P1"} ♠ ${(P.A.desc||"").trim()}${persIA(P.A)}${detA?` (detesta dell'altro: ${detA})`:""} | ${P.B.nome||"P2"} ♥ ${(P.B.desc||"").trim()}${persIA(P.B)}${detB?` (detesta dell'altro: ${detB})`:""}.
 Opposizione: nemici ♦ ${normalizzaLista(G.nemici).join("; ")||"-"} | caos ♣ ${normalizzaLista(G.caos).join("; ")||"-"}.
 La prima difficoltà (inquadra la scena 1): ${G.primaDiff||"-"}.
 Spinte del pitch (risorse spuntabili, fiction condivisa):

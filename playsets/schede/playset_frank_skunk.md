@@ -1,6 +1,6 @@
 # La strada della vendetta
 
-*Playset per Frenemies on the Road · tono Poliziesco · protagonisti Frank e Skunk*
+*Playset per Frenemies on the Road · genere Poliziesco · protagonisti Frank e Skunk*
 
 ## Premessa
 
