@@ -1,6 +1,6 @@
 # Frenemies on the Road
 
-Gioco narrativo competitivo per 2, 3 o 4 giocatori su meccaniche tipo Scopa, ambientato in un road movie notturno. Protagonisti (Cuori e Picche) contro Opposizione (Fiori e Quadri), cinque scene fisse, diario relazionale letto dalle dominanze di seme.
+Gioco narrativo competitivo per 2, 3 o 4 giocatori su meccaniche tipo Scopa, ambientato in un road movie notturno. Protagonisti (Cuori e Picche) contro Opposizione (Fiori e Quadri), cinque scene fisse, esito di ogni scena letto dal seme dominante nel piatto.
 
 ## Struttura
 

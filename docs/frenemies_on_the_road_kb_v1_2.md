@@ -73,7 +73,7 @@ L'esperienza che Frenemies on the Road cerca di creare si articola su quattro as
 
 **1. Tensione strategica** — I giocatori decidono continuamente se controllare la situazione o spingere forte per vincere la scena. Ogni carta giocata ha un peso reale sull'esito finale.
 
-**2. Narrazione emergente** — La storia si costruisce attraverso le carte giocate, le prese (successi parziali) e le scope (momenti decisivi). Il sistema guida la narrazione senza imporla.
+**2. Narrazione emergente** — La storia si costruisce attraverso le carte giocate, le prese (successi, anche se con un costo) e le scope (momenti decisivi). Il sistema guida la narrazione senza imporla.
 
 **3. Conflitto relazionale** — Il rapporto tra i protagonisti non è stabile. Cambia scena dopo scena. Alla fine sarà tanto importante quanto l'esito della missione.
 
@@ -158,7 +158,7 @@ Stato iniziale:
 
 Le figure si acquistano al mercato tra le scene: dalla **v1.34** non entrano più nel mazzo ma **direttamente nella mano** ed entrano in scena nella scena immediatamente successiva (§21.1, §19). Il Jolly (uno solo) non entra mai nel mazzo: è una risorsa dei Protagonisti, disponibile davanti a loro dall'inizio della partita (§22).
 
-> **Nota (v1.1, agg. v1.34):** 20 carte bastano esattamente per le cinque scene (4 pescate a scena). Quando il mazzo finisce, la partita finisce: non esiste alcun rimescolo degli scarti nel mazzo. Le **figure comprate al mercato** (dalla v1.34) **non entrano più nel mazzo**: vanno in mano e occupano uno slot, quindi la pescata di fine mercato completa a 4 con una carta base in meno (il mazzo resta neutro). Gli ingressi di carte nel mazzo sono quindi solo: dalla v1.27, la carta che il **Re** recupera dagli scarti comuni e rimescola nel proprio mazzo (§21, solo nelle scene 1-4; nell'ultima scena la carta recuperata dal Re entra invece nella riserva). *(Fino alla v1.43 c'era anche la carta che la Ritirata strategica rimescolava nel mazzo; dalla v1.44 concedere la scena manda la carta agli scarti, non più nel mazzo, §18.1.)* Il Jolly (v1.33) **non entra mai nel mazzo** (è una risorsa fuori dal mazzo, §22); l'unico movimento verso il mazzo che introduce è la **carta che un lato cede per afferrarlo**, che finisce in fondo al proprio mazzo.
+> **Nota (v1.1, agg. v1.34):** 20 carte bastano esattamente per le cinque scene (4 pescate a scena). Quando il mazzo finisce, la partita finisce: non esiste alcun rimescolo degli scarti nel mazzo. Le **figure comprate al mercato** (dalla v1.34) **non entrano più nel mazzo**: vanno in mano e occupano uno slot, quindi la pescata di fine mercato completa a 4 con una carta base in meno (il mazzo resta neutro). Gli ingressi di carte nel mazzo sono quindi solo: dalla v1.27, la carta che il **Re** recupera dagli scarti comuni e rimescola nel proprio mazzo (§21, solo nelle scene 1-4; nell'ultima scena la carta recuperata dal Re entra invece nella riserva). *(Fino alla v1.43 c'era anche la carta che la Ritirata strategica rimescolava nel mazzo; dalla v1.44 concedere la scena manda la carta agli scarti, non più nel mazzo, §18.1.)* Il Jolly (v1.33) **non entra mai nel mazzo** (è una risorsa fuori dal mazzo, §22); l'unico movimento verso il mazzo che introduce è la **carta che i Protagonisti cedono per afferrarlo**, che finisce in fondo al loro mazzo (l'Opposizione invece la scarta, v1.39).
 
 ## 9. Preparazione narrativa: il pitch
 
@@ -176,7 +176,7 @@ Si definiscono chi è il personaggio Picche e chi è il personaggio Cuori. La co
 - un conflitto interno
 - un motivo per collaborare nonostante tutto
 
-> **Esempio (scenario demo, §33):** Frank (Picche), ex poliziotto sospeso per eccesso di forza, cinico e metodico. Skunk (Cuori), suo ex informatore, truffatore e intrallazzone dei bassifondi. Una spiata sbagliata di Skunk è costata a Frank il distintivo; collaborano perché Skunk ha in testa la pista di Vargas e il modo di superarne la sicurezza, mentre Frank, che si è fatto terra bruciata attorno, da solo non può più muovere un passo.
+> **Esempio (playset «La strada della vendetta»):** Frank (Picche), ex poliziotto sospeso per eccesso di forza, cinico e metodico. Skunk (Cuori), suo ex informatore, truffatore e intrallazzone dei bassifondi. Una spiata sbagliata di Skunk è costata a Frank il distintivo; collaborano perché Skunk ha in testa la pista di Vargas e il modo di superarne la sicurezza, mentre Frank, che si è fatto terra bruciata attorno, da solo non può più muovere un passo.
 
 ### 9.3 — La Missione
 
@@ -228,15 +228,15 @@ Dopo le due serie di domande, tutti i giocatori rispondono insieme a un'ultima d
 
 La risposta si scrive ma, a differenza delle altre, non è una risorsa spuntabile: si decide insieme, ma **l'ultima parola spetta all'Opposizione** *(v1.17)*. È il materiale della Scena 1 (Innesco): chi vince l'iniziativa della prima scena la usa per inquadrarla.
 
-> **Esempio (scenario demo, §33):** Skunk è in cella. I poliziotti corrotti lo hanno arrestato con un pretesto per consegnarlo agli uomini di Vargas dentro la prigione. Bisogna tirarlo fuori prima che qualcuno arrivi a lui: la Scena 1 nasce da qui.
+> **Esempio (playset «La strada della vendetta»):** Skunk è in cella. I poliziotti corrotti lo hanno arrestato con un pretesto per consegnarlo agli uomini di Vargas dentro la prigione. Bisogna tirarlo fuori prima che qualcuno arrivi a lui: la Scena 1 nasce da qui.
 
 ### 9.8 — Uso meccanico delle risposte del pitch
 
 Le spinte sono **otto, due per seme** (♠ e ♥ dai Protagonisti, ♦ e ♣ dall'Opposizione). I due "cosa si detestano" (§9.5) **non** sono spinte: sono tratti narrativi dei protagonisti, senza effetto.
 
-Dopo una presa fatta con una **carta numerica**, il giocatore può spuntare la risposta corrispondente al seme della carta con cui ha preso: la presa diventa una scopa a tutti gli effetti. La carta di presa va nel mazzetto delle scope e le carte rimaste nel piatto finiscono negli scarti comuni, esattamente come per una scopa normale.
+Dopo una presa fatta con una **carta numerica**, il giocatore può spuntare la risposta corrispondente al seme della carta con cui ha preso: la presa diventa una scopa a tutti gli effetti. Si segnano i 3 punti della scopa e tutte le carte, quella di presa e quelle rimaste nel piatto, finiscono negli scarti comuni, esattamente come per una scopa normale.
 
-Cinque condizioni. La risposta spuntata deve entrare esplicitamente nella narrazione, come scena presente, rivelazione o flashback. Ogni risposta si usa una sola volta in tutta la partita: ogni lato ne ha quattro, due per ciascuno dei suoi due semi, e **tutte sono spendibili** (averne due per seme dà varietà di scelta, non potenza). **Una sola spinta per presa**: una presa diventa scopa con una spinta, e bruciarne una seconda sulla stessa giocata non aggiunge nulla. **Mai su una presa di figura (v1.36):** la spinta si può usare solo su una presa fatta con una carta numerica; una presa fatta con una figura (Fante, Regina, Re) non è promuovibile a scopa (la figura è già di suo una carta forte). La spinta **non si può usare nell'ultima scena**: nella Risoluzione il piatto si svuota solo con una scopa.
+Cinque condizioni. La risposta spuntata deve entrare esplicitamente nella narrazione, come scena presente, rivelazione o flashback. Ogni risposta si usa una sola volta in tutta la partita: ogni lato ne ha quattro, due per ciascuno dei suoi due semi, e **tutte sono spendibili** (averne due per seme dà varietà di scelta, non potenza). **Una sola spinta per presa**: una presa diventa scopa con una spinta, e bruciarne una seconda sulla stessa giocata non aggiunge nulla. **Mai su una presa di figura o di Jolly (v1.36, Jolly v1.46):** la spinta si può usare solo su una presa fatta con una carta numerica; una presa fatta con una figura (Fante, Regina, Re) o con il Jolly non è promuovibile a scopa. La spinta **non si può usare nell'ultima scena**: nella Risoluzione il piatto si svuota solo con una scopa.
 
 > **Nota (v1.2):** questa regola sostituisce la "finta scopa" della v1.1, che promuoveva la carta di presa tra le scope senza toccare il piatto. Dalla v1.2 la scopa della spinta è ancorata al seme della carta di presa: è la carta giusta, nel momento giusto, a sbloccare la rivelazione.
 
@@ -388,7 +388,7 @@ Togli una risorsa **all'avversario** (prendi le carte dell'altro lato dal piatto
 - **Protagonisti:** superano un ostacolo che l'Opposizione aveva messo in scena.
 - **Opposizione:** toglie ai protagonisti una risorsa, oppure ne mostra l'inutilità (si ritorce contro di loro).
 
-> **Esempio (Protagonisti):** il 6 di Fiori era la carta di credito bloccata. Fai la presa e dichiari: "Vado a impegnare il mio orologio d'oro e ottengo un bel gruzzolo di contanti". L'ostacolo è superato, a un prezzo.
+> **Esempio (Protagonisti):** il 6 di Quadri era la carta di credito bloccata. Fai la presa e dichiari: "Vado a impegnare il mio orologio d'oro e ottengo un bel gruzzolo di contanti". L'ostacolo è superato, a un prezzo.
 >
 > **Esempio (Opposizione):** i protagonisti avevano introdotto il secondino gentile, vecchio compagno di scuola. L'Opposizione prende quella carta: appena lui si allontana, telefona al gran cattivo per avvertirlo che li tiene in pugno. Il vantaggio apparente era una trappola.
 
@@ -410,7 +410,7 @@ Le prese seguono la logica della Scopa tradizionale:
 
 **Presa obbligatoria.** Se la carta che giochi può fare una presa o una scopa, **non** può essere messa nel piatto: la cattura è obbligatoria. L'obbligo riguarda la singola carta giocata, non l'intero turno (puoi sempre mettere nel piatto un'altra carta che non cattura); quando la carta ha più catture possibili (singola, gruppo, presa o scopa) la scelta tra esse resta libera.
 
-**Cattura di una carta del proprio lato.** Se sei costretto a prendere una carta del tuo stesso lato (stesso schieramento), raccontalo come un'azione maldestra in cui le due anime del lato si sono ostacolate o annullate a vicenda: **Cuori e Picche** per i Protagonisti, **Fiori e Quadri** per l'Opposizione.
+**Cattura di una carta del proprio lato (presa maldestra).** Se sei costretto a prendere una carta del tuo stesso lato (stesso schieramento: **Cuori e Picche** per i Protagonisti, **Fiori e Quadri** per l'Opposizione), ci sono due modi di raccontarlo *(v1.46, dal manuale §3.8)*: le due anime del lato che si intralciano, l'una che manda all'aria ciò che l'altra aveva costruito (l'empatico ostacola l'energico, l'energico vanifica un'alleanza dell'empatico, il caos vanifica una minaccia dei nemici, un'azione dei nemici riporta ordine eliminando il caos); oppure, più interessante per i Protagonisti, un personaggio che agisce insolitamente contro la propria natura (l'energico si trattiene, si apre, si confida; l'empatico perde la pazienza e agisce d'impeto). La presa può anche essere **mista**, una carta nemica e una propria insieme: un successo e un danno interno. In ogni caso la presa resta un successo: è solo colore narrativo.
 
 **Cattura flessibile delle figure (v1.6).** Una figura (Fante, Regina, Re) cattura in modo più ampio di una carta numerica: prende dal piatto un gruppo di carte la cui somma è **minore o uguale** al suo valore (Fante 8, Regina 9, Re 10), comprese eventuali carte dei propri semi. Anche per le figure la cattura è obbligatoria: se nel piatto c'è almeno una carta alla sua portata, la figura deve catturare. Se la cattura svuota il piatto è una scopa, altrimenti è una presa che vale 1 punto come ogni altra (vedi §17). Se invece nessuna carta del piatto è alla sua portata, oppure il piatto è vuoto, la figura **non resta sul tavolo** ma si **sacrifica** (§15.3): vale **1 punto** (come concedere la scena), lasciando nel piatto le eventuali carte fuori portata. Una figura che non cattura non fa mai scopa. L'effetto speciale della figura (§21) scatta in ogni caso.
 
@@ -593,7 +593,7 @@ A macchiarsi del peccato è **uno solo dei due protagonisti**: una ricaduta nei 
 
 > **Esempio (i Protagonisti usano il Jolly).** Nel piatto resta un 4♣ e Vera non ha di meglio in mano. Seppellisce un 3♠ in fondo al proprio mazzo, afferra il Jolly, lo dichiara **4** e cattura il 4♣: **SCOPA**, il piatto è pulito e la posta è dei Protagonisti. Nessuno segna punti, ma il Jolly passa a Omar. Narra: "Vera infrange la promessa di restare pulita e sfrutta un vecchio contatto del contrabbando — Otto ancora non lo sa."
 >
-> **Esempio (l'Opposizione fa emergere il peccato).** Due scene dopo, l'Opposizione seppellisce una carta in fondo al proprio mazzo, afferra il Jolly e **cattura** la carta dei Protagonisti che pesava di più nel piatto (una sola carta): quel che resta sul tavolo ora la mette avanti nella posta. Nel narrarlo fa affiorare cosa aveva fatto Vera con quel contatto: davanti a Otto cala il gelo. Nessuno segna punti, ma fra i due si apre una crepa.
+> **Esempio (l'Opposizione fa emergere il peccato).** Due scene dopo, l'Opposizione scarta una carta della mano, afferra il Jolly e **cattura** la carta dei Protagonisti che pesava di più nel piatto (una sola carta): quel che resta sul tavolo ora la mette avanti nella posta. Nel narrarlo fa affiorare cosa aveva fatto Vera con quel contatto: davanti a Otto cala il gelo. Nessuno segna punti, ma fra i due si apre una crepa.
 
 ---
 
@@ -613,7 +613,7 @@ La mano finale si sceglie **dopo il mercato**. Una figura comprata all'ultimo me
 
 **La riserva è la scelta strategica dell'ultima scena *(v1.38)*:** giocare le carte alte nella scena (per vincere il primo conteggio ed essere il difensore, §24) oppure tenerle in riserva (per vincere il duello dei colpi di scena). Bastano poche carte ben scelte: una **media** per superare il muro e aprire, una **alta** per vincere il rilancio.
 
-La riserva alimenta i colpi di scena (§24), ed è anche la fonte da cui si pesca quando un effetto lo richiede e il mazzo è ormai esaurito: in particolare la Regina avversaria (§21) rimpiazza dalla riserva la carta che costringe a scartare.
+La riserva alimenta i colpi di scena (§24). *(Fino alla v1.42 la Regina avversaria rimpiazzava dalla riserva la carta che faceva scartare; dalla v1.43 il rimpiazzo viene solo dagli scarti comuni, §21.)*
 
 ## 24. Colpi di scena finali — il duello a rilancio *(v1.38)*
 
@@ -689,7 +689,7 @@ I **sapori** di una vignetta sono liberi (chiusura dolce o amara, colpo di scena
 
 ## 27. Lettura del piatto a fine scena
 
-Al termine di ogni scena, dopo aver determinato chi ha vinto la posta, si legge il piatto per interpretare lo stato della storia in quel momento.
+Al termine di ogni scena, dopo aver determinato chi ha vinto la posta, si legge il piatto per dare colore al racconto dell'esito (manuale §3.14). *(v1.46: tolte le letture del rapporto tra i protagonisti, ♥ contro ♠, e della natura dell'Opposizione, ♦ contro ♣ nell'ultimo piatto: il manuale non le prevede.)*
 
 ### 27.1 — Cosa ha deciso l'esito
 
@@ -703,28 +703,6 @@ Si guarda quale seme ha il valore più alto tra le carte rimaste nel piatto.
 | Fiori | È stata la sfortuna o il caos a determinare l'esito — fattori esterni, imprevisti, attriti |
 
 Questo vale indipendentemente da chi ha vinto la scena: i Protagonisti possono vincere per un soffio grazie al caos (Fiori alto) oppure perdere nonostante un momento di connessione genuina (Cuori alto ma insufficiente).
-
-### 27.2 — Stato del rapporto tra i protagonisti
-
-Si confrontano i valori totali di Cuori e Picche nel piatto.
-
-| Situazione | Lettura |
-|---|---|
-| Cuori > Picche | In questa scena i protagonisti si sono avvicinati — dialogo, fiducia, connessione |
-| Picche > Cuori | In questa scena i protagonisti si sono allontanati — conflitto, tensione, distanza |
-| Parità | Il rapporto è in bilico, né avanzato né peggiorato |
-
-Seguendo questa lettura scena per scena emerge un **diario del rapporto** tra i protagonisti, indipendente dall'esito della missione.
-
-### 27.3 — Natura dell'opposizione (lettura finale)
-
-Al termine della quinta scena si confrontano i valori totali di Fiori e Quadri nell'ultimo piatto.
-
-- Quadri dominanti → sono stati i nemici a decidere l'esito finale
-- Fiori dominanti → è stato il caos, la sfortuna o la fragilità interna a decidere
-- Parità → entrambi gli assi hanno inciso in modo simile
-
-> **Esempio di lettura completa:** Frank e Skunk compiono la missione, e i pochi punti non spesi li lasciano in fascia bassa di Crescita (poca crescita: ce l'hanno fatta, ma restano quelli di prima). Nelle scene 1, 3 e 4 dominavano le Picche: il rapporto è stato duro per la maggior parte del viaggio, con Frank a dettare legge. Nella scena 5 dominano i Cuori: si sono avvicinati solo alla fine, davanti al jet. Nell'ultimo piatto dominano i Fiori: non sono stati i sicari a quasi fermarli, ma il caos e la fragilità della coppia.
 
 ---
 
@@ -754,27 +732,30 @@ Nell'ultima scena emergono due strategie principali che si oppongono:
    ├── Pesca di 4 carte per lato
    ├── Asta: carta coperta → si rivela → chi è più alto vince l'iniziativa
    │      (parità: a chi non l'ha avuta la scena prima; scena 1 → Opposizione)
-   ├── Il vincitore sceglie titolo, ambiente iniziale e posta della scena
+   ├── Il vincitore sceglie titolo e posta; la sua prima carta apre la scena
    ├── Round: si alternano giocate, prese e scope (4 carte a testa)
+   │      (ultima carta: chi non ha l'iniziativa può concedere la scena, scene 1-4)
    ├── Fine round: si somma il piatto → chi vince la scena?
    │   ├── Protagonisti vincono → la posta è raggiunta
-   │   └── Opposizione vince → situazione peggiora
+   │   ├── Opposizione vince → situazione peggiora
+   │   └── parità → chi ha giocato l'ultima carta; piatto vuoto → chi ha fatto scopa
+   ├── Chi ha perso la posta narra l'esito (colore: seme dominante)
    ├── Il piatto resta sul tavolo per la scena successiva
    └── Mercato: acquisto figure → in mano → pesca fino a 4 (niente rimescolo)
    (Jolly: risorsa dei Protagonisti, usabile nelle scene 1-3; se usato passa all'Opposizione, §22)
 
 3. QUINTA SCENA
    ├── Mercato, poi mano estesa (più di 4 carte) → scelta di 4 + riserva
+   ├── Jolly non speso → fuori dal gioco, +2 Crescita a chi lo aveva
    ├── Round normale
-   ├── Primo conteggio → esito apparente
-   ├── Colpi di scena dalla riserva (alternati)
-   └── Conteggio definitivo
+   ├── Primo conteggio → esito apparente e difensore
+   │      (parità: chi ha più Crescita può azzerarla per difendere, o rinunciare)
+   └── Duello a rilancio dalla riserva → chi cala per ultimo vince la missione
 
 4. FINALE
-   ├── Vittoria del piatto → esito esterno della missione
-   ├── Tie-break → scope → prese
-   ├── Incrocio piatto + punti → uno dei quattro outcome
-   └── Dominanze di seme → lettura della relazione e della natura dell'opposizione
+   ├── Missione compiuta o fallita (decisa dal duello)
+   ├── Crescita di ciascun lato, letta a scaglioni (0-2 / 3-6 / 7+)
+   └── Epilogo facoltativo: vignette a turno
 ```
 
 ## 30. Principio operativo essenziale
@@ -947,13 +928,19 @@ Il taccuino del professor Aldo Falco, l'unico che abbia mai annotato la via per 
 
 ## 34. Partita d'esempio
 
-La partita d'esempio completa, narrata scena per scena sullo scenario demo (§33), è l'**Appendice B del manuale del giocatore** ("Il sole di mezzanotte"): cinque scene, i quattro mercati, il finale e l'epilogo. È una partita vera a 2 giocatori (Paola gioca i Protagonisti, Omar l'Opposizione), generata e verificata dal motore (seed 34/367) e poi narrata.
-
-In breve: arco delle scene P-O-P-O-P (diario del rapporto **su, su, pari, pari, giù**), vetrina di tutte e tre le figure (Fante e Regina di Paola, Re di Omar), del Jolly, di tre spinte del pitch e dei colpi di scena finali. Il primo conteggio dà l'Opposizione in vantaggio, ma i colpi di scena ribaltano l'apparenza: i Protagonisti **compiono la missione** (piatto 11-10) e chiudono con la Crescita più alta.
+La partita d'esempio è l'**Appendice B del manuale del giocatore**, al momento **in rifacimento**: la versione precedente (seed 34/367) è obsoleta dalla v1.32, perché i punti sono diventati una valuta a gettoni, e va rigiocata sulle regole correnti con un nuovo seed-vetrina.
 
 ---
 
 # REGISTRO MODIFICHE
+
+## v1.47 (settembre 2026): testi e letture allineati al manuale
+
+1. **§27: tolte le letture 27.2 (rapporto, ♥ contro ♠) e 27.3 (natura dell'Opposizione, ♦ contro ♣)** e il loro esempio: il manuale non le prevede. Resta la lettura del seme dominante (manuale §3.14). Nell'app via il grafico della strada nel Diario, la lettura del rapporto a fine scena e i pannelli "Il rapporto" e natura dell'Opposizione nel finale.
+2. **§16: la presa maldestra ha due modi di racconto** (le due anime che si intralciano, o il personaggio che agisce contro la propria natura) e può essere mista, come nel manuale §3.8.
+3. **§9.8: la spinta non vale sulle prese col Jolly**, come nel manuale §3.10; la carta di presa non va più nel "mazzetto delle scope" (residuo pre-v1.32).
+4. **Residui corretti:** §22 l'Opposizione scarta (non seppellisce) la carta ceduta per il Jolly; §23.1 la Regina non rimpiazza più dalla riserva; §29 flusso rifatto (duello, Crescita a scaglioni, epilogo; niente tie-break per scope e prese né quattro esiti); §34 segnato come in rifacimento; esempio della presa sul 6♦ come nel manuale; esempi su Frank e Skunk etichettati col loro playset invece che "scenario demo §33".
+5. **Propagazione (stesso commit).** `index.html`: `REGOLE` (esempi Vera e Otto dal manuale, presa maldestra, "Dalla mossa alla narrazione", sacrificio che esce dal gioco, spinta mai col Jolly, rimandi ai paragrafi del manuale), `REGOLE_IA` (la missione la decide il duello, sacrificio, presa maldestra, scala di valore, spinta e Jolly), `statoPerIA`, prompt di apertura (posta a due rami) e di esito (narra chi ha perso la posta), banner del mercato, testo della mano finale, testo di benvenuto; README; diario.
 
 ## v1.46 (settembre 2026): allineamento al manuale, che diventa la fonte di verità
 
@@ -1242,4 +1229,4 @@ Regole chiarite o aggiunte durante lo sviluppo del prototipo digitale (giugno 20
 
 ---
 
-*Frenemies on the Road — Knowledge Base v1.46*
+*Frenemies on the Road — Knowledge Base v1.47*
