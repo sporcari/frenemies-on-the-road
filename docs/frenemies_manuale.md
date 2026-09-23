@@ -1,7 +1,7 @@
 # Frenemies on the Road
 ## Manuale del gioco
 
-*Uno story-game due giocatori, basato su meccaniche tipo Scopa. Una coppia mal assortita parte per una missione disperata, un viaggio che si scriverà una carta alla volta.*
+*Uno story-game per 2-4 giocatori, basato su meccaniche tipo Scopa. Una coppia mal assortita parte per una missione disperata, un viaggio che si scriverà una carta alla volta.*
 
 ---
 
@@ -33,9 +33,9 @@
 
 **Appendice F. Glossario.** Tutti i termini di gioco, in ordine alfabetico.
 
-**Appendice G. Le schede da fotocopiare.** Schede dei protagonisti, scheda del viaggio, scheda dell'opposizione, carte dei Qualcuno.
+**Appendice G. Le schede e materiali da stampare.** Schede dei protagonisti, scheda del viaggio, scheda dell'opposizione, carte dei Qualcuno.
 
-**Appendice H. Handout riassuntivi.** Otto schede di riepilogo da tavolo: sequenza della scena, figure, Jolly, spareggio finale, duello dei colpi di scena, scaglioni della Crescita, significato dei semi, le tre mosse e la spinta.
+**Appendice H. Handout riassuntivi.** Nove schede di riepilogo da tavolo: sequenza della scena, figure, Jolly, spareggio finale, duello dei colpi di scena, scaglioni della Crescita, significato dei semi, le tre mosse e la spinta, come narrare una mossa.
 
 ---
 
@@ -120,10 +120,10 @@ Il mazzo si divide tra i giocatori nel seguente modo:
 Prima di cominciare, prepara i mazzi così:
 
 - togli da entrambi i mazzi tutte le figure (Fante, Regina, Re): entreranno in gioco più tardi, comprandole al mercato;
-- togli entrambi i Jolly dal mazzo: uno lo tieni da parte come risorsa dei Protagonisti (fuori dal mazzo, disponibile dall'inizio — vedi Capitolo 5), l'altro resta fuori dalla partita;
+- togli entrambi i Jolly dal mazzo: uno lo tieni da parte come risorsa dei Protagonisti (fuori dal mazzo, disponibile dall'inizio: vedi Capitolo 5), l'altro resta fuori dalla partita;
 - restano quindi soltanto le carte numeriche, dall'Asso al 10, di ciascun seme: venti carte per lato.
 
-Venti carte bastano esattamente per cinque scene, perché ogni lato ne pesca quattro a scena. Tienilo a mente, perché è una regola con un peso strategico: quando il mazzo finisce, la partita finisce. Non si rimescolano mai gli scarti dentro il mazzo. Le figure comprate al mercato non entrano nel mazzo: vanno direttamente in mano (Capitolo 4), e la carta base che occuperebbero resta nel mazzo. L'unico modo per aggiungere carte al mazzo è quindi la carta numerica che il Re recupera dagli scarti nelle scene 1-4 (nell'ultima scena finisce invece nella riserva). Il Jolly (Capitolo 5) non entra mai nel mazzo, è una risorsa a parte dei Protagonisti; l'unica carta che muove verso il mazzo è quella che un lato cede per afferrarlo, che torna in fondo al proprio mazzo.
+Venti carte bastano esattamente per cinque scene, perché ogni lato ne pesca quattro a scena. Tienilo a mente, perché è una regola con un peso strategico: quando il mazzo finisce, la partita finisce. Non si rimescolano mai gli scarti dentro il mazzo. Le figure comprate al mercato non entrano nel mazzo: vanno direttamente in mano (Capitolo 4), e la carta base che occuperebbero resta nel mazzo. L'unico modo per aggiungere carte al mazzo è quindi la carta numerica che il Re recupera dagli scarti nelle scene 1-4 (nell'ultima scena finisce invece nella riserva). Il Jolly (Capitolo 5) non entra mai nel mazzo, è una risorsa a parte dei Protagonisti; l'unica carta che muove verso il mazzo è quella che i Protagonisti cedono per afferrarlo, che torna in fondo al loro mazzo (quando lo usa l'Opposizione, invece, la carta ceduta si scarta: Capitolo 5).
 
 ## 1.6 Che cosa significano i semi
 
@@ -138,7 +138,7 @@ Ogni carta che giochi appartiene a un seme, e il seme dice due cose insieme: che
 
 Durante ogni scena i giocatori si sfidano a una sorta di scopa. A turno giocano una carta da una mano di 4 carte e, dopo averla giocata, narrano l'effetto di quella mossa all'interno della storia.
 
-All'inizio della prima scena il piatto è vuoto. Al termine di qualunque scena si stabilisce chi vince la posta in base a quali carte sono rimaste nel piatto: se la somma di Cuori e Picche supera quella di Quadri e Fiori la posta va ai Protagonisti, altrimenti all'Opposizione. Le carte che non sono state prese rimangono nel piatto per la scena successiva.
+All'inizio della prima scena il piatto è vuoto. Al termine di qualunque scena si stabilisce chi vince la posta in base a quali carte sono rimaste nel piatto: se la somma di Cuori e Picche supera quella di Quadri e Fiori la posta va ai Protagonisti, se è inferiore va all'Opposizione; in parità la vince chi ha giocato l'ultima carta, e se la scena si chiude con una scopa a piatto vuoto la vince chi l'ha fatta (§3.13). Le carte che non sono state prese rimangono nel piatto per la scena successiva.
 
 Le mosse possibili, aggiungere una carta al piatto, fare una presa, fare una scopa, hanno ciascuna un preciso significato narrativo. Inoltre anche il seme della carta giocata contribuisce a ispirare la narrazione che accompagna la mossa, in base a quanto mostrato nel paragrafo precedente.
 
@@ -165,12 +165,12 @@ Siate generosi anche quando ci saranno degli "sconfinamenti" nelle narrazioni. I
 
 ## 1.9 Come finisce?
 
-L'esito della missione dei protagonisti si decide nell'ultima scena: chi vince quella compie o fallisce la missione, e il gioco ha già raccontato lungo la strada che tipo di vittoria o di sconfitta sia stata. Resta da leggere un solo dato in più, la Crescita: i punti accumulati nel corso della partita con prese e scope e non spesi, che dicono quanto i protagonisti sono cresciuti e si sono fatti un nome (e, per l'Opposizione, quanto è diventata una minaccia). È una misura a parte, che non si incrocia con la missione e si legge a scaglioni per ciascun lato.
+L'esito della missione dei protagonisti si decide nell'ultima scena: il conteggio del piatto dà un esito apparente, e il duello dei colpi di scena che segue decide se la missione è compiuta o fallita. Il gioco ha già raccontato lungo la strada che tipo di vittoria o di sconfitta sia stata. Resta da leggere un solo dato in più, la Crescita: i punti accumulati nel corso della partita con prese e scope e non spesi, che dicono quanto i protagonisti sono cresciuti e si sono fatti un nome (e, per l'Opposizione, quanto è diventata una minaccia). È una misura a parte, che non si incrocia con la missione e si legge a scaglioni per ciascun lato.
 
 La Crescita si legge a scaglioni, uno per lato:
 
-- **Protagonisti:** poca crescita (siete rimasti quelli della partenza), crescita (qualcosa è cambiato, nasce una stima reciproca) o grande crescita (il viaggio vi ha trasformati).
-- **Opposizione:**  può risultare: sventata (i nemici si sono sfilacciati), intatta (rallentati, non fermati) o come un'Idra (torneranno più forti di prima).
+- **Protagonisti:** nessuna crescita (siete rimasti quelli della partenza), crescita (qualcosa è cambiato, nasce una stima reciproca) o grande crescita (il viaggio vi ha trasformati).
+- **Opposizione:** minaccia sventata (i nemici si sono sfilacciati), minaccia intatta (rallentati, non fermati) o come l'idra (torneranno più forti di prima).
 
 Oltre all'esito della missione, la storia racconterà anche il destino del rapporto tra i due protagonisti: si è rafforzato, evoluto o è deflagrato?
 Letta la Crescita, i giocatori racconteranno a turno, con brevi scenette, il destino dei vari personaggi, fino all'ultima dissolvenza al nero.
@@ -203,7 +203,7 @@ In breve, fase per fase:
 
 Prima di giocare la prima scena si pongono le basi della storia che si andrà a creare: i Protagonisti, la loro missione, l'Opposizione.
 
-Se vuoi un esempio completo e pronto all'uso, in appendice troverai diversi playset con dei pitch pronti per l'uso.
+Se vuoi un esempio completo e pronto all'uso, in Appendice A troverai lo scenario demo; altri playset con pitch pronti si caricano direttamente nell'app.
 
 ## 2.1 Scegliere il genere e il tono
 
@@ -246,12 +246,11 @@ Scegliere una buona coppia di protagonisti è molto più importante di una buona
 
 Cercate di trovare un buon motivo per cui per nessuna ragione uno dei due personaggi, possa rinunciare alla missione. Potranno litigare, minacciarsi infinite volte di separarsi, ma non potranno farlo mai, davvero.
 
-Compilate quindi la scheda, scrivendo il nome di ciascun personaggio, spiegando in poche parole chi è, la sua età e il suo aspetto.
-Inoltre rispondete alle seguenti domande
+Compilate quindi la scheda, scrivendo il nome di ciascun personaggio, spiegando in poche parole chi è, la sua età e il suo aspetto (com'è il suo aspetto fisico e il suo look?).
+Inoltre rispondete alle seguenti domande:
 
 1. Cosa il Picche detesta di Cuori?
 2. Cosa il Cuori detesta di Picche?
-3. Com'è il mio aspetto fisico e il mio look?
 
 Nello scenario demo Vera (Picche) non sopporta che «Otto si paralizza davanti a qualsiasi cosa strisci o voli, e prima di muovere un passo deve leggere qualcosa»; Otto (Cuori) non sopporta che «Vera agisce prima di pensare e fa saltare in aria cose che andrebbero studiate: tratta i reperti come maniglie».
 {: .esempio }
@@ -275,7 +274,7 @@ Fate un brainstorming e siate precisi soprattutto nello stabilire i nemici (Quad
 
 ## 2.5 Le spinte dei Protagonisti
 
-Le risposte alle seguenti domande diventano che potrete spendere meccanicamente in gioco per dare una Spinta alla vostra azione permettendovi di trasformare una normale Presa in una Scopa, purché le inseriate e le mostriate nella vostra narrazione. Nel resto del manuale queste risorse verranno chiamate Spinte.
+Le risposte alle seguenti domande diventano risorse che potrete spendere meccanicamente in gioco per dare una Spinta alla vostra azione permettendovi di trasformare una normale Presa in una Scopa, purché le inseriate e le mostriate nella vostra narrazione. Nel resto del manuale queste risorse verranno chiamate Spinte.
 Due appartengono al personaggio Picche, due al personaggio Cuori.
 Per ogni seme una spinta riguarda la motivazione per Protagonista che deve assolutamente compiere la missione, mentre l'altra riguarda le sue doti o capacità che possono risultare determinanti.
 
@@ -289,7 +288,7 @@ Nello scenario demo, per Vera (Picche) la missione conta perché «suo padre è 
 
 ## 2.6 Le spinte dell'Opposizione
 
-Poi sono i Protagonisti a interrogare l'Opposizione. Quattro domande, e tutte e quattro diventano saranno risorse spendibili come Spinta: due di Quadri, due di Fiori.
+Poi sono i Protagonisti a interrogare l'Opposizione. Quattro domande, e tutte e quattro diventano risorse spendibili come Spinta: due di Quadri, due di Fiori.
 Qui le domande servono a stabilire per quanto riguarda Quadri quali sono le risorse dei Nemici e le motivazioni che li spingono contro i Protagonisti.
 
 Riguardo ai fiori invece si inizia a pensare a quali potrebbero essere le catastrofi e i contrattempi: Tempeste, Epidemie, Scioperi dei trasporti, Uragani, Ambiente ostile, Un veicolo che continua a rompersi. Non considerate questa risposta come un limite, ma come un modo per iniziare a fare brainstorming. Se durante la partita vi viene in mente qualsiasi altra cosa che rientra nella categoria Caos/Sfortuna potete usarlo.
@@ -352,7 +351,7 @@ Assegnata la missione, il gioco fa il resto: le scene diventano le tappe del lor
 
 Questo è il cuore del gioco. Una scena è un round, e ogni round segue sempre la stessa sequenza: si pesca, si fa l'asta per l'iniziativa, chi vince apre la scena e ne fissa la posta, poi i due lati si alternano giocando carte, facendo prese e tentando scope, finché la mano finisce. Vediamo ogni passaggio.
 
-In sintesi: una scena si svolge giocando a turno le quattro carte della propria mano, e ogni carta giocata ha un effetto narrativo suggerito dal suo seme e dal tipo di giocata (aggiunta al piatto, presa o scopa). La scena termina quando viene calata l'ultima carta. L'esito della scena e quindi chi si aggiudica la posta,viene stabilito in base a quali carte sono rimaste nel piatto: se la somma di Cuori e Picche supera quella di Quadri e Fiori la posta va ai Protagonisti, altrimenti all'Opposizione.
+In sintesi: una scena si svolge giocando a turno le quattro carte della propria mano, e ogni carta giocata ha un effetto narrativo suggerito dal suo seme e dal tipo di giocata (aggiunta al piatto, presa o scopa). La scena termina quando viene calata l'ultima carta. L'esito della scena, e quindi chi si aggiudica la posta, viene stabilito in base a quali carte sono rimaste nel piatto: se la somma di Cuori e Picche supera quella di Quadri e Fiori la posta va ai Protagonisti, se è inferiore va all'Opposizione (parità e scopa a piatto vuoto: §3.13).
 
 Questa meccanica fa sì che ogni scena, oltre essere uno scontro a scopa, sia anche un minigioco di maggioranze di cui tenere conto ad ogni mossa.
 
@@ -387,7 +386,7 @@ Se nel piatto ci sono 5, 2, 7, 4, 3, con un 7 puoi prendere il 7, oppure 5+2, op
 Qualche consiglio per cominciare a giocare bene:
 
 - Le carte alte catturano più spesso e più carte: conviene tenere la propria carta più alta per l'ultima giocata del round
-- Quando devi aggiungere una carta, attento a far sì che nel piatto non resti un valore inferiore a 10 che l'avversario potrebbe prendere con una scopa.
+- Quando devi aggiungere una carta, attento a far sì che nel piatto non resti una somma fino a 10, che l'avversario potrebbe prendere in blocco con una scopa.
 - Cerca di ricordare le carte già uscite: in fondo l'avversario ha solo due copie di ogni numero da 1 a 10 (una per ciascuno dei suoi due semi), quindi puoi farti un'idea di quali giocate siano sicure o rischiose.
 
 ### Differenze rispetto alla scopa tradizionale
@@ -594,7 +593,7 @@ Vale allora, a maggior ragione, quanto detto sulla presa (§3.8): se già lì co
 
 Vi ricordate le domande che erano state fatte ai Protagonisti e all'Opposizione durante il pitch?
 
-Ecco a che cosa servono. Dopo una presa fatta con una carta numerica, il giocatore può spuntare una Spinta corrispondente al seme della carta che ha appena giocato: in quel momento la presa diventa una scopa a tutti gli effetti. La carta di presa viene marcata come scopa e vale 3 punti.
+Ecco a che cosa servono. Dopo una presa fatta con una carta numerica, il giocatore può spuntare una Spinta corrispondente al seme della carta che ha appena giocato: in quel momento la presa diventa una scopa a tutti gli effetti: il piatto si svuota e si segnano 3 punti.
 
 Cinque condizioni regolano questo potere:
 
@@ -606,7 +605,7 @@ Cinque condizioni regolano questo potere:
 
 L'idea è che sia la carta giusta, nel momento giusto, a sbloccare la rivelazione: il legame con il seme non è un dettaglio, è il senso della regola.
 
-L'Opposizione ha scritto, come spinta di Fiori: "Aldo Falco è vivo: è diventato un Vegliante. Otto lo ha capito, e tace." In una scena avanzata il giocatore dell'Opposizione prende con una carta di Fiori e spunta questa spinta con una rivelazione: tra i custodi incappucciati della cripta Vera riconosce il passo di suo padre, e capisce che Otto lo sapeva già da giorni. La rivelazione spacca la coppia, la presa diventa una scopa, e il piatto si svuota nelle prese di chi ha spuntato.
+L'Opposizione ha scritto, come spinta di Fiori: "Aldo Falco è vivo: è diventato un Vegliante. Otto lo ha capito, e tace." In una scena avanzata il giocatore dell'Opposizione prende con una carta di Fiori e spunta questa spinta con una rivelazione: tra i custodi incappucciati della cripta Vera riconosce il passo di suo padre, e capisce che Otto lo sapeva già da giorni. La rivelazione spacca la coppia, la presa diventa una scopa, e il piatto si svuota.
 {: .esempio }
 
 Anche i Protagonisti spingono così. Sul treno bloccato dalla tempesta Otto prende con il 9♥ (una presa normale) e spunta la spinta ♥ del suo pitch, il peso di aver riaperto lui la caccia con la sua traduzione: la presa diventa scopa e svuota il piatto. In fiction, chino sul taccuino di Aldo, lo coglie un'illuminazione e ripete a mezza voce una formula in una lingua arcaica; fuori, come obbedisse a quelle parole, la tempesta di sabbia si placa, e il treno può ripartire.
@@ -644,13 +643,13 @@ Metti insieme i tre passi e racconta. E se le risposte alle domande del Passo 1 
 
 Esiste un'ulteriore mossa che può essere fatta soltanto dal giocatore che dovrebbe giocare l'ultima carta della scena e soltanto nelle scene dalla 1 alla 4.
 
-Questa possibilità si verifica quando giocatore ha solo una carta in mano, e sa già che non gli sarà di alcuna utilità: non può fare prese o scopa scopa e se l'aggiungesse al piatto, non basterebbe a raggiungere la maggioranza, facendo la somma dei valori in gioco per aggiundicarsi la scena.
+Questa possibilità si verifica quando il giocatore ha solo una carta in mano, e sa già che non gli sarà di alcuna utilità: non può fare prese o scopa e, se l'aggiungesse al piatto, non basterebbe a raggiungere la maggioranza, facendo la somma dei valori in gioco per aggiudicarsi la scena. Una figura non si aggiunge mai al piatto: è inutile solo se nessuna carta del piatto è alla sua portata.
 
 In questo caso, invece di sprecare la carta, può decidere di Concedere la scena, ricavandone un piccolo vantaggio.
 
 Concedere la scena vale **1 punto** (la carta viene conteggiata come una presa) e la carta finisce negli scarti comuni. Si può fare una sola volta per lato in tutta la partita. Il giocatore narra come i suoi personaggi ammettano la sconfitta di fronte al nemico, o lascino il campo rinunciando per il momento alla posta.
 
-In entrambi i casi la vittoria della scena va all'avversario senza conteggio e lo sconfitto narra la chiusura della scena e come la posta viene conquistata dal vincitore.
+La vittoria della scena va all'avversario senza conteggio e lo sconfitto narra la chiusura della scena e come la posta viene conquistata dal vincitore.
 
 Sul treno per El Qara ai Protagonisti resta in mano solo il 4♠, una carta che non cambierebbe più la scena, ormai perduta. Paola concede la scena: vale 1 punto. Ed è un Picche, il seme di Vera, così la concessione prende il suo volto, ed è lei, che non molla mai, a decidere per una volta di non battersi. «Ci arrendiamo, ma non fate del male a questi uomini... è noi che volete», dice alzando le mani dietro la nuca. La scena va all'Opposizione, e la chiusura la racconta chi si è arreso.
 {: .esempio }
@@ -816,7 +815,7 @@ Nel proprio turno, invece di giocare una carta della mano, il giocatore Protagon
 
 - **seppellisce una carta della mano in fondo al proprio mazzo** e prende il Jolly al suo posto;
 - Effettua la presa di **una singola carta dal piatto**, infatti il Jolly ha **valore elastico da 1 a 10**. 
-- Se la carta era l'unica rimasta la presa diventa una scopa. E se questa è l'ultima scopa della scena, allora otterrà la posta;
+- Se la carta era l'unica rimasta la presa diventa una scopa. E se la scena si chiude con il piatto vuoto dopo questa scopa, la posta è dei Protagonisti;
 
 ## 5.2 Limitazioni
 
@@ -964,9 +963,9 @@ I sapori di una vignetta sono liberi: una chiusura dolce o amara, un colpo di sc
 
 # Appendice A. Lo scenario demo: Il sole di mezzanotte
 
-Questo è il pitch completo dello scenario demo, lo stesso che gioca la partita d'esempio dell'Appendice B. Lo puoi giocare così com'è, oppure usarlo come modello per costruirne uno tuo.
+Questo è il pitch completo dello scenario demo, lo stesso su cui è costruita la partita d'esempio dell'Appendice B (in rifacimento). Lo puoi giocare così com'è, oppure usarlo come modello per costruirne uno tuo.
 
-**Tono:** action, avventura archeologica.
+**Genere:** avventura archeologica. **Tono:** epico e romanzesco.
 
 **I protagonisti**
 
@@ -1186,7 +1185,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Cuori (♥).** Seme dei Protagonisti: il protagonista empatico e relazionale. Dialogo, legame, mediazione, richiesta di aiuto, intuizione emotiva.
 
-**Domande di fine partita.** Le domande a cui ciascun giocatore risponde alla fine, secondo come è andata (chi ha vinto la missione, chi i punti, chi giocava i protagonisti, chi ha perso la missione ma vinto più scene). Mettono a fuoco la storia e producono i fatti su cui si costruisce l'epilogo.
+**Difensore.** Nel duello dei colpi di scena, il lato che ha vinto il primo conteggio della quinta scena: difende dietro un muro pari al numero di scene che ha vinto (§6.3).
 
 **Epilogo.** La sequenza facoltativa di vignette con cui si chiude, letta la Crescita. Si narra a turno, mai due di fila; "passo" chiude. È l'unico momento in cui un destino dato per certo può essere riaperto.
 
@@ -1218,19 +1217,21 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Mossa sleale.** L'uso del Jolly da parte dei Protagonisti: dà il vantaggio sul tavolo senza segnare punti, ma consegna il Jolly all'avversario. Si narra come un successo ottenuto tradendo i propri principi.
 
+**Muro.** Nel duello dei colpi di scena, la soglia del difensore: pari al numero di scene che ha vinto (da 1 a 5). Lo sfidante deve raggiungerla o superarla per aprire il duello (§6.3).
+
 **Opposizione.** Il lato che ostacola i protagonisti, fatto di Quadri (i nemici) e Fiori (il caos). Non deve essere un'unica fazione: possono essere attori diversi, anche rivali, che comunque remano contro.
 
 **Picche (♠).** Seme dei Protagonisti: il protagonista duro e diretto. Forza, imposizione, conflitto aperto, decisioni brusche.
 
 **Piatto.** Le carte giocate sul tavolo e non ancora catturate. Si svuota con una scopa; ciò che resta a fine scena decide chi vince la posta e passa alla scena dopo.
 
-**Pitch.** La fase di preparazione prima della prima scena: si definiscono tono, coppia, missione e opposizione, e si rispondono le domande che diventano le spinte.
+**Pitch.** La fase di preparazione prima della prima scena: si definiscono genere e tono, missione, coppia e opposizione, si rispondono le domande che diventano le spinte e si fissa insieme la prima difficoltà.
 
 **Posta.** L'obiettivo concreto in palio nella scena, da vincere o perdere. Si formula con entrambi i rami (cosa accade se vince ciascun lato), dice il cosa e non il come, e non è mai indispensabile: la missione resta raggiungibile fino all'ultima scena.
 
 **Presa.** Catturare carte dal piatto secondo le regole della scopa (per pari valore o per somma). Vale un punto, anche se fatta con una figura. È obbligatoria: se una carta può catturare, non la si può lasciare nel piatto.
 
-**Presa maldestra.** Quando si è costretti a catturare una carta del proprio stesso lato (Cuori che prende Picche, o Quadri che prende Fiori, e viceversa): si racconta come un'azione goffa, le due anime del lato che si intralciano.
+**Presa maldestra.** Quando si è costretti a catturare una carta del proprio stesso lato (Cuori che prende Picche, o Quadri che prende Fiori, e viceversa). Si racconta in due modi: le due anime del lato che si intralciano, oppure un personaggio che agisce insolitamente contro la propria natura. Resta comunque un successo (§3.8).
 
 **Prestigio.** Una delle interpretazioni possibili della Crescita (la reputazione, il nome che ci si è fatti), accanto alla maturazione e all'evoluzione del personaggio. Non è più il nome del piano del finale.
 
@@ -1254,9 +1255,9 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Round.** Il ciclo di gioco di una scena, dall'asta all'ultima carta giocata. Round e scena coincidono.
 
-**Sacrificio.** Quando una figura non ha nulla da catturare non resta nel piatto: si sacrifica e viene scartata come se avesse preso sé stessa. Questa presa atipica vale comunque 1 punto. L'effetto della figura scatta comunque.
+**Sacrificio.** Quando una figura non ha nulla da catturare non resta nel piatto: si sacrifica ed esce dal gioco, come se avesse preso sé stessa. Questa presa atipica vale comunque 1 punto. L'effetto della figura scatta comunque.
 
-**Scarti comuni.** La pila dove finiscono le carte catturate e le figure sacrificate. Non danno punti, ma sono il bacino da cui pesca il Re.
+**Scarti comuni.** La pila dove finiscono le carte numeriche giocate e catturate (le figure giocate escono invece dal gioco). Non danno punti, ma sono il bacino da cui pescano il Re e la Regina.
 
 **Scena.** Una delle cinque unità della partita: Innesco, Adattamento, Frattura, Crisi, Risoluzione. Ognuna ha un luogo, un momento e una posta.
 
@@ -1264,11 +1265,13 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 
 **Semi.** I quattro semi del mazzo, due per lato: Cuori e Picche ai Protagonisti, Quadri e Fiori all'Opposizione. Ciascuno ha un significato narrativo che si adatta al tono scelto.
 
-**Spinte (darsi una spinta).** Le risorse spuntabili definite nel pitch, due per seme per ciascun lato (quattro a testa). Dopo una presa fatta con una carta numerica, chi prende può spuntare la risposta del seme della carta di presa e trasformare la presa in una scopa. Ognuna si usa una sola volta, una sola per presa, mai su una presa di figura, mai nell'ultima scena.
+**Sfidante.** Nel duello dei colpi di scena, il lato che ha perso il primo conteggio della quinta scena: apre calando dalla riserva una carta di valore pari o superiore al muro (§6.3).
+
+**Spinte (darsi una spinta).** Le risorse spuntabili definite nel pitch, due per seme per ciascun lato (quattro a testa). Dopo una presa fatta con una carta numerica, chi prende può spuntare la risposta del seme della carta di presa e trasformare la presa in una scopa. Ognuna si usa una sola volta, una sola per presa, mai su una presa di figura o di Jolly, mai nell'ultima scena.
 
 **Titolo della scena.** Il nome che chi vince l'asta dà alla scena, insieme alla posta, aprendola.
 
-**Tono.** Il genere di riferimento scelto al pitch (action, comedy, dramedy, romance e così via). Non cambia le regole, ma orienta come si narra e come si legge il significato dei semi.
+**Tono.** Il registro scelto al pitch insieme al genere (leggero, pesante, comico, commovente, demenziale, spaventoso). Genere e tono non cambiano le regole, ma orientano come si narra (§2.1).
 
 **Vignetta.** La singola scena dell'epilogo, incentrata su un Qualcuno, ambientata giorni o anni dopo. Chiusura dolce o amara, colpo di scena retrospettivo o gancio per un seguito: a piacere.
 
@@ -1286,6 +1289,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 <div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
 </div>
 </div>
+<span class="sg-lab">Et&agrave;</span><div class="sg-box">&nbsp;</div>
 <span class="sg-lab">Aspetto fisico e look <i>(com'&egrave; fatto, come si veste, un tratto riconoscibile)</i></span>
 <div class="sg-box sg-righe"><div class="r"></div><div class="r"></div></div>
 <span class="sg-lab">Cosa detesta dell'altro <i>(spunto narrativo, senza effetto sul gioco)</i></span>
@@ -1309,6 +1313,7 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 <div class="sg-box sg-righe"><div class="r"></div><div class="r"></div><div class="r"></div></div>
 </div>
 </div>
+<span class="sg-lab">Et&agrave;</span><div class="sg-box">&nbsp;</div>
 <span class="sg-lab">Aspetto fisico e look <i>(com'&egrave; fatto, come si veste, un tratto riconoscibile)</i></span>
 <div class="sg-box sg-righe"><div class="r"></div><div class="r"></div></div>
 <span class="sg-lab">Cosa detesta dell'altro <i>(spunto narrativo, senza effetto sul gioco)</i></span>
@@ -1381,8 +1386,8 @@ I termini di gioco in ordine alfabetico, con il loro significato in breve. Per l
 <li><b>Asta per l'iniziativa:</b> ognuno cala coperta una carta <i>numerica</i> (figure e Jolly esclusi). Vince la più alta; a parità l'iniziativa va a chi non l'aveva nella scena precedente (alla scena 1, all'Opposizione).</li>
 <li><b>Apertura:</b> chi vince l'asta fissa <b>titolo</b> e <b>posta</b> e apre giocando per primo. La sua carta d'asta resta scoperta sul tavolo e sarà la sua ultima giocata del round.</li>
 <li><b>Il turno:</b> a turni alterni, una mossa a testa: metti una carta nel piatto, oppure fai una <b>presa</b>, oppure una <b>scopa</b> (presa che svuota il piatto). La presa è <b>obbligatoria</b>. Dopo ogni mossa, <b>narra</b>.</li>
-<li><b>Spinta:</b> dopo una presa fatta con una carta <i>numerica</i> puoi spendere una spinta del suo seme per trasformarla in scopa. Una sola per presa; mai su una presa di figura; mai nell'ultima scena.</li>
-<li><b>Concedere la scena</b> (solo chi non ha l'iniziativa, sull'ultima carta, scene 1-4): vale 1 punto e la carta va negli scarti. Una volta per lato. La posta va all'avversario.</li>
+<li><b>Spinta:</b> dopo una presa fatta con una carta <i>numerica</i> puoi spendere una spinta del suo seme per trasformarla in scopa. Una sola per presa; mai su una presa di figura o di Jolly; mai nell'ultima scena.</li>
+<li><b>Concedere la scena</b> (solo chi non ha l'iniziativa, sull'ultima carta, scene 1-4, se quella carta non gli serve a nulla): vale 1 punto e la carta va negli scarti. Una volta per lato. La posta va all'avversario.</li>
 <li><b>Fine round:</b> vince la posta chi ha la <b>somma di valori</b> più alta nel piatto (le proprie carte più quelle dell'avversario). A parità, la posta va a chi ha giocato l'ultima carta; una scopa a piatto vuoto la vince chi l'ha fatta.</li>
 <li><b>Mercato</b> tra una scena e l'altra (vedi H.2).</li>
 </ol>
