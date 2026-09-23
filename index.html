@@ -1183,7 +1183,7 @@ function rLobby(){
 }
 
 /* ================= WIZARD DI CREAZIONE ================= */
-const PASSI_WIZ=["Il gioco","Giocatori","Tono","Missione","Protagonisti","Opposizione","Spinte protagonisti","Spinte opposizione","Difficoltà iniziale","Pronti a partire"];
+const PASSI_WIZ=["Il gioco","Giocatori","Genere e tono","Missione","Protagonisti","Opposizione","Spinte protagonisti","Spinte opposizione","Difficoltà iniziale","Pronti a partire"];
 function caso(a){return a[Math.floor(Math.random()*a.length)]}
 function persExtra(q){
   const e=(q.eta||"").trim(), a=(q.aspetto||"").trim();
@@ -2661,9 +2661,14 @@ function avviaMercato(){
   G.mercatoLato = G.modalita==="online" ? "P" : null;
   G.fase="mercato"; render();
 }
+// con poche carte nel mazzo la mano finale si pesca subito, al passaggio di turno: rManoEstesa non tocca G
+function preparaEstesa(l){
+  const L=lato(l);
+  if(L.mazzo.length<=Math.max(0,4-L.mano.length)) pescaFinoA(l,4);
+}
 function avviaManoEstesa(){
   G.estesa={P:false,O:false};
-  G.fase="mano_estesa"; G.attore="P"; velo("P",render);
+  G.fase="mano_estesa"; G.attore="P"; preparaEstesa("P"); velo("P",render);
 }
 function rManoEstesa(){
   const l=G.attore, L=lato(l);
@@ -2702,7 +2707,6 @@ function rManoEstesa(){
       fineEstesa(l);
     });
   }else{
-    pescaFinoA(l,4);   // ≤slot carte nel mazzo: le prende tutte (la figura in mano è già dentro)
     SC.innerHTML=`
       <h2 class="ts">Mano finale — ${nomeLato(l)}</h2>
       <p class="sotto">${L.mazzo.length===0?"Hai preso in mano tutte le carte rimaste.":"Hai pescato la mano per l'ultima scena."}</p>
@@ -2714,7 +2718,7 @@ function rManoEstesa(){
 }
 function fineEstesa(l){
   G.estesa[l]=true;
-  if(!G.estesa.O){ G.attore="O"; velo("O",render); }
+  if(!G.estesa.O){ G.attore="O"; preparaEstesa("O"); velo("O",render); }
   else avanzaScena();
 }
 
